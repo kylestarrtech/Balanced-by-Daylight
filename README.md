@@ -3,4 +3,4 @@
 
 This tool is in very early stages, but I decided to make the repository public nonetheless.
 
-For more information, DM/follow me on [Twitter](https://twitter.com/SHADERSOP) or message me on <abbr title="shaders">Discord</abbr> for more information.
+For more information, DM/follow me on [Twitter](https://twitter.com/SHADERSOP) or message me on Discord (shaders) for more information.
