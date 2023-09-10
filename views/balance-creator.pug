@@ -1,0 +1,131 @@
+html 
+    head 
+        title Dead by Daylight Balance Checker
+        link(rel="stylesheet", href="/stylesheets/balance-creator.css", type="text/css")
+        script(src="/scripts/balance-creator.js", type="text/javascript" defer="defer")
+    body(onload="main()")
+        h1 Dead by Daylight Balance Checker
+        h2 Balance Creator Tool
+
+        div#column-flow-container
+            div#left-column(class="column-child")
+                h3 Tier Balancing
+                
+                div#tiered-balance-div
+                    label(for="tier-creation-textbox") Tier Name: 
+                    input#tier-creation-textbox(type="text")
+                    button#tier-creation-button Add New Tier
+
+                    br
+
+                    label(for="tier-selection-dropdown") Tier:
+                    select#tier-selection-dropdown(style="min-width: 200px;")
+
+                    br
+                    hr
+
+                    div#tier-selection-container
+                        
+                        div.perk-ban-dropdown
+                            //  Create a dropdown for Survivor Individual Perk Bans
+                            p Survivor Individual Perk Bans:
+                            select#survivor-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#survivor-individual-perk-ban-add-button Add Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Survivor Combined Perk Bans
+                            p Survivor Combined Perk Bans:
+                            select#survivor-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#survivor-combined-perk-ban-add-button Add Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Killer Individual Perk Bans
+                            p Killer Individual Perk Bans:
+                            select#killer-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#killer-individual-perk-ban-add-button Add Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Killer Combined Perk Bans
+                            p Killer Combined Perk Bans:
+                            select#killer-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#killer-combined-perk-ban-add-button Add Perk(s)
+
+                hr
+                hr
+                h3 Killer Balancing
+
+                div#killer-balance-div
+                    label(for="killer-selection-dropdown") Killer:
+                    select#killer-selection-dropdown(style="min-width: 200px;")
+                    br
+                    br
+                    label(for="killer-tier-selection-dropdown") Killer Tiers: 
+                    br
+                    select#killer-tier-selection-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
+                    br
+                    button#killer-tier-confirmation-button(style="min-width: 200px;") Confirm Tiers
+                    br
+                    hr
+
+                    div#killer-selection-container
+                        div.perk-ban-dropdown
+                            //  Create a dropdown for Survivor Individual Perk Bans
+                            p Survivor Individual Perk Bans:
+                            select#survivor-tiered-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#survivor-tiered-individual-perk-ban-add-button Add Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Survivor Combined Perk Bans
+                            p Survivor Combined Perk Bans:
+                            select#survivor-tiered-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#survivor-tiered-combined-perk-ban-add-button Add Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Killer Individual Perk Bans
+                            p Killer Individual Perk Bans:
+                            select#killer-tiered-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#killer-tiered-individual-perk-ban-add-button Add Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Killer Combined Perk Bans
+                            p Killer Combined Perk Bans:
+                            select#killer-tiered-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#killer-tiered-combined-perk-ban-add-button Add Perk(s)
+                - var i = 0;
+                while i < 20
+                    br
+                    - i++;
+            div#mid-column(class="column-child")
+                    div.perk-search-module
+                        label(for="perk-search-role-checkbox") Is Survivor Perk?:
+                        input#perk-search-role-checkbox(type="checkbox")
+                        br
+                        label(for="perk-search-textbox-gen-perk-ban") Perk Name:
+                        input#perk-search-textbox(type="text")
+                        button#perk-search-button Search
+                    div#perk-search-results-container
+                        select#perk-search-results(size="30" style="min-width: 350px;" multiple="multiple")
+                        br
+
+                    hr
+
+                    textarea#balance-import-textbox(rows="5" cols="50")
+                    br
+                    button(id="balance-import-button") Import Balancing Sheet 
+                    hr
+                    label(for="balance-name-textbox") Balancing Title:
+                    input#balance-name-textbox(type="text")
+                    button Save 
+                    br
+                    button(id="balance-export-button") Export Balancing Sheet 
+                    br
+                    // Create a readonly textbox for the exported balancing sheet with 10 rows and 50 columns
+                    textarea#balance-creator-textbox(rows="5" cols="50" readonly="readonly")

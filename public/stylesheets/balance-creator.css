@@ -1,0 +1,42 @@
+body {
+    text-align: center;
+}
+
+#column-flow-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.column-child {
+    flex: 1;
+    width: 40%;
+}
+
+.column-child:first-child {
+    margin-right: 20px;
+}
+
+#mid-column {
+    position: sticky;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#tier-selection-container {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#killer-selection-container {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.selection-dropdown {
+    width: 90%;
+}

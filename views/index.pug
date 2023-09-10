@@ -1,0 +1,36 @@
+html 
+    head 
+        title Dead by Daylight Balance Checker
+        link(rel="stylesheet", href="/stylesheets/style.css")
+    body 
+        h1 Dead by Daylight Balance Checker
+        
+        // Create a dropdown with the "Role" label
+        label(for="role") Role:
+        select#role
+            option(value="survivor") Survivor
+            option(value="killer") Killer
+        
+        br
+
+        // Create a Dropdown with the "Balancing" label
+        label(for="balancing") Balancing:
+        select#balancing
+            option(value="dbdl") DBDLeague
+            option(value="otf") Outrun the Fog
+
+        br
+
+        div#perkGroupHolder
+            // Create four dropdowns labelled for Perks.
+            label(for="perk1") Perk 1:
+            select#perk1
+            br
+            label(for="perk2") Perk 2:
+            select#perk2
+            br
+            label(for="perk3") Perk 3:
+            select#perk3
+            br
+            label(for="perk4") Perk 4:
+            select#perk4
