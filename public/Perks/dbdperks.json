@@ -1,0 +1,2189 @@
+[
+    {
+        "id": 0,
+        "name": "Ace in the Hole",
+        "icon": "public/Perks/Survivors/Ace In The Hole.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ace Visconti",
+        "survivorPerk": true
+    },
+    {
+        "id": 1,
+        "name": "Adrenaline",
+        "icon": "public/Perks/Survivors/Adrenaline.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Meg Thomas",
+        "survivorPerk": true
+    },
+    {
+        "id": 2,
+        "name": "Aftercare",
+        "icon": "public/Perks/Survivors/Aftercare.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jeff Johansen",
+        "survivorPerk": true
+    },
+    {
+        "id": 3,
+        "name": "Alert",
+        "icon": "public/Perks/Survivors/Alert.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Feng Min",
+        "survivorPerk": true
+    },
+    {
+        "id": 4,
+        "name": "Any Means Necessary",
+        "icon": "public/Perks/Survivors/Any Means Necessary.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yui Kimura",
+        "survivorPerk": true
+    },
+    {
+        "id": 5,
+        "name": "Appraisal",
+        "icon": "public/Perks/Survivors/Appraisal.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Elodie Rakoto",
+        "survivorPerk": true
+    },
+    {
+        "id": 6,
+        "name": "Autodidact",
+        "icon": "public/Perks/Survivors/Autodidact.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Adam Francis",
+        "survivorPerk": true
+    },
+    {
+        "id": 7,
+        "name": "Background Player",
+        "icon": "public/Perks/Survivors/Background Player.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Renato Lyra",
+        "survivorPerk": true
+    },
+    {
+        "id": 8,
+        "name": "Balanced Landing",
+        "icon": "public/Perks/Survivors/Balanced Landing.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nea Karlsson",
+        "survivorPerk": true
+    },
+    {
+        "id": 9,
+        "name": "Better than New",
+        "icon": "public/Perks/Survivors/Better Than New.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Rebecca Chambers",
+        "survivorPerk": true
+    },
+    {
+        "id": 10,
+        "name": "Bite the Bullet",
+        "icon": "public/Perks/Survivors/Bite The Bullet.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Leon S. Kennedy",
+        "survivorPerk": true
+    },
+    {
+        "id": 11,
+        "name": "Blast Mine",
+        "icon": "public/Perks/Survivors/Blast Mine.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jill Valentine",
+        "survivorPerk": true
+    },
+    {
+        "id": 12,
+        "name": "Blood Pact",
+        "icon": "public/Perks/Survivors/Blood Pact.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Cheryl Mason",
+        "survivorPerk": true
+    },
+    {
+        "id": 13,
+        "name": "Blood Rush",
+        "icon": "public/Perks/Survivors/Blood Rush.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Renato Lyra",
+        "survivorPerk": true
+    },
+    {
+        "id": 14,
+        "name": "Boil Over",
+        "icon": "public/Perks/Survivors/Boil Over.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Kate Denson",
+        "survivorPerk": true
+    },
+    {
+        "id": 15,
+        "name": "Bond",
+        "icon": "public/Perks/Survivors/Bond.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Dwight Fairfield",
+        "survivorPerk": true
+    },
+    {
+        "id": 16,
+        "name": "Boon: Circle of Healing",
+        "icon": "public/Perks/Survivors/Boon Circle Of Healing.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Mikaela Reid",
+        "survivorPerk": true
+    },
+    {
+        "id": 17,
+        "name": "Boon: Dark Theory",
+        "icon": "public/Perks/Survivors/Boon Dark Theory.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yoichi Asakawa",
+        "survivorPerk": true
+    },
+    {
+        "id": 18,
+        "name": "Boon: Exponential",
+        "icon": "public/Perks/Survivors/Boon Exponential.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jonah Vasquez",
+        "survivorPerk": true
+    },
+    {
+        "id": 19,
+        "name": "Boon: Shadow Step",
+        "icon": "public/Perks/Survivors/Boon Shadow Step.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Mikaela Reid",
+        "survivorPerk": true
+    },
+    {
+        "id": 20,
+        "name": "Borrowed Time",
+        "icon": "public/Perks/Survivors/Borrowed Time.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "William \"Bill\" Overbeck",
+        "survivorPerk": true
+    },
+    {
+        "id": 21,
+        "name": "Botany Knowledge",
+        "icon": "public/Perks/Survivors/Botany Knowledge.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Claudette Morel",
+        "survivorPerk": true
+    },
+    {
+        "id": 22,
+        "name": "Breakdown",
+        "icon": "public/Perks/Survivors/Breakdown.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jeff Johansen",
+        "survivorPerk": true
+    },
+    {
+        "id": 23,
+        "name": "Breakout",
+        "icon": "public/Perks/Survivors/Breakout.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yui Kimura",
+        "survivorPerk": true
+    },
+    {
+        "id": 24,
+        "name": "Buckle Up",
+        "icon": "public/Perks/Survivors/Buckle Up.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ashley J. Williams",
+        "survivorPerk": true
+    },
+    {
+        "id": 25,
+        "name": "Built to Last",
+        "icon": "public/Perks/Survivors/Built To Last.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Felix Richter",
+        "survivorPerk": true
+    },
+    {
+        "id": 26,
+        "name": "Calm Spirit",
+        "icon": "public/Perks/Survivors/Calm Spirit.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jake Park",
+        "survivorPerk": true
+    },
+    {
+        "id": 27,
+        "name": "Chemical Trap",
+        "icon": "public/Perks/Survivors/Chemical Trap.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ellen Ripley",
+        "survivorPerk": true
+    },
+    {
+        "id": 28,
+        "name": "Clairvoyance",
+        "icon": "public/Perks/Survivors/Clairvoyance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Mikaela Reid",
+        "survivorPerk": true
+    },
+    {
+        "id": 29,
+        "name": "Corrective Action",
+        "icon": "public/Perks/Survivors/Corrective Action.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jonah Vasquez",
+        "survivorPerk": true
+    },
+    {
+        "id": 30,
+        "name": "Counterforce",
+        "icon": "public/Perks/Survivors/Counterforce.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jill Valentine",
+        "survivorPerk": true
+    },
+    {
+        "id": 31,
+        "name": "Cut Loose",
+        "icon": "public/Perks/Survivors/Cut Loose.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Thalita Lyra",
+        "survivorPerk": true
+    },
+    {
+        "id": 32,
+        "name": "Dance with Me",
+        "icon": "public/Perks/Survivors/Dance With Me.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Kate Denson",
+        "survivorPerk": true
+    },
+    {
+        "id": 33,
+        "name": "Dark Sense",
+        "icon": "public/Perks/Survivors/Dark Sense.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 34,
+        "name": "Dead Hard",
+        "icon": "public/Perks/Survivors/Dead Hard.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "David King",
+        "survivorPerk": true
+    },
+    {
+        "id": 35,
+        "name": "Deception",
+        "icon": "public/Perks/Survivors/Deception.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Elodie Rakoto",
+        "survivorPerk": true
+    },
+    {
+        "id": 36,
+        "name": "Decisive Strike",
+        "icon": "public/Perks/Survivors/Decisive Strike.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Laurie Strode",
+        "survivorPerk": true
+    },
+    {
+        "id": 37,
+        "name": "Deja Vu",
+        "icon": "public/Perks/Survivors/Deja Vu.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 38,
+        "name": "Deliverance",
+        "icon": "public/Perks/Survivors/Deliverance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Adam Francis",
+        "survivorPerk": true
+    },
+    {
+        "id": 39,
+        "name": "Desperate Measures",
+        "icon": "public/Perks/Survivors/Desperate Measures.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Felix Richter",
+        "survivorPerk": true
+    },
+    {
+        "id": 40,
+        "name": "Detective's Hunch",
+        "icon": "public/Perks/Survivors/Detective_S Hunch.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "David Tapp",
+        "survivorPerk": true
+    },
+    {
+        "id": 41,
+        "name": "Distortion",
+        "icon": "public/Perks/Survivors/Distortion.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jeff Johansen",
+        "survivorPerk": true
+    },
+    {
+        "id": 42,
+        "name": "Diversion",
+        "icon": "public/Perks/Survivors/Diversion.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Adam Francis",
+        "survivorPerk": true
+    },
+    {
+        "id": 43,
+        "name": "Dramaturgy",
+        "icon": "public/Perks/Survivors/Dramaturgy.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nicolas Cage",
+        "survivorPerk": true
+    },
+    {
+        "id": 44,
+        "name": "Empathic Connection",
+        "icon": "public/Perks/Survivors/Empathic Connection.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yoichi Asakawa",
+        "survivorPerk": true
+    },
+    {
+        "id": 45,
+        "name": "Empathy",
+        "icon": "public/Perks/Survivors/Empathy.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Claudette Morel",
+        "survivorPerk": true
+    },
+    {
+        "id": 46,
+        "name": "Fast Track",
+        "icon": "public/Perks/Survivors/Fast Track.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yun-Jin Lee",
+        "survivorPerk": true
+    },
+    {
+        "id": 47,
+        "name": "Flashbang",
+        "icon": "public/Perks/Survivors/Flashbang.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Leon S. Kennedy",
+        "survivorPerk": true
+    },
+    {
+        "id": 48,
+        "name": "Flip-Flop",
+        "icon": "public/Perks/Survivors/Flip Flop.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ashley J. Williams",
+        "survivorPerk": true
+    },
+    {
+        "id": 49,
+        "name": "Fogwise",
+        "icon": "public/Perks/Survivors/Fogwise.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Vittorio Toscano",
+        "survivorPerk": true
+    },
+    {
+        "id": 50,
+        "name": "For the People",
+        "icon": "public/Perks/Survivors/For The People.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Zarina Kassir",
+        "survivorPerk": true
+    },
+    {
+        "id": 51,
+        "name": "Friendly Competition",
+        "icon": "public/Perks/Survivors/Friendly Competition.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Thalita Lyra",
+        "survivorPerk": true
+    },
+    {
+        "id": 52,
+        "name": "Guardian",
+        "icon": "public/Perks/Survivors/Guardian.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Steve Harrington",
+        "survivorPerk": true
+    },
+    {
+        "id": 53,
+        "name": "Head On",
+        "icon": "public/Perks/Survivors/Head On.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jane Romero",
+        "survivorPerk": true
+    },
+    {
+        "id": 54,
+        "name": "Hope",
+        "icon": "public/Perks/Survivors/Hope.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 55,
+        "name": "Hyperfocus",
+        "icon": "public/Perks/Survivors/Hyperfocus.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Rebecca Chambers",
+        "survivorPerk": true
+    },
+    {
+        "id": 56,
+        "name": "Inner Focus",
+        "icon": "public/Perks/Survivors/Inner Focus.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Haddie Kaur",
+        "survivorPerk": true
+    },
+    {
+        "id": 57,
+        "name": "Inner Healing",
+        "icon": "public/Perks/Survivors/Inner Healing.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nancy Wheeler",
+        "survivorPerk": true
+    },
+    {
+        "id": 58,
+        "name": "Iron Will",
+        "icon": "public/Perks/Survivors/Iron Will.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jake Park",
+        "survivorPerk": true
+    },
+    {
+        "id": 59,
+        "name": "Kindred",
+        "icon": "public/Perks/Survivors/Kindred.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 60,
+        "name": "Kinship",
+        "icon": "public/Perks/Survivors/Kinship.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Steve Harrington",
+        "survivorPerk": true
+    },
+    {
+        "id": 61,
+        "name": "Leader",
+        "icon": "public/Perks/Survivors/Leader.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Dwight Fairfield",
+        "survivorPerk": true
+    },
+    {
+        "id": 62,
+        "name": "Left Behind",
+        "icon": "public/Perks/Survivors/Left Behind.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "William \"Bill\" Overbeck",
+        "survivorPerk": true
+    },
+    {
+        "id": 63,
+        "name": "Light-Footed",
+        "icon": "public/Perks/Survivors/Light Footed.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ellen Ripley",
+        "survivorPerk": true
+    },
+    {
+        "id": 64,
+        "name": "Lightweight",
+        "icon": "public/Perks/Survivors/Lightweight.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 65,
+        "name": "Lithe",
+        "icon": "public/Perks/Survivors/Lithe.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Feng Min",
+        "survivorPerk": true
+    },
+    {
+        "id": 66,
+        "name": "Low Profile",
+        "icon": "public/Perks/Survivors/Low Profile.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ada Wong",
+        "survivorPerk": true
+    },
+    {
+        "id": 67,
+        "name": "Lucky Break",
+        "icon": "public/Perks/Survivors/Lucky Break.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yui Kimura",
+        "survivorPerk": true
+    },
+    {
+        "id": 68,
+        "name": "Lucky Star",
+        "icon": "public/Perks/Survivors/Lucky Star.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ellen Ripley",
+        "survivorPerk": true
+    },
+    {
+        "id": 69,
+        "name": "Made for This",
+        "icon": "public/Perks/Survivors/Made For This.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Gabriel Soma",
+        "survivorPerk": true
+    },
+    {
+        "id": 70,
+        "name": "Mettle of Man",
+        "icon": "public/Perks/Survivors/Mettle Of Man.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ashley J. Williams",
+        "survivorPerk": true
+    },
+    {
+        "id": 71,
+        "name": "No Mither",
+        "icon": "public/Perks/Survivors/No Mither.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "David King",
+        "survivorPerk": true
+    },
+    {
+        "id": 72,
+        "name": "No One Left Behind",
+        "icon": "public/Perks/Survivors/No One Left Behind.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 73,
+        "name": "Object of Obsession",
+        "icon": "public/Perks/Survivors/Object Of Obsession.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Laurie Strode",
+        "survivorPerk": true
+    },
+    {
+        "id": 74,
+        "name": "Off the Record",
+        "icon": "public/Perks/Survivors/Off The Record.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Zarina Kassir",
+        "survivorPerk": true
+    },
+    {
+        "id": 75,
+        "name": "Open-Handed",
+        "icon": "public/Perks/Survivors/Open Handed.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ace Visconti",
+        "survivorPerk": true
+    },
+    {
+        "id": 76,
+        "name": "Overcome",
+        "icon": "public/Perks/Survivors/Overcome.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jonah Vasquez",
+        "survivorPerk": true
+    },
+    {
+        "id": 77,
+        "name": "Overzealous",
+        "icon": "public/Perks/Survivors/Overzealous.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Haddie Kaur",
+        "survivorPerk": true
+    },
+    {
+        "id": 78,
+        "name": "Parental Guidance",
+        "icon": "public/Perks/Survivors/Parental Guidance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yoichi Asakawa",
+        "survivorPerk": true
+    },
+    {
+        "id": 79,
+        "name": "Pharmacy",
+        "icon": "public/Perks/Survivors/Pharmacy.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Quentin Smith",
+        "survivorPerk": true
+    },
+    {
+        "id": 80,
+        "name": "Plot Twist",
+        "icon": "public/Perks/Survivors/Plot Twist.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nicolas Cage",
+        "survivorPerk": true
+    },
+    {
+        "id": 81,
+        "name": "Plunderer's Instinct",
+        "icon": "public/Perks/Survivors/Plunderer_S Instinct.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 82,
+        "name": "Poised",
+        "icon": "public/Perks/Survivors/Poised.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jane Romero",
+        "survivorPerk": true
+    },
+    {
+        "id": 83,
+        "name": "Potential Energy",
+        "icon": "public/Perks/Survivors/Potential Energy.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Vittorio Toscano",
+        "survivorPerk": true
+    },
+    {
+        "id": 84,
+        "name": "Power Struggle",
+        "icon": "public/Perks/Survivors/Power Struggle.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Elodie Rakoto",
+        "survivorPerk": true
+    },
+    {
+        "id": 85,
+        "name": "Premonition",
+        "icon": "public/Perks/Survivors/Premonition.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 86,
+        "name": "Prove Thyself",
+        "icon": "public/Perks/Survivors/Prove Thyself.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Dwight Fairfield",
+        "survivorPerk": true
+    },
+    {
+        "id": 87,
+        "name": "Quick and Quiet",
+        "icon": "public/Perks/Survivors/Quick And Quiet.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Meg Thomas",
+        "survivorPerk": true
+    },
+    {
+        "id": 88,
+        "name": "Quick Gambit",
+        "icon": "public/Perks/Survivors/Quick Gambit.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Vittorio Toscano",
+        "survivorPerk": true
+    },
+    {
+        "id": 89,
+        "name": "Reactive Healing",
+        "icon": "public/Perks/Survivors/Reactive Healing.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ada Wong",
+        "survivorPerk": true
+    },
+    {
+        "id": 90,
+        "name": "Reassurance",
+        "icon": "public/Perks/Survivors/Reassurance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Rebecca Chambers",
+        "survivorPerk": true
+    },
+    {
+        "id": 91,
+        "name": "Red Herring",
+        "icon": "public/Perks/Survivors/Red Herring.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Zarina Kassir",
+        "survivorPerk": true
+    },
+    {
+        "id": 92,
+        "name": "Renewal",
+        "icon": "public/Perks/Survivors/Renewal.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Steve Harrington",
+        "survivorPerk": true
+    },
+    {
+        "id": 93,
+        "name": "Repressed Alliance",
+        "icon": "public/Perks/Survivors/Repressed Alliance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Cheryl Mason",
+        "survivorPerk": true
+    },
+    {
+        "id": 94,
+        "name": "Residual Manifest",
+        "icon": "public/Perks/Survivors/Residual Manifest.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Haddie Kaur",
+        "survivorPerk": true
+    },
+    {
+        "id": 95,
+        "name": "Resilience",
+        "icon": "public/Perks/Survivors/Resilience.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 96,
+        "name": "Resurgence",
+        "icon": "public/Perks/Survivors/Resurgence.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jill Valentine",
+        "survivorPerk": true
+    },
+    {
+        "id": 97,
+        "name": "Rookie Spirit",
+        "icon": "public/Perks/Survivors/Rookie Spirit.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Leon S. Kennedy",
+        "survivorPerk": true
+    },
+    {
+        "id": 98,
+        "name": "Saboteur",
+        "icon": "public/Perks/Survivors/Saboteur.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jake Park",
+        "survivorPerk": true
+    },
+    {
+        "id": 99,
+        "name": "Scavenger",
+        "icon": "public/Perks/Survivors/Scavenger.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Gabriel Soma",
+        "survivorPerk": true
+    },
+    {
+        "id": 100,
+        "name": "Scene Partner",
+        "icon": "public/Perks/Survivors/Scene Partner.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nicolas Cage",
+        "survivorPerk": true
+    },
+    {
+        "id": 101,
+        "name": "Self-Aware",
+        "icon": "public/Perks/Survivors/Self Aware.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nancy Wheeler",
+        "survivorPerk": true
+    },
+    {
+        "id": 102,
+        "name": "Self-Care",
+        "icon": "public/Perks/Survivors/Self Care.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Claudette Morel",
+        "survivorPerk": true
+    },
+    {
+        "id": 103,
+        "name": "Self-Preservation",
+        "icon": "public/Perks/Survivors/Self Preservation.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yun-Jin Lee",
+        "survivorPerk": true
+    },
+    {
+        "id": 104,
+        "name": "Situational Awareness",
+        "icon": "public/Perks/Survivors/Situational Awareness.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nancy Wheeler",
+        "survivorPerk": true
+    },
+    {
+        "id": 105,
+        "name": "Slippery Meat",
+        "icon": "public/Perks/Survivors/Slippery Meat.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 106,
+        "name": "Small Game",
+        "icon": "public/Perks/Survivors/Small Game.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 107,
+        "name": "Smash Hit",
+        "icon": "public/Perks/Survivors/Smash Hit.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Yun-Jin Lee",
+        "survivorPerk": true
+    },
+    {
+        "id": 108,
+        "name": "Sole Survivor",
+        "icon": "public/Perks/Survivors/Sole Survivor.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Laurie Strode",
+        "survivorPerk": true
+    },
+    {
+        "id": 109,
+        "name": "Solidarity",
+        "icon": "public/Perks/Survivors/Solidarity.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Jane Romero",
+        "survivorPerk": true
+    },
+    {
+        "id": 110,
+        "name": "Soul Guard",
+        "icon": "public/Perks/Survivors/Soul Guard.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Cheryl Mason",
+        "survivorPerk": true
+    },
+    {
+        "id": 111,
+        "name": "Spine Chill",
+        "icon": "public/Perks/Survivors/Spine Chill.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 112,
+        "name": "Sprint Burst",
+        "icon": "public/Perks/Survivors/Sprint Burst.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Meg Thomas",
+        "survivorPerk": true
+    },
+    {
+        "id": 113,
+        "name": "Stake Out",
+        "icon": "public/Perks/Survivors/Stake Out.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "David Tapp",
+        "survivorPerk": true
+    },
+    {
+        "id": 114,
+        "name": "Streetwise",
+        "icon": "public/Perks/Survivors/Streetwise.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nea Karlsson",
+        "survivorPerk": true
+    },
+    {
+        "id": 115,
+        "name": "Teamwork: Collective Stealth",
+        "icon": "public/Perks/Survivors/Teamwork Collective Stealth.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Renato Lyra",
+        "survivorPerk": true
+    },
+    {
+        "id": 116,
+        "name": "Teamwork: Power of Two",
+        "icon": "public/Perks/Survivors/Teamwork Power Of Two.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Thalita Lyra",
+        "survivorPerk": true
+    },
+    {
+        "id": 117,
+        "name": "Technician",
+        "icon": "public/Perks/Survivors/Technician.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Feng Min",
+        "survivorPerk": true
+    },
+    {
+        "id": 118,
+        "name": "Tenacity",
+        "icon": "public/Perks/Survivors/Tenacity.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "David Tapp",
+        "survivorPerk": true
+    },
+    {
+        "id": 119,
+        "name": "This is Not Happening",
+        "icon": "public/Perks/Survivors/This Is Not Happening.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 120,
+        "name": "Troubleshooter",
+        "icon": "public/Perks/Survivors/Troubleshooter.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Gabriel Soma",
+        "survivorPerk": true
+    },
+    {
+        "id": 121,
+        "name": "Unbreakable",
+        "icon": "public/Perks/Survivors/Unbreakable.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "William \"Bill\" Overbeck",
+        "survivorPerk": true
+    },
+    {
+        "id": 122,
+        "name": "Up the Ante",
+        "icon": "public/Perks/Survivors/Up The Ante.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ace Visconti",
+        "survivorPerk": true
+    },
+    {
+        "id": 123,
+        "name": "Urban Evasion",
+        "icon": "public/Perks/Survivors/Urban Evasion.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Nea Karlsson",
+        "survivorPerk": true
+    },
+    {
+        "id": 124,
+        "name": "Vigil",
+        "icon": "public/Perks/Survivors/Vigil.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Quentin Smith",
+        "survivorPerk": true
+    },
+    {
+        "id": 125,
+        "name": "Visionary",
+        "icon": "public/Perks/Survivors/Visionary.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Felix Richter",
+        "survivorPerk": true
+    },
+    {
+        "id": 126,
+        "name": "Wake Up!",
+        "icon": "public/Perks/Survivors/Wake Up.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Quentin Smith",
+        "survivorPerk": true
+    },
+    {
+        "id": 127,
+        "name": "We'll Make It",
+        "icon": "public/Perks/Survivors/We_Ll Make It.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": true
+    },
+    {
+        "id": 128,
+        "name": "We're Gonna Live Forever",
+        "icon": "public/Perks/Survivors/We_Re Gonna Live Forever.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "David King",
+        "survivorPerk": true
+    },
+    {
+        "id": 129,
+        "name": "Windows of Opportunity",
+        "icon": "public/Perks/Survivors/Windows Of Opportunity.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Kate Denson",
+        "survivorPerk": true
+    },
+    {
+        "id": 130,
+        "name": "Wiretap",
+        "icon": "public/Perks/Survivors/Wiretap.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Ada Wong",
+        "survivorPerk": true
+    },
+    {
+        "id": 131,
+        "name": "A Nurse's Calling",
+        "icon": "public/Perks/Survivors/A Nurse_S Calling.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nurse",
+        "survivorPerk": false
+    },
+    {
+        "id": 132,
+        "name": "Agitation",
+        "icon": "public/Perks/Survivors/Agitation.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Trapper",
+        "survivorPerk": false
+    },
+    {
+        "id": 133,
+        "name": "Alien Instinct",
+        "icon": "public/Perks/Survivors/Alien Instinct.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Xenomorph",
+        "survivorPerk": false
+    },
+    {
+        "id": 134,
+        "name": "Awakened Awareness",
+        "icon": "public/Perks/Survivors/Awakened Awareness.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Mastermind",
+        "survivorPerk": false
+    },
+    {
+        "id": 135,
+        "name": "Bamboozle",
+        "icon": "public/Perks/Survivors/Bamboozle.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Clown",
+        "survivorPerk": false
+    },
+    {
+        "id": 136,
+        "name": "Barbecue & Chili",
+        "icon": "public/Perks/Survivors/Barbecue And Chili.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Cannibal",
+        "survivorPerk": false
+    },
+    {
+        "id": 137,
+        "name": "Beast of Prey",
+        "icon": "public/Perks/Survivors/Beast Of Prey.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Huntress",
+        "survivorPerk": false
+    },
+    {
+        "id": 138,
+        "name": "Bitter Murmur",
+        "icon": "public/Perks/Survivors/Bitter Murmur.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 139,
+        "name": "Blood Echo",
+        "icon": "public/Perks/Survivors/Blood Echo.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Oni",
+        "survivorPerk": false
+    },
+    {
+        "id": 140,
+        "name": "Bloodwarden",
+        "icon": "public/Perks/Survivors/Bloodwarden.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nightmare",
+        "survivorPerk": false
+    },
+    {
+        "id": 141,
+        "name": "Bloodhound",
+        "icon": "public/Perks/Survivors/Bloodhound.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Wraith",
+        "survivorPerk": false
+    },
+    {
+        "id": 142,
+        "name": "Brutal Strength",
+        "icon": "public/Perks/Survivors/Brutal Strength.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Trapper",
+        "survivorPerk": false
+    },
+    {
+        "id": 143,
+        "name": "Call of Brine",
+        "icon": "public/Perks/Survivors/Call Of Brine.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Onryo",
+        "survivorPerk": false
+    },
+    {
+        "id": 144,
+        "name": "Claustrophobia",
+        "icon": "public/Perks/Survivors/Claustrophobia.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Demogorgon",
+        "survivorPerk": false
+    },
+    {
+        "id": 145,
+        "name": "Corrupt Intervention",
+        "icon": "public/Perks/Survivors/Corrupt Intervention.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Plague",
+        "survivorPerk": false
+    },
+    {
+        "id": 146,
+        "name": "Coulrophobia",
+        "icon": "public/Perks/Survivors/Coulrophobia.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Clown",
+        "survivorPerk": false
+    },
+    {
+        "id": 147,
+        "name": "Coup de Grace",
+        "icon": "public/Perks/Survivors/Coup De Grace.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Twins",
+        "survivorPerk": false
+    },
+    {
+        "id": 148,
+        "name": "Dark Devotion",
+        "icon": "public/Perks/Survivors/Dark Devotion.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Plague",
+        "survivorPerk": false
+    },
+    {
+        "id": 149,
+        "name": "Darkness Revealed",
+        "icon": "public/Perks/Survivors/Darkness Revealed.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Dredge",
+        "survivorPerk": false
+    },
+    {
+        "id": 150,
+        "name": "Dead Man's Switch",
+        "icon": "public/Perks/Survivors/Dead Man_S Switch.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Deathslinger",
+        "survivorPerk": false
+    },
+    {
+        "id": 151,
+        "name": "Deadlock",
+        "icon": "public/Perks/Survivors/Deadlock.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Cenobite",
+        "survivorPerk": false
+    },
+    {
+        "id": 152,
+        "name": "Deathbound",
+        "icon": "public/Perks/Survivors/Deathbound.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Executioner",
+        "survivorPerk": false
+    },
+    {
+        "id": 153,
+        "name": "Deerstalker",
+        "icon": "public/Perks/Survivors/Deerstalker.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 154,
+        "name": "Discordance",
+        "icon": "public/Perks/Survivors/Discordance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Legion",
+        "survivorPerk": false
+    },
+    {
+        "id": 155,
+        "name": "Dissolution",
+        "icon": "public/Perks/Survivors/Dissolution.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Dredge",
+        "survivorPerk": false
+    },
+    {
+        "id": 156,
+        "name": "Distressing",
+        "icon": "public/Perks/Survivors/Distressing.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 157,
+        "name": "Dragon's Grip",
+        "icon": "public/Perks/Survivors/Dragon_S Grip.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Blight",
+        "survivorPerk": false
+    },
+    {
+        "id": 158,
+        "name": "Dying Light",
+        "icon": "public/Perks/Survivors/Dying Light.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Shape",
+        "survivorPerk": false
+    },
+    {
+        "id": 159,
+        "name": "Enduring",
+        "icon": "public/Perks/Survivors/Enduring.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Hillbilly",
+        "survivorPerk": false
+    },
+    {
+        "id": 160,
+        "name": "Eruption",
+        "icon": "public/Perks/Survivors/Eruption.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nemesis",
+        "survivorPerk": false
+    },
+    {
+        "id": 161,
+        "name": "Fearmonger",
+        "icon": "public/Perks/Survivors/Fearmonger.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Demogorgon",
+        "survivorPerk": false
+    },
+    {
+        "id": 162,
+        "name": "Fire Up",
+        "icon": "public/Perks/Survivors/Fire Up.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nightmare",
+        "survivorPerk": false
+    },
+    {
+        "id": 163,
+        "name": "Forced Hesitation",
+        "icon": "public/Perks/Survivors/Forced Hesitation.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Singularity",
+        "survivorPerk": false
+    },
+    {
+        "id": 164,
+        "name": "Forced Penance",
+        "icon": "public/Perks/Survivors/Forced Penance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Executioner",
+        "survivorPerk": false
+    },
+    {
+        "id": 165,
+        "name": "Franklin's Demise",
+        "icon": "public/Perks/Survivors/Franklin_S Demise.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Cannibal",
+        "survivorPerk": false
+    },
+    {
+        "id": 166,
+        "name": "Furtive Chase",
+        "icon": "public/Perks/Survivors/Furtive Chase.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Ghost Face",
+        "survivorPerk": false
+    },
+    {
+        "id": 167,
+        "name": "Game Afoot",
+        "icon": "public/Perks/Survivors/Game Afoot.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Skull Merchant",
+        "survivorPerk": false
+    },
+    {
+        "id": 168,
+        "name": "Gearhead",
+        "icon": "public/Perks/Survivors/Gearhead.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Deathslinger",
+        "survivorPerk": false
+    },
+    {
+        "id": 169,
+        "name": "Genetic Limits",
+        "icon": "public/Perks/Survivors/Genetic Limits.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Singularity",
+        "survivorPerk": false
+    },
+    {
+        "id": 170,
+        "name": "Grim Embrace",
+        "icon": "public/Perks/Survivors/Grim Embrace.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Artist",
+        "survivorPerk": false
+    },
+    {
+        "id": 171,
+        "name": "Hex: Blood Favor",
+        "icon": "public/Perks/Survivors/Hex Blood Favor.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Blight",
+        "survivorPerk": false
+    },
+    {
+        "id": 172,
+        "name": "Hex: Crowd Control",
+        "icon": "public/Perks/Survivors/Hex Crowd Control.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Trickster",
+        "survivorPerk": false
+    },
+    {
+        "id": 173,
+        "name": "Hex: Devour Hope",
+        "icon": "public/Perks/Survivors/Hex Devour Hope.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Hag",
+        "survivorPerk": false
+    },
+    {
+        "id": 174,
+        "name": "Hex: Face the Darkness",
+        "icon": "public/Perks/Survivors/Hex Face The Darkness.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Knight",
+        "survivorPerk": false
+    },
+    {
+        "id": 175,
+        "name": "Hex: Haunted Grounds",
+        "icon": "public/Perks/Survivors/Hex Haunted Grounds.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Spirit",
+        "survivorPerk": false
+    },
+    {
+        "id": 176,
+        "name": "Hex: Huntress Lullaby",
+        "icon": "public/Perks/Survivors/Hex Huntress Lullaby.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Huntress",
+        "survivorPerk": false
+    },
+    {
+        "id": 177,
+        "name": "Hex: No one Escapes Death",
+        "icon": "public/Perks/Survivors/Hex No One Escapes Death.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 178,
+        "name": "Hex: Pentimento",
+        "icon": "public/Perks/Survivors/Hex Pentimento.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Artist",
+        "survivorPerk": false
+    },
+    {
+        "id": 179,
+        "name": "Hex: Plaything",
+        "icon": "public/Perks/Survivors/Hex Plaything.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Cenobite",
+        "survivorPerk": false
+    },
+    {
+        "id": 180,
+        "name": "Hex: Retribution",
+        "icon": "public/Perks/Survivors/Hex Retribution.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Deathslinger",
+        "survivorPerk": false
+    },
+    {
+        "id": 181,
+        "name": "Hex: Ruin",
+        "icon": "public/Perks/Survivors/Hex Ruin.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Hag",
+        "survivorPerk": false
+    },
+    {
+        "id": 182,
+        "name": "Hex: The Third Seal",
+        "icon": "public/Perks/Survivors/Hex The Third Seal.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Hag",
+        "survivorPerk": false
+    },
+    {
+        "id": 183,
+        "name": "Hex: Thrill of the Hunt",
+        "icon": "public/Perks/Survivors/Hex Thrill Of The Hunt.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 184,
+        "name": "Hex: Undying",
+        "icon": "public/Perks/Survivors/Hex Undying.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Blight",
+        "survivorPerk": false
+    },
+    {
+        "id": 185,
+        "name": "Hoarder",
+        "icon": "public/Perks/Survivors/Hoarder.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Twins",
+        "survivorPerk": false
+    },
+    {
+        "id": 186,
+        "name": "Hubris",
+        "icon": "public/Perks/Survivors/Hubris.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Knight",
+        "survivorPerk": false
+    },
+    {
+        "id": 187,
+        "name": "Hysteria",
+        "icon": "public/Perks/Survivors/Hysteria.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nemesis",
+        "survivorPerk": false
+    },
+    {
+        "id": 188,
+        "name": "I'm All Ears",
+        "icon": "public/Perks/Survivors/I_M All Ears.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Ghost Face",
+        "survivorPerk": false
+    },
+    {
+        "id": 189,
+        "name": "Infectious Fright",
+        "icon": "public/Perks/Survivors/Infectious Fright.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Plague",
+        "survivorPerk": false
+    },
+    {
+        "id": 190,
+        "name": "Insidious",
+        "icon": "public/Perks/Survivors/Insidious.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 191,
+        "name": "Iron Grasp",
+        "icon": "public/Perks/Survivors/Iron Grasp.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 192,
+        "name": "Iron Maiden",
+        "icon": "public/Perks/Survivors/Iron Maiden.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Legion",
+        "survivorPerk": false
+    },
+    {
+        "id": 193,
+        "name": "Jolt",
+        "icon": "public/Perks/Survivors/Jolt.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Demogorgon",
+        "survivorPerk": false
+    },
+    {
+        "id": 194,
+        "name": "Knockout",
+        "icon": "public/Perks/Survivors/Knockout.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Cannibal",
+        "survivorPerk": false
+    },
+    {
+        "id": 195,
+        "name": "Lethal Pursuer",
+        "icon": "public/Perks/Survivors/Lethal Pursuer.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nemesis",
+        "survivorPerk": false
+    },
+    {
+        "id": 196,
+        "name": "Leverage",
+        "icon": "public/Perks/Survivors/Leverage.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Skull Merchant",
+        "survivorPerk": false
+    },
+    {
+        "id": 197,
+        "name": "Lightborn",
+        "icon": "public/Perks/Survivors/Lightborn.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Hillbilly",
+        "survivorPerk": false
+    },
+    {
+        "id": 198,
+        "name": "Machine Learning",
+        "icon": "public/Perks/Survivors/Machine Learning.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Singularity",
+        "survivorPerk": false
+    },
+    {
+        "id": 199,
+        "name": "Mad Grit",
+        "icon": "public/Perks/Survivors/Mad Grit.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Legion",
+        "survivorPerk": false
+    },
+    {
+        "id": 200,
+        "name": "Make Your Choice",
+        "icon": "public/Perks/Survivors/Make Your Choice.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Pig",
+        "survivorPerk": false
+    },
+    {
+        "id": 201,
+        "name": "Merciless Storm",
+        "icon": "public/Perks/Survivors/Merciless Storm.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Onryo",
+        "survivorPerk": false
+    },
+    {
+        "id": 202,
+        "name": "Monitor and Abuse",
+        "icon": "public/Perks/Survivors/Monitor And Abuse.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Doctor",
+        "survivorPerk": false
+    },
+    {
+        "id": 203,
+        "name": "Nemesis",
+        "icon": "public/Perks/Survivors/Nemesis.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Oni",
+        "survivorPerk": false
+    },
+    {
+        "id": 204,
+        "name": "No Way Out",
+        "icon": "public/Perks/Survivors/No Way Out.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Trickster",
+        "survivorPerk": false
+    },
+    {
+        "id": 205,
+        "name": "Nowhere to Hide",
+        "icon": "public/Perks/Survivors/Nowhere To Hide.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Knight",
+        "survivorPerk": false
+    },
+    {
+        "id": 206,
+        "name": "Oppression",
+        "icon": "public/Perks/Survivors/Oppression.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Twins",
+        "survivorPerk": false
+    },
+    {
+        "id": 207,
+        "name": "Overcharge",
+        "icon": "public/Perks/Survivors/Overcharge.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Doctor",
+        "survivorPerk": false
+    },
+    {
+        "id": 208,
+        "name": "Overwhelming Presence",
+        "icon": "public/Perks/Survivors/Overwhelming Presence.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Doctor",
+        "survivorPerk": false
+    },
+    {
+        "id": 209,
+        "name": "Play with your Food",
+        "icon": "public/Perks/Survivors/Play With Your Food.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Shape",
+        "survivorPerk": false
+    },
+    {
+        "id": 210,
+        "name": "Pop Goes the Weasel",
+        "icon": "public/Perks/Survivors/Pop Goes The Weasel.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Clown",
+        "survivorPerk": false
+    },
+    {
+        "id": 211,
+        "name": "Predator",
+        "icon": "public/Perks/Survivors/Predator.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Wraith",
+        "survivorPerk": false
+    },
+    {
+        "id": 212,
+        "name": "Rancor",
+        "icon": "public/Perks/Survivors/Rancor.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Spirit",
+        "survivorPerk": false
+    },
+    {
+        "id": 213,
+        "name": "Rapid Brutality",
+        "icon": "public/Perks/Survivors/Rapid Brutality.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Xenomorph",
+        "survivorPerk": false
+    },
+    {
+        "id": 214,
+        "name": "Remember Me",
+        "icon": "public/Perks/Survivors/Remember Me.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nightmare",
+        "survivorPerk": false
+    },
+    {
+        "id": 215,
+        "name": "Save the Best for Last",
+        "icon": "public/Perks/Survivors/Save The Best For Last.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Shape",
+        "survivorPerk": false
+    },
+    {
+        "id": 216,
+        "name": "Scourge Hook: Floods of Rage",
+        "icon": "public/Perks/Survivors/Scourge Hook Floods Of Rage.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Onryo",
+        "survivorPerk": false
+    },
+    {
+        "id": 217,
+        "name": "Scourge Hook: Gift of Pain",
+        "icon": "public/Perks/Survivors/Scourge Hook Gift Of Pain.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Cenobite",
+        "survivorPerk": false
+    },
+    {
+        "id": 218,
+        "name": "Scourge Hook: Hangman's Trick",
+        "icon": "public/Perks/Survivors/Scourge Hook Hangman_S Trick.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Pig",
+        "survivorPerk": false
+    },
+    {
+        "id": 219,
+        "name": "Scourge Hook: Monstrous Shrine",
+        "icon": "public/Perks/Survivors/Scourge Hook Monstrous Shrine.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 220,
+        "name": "Scourge Hook: Pain Resonance",
+        "icon": "public/Perks/Survivors/Scourge Hook Pain Resonance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Artist",
+        "survivorPerk": false
+    },
+    {
+        "id": 221,
+        "name": "Septic Touch",
+        "icon": "public/Perks/Survivors/Septic Touch.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Dredge",
+        "survivorPerk": false
+    },
+    {
+        "id": 222,
+        "name": "Shadowborn",
+        "icon": "public/Perks/Survivors/Shadowborn.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Wraith",
+        "survivorPerk": false
+    },
+    {
+        "id": 223,
+        "name": "Shattered Hope",
+        "icon": "public/Perks/Survivors/Shattered Hope.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 224,
+        "name": "Sloppy Butcher",
+        "icon": "public/Perks/Survivors/Sloppy Butcher.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 225,
+        "name": "Spies from the Shadows",
+        "icon": "public/Perks/Survivors/Spies From The Shadows.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 226,
+        "name": "Spirit Fury",
+        "icon": "public/Perks/Survivors/Spirit Fury.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Spirit",
+        "survivorPerk": false
+    },
+    {
+        "id": 227,
+        "name": "Starstruck",
+        "icon": "public/Perks/Survivors/Starstruck.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Trickster",
+        "survivorPerk": false
+    },
+    {
+        "id": 228,
+        "name": "Stridor",
+        "icon": "public/Perks/Survivors/Stridor.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nurse",
+        "survivorPerk": false
+    },
+    {
+        "id": 229,
+        "name": "Superior Anatomy",
+        "icon": "public/Perks/Survivors/Superior Anatomy.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Mastermind",
+        "survivorPerk": false
+    },
+    {
+        "id": 230,
+        "name": "Surveillance",
+        "icon": "public/Perks/Survivors/Surveillance.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Pig",
+        "survivorPerk": false
+    },
+    {
+        "id": 231,
+        "name": "Terminus",
+        "icon": "public/Perks/Survivors/Terminus.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Mastermind",
+        "survivorPerk": false
+    },
+    {
+        "id": 232,
+        "name": "Territorial Imperative",
+        "icon": "public/Perks/Survivors/Territorial Imperative.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Huntress",
+        "survivorPerk": false
+    },
+    {
+        "id": 233,
+        "name": "Thanatophobia",
+        "icon": "public/Perks/Survivors/Thanatophobia.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Nurse",
+        "survivorPerk": false
+    },
+    {
+        "id": 234,
+        "name": "Thrilling Tremors",
+        "icon": "public/Perks/Survivors/Thrilling Tremors.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Ghost Face",
+        "survivorPerk": false
+    },
+    {
+        "id": 235,
+        "name": "THWACK!",
+        "icon": "public/Perks/Survivors/Thwack.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Skull Merchant",
+        "survivorPerk": false
+    },
+    {
+        "id": 236,
+        "name": "Tinkerer",
+        "icon": "public/Perks/Survivors/Tinkerer.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Hillbilly",
+        "survivorPerk": false
+    },
+    {
+        "id": 237,
+        "name": "Trail of Torment",
+        "icon": "public/Perks/Survivors/Trail Of Torment.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Executioner",
+        "survivorPerk": false
+    },
+    {
+        "id": 238,
+        "name": "Ultimate Weapon",
+        "icon": "public/Perks/Survivors/Ultimate Weapon.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Xenomorph",
+        "survivorPerk": false
+    },
+    {
+        "id": 239,
+        "name": "Unnerving Presence",
+        "icon": "public/Perks/Survivors/Unnerving Presence.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Trapper",
+        "survivorPerk": false
+    },
+    {
+        "id": 240,
+        "name": "Unrelenting",
+        "icon": "public/Perks/Survivors/Unrelenting.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 241,
+        "name": "Whispers",
+        "icon": "public/Perks/Survivors/Whispers.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "",
+        "survivorPerk": false
+    },
+    {
+        "id": 242,
+        "name": "Zanshin Tactics",
+        "icon": "public/Perks/Survivors/Zanshin Tactics.png",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Oni",
+        "survivorPerk": false
+    }
+]

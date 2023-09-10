@@ -1,0 +1,13 @@
+{
+    "Tiers": [
+        {
+            "Name": "Bronze",
+            "Killer Perk Bans": [
+                150,174,184
+            ],
+            "Survivor Perk Bans": [
+                0, 1, 5
+            ]
+        }
+    ]
+}
