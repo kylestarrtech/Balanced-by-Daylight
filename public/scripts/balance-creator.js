@@ -503,6 +503,9 @@ function OverrideButtonSearch(query, isSurvivor) {
         optionsElement.value = selectedPerks[i];
         optionsElement.innerHTML = Perks[selectedPerks[i]].name;
         optionsElement.style.backgroundImage = "url(" + Perks[selectedPerks[i]].icon + ")";
+        optionsElement.style.backgroundSize = "contain";
+        optionsElement.style.backgroundRepeat = "no-repeat";
+        optionsElement.style.backgroundPosition = "right";
         searchResultsContainer.appendChild(optionsElement);
     }
 
@@ -523,6 +526,10 @@ function OverrideButtonSearch(query, isSurvivor) {
         optionsElement.value = searchResults[i].id;
 
         optionsElement.innerHTML = searchResults[i].name;
+        optionsElement.style.backgroundImage = "url(" + searchResults[i].icon + ")";
+        optionsElement.style.backgroundSize = "contain";
+        optionsElement.style.backgroundRepeat = "no-repeat";
+        optionsElement.style.backgroundPosition = "right";
         searchResultsContainer.appendChild(optionsElement);
     }
 }
@@ -608,4 +615,16 @@ function ExportBalancing() {
 
     var balanceExportBox = document.getElementById("balance-export-textbox");
     balanceExportBox.value = JSON.stringify(FinalBalanceObj);
+}
+
+function ImportBalancing() {
+    var balanceImportBox = document.getElementById("balance-import-textbox");
+    var balanceImportObj = JSON.parse(balanceImportBox.value);
+
+    document.getElementById("balance-name-textbox").value = balanceImportObj.Name;
+    Tiers = balanceImportObj.Tiers;
+    KillerBalance = balanceImportObj.KillerOverride;
+
+    UpdateDropdowns();
+    LoadTier(0);
 }
