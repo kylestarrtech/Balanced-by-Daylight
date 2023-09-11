@@ -29,30 +29,34 @@ html
                         div.perk-ban-dropdown
                             //  Create a dropdown for Survivor Individual Perk Bans
                             p Survivor Individual Perk Bans:
-                            select#survivor-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            select#survivor-individual-perk-ban-dropdown(class="selection-dropdown", size="10" multiple="multiple")
                             br
                             button#survivor-individual-perk-ban-add-button Add Perk(s)
+                            button#survivor-individual-perk-ban-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
                             // Create a dropdown for Survivor Combined Perk Bans
                             p Survivor Combined Perk Bans:
-                            select#survivor-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            select#survivor-combined-perk-ban-dropdown(class="selection-dropdown" size="10" multiple="multiple")
                             br
                             button#survivor-combined-perk-ban-add-button Add Perk(s)
+                            button#survivor-combined-perk-ban-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
                             // Create a dropdown for Killer Individual Perk Bans
                             p Killer Individual Perk Bans:
-                            select#killer-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            select#killer-individual-perk-ban-dropdown(class="selection-dropdown", size="10" multiple="multiple")
                             br
                             button#killer-individual-perk-ban-add-button Add Perk(s)
+                            button#killer-individual-perk-ban-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
                             // Create a dropdown for Killer Combined Perk Bans
                             p Killer Combined Perk Bans:
-                            select#killer-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
+                            select#killer-combined-perk-ban-dropdown(class="selection-dropdown", size="10" multiple="multiple")
                             br
                             button#killer-combined-perk-ban-add-button Add Perk(s)
+                            button#killer-combined-perk-ban-remove-button Remove Perk(s)
 
                 hr
                 hr
@@ -78,6 +82,7 @@ html
                             select#survivor-tiered-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
                             br
                             button#survivor-tiered-individual-perk-ban-add-button Add Perk(s)
+                            button#survivor-tiered-individual-perk-ban-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
                             // Create a dropdown for Survivor Combined Perk Bans
