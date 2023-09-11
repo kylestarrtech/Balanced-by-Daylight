@@ -17,6 +17,8 @@ function main() {
     SetKillerBalancing();
     SetTierButtonEvents();
 
+    SetImportExportButtonEvents();
+
     // Fill listbox with all Survivor perks by default.
     OverrideButtonSearch("", true);
 
@@ -24,7 +26,25 @@ function main() {
     UpdateDropdowns();
 }
 
+function SetImportExportButtonEvents() {
+    // Import Button
+    var importButton = document.getElementById("balance-import-button");
+
+    // Export Button
+    var exportButton = document.getElementById("balance-export-button");
+
+    exportButton.addEventListener("click", function() {
+        ExportBalancing();
+    });
+}
+
 function SetTierButtonEvents() {
+    // Set Tier Dropdown Change Event
+    var tierDropdown = document.getElementById("tier-selection-dropdown");
+    tierDropdown.addEventListener("change", function() {
+        LoadTierByName(tierDropdown.value);
+    });
+
     // Get Individual Perk Ban Buttons
 
     // Add
@@ -296,6 +316,7 @@ function SetKillerBalancing() {
     for (var i = 0; i < Killers.length; i++) {
         NewKillerBalance = {
             Name: Killers[i],
+            Map: 0,
             BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
             KillerIndvPerkBans: [],
             KillerComboPerkBans: [],
@@ -471,12 +492,36 @@ function SetSearchEvents() {
 function OverrideButtonSearch(query, isSurvivor) {
     var searchResults = SearchForPerks(query, isSurvivor);
 
+    
     var searchResultsContainer = document.getElementById("perk-search-results");
+    selectedPerks = GetSelectValues(searchResultsContainer);
+
     searchResultsContainer.innerHTML = "";
 
+    for (var i = 0; i < selectedPerks.length; i++) { 
+        var optionsElement = document.createElement("option");
+        optionsElement.value = selectedPerks[i];
+        optionsElement.innerHTML = Perks[selectedPerks[i]].name;
+        optionsElement.style.backgroundImage = "url(" + Perks[selectedPerks[i]].icon + ")";
+        searchResultsContainer.appendChild(optionsElement);
+    }
+
     for (var i = 0; i < searchResults.length; i++) {
+        // Get the values from the search container
+        var allOptionsInSearch = searchResultsContainer.options;
+        // Check if the perk is already in the search container
+        var alreadyInSearch = false;
+        for (var j = 0; j < allOptionsInSearch.length; j++) {
+            if (allOptionsInSearch[j].value == searchResults[i].id) {
+                alreadyInSearch = true;
+                break;
+            }
+        }
+        if (alreadyInSearch) { continue; }
+
         var optionsElement = document.createElement("option");
         optionsElement.value = searchResults[i].id;
+
         optionsElement.innerHTML = searchResults[i].name;
         searchResultsContainer.appendChild(optionsElement);
     }
@@ -552,4 +597,15 @@ function SearchForPerks(searchQuery, isSurvivor) {
     }
 
     return searchResults;   
+}
+
+function ExportBalancing() {
+    var FinalBalanceObj = {
+        Name: document.getElementById("balance-name-textbox").value,
+        Tiers: Tiers,
+        KillerOverride: KillerBalance
+    }
+
+    var balanceExportBox = document.getElementById("balance-export-textbox");
+    balanceExportBox.value = JSON.stringify(FinalBalanceObj);
 }

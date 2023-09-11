@@ -66,6 +66,9 @@ html
                     label(for="killer-selection-dropdown") Killer:
                     select#killer-selection-dropdown(style="min-width: 200px;")
                     br
+                    label(for="map-selection-dropdown") Map:
+                    select#map-selection-dropdown(style="min-width: 200px;")
+                    br
                     br
                     label(for="killer-tier-selection-dropdown") Killer Tiers: 
                     br
@@ -133,4 +136,4 @@ html
                     button(id="balance-export-button") Export Balancing Sheet 
                     br
                     // Create a readonly textbox for the exported balancing sheet with 10 rows and 50 columns
-                    textarea#balance-creator-textbox(rows="5" cols="50" readonly="readonly")
+                    textarea#balance-export-textbox(rows="5" cols="50" readonly="readonly")
