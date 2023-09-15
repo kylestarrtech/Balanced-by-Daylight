@@ -9,6 +9,14 @@ html
 
         div#column-flow-container
             div#left-column(class="column-child")
+                h3 Base Game Balancing
+                label(for="maximum-perk-repetition-dropdown") Maximum Perk Repetition: 
+                select#maximum-perk-repetition-dropdown(style="min-width: 200px;")
+                    option 1
+                    option 2
+                    option 3
+                    option 4
+
                 h3 Tier Balancing
                 
                 div#tiered-balance-div
@@ -64,6 +72,9 @@ html
                 div#killer-balance-div
                     label(for="killer-selection-dropdown") Killer:
                     select#killer-selection-dropdown(style="min-width: 200px;")
+                    br
+                    label(for="killer-enable-facecamping-checkbox") Facecamping Permitted?:
+                    input#killer-enable-facecamping-checkbox(type="checkbox")
                     br
                     br
                     label(for="map-selection-dropdown") Map:
@@ -147,7 +158,7 @@ html
                             button#killer-tiered-combined-perk-whitelist-remove-button Remove Perk(s)
 
                     - var i = 0;
-                    while i < 20
+                    while i < 10
                         br
                         - i++;
             div#mid-column(class="column-child")
@@ -176,3 +187,7 @@ html
                     br
                     // Create a readonly textbox for the exported balancing sheet with 10 rows and 50 columns
                     textarea#balance-export-textbox(rows="5" cols="50" readonly="readonly")
+                    - var i = 0;
+                    while i < 10
+                        br
+                        - i++;

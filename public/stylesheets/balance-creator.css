@@ -1,5 +1,7 @@
 body {
     text-align: center;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 #column-flow-container {
@@ -16,11 +18,16 @@ body {
     margin-right: 20px;
 }
 
-#mid-column {
-    position: sticky;
+#left-column {
+    position: relative;
+    height: 100vh;
+    overflow-y: scroll;
+}
 
-    top: 50%;
-    transform: translateY(-50%);
+#mid-column {
+    position: relative;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 #tier-selection-container {
