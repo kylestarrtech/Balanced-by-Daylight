@@ -15,7 +15,7 @@ app.set('view engine', 'pug')
 app.set('views', './views')
 
 app.get('*', (req, res) => {
-    res.send('404 Not Found', 404)
+    res.status(404).send('404 Not Found')
 })
 
 app.listen(port, () => {

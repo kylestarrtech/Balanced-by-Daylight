@@ -57,7 +57,6 @@ html
                             br
                             button#killer-combined-perk-ban-add-button Add Perk(s)
                             button#killer-combined-perk-ban-remove-button Remove Perk(s)
-
                 hr
                 hr
                 h3 Killer Balancing
@@ -66,15 +65,19 @@ html
                     label(for="killer-selection-dropdown") Killer:
                     select#killer-selection-dropdown(style="min-width: 200px;")
                     br
+                    br
                     label(for="map-selection-dropdown") Map:
-                    select#map-selection-dropdown(style="min-width: 200px;")
+                    br
+                    select#map-selection-dropdown(style="min-width: 200px;", size="10" multiple="multiple")
+                    br
+                    button#map-confirmation-button(style="min-width: 252px;") Confirm Map(s)
                     br
                     br
                     label(for="killer-tier-selection-dropdown") Killer Tiers: 
                     br
                     select#killer-tier-selection-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
                     br
-                    button#killer-tier-confirmation-button(style="min-width: 200px;") Confirm Tiers
+                    button#killer-tier-confirmation-button(style="min-width: 200px;") Confirm Tier(s)
                     br
                     hr
 
@@ -93,6 +96,7 @@ html
                             select#survivor-tiered-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
                             br
                             button#survivor-tiered-combined-perk-ban-add-button Add Perk(s)
+                            button#survivor-tiered-combined-perk-ban-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
                             // Create a dropdown for Killer Individual Perk Bans
@@ -100,6 +104,7 @@ html
                             select#killer-tiered-individual-perk-ban-dropdown(class="selection-dropdown", size="10")
                             br
                             button#killer-tiered-individual-perk-ban-add-button Add Perk(s)
+                            button#killer-tiered-individual-perk-ban-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
                             // Create a dropdown for Killer Combined Perk Bans
@@ -107,10 +112,44 @@ html
                             select#killer-tiered-combined-perk-ban-dropdown(class="selection-dropdown", size="10")
                             br
                             button#killer-tiered-combined-perk-ban-add-button Add Perk(s)
-                - var i = 0;
-                while i < 20
-                    br
-                    - i++;
+                            button#killer-tiered-combined-perk-ban-remove-button Remove Perk(s)
+
+                        div.perk-ban-dropdown
+                            //  Create a dropdown for Survivor Individual Perk Whitelists
+                            p Survivor Individual Perk Whitelists:
+                            select#survivor-tiered-individual-perk-whitelist-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#survivor-tiered-individual-perk-whitelist-add-button Add Perk(s)
+                            button#survivor-tiered-individual-perk-whitelist-remove-button Remove Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Survivor Combined Perk Whitelists
+                            p Survivor Combined Perk Whitelists:
+                            select#survivor-tiered-combined-perk-whitelist-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#survivor-tiered-combined-perk-whitelist-add-button Add Perk(s)
+                            button#survivor-tiered-combined-perk-whitelist-remove-button Remove Perk(s)
+
+                        div.perk-ban-dropdown
+                            //  Create a dropdown for Killer Individual Perk Whitelists
+                            p Killer Individual Perk Whitelists:
+                            select#killer-tiered-individual-perk-whitelist-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#killer-tiered-individual-perk-whitelist-add-button Add Perk(s)
+                            button#killer-tiered-individual-perk-whitelist-remove-button Remove Perk(s)
+
+                        div.perk-ban-dropdown
+                            // Create a dropdown for Jukker Combined Perk Whitelists
+                            p Killer Combined Perk Whitelists:
+                            select#killer-tiered-combined-perk-whitelist-dropdown(class="selection-dropdown", size="10")
+                            br
+                            button#killer-tiered-combined-perk-whitelist-add-button Add Perk(s)
+                            button#killer-tiered-combined-perk-whitelist-remove-button Remove Perk(s)
+
+                    - var i = 0;
+                    while i < 20
+                        br
+                        - i++;
             div#mid-column(class="column-child")
                     div.perk-search-module
                         label(for="perk-search-role-checkbox") Is Survivor Perk?:

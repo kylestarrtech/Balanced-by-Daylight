@@ -1,6 +1,7 @@
 Perks = null;
 Killers = null;
 Survivors = null;
+Maps = null;
 
 Tiers = [];
 KillerBalance = [];
@@ -16,13 +17,14 @@ function main() {
 
     SetKillerBalancing();
     SetTierButtonEvents();
+    SetKillerOverrideEvents();
 
     SetImportExportButtonEvents();
 
     // Fill listbox with all Survivor perks by default.
     OverrideButtonSearch("", true);
 
-    // Update all tier and killer dropdowns
+    // Update all tier, killer, and map dropdowns
     UpdateDropdowns();
 }
 
@@ -292,6 +294,686 @@ function SetTierButtonEvents() {
     });
 }
 
+function SetKillerOverrideEvents() {
+    // Get the Killer Confirm Tier Button
+    var killerConfirmTierButton = document.getElementById("killer-tier-confirmation-button");
+
+    killerConfirmTierButton.addEventListener("click", function() {
+        // Get the tiers selected
+        var selectedTiers = GetSelectValues(document.getElementById("killer-tier-selection-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Get the indexes of the tiers with the same name
+        var tierIndexes = [];
+        for (var i = 0; i < selectedTiers.length; i++) {
+            for (var j = 0; j < Tiers.length; j++) {
+                if (Tiers[j].Name == selectedTiers[i]) {
+                    tierIndexes.push(j);
+                    continue;
+                }
+            }
+        }
+
+        // Set the tierIndexes to the killer
+        KillerBalance[killerIndex].BalanceTiers = tierIndexes;
+    });
+
+    // Get the Killer Confirm Map Button
+    var killerConfirmMapButton = document.getElementById("map-confirmation-button");
+
+    killerConfirmMapButton.addEventListener("click", function() {
+        // Get the maps selected
+        var selectedMaps = GetSelectValues(document.getElementById("map-selection-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Get the indexes of the maps with the same name
+        var mapIndexes = [];
+        for (var i = 0; i < selectedMaps.length; i++) {
+            for (var j = 0; j < Maps.length; j++) {
+                if (Maps[j] == selectedMaps[i]) {
+                    mapIndexes.push(j);
+                    continue;
+                }
+            }
+        }
+
+        // Set the mapIndexes to the killer
+        KillerBalance[killerIndex].Map = mapIndexes;
+    });
+
+    // Set Killer Perk Ban Events
+    SetKillerOverridePerkBanEvents();
+}
+
+function SetKillerOverridePerkBanEvents() {
+    // Get the Killer Perk Ban Buttons
+    var addKillerIndvPrkBanButton = document.getElementById("killer-tiered-individual-perk-ban-add-button");
+    var addKillerComboPrkBanButton = document.getElementById("killer-tiered-combined-perk-ban-add-button");
+
+    var removeKillerIndvPrkBanButton = document.getElementById("killer-tiered-individual-perk-ban-remove-button");
+    var removeKillerComboPrkBanButton = document.getElementById("killer-tiered-combined-perk-ban-remove-button");
+
+    // Get the Survivor Perk Ban Buttons
+    var addSurvivorIndvPrkBanButton = document.getElementById("survivor-tiered-individual-perk-ban-add-button");
+    var addSurvivorComboPrkBanButton = document.getElementById("survivor-tiered-combined-perk-ban-add-button");
+
+    var removeSurvivorIndvPrkBanButton = document.getElementById("survivor-tiered-individual-perk-ban-remove-button");
+    var removeSurvivorComboPrkBanButton = document.getElementById("survivor-tiered-combined-perk-ban-remove-button");
+
+    // Get the Killer Perk Whitelist Buttons
+    var addKillerIndvPrkWhitelistButton = document.getElementById("killer-tiered-individual-perk-whitelist-add-button");
+    var addKillerComboPrkWhitelistButton = document.getElementById("killer-tiered-combined-perk-whitelist-add-button");
+
+    var removeKillerIndvPrkWhitelistButton = document.getElementById("killer-tiered-individual-perk-whitelist-remove-button");
+    var removeKillerComboPrkWhitelistButton = document.getElementById("killer-tiered-combined-perk-whitelist-remove-button");
+
+    // Get the Survivor Perk Whitelist Buttons
+    var addSurvivorIndvPrkWhitelistButton = document.getElementById("survivor-tiered-individual-perk-whitelist-add-button");
+    var addSurvivorComboPrkWhitelistButton = document.getElementById("survivor-tiered-combined-perk-whitelist-add-button");
+
+    var removeSurvivorIndvPrkWhitelistButton = document.getElementById("survivor-tiered-individual-perk-whitelist-remove-button");
+    var removeSurvivorComboPrkWhitelistButton = document.getElementById("survivor-tiered-combined-perk-whitelist-remove-button");
+
+    // Add On Click Events
+    addKillerIndvPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Add the perks to the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (Perks[selectedPerks[i]].survivorPerk) { continue; }
+            KillerBalance[killerIndex].KillerIndvPerkBans.push(selectedPerks[i]);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addKillerComboPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        var ComboObj = [];
+        // Create the perk combo, then add it to the killer
+        if (selectedPerks.length < 2) { console.error("Not enough perks selected!"); return; }
+        if (selectedPerks.length > 4) { console.error("Too many perks selected!"); return; }
+
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (Perks[selectedPerks[i]].survivorPerk) { continue; }
+
+            ComboObj.push(selectedPerks[i]);
+        }
+        console.log(ComboObj)
+        KillerBalance[killerIndex].KillerComboPerkBans.push(ComboObj);
+        console.log(KillerBalance[killerIndex]);
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addSurvivorIndvPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Add the perks to the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (!Perks[selectedPerks[i]].survivorPerk) { continue; }
+            KillerBalance[killerIndex].SurvivorIndvPerkBans.push(selectedPerks[i]);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addSurvivorComboPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        var ComboObj = [];
+        // Create the perk combo, then add it to the killer
+        if (selectedPerks.length < 2) { console.error("Not enough perks selected!"); return; }
+        if (selectedPerks.length > 4) { console.error("Too many perks selected!"); return; }
+
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (!Perks[selectedPerks[i]].survivorPerk) { continue; }
+
+            ComboObj.push(selectedPerks[i]);
+        }
+        console.log(ComboObj)
+        KillerBalance[killerIndex].SurvivorComboPerkBans.push(ComboObj);
+        console.log(KillerBalance[killerIndex]);
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addKillerIndvPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Add the perks to the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (Perks[selectedPerks[i]].survivorPerk) { continue; }
+            KillerBalance[killerIndex].KillerWhitelistedPerks.push(selectedPerks[i]);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addKillerComboPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        var ComboObj = [];
+        // Create the perk combo, then add it to the killer
+        if (selectedPerks.length < 2) { console.error("Not enough perks selected!"); return; }
+        if (selectedPerks.length > 4) { console.error("Too many perks selected!"); return; }
+
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (Perks[selectedPerks[i]].survivorPerk) { continue; }
+
+            ComboObj.push(selectedPerks[i]);
+        }
+        console.log(ComboObj)
+        KillerBalance[killerIndex].KillerWhitelistedComboPerks.push(ComboObj);
+        console.log(KillerBalance[killerIndex]);
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addSurvivorIndvPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Add the perks to the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (!Perks[selectedPerks[i]].survivorPerk) { continue; }
+            KillerBalance[killerIndex].SurvivorWhitelistedPerks.push(selectedPerks[i]);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    addSurvivorComboPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        var ComboObj = [];
+        // Create the perk combo, then add it to the killer
+        if (selectedPerks.length < 2) { console.error("Not enough perks selected!"); return; }
+        if (selectedPerks.length > 4) { console.error("Too many perks selected!"); return; }
+
+        for (var i = 0; i < selectedPerks.length; i++) {
+            if (!Perks[selectedPerks[i]].survivorPerk) { continue; }
+
+            ComboObj.push(selectedPerks[i]);
+        }
+        console.log(ComboObj)
+        KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.push(ComboObj);
+        console.log(KillerBalance[killerIndex]);
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    // Remove On Click Events
+    removeKillerIndvPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("killer-tiered-individual-perk-ban-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].KillerIndvPerkBans.splice(KillerBalance[killerIndex].KillerIndvPerkBans.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeKillerComboPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("killer-tiered-combined-perk-ban-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].KillerComboPerkBans.splice(KillerBalance[killerIndex].KillerComboPerkBans.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeSurvivorIndvPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("survivor-tiered-individual-perk-ban-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].SurvivorIndvPerkBans.splice(KillerBalance[killerIndex].SurvivorIndvPerkBans.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeSurvivorComboPrkBanButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("survivor-tiered-combined-perk-ban-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].SurvivorComboPerkBans.splice(KillerBalance[killerIndex].SurvivorComboPerkBans.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeKillerIndvPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("killer-tiered-individual-perk-whitelist-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < KillerBalance.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].KillerWhitelistedPerks.splice(KillerBalance[killerIndex].KillerWhitelistedPerks.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeKillerComboPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("killer-tiered-combined-perk-whitelist-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+
+        for (var i = 0; i < KillerBalance.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].KillerWhitelistedComboPerks.splice(KillerBalance[killerIndex].KillerWhitelistedComboPerks.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeSurvivorIndvPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("survivor-tiered-individual-perk-whitelist-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+
+        var killerIndex = -1;
+        for (var i = 0; i < KillerBalance.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].SurvivorWhitelistedPerks.splice(KillerBalance[killerIndex].SurvivorWhitelistedPerks.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+
+    removeSurvivorComboPrkWhitelistButton.addEventListener("click", function() {
+        // Get the selected perks
+        var selectedPerks = GetSelectValues(document.getElementById("survivor-tiered-combined-perk-whitelist-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+
+        var killerIndex = -1;
+        for (var i = 0; i < KillerBalance.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+
+        // Remove the perks from the killer
+        for (var i = 0; i < selectedPerks.length; i++) {
+            KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.splice(KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.indexOf(selectedPerks[i]), 1);
+        }
+
+        LoadKillerOverrideUI(killerIndex);
+    });
+}
+
+function LoadKillerOverrideUI(id) {
+    KillerData = KillerBalance[id];
+
+    // Guard clause to make sure the killer data is valid.
+    if (KillerData == undefined) {
+        console.error("Killer balance data or Killer does not exist!");
+        return;
+    }
+
+    // Once we know killer data is legit, we can apply it to frontend.
+
+    // Apply it to KillerIndvBanDropdown
+    var KlrIndvPrkBanDropdown = document.getElementById("killer-tiered-individual-perk-ban-dropdown");
+    KlrIndvPrkBanDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.KillerIndvPerkBans.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.KillerIndvPerkBans[i];
+        optionsElement.innerHTML = Perks[KillerData.KillerIndvPerkBans[i]].name;
+        KlrIndvPrkBanDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to KlrComboBanDropdown
+    var KlrComboBanDropdown = document.getElementById("killer-tiered-combined-perk-ban-dropdown");
+    KlrComboBanDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.KillerComboPerkBans.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.KillerComboPerkBans[i];
+
+        // Get the string representation of the perk combo
+        var comboString = "";
+        for (var j = 0; j < KillerData.KillerComboPerkBans[i].length; j++) {
+            comboString += Perks[KillerData.KillerComboPerkBans[i][j]].name;
+            if (j != KillerData.KillerComboPerkBans[i].length - 1) {
+                comboString += " + ";
+            }
+        }
+        optionsElement.innerHTML = comboString;
+        KlrComboBanDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to KillerIndvWhitelistDropdown
+    var KlrIndvPrkWhitelistDropdown = document.getElementById("killer-tiered-individual-perk-whitelist-dropdown");
+    KlrIndvPrkWhitelistDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.KillerWhitelistedPerks.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.KillerWhitelistedPerks[i];
+        optionsElement.innerHTML = Perks[KillerData.KillerWhitelistedPerks[i]].name;
+        KlrIndvPrkWhitelistDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to KlrComboWhitelistDropdown
+    var KlrComboWhitelistDropdown = document.getElementById("killer-tiered-combined-perk-whitelist-dropdown");
+    KlrComboWhitelistDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.KillerWhitelistedComboPerks.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.KillerWhitelistedComboPerks[i];
+
+        // Get the string representation of the perk combo
+        var comboString = "";
+        for (var j = 0; j < KillerData.KillerWhitelistedComboPerks[i].length; j++) {
+            comboString += Perks[KillerData.KillerWhitelistedComboPerks[i][j]].name;
+            if (j != KillerData.KillerWhitelistedComboPerks[i].length - 1) {
+                comboString += " + ";
+            }
+        }
+        optionsElement.innerHTML = comboString;
+        KlrComboWhitelistDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to SurvivorIndvBanDropdown
+    var SrvIndvPrkBanDropdown = document.getElementById("survivor-tiered-individual-perk-ban-dropdown");
+    SrvIndvPrkBanDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.SurvivorIndvPerkBans.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.SurvivorIndvPerkBans[i];
+        optionsElement.innerHTML = Perks[KillerData.SurvivorIndvPerkBans[i]].name;
+        SrvIndvPrkBanDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to SurvComboBanDropdown
+    var SrvComboBanDropdown = document.getElementById("survivor-tiered-combined-perk-ban-dropdown");
+    SrvComboBanDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.SurvivorComboPerkBans.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.SurvivorComboPerkBans[i];
+
+        // Get the string representation of the perk combo
+        var comboString = "";
+        for (var j = 0; j < KillerData.SurvivorComboPerkBans[i].length; j++) {
+            comboString += Perks[KillerData.SurvivorComboPerkBans[i][j]].name;
+            if (j != KillerData.SurvivorComboPerkBans[i].length - 1) {
+                comboString += " + ";
+            }
+        }
+        optionsElement.innerHTML = comboString;
+        SrvComboBanDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to SurvivorIndvWhitelistDropdown
+    var SrvIndvPrkWhitelistDropdown = document.getElementById("survivor-tiered-individual-perk-whitelist-dropdown");
+    SrvIndvPrkWhitelistDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.SurvivorWhitelistedPerks.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.SurvivorWhitelistedPerks[i];
+        optionsElement.innerHTML = Perks[KillerData.SurvivorWhitelistedPerks[i]].name;
+        SrvIndvPrkWhitelistDropdown.appendChild(optionsElement);
+    }
+
+    // Apply it to SrvComboWhitelistDropdown
+    var SrvComboWhitelistDropdown = document.getElementById("survivor-tiered-combined-perk-whitelist-dropdown");
+    SrvComboWhitelistDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.SurvivorWhitelistedComboPerks.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.SurvivorWhitelistedComboPerks[i];
+
+        // Get the string representation of the perk combo
+        var comboString = "";
+        for (var j = 0; j < KillerData.SurvivorWhitelistedComboPerks[i].length; j++) {
+            comboString += Perks[KillerData.SurvivorWhitelistedComboPerks[i][j]].name;
+            if (j != KillerData.SurvivorWhitelistedComboPerks[i].length - 1) {
+                comboString += " + ";
+            }
+        }
+        optionsElement.innerHTML = comboString;
+        SrvComboWhitelistDropdown.appendChild(optionsElement);
+    }
+
+    return "OK!";
+}
+
 // Code from RobG as of 05/03/2011 on StackOverflow
 // https://stackoverflow.com/questions/5866169/how-to-get-all-selected-values-of-a-multiple-select-box
 // Return an array of the selected option values
@@ -316,14 +998,16 @@ function SetKillerBalancing() {
     for (var i = 0; i < Killers.length; i++) {
         NewKillerBalance = {
             Name: Killers[i],
-            Map: 0,
+            Map: [0], // Can be empty, which means all maps are allowed.
             BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
             KillerIndvPerkBans: [],
             KillerComboPerkBans: [],
             SurvivorIndvPerkBans: [],
             SurvivorComboPerkBans: [],
             SurvivorWhitelistedPerks: [], // e.g. Skull Merchant sucks ass so we need to give people Potential Energy so games aren't slogs...
-            SurvivorWhitelistedComboPerks: [] // In the case some perk combo deserves to be whitelisted for a particular Killer.
+            SurvivorWhitelistedComboPerks: [], // In the case some perk combo deserves to be whitelisted for a particular Killer.
+            KillerWhitelistedPerks: [], // If some Killer benefits particularly off of a perk.
+            KillerWhitelistedComboPerks: [] // If some Killer benefits particularly off of a perk combo.
         }
         KillerBalance.push(NewKillerBalance);
     }
@@ -422,6 +1106,9 @@ function UpdateDropdowns() {
 
     // Update Killer Dropdowns
     UpdateKillerDropdowns();
+
+    // Update Map Dropdowns
+    UpdateMapDropdowns();
 }
 
 function SetTierEvents() {
@@ -464,6 +1151,19 @@ function UpdateKillerDropdowns() {
         optionsElement.value = Killers[i];
         optionsElement.innerHTML = Killers[i];
         killerDropdown.appendChild(optionsElement);
+    }
+}
+
+function UpdateMapDropdowns() {
+    var mapDropdown = document.getElementById("map-selection-dropdown");
+
+    mapDropdown.innerHTML = "";
+
+    for (var i = 0; i < Maps.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = Maps[i];
+        optionsElement.innerHTML = Maps[i];
+        mapDropdown.appendChild(optionsElement);
     }
 }
 
@@ -526,7 +1226,7 @@ function OverrideButtonSearch(query, isSurvivor) {
         optionsElement.value = searchResults[i].id;
 
         optionsElement.innerHTML = searchResults[i].name;
-        optionsElement.style.backgroundImage = "url(" + searchResults[i].icon + ")";
+        //optionsElement.style.backgroundImage = "url(" + searchResults[i].icon + ")";
         optionsElement.style.backgroundSize = "contain";
         optionsElement.style.backgroundRepeat = "no-repeat";
         optionsElement.style.backgroundPosition = "right";
@@ -565,8 +1265,8 @@ function GetKillers() {
                 default:
                     console.error("Error getting killers: " + this.status);
             }
+            GetSurvivors();
         }
-        GetSurvivors();
     }
     xhttp.open("GET", "Killers.json", false);
     xhttp.send();
@@ -584,10 +1284,30 @@ function GetSurvivors() {
                 break;
                 default:
                     console.error("Error getting survivors: " + this.status);
+            
             }
+            GetMaps();
         }
     }
     xhttp.open("GET", "Survivors.json", false);
+    xhttp.send();
+}
+
+function GetMaps() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Maps = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting maps: " + this.status);
+            }
+        }
+    }
+    xhttp.open("GET", "Maps.json", false);
     xhttp.send();
 }
 
@@ -607,6 +1327,21 @@ function SearchForPerks(searchQuery, isSurvivor) {
 }
 
 function ExportBalancing() {
+
+    // Validate the killer balance
+    KillerValidityErrors = [];
+    for (var i = 0; i < KillerBalance.length; i++) {
+        var validation = ValidateKillerBalance(i);
+        if (!validation[0]) {
+            KillerValidityErrors.push(validation[1]);
+        }
+    }
+
+    if (KillerValidityErrors.length > 0) {
+        alert("Killer balance is invalid! Please fix the following errors:\n\n" + KillerValidityErrors.join("\n"));
+        return;
+    }
+
     var FinalBalanceObj = {
         Name: document.getElementById("balance-name-textbox").value,
         Tiers: Tiers,
@@ -615,6 +1350,34 @@ function ExportBalancing() {
 
     var balanceExportBox = document.getElementById("balance-export-textbox");
     balanceExportBox.value = JSON.stringify(FinalBalanceObj);
+}
+
+/**
+ * Validate the balance of a killer's data and return a boolean.
+ * @param {*} id The id of the killer to validate.
+ * @returns {Array} First argument is a boolean representing if the killer's data is valid. Second argument is a string representing the error message (otherwise "OK" is returned).
+ */ 
+function ValidateKillerBalance(id) { 
+    // Get the killer's data
+    var killerData = KillerBalance[id];
+
+    // Check if the killer's data is valid
+    if (killerData == undefined) {
+        console.error(`Killer data for ${Killers[id]} is undefined!`);
+        return [false, `Killer data for ${Killers[id]} is undefined!`];
+    }
+
+    // Check if the killer has a map assigned
+    if (killerData.Map == undefined) { 
+        console.error(`Map for ${killerData.Name} is undefined!`);
+        return [false, `Map for ${killerData.Name} is undefined!`];
+    }
+    if (killerData.Map.length <= 0) {
+        console.error(`Map for ${killerData.Name} is empty!`);
+        return [false, `Map for ${killerData.Name} is empty! Please assign a map!`];
+    }
+
+    return [true, "OK"];
 }
 
 function ImportBalancing() {
