@@ -1,0 +1,1651 @@
+[
+    {
+        "Name": "The Trapper",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Trapper Gloves",
+                    "Padded Jaws",
+                    "Makeshift Wrap",
+                    "Bear Oil"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Wax Brick",
+                    "Serrated Jaws",
+                    "Lengthened Jaws",
+                    "Coffee Grounds",
+                    "4-Coil Spring Kit"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Trapper Bag",
+                    "Tar Bottle",
+                    "Secondary Coil",
+                    "Rusted Jaws",
+                    "Fastening Tools"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Trapper Sack",
+                    "Tension Spring",
+                    "Oily Coil",
+                    "Honing Stone"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Stone",
+                    "Bloody Coil"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Wraith",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "\"The Serpent\" - Soot",
+                    "\"The Hound\" - Soot",
+                    "\"The Ghost\" - Soot",
+                    "\"The Beast\" - Soot"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Bone Clapper",
+                    "\"Blink\" - Mud",
+                    "\"Windstorm\" - Mud",
+                    "\"Swift Hunt\" - Mud",
+                    "\"Blind Warrior\" - Mud"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "\"Windstorm\" - White",
+                    "\"Swift Hunt\" - White",
+                    "\"Shadow Dance\" - White",
+                    "\"Blink\" - White",
+                    "\"Blind Warrior\" - White"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "\"Windstorm\" - Blood",
+                    "\"Swift Hunt\" - Blood",
+                    "\"Shadow Dance\" - Blood",
+                    "\"All Seeing\" - Blood"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Coxcombed Clapper",
+                    "\"All Seeing\" - Spirit"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Hillbilly",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Steel Toe Boots",
+                    "Junkyard Air Filter",
+                    "Heavy Clutch",
+                    "Speed Limiter"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Dad's Boots",
+                    "Punctured Muffler",
+                    "Off-Brand Motor Oil",
+                    "Death Engravings",
+                    "Big Buckle"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Mother's Helpers",
+                    "Low Kickback Chains",
+                    "Leafy Mash",
+                    "Doom Engravings",
+                    "Black Grease"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Tuned Carburetor",
+                    "Spiked Boots",
+                    "Pighouse Gloves",
+                    "LoPro Chains"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Apex Muffler",
+                    "Iridescent Brick"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Nurse",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Wooden Horse",
+                    "White Nit Comb",
+                    "Plaid Flannel",
+                    "Metal Spoon"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Pocket Watch",
+                    "Dull Bracelet",
+                    "Dark Cincture",
+                    "Catatonic Boy's Treasure",
+                    "Bad Man Keepsake"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Spasmodic Breath",
+                    "Heavy Panting",
+                    "Fragile Wheeze",
+                    "Ataxic Respiration",
+                    "Anxious Gasp"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Kavanagh's Last Breath",
+                    "Jenner's Last Breath",
+                    "Campbell's Last Breath",
+                    "\"Bad Man's\" Last Breath"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Torn Bookmark",
+                    "Matchbox"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Shape",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Tacky Earrings",
+                    "Memorial Flower",
+                    "Boyfriend's Memo",
+                    "Blond Hair"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Reflective Fragment",
+                    "Jewellery",
+                    "Hair Brush",
+                    "Glass Fragment",
+                    "Dead Rabbit"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Mirror Shard",
+                    "Judith's Journal",
+                    "Jewellery Box",
+                    "J. Myers Memorial",
+                    "Hair Bow"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Vanity Mirror",
+                    "Tombstone Piece",
+                    "Scratched Mirror",
+                    "Lock of Hair"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Judith's Tombstone",
+                    "Fragrant Tuft of Hair"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Hag",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Rope Necklet",
+                    "Powdered Eggshell",
+                    "Dead Fly Mud",
+                    "Bog Water"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Pussy Willow Catkins",
+                    "Half Eggshell",
+                    "Dragonfly Wings",
+                    "Cypress Necklet",
+                    "Bloodied Water"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Willow Wreath",
+                    "Swamp Orchid Necklet",
+                    "Dried Cicada",
+                    "Cracked Turtle Egg",
+                    "Bloodied Mud"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Scarred Hand",
+                    "Rusty Shackles",
+                    "Grandma's Heart",
+                    "Disfigured Ear"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Waterlogged Shoe",
+                    "Mint Rag"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Doctor",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Mouldy Electrode",
+                    "Maple Knight",
+                    "\"Order\" - Class I",
+                    "\"Calm\" - Class I"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Polished Electrode",
+                    "\"Restraint\" - Class II",
+                    "\"Order\" - Class II",
+                    "\"Discipline\" - Class II",
+                    "\"Calm\" - Class II"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Scrapped Tape",
+                    "Interview Tape",
+                    "High Stimulus Electrode",
+                    "\"Restraint\" - Class III",
+                    "\"Discipline\" - Class III"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "\"Restraint\" - Carter's Notes",
+                    "\"Order\" - Carter's Notes",
+                    "\"Discipline\" - Carter's Notes",
+                    "\"Calm\" - Carter's Notes"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Queen",
+                    "Iridescent King"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Huntress",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Yellowed Cloth",
+                    "Coarse Stone",
+                    "Bandaged Haft",
+                    "Amanita Toxin"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Weighted Head",
+                    "Shiny Pin",
+                    "Oak Haft",
+                    "Manna Grass Braid",
+                    "Leather Loop"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Rusty Head",
+                    "Rose Root",
+                    "Flower Babushka",
+                    "Deerskin Gloves"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Wooden Fox",
+                    "Infantry Belt",
+                    "Glowing Concoction",
+                    "Begrimed Head"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Soldier's Puttee",
+                    "Iridescent Head"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Cannibal",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Vegetable Oil",
+                    "Spark Plug",
+                    "Speed Limiter",
+                    "Chainsaw File"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Long Guide Bar",
+                    "Primer Bulb",
+                    "Knife Scratches",
+                    "Homemade Muffler",
+                    "Chili"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "The Grease",
+                    "The Beast's Marks",
+                    "Shop Lubricant",
+                    "Grisly Chains",
+                    "Begrimed Chains"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Rusted Chains",
+                    "Light Chassis",
+                    "Depth Gauge Rake",
+                    "Award-winning Chili"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Flesh",
+                    "Carburettor Tuning Guide"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Nightmare",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Wool Shirt",
+                    "Sheep Block",
+                    "Kid's Drawing",
+                    "Garden Rake"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Prototype Claws",
+                    "Outdoor Rope",
+                    "Nancy's Sketch",
+                    "Green Dress",
+                    "Cat Block"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Unicorn Block",
+                    "Paint Thinner",
+                    "Nancy's Masterpiece",
+                    "Jump Rope",
+                    "Blue Dress"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Pill Bottle",
+                    "Swing Chains",
+                    "Class Photo",
+                    "\"Z\" Block"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Red Paint Brush",
+                    "Black Box"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Pig",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Shattered Syringe",
+                    "John's Medical File",
+                    "Interlocking Razor",
+                    "Combat Straps"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Workshop Grease",
+                    "Utility Blades",
+                    "Razor Wires",
+                    "Last Will",
+                    "Face Mask"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Slow-Release Toxin",
+                    "Rusty Attachments",
+                    "Rules Set No.2",
+                    "Jigsaw's Annotated Plan",
+                    "Bag of Gears"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Tampered Timer",
+                    "Jigsaw's Sketch",
+                    "Crate of Gears",
+                    "Amanda's Secret"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Amanda's Letter",
+                    "Video Tape"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Clown",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "VHS Porn",
+                    "Robin Feather",
+                    "Party Bottle",
+                    "Fingerless Parade Gloves"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Thick Cork Stopper",
+                    "Sticky Soda Bottle",
+                    "Starling Feather",
+                    "Solvent Jug",
+                    "Kerosene Can"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Sulphuric Acid Vial",
+                    "Spirit of Hartshorn",
+                    "Smelly Inner Soles",
+                    "Flask of Bleach",
+                    "Bottle of Chloroform"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Garish Make-Up Kit",
+                    "Ether 15% Vol",
+                    "Cigar Box",
+                    "Cheap Gin Bottle"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Tattoo's Middle Finger",
+                    "Redhead's Pinky Finger"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Spirit",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Zori",
+                    "Shiawase Amulet",
+                    "Origami Crane",
+                    "Gifted Bamboo Comb"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "White Hair Ribbon",
+                    "Rin's Broken Watch",
+                    "Muddy Sports Day Cap",
+                    "Kaiun Talisman",
+                    "Juniper Bonsai"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Rusty Flute",
+                    "Senko Hanabi",
+                    "Katana Tsuba",
+                    "Uchiwa",
+                    "Mother's Glasses"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Yakuyoke Amulet",
+                    "Wakizashi Saya",
+                    "Furin",
+                    "Dried Cherry Blossom"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Mother-Daughter Ring",
+                    "Kintsugi Teacup"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Legion",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Smiley Face Pin",
+                    "Scratched Ruler",
+                    "Mischief List",
+                    "Friendship Bracelet"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Never-Sleep Pills",
+                    "Mural Sketch",
+                    "Julie's Mix Tape",
+                    "Etched Ruler",
+                    "Defaced Smiley Pin"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "The Legion Pin",
+                    "Susie's Mix Tape",
+                    "Stolen Sketch Book",
+                    "Stylish Sunglasses",
+                    "Joey's Mix Tape"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Stab Wounds Study",
+                    "Frank's Mix Tape",
+                    "Filthy Blade",
+                    "BFFs"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Button",
+                    "Fuming Mix Tape"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Plague",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Prayer Tablet Fragment",
+                    "Olibanum Incense",
+                    "Limestone Seal",
+                    "Healing Salve"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Prophylactic Amulet",
+                    "Potent Tincture",
+                    "Haematite Seal",
+                    "Emetic Potion",
+                    "Blessed Apple"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Rubbing Oil",
+                    "Infected Emetic",
+                    "Incensed Ointment",
+                    "Exorcism Amulet",
+                    "Ashen Apple"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Worship Tablet",
+                    "Vile Emetic",
+                    "Severed Toe",
+                    "Devotee's Amulet"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Seal",
+                    "Black Incense"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Ghost Face",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Philly",
+                    "Walleye's Matchbook",
+                    "Headline Cut-Outs",
+                    "Cheap Cologne"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Telephoto Lens",
+                    "Cinch Straps",
+                    "Olsen's Journal",
+                    "Olsen's Address Book",
+                    "Marked Map"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Olsen's Wallet",
+                    "Leather Knife Sheath",
+                    "Lasting Perfume",
+                    "Knife Belt Clip",
+                    "Chewed Pen"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Victim's Detailed Routine",
+                    "Night Vision Monocular",
+                    "Drop-Leg Knife Sheath",
+                    "Driver's License"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "\"Ghost Face Caught on Tape\"",
+                    "Outdoor Security Camera"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Demogorgon",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Rotten Pumpkin",
+                    "Black Heart",
+                    "Rat Liver",
+                    "Rat Tail"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Sticky Lining",
+                    "Viscous Webbing",
+                    "Rotten Green Tripe",
+                    "Mew's Guts",
+                    "Barb's Glasses"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Eleven's Soda",
+                    "Thorny Vines",
+                    "Brass Case Lighter",
+                    "Violet Waxcap",
+                    "Deer Lung"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Lifeguard Whistle",
+                    "Vermillion Webcap",
+                    "Upside Down Resin",
+                    "Unknown Egg"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Leprose Lichen",
+                    "Red Moss"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Oni",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Rotting Rope",
+                    "Paper Lantern",
+                    "Cracked Sakazuki",
+                    "Blackened Toenail"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Polished Maedate",
+                    "Ink Lion",
+                    "Chipped Saihai",
+                    "Child's Wooden Sword",
+                    "Bloody Sash"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Yamaoka Sashimono",
+                    "Wooden Oni Mask",
+                    "Shattered Wakizashi",
+                    "Scalped Topknot",
+                    "Kanai-Anzen Talisman"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Tear Soaked Tenugui",
+                    "Splintered Hull",
+                    "Lion Fang",
+                    "Akito's Crutch"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Renjiro's Bloody Glove",
+                    "Iridescent Family Crest"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Deathslinger",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Spit Polish Rag",
+                    "Snake Oil",
+                    "Rickety Chain",
+                    "Modified Ammo Belt"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Rusted Spike",
+                    "Poison Oak Leaves",
+                    "Marshal's Badge",
+                    "Jaw Smasher",
+                    "Chewing Tobacco"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Warden's Keys",
+                    "Wanted Poster",
+                    "Tin Oil Can",
+                    "Honey Locust Thorn",
+                    "Bayshore's Gold Tooth"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Prison Chain",
+                    "Gold Creek Whiskey",
+                    "Bayshore's Cigar",
+                    "Barbed Wire"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Coin",
+                    "Hellshire Iron"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Executioner",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Lead Ring",
+                    "Dead Butterfly",
+                    "Copper Ring",
+                    "Black Strap"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Wax Doll",
+                    "Spearhead",
+                    "Leopart-Print Fabric",
+                    "Forgotten Videotape",
+                    "Cinderella Music Box"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Valtiel Sect Photograph",
+                    "Tablet of the Oppressor",
+                    "Misty Day, Remains of Judgement",
+                    "Mannequin Foot",
+                    "Burning Man Painting"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Scarlet Egg",
+                    "Rust-Coloured Egg",
+                    "Lost Memories Book",
+                    "Crimson Ceremony Book"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Obsidian Goblet",
+                    "Iridescent Seal of Metatron"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Blight",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Placebo Tablet",
+                    "Foxglove",
+                    "Compound Seven",
+                    "Chipped Monocle"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Shredded Notes",
+                    "Pustula Dust",
+                    "Plague Bile",
+                    "Canker Thorn",
+                    "Blighted Rat"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Umbra Salts",
+                    "Rose Tonic",
+                    "Compound Twenty-One",
+                    "Blighted Crow",
+                    "Adrenaline Vial"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Vigo's Journal",
+                    "Summoning Stone",
+                    "Soul Chemical",
+                    "Alchemist's Ring"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Blight Tag",
+                    "Compound Thirty-Three"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Twins",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Toy Sword",
+                    "Tiny Fingernail",
+                    "Soured Milk",
+                    "Cat Figurine"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Madeleine's Glove",
+                    "Ceremonial Candelabrum",
+                    "Cat's Eye",
+                    "Bloody Black Hood",
+                    "Baby Teeth"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Weighty Rattle",
+                    "Stale Biscuit",
+                    "Sewer Sludge",
+                    "Rusted Needle",
+                    "Madeleine's Scarf"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Victor's Soldier",
+                    "Spinning Top",
+                    "Forest Stew",
+                    "Drop of Perfume"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Silencing Cloth",
+                    "Iridescent Pendant"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Trickster",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Trick Pouch",
+                    "Memento Blades",
+                    "Killing Part Chords",
+                    "Inferno Wires"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Tequuila Moonrock",
+                    "On Target Single",
+                    "Lucky Blade",
+                    "Ji-Woon's Autograph",
+                    "Caged Heart Shoes"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Melodious Murder",
+                    "Waiting For You Watch",
+                    "Ripper Brace",
+                    "Fizz-Spin Soda",
+                    "Bloody Boa"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Trick Blades",
+                    "Edge of Revival Album",
+                    "Diamond Cufflinks",
+                    "Cut Thru U Single"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Photocard",
+                    "Death Throes Compilation"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Nemesis",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Visitor Wristband",
+                    "S.T.A.R.S. Field Combat Manual",
+                    "Damaged Syringe",
+                    "Brian's Intestine"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Zombie Heart",
+                    "Mikhail's Eye",
+                    "Marvin's Blood",
+                    "Adrenaline Injector",
+                    "Admin Wristband"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Tyrant Gore",
+                    "T-Virus Sample",
+                    "Serotonin Injector",
+                    "Plant 43 Vine",
+                    "Licker Tongue"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "NE-a Parasite",
+                    "Jill's Sandwich",
+                    "Depleted Ink Ribbon",
+                    "Broken Recovery Coin"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Shattered S.T.A.R.S. Badge",
+                    "Iridescent Umbrella Badge"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Cenobite",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Leather Strip",
+                    "Lively Crickets",
+                    "Burning Candle",
+                    "Bent Nail"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Wriggling Maggots",
+                    "Spoiled Meal",
+                    "Skewered Rat",
+                    "Liquified gORE",
+                    "Flickering Television"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Torture Pillar",
+                    "Slice of Frank",
+                    "Larry's Remains",
+                    "Larry's Blood",
+                    "Frank's Heart"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Original Pain",
+                    "Impaling Wire",
+                    "Greasy Black Lens",
+                    "Chatterer's Tooth"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Lament Configuration",
+                    "Engineer's Fang"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Artist",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Vibrant Obituary",
+                    "Thick Tar",
+                    "Oil Paints",
+                    "Choclo Corn"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Velvet Fabric",
+                    "Untitled Agony",
+                    "Still Life Crow",
+                    "Festering Carrion",
+                    "Automatic Drawing"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Thorny Nest",
+                    "Silver Bell",
+                    "O Grief, O Lover",
+                    "Darkest Ink",
+                    "Charcoal Stick"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Severed Tongue",
+                    "Severed Hands",
+                    "Matias' Baby Shoes",
+                    "Ink Egg"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Feather",
+                    "Garden of Rot"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Onryo",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Videotape Copy",
+                    "Old Newspaper",
+                    "Mother's Mirror",
+                    "Cabin Sign"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Yoichi's Fishing Net",
+                    "Well Stone",
+                    "Sea-Soaked Cloth",
+                    "Reiko's Watch",
+                    "Clump of Hair"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Well Water",
+                    "Ring Drawing",
+                    "Rickety Pinwheel",
+                    "Mother's Comb",
+                    "Bloody Fingernails"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "VCR",
+                    "Telephone",
+                    "Tape Editing Deck",
+                    "Distorted Photo"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Remote Control",
+                    "Iridescent Videotape"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Dredge",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Wooden Plank",
+                    "Mortar and Pestle",
+                    "Follower's Cowl",
+                    "Caffeine Tablets"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Malthinker's Skull",
+                    "Haddie's Calendar",
+                    "Fallen Shingle",
+                    "Burnt Letters",
+                    "Air Freshener"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Worry Stone",
+                    "War Helmet",
+                    "Ottomarian Writing",
+                    "Destroyed Pillow",
+                    "Broken Doll"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Tilling Blade",
+                    "Lavalier Microphone",
+                    "Field Recorder",
+                    "Boat Key"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Sacrifical Knife",
+                    "Iridescent Wooden Plank"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Mastermind",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Jewel Beetle",
+                    "Unicorn Medallion",
+                    "R.P.D. Shoulder Walkie",
+                    "Uroboros Tendril"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Loose Crank",
+                    "Leather Gloves",
+                    "Lion Medallion",
+                    "Chalice (Gold)",
+                    "Bullhorn"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Portable Safe",
+                    "Red Herb",
+                    "Maiden Medallion",
+                    "Video Conference Device",
+                    "Egg (Gold)"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Dark Sunglasses",
+                    "Green Herb",
+                    "Helicopter Stick",
+                    "Uroboros Virus"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Lab Photo",
+                    "Iridescent Uroboros Vial"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Knight",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Tattered Tabard",
+                    "Pillaged Mead",
+                    "Map of the Realm",
+                    "Gritty Lump"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Treated Blade",
+                    "Dried Horsemeat",
+                    "Cold Steel Manacles",
+                    "Call To Arms",
+                    "Battle Axe Head"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Town Watch's Torch",
+                    "Ironworker's Tongs",
+                    "Grim Iron Mask",
+                    "Chain Mail Fragment",
+                    "Broken Hilt"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Lightweight Greaves",
+                    "Healing Poultice",
+                    "Flint and Steel",
+                    "Blacksmith's Hammer"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Knight's Contract",
+                    "Iridescent Company Banner"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Skull Merchant",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Ultrasonic Trap Speaker",
+                    "High-Power Floodlight",
+                    "High-Current Upgrade",
+                    "Adi Valente Issue 1"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Stereo Remote Mic",
+                    "Shotgun Speakers",
+                    "Supercharge",
+                    "Low-Power Mode",
+                    "Adaptive Lighting"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Vital Targeting Processor",
+                    "Powdered Glass",
+                    "Loose Screw",
+                    "Infrared Upgrade",
+                    "Brown Noise Generator"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Randomised Strobes",
+                    "Geographical Readout",
+                    "Prototype Rotor",
+                    "Advanced Movement Prediction"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Expired Batteries",
+                    "Iridescent Unpublished Manuscript"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Singularity",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Nutritional Slurry",
+                    "Kid's Ball Glove",
+                    "Heavy Water",
+                    "Broken Security Key"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Ultrasonic Sensor",
+                    "Diagnostic Tool (Repair)",
+                    "Cryo Gel",
+                    "Cremated Remains",
+                    "Android Arm"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Spent Oxygen Tank",
+                    "Nanomachine Gel",
+                    "Live Wires",
+                    "Hyperawareness Spray",
+                    "Hologram Generator"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Soma Family Photo",
+                    "Foreign Plant Fibres",
+                    "Diagnostic Tool (Construction)",
+                    "Crew Manifest"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Crystal Shard",
+                    "Denied Requisition Form"
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "The Xenomorph",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Ripley's Watch",
+                    "Ovomorph",
+                    "Drinking Bird",
+                    "Cereal Rations"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Light Wand",
+                    "Lambert's Star Map",
+                    "Crew Headset",
+                    "Brett's Cap",
+                    "Ash's Innards"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Parker's Headband",
+                    "Multipurpose Hatchet",
+                    "Moulted Skin",
+                    "Kane's Helmet",
+                    "Emergency Helmet"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Semiotic Keyboard",
+                    "Self-Destruct Bolt",
+                    "Harpoon Gun",
+                    "Cat Carrier"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Improvised Cattle Prod",
+                    "Acidic Blood"
+                ]
+            }
+        ]
+    }
+]
