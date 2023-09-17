@@ -7,17 +7,30 @@ Maps = null;
 Addons = null;
 Offerings = null;
 
+/**
+ * @type {boolean} AllDataLoaded - Used to check if all data (perks, addons, offerings, maps .etc) has been loaded
+ */
+AllDataLoaded = false;
+
 Tiers = [];
 KillerBalance = [];
 
 // Constant Variable to reference rarity colours
 TIER_RARITY_COLOURS = {
-    "COMMON": "#ab713c",
-    "UNCOMMON": "#e8c252",
-    "RARE": "#199b1e",
-    "VERY_RARE": "#ac3ee3",
-    "ULTRA_RARE": "#ff0955"
+    "COMMON": "#614022",
+    "UNCOMMON": "#937c34",
+    "RARE": "#116814",
+    "VERY_RARE": "#1d1b6a",
+    "ULTRA_RARE": "#e6064d"
 }
+
+TIER_RARITY_COLOURLIST = [
+    TIER_RARITY_COLOURS.COMMON,
+    TIER_RARITY_COLOURS.UNCOMMON,
+    TIER_RARITY_COLOURS.RARE,
+    TIER_RARITY_COLOURS.VERY_RARE,
+    TIER_RARITY_COLOURS.ULTRA_RARE
+]
 
 function main() {
     GetPerks();
@@ -30,6 +43,14 @@ function main() {
     SetKillerBalancing();
     SetTierButtonEvents();
     SetKillerOverrideEvents();
+    
+    // A timer that launches LoadKillerOverrideUI(0); if AllDataLoaded is true, if not then it will wait 100ms and try again, if it is true then it will stop the timer
+    var timer = setInterval(function() {
+        if (AllDataLoaded) {
+            LoadKillerOverrideUI(0);
+            clearInterval(timer);
+        }
+    }, 100);
 
     SetImportExportButtonEvents();
 
@@ -49,6 +70,10 @@ function SetImportExportButtonEvents() {
 
     exportButton.addEventListener("click", function() {
         ExportBalancing();
+    });
+
+    importButton.addEventListener("click", function() {
+        ImportBalancing();
     });
 }
 
@@ -324,6 +349,148 @@ function SetKillerOverrideEvents() {
 
         KillerBalance[selectedKillerIndex].AntiFacecamp = antiFacecampCheckbox.checked;
         DebugLog(`Anti-Facecamp set to <b>${KillerBalance[selectedKillerIndex].AntiFacecamp}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
+    });
+
+    AddonCheckboxBanIDList = [
+        ["killer-addon-ban-checkbox-common", "Common"],
+        ["killer-addon-ban-checkbox-uncommon", "Uncommon"],
+        ["killer-addon-ban-checkbox-rare", "Rare"],
+        ["killer-addon-ban-checkbox-veryrare", "Very Rare"],
+        ["killer-addon-ban-checkbox-iridescent", "Ultra Rare"]
+    ]
+
+    document.getElementById(AddonCheckboxBanIDList[0][0]).addEventListener("change", function() {
+        DebugLog("Banning Common Addons");
+
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        var curBanRar = KillerBalance[selectedKillerIndex].AddonTiersBanned;
+
+        if (curBanRar.includes(0)) {
+            curBanRar.splice(curBanRar.indexOf(0), 1);
+        } else {
+            curBanRar.push(0);
+        }
+
+        DebugLog(KillerBalance[selectedKillerIndex].AddonTiersBanned);
+    });
+
+    document.getElementById(AddonCheckboxBanIDList[1][0]).addEventListener("change", function() {
+        DebugLog("Banning Uncommon Addons");
+
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        var curBanRar = KillerBalance[selectedKillerIndex].AddonTiersBanned;
+
+        if (curBanRar.includes(1)) {
+            curBanRar.splice(curBanRar.indexOf(1), 1);
+        } else {
+            curBanRar.push(1);
+        }
+
+        DebugLog(KillerBalance[selectedKillerIndex].AddonTiersBanned);
+    });
+
+    document.getElementById(AddonCheckboxBanIDList[2][0]).addEventListener("change", function() {
+        DebugLog("Banning Rare Addons");
+
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        var curBanRar = KillerBalance[selectedKillerIndex].AddonTiersBanned;
+
+        if (curBanRar.includes(2)) {
+            curBanRar.splice(curBanRar.indexOf(2), 1);
+        } else {
+            curBanRar.push(2);
+        }
+
+        DebugLog(KillerBalance[selectedKillerIndex].AddonTiersBanned);
+    });
+
+    document.getElementById(AddonCheckboxBanIDList[3][0]).addEventListener("change", function() {
+        DebugLog("Banning Very Rare Addons");
+
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        var curBanRar = KillerBalance[selectedKillerIndex].AddonTiersBanned;
+
+        if (curBanRar.includes(3)) {
+            curBanRar.splice(curBanRar.indexOf(3), 1);
+        } else {
+            curBanRar.push(3);
+        }
+
+        DebugLog(KillerBalance[selectedKillerIndex].AddonTiersBanned);
+    });
+
+    document.getElementById(AddonCheckboxBanIDList[4][0]).addEventListener("change", function() {
+        DebugLog("Banning Iridescent Addons");
+
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        var curBanRar = KillerBalance[selectedKillerIndex].AddonTiersBanned;
+
+        if (curBanRar.includes(4)) {
+            curBanRar.splice(curBanRar.indexOf(4), 1);
+        } else {
+            curBanRar.push(4);
+        }
+
+        DebugLog(KillerBalance[selectedKillerIndex].AddonTiersBanned);
+    });
+
+    for (var i = 0; i < AddonCheckboxBanIDList.length; i++) {
+        var curCheckbox = document.getElementById(AddonCheckboxBanIDList[i][0]);
+        curCheckbox.addEventListener("change", function() {
+            LoadKillerOverrideUI(GetCurrentKillerIndex());
+        });
+    }
+
+    // Set the Confirm Addon(s) Button Event
+    var addonConfirmButton = document.getElementById("killer-individual-addon-ban-confirmation-button");
+    addonConfirmButton.addEventListener("click", function() {
+        // Get the addons selected
+        var selectedAddons = GetSelectValues(document.getElementById("killer-individual-addon-ban-dropdown"));
+
+        // Get the selected killer
+        var selectedKiller = GetCurrentKillerIndex();
+        if (selectedKiller == -1) { console.error("Invalid killer name!"); return;}
+
+        // Add the addon selections to the killer if they are not already in the list
+        for (var i = 0; i < selectedAddons.length; i++) {
+            if (KillerBalance[selectedKiller].IndividualAddonBans.includes(selectedAddons[i])) { continue; }
+            KillerBalance[selectedKiller].IndividualAddonBans.push(selectedAddons[i]);
+        }
+
+        DebugLog(`Added <b>${selectedAddons}</b> to <b>${KillerBalance[selectedKiller].Name}</b>`);
+        LoadKillerOverrideUI(selectedKiller);
+    });
+
+    // Set the Remove Addon(s) Button Event
+    var addonRemoveButton = document.getElementById("killer-individual-addon-ban-remove-bans-button");
+    addonRemoveButton.addEventListener("click", function() {
+        // Get the addons selected
+        var selectedAddons = GetSelectValues(document.getElementById("killer-individual-addon-confirmed-bans-dropdown"));
+        
+        // Get the selected killer
+        var selectedKiller = GetCurrentKillerIndex();
+        if (selectedKiller == -1) { console.error("Invalid killer name!"); return;}
+
+        // Remove the addon selections from the killer if they are in the list
+        for (var i = 0; i < selectedAddons.length; i++) {
+            if (!KillerBalance[selectedKiller].IndividualAddonBans.includes(selectedAddons[i])) { continue; }
+            KillerBalance[selectedKiller].IndividualAddonBans.splice(KillerBalance[selectedKiller].IndividualAddonBans.indexOf(selectedAddons[i]), 1);
+        }
+
+        DebugLog(`Removed <b>${selectedAddons}</b> from <b>${KillerBalance[selectedKiller].Name}</b>`);
+        DebugLog(selectedAddons);
+
+        LoadKillerOverrideUI(selectedKiller);
     });
 
     // Get the Killer Confirm Tier Button
@@ -885,7 +1052,7 @@ function LoadKillerOverrideUIByName(name) {
 }
 
 function LoadKillerOverrideUI(id) {
-    
+
     KillerData = KillerBalance[id];
     
     // Guard clause to make sure the killer data is valid.
@@ -910,23 +1077,67 @@ function LoadKillerOverrideUI(id) {
         "killer-addon-ban-checkbox-veryrare",
         "killer-addon-ban-checkbox-iridescent"
     ]
+    
+    // Check appropriate ban checkboxes
+    for (var i = 0; i < AddonCheckboxBanIDList.length; i++) {
+        var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[i]);
+        DebugLog(`\tChecking checkbox ${AddonCheckboxBanIDList[i]} for ${KillerBalance[CurrentKiller].Name}`)
+        currentCheckbox.checked = KillerBalance[CurrentKiller].AddonTiersBanned.includes(i);
+        DebugLog(`\t\tDoes ${KillerBalance[CurrentKiller].Name} have ${i} in their ban list? ${KillerBalance[CurrentKiller].AddonTiersBanned.includes(i)}`)
+    }
+
     DebugLog(Addons[CurrentKiller]);
     for (var i = 0; i < Addons[CurrentKiller].Addons.length; i++) {
         var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[i]);
 
         if (currentCheckbox.checked) { continue; }
 
-        DebugLog("Current Addons:");
-        DebugLog(Addons[CurrentKiller].Addons);
+        //DebugLog("Current Addons:");
+        //DebugLog(Addons[CurrentKiller].Addons);
 
         CurrentAddonList = Addons[CurrentKiller].Addons[i].Addons;
-        DebugLog(CurrentAddonList);
+        //DebugLog(CurrentAddonList);
         for (var j = 0; j < CurrentAddonList.length; j++) {
             var optionsElement = document.createElement("option");
             optionsElement.value = CurrentAddonList[j];
             optionsElement.innerHTML = CurrentAddonList[j];
+            optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[i];
+            optionsElement.style.color = "white";
+            optionsElement.style.fontWeight = 700;
+            optionsElement.style.textShadow = "0px 0px 5px black";
+            optionsElement.style.textAlign = "center";
+            optionsElement.style.border = "1px solid black";
+            optionsElement.style.padding = "5px";
+            //DebugLog(`Added Addon ${CurrentAddonList[j]} to ${KillerBalance[CurrentKiller].Name}`);
             addonDropdown.appendChild(optionsElement);
         }
+    }
+
+    addonDropdown = document.getElementById("killer-individual-addon-confirmed-bans-dropdown");
+    addonDropdown.innerHTML = "";
+
+    for (var i = 0; i < KillerData.IndividualAddonBans.length; i++) {
+        var optionsElement = document.createElement("option");
+        optionsElement.value = KillerData.IndividualAddonBans[i];
+        optionsElement.innerHTML = KillerData.IndividualAddonBans[i];
+        
+        // Get the rarity of the addon
+        var addonRarity = 0;
+        for (var j = 0; j < Addons[CurrentKiller].Addons.length; j++) {
+            if (Addons[CurrentKiller].Addons[j].Addons.includes(KillerData.IndividualAddonBans[i])) {
+                addonRarity = j;
+                break;
+            }
+        }
+        optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[addonRarity];
+
+        optionsElement.style.color = "white";
+        optionsElement.style.fontWeight = 700;
+        optionsElement.style.textShadow = "0px 0px 5px black";
+        optionsElement.style.textAlign = "center";
+        optionsElement.style.border = "1px solid black";
+        optionsElement.style.padding = "5px";
+        addonDropdown.appendChild(optionsElement);
     }
     
     // Apply it to KillerIndvBanDropdown
@@ -1082,6 +1293,7 @@ function SetKillerBalancing() {
             Name: Killers[i],
             Map: [0], // Can be empty, which means all maps are allowed.
             BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
+            SurvivorBalanceTiers: [0], // Set to 0 for General Tier, which is always created.
             AntiFacecampPermitted: false, // Whether or not the anti-facecamping feature is permitted.
             KillerIndvPerkBans: [], // e.g. Noed, BBQ, etc.
             KillerComboPerkBans: [], // e.g. Noed + BBQ, etc.
@@ -1090,7 +1302,9 @@ function SetKillerBalancing() {
             SurvivorWhitelistedPerks: [], // e.g. Skull Merchant sucks ass so we need to give people Potential Energy so games aren't slogs...
             SurvivorWhitelistedComboPerks: [], // In the case some perk combo deserves to be whitelisted for a particular Killer.
             KillerWhitelistedPerks: [], // If some Killer benefits particularly off of a perk.
-            KillerWhitelistedComboPerks: [] // If some Killer benefits particularly off of a perk combo.
+            KillerWhitelistedComboPerks: [], // If some Killer benefits particularly off of a perk combo.
+            AddonTiersBanned: [], // 0=Common | 1=Uncommon | 2=Rare | 3=Very Rare | 4=Iridescent
+            IndividualAddonBans: [] // Name of the addons that are banned.
         }
         KillerBalance.push(NewKillerBalance);
     }
@@ -1430,6 +1644,7 @@ function GetOfferings() {
                 default:
                     console.error("Error getting offerings: " + this.status);
             }
+            AllDataLoaded = true;
         }
     }
     xhttp.open("GET", "Offerings.json", false);
@@ -1514,6 +1729,7 @@ function ImportBalancing() {
     KillerBalance = balanceImportObj.KillerOverride;
 
     LoadTier(0);
+    LoadKillerOverrideUI(0);
     UpdateDropdowns();
 }
 
