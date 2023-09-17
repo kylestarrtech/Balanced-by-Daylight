@@ -12,10 +12,10 @@ html
                 h3 Base Game Balancing
                 label(for="maximum-perk-repetition-dropdown") Maximum Perk Repetition: 
                 select#maximum-perk-repetition-dropdown(style="min-width: 200px;")
-                    option 1
-                    option 2
-                    option 3
-                    option 4
+                    option(value="1") 1
+                    option(value="2") 2
+                    option(value="3") 3
+                    option(value="4") 4
 
                 h3 Tier Balancing
                 
@@ -86,8 +86,6 @@ html
                     br
                     div#killer-addon-container
                         div#killer-addon-ban-container
-                            h3 Killer Addon Bans
-
                             label(for="killer-addon-ban-checkbox-common") Common Addons
                             input#killer-addon-ban-checkbox-common(type="checkbox")
                             br
@@ -104,14 +102,12 @@ html
                             input#killer-addon-ban-checkbox-iridescent(type="checkbox")
                             br
                         div#killer-individual-addon-ban-container
-                            h3 Killer Individual Addon Bans
                             label(for="killer-individual-addon-ban-dropdown") Individual Addons: 
                             br
                             select#killer-individual-addon-ban-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
                             br
                             button#killer-individual-addon-ban-confirmation-button(style="min-width: 200px;") Confirm Addon(s)
                         div#killer-individual-addon-ban-confirmed-container
-                            h3 Confirmed Individual Addon Bans
                             label(for="killer-individual-addon-confirmed-bans-dropdown") Confirmed Addon Bans: 
                             br
                             select#killer-individual-addon-confirmed-bans-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
@@ -119,11 +115,35 @@ html
                             button#killer-individual-addon-ban-remove-bans-button(style="min-width: 200px;") Remove Addon(s)
                     br
                     br
-                    label(for="killer-tier-selection-dropdown") Killer Tiers: 
+                    div#killer-override-tier-selection-container
+                        div#killer-individual-killer-tier-selection-container
+                            label(for="killer-tier-selection-dropdown") Killer Perk Tiers: 
+                            br
+                            select#killer-tier-selection-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
+                            br
+                            button#killer-tier-confirmation-button(style="min-width: 200px;") Confirm Tier(s)
+                        #killer-individual-survivor-tier-selection-container 
+                            label(for="survivor-balance-tier-dropdown") Survivor Perk Tiers: 
+                            br
+                            select#survivor-balance-tier-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
+                            br
+                            button#survivor-tier-confirmation-button(style="min-width: 200px;") Confirm Tier(s)
                     br
-                    select#killer-tier-selection-dropdown(style="min-width: 200px;" size="5" multiple="multiple")
                     br
-                    button#killer-tier-confirmation-button(style="min-width: 200px;") Confirm Tier(s)
+                    div#killer-override-offering-selection-container
+                        div#killer-individual-offering-selection-container
+                            label(for="killer-offering-selection-dropdown") Permitted Killer Offerings: 
+                            br
+                            select#killer-offering-selection-dropdown(style="min-width: 200px;" size="10" multiple="multiple")
+                            br
+                            button#killer-offering-confirmation-button(style="min-width: 200px;") Confirm Offering(s)
+                        div#survivor-individual-offering-selection-container
+                            label(for="killer-offering-selection-dropdown") Permitted Survivor Offerings: 
+                            br
+                            select#survivor-offering-selection-dropdown(style="min-width: 200px;" size="10" multiple="multiple")
+                            br
+                            button#survivor-offering-confirmation-button(style="min-width: 200px;") Confirm Offering(s)
+
                     br
                     hr
 
@@ -185,7 +205,7 @@ html
                             button#killer-tiered-individual-perk-whitelist-remove-button Remove Perk(s)
 
                         div.perk-ban-dropdown
-                            // Create a dropdown for Jukker Combined Perk Whitelists
+                            // Create a dropdown for Killer Combined Perk Whitelists
                             p Killer Combined Perk Whitelists:
                             select#killer-tiered-combined-perk-whitelist-dropdown(class="selection-dropdown", size="10")
                             br

@@ -44,6 +44,20 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
+#killer-override-offering-selection-container {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#killer-override-tier-selection-container {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .selection-dropdown {
     width: 90%;
 }
