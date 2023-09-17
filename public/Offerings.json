@@ -1,0 +1,37 @@
+{
+    "Killer": [
+        "Bloodied Blueprint",
+        "Torn Blueprint",
+        "Annotated Blueprint",
+        "Vigo's Blueprint",
+        "Scratched Coin",
+        "Cut Coin",
+        "Mouldy Oak",
+        "Rotten Oak",
+        "Putrid Oak",
+        "Clear Reagent",
+        "Faint Reagent",
+        "Hazy Reagent",
+        "Murky Reagent",
+        "Cypress Memento Mori",
+        "Ivory Memento Mori",
+        "Ebony Memento Mori"
+    ],
+    "Survivor": [
+        "Bloodied Blueprint",
+        "Torn Blueprint",
+        "Annotated Blueprint",
+        "Vigo's Blueprint",
+        "Chalk Pouch",
+        "Cream Chalk Pouch",
+        "Ivory Chalk Pouch",
+        "Salt Pouch",
+        "Black Salt Statuette",
+        "Vigo's Jar of Salty Lips",
+        "Petrified Oak",
+        "Clear Reagent",
+        "Faint Reagent",
+        "Hazy Reagent",
+        "Murky Reagent"
+    ]
+}

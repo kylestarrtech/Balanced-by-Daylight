@@ -47,3 +47,11 @@ body {
 .selection-dropdown {
     width: 90%;
 }
+
+#killer-addon-container {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+}

@@ -1,11 +1,23 @@
+debugging = true;
+
 Perks = null;
 Killers = null;
 Survivors = null;
 Maps = null;
+Addons = null;
+Offerings = null;
 
 Tiers = [];
 KillerBalance = [];
 
+// Constant Variable to reference rarity colours
+TIER_RARITY_COLOURS = {
+    "COMMON": "#ab713c",
+    "UNCOMMON": "#e8c252",
+    "RARE": "#199b1e",
+    "VERY_RARE": "#ac3ee3",
+    "ULTRA_RARE": "#ff0955"
+}
 
 function main() {
     GetPerks();
@@ -67,13 +79,13 @@ function SetTierButtonEvents() {
     var SrvComboRmvPrkBanButton = document.getElementById("survivor-combined-perk-ban-remove-button");
     var KlrComboRmvPrkBanButton = document.getElementById("killer-combined-perk-ban-remove-button");
 
-    console.log("Click");
+    DebugLog("Click");
     // Add On Click Events
     SrvIndvPrkBanButton.addEventListener("click", function() {
         // Get the selected perks
         var selectedPerks = GetSelectValues(document.getElementById("perk-search-results"));
 
-        console.log(selectedPerks);
+        DebugLog(selectedPerks);
 
         // Get the selected tier
         var selectedTier = document.getElementById("tier-selection-dropdown").value;
@@ -87,7 +99,7 @@ function SetTierButtonEvents() {
             }
         }
         if (tierIndex == -1) { console.error("Invalid tier name!"); return;}
-        console.log(`Passed Tier Index Guard Clause ${tierIndex}`);
+        DebugLog(`Passed Tier Index Guard Clause ${tierIndex}`);
 
         // Add the perks to the tier
         for (var i = 0; i < selectedPerks.length; i++) {
@@ -151,9 +163,9 @@ function SetTierButtonEvents() {
 
             ComboObj.push(selectedPerks[i]);
         }
-        console.log(ComboObj)
+        DebugLog(ComboObj)
         Tiers[tierIndex].SurvivorComboPerkBans.push(ComboObj);
-        console.log(Tiers[tierIndex]);
+        DebugLog(Tiers[tierIndex]);
 
         LoadTier(tierIndex);
     });
@@ -185,9 +197,9 @@ function SetTierButtonEvents() {
 
             ComboObj.push(selectedPerks[i]);
         }
-        console.log(ComboObj)
+        DebugLog(ComboObj)
         Tiers[tierIndex].KillerComboPerkBans.push(ComboObj);
-        console.log(Tiers[tierIndex]);
+        DebugLog(Tiers[tierIndex]);
         
         LoadTier(tierIndex);
     });
@@ -295,6 +307,25 @@ function SetTierButtonEvents() {
 }
 
 function SetKillerOverrideEvents() {
+
+    DebugLog("<b>Setting Killer Override UI Events...</b>");
+
+    // Get the primary Killer dropdown
+    var killerDropdown = document.getElementById("killer-selection-dropdown");
+    killerDropdown.addEventListener("change", function() {
+        LoadKillerOverrideUIByName(GetCurrentKiller());
+    });
+    DebugLog("Set Killer Dropdown Override Event")
+
+    var antiFacecampCheckbox = document.getElementById("killer-antifacecamp-checkbox");
+    antiFacecampCheckbox.addEventListener("change", function() {
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        KillerBalance[selectedKillerIndex].AntiFacecamp = antiFacecampCheckbox.checked;
+        DebugLog(`Anti-Facecamp set to <b>${KillerBalance[selectedKillerIndex].AntiFacecamp}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
+    });
+
     // Get the Killer Confirm Tier Button
     var killerConfirmTierButton = document.getElementById("killer-tier-confirmation-button");
 
@@ -363,6 +394,8 @@ function SetKillerOverrideEvents() {
 
         // Set the mapIndexes to the killer
         KillerBalance[killerIndex].Map = mapIndexes;
+
+        DebugLog(`Map set to <b>${KillerBalance[killerIndex].Map}</b> for <b>${KillerBalance[killerIndex].Name}</b>`);
     });
 
     // Set Killer Perk Ban Events
@@ -452,9 +485,9 @@ function SetKillerOverridePerkBanEvents() {
 
             ComboObj.push(selectedPerks[i]);
         }
-        console.log(ComboObj)
+        DebugLog(ComboObj)
         KillerBalance[killerIndex].KillerComboPerkBans.push(ComboObj);
-        console.log(KillerBalance[killerIndex]);
+        DebugLog(KillerBalance[killerIndex]);
 
         LoadKillerOverrideUI(killerIndex);
     });
@@ -512,9 +545,9 @@ function SetKillerOverridePerkBanEvents() {
 
             ComboObj.push(selectedPerks[i]);
         }
-        console.log(ComboObj)
+        DebugLog(ComboObj)
         KillerBalance[killerIndex].SurvivorComboPerkBans.push(ComboObj);
-        console.log(KillerBalance[killerIndex]);
+        DebugLog(KillerBalance[killerIndex]);
 
         LoadKillerOverrideUI(killerIndex);
     });
@@ -572,9 +605,9 @@ function SetKillerOverridePerkBanEvents() {
 
             ComboObj.push(selectedPerks[i]);
         }
-        console.log(ComboObj)
+        DebugLog(ComboObj)
         KillerBalance[killerIndex].KillerWhitelistedComboPerks.push(ComboObj);
-        console.log(KillerBalance[killerIndex]);
+        DebugLog(KillerBalance[killerIndex]);
 
         LoadKillerOverrideUI(killerIndex);
     });
@@ -632,9 +665,9 @@ function SetKillerOverridePerkBanEvents() {
 
             ComboObj.push(selectedPerks[i]);
         }
-        console.log(ComboObj)
+        DebugLog(ComboObj)
         KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.push(ComboObj);
-        console.log(KillerBalance[killerIndex]);
+        DebugLog(KillerBalance[killerIndex]);
 
         LoadKillerOverrideUI(killerIndex);
     });
@@ -836,17 +869,66 @@ function SetKillerOverridePerkBanEvents() {
     });
 }
 
-function LoadKillerOverrideUI(id) {
-    KillerData = KillerBalance[id];
+function LoadKillerOverrideUIByName(name) {
 
+    // Get the index of the killer with the same name
+    var killerIndex = -1;
+    for (var i = 0; i < Killers.length; i++) {
+        if (Killers[i] == name) {
+            killerIndex = i;
+            continue;
+        }
+    }
+    if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+    LoadKillerOverrideUI(killerIndex);
+}
+
+function LoadKillerOverrideUI(id) {
+    
+    KillerData = KillerBalance[id];
+    
     // Guard clause to make sure the killer data is valid.
     if (KillerData == undefined) {
         console.error("Killer balance data or Killer does not exist!");
         return;
     }
-
+    
     // Once we know killer data is legit, we can apply it to frontend.
+    
+    DebugLog(`Loading balance data for Killer <b>${KillerBalance[id].Name}</b>`);
+    
+    // Load Killer Addons
+    var addonDropdown = document.getElementById("killer-individual-addon-ban-dropdown");
+    addonDropdown.innerHTML = "";
 
+    CurrentKiller = GetCurrentKillerIndex();
+    AddonCheckboxBanIDList = [
+        "killer-addon-ban-checkbox-common",
+        "killer-addon-ban-checkbox-uncommon",
+        "killer-addon-ban-checkbox-rare",
+        "killer-addon-ban-checkbox-veryrare",
+        "killer-addon-ban-checkbox-iridescent"
+    ]
+    DebugLog(Addons[CurrentKiller]);
+    for (var i = 0; i < Addons[CurrentKiller].Addons.length; i++) {
+        var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[i]);
+
+        if (currentCheckbox.checked) { continue; }
+
+        DebugLog("Current Addons:");
+        DebugLog(Addons[CurrentKiller].Addons);
+
+        CurrentAddonList = Addons[CurrentKiller].Addons[i].Addons;
+        DebugLog(CurrentAddonList);
+        for (var j = 0; j < CurrentAddonList.length; j++) {
+            var optionsElement = document.createElement("option");
+            optionsElement.value = CurrentAddonList[j];
+            optionsElement.innerHTML = CurrentAddonList[j];
+            addonDropdown.appendChild(optionsElement);
+        }
+    }
+    
     // Apply it to KillerIndvBanDropdown
     var KlrIndvPrkBanDropdown = document.getElementById("killer-tiered-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
@@ -1000,10 +1082,11 @@ function SetKillerBalancing() {
             Name: Killers[i],
             Map: [0], // Can be empty, which means all maps are allowed.
             BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
-            KillerIndvPerkBans: [],
-            KillerComboPerkBans: [],
-            SurvivorIndvPerkBans: [],
-            SurvivorComboPerkBans: [],
+            AntiFacecampPermitted: false, // Whether or not the anti-facecamping feature is permitted.
+            KillerIndvPerkBans: [], // e.g. Noed, BBQ, etc.
+            KillerComboPerkBans: [], // e.g. Noed + BBQ, etc.
+            SurvivorIndvPerkBans: [], // e.g. DS, Unbreakable, etc.
+            SurvivorComboPerkBans: [], // e.g. DS + Unbreakable, etc.
             SurvivorWhitelistedPerks: [], // e.g. Skull Merchant sucks ass so we need to give people Potential Energy so games aren't slogs...
             SurvivorWhitelistedComboPerks: [], // In the case some perk combo deserves to be whitelisted for a particular Killer.
             KillerWhitelistedPerks: [], // If some Killer benefits particularly off of a perk.
@@ -1109,6 +1192,10 @@ function UpdateDropdowns() {
 
     // Update Map Dropdowns
     UpdateMapDropdowns();
+}
+
+function UpdateKillerDropdowns() {
+    
 }
 
 function SetTierEvents() {
@@ -1305,9 +1392,47 @@ function GetMaps() {
                 default:
                     console.error("Error getting maps: " + this.status);
             }
+            GetAddons();
         }
     }
     xhttp.open("GET", "Maps.json", false);
+    xhttp.send();
+}
+
+function GetAddons() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Addons = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting addons: " + this.status);
+            }
+            GetOfferings();
+        }
+    }
+    xhttp.open("GET", "Addons.json", false);
+    xhttp.send();
+}
+
+function GetOfferings() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Offerings = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting offerings: " + this.status);
+            }
+        }
+    }
+    xhttp.open("GET", "Offerings.json", false);
     xhttp.send();
 }
 
@@ -1388,6 +1513,44 @@ function ImportBalancing() {
     Tiers = balanceImportObj.Tiers;
     KillerBalance = balanceImportObj.KillerOverride;
 
-    UpdateDropdowns();
     LoadTier(0);
+    UpdateDropdowns();
+}
+
+/* HELPER FUNCTIONS */
+
+/**
+ * Returns the name of the currently selected killer.
+ * @returns {String} The name of the currently selected killer.
+ */
+function GetCurrentKiller() {
+    return document.getElementById("killer-selection-dropdown").value;
+}
+
+/**
+ * Returns the index of the currently selected killer.
+ * @returns {Number} The index of the currently selected killer.
+ */
+function GetCurrentKillerIndex() {
+    var killerName = GetCurrentKiller();
+    for (var i = 0; i < Killers.length; i++) {
+        if (Killers[i] == killerName) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * Returns the name of the currently selected balance tier.
+ * @returns {String} The name of the currently selected balance tier.
+ */
+function GetCurrentTier() {
+    return document.getElementById("tier-selection-dropdown").value;
+}
+
+function DebugLog(text) {
+    if (!debugging) { return; }
+
+    console.log(text);
 }
