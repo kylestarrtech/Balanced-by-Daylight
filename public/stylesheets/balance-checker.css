@@ -259,6 +259,74 @@ body {
     font-size: 0.9rem;
 }
 
+#main-balance-window {
+    text-align: center;
+}
+
+.survivor-build-component {
+    display: flex;
+    flex-direction: row;
+
+    background-color: #ffffff04;
+    margin: auto;
+    width: auto;
+    padding: 10px;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    height: 120px;
+    border-radius: 17px;
+}
+
+.survivor-builds-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+
+    width: max-content;
+    margin: auto;
+}
+
+.perk-slot {
+    background-color: #ffffff04;
+
+    border-radius: 10px;
+
+    aspect-ratio: 1 / 1;
+    height: 100%;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.perk-slot:hover {
+    background-color: #ffffff10;
+
+    filter:drop-shadow(0px 0px 4px #000000);
+}
+
+.perk-slot:hover img {
+    filter:drop-shadow(0px 0px 4px #ffffff);
+}
+
+.perk-slot:active img {
+    filter:drop-shadow(0px 0px 2px #ffffff);
+}
+
+.perk-slot img {
+    width: 100%;
+
+    transition: all 0.2s ease-in-out;
+}
+
 /* Create an animation */
 @keyframes intro-blur {
     from {backdrop-filter: blur(0px);}
