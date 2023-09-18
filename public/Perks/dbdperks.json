@@ -1181,7 +1181,7 @@
     {
         "id": 131,
         "name": "A Nurse's Calling",
-        "icon": "public/Perks/Survivors/A-Nurse_S-Calling.png",
+        "icon": "public/Perks/Killers/A-Nurse_S-Calling.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nurse",
@@ -1190,7 +1190,7 @@
     {
         "id": 132,
         "name": "Agitation",
-        "icon": "public/Perks/Survivors/Agitation.png",
+        "icon": "public/Perks/Killers/Agitation.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Trapper",
@@ -1199,7 +1199,7 @@
     {
         "id": 133,
         "name": "Alien Instinct",
-        "icon": "public/Perks/Survivors/Alien-Instinct.png",
+        "icon": "public/Perks/Killers/Alien-Instinct.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Xenomorph",
@@ -1208,7 +1208,7 @@
     {
         "id": 134,
         "name": "Awakened Awareness",
-        "icon": "public/Perks/Survivors/Awakened-Awareness.png",
+        "icon": "public/Perks/Killers/Awakened-Awareness.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Mastermind",
@@ -1217,7 +1217,7 @@
     {
         "id": 135,
         "name": "Bamboozle",
-        "icon": "public/Perks/Survivors/Bamboozle.png",
+        "icon": "public/Perks/Killers/Bamboozle.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Clown",
@@ -1226,7 +1226,7 @@
     {
         "id": 136,
         "name": "Barbecue & Chili",
-        "icon": "public/Perks/Survivors/Barbecue-And-Chili.png",
+        "icon": "public/Perks/Killers/Barbecue-And-Chili.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Cannibal",
@@ -1235,7 +1235,7 @@
     {
         "id": 137,
         "name": "Beast of Prey",
-        "icon": "public/Perks/Survivors/Beast-Of-Prey.png",
+        "icon": "public/Perks/Killers/Beast-Of-Prey.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Huntress",
@@ -1244,7 +1244,7 @@
     {
         "id": 138,
         "name": "Bitter Murmur",
-        "icon": "public/Perks/Survivors/Bitter-Murmur.png",
+        "icon": "public/Perks/Killers/Bitter-Murmur.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1253,7 +1253,7 @@
     {
         "id": 139,
         "name": "Blood Echo",
-        "icon": "public/Perks/Survivors/Blood-Echo.png",
+        "icon": "public/Perks/Killers/Blood-Echo.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Oni",
@@ -1262,7 +1262,7 @@
     {
         "id": 140,
         "name": "Bloodwarden",
-        "icon": "public/Perks/Survivors/Bloodwarden.png",
+        "icon": "public/Perks/Killers/Bloodwarden.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nightmare",
@@ -1271,7 +1271,7 @@
     {
         "id": 141,
         "name": "Bloodhound",
-        "icon": "public/Perks/Survivors/Bloodhound.png",
+        "icon": "public/Perks/Killers/Bloodhound.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Wraith",
@@ -1280,7 +1280,7 @@
     {
         "id": 142,
         "name": "Brutal Strength",
-        "icon": "public/Perks/Survivors/Brutal-Strength.png",
+        "icon": "public/Perks/Killers/Brutal-Strength.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Trapper",
@@ -1289,7 +1289,7 @@
     {
         "id": 143,
         "name": "Call of Brine",
-        "icon": "public/Perks/Survivors/Call-Of-Brine.png",
+        "icon": "public/Perks/Killers/Call-Of-Brine.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Onryo",
@@ -1298,7 +1298,7 @@
     {
         "id": 144,
         "name": "Claustrophobia",
-        "icon": "public/Perks/Survivors/Claustrophobia.png",
+        "icon": "public/Perks/Killers/Claustrophobia.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
@@ -1307,7 +1307,7 @@
     {
         "id": 145,
         "name": "Corrupt Intervention",
-        "icon": "public/Perks/Survivors/Corrupt-Intervention.png",
+        "icon": "public/Perks/Killers/Corrupt-Intervention.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Plague",
@@ -1316,7 +1316,7 @@
     {
         "id": 146,
         "name": "Coulrophobia",
-        "icon": "public/Perks/Survivors/Coulrophobia.png",
+        "icon": "public/Perks/Killers/Coulrophobia.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Clown",
@@ -1325,7 +1325,7 @@
     {
         "id": 147,
         "name": "Coup de Grace",
-        "icon": "public/Perks/Survivors/Coup-De-Grace.png",
+        "icon": "public/Perks/Killers/Coup-De-Grace.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Twins",
@@ -1334,7 +1334,7 @@
     {
         "id": 148,
         "name": "Dark Devotion",
-        "icon": "public/Perks/Survivors/Dark-Devotion.png",
+        "icon": "public/Perks/Killers/Dark-Devotion.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Plague",
@@ -1343,7 +1343,7 @@
     {
         "id": 149,
         "name": "Darkness Revealed",
-        "icon": "public/Perks/Survivors/Darkness-Revealed.png",
+        "icon": "public/Perks/Killers/Darkness-Revealed.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Dredge",
@@ -1352,7 +1352,7 @@
     {
         "id": 150,
         "name": "Dead Man's Switch",
-        "icon": "public/Perks/Survivors/Dead-Man_S-Switch.png",
+        "icon": "public/Perks/Killers/Dead-Man_S-Switch.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Deathslinger",
@@ -1361,7 +1361,7 @@
     {
         "id": 151,
         "name": "Deadlock",
-        "icon": "public/Perks/Survivors/Deadlock.png",
+        "icon": "public/Perks/Killers/Deadlock.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Cenobite",
@@ -1370,7 +1370,7 @@
     {
         "id": 152,
         "name": "Deathbound",
-        "icon": "public/Perks/Survivors/Deathbound.png",
+        "icon": "public/Perks/Killers/Deathbound.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Executioner",
@@ -1379,7 +1379,7 @@
     {
         "id": 153,
         "name": "Deerstalker",
-        "icon": "public/Perks/Survivors/Deerstalker.png",
+        "icon": "public/Perks/Killers/Deerstalker.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1388,7 +1388,7 @@
     {
         "id": 154,
         "name": "Discordance",
-        "icon": "public/Perks/Survivors/Discordance.png",
+        "icon": "public/Perks/Killers/Discordance.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Legion",
@@ -1397,7 +1397,7 @@
     {
         "id": 155,
         "name": "Dissolution",
-        "icon": "public/Perks/Survivors/Dissolution.png",
+        "icon": "public/Perks/Killers/Dissolution.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Dredge",
@@ -1406,7 +1406,7 @@
     {
         "id": 156,
         "name": "Distressing",
-        "icon": "public/Perks/Survivors/Distressing.png",
+        "icon": "public/Perks/Killers/Distressing.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1415,7 +1415,7 @@
     {
         "id": 157,
         "name": "Dragon's Grip",
-        "icon": "public/Perks/Survivors/Dragon_S-Grip.png",
+        "icon": "public/Perks/Killers/Dragon_S-Grip.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Blight",
@@ -1424,7 +1424,7 @@
     {
         "id": 158,
         "name": "Dying Light",
-        "icon": "public/Perks/Survivors/Dying-Light.png",
+        "icon": "public/Perks/Killers/Dying-Light.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
@@ -1433,7 +1433,7 @@
     {
         "id": 159,
         "name": "Enduring",
-        "icon": "public/Perks/Survivors/Enduring.png",
+        "icon": "public/Perks/Killers/Enduring.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Hillbilly",
@@ -1442,7 +1442,7 @@
     {
         "id": 160,
         "name": "Eruption",
-        "icon": "public/Perks/Survivors/Eruption.png",
+        "icon": "public/Perks/Killers/Eruption.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nemesis",
@@ -1451,7 +1451,7 @@
     {
         "id": 161,
         "name": "Fearmonger",
-        "icon": "public/Perks/Survivors/Fearmonger.png",
+        "icon": "public/Perks/Killers/Fearmonger.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
@@ -1460,7 +1460,7 @@
     {
         "id": 162,
         "name": "Fire Up",
-        "icon": "public/Perks/Survivors/Fire-Up.png",
+        "icon": "public/Perks/Killers/Fire-Up.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nightmare",
@@ -1469,7 +1469,7 @@
     {
         "id": 163,
         "name": "Forced Hesitation",
-        "icon": "public/Perks/Survivors/Forced-Hesitation.png",
+        "icon": "public/Perks/Killers/Forced-Hesitation.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Singularity",
@@ -1478,7 +1478,7 @@
     {
         "id": 164,
         "name": "Forced Penance",
-        "icon": "public/Perks/Survivors/Forced-Penance.png",
+        "icon": "public/Perks/Killers/Forced-Penance.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Executioner",
@@ -1487,7 +1487,7 @@
     {
         "id": 165,
         "name": "Franklin's Demise",
-        "icon": "public/Perks/Survivors/Franklin_S-Demise.png",
+        "icon": "public/Perks/Killers/Franklin_S-Demise.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Cannibal",
@@ -1496,7 +1496,7 @@
     {
         "id": 166,
         "name": "Furtive Chase",
-        "icon": "public/Perks/Survivors/Furtive-Chase.png",
+        "icon": "public/Perks/Killers/Furtive-Chase.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Ghost Face",
@@ -1505,7 +1505,7 @@
     {
         "id": 167,
         "name": "Game Afoot",
-        "icon": "public/Perks/Survivors/Game-Afoot.png",
+        "icon": "public/Perks/Killers/Game-Afoot.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Skull Merchant",
@@ -1514,7 +1514,7 @@
     {
         "id": 168,
         "name": "Gearhead",
-        "icon": "public/Perks/Survivors/Gearhead.png",
+        "icon": "public/Perks/Killers/Gearhead.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Deathslinger",
@@ -1523,7 +1523,7 @@
     {
         "id": 169,
         "name": "Genetic Limits",
-        "icon": "public/Perks/Survivors/Genetic-Limits.png",
+        "icon": "public/Perks/Killers/Genetic-Limits.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Singularity",
@@ -1532,7 +1532,7 @@
     {
         "id": 170,
         "name": "Grim Embrace",
-        "icon": "public/Perks/Survivors/Grim-Embrace.png",
+        "icon": "public/Perks/Killers/Grim-Embrace.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Artist",
@@ -1541,7 +1541,7 @@
     {
         "id": 171,
         "name": "Hex: Blood Favor",
-        "icon": "public/Perks/Survivors/Hex-Blood-Favor.png",
+        "icon": "public/Perks/Killers/Hex-Blood-Favor.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Blight",
@@ -1550,7 +1550,7 @@
     {
         "id": 172,
         "name": "Hex: Crowd Control",
-        "icon": "public/Perks/Survivors/Hex-Crowd-Control.png",
+        "icon": "public/Perks/Killers/Hex-Crowd-Control.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Trickster",
@@ -1559,7 +1559,7 @@
     {
         "id": 173,
         "name": "Hex: Devour Hope",
-        "icon": "public/Perks/Survivors/Hex-Devour-Hope.png",
+        "icon": "public/Perks/Killers/Hex-Devour-Hope.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Hag",
@@ -1568,7 +1568,7 @@
     {
         "id": 174,
         "name": "Hex: Face the Darkness",
-        "icon": "public/Perks/Survivors/Hex-Face-The-Darkness.png",
+        "icon": "public/Perks/Killers/Hex-Face-The-Darkness.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Knight",
@@ -1577,7 +1577,7 @@
     {
         "id": 175,
         "name": "Hex: Haunted Grounds",
-        "icon": "public/Perks/Survivors/Hex-Haunted-Grounds.png",
+        "icon": "public/Perks/Killers/Hex-Haunted-Grounds.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Spirit",
@@ -1586,7 +1586,7 @@
     {
         "id": 176,
         "name": "Hex: Huntress Lullaby",
-        "icon": "public/Perks/Survivors/Hex-Huntress-Lullaby.png",
+        "icon": "public/Perks/Killers/Hex-Huntress-Lullaby.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Huntress",
@@ -1595,7 +1595,7 @@
     {
         "id": 177,
         "name": "Hex: No one Escapes Death",
-        "icon": "public/Perks/Survivors/Hex-No-One-Escapes-Death.png",
+        "icon": "public/Perks/Killers/Hex-No-One-Escapes-Death.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1604,7 +1604,7 @@
     {
         "id": 178,
         "name": "Hex: Pentimento",
-        "icon": "public/Perks/Survivors/Hex-Pentimento.png",
+        "icon": "public/Perks/Killers/Hex-Pentimento.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Artist",
@@ -1613,7 +1613,7 @@
     {
         "id": 179,
         "name": "Hex: Plaything",
-        "icon": "public/Perks/Survivors/Hex-Plaything.png",
+        "icon": "public/Perks/Killers/Hex-Plaything.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Cenobite",
@@ -1622,7 +1622,7 @@
     {
         "id": 180,
         "name": "Hex: Retribution",
-        "icon": "public/Perks/Survivors/Hex-Retribution.png",
+        "icon": "public/Perks/Killers/Hex-Retribution.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Deathslinger",
@@ -1631,7 +1631,7 @@
     {
         "id": 181,
         "name": "Hex: Ruin",
-        "icon": "public/Perks/Survivors/Hex-Ruin.png",
+        "icon": "public/Perks/Killers/Hex-Ruin.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Hag",
@@ -1640,7 +1640,7 @@
     {
         "id": 182,
         "name": "Hex: The Third Seal",
-        "icon": "public/Perks/Survivors/Hex-The-Third-Seal.png",
+        "icon": "public/Perks/Killers/Hex-The-Third-Seal.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Hag",
@@ -1649,7 +1649,7 @@
     {
         "id": 183,
         "name": "Hex: Thrill of the Hunt",
-        "icon": "public/Perks/Survivors/Hex-Thrill-Of-The-Hunt.png",
+        "icon": "public/Perks/Killers/Hex-Thrill-Of-The-Hunt.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1658,7 +1658,7 @@
     {
         "id": 184,
         "name": "Hex: Undying",
-        "icon": "public/Perks/Survivors/Hex-Undying.png",
+        "icon": "public/Perks/Killers/Hex-Undying.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Blight",
@@ -1667,7 +1667,7 @@
     {
         "id": 185,
         "name": "Hoarder",
-        "icon": "public/Perks/Survivors/Hoarder.png",
+        "icon": "public/Perks/Killers/Hoarder.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Twins",
@@ -1676,7 +1676,7 @@
     {
         "id": 186,
         "name": "Hubris",
-        "icon": "public/Perks/Survivors/Hubris.png",
+        "icon": "public/Perks/Killers/Hubris.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Knight",
@@ -1685,7 +1685,7 @@
     {
         "id": 187,
         "name": "Hysteria",
-        "icon": "public/Perks/Survivors/Hysteria.png",
+        "icon": "public/Perks/Killers/Hysteria.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nemesis",
@@ -1694,7 +1694,7 @@
     {
         "id": 188,
         "name": "I'm All Ears",
-        "icon": "public/Perks/Survivors/I_M-All-Ears.png",
+        "icon": "public/Perks/Killers/I_M-All-Ears.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Ghost Face",
@@ -1703,7 +1703,7 @@
     {
         "id": 189,
         "name": "Infectious Fright",
-        "icon": "public/Perks/Survivors/Infectious-Fright.png",
+        "icon": "public/Perks/Killers/Infectious-Fright.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Plague",
@@ -1712,7 +1712,7 @@
     {
         "id": 190,
         "name": "Insidious",
-        "icon": "public/Perks/Survivors/Insidious.png",
+        "icon": "public/Perks/Killers/Insidious.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1721,7 +1721,7 @@
     {
         "id": 191,
         "name": "Iron Grasp",
-        "icon": "public/Perks/Survivors/Iron-Grasp.png",
+        "icon": "public/Perks/Killers/Iron-Grasp.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1730,7 +1730,7 @@
     {
         "id": 192,
         "name": "Iron Maiden",
-        "icon": "public/Perks/Survivors/Iron-Maiden.png",
+        "icon": "public/Perks/Killers/Iron-Maiden.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Legion",
@@ -1739,7 +1739,7 @@
     {
         "id": 193,
         "name": "Jolt",
-        "icon": "public/Perks/Survivors/Jolt.png",
+        "icon": "public/Perks/Killers/Jolt.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
@@ -1748,7 +1748,7 @@
     {
         "id": 194,
         "name": "Knockout",
-        "icon": "public/Perks/Survivors/Knockout.png",
+        "icon": "public/Perks/Killers/Knockout.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Cannibal",
@@ -1757,7 +1757,7 @@
     {
         "id": 195,
         "name": "Lethal Pursuer",
-        "icon": "public/Perks/Survivors/Lethal-Pursuer.png",
+        "icon": "public/Perks/Killers/Lethal-Pursuer.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nemesis",
@@ -1766,7 +1766,7 @@
     {
         "id": 196,
         "name": "Leverage",
-        "icon": "public/Perks/Survivors/Leverage.png",
+        "icon": "public/Perks/Killers/Leverage.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Skull Merchant",
@@ -1775,7 +1775,7 @@
     {
         "id": 197,
         "name": "Lightborn",
-        "icon": "public/Perks/Survivors/Lightborn.png",
+        "icon": "public/Perks/Killers/Lightborn.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Hillbilly",
@@ -1784,7 +1784,7 @@
     {
         "id": 198,
         "name": "Machine Learning",
-        "icon": "public/Perks/Survivors/Machine-Learning.png",
+        "icon": "public/Perks/Killers/Machine-Learning.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Singularity",
@@ -1793,7 +1793,7 @@
     {
         "id": 199,
         "name": "Mad Grit",
-        "icon": "public/Perks/Survivors/Mad-Grit.png",
+        "icon": "public/Perks/Killers/Mad-Grit.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Legion",
@@ -1802,7 +1802,7 @@
     {
         "id": 200,
         "name": "Make Your Choice",
-        "icon": "public/Perks/Survivors/Make-Your-Choice.png",
+        "icon": "public/Perks/Killers/Make-Your-Choice.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Pig",
@@ -1811,7 +1811,7 @@
     {
         "id": 201,
         "name": "Merciless Storm",
-        "icon": "public/Perks/Survivors/Merciless-Storm.png",
+        "icon": "public/Perks/Killers/Merciless-Storm.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Onryo",
@@ -1820,7 +1820,7 @@
     {
         "id": 202,
         "name": "Monitor and Abuse",
-        "icon": "public/Perks/Survivors/Monitor-And-Abuse.png",
+        "icon": "public/Perks/Killers/Monitor-And-Abuse.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Doctor",
@@ -1829,7 +1829,7 @@
     {
         "id": 203,
         "name": "Nemesis",
-        "icon": "public/Perks/Survivors/Nemesis.png",
+        "icon": "public/Perks/Killers/Nemesis.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Oni",
@@ -1838,7 +1838,7 @@
     {
         "id": 204,
         "name": "No Way Out",
-        "icon": "public/Perks/Survivors/No-Way-Out.png",
+        "icon": "public/Perks/Killers/No-Way-Out.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Trickster",
@@ -1847,7 +1847,7 @@
     {
         "id": 205,
         "name": "Nowhere to Hide",
-        "icon": "public/Perks/Survivors/Nowhere-To-Hide.png",
+        "icon": "public/Perks/Killers/Nowhere-To-Hide.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Knight",
@@ -1856,7 +1856,7 @@
     {
         "id": 206,
         "name": "Oppression",
-        "icon": "public/Perks/Survivors/Oppression.png",
+        "icon": "public/Perks/Killers/Oppression.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Twins",
@@ -1865,7 +1865,7 @@
     {
         "id": 207,
         "name": "Overcharge",
-        "icon": "public/Perks/Survivors/Overcharge.png",
+        "icon": "public/Perks/Killers/Overcharge.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Doctor",
@@ -1874,7 +1874,7 @@
     {
         "id": 208,
         "name": "Overwhelming Presence",
-        "icon": "public/Perks/Survivors/Overwhelming-Presence.png",
+        "icon": "public/Perks/Killers/Overwhelming-Presence.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Doctor",
@@ -1883,7 +1883,7 @@
     {
         "id": 209,
         "name": "Play with your Food",
-        "icon": "public/Perks/Survivors/Play-With-Your-Food.png",
+        "icon": "public/Perks/Killers/Play-With-Your-Food.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
@@ -1892,7 +1892,7 @@
     {
         "id": 210,
         "name": "Pop Goes the Weasel",
-        "icon": "public/Perks/Survivors/Pop-Goes-The-Weasel.png",
+        "icon": "public/Perks/Killers/Pop-Goes-The-Weasel.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Clown",
@@ -1901,7 +1901,7 @@
     {
         "id": 211,
         "name": "Predator",
-        "icon": "public/Perks/Survivors/Predator.png",
+        "icon": "public/Perks/Killers/Predator.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Wraith",
@@ -1910,7 +1910,7 @@
     {
         "id": 212,
         "name": "Rancor",
-        "icon": "public/Perks/Survivors/Rancor.png",
+        "icon": "public/Perks/Killers/Rancor.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Spirit",
@@ -1919,7 +1919,7 @@
     {
         "id": 213,
         "name": "Rapid Brutality",
-        "icon": "public/Perks/Survivors/Rapid-Brutality.png",
+        "icon": "public/Perks/Killers/Rapid-Brutality.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Xenomorph",
@@ -1928,7 +1928,7 @@
     {
         "id": 214,
         "name": "Remember Me",
-        "icon": "public/Perks/Survivors/Remember-Me.png",
+        "icon": "public/Perks/Killers/Remember-Me.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nightmare",
@@ -1937,7 +1937,7 @@
     {
         "id": 215,
         "name": "Save the Best for Last",
-        "icon": "public/Perks/Survivors/Save-The-Best-For-Last.png",
+        "icon": "public/Perks/Killers/Save-The-Best-For-Last.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
@@ -1946,7 +1946,7 @@
     {
         "id": 216,
         "name": "Scourge Hook: Floods of Rage",
-        "icon": "public/Perks/Survivors/Scourge-Hook-Floods-Of-Rage.png",
+        "icon": "public/Perks/Killers/Scourge-Hook-Floods-Of-Rage.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Onryo",
@@ -1955,7 +1955,7 @@
     {
         "id": 217,
         "name": "Scourge Hook: Gift of Pain",
-        "icon": "public/Perks/Survivors/Scourge-Hook-Gift-Of-Pain.png",
+        "icon": "public/Perks/Killers/Scourge-Hook-Gift-Of-Pain.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Cenobite",
@@ -1964,7 +1964,7 @@
     {
         "id": 218,
         "name": "Scourge Hook: Hangman's Trick",
-        "icon": "public/Perks/Survivors/Scourge-Hook-Hangman_S-Trick.png",
+        "icon": "public/Perks/Killers/Scourge-Hook-Hangman_S-Trick.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Pig",
@@ -1973,7 +1973,7 @@
     {
         "id": 219,
         "name": "Scourge Hook: Monstrous Shrine",
-        "icon": "public/Perks/Survivors/Scourge-Hook-Monstrous-Shrine.png",
+        "icon": "public/Perks/Killers/Scourge-Hook-Monstrous-Shrine.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -1982,7 +1982,7 @@
     {
         "id": 220,
         "name": "Scourge Hook: Pain Resonance",
-        "icon": "public/Perks/Survivors/Scourge-Hook-Pain-Resonance.png",
+        "icon": "public/Perks/Killers/Scourge-Hook-Pain-Resonance.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Artist",
@@ -1991,7 +1991,7 @@
     {
         "id": 221,
         "name": "Septic Touch",
-        "icon": "public/Perks/Survivors/Septic-Touch.png",
+        "icon": "public/Perks/Killers/Septic-Touch.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Dredge",
@@ -2000,7 +2000,7 @@
     {
         "id": 222,
         "name": "Shadowborn",
-        "icon": "public/Perks/Survivors/Shadowborn.png",
+        "icon": "public/Perks/Killers/Shadowborn.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Wraith",
@@ -2009,7 +2009,7 @@
     {
         "id": 223,
         "name": "Shattered Hope",
-        "icon": "public/Perks/Survivors/Shattered-Hope.png",
+        "icon": "public/Perks/Killers/Shattered-Hope.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -2018,7 +2018,7 @@
     {
         "id": 224,
         "name": "Sloppy Butcher",
-        "icon": "public/Perks/Survivors/Sloppy-Butcher.png",
+        "icon": "public/Perks/Killers/Sloppy-Butcher.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -2027,7 +2027,7 @@
     {
         "id": 225,
         "name": "Spies from the Shadows",
-        "icon": "public/Perks/Survivors/Spies-From-The-Shadows.png",
+        "icon": "public/Perks/Killers/Spies-From-The-Shadows.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -2036,7 +2036,7 @@
     {
         "id": 226,
         "name": "Spirit Fury",
-        "icon": "public/Perks/Survivors/Spirit-Fury.png",
+        "icon": "public/Perks/Killers/Spirit-Fury.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Spirit",
@@ -2045,7 +2045,7 @@
     {
         "id": 227,
         "name": "Starstruck",
-        "icon": "public/Perks/Survivors/Starstruck.png",
+        "icon": "public/Perks/Killers/Starstruck.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Trickster",
@@ -2054,7 +2054,7 @@
     {
         "id": 228,
         "name": "Stridor",
-        "icon": "public/Perks/Survivors/Stridor.png",
+        "icon": "public/Perks/Killers/Stridor.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nurse",
@@ -2063,7 +2063,7 @@
     {
         "id": 229,
         "name": "Superior Anatomy",
-        "icon": "public/Perks/Survivors/Superior-Anatomy.png",
+        "icon": "public/Perks/Killers/Superior-Anatomy.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Mastermind",
@@ -2072,7 +2072,7 @@
     {
         "id": 230,
         "name": "Surveillance",
-        "icon": "public/Perks/Survivors/Surveillance.png",
+        "icon": "public/Perks/Killers/Surveillance.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Pig",
@@ -2081,7 +2081,7 @@
     {
         "id": 231,
         "name": "Terminus",
-        "icon": "public/Perks/Survivors/Terminus.png",
+        "icon": "public/Perks/Killers/Terminus.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Mastermind",
@@ -2090,7 +2090,7 @@
     {
         "id": 232,
         "name": "Territorial Imperative",
-        "icon": "public/Perks/Survivors/Territorial-Imperative.png",
+        "icon": "public/Perks/Killers/Territorial-Imperative.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Huntress",
@@ -2099,7 +2099,7 @@
     {
         "id": 233,
         "name": "Thanatophobia",
-        "icon": "public/Perks/Survivors/Thanatophobia.png",
+        "icon": "public/Perks/Killers/Thanatophobia.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Nurse",
@@ -2108,7 +2108,7 @@
     {
         "id": 234,
         "name": "Thrilling Tremors",
-        "icon": "public/Perks/Survivors/Thrilling-Tremors.png",
+        "icon": "public/Perks/Killers/Thrilling-Tremors.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Ghost Face",
@@ -2117,7 +2117,7 @@
     {
         "id": 235,
         "name": "THWACK!",
-        "icon": "public/Perks/Survivors/Thwack.png",
+        "icon": "public/Perks/Killers/Thwack.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Skull Merchant",
@@ -2126,7 +2126,7 @@
     {
         "id": 236,
         "name": "Tinkerer",
-        "icon": "public/Perks/Survivors/Tinkerer.png",
+        "icon": "public/Perks/Killers/Tinkerer.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Hillbilly",
@@ -2135,7 +2135,7 @@
     {
         "id": 237,
         "name": "Trail of Torment",
-        "icon": "public/Perks/Survivors/Trail-Of-Torment.png",
+        "icon": "public/Perks/Killers/Trail-Of-Torment.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Executioner",
@@ -2144,7 +2144,7 @@
     {
         "id": 238,
         "name": "Ultimate Weapon",
-        "icon": "public/Perks/Survivors/Ultimate-Weapon.png",
+        "icon": "public/Perks/Killers/Ultimate-Weapon.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Xenomorph",
@@ -2153,7 +2153,7 @@
     {
         "id": 239,
         "name": "Unnerving Presence",
-        "icon": "public/Perks/Survivors/Unnerving-Presence.png",
+        "icon": "public/Perks/Killers/Unnerving-Presence.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Trapper",
@@ -2162,7 +2162,7 @@
     {
         "id": 240,
         "name": "Unrelenting",
-        "icon": "public/Perks/Survivors/Unrelenting.png",
+        "icon": "public/Perks/Killers/Unrelenting.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -2171,7 +2171,7 @@
     {
         "id": 241,
         "name": "Whispers",
-        "icon": "public/Perks/Survivors/Whispers.png",
+        "icon": "public/Perks/Killers/Whispers.png",
         "exhaustion": false,
         "tags": [],
         "character": "",
@@ -2180,7 +2180,7 @@
     {
         "id": 242,
         "name": "Zanshin Tactics",
-        "icon": "public/Perks/Survivors/Zanshin-Tactics.png",
+        "icon": "public/Perks/Killers/Zanshin-Tactics.png",
         "exhaustion": false,
         "tags": [],
         "character": "The Oni",
