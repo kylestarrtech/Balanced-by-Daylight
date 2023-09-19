@@ -9,3 +9,4 @@ Offerings = null;
 
 CurrentBalancing = undefined;
 selectedKiller = 0;
+

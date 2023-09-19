@@ -3,7 +3,7 @@ html
         title Dead by Daylight Balance Checker
         link(rel="stylesheet", href="/stylesheets/balance-checker.css")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
-    body
+    body(onload="main()")
         div#primary-balance-container
             div#balance-tabs-container
                 div.tier-selector-button
@@ -120,6 +120,26 @@ html
                             img(src="public/Perks/Survivors/Hope.png")
                         div.perk-slot
                             img(src="public/Perks/Survivors/Camaraderie.png")
+            div#errors-window
+                h1#error-panel-title Errors (3)
+                div#error-list-container
+                    div.error-list-item
+                        div.error-header-container
+                            img.error-icon(src="iconography/Error.png")
+                            h1.error-title Perk Repetition
+                        p Survivors 1, 4 have the same perk: Adrenaline - Note due to balancing, you may only have 1 copy of a perk per team.
+                    div.error-list-item
+                        div.error-header-container
+                            img.error-icon(src="iconography/CriticalError.png")
+                            h1.error-title Perk Duplicate
+                        p Survivor 1 has two copies of Kinship.
+                    div.error-list-item
+                        div.error-header-container
+                            img.error-icon(src="iconography/Error.png")
+                            h1.error-title Banned Perk
+                        p The perk Potential Energy is banned against The Singularity.
+                        
+
         div#settings-container(hidden="hidden")
             div.background-blur
                 div#settings-menu
@@ -134,3 +154,67 @@ html
                     div#settings-button-container
                         button#settings-save-button Save
                         button#settings-cancel-button Cancel
+        div#perk-search-module-container
+            div.perk-search-bar-module
+                input#perk-search-bar(type="text", placeholder="Search Perks...")
+            div.perk-search-results-module
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
+                div.perk-slot-result
+                    img(src="public/Perks/Survivors/Adrenaline.png")
