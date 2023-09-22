@@ -172,13 +172,14 @@ function LoadPerkSelectionEvents() {
             DebugLog(`Clicked on perk ${currentPerk.dataset.perkID} for survivor ${currentPerk.dataset.survivorID}`);
             var perkSearchContainer = document.getElementById("perk-search-container");
             perkSearchContainer.hidden = false;
-
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+            
             var perkSearchModule = document.getElementById("perk-search-module-container");
-
-
-            perkSearchModule.style.left = mousePos[0] + 201;
-            perkSearchModule.style.top = mousePos[1] + 201;
-
+            
+            
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+            
             // If perk module is out of bounds, move it back in bounds
             if (parseInt(perkSearchModule.style.left) + parseInt(perkSearchModule.style.width) > window.innerWidth) {
                 perkSearchModule.style.left = window.innerWidth - parseInt(perkSearchModule.style.width);

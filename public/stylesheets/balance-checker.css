@@ -362,7 +362,7 @@ body {
     backdrop-filter: blur(10px);
 
     border: 1px solid #ffffff80;
-    border-radius: 0px 20px 20px 20px;
+    border-radius: 10px;
     box-shadow: 5px 5px 50px #000000ff;
     overflow: hidden;
 
@@ -384,6 +384,10 @@ body {
 
 .background-blur-raw {
     backdrop-filter: blur(10px);
+}
+
+.grayscale-raw {
+    filter: grayscale(100%);
 }
 
 #perk-search-container {
@@ -623,6 +627,30 @@ body {
     animation: fade-out-blur 2.0s ease-in-out;
 }
 
+.intro-grayscale-animation-class-0p5s {
+    animation: fade-in-grayscale 0.5s ease-in-out;
+}
+
+.intro-grayscale-animation-class-1p0s {
+    animation: fade-in-grayscale 1.0s ease-in-out;
+}
+
+.intro-grayscale-animation-class-2p0s {
+    animation: fade-in-grayscale 2.0s ease-in-out;
+}
+
+.outro-grayscale-animation-class-0p5s {
+    animation: fade-out-grayscale 0.5s ease-in-out;
+}
+
+.outro-grayscale-animation-class-1p0s {
+    animation: fade-out-grayscale 1.0s ease-in-out;
+}
+
+.outro-grayscale-animation-class-2p0s {
+    animation: fade-out-grayscale 2.0s ease-in-out;
+}
+
 #killer-lore-image-container {
     width: 25%;
     height: 100%;
@@ -696,6 +724,52 @@ body {
     }
     to {
         filter: blur(10px);
+        opacity: 0;
+    }
+}
+
+/* Create a fade-in animation with grayscale */
+@keyframes fade-in-grayscale {
+    from {
+        filter: grayscale(100%);
+        opacity: 0;
+    }
+    to {
+        filter: grayscale(0px);
+        opacity: 1;
+    }
+}
+
+/* Create a fade-out animation with grayscale */
+@keyframes fade-out-grayscale {
+    from {
+        filter: grayscale(0px);
+        opacity: 1;
+    }
+    to {
+        filter: grayscale(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes scale-in {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-out {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.8);
         opacity: 0;
     }
 }
