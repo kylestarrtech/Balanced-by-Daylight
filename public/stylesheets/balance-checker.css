@@ -308,7 +308,7 @@ body {
     border-radius: 17px;
 }
 
-.survivor-builds-container {
+#survivor-builds-container {
     display: flex;
     flex-direction: column;
 
