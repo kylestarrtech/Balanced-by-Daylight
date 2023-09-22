@@ -10,11 +10,11 @@ html
                     img(src="iconography/Tiers.png")
                 div.tier-selector-button
                     img(src="iconography/Killer.png")
-                div.tier-selector-button
+                div#settings-button(class="tier-selector-button")
                     img(src="iconography/Settings.png")
             div#balance-character-select-container
                 h1 Killer Selection
-                div#character-select-grid
+                div#character-select-grid(class="override-scrollbar")
                     div.character-select-button
                         img(src="iconography/portraits/Trapper.png")
                     div.character-select-button
@@ -82,8 +82,9 @@ html
                     div.character-select-button
                         img(src="iconography/portraits/Xenomorph.png")
             div#main-balance-window
+                h2 Selected Killer: {KILLER NAME}
                 h2 Survivor Builds
-                div.survivor-builds-container
+                div#survivor-builds-container
                     div.survivor-build-component
                         div.perk-slot
                             img(src="public/Perks/Survivors/Adrenaline.png")
@@ -92,7 +93,7 @@ html
                         div.perk-slot
                             img(src="public/Perks/Survivors/Hope.png")
                         div.perk-slot
-                            img(src="public/Perks/Survivors/Camaraderie.png")
+                            img(src="public/Perks/Survivors/Kinship.png")
                     div.survivor-build-component
                         div.perk-slot
                             img(src="public/Perks/Survivors/Adrenaline.png")
@@ -101,7 +102,7 @@ html
                         div.perk-slot
                             img(src="public/Perks/Survivors/Hope.png")
                         div.perk-slot
-                            img(src="public/Perks/Survivors/Camaraderie.png")
+                            img(src="public/Perks/Survivors/Kinship.png")
                     div.survivor-build-component
                         div.perk-slot
                             img(src="public/Perks/Survivors/Adrenaline.png")
@@ -110,7 +111,7 @@ html
                         div.perk-slot
                             img(src="public/Perks/Survivors/Hope.png")
                         div.perk-slot
-                            img(src="public/Perks/Survivors/Camaraderie.png")
+                            img(src="public/Perks/Survivors/Kinship.png")
                     div.survivor-build-component
                         div.perk-slot
                             img(src="public/Perks/Survivors/Adrenaline.png")
@@ -119,7 +120,7 @@ html
                         div.perk-slot
                             img(src="public/Perks/Survivors/Hope.png")
                         div.perk-slot
-                            img(src="public/Perks/Survivors/Camaraderie.png")
+                            img(src="public/Perks/Survivors/Kinship.png")
             div#errors-window
                 h1#error-panel-title Errors (3)
                 div#error-list-container
@@ -138,83 +139,44 @@ html
                             img.error-icon(src="iconography/Error.png")
                             h1.error-title Banned Perk
                         p The perk Potential Energy is banned against The Singularity.
-                        
-
+        div#perk-search-container(hidden="hidden")
+            div#perk-search-module-container
+                div.perk-search-bar-module
+                    input#perk-search-bar(type="text", placeholder="Search Perks...")
+                div#perk-search-results-module(class="override-scrollbar")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                    div.perk-slot-result
+                        img(src="public/Perks/Survivors/Adrenaline.png")
+                h3#perk-highlight-name Select a Perk...
         div#settings-container(hidden="hidden")
-            div.background-blur
+            div#settings-blur(class="background-blur")
                 div#settings-menu
                     h1 Settings Menu
                     label(for="balancing-select") Balancing Mode: 
                     select#balancing-select
                         option(value="OTF") Outrun The Fog (OTF)
                         option(value="DBDL") DBDLeague (DBDL)
+                        option(value="Custom") Custom
                     br
+                    label(for="custom-balance-select") Custom Balance:
                     br
+                    textarea#custom-balance-select(class="override-scrollbar", placeholder="Enter Custom Balance JSON...", rows="15")
+                    br
+                    div#custom-error(class="error-flash-animation" hidden="hidden")
+                        p Custom Balance JSON is invalid. Please verify your JSON <a href="https://jsonlint.com/" target="_blank">here</a>.
                     p Made by Kyle Starr (v1.0)
                     div#settings-button-container
                         button#settings-save-button Save
                         button#settings-cancel-button Cancel
-        div#perk-search-module-container
-            div.perk-search-bar-module
-                input#perk-search-bar(type="text", placeholder="Search Perks...")
-            div.perk-search-results-module
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
-                div.perk-slot-result
-                    img(src="public/Perks/Survivors/Adrenaline.png")
+
