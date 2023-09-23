@@ -9,6 +9,19 @@ Offerings = null;
 
 AllDataLoaded = false;
 
+BalancePresets = [
+    {
+        Name: "Outrun the Fog (OTF)",
+        Path: "BalancingPresets/OTF.json",
+        Balancing: {}
+    },
+    {
+        Name: "DBDLeague (DBDL)",
+        Path: "BalancingPresets/DBDL.json",
+        Balancing: {}
+    }
+]
+
 mousePos = [0, 0];
 function UpdateMousePos(event) {
     mousePos = [event.clientX, event.clientY];
@@ -227,6 +240,34 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
     perkSearchResultsContainer.innerHTML = "";
 
+    // Add a blank perk to the top of the list
+    let blankPerk = document.createElement("div");
+    blankPerk.classList.add("perk-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.src = "public/Perks/blank.png";
+
+    blankPerk.appendChild(blankImg);
+    perkSearchResultsContainer.appendChild(blankPerk);
+
+    blankPerk.addEventListener("click", function() {
+        var targetSurvivor = parseInt(perkSearchContainer.dataset.targetSurvivor);
+        var targetPerk = parseInt(perkSearchContainer.dataset.targetPerk);
+
+        SurvivorPerks[targetSurvivor][targetPerk] = undefined;
+
+        UpdatePerkUI();
+
+        perkSearchContainer.dataset.targetSurvivor = undefined;
+        perkSearchContainer.dataset.targetPerk = undefined;
+    });
+
+    blankPerk.addEventListener("mouseover", function() {
+        var perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Perk";
+    });
+    
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 
