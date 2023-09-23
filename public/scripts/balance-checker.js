@@ -1,26 +1,22 @@
-debugging = true;
+var debugging = true;
 
-Perks = null;
-Killers = null;
-Survivors = null;
-Maps = null;
-Addons = null;
-Offerings = null;
+var Perks = null;
+var Killers = null;
+var Survivors = null;
+var Maps = null;
+var Addons = null;
+var Offerings = null;
 
-AllDataLoaded = false;
+var AllDataLoaded = false;
 
-BalancePresets = [
+var BalancePresets = [
     {
         Name: "Outrun the Fog (OTF)",
         Path: "BalancingPresets/OTF.json",
         Balancing: {}
-    },
-    {
-        Name: "DBDLeague (DBDL)",
-        Path: "BalancingPresets/DBDL.json",
-        Balancing: {}
     }
 ]
+var currentBalancingIndex = 0;
 
 mousePos = [0, 0];
 function UpdateMousePos(event) {
@@ -56,7 +52,7 @@ SurvivorPerks = [
 
 selectedKiller = 0;
 currentBalancingIndex = 0;
-customBalanceObj = undefined; // To be used if currentBalancingIndex = 2
+customBalanceObj = undefined; // To be used if currentBalancingIndex = -1
 
 function main() {
     document.body.addEventListener("mousemove", UpdateMousePos);
@@ -67,8 +63,14 @@ function main() {
     // Update Perk Page
     UpdatePerkUI();
 
+    // Update Killer Selection UI
+    UpdateKillerSelectionUI();
+
     // Load button events
     LoadButtonEvents();
+
+    // Update balancing dropdown
+    UpdateBalancingDropdown();
 }
 
 /**
@@ -124,17 +126,76 @@ function UpdatePerkUI() {
     LoadPerkSelectionEvents();
 }
 
+function UpdateKillerSelectionUI() {
+    var selectedKillerTitle = document.getElementById("selected-killer-title");
+    selectedKillerTitle.innerText = `Selected Killer: ${Killers[selectedKiller]}`;
+}
+
+function UpdateBalancingDropdown() {
+    var balancingDropdown = document.getElementById("balancing-select");
+
+    balancingDropdown.innerHTML = "";
+
+    for (var i = 0; i < BalancePresets.length; i++) {
+        let currentPreset = BalancePresets[i];
+
+        let optionElement = document.createElement("option");
+        optionElement.innerText = currentPreset["Name"];
+        optionElement.value = i;
+
+        balancingDropdown.appendChild(optionElement);
+    }
+
+    let optionElement = document.createElement("option");
+    optionElement.innerText = "Custom";
+    optionElement.value = -1;
+
+    balancingDropdown.appendChild(optionElement);
+
+    balancingDropdown.value = 0;
+
+    balancingDropdown.addEventListener("change", function() {
+        currentBalancingIndex = parseInt(balancingDropdown.value);
+
+        var customBalancingContainer = document.getElementById("custom-balance-select");
+        if (currentBalancingIndex == -1) {
+            // Show custom balancing
+            customBalancingContainer.hidden = false;
+        } else {
+            // Hide custom balancing
+            customBalancingContainer.hidden = true;
+        }
+    });
+}
+
 /**
  * A function to load all button events.
  * Nested with other functions to keep things clean.
  */
 function LoadButtonEvents() {
-
     LoadSettingsEvents();
+
+    SetKillerCharacterSelectEvents();
 
     LoadPerkSelectionEvents();
 
     LoadPerkSearchEvents();
+}
+
+function SetKillerCharacterSelectEvents() {
+    var GetCharacterSelectButtons = document.getElementsByClassName("character-select-button");
+
+    for (var i = 0; i < GetCharacterSelectButtons.length; i++) {
+
+        let newIndex = i;
+        let currentButton = GetCharacterSelectButtons[newIndex];
+        currentButton.addEventListener("click", function() {
+            DebugLog(newIndex);
+            selectedKiller = newIndex;
+
+            UpdateKillerSelectionUI();
+        });
+    }
 }
 
 function LoadSettingsEvents() {
@@ -433,11 +494,75 @@ function GetOfferings() {
                 default:
                     console.error("Error getting offerings: " + this.status);
             }
-            AllDataLoaded = true;
+            GetBalancing();
         }
     }
     xhttp.open("GET", "Offerings.json", false);
     xhttp.send();
+}
+
+function GetBalancing() {
+    for (var i = 0; i < BalancePresets.length; i++) {
+        let currentPreset = BalancePresets[i];
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                switch (this.status) {
+                    case 200:
+                        currentPreset["Balancing"] = JSON.parse(this.responseText);
+                    break;
+                    default:
+                        console.error("Error getting balancing: " + this.status);
+                }
+            }
+        }
+        xhttp.open("GET", currentPreset["Path"], false);
+        xhttp.send();
+    }
+
+    AllDataLoaded = true;
+}
+
+/* -------------------------------------- */
+/* --------- BALANCE CHECKING ----------- */
+/* -------------------------------------- */
+
+/**
+ * A function to check the balance of the current set of builds.
+ */
+function CheckBuildsBalance() {
+
+}
+
+/**
+ * A function to check how many times perks are used in the current set of builds.
+ * @returns {object} An object containing the error information if an error is found.
+ */
+function CheckForRepetition() {
+
+}
+
+function CheckForDuplicates() {
+
+}
+
+function CheckForBannedIndividualPerk() {
+}
+
+function CheckForBannedComboPerks() {
+}
+
+/**
+ * A function to check if the current set of builds is balanced against the current balancing preset.
+ */
+function CheckAgainstIndividualBalancing() {
+    
+}
+
+function CheckAgainstCombinedBalancing() {
+
 }
 
 /* -------------------------------------- */

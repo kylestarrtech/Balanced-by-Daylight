@@ -158,7 +158,6 @@ body {
     height: 100%;
 
     position: relative;
-    top: -20px;
 
     backdrop-filter: blur(10px);
 
@@ -187,11 +186,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    transition: all 0.2s ease-in-out;
 }
 
 #settings-button-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 10px;
 }
 
@@ -569,6 +570,8 @@ body {
 
     background-color: #00000040;
     color: #ffffff;
+
+    animation: scale-in 0.5s ease-in-out;
 }
 
 #custom-balance-select::placeholder {
@@ -756,10 +759,12 @@ body {
     from {
         transform: scale(0.8);
         opacity: 0;
+        filter: blur(10px);
     }
     to {
         transform: scale(1);
         opacity: 1;
+        filter: blur(0px);
     }
 }
 
@@ -767,10 +772,12 @@ body {
     from {
         transform: scale(1);
         opacity: 1;
+        filter: blur(0px);
     }
     to {
         transform: scale(0.8);
         opacity: 0;
+        filter: blur(10px);
     }
 }
 
