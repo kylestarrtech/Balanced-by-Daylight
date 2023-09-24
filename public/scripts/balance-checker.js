@@ -14,39 +14,50 @@ var BalancePresets = [
         Name: "Outrun the Fog (OTF)",
         Path: "BalancingPresets/OTF.json",
         Balancing: {}
+    },
+    {
+        Name: "Custom",
+        Path: "",
+        Balancing: {}
     }
 ]
 var currentBalancingIndex = 0;
+
+var currentBalancing = {};
 
 mousePos = [0, 0];
 function UpdateMousePos(event) {
     mousePos = [event.clientX, event.clientY];
 }
 
+MasterErrorList = [
+    
+]
+
 SurvivorPerks = [
     [
-        undefined, // Perk 1
-        undefined, // Perk 2
-        undefined, // Perk 3
-        undefined  // Perk 4
+        null, // Perk 1
+        null, // Perk 2
+        null, // Perk 3
+        null  // Perk 4
     ],
     [
-        undefined, // Perk 1
-        undefined, // Perk 2
-        undefined, // Perk 3
-        undefined  // Perk 4
+        null, // Perk 1
+        null, // Perk 2
+        null, // Perk 3
+        null  // Perk 4
     ],
     [
-        undefined, // Perk 1
-        undefined, // Perk 2
-        undefined, // Perk 3
-        undefined  // Perk 4
+        null, // Perk 1
+        null, // Perk 2
+        null, // Perk 3
+        null  // Perk 4
     ],
     [
-        undefined, // Perk 1
-        undefined, // Perk 2
-        undefined, // Perk 3
-        undefined  // Perk 4
+        null, // Perk 1
+        null, // Perk 2
+        null, // Perk 3
+        null  // Perk 4
     ]
 ]
 
@@ -56,6 +67,16 @@ customBalanceObj = undefined; // To be used if currentBalancingIndex = -1
 
 function main() {
     document.body.addEventListener("mousemove", UpdateMousePos);
+
+    // Initialize Survivor Perks
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        SurvivorPerks[i] = [
+            undefined,
+            undefined,
+            undefined,
+            undefined
+        ];
+    }
 
     // Load data
     GetPerks();
@@ -71,6 +92,11 @@ function main() {
 
     // Update balancing dropdown
     UpdateBalancingDropdown();
+
+    // Set current balancing
+    currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+
+    CheckForBalancingErrors();
 }
 
 /**
@@ -165,6 +191,8 @@ function UpdateBalancingDropdown() {
             // Hide custom balancing
             customBalancingContainer.hidden = true;
         }
+
+        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     });
 }
 
@@ -321,6 +349,8 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
         perkSearchContainer.dataset.targetSurvivor = undefined;
         perkSearchContainer.dataset.targetPerk = undefined;
+
+        CheckForBalancingErrors();
     });
 
     blankPerk.addEventListener("mouseover", function() {
@@ -356,6 +386,8 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
             perkSearchContainer.dataset.targetSurvivor = undefined;
             perkSearchContainer.dataset.targetPerk = undefined;
+
+            CheckForBalancingErrors();
         });
 
         perkElement.addEventListener("mouseover", function() {
@@ -502,7 +534,8 @@ function GetOfferings() {
 }
 
 function GetBalancing() {
-    for (var i = 0; i < BalancePresets.length; i++) {
+    // Subtract one due to customs
+    for (var i = 0; i < BalancePresets.length-1; i++) {
         let currentPreset = BalancePresets[i];
 
         var xhttp = new XMLHttpRequest();
@@ -525,6 +558,20 @@ function GetBalancing() {
     AllDataLoaded = true;
 }
 
+function GetCustomBalancing() {
+    var customBalanceInput = document.getElementById("custom-balance-select");
+
+    var customBalanceObj = {};
+    try {
+        customBalanceObj = JSON.parse(customBalanceInput.value);
+    } catch (error) {
+        //alert("Invalid JSON for custom balancing. Using default balancing.");
+        currentBalancingIndex = 0;
+    }
+
+    return customBalanceObj;
+}
+
 /* -------------------------------------- */
 /* --------- BALANCE CHECKING ----------- */
 /* -------------------------------------- */
@@ -540,29 +587,163 @@ function CheckBuildsBalance() {
  * A function to check how many times perks are used in the current set of builds.
  * @returns {object} An object containing the error information if an error is found.
  */
-function CheckForRepetition() {
+function CheckForRepetition(builds) {
+    var ErrorLog = [];
 
-}
+    DebugLog(builds);
 
-function CheckForDuplicates() {
+    // Loop through builds
+    for (var i = 0; i < builds.length; i++) {
+        let currentBuild = builds[i];
+        
+        if (currentBuild == undefined) { continue; }
 
-}
+        // Loop through perks in build
+        for (var j = 0; j < currentBuild.length; j++) {
+            let currentPerk = currentBuild[j];
 
-function CheckForBannedIndividualPerk() {
-}
+            if (currentPerk == undefined) { continue; }
 
-function CheckForBannedComboPerks() {
+            // Loop through other builds
+            for (var k = i+1; k < builds.length; k++) {
+                var perkRepeatAmount = 0;
+
+                let otherBuild = builds[k];
+
+                if (otherBuild == undefined) { continue; }
+
+                var perkRepeated = BuildHasPerk(currentPerk["id"], otherBuild);
+                DebugLog(`Checking if ${currentPerk["name"]} is repeated in build ${k} (on build ${i})`);
+
+                if (perkRepeated) {
+                    perkRepeatAmount++;
+                }
+
+                DebugLog(perkRepeated);
+                DebugLog(currentBalancing.MaxPerkRepetition)
+                if (perkRepeatAmount >= currentBalancing.MaxPerkRepetition) {
+                    ErrorLog.push({
+                        ERROR: "Perk Repetition",
+                        REASON: `Perk ${currentPerk["name"]} is repeated ${perkRepeatAmount} times in the Survivor builds.`
+                    });
+                }
+            }
+        }
+    }
+
+    for (var i = 0; i < ErrorLog.length; i++) {
+        MasterErrorList.push(ErrorLog[i]);
+    }
+
+    return ErrorLog;
 }
 
 /**
- * A function to check if the current set of builds is balanced against the current balancing preset.
+ * A function to check if the current build contains a duplicate perk.
+ * @param {object} build The build to check for duplicates.
  */
-function CheckAgainstIndividualBalancing() {
-    
+function CheckForDuplicates(survIndex, build) {
+    var ErrorLog = [];
+
+    DebugLog(build);
+
+    for (var i = 0; i < build.length; i++) {
+        let currentPerk = build[i];
+
+        if (currentPerk == undefined) { continue; }
+
+        for (var j = i+1; j < build.length; j++) {
+            let otherPerk = build[j];
+
+            if (otherPerk == undefined) { continue; }
+
+            DebugLog(`Comparing ${currentPerk["name"]} to ${otherPerk["name"]}`);
+            if (currentPerk["id"] == otherPerk["id"]) {
+                ErrorLog.push({
+                    ERROR: "Duplicate Perk",
+                    REASON: `Perk ${currentPerk["name"]} is duplicated in Survivor #${survIndex}'s build.`,
+                });
+            }
+        }
+    }
+
+    for (var i = 0; i < ErrorLog.length; i++) {
+        MasterErrorList.push(ErrorLog[i]);
+    }
+
+    return ErrorLog;
 }
 
-function CheckAgainstCombinedBalancing() {
+/**
+ * A function to check if the current build contains a banned perk.
+ * @param {object} build The build to check for banned perks. 
+ */
+function CheckForBannedIndividualPerk(build) {
+}
 
+/**
+ * A function to check if the current build contains a banned perk combination.
+ * @param {object} build The build to check for banned perk combinations.
+ */
+function CheckForBannedComboPerks(build) {
+}
+
+function CheckForBalancingErrors() {
+    MasterErrorList = [];
+
+    // Check for repetition
+    CheckForRepetition(SurvivorPerks);
+
+    // Check for duplicates
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        CheckForDuplicates(i, SurvivorPerks[i]);
+    }
+
+    // Check for banned perks
+    CheckForBannedIndividualPerk(SurvivorPerks);
+
+    // Check for banned perk combinations
+    CheckForBannedComboPerks(SurvivorPerks);
+
+    UpdateErrorUI();
+}
+
+function UpdateErrorUI() {
+    var errorListContainer = document.getElementById("error-list-container");
+    errorListContainer.innerHTML = "";
+
+    for (var i = 0; i < MasterErrorList.length; i++) {
+        let currentError = MasterErrorList[i];
+
+        let errorContainer = document.createElement("div");
+        errorContainer.classList.add("error-list-item");
+
+        let errorHeaderContainer = document.createElement("div");
+        errorHeaderContainer.classList.add("error-header-container");
+
+        let errorIcon = document.createElement("img");
+        errorIcon.src = "iconography/Error.png";
+        errorIcon.classList.add("error-icon");
+
+        let errorTitle = document.createElement("h1");
+        errorTitle.classList.add("error-title");
+        errorTitle.innerText = currentError["ERROR"];
+
+        let errorDescription = document.createElement("p");
+        errorDescription.innerText = currentError["REASON"];
+
+        errorHeaderContainer.appendChild(errorIcon);
+        errorHeaderContainer.appendChild(errorTitle);
+
+        errorContainer.appendChild(errorHeaderContainer);
+        errorContainer.appendChild(errorDescription);
+
+        errorListContainer.appendChild(errorContainer);
+    }
+
+    var errorPanelTitle = document.getElementById("error-panel-title");
+
+    errorPanelTitle.innerText = MasterErrorList.length > 0 ? `Errors (${MasterErrorList.length})` : "No Errors";
 }
 
 /* -------------------------------------- */
@@ -583,4 +764,26 @@ function DebugLog(text, printStackTrace = false) {
     if (!printStackTrace) { return; }
     // Print current stack trace
     console.trace();
+}
+
+/**
+ * A function to check if a build contains a perk.
+ * @param {number} perkID The ID of the perk to check for.
+ * @param {object} build The build to check for the perk in.
+ * @returns {boolean} Whether or not the build contains the perk.
+ */
+function BuildHasPerk(perkID, build) {
+    if (build == undefined) { return false; }
+
+    for (var i = 0; i < build.length; i++) {
+        let currentPerk = build[i];
+
+        if (currentPerk == undefined) { continue; }
+
+        if (currentPerk["id"] == perkID) {
+            return true;
+        }
+    }
+
+    return false;
 }
