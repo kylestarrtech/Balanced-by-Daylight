@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 html
     head 
         title Dead by Daylight Balance Checker
@@ -6,10 +7,8 @@ html
     body(onload="main()")
         div#primary-balance-container
             div#balance-tabs-container
-                div.tier-selector-button
-                    img(src="iconography/Tiers.png")
-                div.tier-selector-button
-                    img(src="iconography/Killer.png")
+                div.tier-selector-button(onclick="alert('This feature is coming soon!')")
+                    img(src="iconography/Multiplayer.png")
                 div#settings-button(class="tier-selector-button")
                     img(src="iconography/Settings.png")
             div#balance-character-select-container
@@ -24,13 +23,13 @@ html
                     div.character-select-button(data-killerID="3")
                         img(src="iconography/portraits/Nurse.png")
                     div.character-select-button(data-killerID="4")
-                        img(src="iconography/portraits/Huntress.png")
-                    div.character-select-button(data-killerID="5")
                         img(src="iconography/portraits/Shape Variant.png")
+                    div.character-select-button(data-killerID="5")
+                        img(src="iconography/portraits/Hag.png")
                     div.character-select-button(data-killerID="6")
                         img(src="iconography/portraits/Doctor.png")
                     div.character-select-button(data-killerID="7")
-                        img(src="iconography/portraits/Hag.png")
+                        img(src="iconography/portraits/Huntress.png")
                     div.character-select-button(data-killerID="8")
                         img(src="iconography/portraits/Cannibal.png")
                     div.character-select-button(data-killerID="9")
@@ -122,23 +121,8 @@ html
                         div.perk-slot
                             img(src="public/Perks/Survivors/Kinship.png")
             div#errors-window
-                h1#error-panel-title Errors (3)
-                div#error-list-container
-                    div.error-list-item
-                        div.error-header-container
-                            img.error-icon(src="iconography/Error.png")
-                            h1.error-title Perk Repetition
-                        p Survivors 1, 4 have the same perk: Adrenaline - Note due to balancing, you may only have 1 copy of a perk per team.
-                    div.error-list-item
-                        div.error-header-container
-                            img.error-icon(src="iconography/CriticalError.png")
-                            h1.error-title Perk Duplicate
-                        p Survivor 1 has two copies of Kinship.
-                    div.error-list-item
-                        div.error-header-container
-                            img.error-icon(src="iconography/Error.png")
-                            h1.error-title Banned Perk
-                        p The perk Potential Energy is banned against The Singularity.
+                h1#error-panel-title Errors
+                div#error-list-container(class="override-scrollbar")
         div#perk-search-container(class="background-blur" hidden="hidden")
             div#perk-search-module-container
                 div.perk-search-bar-module
@@ -175,4 +159,11 @@ html
                     p Made by Kyle Starr (v1.0)
                     div#settings-button-container
                         button#settings-cancel-button Close
+        div#alert-container(hidden="hidden")
+            div#alert-blur(class="background-blur")
+                div#alert-menu
+                    h1#alert-title Test
+                    p#alert-message Test
+                    div#alert-button-container
+                        button#alert-ok-button OK
 

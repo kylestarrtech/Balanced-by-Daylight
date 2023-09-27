@@ -1,4 +1,5 @@
 var debugging = true;
+var overrideStackTrace = false;
 
 var Perks = null;
 var Killers = null;
@@ -124,7 +125,7 @@ function UpdatePerkUI() {
         for (var j = 0; j < currentSurvivorPerks.length; j++) {
             let currentPerk = currentSurvivorPerks[j];
 
-            DebugLog(`${j}/${i} - Current Perk: ${currentPerk}`);
+            //DebugLog(`${j}/${i} - Current Perk: ${currentPerk}`);
 
             ImgSrc = "";
             try {
@@ -214,13 +215,13 @@ function SetKillerCharacterSelectEvents() {
     var GetCharacterSelectButtons = document.getElementsByClassName("character-select-button");
 
     for (var i = 0; i < GetCharacterSelectButtons.length; i++) {
-
         let newIndex = i;
         let currentButton = GetCharacterSelectButtons[newIndex];
         currentButton.addEventListener("click", function() {
             DebugLog(newIndex);
             selectedKiller = newIndex;
 
+            CheckForBalancingErrors();
             UpdateKillerSelectionUI();
         });
     }
@@ -590,7 +591,7 @@ function CheckBuildsBalance() {
 function CheckForRepetition(builds) {
     var ErrorLog = [];
 
-    DebugLog(builds);
+    //DebugLog(builds);
 
     // Loop through builds
     for (var i = 0; i < builds.length; i++) {
@@ -622,10 +623,13 @@ function CheckForRepetition(builds) {
                 DebugLog(perkRepeated);
                 DebugLog(currentBalancing.MaxPerkRepetition)
                 if (perkRepeatAmount >= currentBalancing.MaxPerkRepetition) {
-                    ErrorLog.push({
-                        ERROR: "Perk Repetition",
-                        REASON: `Perk ${currentPerk["name"]} is repeated ${perkRepeatAmount} times in the Survivor builds.`
-                    });
+
+                    ErrorLog.push(GenerateErrorObject(
+                        "Perk Repetition",
+                        `Perk ${currentPerk["name"]} is repeated ${perkRepeatAmount} times in the Survivor builds.`,
+                        console.trace(),
+                        "iconography/Error.png"
+                    ))
                 }
             }
         }
@@ -645,7 +649,7 @@ function CheckForRepetition(builds) {
 function CheckForDuplicates(survIndex, build) {
     var ErrorLog = [];
 
-    DebugLog(build);
+    //DebugLog(build);
 
     for (var i = 0; i < build.length; i++) {
         let currentPerk = build[i];
@@ -659,10 +663,14 @@ function CheckForDuplicates(survIndex, build) {
 
             DebugLog(`Comparing ${currentPerk["name"]} to ${otherPerk["name"]}`);
             if (currentPerk["id"] == otherPerk["id"]) {
-                ErrorLog.push({
-                    ERROR: "Duplicate Perk",
-                    REASON: `Perk ${currentPerk["name"]} is duplicated in Survivor #${survIndex}'s build.`,
-                });
+                ErrorLog.push(
+                    GenerateErrorObject(
+                        "Duplicate Perk",
+                        `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex}</b>'s build.`,
+                        console.trace(),
+                        "iconography/CriticalError.png"
+                    )
+                )
             }
         }
     }
@@ -677,15 +685,344 @@ function CheckForDuplicates(survIndex, build) {
 /**
  * A function to check if the current build contains a banned perk.
  * @param {object} build The build to check for banned perks. 
+ * @returns {object} An object containing the error information if an error is found.
  */
-function CheckForBannedIndividualPerk(build) {
+function CheckForBannedIndividualPerk(build, survivorIndex) {
+    var currentOverride = currentBalancing.KillerOverride[selectedKiller];
+    //DebugLog(currentOverride);
+
+    var ErrorLog = [];
+
+    // DebugLog("Getting new log (Individual)...");
+    var newLog = IndividualIsBannedInOverride(build, currentOverride, survivorIndex);
+    
+    for (var i = 0; i < newLog.length; i++) {
+        ErrorLog.push(newLog[i]);
+    }
+
+    for (var i = 0; i < ErrorLog.length; i++) {
+        MasterErrorList.push(ErrorLog[i]);
+    }
+    return ErrorLog;
+}
+
+function CheckForBannedComboPerks(build, survivorIndex) {
+    DebugLog("Checking for banned combo perks...");
+    var currentOverride = currentBalancing.KillerOverride[selectedKiller];
+
+    var ErrorLog = [];
+
+    DebugLog("Getting new log (Combo)...");
+    var newLog = ComboIsBannedInOverride(build, currentOverride, survivorIndex);
+
+    for (var i = 0; i < newLog.length; i++) {
+        ErrorLog.push(newLog[i]);
+    }
+
+    for (var i = 0; i < ErrorLog.length; i++) {
+        MasterErrorList.push(ErrorLog[i]);
+    }
+}
+
+function GetAllBuildCombos(build) {
+    if (build == undefined) { return; }
+
+    let ComboList = [];
+
+    // Loop through build perks and acquire combo lists of size 2.
+    for (var i = 0; i < build.length; i++) {
+        for (var j = i+1; j < build.length; j++) {
+            let currentPerk = build[i];
+            let otherPerk = build[j];
+
+            if (currentPerk == undefined) { continue; }
+            if (otherPerk == undefined) { continue; }
+
+            // let combo = [currentPerk, otherPerk];
+            // DebugLog("COMBO: ");
+            // DebugLog(combo);
+
+            ComboList.push([currentPerk, otherPerk]);
+        }
+    }
+
+    // Loop through combo list and acquire combos of size 3.
+    for (var i = 0; i < build.length; i++) {
+        for (var j = i+1; j < build.length; j++) {
+            for (var k = j+1; k < build.length; k++) {
+                let currentPerk = build[i];
+                let otherPerk = build[j];
+                let anotherPerk = build[k];
+
+                if (currentPerk == undefined) { continue; }
+                if (otherPerk == undefined) { continue; }
+                if (anotherPerk == undefined) { continue; }
+
+                // let combo = [currentPerk, otherPerk, anotherPerk];
+                // DebugLog("COMBO: ");
+                // DebugLog(combo);
+
+                ComboList.push([currentPerk, otherPerk, anotherPerk]);
+            }
+        }
+    }
+
+    // Loop through combo list and acquire combos of size 4.
+    var comboSize4 = [];
+    for (var i = 0; i < build.length; i++) {
+        if (build[i] == undefined) { continue; }
+
+        comboSize4.push(build[i]);
+    }
+    if (comboSize4.length == 4) {
+        ComboList.push(comboSize4);
+    }
+
+    return ComboList;
+
+}
+
+function ComboIsEqual(currentCombo, otherCombo) {
+    if (currentCombo == undefined) { return false; }
+    if (otherCombo == undefined) { return false; }
+
+    let sntzCurrent = [];
+    let sntzOther = [];
+
+    for (var i = 0; i < currentCombo.length; i++) {
+        if (currentCombo[i] == undefined) { continue; }
+        
+        sntzCurrent.push(parseInt(currentCombo[i]["id"]));
+    }
+
+    for (var i = 0; i < otherCombo.length; i++) {
+        if (otherCombo[i] == undefined) { continue; }
+        
+        sntzOther.push(parseInt(otherCombo[i]));
+    }
+
+    if (sntzCurrent.length != sntzOther.length) { return false; }
+
+    sntzCurrent.sort();
+    sntzOther.sort();
+
+    DebugLog("CURRENT:");
+    DebugLog(sntzCurrent);
+    DebugLog("OTHER:");
+    DebugLog(sntzOther);
+
+    for (var i = 0; i < sntzCurrent.length; i++) {
+        if (sntzCurrent[i] == undefined) { continue; }
+
+        let currentID = sntzCurrent[i];
+        let otherID = sntzOther[i];
+
+        DebugLog(`Comparing ${currentID} to ${otherID}`);
+
+        if (currentID != otherID) { return false; }
+    }
+
+    DebugLog("MATCH FOUND!");
+
+    return true;
+}
+
+function ComboIsBannedInOverride(build, override, survivorIndex) {
+    let ErrorList = [];
+
+    let combos = GetAllBuildCombos(build);
+
+    DebugLog("COMBOS: ");
+    DebugLog(combos);
+
+    // Loop through combos
+    for (var i = 0; i < combos.length; i++) {
+        
+        // Get current combo
+        let currentCombo = combos[i];
+
+        // Check if combo is explicitly banned
+        for (var j = 0; j < override.SurvivorComboPerkBans.length; j++) {
+            let currentBannedCombo = override.SurvivorComboPerkBans[j];
+
+            if (currentBannedCombo == undefined) { continue; }
+
+            // Check if current combo is banned
+            if (ComboIsEqual(currentCombo, currentBannedCombo)) {
+                ErrorList.push(
+                    GenerateErrorObject(
+                        "Banned Combo",
+                        `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                        console.trace(),
+                        "iconography/Error.png"
+                    )
+                )
+            }
+        }
+
+        // Check if combo is whitelisted
+        var comboWhitelisted = false;
+        DebugLog(override);
+        DebugLog(override.SurvivorWhitelistedComboPerks);
+        for (var j = 0; j < override.SurvivorWhitelistedComboPerks.length; j++) {
+            let currentWhitelistedCombo = override.SurvivorWhitelistedComboPerks[j];
+
+            if (currentWhitelistedCombo == undefined) { continue; }
+
+            // Check if current combo is whitelisted
+            if (ComboIsEqual(currentCombo, currentWhitelistedCombo)) {
+                comboWhitelisted = true;
+            }
+        }
+
+        // Check if combo is banned by tier
+        for (var j = 0; j < override.SurvivorBalanceTiers.length; j++) {
+            let currentTierIndex = override.SurvivorBalanceTiers[j];
+            let currentTier = currentBalancing.Tiers[currentTierIndex];
+
+            if (currentTier == undefined) { continue; }
+
+            // Check if current combo is banned
+            for (var k = 0; k < currentTier.SurvivorComboPerkBans.length; k++) {
+                let currentBannedCombo = currentTier.SurvivorComboPerkBans[k];
+
+                if (currentBannedCombo == undefined) { continue; }
+
+                // Check if current combo is banned
+                if (ComboIsEqual(currentCombo, currentBannedCombo)) {
+                    ErrorList.push(
+                        GenerateErrorObject(
+                            "Banned Combo",
+                            `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                            console.trace(),
+                            "iconography/Error.png"
+                        )
+                    )
+                }
+            }
+        }
+    }
+
+    return ErrorList;
+}
+
+function PrintCombo(combo) {
+    if (combo == undefined) { return; }
+
+    var comboString = "";
+
+    for (var i = 0; i < combo.length; i++) {
+        let currentPerk = combo[i];
+
+        if (currentPerk == undefined) { continue; }
+
+        comboString += currentPerk["name"];
+        if (i <= combo.length-2) {
+            comboString += " + ";
+        }
+    }
+
+    return comboString;
 }
 
 /**
- * A function to check if the current build contains a banned perk combination.
- * @param {object} build The build to check for banned perk combinations.
+ * A function to check if the current build contains a banned perk from a specified override.
+ * @param {object} build The build to check for banned perks.
+ * @param {object} override The override to check for banned perks in.
+ * @returns {object} An object containing the error information if an error is found.
  */
-function CheckForBannedComboPerks(build) {
+function IndividualIsBannedInOverride(build, override, survivorIndex) {
+    //DebugLog("BUILD AND OVERRIDE:");
+    //DebugLog(build);
+    //DebugLog(override);
+    if (build == undefined) { return; }
+    if (override == undefined) { return; }
+
+    ErrorList = [];
+
+    // Loop through build perks
+    for (var i = 0; i < build.length; i++) {
+        var currentPerk = build[i];
+        
+        if (currentPerk == undefined) { continue; }
+        // DebugLog(`Checking if ${currentPerk["name"]} is banned explicitly against ${override.Name}...`, true);
+
+        // Check if explicitly banned
+        // DebugLog(`OverrideIndvSurvivorPerkBans:`);
+        // DebugLog(override.SurvivorIndvPerkBans);
+        for (var j = 0; j < override.SurvivorIndvPerkBans.length; j++) {
+            var currentBannedPerk = parseInt(override.SurvivorIndvPerkBans[j]);
+
+            if (currentBannedPerk == undefined) { continue; }
+
+            // DebugLog(`Checking if ${currentPerk["name"]} is banned against ${override.Name}...`);
+            if (currentPerk["id"] == currentBannedPerk) {
+                ErrorList.push(
+                    GenerateErrorObject(
+                        "Banned Perk",
+                        `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                        console.trace(),
+                        "iconography/Error.png"
+                    )
+                )
+            }
+        }
+
+        // Check if current perk is whitelisted
+        var perkWhitelisted = false;
+
+        // DebugLog(`Checking if ${currentPerk["name"]} is whitelisted explicitly against ${override.Name}...`);
+        for (var j = 0; j < override.SurvivorWhitelistedPerks.length; j++) {
+            var currentWhitelistedPerk = parseInt(override.SurvivorWhitelistedPerks[j]);
+
+            if (currentPerk == undefined) { continue; }
+
+            // DebugLog(`Checking if ${currentPerk["name"]} is whitelisted against ${override.Name}...`)
+            if (currentPerk["id"] == currentWhitelistedPerk) {
+                perkWhitelisted = true;
+                // DebugLog(`Perk ${currentPerk["name"]} is whitelisted against ${override.Name}!`);
+            }
+        }
+
+        // Check if banned by tier
+
+        // DebugLog(`Checking if ${currentPerk["name"]} is banned by a tier in ${override.Name}...`);
+        // DebugLog(override.SurvivorBalanceTiers);
+        for (var j = 0; j < override.SurvivorBalanceTiers.length; j++) {
+            // DebugLog(`Current Balance Tier: ${currentBalancing.Tiers[j].Name}`);
+            if (perkWhitelisted) { break; }
+
+            var currentTierIndex = override.SurvivorBalanceTiers[j];
+            var currentTier = currentBalancing.Tiers[currentTierIndex];
+
+            // DebugLog(`Checking if ${currentPerk["name"]} is banned in ${currentTier.Name} Tier Balancing...`);
+
+            if (currentTier == undefined) { continue; }
+
+            // Check if current perk is banned
+            for (var k = 0; k < currentTier.SurvivorIndvPerkBans.length; k++) {
+                var currentBannedPerk = parseInt(currentTier.SurvivorIndvPerkBans[k]);
+
+                if (currentPerk == undefined) { continue; }
+                if (currentBannedPerk == undefined) { continue; }
+
+                //DebugLog(`Checking if ${currentPerk["name"]} is banned in ${currentTier.Name} Tier Balancing...`);
+                if (currentPerk["id"] == currentBannedPerk) {
+                    ErrorList.push(
+                        GenerateErrorObject(
+                            "Banned Perk",
+                            `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                            console.trace(),
+                            "iconography/Error.png"
+                        )
+                    )
+                }
+            }
+
+        }
+    }
+
+    return ErrorList;
 }
 
 function CheckForBalancingErrors() {
@@ -700,10 +1037,13 @@ function CheckForBalancingErrors() {
     }
 
     // Check for banned perks
-    CheckForBannedIndividualPerk(SurvivorPerks);
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        // DebugLog(`Checking for individual perk bans on build #${i}...`);
+        CheckForBannedIndividualPerk(SurvivorPerks[i], i);
 
-    // Check for banned perk combinations
-    CheckForBannedComboPerks(SurvivorPerks);
+        DebugLog(`Checking for combo perk bans on build #${i}...`);
+        CheckForBannedComboPerks(SurvivorPerks[i], i);
+    }
 
     UpdateErrorUI();
 }
@@ -722,7 +1062,7 @@ function UpdateErrorUI() {
         errorHeaderContainer.classList.add("error-header-container");
 
         let errorIcon = document.createElement("img");
-        errorIcon.src = "iconography/Error.png";
+        errorIcon.src = currentError["ICON"];
         errorIcon.classList.add("error-icon");
 
         let errorTitle = document.createElement("h1");
@@ -730,7 +1070,7 @@ function UpdateErrorUI() {
         errorTitle.innerText = currentError["ERROR"];
 
         let errorDescription = document.createElement("p");
-        errorDescription.innerText = currentError["REASON"];
+        errorDescription.innerHTML = currentError["REASON"];
 
         errorHeaderContainer.appendChild(errorIcon);
         errorHeaderContainer.appendChild(errorTitle);
@@ -761,7 +1101,7 @@ function DebugLog(text, printStackTrace = false) {
 
     console.log(text);
 
-    if (!printStackTrace) { return; }
+    if (!printStackTrace && !overrideStackTrace) { return; }
     // Print current stack trace
     console.trace();
 }
@@ -787,3 +1127,24 @@ function BuildHasPerk(perkID, build) {
 
     return false;
 }
+
+/**
+ * A function to generate an error object.
+ * @param {string} name 
+ * @param {string} reason 
+ * @param {string} stacktrace 
+ * @param {string} icon 
+ * @returns 
+ */
+function GenerateErrorObject(
+    name = "Default Error",
+    reason = "Default Reason",
+    stacktrace = console.trace(),
+    icon = "iconography/Error.png") {
+        return {
+            ERROR: name,
+            REASON: reason,
+            STACKTRACE: stacktrace,
+            ICON: icon
+        };
+    }

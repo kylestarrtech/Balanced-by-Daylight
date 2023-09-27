@@ -510,9 +510,10 @@ body {
 }
 
 #error-list-container {
-    display: flex;
-    flex-flow: column wrap;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 5px;
+    align-content: start;
 
     overflow-x: hidden;
 }
@@ -522,6 +523,8 @@ body {
     background-color: #ffffff10;
     display: inline-grid;
     grid-template-rows: 25fr 75fr;
+
+    margin-right: 1px;
 
     animation: fade-in-blur 0.5s ease-in-out;
 }
