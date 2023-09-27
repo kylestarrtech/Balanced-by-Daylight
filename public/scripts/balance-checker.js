@@ -66,6 +66,9 @@ selectedKiller = 0;
 currentBalancingIndex = 0;
 customBalanceObj = undefined; // To be used if currentBalancingIndex = -1
 
+var socket = io();
+var RoomID = undefined;
+
 function main() {
     document.body.addEventListener("mousemove", UpdateMousePos);
 
@@ -1148,3 +1151,26 @@ function GenerateErrorObject(
             ICON: icon
         };
     }
+
+/* -------------------------------------- */
+/* -------------- SOCKET ---------------- */
+/* -------------------------------------- */
+
+// Socket Events
+
+socket.on("connect", function() {
+    DebugLog("Connected to server!");
+    socket.emit("initialize-client");
+});
+
+socket.on("receive-room-id", function(roomID) {
+    DebugLog(`Received room ID: ${roomID}`);
+    RoomID = roomID;
+});
+
+socket.on("receive-builds-data", function(data) {
+    SurvivorPerks = data["SurvivorPerks"];
+    selectedKiller = data["selectedKiller"];
+    currentBalancingIndex = data["currentBalancingIndex"];
+    currentBalancing = BalancePresets[currentBalancingIndex];
+});
