@@ -12,6 +12,8 @@ html
                     img(src="iconography/Multiplayer.png")
                 div#settings-button(class="tier-selector-button")
                     img(src="iconography/Settings.png")
+                div.tier-selector-button(onclick="window.location.href = '/'")
+                    img(src="iconography/Home.png")
             div#balance-character-select-container
                 h1 Killer Selection
                 div#character-select-grid(class="override-scrollbar")
@@ -148,10 +150,11 @@ html
             div#settings-blur(class="background-blur")
                 div#settings-menu
                     h1 Settings Menu
-                    label(for="balancing-select") Balancing Mode: 
+                    label#balance-mode-label(for="balancing-select") Balancing Mode: 
                     select#balancing-select
-                        option(value="Custom") Custom
                     br
+                    label(for="custom-balancing-checkbox") Enable Custom Balancing?
+                    input#custom-balancing-checkbox(type="checkbox")
                     br
                     textarea#custom-balance-select(class="override-scrollbar", placeholder="Enter Custom Balance JSON...", rows="15", hidden="hidden")
                     br

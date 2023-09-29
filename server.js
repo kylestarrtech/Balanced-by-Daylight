@@ -30,7 +30,7 @@ io.on("connection",(client)=>{
   client.join(client.id);
 
   // Add the client to the activeBuilds object
-  activeBuilds[client.id] = client.id;
+  //activeBuilds[client.id] = client.id;
 
   // Send the room ID to the client
   client.emit("receive-room-id", client.id);
@@ -50,7 +50,7 @@ io.on("connection",(client)=>{
     // Check if the room is empty
     if (io.sockets.adapter.rooms.get(client.id) === undefined) {
       // Delete the room if it is empty
-      delete activeBuilds[client.id];
+      //delete activeBuilds[client.id];
     }
   });
 

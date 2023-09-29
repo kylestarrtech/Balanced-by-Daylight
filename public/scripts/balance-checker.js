@@ -15,14 +15,10 @@ var BalancePresets = [
         Name: "Outrun the Fog (OTF)",
         Path: "BalancingPresets/OTF.json",
         Balancing: {}
-    },
-    {
-        Name: "Custom",
-        Path: "",
-        Balancing: {}
     }
 ]
 var currentBalancingIndex = 0;
+var customBalanceOverride = false;
 
 var currentBalancing = {};
 
@@ -64,7 +60,6 @@ SurvivorPerks = [
 
 selectedKiller = 0;
 currentBalancingIndex = 0;
-customBalanceObj = undefined; // To be used if currentBalancingIndex = -1
 
 var socket = io();
 var RoomID = undefined;
@@ -98,6 +93,7 @@ function main() {
     UpdateBalancingDropdown();
 
     // Set current balancing
+    currentBalancingIndex = 0;
     currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
 
     CheckForBalancingErrors();
@@ -176,27 +172,43 @@ function UpdateBalancingDropdown() {
         balancingDropdown.appendChild(optionElement);
     }
 
-    let optionElement = document.createElement("option");
-    optionElement.innerText = "Custom";
-    optionElement.value = -1;
-
-    balancingDropdown.appendChild(optionElement);
-
-    balancingDropdown.value = 0;
-
     balancingDropdown.addEventListener("change", function() {
         currentBalancingIndex = parseInt(balancingDropdown.value);
 
+        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+    });
+
+    // var customBalancingContainer = document.getElementById("custom-balance-select");
+    // if (currentBalancingIndex == -1) {
+    //     // Show custom balancing
+    //     customBalancingContainer.hidden = false;
+    // } else {
+    //     // Hide custom balancing
+    //     customBalancingContainer.hidden = true;
+    // }
+
+    var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
+
+    customBalanceCheckbox.addEventListener("change", function() {
+        customBalanceOverride = customBalanceCheckbox.checked;
+
         var customBalancingContainer = document.getElementById("custom-balance-select");
-        if (currentBalancingIndex == -1) {
+        var customBalanceLabel = document.getElementById("balance-mode-label");
+        var customBalanceDropdown = document.getElementById("balancing-select");
+
+        if (customBalanceOverride) {
             // Show custom balancing
             customBalancingContainer.hidden = false;
+            customBalanceDropdown.hidden = true;
+            customBalanceLabel.hidden = true;
         } else {
             // Hide custom balancing
             customBalancingContainer.hidden = true;
-        }
+            customBalanceDropdown.hidden = false;
+            customBalanceLabel.hidden = false;
 
-        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+            customBalancingContainer.innerHTML = "";
+        }
     });
 }
 
@@ -251,6 +263,14 @@ function LoadSettingsEvents() {
     var settingsCancelButton = document.getElementById("settings-cancel-button");
     settingsCancelButton.addEventListener("click", function() {
 
+        if (customBalanceOverride) {
+            currentBalancing = GetCustomBalancing();
+            currentBalancingIndex = -1;
+        } else {
+            currentBalancingIndex = parseInt(document.getElementById("balancing-select").value);
+            currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+        }
+
         var settingsMenu = document.getElementById("settings-menu");
         settingsMenu.classList.remove("outro-blur-animation-class-0p5s");
         settingsMenu.classList.add("outro-blur-animation-class-0p5s");
@@ -264,6 +284,8 @@ function LoadSettingsEvents() {
             var settingsContainer = document.getElementById("settings-container");
             settingsContainer.hidden = !settingsContainer.hidden;
         }, 500);
+
+        CheckForBalancingErrors();
     });
 }
 
@@ -539,7 +561,7 @@ function GetOfferings() {
 
 function GetBalancing() {
     // Subtract one due to customs
-    for (var i = 0; i < BalancePresets.length-1; i++) {
+    for (var i = 0; i < BalancePresets.length; i++) {
         let currentPreset = BalancePresets[i];
 
         var xhttp = new XMLHttpRequest();
@@ -564,13 +586,45 @@ function GetBalancing() {
 
 function GetCustomBalancing() {
     var customBalanceInput = document.getElementById("custom-balance-select");
+    var customBalanceLabel = document.getElementById("balance-mode-label");
+    var customBalanceDropdown = document.getElementById("balancing-select");
 
     var customBalanceObj = {};
+    
+    // 0 = Invalid JSON | 1 = Valid JSON, but invalid balance format
+    let errorType = 0;
     try {
         customBalanceObj = JSON.parse(customBalanceInput.value);
+        errorType++;
+
+        if (!ValidateCustomBalancing(customBalanceObj)) {
+            throw "Invalid JSON for custom balancing. Using default balancing.";
+        }
     } catch (error) {
         //alert("Invalid JSON for custom balancing. Using default balancing.");
+        
+        switch(errorType) {
+            case 0:
+                GenerateAlertModal("Invalid JSON", "The JSON used is not valid JSON. You can validate your JSON <a href='https://jsonlint.com/' target='_blank'>here</a>.\n\nUsing default balancing.");
+                break;
+            case 1:
+                GenerateAlertModal("Invalid Balance Format", "The JSON used is valid JSON, but is not in the correct format. Please refer to the balance creator to generate the correct format.\n\nUsing default balancing.");
+                break;
+        }        
+        
+        customBalanceInput.innerHTML = "";
+        customBalanceInput.hidden = true;
+
+        customBalanceDropdown.hidden = false;
+        customBalanceLabel.hidden = false;
+
+        var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
+        customBalanceCheckbox.checked = false;
+        customBalanceOverride = customBalanceCheckbox.checked;
+        
         currentBalancingIndex = 0;
+
+        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     }
 
     return customBalanceObj;
@@ -1152,25 +1206,107 @@ function GenerateErrorObject(
         };
     }
 
+function GenerateAlertModal(
+    title,
+    message
+) {
+    var alertContainer = document.getElementById("alert-container");
+    alertContainer.hidden = false;
+
+    var alertTitle = document.getElementById("alert-title");
+    alertTitle.innerText = title;
+
+    var alertMessage = document.getElementById("alert-message");
+    alertMessage.innerHTML = message;
+
+    var alertOkButton = document.getElementById("alert-ok-button");
+    alertOkButton.addEventListener("click", function() {
+        alertContainer.hidden = true;
+    });
+}
+
+/**
+ * A function to validate a custom balancing object.
+ * @param {object} balanceObj The balance object to validate.
+ * @returns {boolean} Whether or not the balance object is valid.
+ */
+function ValidateCustomBalancing(balanceObj) {
+    if (balanceObj == undefined) { return false; }
+
+    if (balanceObj["Name"] == undefined) { return false; }
+    if (balanceObj["MaxPerkRepetition"] == undefined) { return false; }
+
+    if (balanceObj["Tiers"] == undefined) { return false; }
+    try {
+
+        for (var i = 0; i < balanceObj["Tiers"].length; i++) {
+            let currentTier = balanceObj["Tiers"][i];
+
+            if (currentTier["Name"] == undefined) { return false; }
+
+            if (currentTier["SurvivorIndvPerkBans"] == undefined) { return false; }
+            if (currentTier["SurvivorComboPerkBans"] == undefined) { return false; }
+            if (currentTier["KillerIndvPerkBans"] == undefined) { return false; }
+            if (currentTier["KillerComboPerkBans"] == undefined) { return false; }
+        }
+    } catch (error) {
+        return false;
+    }
+
+    if (balanceObj["KillerOverride"] == undefined) { return false; }
+
+    try {
+        for (var i = 0; i < balanceObj["KillerOverride"].length; i++) {
+            let currentOverride = balanceObj["KillerOverride"][i];
+    
+            if (currentOverride["Name"] == undefined) { return false; }
+            if (currentOverride["Map"] == undefined) { return false; }
+            if (currentOverride["BalanceTiers"] == undefined) { return false; }
+            if (currentOverride["SurvivorBalanceTiers"] == undefined) { return false; }
+
+            if (currentOverride["SurvivorIndvPerkBans"] == undefined) { return false; }
+            if (currentOverride["SurvivorComboPerkBans"] == undefined) { return false; }
+            if (currentOverride["KillerIndvPerkBans"] == undefined) { return false; }
+            if (currentOverride["KillerComboPerkBans"] == undefined) { return false; }
+
+            if (currentOverride["SurvivorWhitelistedPerks"] == undefined) { return false; }
+            if (currentOverride["SurvivorWhitelistedComboPerks"] == undefined) { return false; }
+            if (currentOverride["KillerWhitelistedPerks"] == undefined) { return false; }
+            if (currentOverride["KillerWhitelistedComboPerks"] == undefined) { return false; }
+
+            if (currentOverride["AddonTiersBanned"] == undefined) { return false; }
+            if (currentOverride["IndividualAddonBans"] == undefined) { return false; }
+
+            if (currentOverride["SurvivorOfferings"] == undefined) { return false; }
+            if (currentOverride["KillerOfferings"] == undefined) { return false; }
+        }
+    
+    } catch (error) {
+        return false;
+    }
+
+    return true;
+}
+
 /* -------------------------------------- */
 /* -------------- SOCKET ---------------- */
 /* -------------------------------------- */
 
 // Socket Events
 
-socket.on("connect", function() {
-    DebugLog("Connected to server!");
-    socket.emit("initialize-client");
-});
+// socket.on("connect", function() {
+//     DebugLog("Connected to server!");
+//     socket.emit("initialize-client");
+// });
 
-socket.on("receive-room-id", function(roomID) {
-    DebugLog(`Received room ID: ${roomID}`);
-    RoomID = roomID;
-});
+// socket.on("receive-room-id", function(roomID) {
+//     DebugLog(`Received room ID: ${roomID}`);
+//     RoomID = roomID;
+// });
 
-socket.on("receive-builds-data", function(data) {
-    SurvivorPerks = data["SurvivorPerks"];
-    selectedKiller = data["selectedKiller"];
-    currentBalancingIndex = data["currentBalancingIndex"];
-    currentBalancing = BalancePresets[currentBalancingIndex];
-});
+// socket.on("receive-builds-data", function(data) {
+//     SurvivorPerks = data["SurvivorPerks"];
+//     selectedKiller = data["selectedKiller"];
+//     currentBalancingIndex = data["currentBalancingIndex"];
+//     currentBalancing = BalancePresets[currentBalancingIndex];
+// });
