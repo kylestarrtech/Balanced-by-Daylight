@@ -146,6 +146,16 @@ html
                     div.perk-slot-result
                         img(src="public/Perks/Survivors/Adrenaline.png")
                 h3#perk-highlight-name Select a Perk...
+        div#room-container(hidden="hidden")
+            div#room-blur(class="background-blur")
+                div#room-menu
+                    h1 Room Menu
+                    h2 Room Code: {ROOM CODE}
+                    p You can share this code with your friends to create builds together!
+                    input#room-code-input(type="text", placeholder="Enter Room Code...")
+                    button#join-room-button Join Room
+                    br
+                    button#leave-room-button Leave Room
         div#settings-container(hidden="hidden")
             div#settings-blur(class="background-blur")
                 div#settings-menu

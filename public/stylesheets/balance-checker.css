@@ -752,6 +752,29 @@ body {
     border-width: 3px;
 }
 
+#room-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+}
+
+#room-menu {
+    position: absolute;
+    max-width: 400px;
+    max-height: 400px;
+    background-color: #2b2452;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+}
+
 /* Intro animation for settings menu */
 @keyframes intro-blur {
     from {backdrop-filter: blur(0px);}

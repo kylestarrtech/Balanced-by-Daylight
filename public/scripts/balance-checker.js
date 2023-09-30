@@ -61,7 +61,7 @@ SurvivorPerks = [
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
-var socket = io();
+//var socket = io();
 var RoomID = undefined;
 
 function main() {
@@ -232,8 +232,29 @@ function SetKillerCharacterSelectEvents() {
     for (var i = 0; i < GetCharacterSelectButtons.length; i++) {
         let newIndex = i;
         let currentButton = GetCharacterSelectButtons[newIndex];
+
+        let currentName = Killers[newIndex];
         currentButton.addEventListener("click", function() {
             DebugLog(newIndex);
+            DebugLog(currentName);
+
+            // If killer with currentName is not in the list, return
+            let currentOverrides = currentBalancing.KillerOverride;
+            let killerFound = false;
+            for (var i = 0; i < currentOverrides.length; i++) {
+                let currentOverride = currentOverrides[i];
+
+                if (currentOverride.Name == currentName) {
+                    killerFound = true;
+                    break;
+                }
+            }
+
+            if (!killerFound) {
+                GenerateAlertModal("Killer Not Found", `Killer <b>${currentName}</b> not found in current balancing! Please select a different killer or change the balancing.`);
+                return;
+            }
+
             selectedKiller = newIndex;
 
             CheckForBalancingErrors();
@@ -753,8 +774,14 @@ function CheckForBannedIndividualPerk(build, survivorIndex) {
     // DebugLog("Getting new log (Individual)...");
     var newLog = IndividualIsBannedInOverride(build, currentOverride, survivorIndex);
     
-    for (var i = 0; i < newLog.length; i++) {
-        ErrorLog.push(newLog[i]);
+    try {
+        for (var i = 0; i < newLog.length; i++) {
+            ErrorLog.push(newLog[i]);
+        }
+    } catch (error) {
+        GenerateAlertModal("Error", "An error occurred while checking for banned perks.<br>" + 
+        "It's possible that this character is no longer in the Killer Override balancing list.<br>" +
+        "Please select a different killer or change the balancing."); 
     }
 
     for (var i = 0; i < ErrorLog.length; i++) {
@@ -1280,12 +1307,36 @@ function ValidateCustomBalancing(balanceObj) {
             if (currentOverride["SurvivorOfferings"] == undefined) { return false; }
             if (currentOverride["KillerOfferings"] == undefined) { return false; }
         }
-    
+
+        if (balanceObj["KillerOverride"].length <= 0) { return false; }
+        
+        // Check which killer overrides are valid
+
+        for (var i = 0; i < balanceObj["KillerOverride"].length; i++) {
+            
+        }
     } catch (error) {
         return false;
     }
 
     return true;
+}
+
+/**
+ * A function to create a status object for the app.
+ * @returns {object} An object containing the current status of the app. Is used for multiplayer builds.
+ */
+function CreateStatusObject() {
+    var buildStatus = {
+        "SurvivorPerks": SurvivorPerks,
+        "selectedKiller": selectedKiller,
+        "currentBalancingIndex": currentBalancingIndex,
+        "customBalanceOverride": customBalanceOverride,
+        "currentBalancing": currentBalancing,
+        "roomID": RoomID
+    }
+
+    return buildStatus;
 }
 
 /* -------------------------------------- */
