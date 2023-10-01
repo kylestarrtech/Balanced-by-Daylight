@@ -61,6 +61,10 @@ form input:active {
     font-size: 3.1rem;
 }
 
+h2 {
+    font-weight: 300;
+}
+
 #main-balance-container {
     width: 100%;
     height: 100%;
