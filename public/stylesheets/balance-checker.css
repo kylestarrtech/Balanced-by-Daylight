@@ -775,6 +775,27 @@ body {
     padding: 20px;
 }
 
+#chat-container {
+    display: grid;
+    grid-template-rows: 85fr 15fr;
+    height: 100%;
+}
+
+#chat-input-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 75fr 25fr;
+    height: 67%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#chat-messages-container {
+    background-color: #00000040;
+    height: 100%;
+}
+
 /* Intro animation for settings menu */
 @keyframes intro-blur {
     from {backdrop-filter: blur(0px);}

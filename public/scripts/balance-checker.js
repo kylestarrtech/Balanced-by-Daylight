@@ -8,12 +8,19 @@ var Maps = null;
 var Addons = null;
 var Offerings = null;
 
+var Config = null;
+
 var AllDataLoaded = false;
 
 var BalancePresets = [
     {
         Name: "Outrun the Fog (OTF)",
         Path: "BalancingPresets/OTF.json",
+        Balancing: {}
+    },
+    {
+        Name: "Dead by Daylight League (DBDL)",
+        Path: "BalancingPresets/DBDL.json",
         Balancing: {}
     }
 ]
@@ -61,11 +68,18 @@ SurvivorPerks = [
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
-//var socket = io();
+var socket = null;
 var RoomID = undefined;
 
 function main() {
     document.body.addEventListener("mousemove", UpdateMousePos);
+
+    // Get config
+    GetConfig();
+
+    if (Config.multiplayerEnabled) {
+        socket = io();
+    }
 
     // Initialize Survivor Perks
     for (var i = 0; i < SurvivorPerks.length; i++) {
@@ -97,6 +111,24 @@ function main() {
     currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
 
     CheckForBalancingErrors();
+}
+
+function GetConfig() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Config = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting config: " + this.status);
+            }
+        }
+    }
+    xhttp.open("GET", "config", false);
+    xhttp.send();
 }
 
 /**
@@ -224,6 +256,35 @@ function LoadButtonEvents() {
     LoadPerkSelectionEvents();
 
     LoadPerkSearchEvents();
+
+    LoadRoomEvents();
+}
+
+function LoadRoomEvents() {
+    let roomIDInput = document.getElementById("room-code-input");
+    let joinRoomButton = document.getElementById("join-room-button");
+
+    joinRoomButton.addEventListener("click", function() {
+        if (roomIDInput.value == "") {
+            GenerateAlertModal("Room ID Empty", "Please enter a room ID.");
+            return;
+        }
+
+        socket.emit("clientJoinRoom", roomIDInput.value);
+    });
+
+    let leaveRoomButton = document.getElementById("leave-room-button");
+
+    leaveRoomButton.addEventListener("click", function() {
+        socket.emit("clientLeaveRoom", CreateStatusObject());
+    });
+
+    let closeRoomButton = document.getElementById("close-room-button");
+
+    closeRoomButton.addEventListener("click", function() {
+        let roomContainer = document.getElementById("room-container");
+        roomContainer.hidden = true;
+    });
 }
 
 function SetKillerCharacterSelectEvents() {
@@ -259,6 +320,8 @@ function SetKillerCharacterSelectEvents() {
 
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+
+            SendRoomDataUpdate();
         });
     }
 }
@@ -307,6 +370,7 @@ function LoadSettingsEvents() {
         }, 500);
 
         CheckForBalancingErrors();
+        SendRoomDataUpdate();
     });
 }
 
@@ -435,6 +499,8 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             perkSearchContainer.dataset.targetPerk = undefined;
 
             CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
         });
 
         perkElement.addEventListener("mouseover", function() {
@@ -916,8 +982,8 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
 
     let combos = GetAllBuildCombos(build);
 
-    DebugLog("COMBOS: ");
-    DebugLog(combos);
+    // DebugLog("COMBOS: ");
+    // DebugLog(combos);
 
     // Loop through combos
     for (var i = 0; i < combos.length; i++) {
@@ -946,8 +1012,8 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
 
         // Check if combo is whitelisted
         var comboWhitelisted = false;
-        DebugLog(override);
-        DebugLog(override.SurvivorWhitelistedComboPerks);
+        // DebugLog(override);
+        // DebugLog(override.SurvivorWhitelistedComboPerks);
         for (var j = 0; j < override.SurvivorWhitelistedComboPerks.length; j++) {
             let currentWhitelistedCombo = override.SurvivorWhitelistedComboPerks[j];
 
@@ -1345,19 +1411,60 @@ function CreateStatusObject() {
 
 // Socket Events
 
-// socket.on("connect", function() {
-//     DebugLog("Connected to server!");
-//     socket.emit("initialize-client");
-// });
+function SendRoomDataUpdate() {
+    DebugLog("Multiplayer not enabled!");
+}
 
-// socket.on("receive-room-id", function(roomID) {
-//     DebugLog(`Received room ID: ${roomID}`);
-//     RoomID = roomID;
-// });
+function JoinRoom(roomID) {
+    DebugLog("Multiplayer not enabled!");
+}
 
-// socket.on("receive-builds-data", function(data) {
-//     SurvivorPerks = data["SurvivorPerks"];
-//     selectedKiller = data["selectedKiller"];
-//     currentBalancingIndex = data["currentBalancingIndex"];
-//     currentBalancing = BalancePresets[currentBalancingIndex];
-// });
+function CreateSocketEvents() {
+    if (!Config.multiplayerEnabled) { return; }
+
+    SendRoomDataUpdate = function() {
+        DebugLog("Sending room update to server!");
+        socket.emit('clientRoomDataUpdate', CreateStatusObject());
+    }
+
+    JoinRoom = function(roomID) {
+        DebugLog(`Joining room ${roomID}...`);
+        socket.emit('clientJoinRoom', roomID);
+    }
+
+    socket.on("connect", function() {
+        DebugLog("Connected to server!");
+    });
+    
+    socket.on('serverRequestRoomData', function() {
+        DebugLog("Room data requested!");
+        socket.emit('clientRoomDataResponse', CreateStatusObject());
+    });
+    
+    socket.on('serverRoomDataResponse', function(data) {
+        DebugLog("Room Data Received from server!");
+        DebugLog(data);
+    
+        // Update local data
+        DebugLog("Updating local data...");
+        let appStatus = data.appStatus;
+    
+        SurvivorPerks = appStatus.builds;
+        selectedKiller = appStatus.selectedKiller;
+        currentBalancingIndex = appStatus.currentBalancingIndex;
+        customBalanceOverride = appStatus.customBalanceOverride;
+        currentBalancing = appStatus.currentBalancing;
+        RoomID = appStatus.roomID;
+    
+        // Update UI
+        UpdateBalancingDropdown();
+        UpdateKillerSelectionUI();
+        UpdatePerkUI();
+        CheckForBalancingErrors();
+    });
+    
+    socket.on('roomID', function(id) {
+        RoomID = id;
+        DebugLog(`Room ID: ${RoomID}`);
+    });
+}

@@ -7,6 +7,7 @@ Maps = null;
 Addons = null;
 Offerings = null;
 MaximumPerkRepetition = 1;
+const version = 1;
 
 /**
  * @type {boolean} AllDataLoaded - Used to check if all data (perks, addons, offerings, maps .etc) has been loaded
@@ -1909,6 +1910,7 @@ function ExportBalancing() {
 
     var FinalBalanceObj = {
         Name: document.getElementById("balance-name-textbox").value,
+        Version: version,
         MaxPerkRepetition: maxPerkRepetition,
         Tiers: NewTierExport,
         KillerOverride: NewKillerExport
