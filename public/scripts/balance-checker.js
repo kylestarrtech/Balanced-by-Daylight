@@ -810,7 +810,7 @@ function CheckForDuplicates(survIndex, build) {
                 ErrorLog.push(
                     GenerateErrorObject(
                         "Duplicate Perk",
-                        `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex}</b>'s build.`,
+                        `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex+1}</b>'s build.`,
                         console.trace(),
                         "iconography/CriticalError.png"
                     )
@@ -1002,7 +1002,7 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                 ErrorList.push(
                     GenerateErrorObject(
                         "Banned Combo",
-                        `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                        `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                         console.trace(),
                         "iconography/Error.png"
                     )
@@ -1043,7 +1043,7 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                     ErrorList.push(
                         GenerateErrorObject(
                             "Banned Combo",
-                            `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                            `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                             console.trace(),
                             "iconography/Error.png"
                         )
@@ -1110,7 +1110,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                 ErrorList.push(
                     GenerateErrorObject(
                         "Banned Perk",
-                        `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                        `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                         console.trace(),
                         "iconography/Error.png"
                     )
@@ -1161,7 +1161,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                     ErrorList.push(
                         GenerateErrorObject(
                             "Banned Perk",
-                            `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex}</b>'s build.`,
+                            `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                             console.trace(),
                             "iconography/Error.png"
                         )
