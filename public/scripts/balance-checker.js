@@ -351,9 +351,9 @@ function LoadImportEvents() {
         var exportData = JSON.stringify(CreateStatusObject());
 
         // Ask user if they'd like to copy to clipboard. If yes, copy to clipboard. If no, return.
-        if (!confirm("Would you like to copy your build data to your clipboard?")) {
-            return;
-        }
+        // if (!confirm("Would you like to copy your build data to your clipboard?")) {
+        //     return;
+        // }
 
         // Copy exportData to clipboard
         navigator.clipboard.writeText(exportData);
