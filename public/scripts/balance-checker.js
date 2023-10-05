@@ -255,9 +255,111 @@ function LoadButtonEvents() {
 
     LoadPerkSelectionEvents();
 
+    LoadImportEvents();
+
     LoadPerkSearchEvents();
 
     LoadRoomEvents();
+}
+
+function LoadImportEvents() {
+    let importButton = document.getElementById("import-button");
+    let exportButton = document.getElementById("export-button");
+
+    importButton.addEventListener("click", function() {
+        let importData = prompt("Please enter your build data here.\n\nThis data can be found by clicking the 'Export' button. Please note that improper formatting may result in unexpected behavior or loss of builds!");
+
+        if (importData == null) {
+            return;
+        }
+
+        try {
+            // Check if importData.SurvivorPerks is a valid array
+            let importDataObj = JSON.parse(importData);
+
+            if (importDataObj.SurvivorPerks == undefined) {
+                throw "Invalid import data. SurvivorPerks is undefined.";
+            }
+            if (importDataObj.SurvivorPerks.length != 4) {
+                throw "Invalid import data. SurvivorPerks length is not 4.";
+            }
+
+            for (var i = 0; i < importDataObj.SurvivorPerks.length; i++) {
+                let currentSurvivor = importDataObj.SurvivorPerks[i];
+
+                if (currentSurvivor.length != 4) {
+                    throw "Invalid import data. SurvivorPerks length is not 4.";
+                }
+
+                for (var j = 0; j < currentSurvivor.length; j++) {
+                    let currentPerk = currentSurvivor[j];
+
+                    if (currentPerk != null) {
+                        if (currentPerk.id == undefined) {
+                            throw "Invalid import data. Perk ID is undefined.";
+                        }
+                        if (currentPerk.name == undefined) {
+                            throw "Invalid import data. Perk name is undefined.";
+                        }
+                        if (currentPerk.icon == undefined) {
+                            throw "Invalid import data. Perk icon is undefined.";
+                        }
+                    }
+                }
+            }
+
+            // Is custom balancing enabled?
+            if (importDataObj.customBalanceOverride == undefined) {
+                throw "Invalid import data. Custom balancing is undefined.";
+            }
+
+            if (importDataObj.customBalanceOverride) {
+                // Check if current balancing is valid
+                let currentBalance = importDataObj.currentBalancing;
+                if (!ValidateCustomBalancing(currentBalance)) {
+                    throw "Invalid import data. Current balancing is invalid.";
+                }
+            }
+
+            // Is there a valid balancing index?
+            if (importDataObj.currentBalancingIndex == undefined) {
+                throw "Invalid import data. Current balancing index is undefined.";
+            }
+
+            // Is there a valid selected killer?
+            if (importDataObj.selectedKiller == undefined) {
+                throw "Invalid import data. Selected killer is undefined.";
+            }
+
+            // If all checks pass, set the data
+            SurvivorPerks = importDataObj.SurvivorPerks;
+            currentBalancingIndex = importDataObj.currentBalancingIndex;
+            selectedKiller = importDataObj.selectedKiller;
+            customBalanceOverride = importDataObj.customBalanceOverride;
+            currentBalancing = importDataObj.currentBalancing;
+
+            // Update UI
+            UpdatePerkUI();
+            UpdateBalancingDropdown();
+            CheckForBalancingErrors();
+        } catch (error) {
+            GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.\n\nError: ${error}`);
+        }
+    });
+
+    exportButton.addEventListener("click", function() {
+        var exportData = JSON.stringify(CreateStatusObject());
+
+        // Ask user if they'd like to copy to clipboard. If yes, copy to clipboard. If no, return.
+        if (!confirm("Would you like to copy your build data to your clipboard?")) {
+            return;
+        }
+
+        // Copy exportData to clipboard
+        navigator.clipboard.writeText(exportData);
+
+        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
+    });
 }
 
 function LoadRoomEvents() {
