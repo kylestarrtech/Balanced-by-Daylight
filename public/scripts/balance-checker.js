@@ -1304,6 +1304,7 @@ function UpdateErrorUI() {
     var errorListContainer = document.getElementById("error-list-container");
     errorListContainer.innerHTML = "";
 
+    let ErrorElementList = [];
     for (var i = 0; i < MasterErrorList.length; i++) {
         let currentError = MasterErrorList[i];
 
@@ -1330,7 +1331,24 @@ function UpdateErrorUI() {
         errorContainer.appendChild(errorHeaderContainer);
         errorContainer.appendChild(errorDescription);
 
-        errorListContainer.appendChild(errorContainer);
+        ErrorElementList.push(errorContainer);
+    }
+
+    // Go through error list and add to container with a delay of 100ms in between each error.
+    let totalTime = 0;
+    for (var i = 0; i < ErrorElementList.length; i++) {
+        let currentError = ErrorElementList[i];
+
+        let timerMS = 150 * i;
+
+        totalTime += 150;
+        if (totalTime > 5000) {
+            timerMS = 0;
+        }
+
+        setTimeout(function() {
+            errorListContainer.appendChild(currentError);
+        }, timerMS);
     }
 
     var errorPanelTitle = document.getElementById("error-panel-title");

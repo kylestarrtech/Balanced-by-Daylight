@@ -526,7 +526,7 @@ body {
 
     margin-right: 1px;
 
-    animation: fade-in-blur 0.5s ease-in-out;
+    animation: scale-in 0.5s ease-in-out;
 }
 
 .error-header-container {
