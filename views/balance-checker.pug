@@ -125,6 +125,9 @@ html
                             img(src="public/Perks/Survivors/Hope.png")
                         div.perk-slot
                             img(src="public/Perks/Survivors/Kinship.png")
+                div#import-export-button-container
+                    button#import-button Import Builds
+                    button#export-button Export Builds
             div#errors-window
                 h1#error-panel-title Errors
                 div#error-list-container(class="override-scrollbar")
@@ -177,6 +180,16 @@ html
                     p Made by Kyle Starr (v1.0)
                     div#settings-button-container
                         button#settings-cancel-button Close
+        div#import-container()
+            div#import-blur(class="background-blur")
+                div#import-menu
+                    h1#import-title Import Builds
+                    p#build-import-instructions Please paste your build JSON below. If it is valid, it will be imported into your current build.
+                    textarea#build-import-textarea(class="override-scrollbar", placeholder="Enter Build JSON...", rows="15")
+                    br
+                    div#import-button-container
+                        button#build-import-button Import
+                        button#build-import-cancel-button Cancel
         div#alert-container(hidden="hidden")
             div#alert-blur(class="background-blur")
                 div#alert-menu
