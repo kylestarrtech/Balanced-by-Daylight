@@ -347,6 +347,7 @@ function LoadImportEvents() {
             UpdatePerkUI();
             UpdateBalancingDropdown();
             CheckForBalancingErrors();
+            UpdateKillerSelectionUI();
         } catch (error) {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.\n\nError: ${error}`);
         }
