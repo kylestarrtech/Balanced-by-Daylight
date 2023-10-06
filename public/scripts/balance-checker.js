@@ -530,8 +530,9 @@ function LoadPerkSelectionEvents() {
 function LoadPerkSearchEvents() {
     var perkSearchContainer = document.getElementById("perk-search-container");
 
-    perkSearchContainer.addEventListener("click", function() {
-        perkSearchContainer.hidden = true;
+    perkSearchContainer.addEventListener("click", function(event) {
+        if(event.target.tagName === "IMG" || event.target.classList.contains("background-blur"))
+            perkSearchContainer.hidden = true;
     });
 
     var perkSearchBar = document.getElementById("perk-search-bar");

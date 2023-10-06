@@ -375,12 +375,18 @@ body {
     display: grid;
     grid-template-rows: 10fr 90fr;
 
-    min-width: 400px;
-    max-width: 400px;
-    height: 400px;
+    min-width: 450px;
+    max-width: 450px;
+    height: 500px;
     width: 15vw;
 
     animation: intro-perk-search-module 0.5s ease-in-out;
+}
+.perk-slot-result:nth-child(8n+5){
+    margin-left: 47px !important;
+}
+.perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+    margin-top: -32px !important;
 }
 
 .background-blur-raw {
@@ -413,6 +419,7 @@ body {
     text-shadow: 0px 0px 10px #000000;
     font-weight: 700;
     font-size: 1.15rem;
+    padding-left: 8px !important;
 }
 
 #perk-search-bar::placeholder {
@@ -437,7 +444,7 @@ body {
 }
 
 #perk-search-results-module {
-    width: 100%;    
+    margin-top: 8px;
     background-color: #00000040;
 
     display: flex;
@@ -447,6 +454,47 @@ body {
 
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+/* Everything prestyled for 4 columns a row */
+@media screen and (min-width: 700px) {
+    /* If screen minimum 700px width => restyle to 5 columns a row */
+    #perk-search-module-container {
+        min-width: 550px !important;
+        max-width: 550px !important;
+    }
+    .perk-slot-result:nth-child(8n+5){
+        margin-left: 0 !important;
+    }
+    .perk-slot-result:nth-child(10n+6){
+        margin-left: 47px !important;
+    }
+    .perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+        margin-top: 0 !important;
+    }
+    .perk-slot-result:nth-child(n+6):nth-last-child(-n+1000) {
+        margin-top: -32px !important;
+    }
+    
+    @media screen and (min-width: 1000px) {
+        /* If screen minimum 1000px width => restyle to 6 columns a row */
+        #perk-search-module-container {
+            min-width: 650px !important;
+            max-width: 650px !important;
+        }     
+        .perk-slot-result:nth-child(10n+6){
+            margin-left: 0 !important;
+        }
+        .perk-slot-result:nth-child(12n+7){
+            margin-left: 47px !important;
+        }   
+        .perk-slot-result:nth-child(n+6):nth-last-child(-n+1000) {
+            margin-top: 0 !important;
+        }
+        .perk-slot-result:nth-child(n+7):nth-last-child(-n+1000) {
+            margin-top: -32px !important;
+        }
+    }
 }
 
 .perk-search-results-module::-webkit-scrollbar {
@@ -474,7 +522,7 @@ body {
 }
 
 .perk-slot-result:hover {
-    background-color: #ffffff10;
+    /*background-color: #ffffff10;*/
 
     filter:drop-shadow(0px 0px 4px #000000);
 }
