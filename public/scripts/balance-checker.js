@@ -22,6 +22,11 @@ var BalancePresets = [
         Name: "Dead by Daylight League (DBDL)",
         Path: "BalancingPresets/DBDL.json",
         Balancing: {}
+    },
+    {
+        Name: "Champions of the Fog (COTF)",
+        Path: "BalancingPresets/COTF.json",
+        Balancing: {}
     }
 ]
 var currentBalancingIndex = 0;
