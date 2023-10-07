@@ -34,11 +34,11 @@ body {
 }
 
 .character-selected{
-    -webkit-filter: drop-shadow(2px 2px 0 #ffffff)
-    drop-shadow(-2px -2px 0 #ffffff) !important;
-    filter: drop-shadow(0px 0px 8px #690069) drop-shadow(2px 2px 0 #ffffff) 
-    drop-shadow(-2px -2px 0 #ffffff)
-    drop-shadow(0px 0px 5px #000000) !important;
+    -webkit-filter: drop-shadow(1px 1px 0 #ffffff)
+    drop-shadow(-1px -1px 0 #ffffff) !important;
+    filter: /*drop-shadow(0px 0px 8px #690069)*/ drop-shadow(1px 1px 0 #ffffff) 
+    drop-shadow(-1px -1px 0 #ffffff)
+    drop-shadow(0px 0px 5px #ffffff) !important;
 }
 
 .character-select-button img:hover {
@@ -245,7 +245,11 @@ body {
 }
 
 #settings-cancel-button {
-    border-color: #ffaaaa !important;
+    border-color: #ffffff !important;
+}
+
+#settings-clear-storage-button {
+    border-color: #ff4444 !important;
 }
 
 #custom-error {
@@ -527,42 +531,68 @@ body {
 .perk-slot-result {
     min-width: 96px;
     max-width: 96px;
+
+    transition: all 0.2s ease-in-out;
+
+    cursor: pointer;
 }
 .perk-slot-result, .perk-slot-result img{
     border-radius: 100%;
 }
 
-.perk-slot-result-equiped{
-    filter:hue-rotate(280deg) contrast(90%);
+.perk-slot-result-equipped{
+    filter:hue-rotate(180deg) contrast(90%);
 }
 .perk-slot-result-banned{
     filter:hue-rotate(60deg) contrast(120%);
 }
 
+.perk-slot-result-banned-and-equipped {
+    filter: hue-rotate(100deg) contrast(105%) saturate(140%);
+}
+
 .perk-slot-result:hover {
-    filter:drop-shadow(0px 0px 2px #cecece);
+    filter: drop-shadow(0px 0px 2px #cecece);
 }
 
 .perk-slot-result:hover img {
-    filter:drop-shadow(0px 0px 4px #ffffff);
+    
+    -webkit-filter:
+                drop-shadow(0px 0px 2px #ffffff80)
+                drop-shadow(1px 1px 0 #cecece40)
+                drop-shadow(-1px 1px 0 #cecece40)
+                drop-shadow(1px -1px 0 #cecece40)
+                drop-shadow(-1px -1px 0 #cecece40);
+
+    filter: 
+            drop-shadow(0px 0px 2px #ffffff80)
+            drop-shadow(1px 1px 0 #cecece40)
+            drop-shadow(-1px 1px 0 #cecece40)
+            drop-shadow(1px -1px 0 #cecece40)
+            drop-shadow(-1px -1px 0 #cecece40);
 }
 
 .perk-slot-result:active img {
     filter:drop-shadow(0px 0px 2px #ffffff);
 }
 
-.perk-slot-result-equiped:hover {
-    filter:hue-rotate(280deg) contrast(90%) drop-shadow(0px 0px 2px #cecece);
+.perk-slot-result-equipped:hover {
+    filter:hue-rotate(180deg) contrast(90%) drop-shadow(0px 0px 2px #a4ff9c);
 }
 
 .perk-slot-result-banned:hover {
-    filter:hue-rotate(60deg) contrast(120%) drop-shadow(0px 0px 2px #ce0000);
+    filter:hue-rotate(60deg) contrast(120%) drop-shadow(0px 0px 3px #ce0000);
 }
 
+.perk-slot-result-banned-and-equipped:hover {
+    filter: hue-rotate(100deg) contrast(105%) saturate(140%) drop-shadow(0px 0px 2px #ce8600);
+}
 
 .perk-slot-result img {
     aspect-ratio: 1/1;
     max-width: 100%;
+
+    transition: all 0.2s ease-in-out;
 }
 
 #perk-highlight-name {

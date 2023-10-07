@@ -75,9 +75,10 @@ SurvivorPerks = [
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
+// Load settings from local storage.
+
+//if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
-if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
-if(localStorage.getItem("customBalanceOverride")) customBalanceOverride = localStorage.getItem("customBalanceOverride") == "true";
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 
 var socket = null;
@@ -103,7 +104,8 @@ function main() {
         ];
     }    
 
-    if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+    // Loads survivor perks from local storage
+    //if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
 
     // Load data
     GetPerks();
@@ -121,11 +123,49 @@ function main() {
     UpdateBalancingDropdown();
 
     // Set current balancing
+
+    // Sets balancing to either local storage or default, in this case we're doing local storage since it's default balancing.
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
+
+    // Set balancing to said index.
     currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
 
+    // Load custom balancing if enabled
+    if(localStorage.getItem("customBalanceOverride")) {
+        // Custom balancing override is valid
+
+        // Is it enabled?
+        if (localStorage.getItem("customBalanceOverride") == "true") {
+            // Custom balancing is enabled
+            customBalanceOverride = true;
+
+            // Set balancing to custom balancing
+            if (localStorage.getItem("currentBalancing")) {
+                currentBalancing = JSON.parse(localStorage.getItem("currentBalancing"));
+            }
+        }
+    }
+
+
+
+    // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
+
+    // Update the custom balance checkbox to show if custom balancing is enabled
+    document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
+
+    // Update the custom balance text area to show the current custom balancing
+    if (customBalanceOverride) {
+        document.getElementById("custom-balance-select").value = JSON.stringify(currentBalancing, null, 4);
+        
+        // Hide the balancing select dropdown
+        document.getElementById("balancing-select").hidden = true;
+        document.getElementById("balance-mode-label").hidden = true;
+
+        // Show the custom balancing text area
+        document.getElementById("custom-balance-select").hidden = false;
+    }
 
     CheckForBalancingErrors();
 }
@@ -266,12 +306,6 @@ function UpdateBalancingDropdown() {
             customBalancingContainer.innerHTML = "";
         }
     });
-    
-    const onlyNonBannedCheckbox = document.getElementById("only-non-banned");
-    onlyNonBannedCheckbox.addEventListener("change", function(){
-        onlyShowNonBanned = onlyNonBannedCheckbox.checked;
-        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
-    })
 }
 
 /**
@@ -488,7 +522,11 @@ function LoadSettingsEvents() {
 
         if (customBalanceOverride) {
             currentBalancing = GetCustomBalancing();
-            currentBalancingIndex = -1;
+
+            // Save custom balancing to local storage
+            localStorage.setItem("currentBalancing", JSON.stringify(currentBalancing));
+
+            //currentBalancingIndex = -1;
         } else {
             currentBalancingIndex = parseInt(document.getElementById("balancing-select").value);
             currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
@@ -511,6 +549,20 @@ function LoadSettingsEvents() {
 
         CheckForBalancingErrors();
         SendRoomDataUpdate();
+    });
+
+    const onlyNonBannedCheckbox = document.getElementById("only-non-banned");
+    onlyNonBannedCheckbox.addEventListener("change", function(){
+        onlyShowNonBanned = onlyNonBannedCheckbox.checked;
+        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
+    })
+
+    const clearStorageButton = document.getElementById("settings-clear-storage-button");
+    clearStorageButton.addEventListener("click", function() {
+        if (confirm("Are you sure you want to clear your local storage? This will delete all of your settings including saved custom balancing.")) {
+            localStorage.clear();
+            location.reload();
+        }
     });
 }
 
@@ -616,18 +668,45 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 
+        let isBanned = false;
+        let isEquipped = false;
+
         let perkElement = document.createElement("div");
         perkElement.classList.add("perk-slot-result");
+        
+        // Check if the perk is banned.
         if(bannedPerks.includes(currentPerk["id"] + "")){
-            perkElement.classList.add("perk-slot-result-banned");
+            //perkElement.classList.add("perk-slot-result-banned");
+            isBanned = true;
         }
+
+        // Check if the perk is already equipped.
+        let equipCount = 0;
         for(const surv of SurvivorPerks){
             for(const perk of surv){
                 if(perk && perk.id == currentPerk["id"]){
-                    perkElement.classList.add("perk-slot-result-equiped");
+                    //perkElement.classList.add("perk-slot-result-equipped");
+                    equipCount++;
                 }
             }
         }
+
+        // If the perk is equipped more than the max amount, it's equipped fully.
+        if (equipCount >= currentBalancing.MaxPerkRepetition) {
+            isEquipped = true;
+        }
+
+        // Add classes based on perk status
+        if (isBanned) {
+            if (isEquipped) {
+                perkElement.classList.add("perk-slot-result-banned-and-equipped");
+            } else {
+                perkElement.classList.add("perk-slot-result-banned");
+            }
+        } else if (isEquipped) {
+            perkElement.classList.add("perk-slot-result-equipped");
+        }
+
         perkElement.dataset.perkID = currentPerk["id"];
 
 
@@ -659,7 +738,19 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         perkElement.addEventListener("mouseover", function() {
             var perkTooltip = document.getElementById("perk-highlight-name");
 
-            perkTooltip.innerText = currentPerk["name"];
+            perkTooltip.innerHTML = currentPerk["name"];
+
+            if (isBanned) {
+                if (!isEquipped) {
+                    perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+                } else {
+                    perkTooltip.innerHTML += " <span style='color: #ffbd80'>(Equipped + Banned)</span>";
+                }
+            } else {
+                if (isEquipped) {
+                    perkTooltip.innerHTML += " <span style='color: #80ff80'>(Equipped)</span>";
+                }
+            }
         });
     }
 }
@@ -808,11 +899,18 @@ function GetOfferings() {
 function GetBannedPerks(){
     let bannedPerks = new Array()
     
+    // Concatenate survivor perk bans
     bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorIndvPerkBans)
+
+    // Concatenate tier survivor bans based on killer overrides
     for(const tier of currentBalancing.KillerOverride[selectedKiller].SurvivorBalanceTiers){
         bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].SurvivorIndvPerkBans)
     }
+
+    // Concatenate killer perk bans
     bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].KillerIndvPerkBans)
+
+    // Concatenate tier killer bans based on killer overrides
     for(const tier of currentBalancing.KillerOverride[selectedKiller].BalanceTiers){
         bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].KillerIndvPerkBans)
     }
