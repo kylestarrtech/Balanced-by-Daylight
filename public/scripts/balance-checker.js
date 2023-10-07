@@ -29,8 +29,10 @@ var BalancePresets = [
         Balancing: {}
     }
 ]
+
 var currentBalancingIndex = 0;
 var customBalanceOverride = false;
+var onlyShowNonBanned = false;
 
 var currentBalancing = {};
 
@@ -73,6 +75,10 @@ SurvivorPerks = [
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
+if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
+if(localStorage.getItem("customBalanceOverride")) customBalanceOverride = !!localStorage.getItem("customBalanceOverride");
+if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = !!localStorage.getItem("onlyShowNonBanned");
+
 var socket = null;
 var RoomID = undefined;
 
@@ -113,7 +119,10 @@ function main() {
 
     // Set current balancing
     currentBalancingIndex = 0;
+    if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
     currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+
+    document.getElementById("only-non-banned").checked = onlyShowNonBanned;
 
     CheckForBalancingErrors();
 }
@@ -208,9 +217,11 @@ function UpdateBalancingDropdown() {
 
         balancingDropdown.appendChild(optionElement);
     }
+    balancingDropdown.value = currentBalancingIndex;
 
     balancingDropdown.addEventListener("change", function() {
         currentBalancingIndex = parseInt(balancingDropdown.value);
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     });
@@ -228,6 +239,7 @@ function UpdateBalancingDropdown() {
 
     customBalanceCheckbox.addEventListener("change", function() {
         customBalanceOverride = customBalanceCheckbox.checked;
+        localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
         var customBalancingContainer = document.getElementById("custom-balance-select");
         var customBalanceLabel = document.getElementById("balance-mode-label");
@@ -247,6 +259,12 @@ function UpdateBalancingDropdown() {
             customBalancingContainer.innerHTML = "";
         }
     });
+    
+    const onlyNonBannedCheckbox = document.getElementById("only-non-banned");
+    onlyNonBannedCheckbox.addEventListener("change", function(){
+        onlyShowNonBanned = onlyNonBannedCheckbox.checked;
+        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
+    })
 }
 
 /**
@@ -342,6 +360,9 @@ function LoadImportEvents() {
             selectedKiller = importDataObj.selectedKiller;
             customBalanceOverride = importDataObj.customBalanceOverride;
             currentBalancing = importDataObj.currentBalancing;
+
+            localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+            localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
             // Update UI
             UpdatePerkUI();
@@ -462,6 +483,7 @@ function LoadSettingsEvents() {
             currentBalancingIndex = parseInt(document.getElementById("balancing-select").value);
             currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
         }
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         var settingsMenu = document.getElementById("settings-menu");
         settingsMenu.classList.remove("outro-blur-animation-class-0p5s");
@@ -578,13 +600,16 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
         perkTooltip.innerText = "Blank Perk";
     });
-    
+
+    const bannedPerks = GetBannedPerks()    
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 
         let perkElement = document.createElement("div");
         perkElement.classList.add("perk-slot-result");
-
+        if(bannedPerks.includes(currentPerk["id"] + "")){
+            perkElement.classList.add("perk-slot-result-banned");
+        }
         perkElement.dataset.perkID = currentPerk["id"];
 
 
@@ -624,9 +649,15 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
+    let bannedPerks = new Array()
+    if(onlyShowNonBanned){
+        bannedPerks = GetBannedPerks()
+    }
+
     for (var i = 0; i < Perks.length; i++) {
-        if (Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if (Perks[i].survivorPerk == isSurvivor) {
+        if(Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) continue
+            if(Perks[i].survivorPerk == isSurvivor){
                 searchResults.push(Perks[i]);
             }
         }
@@ -755,6 +786,21 @@ function GetOfferings() {
     xhttp.send();
 }
 
+function GetBannedPerks(){
+    let bannedPerks = new Array()
+    
+    bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorIndvPerkBans)
+    for(const tier of currentBalancing.KillerOverride[selectedKiller].SurvivorBalanceTiers){
+        bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].SurvivorIndvPerkBans)
+    }
+    bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].KillerIndvPerkBans)
+    for(const tier of currentBalancing.KillerOverride[selectedKiller].BalanceTiers){
+        bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].KillerIndvPerkBans)
+    }
+
+    return bannedPerks
+}
+
 function GetBalancing() {
     // Subtract one due to customs
     for (var i = 0; i < BalancePresets.length; i++) {
@@ -817,8 +863,10 @@ function GetCustomBalancing() {
         var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
         customBalanceCheckbox.checked = false;
         customBalanceOverride = customBalanceCheckbox.checked;
+        localStorage.setItem("customBalanceOverride", customBalanceOverride);
         
         currentBalancingIndex = 0;
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     }
@@ -1525,6 +1573,7 @@ function CreateStatusObject() {
         "selectedKiller": selectedKiller,
         "currentBalancingIndex": currentBalancingIndex,
         "customBalanceOverride": customBalanceOverride,
+        "onlyShowNonBanned": onlyShowNonBanned,
         "currentBalancing": currentBalancing,
         "roomID": RoomID
     }
@@ -1580,8 +1629,13 @@ function CreateSocketEvents() {
         selectedKiller = appStatus.selectedKiller;
         currentBalancingIndex = appStatus.currentBalancingIndex;
         customBalanceOverride = appStatus.customBalanceOverride;
+        onlyShowNonBanned = appStatus.onlyShowNonBanned;
         currentBalancing = appStatus.currentBalancing;
         RoomID = appStatus.roomID;
+
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+        localStorage.setItem("customBalanceOverride", customBalanceOverride);
+        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
     
         // Update UI
         UpdateBalancingDropdown();

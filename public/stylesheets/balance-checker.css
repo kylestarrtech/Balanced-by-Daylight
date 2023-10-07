@@ -520,11 +520,16 @@ body {
     min-width: 96px;
     max-width: 96px;
 }
+.perk-slot-result, .perk-slot-result img{
+    border-radius: 100%;
+}
+
+.perk-slot-result-banned{
+    filter:hue-rotate(60deg) contrast(120%);
+}
 
 .perk-slot-result:hover {
-    /*background-color: #ffffff10;*/
-
-    filter:drop-shadow(0px 0px 4px #000000);
+    filter:drop-shadow(0px 0px 2px #cecece);
 }
 
 .perk-slot-result:hover img {
@@ -534,6 +539,11 @@ body {
 .perk-slot-result:active img {
     filter:drop-shadow(0px 0px 2px #ffffff);
 }
+
+.perk-slot-result-banned:hover {
+    filter:hue-rotate(60deg) contrast(120%) drop-shadow(0px 0px 2px #ce0000);
+}
+
 
 .perk-slot-result img {
     aspect-ratio: 1/1;
