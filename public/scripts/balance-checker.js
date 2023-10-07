@@ -1411,7 +1411,7 @@ function UpdateErrorUI() {
     let survCpt = 0
     let perkCpt = 0
     if(document.querySelector(".perk-slot-result-banned")){
-        document.querySelector(".perk-slot-result-banned").classList.remove("perk-slot-result-banned")
+        document.querySelectorAll(".perk-slot-result-banned").forEach(perkSlot => perkSlot.classList.remove("perk-slot-result-banned"))
     }
     for(const surv of SurvivorPerks){
         for(const perk of surv){
