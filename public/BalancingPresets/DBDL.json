@@ -1516,8 +1516,15 @@
                 "Improvised Cattle Prod",
                 "Self-Destruct Bolt"
             ],
-            "SurvivorOfferings": [],
-            "KillerOfferings": []
+            "SurvivorOfferings": [
+                0,
+                2,
+                5,
+                6
+            ],
+            "KillerOfferings": [
+                5
+            ]
         }
     ]
 }
