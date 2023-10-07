@@ -532,6 +532,9 @@ body {
     border-radius: 100%;
 }
 
+.perk-slot-result-equiped{
+    filter:hue-rotate(280deg) contrast(90%);
+}
 .perk-slot-result-banned{
     filter:hue-rotate(60deg) contrast(120%);
 }
@@ -546,6 +549,10 @@ body {
 
 .perk-slot-result:active img {
     filter:drop-shadow(0px 0px 2px #ffffff);
+}
+
+.perk-slot-result-equiped:hover {
+    filter:hue-rotate(280deg) contrast(90%) drop-shadow(0px 0px 2px #cecece);
 }
 
 .perk-slot-result-banned:hover {

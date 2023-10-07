@@ -621,6 +621,13 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         if(bannedPerks.includes(currentPerk["id"] + "")){
             perkElement.classList.add("perk-slot-result-banned");
         }
+        for(const surv of SurvivorPerks){
+            for(const perk of surv){
+                if(perk && perk.id == currentPerk["id"]){
+                    perkElement.classList.add("perk-slot-result-equiped");
+                }
+            }
+        }
         perkElement.dataset.perkID = currentPerk["id"];
 
 
