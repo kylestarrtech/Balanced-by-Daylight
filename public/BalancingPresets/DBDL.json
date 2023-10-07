@@ -717,6 +717,7 @@
                 "38",
                 "54",
                 "58",
+                "63",
                 "64",
                 "67",
                 "77",
@@ -1487,13 +1488,16 @@
         {
             "Name": "The Xenomorph",
             "Map": [
-                0
+                1,
+                9
             ],
             "BalanceTiers": [
-                0
+                0,
+                2
             ],
             "SurvivorBalanceTiers": [
-                0
+                0,
+                2
             ],
             "AntiFacecampPermitted": false,
             "KillerIndvPerkBans": [],
@@ -1505,7 +1509,13 @@
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
-            "IndividualAddonBans": [],
+            "IndividualAddonBans": [
+                "Acidic Blood",
+                "Cereal Rations",
+                "Harpoon Gun",
+                "Improvised Cattle Prod",
+                "Self-Destruct Bolt"
+            ],
             "SurvivorOfferings": [],
             "KillerOfferings": []
         }
