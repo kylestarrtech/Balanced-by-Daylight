@@ -77,7 +77,7 @@ currentBalancingIndex = 0;
 
 // Load settings from local storage.
 
-//if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 
@@ -105,7 +105,7 @@ function main() {
     }    
 
     // Loads survivor perks from local storage
-    //if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+    if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
 
     // Load data
     GetPerks();
@@ -191,6 +191,7 @@ function GetConfig() {
 /**
  * A function to update the perk frontend.
  */
+let dragTargetElement = {}
 function UpdatePerkUI() {
     // Get the builds container
     var buildsContainer = document.getElementById("survivor-builds-container");
@@ -224,6 +225,50 @@ function UpdatePerkUI() {
 
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
+
+            perkElement.addEventListener("dragstart", function(event){
+                event.dataTransfer.effectAllowed = "move"
+                dragTargetElement = {}
+                dragTargetElement.draggable = 0
+                event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+                event.dataTransfer.sourcePerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                event.dataTransfer.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+            });
+            perkElement.addEventListener("dragover", function(event){
+                event.preventDefault()
+                event.dataTransfer.dropEffect = "move"
+            });
+            perkElement.addEventListener("dragenter", function(event){
+                event.preventDefault()
+                dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+                dragTargetElement.targetPerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                dragTargetElement.targetPerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+                dragTargetElement.draggable++
+            });
+            perkElement.addEventListener("dragleave", function(event){
+                event.preventDefault()
+                dragTargetElement.draggable--
+            });
+            perkElement.addEventListener("dragend", function(event){
+                event.preventDefault()
+
+                const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+                const sourcePerk = parseInt(event.dataTransfer.sourcePerk) 
+
+                if(dragTargetElement.draggable <= 0){
+                    SurvivorPerks[sourceSurv][sourcePerk] = null
+                }else{
+                    const targetSurv = parseInt(dragTargetElement.targetSurv)
+                    const targetPerk = parseInt(dragTargetElement.targetPerk) 
+                    
+                    SurvivorPerks[sourceSurv][sourcePerk] = dragTargetElement.targetPerkId ? GetPerkById(dragTargetElement.targetPerkId) : null
+                    SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
+                }
+
+                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                UpdatePerkUI()
+                CheckForBalancingErrors()
+            });
 
             perkElement.dataset.survivorID = validChildI;
             perkElement.dataset.perkID = j;
@@ -916,6 +961,18 @@ function GetBannedPerks(){
     }
 
     return bannedPerks
+}
+
+function GetPerkIdByFileName(fileName){
+    for(const perk of Perks){
+        if(perk.icon == fileName) return perk.id
+    }
+}
+
+function GetPerkById(id){
+    for(const perk of Perks){
+        if(perk.id == id) return perk
+    }
 }
 
 function GetBalancing() {
