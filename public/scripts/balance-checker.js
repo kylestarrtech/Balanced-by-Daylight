@@ -76,8 +76,8 @@ selectedKiller = 0;
 currentBalancingIndex = 0;
 
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
-if(localStorage.getItem("customBalanceOverride")) customBalanceOverride = !!localStorage.getItem("customBalanceOverride");
-if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = !!localStorage.getItem("onlyShowNonBanned");
+if(localStorage.getItem("customBalanceOverride")) customBalanceOverride = localStorage.getItem("customBalanceOverride") == "true";
+if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 
 var socket = null;
 var RoomID = undefined;
@@ -446,6 +446,10 @@ function SetKillerCharacterSelectEvents() {
             }
 
             selectedKiller = newIndex;
+
+            if(document.querySelector(`.character-selected`))
+                document.querySelector(`.character-selected`).classList.remove("character-selected")
+            document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
@@ -1387,6 +1391,28 @@ function UpdateErrorUI() {
         errorContainer.appendChild(errorDescription);
 
         ErrorElementList.push(errorContainer);
+    }
+
+    let survCpt = 0
+    let perkCpt = 0
+    for(const surv of SurvivorPerks){
+        for(const perk of surv){
+            const survPerk = document.querySelector(`[data-survivor-i-d="${survCpt}"][data-perk-i-d="${perkCpt}"]`)
+
+            for(const error of MasterErrorList){
+                if(survPerk && survPerk.classList){
+                    if(perk && error.REASON.includes(perk.name)){
+                        survPerk.classList.add("perk-slot-result-banned")
+                        break
+                    }
+                    survPerk.classList.remove("perk-slot-result-banned")
+                }
+            }
+
+            perkCpt++
+        }
+        perkCpt = 0
+        survCpt++
     }
 
     // Go through error list and add to container with a delay of 100ms in between each error.
