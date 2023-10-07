@@ -1395,17 +1395,17 @@ function UpdateErrorUI() {
 
     let survCpt = 0
     let perkCpt = 0
+    if(document.querySelector(".perk-slot-result-banned")){
+        document.querySelector(".perk-slot-result-banned").classList.remove("perk-slot-result-banned")
+    }
     for(const surv of SurvivorPerks){
         for(const perk of surv){
             const survPerk = document.querySelector(`[data-survivor-i-d="${survCpt}"][data-perk-i-d="${perkCpt}"]`)
 
             for(const error of MasterErrorList){
-                if(survPerk && survPerk.classList){
-                    if(perk && error.REASON.includes(perk.name)){
-                        survPerk.classList.add("perk-slot-result-banned")
-                        break
-                    }
-                    survPerk.classList.remove("perk-slot-result-banned")
+                if(survPerk && survPerk.classList && perk && error.REASON.includes(perk.name)){
+                    survPerk.classList.add("perk-slot-result-banned")
+                    break
                 }
             }
 
