@@ -76,6 +76,7 @@ selectedKiller = 0;
 currentBalancingIndex = 0;
 
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
+if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
 if(localStorage.getItem("customBalanceOverride")) customBalanceOverride = localStorage.getItem("customBalanceOverride") == "true";
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 
@@ -100,7 +101,9 @@ function main() {
             undefined,
             undefined
         ];
-    }
+    }    
+
+    if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
 
     // Load data
     GetPerks();
@@ -201,6 +204,10 @@ function UpdatePerkUI() {
 function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
     selectedKillerTitle.innerText = `Selected Killer: ${Killers[selectedKiller]}`;
+    
+    if(document.querySelector(`.character-selected`))
+        document.querySelector(`.character-selected`).classList.remove("character-selected")
+    document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
 function UpdateBalancingDropdown() {
@@ -361,7 +368,9 @@ function LoadImportEvents() {
             customBalanceOverride = importDataObj.customBalanceOverride;
             currentBalancing = importDataObj.currentBalancing;
 
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+            localStorage.setItem("selectedKiller", selectedKiller);
             localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
             // Update UI
@@ -446,10 +455,7 @@ function SetKillerCharacterSelectEvents() {
             }
 
             selectedKiller = newIndex;
-
-            if(document.querySelector(`.character-selected`))
-                document.querySelector(`.character-selected`).classList.remove("character-selected")
-            document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
+            localStorage.setItem("selectedKiller", selectedKiller);
 
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
@@ -637,8 +643,10 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             perkSearchContainer.dataset.targetPerk = undefined;
 
             CheckForBalancingErrors();
-
+            
             SendRoomDataUpdate();
+            console.log(JSON.stringify(SurvivorPerks))
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         });
 
         perkElement.addEventListener("mouseover", function() {
@@ -1659,6 +1667,8 @@ function CreateSocketEvents() {
         currentBalancing = appStatus.currentBalancing;
         RoomID = appStatus.roomID;
 
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        localStorage.setItem("selectedKiller", selectedKiller);
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
         localStorage.setItem("customBalanceOverride", customBalanceOverride);
         localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
