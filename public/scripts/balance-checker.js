@@ -603,6 +603,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         perkSearchContainer.dataset.targetPerk = undefined;
 
         CheckForBalancingErrors();
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
     });
 
     blankPerk.addEventListener("mouseover", function() {
@@ -645,7 +646,6 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             CheckForBalancingErrors();
             
             SendRoomDataUpdate();
-            console.log(JSON.stringify(SurvivorPerks))
             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         });
 
