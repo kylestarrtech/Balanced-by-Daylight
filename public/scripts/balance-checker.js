@@ -132,9 +132,7 @@ function main() {
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 
-    // Set balancing to said index.
-    currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
-
+    let loadDefaultBalance = false;
     // Load custom balancing if enabled
     if(localStorage.getItem("customBalanceOverride")) {
         // Custom balancing override is valid
@@ -143,13 +141,23 @@ function main() {
         if (localStorage.getItem("customBalanceOverride") == "true") {
             // Custom balancing is enabled
             customBalanceOverride = true;
+            loadDefaultBalance = true;
 
-            // Set balancing to custom balancing
-            if (localStorage.getItem("currentBalancing")) {
+            // Set balancing to custom balancing if it's valid
+            if (localStorage.getItem("currentBalancing") &&
+                ValidateCustomBalancing(JSON.parse(localStorage.getItem("currentBalancing")))) {
+                    
                 currentBalancing = JSON.parse(localStorage.getItem("currentBalancing"));
             }
         }
     }
+
+    // Load default balancing if custom balancing is not enabled/not saved.
+    if (loadDefaultBalance) {
+            // Set balancing to said index.
+        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+    }
+
 
 
 
