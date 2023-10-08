@@ -1,11 +1,5 @@
 FEEL FREE TO CHANGE THIS FILE FOR YOUR COMMIT IF YOU NEED TO EXPLAIN SOMETHING IN GREATER DETAIL.
 
-- Removed the balancing/perk loading functionality from local storage (Kept the code, just commented. If this becomes requested in the future or makes more sense in my design soon I feel like it could be dope!)
-- Changed the "already equipped" perk colour to more closely match Dead by Daylight's "Very Rare"
-- Added text to indicate whether a perk is equipped, banned, or free on perk search
-- Moved nonBanned event to go into the settings event function for organization
-- Added a clear storage button in settings just in case any storage bugs arise.
-- Added custom balancing to saves.
-- Added indicator to show if a perk was equipped AND banned.
-- Added transition effects to perk search selection.
-- Added subtle outline to perks in search on hover, it's barely noticable but it's there.
+- Updated DBDL balancing (Resurgence for some reason was not working, I have no fucking clue what happened so I just removed it and readded it and it worked well so gg)
+- Updated COTF Xenomorph Balancing (Xenomorph was not added)
+- Added server config option decide whether or not the program should save builds, if builds need to be saved then you can just toggle this to true.
