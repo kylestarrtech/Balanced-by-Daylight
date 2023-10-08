@@ -1,4 +1,4 @@
 {
-    "multiplayer-enabled": false,
-    "save-builds": false
+    "multiplayerEnabled": false,
+    "saveBuilds": false
 }

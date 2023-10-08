@@ -1849,7 +1849,7 @@ function CreateSocketEvents() {
             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
             localStorage.setItem("selectedKiller", selectedKiller);
         }
-        
+
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
         localStorage.setItem("customBalanceOverride", customBalanceOverride);
         localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
