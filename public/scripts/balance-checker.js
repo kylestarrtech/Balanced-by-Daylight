@@ -29,8 +29,10 @@ var BalancePresets = [
         Balancing: {}
     }
 ]
+
 var currentBalancingIndex = 0;
 var customBalanceOverride = false;
+var onlyShowNonBanned = false;
 
 var currentBalancing = {};
 
@@ -73,6 +75,12 @@ SurvivorPerks = [
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
+// Load settings from local storage.
+
+//if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
+if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
+
 var socket = null;
 var RoomID = undefined;
 
@@ -94,7 +102,14 @@ function main() {
             undefined,
             undefined
         ];
+    }    
+
+    // Loads survivor perks from local storage if enabled
+    if (Config.saveBuilds) {
+        if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+        if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
     }
+
 
     // Load data
     GetPerks();
@@ -112,8 +127,55 @@ function main() {
     UpdateBalancingDropdown();
 
     // Set current balancing
+
+    // Sets balancing to either local storage or default, in this case we're doing local storage since it's default balancing.
     currentBalancingIndex = 0;
-    currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+    if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
+
+    let loadDefaultBalance = true;
+    // Load custom balancing if enabled
+    if(localStorage.getItem("customBalanceOverride")) {
+        // Custom balancing override is valid
+
+        // Is it enabled?
+        if (localStorage.getItem("customBalanceOverride") == "true") {
+            // Custom balancing is enabled
+            customBalanceOverride = true;
+
+            // Set balancing to custom balancing if it's valid
+            if (localStorage.getItem("currentBalancing") &&
+                ValidateCustomBalancing(JSON.parse(localStorage.getItem("currentBalancing")))) {
+                    
+                currentBalancing = JSON.parse(localStorage.getItem("currentBalancing"));
+                loadDefaultBalance = false;
+            }
+
+        }
+    }
+
+    // Load default balancing if custom balancing is not enabled/not saved.
+    if (loadDefaultBalance) {
+            // Set balancing to said index.
+        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+    }
+
+    // Update the checkbox to show non-banned perks in the search
+    document.getElementById("only-non-banned").checked = onlyShowNonBanned;
+
+    // Update the custom balance checkbox to show if custom balancing is enabled
+    document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
+
+    // Update the custom balance text area to show the current custom balancing
+    if (customBalanceOverride) {
+        document.getElementById("custom-balance-select").value = JSON.stringify(currentBalancing, null, 4);
+        
+        // Hide the balancing select dropdown
+        document.getElementById("balancing-select").hidden = true;
+        document.getElementById("balance-mode-label").hidden = true;
+
+        // Show the custom balancing text area
+        document.getElementById("custom-balance-select").hidden = false;
+    }
 
     CheckForBalancingErrors();
 }
@@ -139,6 +201,7 @@ function GetConfig() {
 /**
  * A function to update the perk frontend.
  */
+let dragTargetElement = {}
 function UpdatePerkUI() {
     // Get the builds container
     var buildsContainer = document.getElementById("survivor-builds-container");
@@ -173,6 +236,52 @@ function UpdatePerkUI() {
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
 
+            perkElement.addEventListener("dragstart", function(event){
+                event.dataTransfer.effectAllowed = "move"
+                dragTargetElement = {}
+                dragTargetElement.draggable = 0
+                event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+                event.dataTransfer.sourcePerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                event.dataTransfer.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+            });
+            perkElement.addEventListener("dragover", function(event){
+                event.preventDefault()
+                event.dataTransfer.dropEffect = "move"
+            });
+            perkElement.addEventListener("dragenter", function(event){
+                event.preventDefault()
+                dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+                dragTargetElement.targetPerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                dragTargetElement.targetPerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+                dragTargetElement.draggable++
+            });
+            perkElement.addEventListener("dragleave", function(event){
+                event.preventDefault()
+                dragTargetElement.draggable--
+            });
+            perkElement.addEventListener("dragend", function(event){
+                event.preventDefault()
+
+                const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+                const sourcePerk = parseInt(event.dataTransfer.sourcePerk) 
+
+                if(dragTargetElement.draggable <= 0){
+                    SurvivorPerks[sourceSurv][sourcePerk] = null
+                }else{
+                    const targetSurv = parseInt(dragTargetElement.targetSurv)
+                    const targetPerk = parseInt(dragTargetElement.targetPerk) 
+                    
+                    SurvivorPerks[sourceSurv][sourcePerk] = dragTargetElement.targetPerkId ? GetPerkById(dragTargetElement.targetPerkId) : null
+                    SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
+                }
+
+                if (Config.saveBuilds) {
+                    localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                }
+                UpdatePerkUI()
+                CheckForBalancingErrors()
+            });
+
             perkElement.dataset.survivorID = validChildI;
             perkElement.dataset.perkID = j;
 
@@ -192,6 +301,14 @@ function UpdatePerkUI() {
 function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
     selectedKillerTitle.innerText = `Selected Killer: ${Killers[selectedKiller]}`;
+    
+    // Remove all character-selected classes
+    if(document.querySelector(`.character-selected`)) {
+        document.querySelector(`.character-selected`).classList.remove("character-selected")
+    }
+    
+    // Add character-selected class to selected killer
+    document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
 function UpdateBalancingDropdown() {
@@ -208,9 +325,11 @@ function UpdateBalancingDropdown() {
 
         balancingDropdown.appendChild(optionElement);
     }
+    balancingDropdown.value = currentBalancingIndex;
 
     balancingDropdown.addEventListener("change", function() {
         currentBalancingIndex = parseInt(balancingDropdown.value);
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     });
@@ -228,6 +347,7 @@ function UpdateBalancingDropdown() {
 
     customBalanceCheckbox.addEventListener("change", function() {
         customBalanceOverride = customBalanceCheckbox.checked;
+        localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
         var customBalancingContainer = document.getElementById("custom-balance-select");
         var customBalanceLabel = document.getElementById("balance-mode-label");
@@ -343,6 +463,13 @@ function LoadImportEvents() {
             customBalanceOverride = importDataObj.customBalanceOverride;
             currentBalancing = importDataObj.currentBalancing;
 
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                localStorage.setItem("selectedKiller", selectedKiller);
+            }
+            localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+            localStorage.setItem("customBalanceOverride", customBalanceOverride);
+
             // Update UI
             UpdatePerkUI();
             UpdateBalancingDropdown();
@@ -425,6 +552,7 @@ function SetKillerCharacterSelectEvents() {
             }
 
             selectedKiller = newIndex;
+            localStorage.setItem("selectedKiller", selectedKiller);
 
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
@@ -457,11 +585,16 @@ function LoadSettingsEvents() {
 
         if (customBalanceOverride) {
             currentBalancing = GetCustomBalancing();
-            currentBalancingIndex = -1;
+
+            // Save custom balancing to local storage
+            localStorage.setItem("currentBalancing", JSON.stringify(currentBalancing));
+
+            //currentBalancingIndex = -1;
         } else {
             currentBalancingIndex = parseInt(document.getElementById("balancing-select").value);
             currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
         }
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         var settingsMenu = document.getElementById("settings-menu");
         settingsMenu.classList.remove("outro-blur-animation-class-0p5s");
@@ -479,6 +612,20 @@ function LoadSettingsEvents() {
 
         CheckForBalancingErrors();
         SendRoomDataUpdate();
+    });
+
+    const onlyNonBannedCheckbox = document.getElementById("only-non-banned");
+    onlyNonBannedCheckbox.addEventListener("change", function(){
+        onlyShowNonBanned = onlyNonBannedCheckbox.checked;
+        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
+    })
+
+    const clearStorageButton = document.getElementById("settings-clear-storage-button");
+    clearStorageButton.addEventListener("click", function() {
+        if (confirm("Are you sure you want to clear your local storage? This will delete all of your settings including saved custom balancing.")) {
+            localStorage.clear();
+            location.reload();
+        }
     });
 }
 
@@ -530,8 +677,9 @@ function LoadPerkSelectionEvents() {
 function LoadPerkSearchEvents() {
     var perkSearchContainer = document.getElementById("perk-search-container");
 
-    perkSearchContainer.addEventListener("click", function() {
-        perkSearchContainer.hidden = true;
+    perkSearchContainer.addEventListener("click", function(event) {
+        if(event.target.tagName === "IMG" || event.target.classList.contains("background-blur"))
+            perkSearchContainer.hidden = true;
     });
 
     var perkSearchBar = document.getElementById("perk-search-bar");
@@ -570,6 +718,9 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         perkSearchContainer.dataset.targetPerk = undefined;
 
         CheckForBalancingErrors();
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        }
     });
 
     blankPerk.addEventListener("mouseover", function() {
@@ -577,12 +728,49 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
         perkTooltip.innerText = "Blank Perk";
     });
-    
+
+    const bannedPerks = GetBannedPerks()    
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 
+        let isBanned = false;
+        let isEquipped = false;
+
         let perkElement = document.createElement("div");
         perkElement.classList.add("perk-slot-result");
+        
+        // Check if the perk is banned.
+        if(bannedPerks.includes(currentPerk["id"] + "")){
+            //perkElement.classList.add("perk-slot-result-banned");
+            isBanned = true;
+        }
+
+        // Check if the perk is already equipped.
+        let equipCount = 0;
+        for(const surv of SurvivorPerks){
+            for(const perk of surv){
+                if(perk && perk.id == currentPerk["id"]){
+                    //perkElement.classList.add("perk-slot-result-equipped");
+                    equipCount++;
+                }
+            }
+        }
+
+        // If the perk is equipped more than the max amount, it's equipped fully.
+        if (equipCount >= currentBalancing.MaxPerkRepetition) {
+            isEquipped = true;
+        }
+
+        // Add classes based on perk status
+        if (isBanned) {
+            if (isEquipped) {
+                perkElement.classList.add("perk-slot-result-banned-and-equipped");
+            } else {
+                perkElement.classList.add("perk-slot-result-banned");
+            }
+        } else if (isEquipped) {
+            perkElement.classList.add("perk-slot-result-equipped");
+        }
 
         perkElement.dataset.perkID = currentPerk["id"];
 
@@ -607,14 +795,29 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             perkSearchContainer.dataset.targetPerk = undefined;
 
             CheckForBalancingErrors();
-
+            
             SendRoomDataUpdate();
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            }
         });
 
         perkElement.addEventListener("mouseover", function() {
             var perkTooltip = document.getElementById("perk-highlight-name");
 
-            perkTooltip.innerText = currentPerk["name"];
+            perkTooltip.innerHTML = currentPerk["name"];
+
+            if (isBanned) {
+                if (!isEquipped) {
+                    perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+                } else {
+                    perkTooltip.innerHTML += " <span style='color: #ffbd80'>(Equipped + Banned)</span>";
+                }
+            } else {
+                if (isEquipped) {
+                    perkTooltip.innerHTML += " <span style='color: #80ff80'>(Equipped)</span>";
+                }
+            }
         });
     }
 }
@@ -623,9 +826,15 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
+    let bannedPerks = new Array()
+    if(onlyShowNonBanned){
+        bannedPerks = GetBannedPerks()
+    }
+
     for (var i = 0; i < Perks.length; i++) {
-        if (Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if (Perks[i].survivorPerk == isSurvivor) {
+        if(Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) continue
+            if(Perks[i].survivorPerk == isSurvivor){
                 searchResults.push(Perks[i]);
             }
         }
@@ -754,6 +963,40 @@ function GetOfferings() {
     xhttp.send();
 }
 
+function GetBannedPerks(){
+    let bannedPerks = new Array()
+    
+    // Concatenate survivor perk bans
+    bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorIndvPerkBans)
+
+    // Concatenate tier survivor bans based on killer overrides
+    for(const tier of currentBalancing.KillerOverride[selectedKiller].SurvivorBalanceTiers){
+        bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].SurvivorIndvPerkBans)
+    }
+
+    // Concatenate killer perk bans
+    bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].KillerIndvPerkBans)
+
+    // Concatenate tier killer bans based on killer overrides
+    for(const tier of currentBalancing.KillerOverride[selectedKiller].BalanceTiers){
+        bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].KillerIndvPerkBans)
+    }
+
+    return bannedPerks
+}
+
+function GetPerkIdByFileName(fileName){
+    for(const perk of Perks){
+        if(perk.icon == fileName) return perk.id
+    }
+}
+
+function GetPerkById(id){
+    for(const perk of Perks){
+        if(perk.id == id) return perk
+    }
+}
+
 function GetBalancing() {
     // Subtract one due to customs
     for (var i = 0; i < BalancePresets.length; i++) {
@@ -765,6 +1008,9 @@ function GetBalancing() {
             if (this.readyState == 4) {
                 switch (this.status) {
                     case 200:
+                        DebugLog(`Loaded balancing for ${currentPreset["Name"]}`);
+                        DebugLog(`Balancing string: ${this.responseText}`);
+                        DebugLog(JSON.parse(this.responseText));
                         currentPreset["Balancing"] = JSON.parse(this.responseText);
                     break;
                     default:
@@ -816,8 +1062,10 @@ function GetCustomBalancing() {
         var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
         customBalanceCheckbox.checked = false;
         customBalanceOverride = customBalanceCheckbox.checked;
+        localStorage.setItem("customBalanceOverride", customBalanceOverride);
         
         currentBalancingIndex = 0;
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     }
@@ -1340,6 +1588,28 @@ function UpdateErrorUI() {
         ErrorElementList.push(errorContainer);
     }
 
+    let survCpt = 0
+    let perkCpt = 0
+    if(document.querySelector(".perk-slot-result-banned")){
+        document.querySelectorAll(".perk-slot-result-banned").forEach(perkSlot => perkSlot.classList.remove("perk-slot-result-banned"))
+    }
+    for(const surv of SurvivorPerks){
+        for(const perk of surv){
+            const survPerk = document.querySelector(`[data-survivor-i-d="${survCpt}"][data-perk-i-d="${perkCpt}"]`)
+
+            for(const error of MasterErrorList){
+                if(survPerk && survPerk.classList && perk && error.REASON.includes(perk.name)){
+                    survPerk.classList.add("perk-slot-result-banned")
+                    break
+                }
+            }
+
+            perkCpt++
+        }
+        perkCpt = 0
+        survCpt++
+    }
+
     // Go through error list and add to container with a delay of 100ms in between each error.
     let totalTime = 0;
     for (var i = 0; i < ErrorElementList.length; i++) {
@@ -1524,6 +1794,7 @@ function CreateStatusObject() {
         "selectedKiller": selectedKiller,
         "currentBalancingIndex": currentBalancingIndex,
         "customBalanceOverride": customBalanceOverride,
+        "onlyShowNonBanned": onlyShowNonBanned,
         "currentBalancing": currentBalancing,
         "roomID": RoomID
     }
@@ -1579,8 +1850,18 @@ function CreateSocketEvents() {
         selectedKiller = appStatus.selectedKiller;
         currentBalancingIndex = appStatus.currentBalancingIndex;
         customBalanceOverride = appStatus.customBalanceOverride;
+        onlyShowNonBanned = appStatus.onlyShowNonBanned;
         currentBalancing = appStatus.currentBalancing;
         RoomID = appStatus.roomID;
+
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            localStorage.setItem("selectedKiller", selectedKiller);
+        }
+
+        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+        localStorage.setItem("customBalanceOverride", customBalanceOverride);
+        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
     
         // Update UI
         UpdateBalancingDropdown();

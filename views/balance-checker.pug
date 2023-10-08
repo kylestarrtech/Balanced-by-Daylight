@@ -175,21 +175,15 @@ html
                     br
                     textarea#custom-balance-select(class="override-scrollbar", placeholder="Enter Custom Balance JSON...", rows="15", hidden="hidden")
                     br
+                    label(for="only-non-banned") Only show non-banned Perks?
+                    input#only-non-banned(type="checkbox")
+                    br
                     div#custom-error(class="error-flash-animation" hidden="hidden")
                         p Custom Balance JSON is invalid. Please verify your JSON <a href="https://jsonlint.com/" target="_blank">here</a>.
                     p Made by Kyle Starr (v1.0)
                     div#settings-button-container
+                        button#settings-clear-storage-button Clear Settings
                         button#settings-cancel-button Close
-        div#import-container()
-            div#import-blur(class="background-blur")
-                div#import-menu
-                    h1#import-title Import Builds
-                    p#build-import-instructions Please paste your build JSON below. If it is valid, it will be imported into your current build.
-                    textarea#build-import-textarea(class="override-scrollbar", placeholder="Enter Build JSON...", rows="15")
-                    br
-                    div#import-button-container
-                        button#build-import-button Import
-                        button#build-import-cancel-button Cancel
         div#alert-container(hidden="hidden")
             div#alert-blur(class="background-blur")
                 div#alert-menu

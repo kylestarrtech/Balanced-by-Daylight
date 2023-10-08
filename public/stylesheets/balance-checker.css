@@ -33,6 +33,14 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
+.character-selected{
+    -webkit-filter: drop-shadow(1px 1px 0 #ffffff)
+    drop-shadow(-1px -1px 0 #ffffff) !important;
+    filter: /*drop-shadow(0px 0px 8px #690069)*/ drop-shadow(1px 1px 0 #ffffff) 
+    drop-shadow(-1px -1px 0 #ffffff)
+    drop-shadow(0px 0px 5px #ffffff) !important;
+}
+
 .character-select-button img:hover {
     width: 100%;
 
@@ -237,7 +245,11 @@ body {
 }
 
 #settings-cancel-button {
-    border-color: #ffaaaa !important;
+    border-color: #ffffff !important;
+}
+
+#settings-clear-storage-button {
+    border-color: #ff4444 !important;
 }
 
 #custom-error {
@@ -375,12 +387,18 @@ body {
     display: grid;
     grid-template-rows: 10fr 90fr;
 
-    min-width: 400px;
-    max-width: 400px;
-    height: 400px;
+    min-width: 450px;
+    max-width: 450px;
+    height: 500px;
     width: 15vw;
 
     animation: intro-perk-search-module 0.5s ease-in-out;
+}
+.perk-slot-result:nth-child(8n+5){
+    margin-left: 47px !important;
+}
+.perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+    margin-top: -32px !important;
 }
 
 .background-blur-raw {
@@ -413,6 +431,7 @@ body {
     text-shadow: 0px 0px 10px #000000;
     font-weight: 700;
     font-size: 1.15rem;
+    padding-left: 8px !important;
 }
 
 #perk-search-bar::placeholder {
@@ -437,7 +456,7 @@ body {
 }
 
 #perk-search-results-module {
-    width: 100%;    
+    margin-top: 8px;
     background-color: #00000040;
 
     display: flex;
@@ -447,6 +466,47 @@ body {
 
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+/* Everything prestyled for 4 columns a row */
+@media screen and (min-width: 700px) {
+    /* If screen minimum 700px width => restyle to 5 columns a row */
+    #perk-search-module-container {
+        min-width: 550px !important;
+        max-width: 550px !important;
+    }
+    .perk-slot-result:nth-child(8n+5){
+        margin-left: 0 !important;
+    }
+    .perk-slot-result:nth-child(10n+6){
+        margin-left: 47px !important;
+    }
+    .perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+        margin-top: 0 !important;
+    }
+    .perk-slot-result:nth-child(n+6):nth-last-child(-n+1000) {
+        margin-top: -32px !important;
+    }
+    
+    @media screen and (min-width: 1000px) {
+        /* If screen minimum 1000px width => restyle to 6 columns a row */
+        #perk-search-module-container {
+            min-width: 650px !important;
+            max-width: 650px !important;
+        }     
+        .perk-slot-result:nth-child(10n+6){
+            margin-left: 0 !important;
+        }
+        .perk-slot-result:nth-child(12n+7){
+            margin-left: 47px !important;
+        }   
+        .perk-slot-result:nth-child(n+6):nth-last-child(-n+1000) {
+            margin-top: 0 !important;
+        }
+        .perk-slot-result:nth-child(n+7):nth-last-child(-n+1000) {
+            margin-top: -32px !important;
+        }
+    }
 }
 
 .perk-search-results-module::-webkit-scrollbar {
@@ -471,25 +531,68 @@ body {
 .perk-slot-result {
     min-width: 96px;
     max-width: 96px;
+
+    transition: all 0.2s ease-in-out;
+
+    cursor: pointer;
+}
+.perk-slot-result, .perk-slot-result img{
+    border-radius: 100%;
+}
+
+.perk-slot-result-banned{
+    filter:hue-rotate(60deg) contrast(120%);
+}
+.perk-slot-result-equipped{
+    filter:hue-rotate(180deg) contrast(90%);
+}
+
+.perk-slot-result-banned-and-equipped {
+    filter: hue-rotate(100deg) contrast(105%) saturate(140%);
 }
 
 .perk-slot-result:hover {
-    background-color: #ffffff10;
-
-    filter:drop-shadow(0px 0px 4px #000000);
+    filter: drop-shadow(0px 0px 2px #cecece);
 }
 
 .perk-slot-result:hover img {
-    filter:drop-shadow(0px 0px 4px #ffffff);
+    
+    -webkit-filter:
+                drop-shadow(0px 0px 2px #ffffff80)
+                drop-shadow(1px 1px 0 #cecece40)
+                drop-shadow(-1px 1px 0 #cecece40)
+                drop-shadow(1px -1px 0 #cecece40)
+                drop-shadow(-1px -1px 0 #cecece40);
+
+    filter: 
+            drop-shadow(0px 0px 2px #ffffff80)
+            drop-shadow(1px 1px 0 #cecece40)
+            drop-shadow(-1px 1px 0 #cecece40)
+            drop-shadow(1px -1px 0 #cecece40)
+            drop-shadow(-1px -1px 0 #cecece40);
 }
 
 .perk-slot-result:active img {
     filter:drop-shadow(0px 0px 2px #ffffff);
 }
 
+.perk-slot-result-banned:hover {
+    filter:hue-rotate(60deg) contrast(120%) drop-shadow(0px 0px 3px #ce0000);
+}
+
+.perk-slot-result-equipped:hover {
+    filter:hue-rotate(180deg) contrast(90%) drop-shadow(0px 0px 2px #a4ff9c);
+}
+
+.perk-slot-result-banned-and-equipped:hover {
+    filter: hue-rotate(100deg) contrast(105%) saturate(140%) drop-shadow(0px 0px 2px #ce8600);
+}
+
 .perk-slot-result img {
     aspect-ratio: 1/1;
     max-width: 100%;
+
+    transition: all 0.2s ease-in-out;
 }
 
 #perk-highlight-name {
