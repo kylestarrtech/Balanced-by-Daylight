@@ -77,7 +77,7 @@ currentBalancingIndex = 0;
 
 // Load settings from local storage.
 
-if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+//if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 
@@ -104,8 +104,12 @@ function main() {
         ];
     }    
 
-    // Loads survivor perks from local storage
-    if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+    // Loads survivor perks from local storage if enabled
+    if (Config.saveBuilds) {
+        if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+        if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+    }
+
 
     // Load data
     GetPerks();
@@ -265,7 +269,9 @@ function UpdatePerkUI() {
                     SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
                 }
 
-                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                if (Config.saveBuilds) {
+                    localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                }
                 UpdatePerkUI()
                 CheckForBalancingErrors()
             });
@@ -290,8 +296,12 @@ function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
     selectedKillerTitle.innerText = `Selected Killer: ${Killers[selectedKiller]}`;
     
-    if(document.querySelector(`.character-selected`))
+    // Remove all character-selected classes
+    if(document.querySelector(`.character-selected`)) {
         document.querySelector(`.character-selected`).classList.remove("character-selected")
+    }
+    
+    // Add character-selected class to selected killer
     document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
@@ -447,9 +457,11 @@ function LoadImportEvents() {
             customBalanceOverride = importDataObj.customBalanceOverride;
             currentBalancing = importDataObj.currentBalancing;
 
-            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                localStorage.setItem("selectedKiller", selectedKiller);
+            }
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
-            localStorage.setItem("selectedKiller", selectedKiller);
             localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
             // Update UI
@@ -700,7 +712,9 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         perkSearchContainer.dataset.targetPerk = undefined;
 
         CheckForBalancingErrors();
-        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        }
     });
 
     blankPerk.addEventListener("mouseover", function() {
@@ -777,7 +791,9 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             CheckForBalancingErrors();
             
             SendRoomDataUpdate();
-            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            }
         });
 
         perkElement.addEventListener("mouseover", function() {
@@ -1829,8 +1845,11 @@ function CreateSocketEvents() {
         currentBalancing = appStatus.currentBalancing;
         RoomID = appStatus.roomID;
 
-        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
-        localStorage.setItem("selectedKiller", selectedKiller);
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            localStorage.setItem("selectedKiller", selectedKiller);
+        }
+
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
         localStorage.setItem("customBalanceOverride", customBalanceOverride);
         localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
