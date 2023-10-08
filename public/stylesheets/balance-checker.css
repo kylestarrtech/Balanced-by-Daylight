@@ -540,11 +540,11 @@ body {
     border-radius: 100%;
 }
 
-.perk-slot-result-equipped{
-    filter:hue-rotate(180deg) contrast(90%);
-}
 .perk-slot-result-banned{
     filter:hue-rotate(60deg) contrast(120%);
+}
+.perk-slot-result-equipped{
+    filter:hue-rotate(180deg) contrast(90%);
 }
 
 .perk-slot-result-banned-and-equipped {
@@ -576,12 +576,12 @@ body {
     filter:drop-shadow(0px 0px 2px #ffffff);
 }
 
-.perk-slot-result-equipped:hover {
-    filter:hue-rotate(180deg) contrast(90%) drop-shadow(0px 0px 2px #a4ff9c);
-}
-
 .perk-slot-result-banned:hover {
     filter:hue-rotate(60deg) contrast(120%) drop-shadow(0px 0px 3px #ce0000);
+}
+
+.perk-slot-result-equipped:hover {
+    filter:hue-rotate(180deg) contrast(90%) drop-shadow(0px 0px 2px #a4ff9c);
 }
 
 .perk-slot-result-banned-and-equipped:hover {
