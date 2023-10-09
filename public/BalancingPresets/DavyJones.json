@@ -97,7 +97,8 @@
       ],
       "SurvivorComboPerkBans": [
         ["58", "67"],
-        ["67", "76"]
+        ["67", "76"],
+        ["34", "76"]
       ],
       "KillerComboPerkBans": [
         ["138", "212"],

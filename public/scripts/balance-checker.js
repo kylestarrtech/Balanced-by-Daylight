@@ -1609,28 +1609,6 @@ function CheckForBalancingErrors() {
         CheckForBannedComboPerks(SurvivorPerks[i], i);
     }
 
-    //Davy Jones combo overall exception
-    if(currentBalancingIndex == 3 && !customBalanceOverride){
-        const allSurvPerksIds = new Array()
-        for(const surv of SurvivorPerks){
-            for(const perk of surv){
-                allSurvPerksIds.push(perk.id)
-            }
-        }
-
-        //Check if there is Overcome + Dead Hard (even if not in same loadout)
-        if(allSurvPerksIds.includes(34) && allSurvPerksIds.includes(76)){
-            MasterErrorList.push(
-                GenerateErrorObject(
-                    "Banned Combo",
-                    `Special: Teams are allowed to run <b>Overcome</b> or <b>Dead Hard</b>, but NOT BOTH.`,
-                    console.trace(),
-                    "iconography/Error.png"
-                )
-            )
-        }
-    }
-
     UpdateErrorUI();
 }
 
