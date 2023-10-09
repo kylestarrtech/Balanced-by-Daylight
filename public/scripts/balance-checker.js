@@ -594,6 +594,12 @@ function LoadImportEvents() {
                 survCpt++
             }
 
+            survCpt = 0
+            for(const offeringId of importDataObj.survivorOfferingsId){
+                SurvivorOfferings[survCpt] = GetOfferingById(offeringId)
+                survCpt++
+            }
+
             // If all checks pass, set the remaining data
             currentBalancingIndex = importDataObj.currentBalancingIndex;
             selectedKiller = importDataObj.selectedKiller;
@@ -627,14 +633,19 @@ function LoadImportEvents() {
             survivorPerksId.push(perksId)
         }
 
+        const survivorOfferingsId = new Array()
+        for(const offering of SurvivorOfferings){
+            survivorOfferingsId.push(offering?.id)
+        }
+
         const exportJson = {
             "survivorPerksId": survivorPerksId,
+            "survivorOfferingsId": survivorOfferingsId,
             "selectedKiller": selectedKiller,
             "currentBalancingIndex": currentBalancingIndex,
             "customBalanceOverride": customBalanceOverride,
             "onlyShowNonBanned": onlyShowNonBanned,
-            "currentBalancing": customBalanceOverride ? currentBalancing : null,
-            "roomID": RoomID
+            "currentBalancing": customBalanceOverride ? currentBalancing : null
         }
         const exportData = JSON.stringify(exportJson);
 
