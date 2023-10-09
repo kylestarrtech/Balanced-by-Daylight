@@ -1167,12 +1167,12 @@ function SearchForOfferings(searchQuery, isSurvivor) {
         bannedOfferings = GetBannedOfferings()
     }
 
-    let OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    const OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    const bannedOffInRole = bannedOfferings[OfferingsRole]
     for (var i = 0; i < Offerings[OfferingsRole].length; i++) {
-        let bannedOffInRole = bannedOfferings[OfferingsRole];
 
         if (Offerings[OfferingsRole][i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id + ""))) { continue; }
+            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id))) { continue; }
             
             searchResults.push(Offerings[OfferingsRole][i]);
         }
