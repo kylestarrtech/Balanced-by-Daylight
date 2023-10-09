@@ -1,0 +1,9 @@
+/node_modules
+.env
+
+changeofferingsjson.py
+convtotitlecase.py
+LEGAL.md
+perktojson.py
+spacetodash.py
+TestBalanceInDev.json
