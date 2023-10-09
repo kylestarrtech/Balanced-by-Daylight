@@ -32,6 +32,11 @@ var BalancePresets = [
         Name: "Davy Jones League",
         Path: "BalancingPresets/DavyJones.json",
         Balancing: {}
+    },
+    {
+        Name: "L-Tournament",
+        Path: "BalancingPresets/L-Tournament.json",
+        Balancing: {}
     }
 ]
 
