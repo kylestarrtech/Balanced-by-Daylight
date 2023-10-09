@@ -27,12 +27,18 @@ var BalancePresets = [
         Name: "Champions of the Fog (COTF)",
         Path: "BalancingPresets/COTF.json",
         Balancing: {}
+    },
+    {
+        Name: "Davy Jones League",
+        Path: "BalancingPresets/DavyJones.json",
+        Balancing: {}
     }
 ]
 
 var currentBalancingIndex = 0;
 var customBalanceOverride = false;
 var onlyShowNonBanned = false;
+var saveLoadoutsAndKiller = false;
 
 var currentBalancing = {};
 
@@ -118,6 +124,7 @@ currentBalancingIndex = 0;
 //if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
+if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
 
 var socket = null;
 var RoomID = undefined;
@@ -144,8 +151,14 @@ function main() {
 
     // Loads survivor perks from local storage if enabled
     if (Config.saveBuilds) {
-        if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
-        if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+        document.getElementById("save-loadouts-killer-container").style.display = "block";
+
+        if(saveLoadoutsAndKiller){
+            if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+            if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+
+            ScrollToSelectedKiller();
+        }
     }
 
 
@@ -202,6 +215,9 @@ function main() {
     // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
 
+    // Update the checkbox to save loadouts and killer selected
+    document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
+
     // Update the custom balance checkbox to show if custom balancing is enabled
     document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
 
@@ -249,6 +265,9 @@ function UpdatePerkUI() {
     // Get all children
     var children = buildsContainer.children;
 
+    //-20 for the 10px padding on left & right
+    const maxWidth = children[0].offsetWidth - 20;
+
     // Loop through all children
     validChildI = 0;
     for (var i = 0; i < children.length; i++) {
@@ -256,6 +275,7 @@ function UpdatePerkUI() {
         // Is this a valid build component?
         if (!currentChild.classList.contains("survivor-build-component")) { continue; }
         
+        currentChild.style.maxWidth = maxWidth + "px";
         currentChild.innerHTML = "";
 
         // Get current survivor perks
@@ -317,7 +337,7 @@ function UpdatePerkUI() {
                     SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
                 }
 
-                if (Config.saveBuilds) {
+                if (Config.saveBuilds && saveLoadoutsAndKiller) {
                     localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
                 }
                 UpdatePerkUI()
@@ -418,6 +438,13 @@ function UpdateKillerSelectionUI() {
     document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
+function ScrollToSelectedKiller(){
+    document.getElementById("character-select-grid").scrollTo({
+        top : document.querySelector(`[data-killerid="${selectedKiller}"]`).getBoundingClientRect().top + document.getElementById("character-select-grid").scrollTop - 102,
+        behavior: "smooth"
+    })
+}
+
 function UpdateBalancingDropdown() {
     var balancingDropdown = document.getElementById("balancing-select");
 
@@ -506,38 +533,20 @@ function LoadImportEvents() {
         }
 
         try {
-            // Check if importData.SurvivorPerks is a valid array
-            let importDataObj = JSON.parse(importData);
+            const compressedDataDecoded = atob(importData);
+            const inflate = pako.inflate(new Uint8Array([...compressedDataDecoded].map(char => char.charCodeAt(0))));
+            const decompressedText = new TextDecoder().decode(inflate);
+            
+            let importDataObj = JSON.parse(decompressedText);
 
-            if (importDataObj.SurvivorPerks == undefined) {
-                throw "Invalid import data. SurvivorPerks is undefined.";
+            // Is there a valid balancing index?
+            if (importDataObj.currentBalancingIndex == undefined) {
+                throw "Invalid import data. Current balancing index is undefined.";
             }
-            if (importDataObj.SurvivorPerks.length != 4) {
-                throw "Invalid import data. SurvivorPerks length is not 4.";
-            }
 
-            for (var i = 0; i < importDataObj.SurvivorPerks.length; i++) {
-                let currentSurvivor = importDataObj.SurvivorPerks[i];
-
-                if (currentSurvivor.length != 4) {
-                    throw "Invalid import data. SurvivorPerks length is not 4.";
-                }
-
-                for (var j = 0; j < currentSurvivor.length; j++) {
-                    let currentPerk = currentSurvivor[j];
-
-                    if (currentPerk != null) {
-                        if (currentPerk.id == undefined) {
-                            throw "Invalid import data. Perk ID is undefined.";
-                        }
-                        if (currentPerk.name == undefined) {
-                            throw "Invalid import data. Perk name is undefined.";
-                        }
-                        if (currentPerk.icon == undefined) {
-                            throw "Invalid import data. Perk icon is undefined.";
-                        }
-                    }
-                }
+            // Is there a valid selected killer?
+            if (importDataObj.selectedKiller == undefined) {
+                throw "Invalid import data. Selected killer is undefined.";
             }
 
             // Is custom balancing enabled?
@@ -551,26 +560,45 @@ function LoadImportEvents() {
                 if (!ValidateCustomBalancing(currentBalance)) {
                     throw "Invalid import data. Current balancing is invalid.";
                 }
+                currentBalancing = importDataObj.currentBalancing;
+            }else{
+                currentBalancing = BalancePresets[importDataObj.currentBalancingIndex]["Balancing"];
             }
 
-            // Is there a valid balancing index?
-            if (importDataObj.currentBalancingIndex == undefined) {
-                throw "Invalid import data. Current balancing index is undefined.";
+            // Check if importData.survivorPerksId is a valid array
+            if (importDataObj.survivorPerksId == undefined) {
+                throw "Invalid import data. SurvivorPerks is undefined.";
+            }
+            if (importDataObj.survivorPerksId.length != 4) {
+                throw "Invalid import data. SurvivorPerks length is not 4.";
             }
 
-            // Is there a valid selected killer?
-            if (importDataObj.selectedKiller == undefined) {
-                throw "Invalid import data. Selected killer is undefined.";
+            let survCpt = 0
+            let perkCpt = 0
+            for(const currentSurvivor of importDataObj.survivorPerksId){
+                if (currentSurvivor.length != 4) {
+                    throw "Invalid import data. SurvivorPerks length is not 4.";
+                }
+                
+                for(const currentPerkId of currentSurvivor){
+                    if (currentPerkId == undefined) {
+                        throw "Invalid import data. Perk ID is undefined.";
+                    }
+
+                    SurvivorPerks[survCpt][perkCpt] = GetPerkById(currentPerkId)
+
+                    perkCpt++
+                }
+                perkCpt = 0
+                survCpt++
             }
 
-            // If all checks pass, set the data
-            SurvivorPerks = importDataObj.SurvivorPerks;
+            // If all checks pass, set the remaining data
             currentBalancingIndex = importDataObj.currentBalancingIndex;
             selectedKiller = importDataObj.selectedKiller;
             customBalanceOverride = importDataObj.customBalanceOverride;
-            currentBalancing = importDataObj.currentBalancing;
 
-            if (Config.saveBuilds) {
+            if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
                 localStorage.setItem("selectedKiller", selectedKiller);
             }
@@ -582,13 +610,35 @@ function LoadImportEvents() {
             UpdateBalancingDropdown();
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+            ScrollToSelectedKiller();
         } catch (error) {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.\n\nError: ${error}`);
         }
     });
 
     exportButton.addEventListener("click", function() {
-        var exportData = JSON.stringify(CreateStatusObject());
+        const survivorPerksId = new Array()
+        for(const surv of SurvivorPerks){
+            const perksId = new Array()
+            for(const perk of surv){
+                perksId.push(perk.id)
+            }
+            survivorPerksId.push(perksId)
+        }
+
+        const exportJson = {
+            "survivorPerksId": survivorPerksId,
+            "selectedKiller": selectedKiller,
+            "currentBalancingIndex": currentBalancingIndex,
+            "customBalanceOverride": customBalanceOverride,
+            "onlyShowNonBanned": onlyShowNonBanned,
+            "currentBalancing": customBalanceOverride ? currentBalancing : null,
+            "roomID": RoomID
+        }
+        const exportData = JSON.stringify(exportJson);
+
+        const deflate = pako.deflate(exportData, { to: "string" });
+        const compressedText = btoa(String.fromCharCode.apply(null, deflate));
 
         // Ask user if they'd like to copy to clipboard. If yes, copy to clipboard. If no, return.
         // if (!confirm("Would you like to copy your build data to your clipboard?")) {
@@ -596,7 +646,7 @@ function LoadImportEvents() {
         // }
 
         // Copy exportData to clipboard
-        navigator.clipboard.writeText(exportData);
+        navigator.clipboard.writeText(compressedText);
 
         GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
     });
@@ -725,6 +775,15 @@ function LoadSettingsEvents() {
     onlyNonBannedCheckbox.addEventListener("change", function(){
         onlyShowNonBanned = onlyNonBannedCheckbox.checked;
         localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
+    })
+
+    const saveLoadoutsKillerCheckbox = document.getElementById("save-loadouts-killer");
+    saveLoadoutsKillerCheckbox.addEventListener("change", function(){
+        saveLoadoutsAndKiller = saveLoadoutsKillerCheckbox.checked;
+        localStorage.setItem("saveLoadoutsAndKiller", saveLoadoutsAndKiller);
+        
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        localStorage.setItem("selectedKiller", selectedKiller);
     })
 
     const clearStorageButton = document.getElementById("settings-clear-storage-button");
@@ -860,7 +919,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         perkSearchContainer.dataset.targetPerk = undefined;
 
         CheckForBalancingErrors();
-        if (Config.saveBuilds) {
+        if (Config.saveBuilds && saveLoadoutsAndKiller) {
             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         }
     });
@@ -939,7 +998,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             CheckForBalancingErrors();
             
             SendRoomDataUpdate();
-            if (Config.saveBuilds) {
+            if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
             }
         });
@@ -2214,7 +2273,7 @@ function CreateSocketEvents() {
         currentBalancing = appStatus.currentBalancing;
         RoomID = appStatus.roomID;
 
-        if (Config.saveBuilds) {
+        if (Config.saveBuilds && saveLoadoutsAndKiller) {
             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
             localStorage.setItem("selectedKiller", selectedKiller);
         }
