@@ -406,8 +406,8 @@ function UpdatePerkUI() {
             }else{
                 const targetSurv = parseInt(dragTargetElement.targetSurv)
                 
-                SurvivorOfferings[sourceSurv] = dragTargetElement.targetOfferingId ? GetOfferingById(dragTargetElement.targetOfferingId) : null
-                SurvivorOfferings[targetSurv] = event.dataTransfer.sourceOfferingID ? GetOfferingById(event.dataTransfer.sourceOfferingID) : null
+                SurvivorOfferings[sourceSurv] = GetOfferingById(dragTargetElement.targetOfferingId)
+                SurvivorOfferings[targetSurv] = GetOfferingById(event.dataTransfer.sourceOfferingID)
             }
 
             if (Config.saveBuilds) {
