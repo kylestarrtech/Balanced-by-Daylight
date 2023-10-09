@@ -5,6 +5,7 @@ body {
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    margin: 0;
 }
 
 #primary-balance-container {
