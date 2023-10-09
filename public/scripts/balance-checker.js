@@ -78,6 +78,44 @@ SurvivorPerks = [
     ]
 ]
 
+SurvivorOfferings = [
+    null,
+    null,
+    null,
+    null
+]
+
+SurvivorItems = [
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    },
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    },
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    },
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    }
+]
+
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
@@ -234,6 +272,7 @@ function UpdatePerkUI() {
     validChildI = 0;
     for (var i = 0; i < children.length; i++) {
         let currentChild = children[i];
+        // Is this a valid build component?
         if (!currentChild.classList.contains("survivor-build-component")) { continue; }
         
         currentChild.style.maxWidth = maxWidth + "px";
@@ -257,6 +296,7 @@ function UpdatePerkUI() {
 
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
+            perkElement.classList.add("loadout-slot");
 
             perkElement.addEventListener("dragstart", function(event){
                 event.dataTransfer.effectAllowed = "move"
@@ -313,6 +353,71 @@ function UpdatePerkUI() {
             perkElement.appendChild(perkImg);
             currentChild.appendChild(perkElement);
         }
+
+        // Get current survivor offerings
+        let currentSurvivorOffering = SurvivorOfferings[validChildI];
+
+        // Create offering element
+        let offeringElement = document.createElement("div");
+        offeringElement.classList.add("offering-slot");
+        offeringElement.classList.add("loadout-slot");
+        
+        let OffSrc = "";
+        try {
+            OffSrc = currentSurvivorOffering["icon"];    
+        } catch (error) {
+            OffSrc = "public/Offerings/blank.webp";
+        }
+        
+        offeringElement.addEventListener("dragstart", function(event){
+            event.dataTransfer.effectAllowed = "move"
+            dragTargetElement = {}
+            dragTargetElement.draggable = 0
+            event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            event.dataTransfer.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+        });
+        offeringElement.addEventListener("dragover", function(event){
+            event.preventDefault()
+            event.dataTransfer.dropEffect = "move"
+        });
+        offeringElement.addEventListener("dragenter", function(event){
+            event.preventDefault()
+            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragTargetElement.targetOfferingId = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            dragTargetElement.draggable++
+        });
+        offeringElement.addEventListener("dragleave", function(event){
+            event.preventDefault()
+            dragTargetElement.draggable--
+        });
+        offeringElement.addEventListener("dragend", function(event){
+            event.preventDefault()
+
+            const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+
+            if(dragTargetElement.draggable <= 0){
+                SurvivorOfferings[sourceSurv] = null
+            }else{
+                const targetSurv = parseInt(dragTargetElement.targetSurv)
+                
+                SurvivorOfferings[sourceSurv] = dragTargetElement.targetOfferingId ? GetOfferingById(dragTargetElement.targetOfferingId) : null
+                SurvivorOfferings[targetSurv] = event.dataTransfer.sourceOfferingID ? GetOfferingById(event.dataTransfer.sourceOfferingID) : null
+            }
+
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+            }
+            UpdatePerkUI();
+            CheckForBalancingErrors();
+        });
+        
+        offeringElement.dataset.survivorID = validChildI;
+
+        let offeringImg = document.createElement("img");
+        offeringImg.src = OffSrc;
+
+        offeringElement.appendChild(offeringImg);
+        currentChild.appendChild(offeringElement);
 
         validChildI++;
     }
@@ -708,17 +813,10 @@ function LoadPerkSelectionEvents() {
             
             perkSearchModule.style.left = "50%";
             perkSearchModule.style.top = "50%";
-            
-            // If perk module is out of bounds, move it back in bounds
-            if (parseInt(perkSearchModule.style.left) + parseInt(perkSearchModule.style.width) > window.innerWidth) {
-                perkSearchModule.style.left = window.innerWidth - parseInt(perkSearchModule.style.width);
-            }
-            if (parseInt(perkSearchModule.style.top) + parseInt(perkSearchModule.style.height) > window.innerHeight) {
-                perkSearchModule.style.top = window.innerHeight - parseInt(perkSearchModule.style.height);
-            }
 
             perkSearchContainer.dataset.targetSurvivor = currentPerk.dataset.survivorID;
             perkSearchContainer.dataset.targetPerk = currentPerk.dataset.perkID;
+            perkSearchContainer.dataset.searchType = "perk";
 
             // Get perk search input
             var perkSearchInput = document.getElementById("perk-search-bar");
@@ -733,25 +831,67 @@ function LoadPerkSelectionEvents() {
             ForcePerkSearch(perkSearchInput, "");
         });
     }
+
+    var offerings = document.getElementsByClassName("offering-slot");
+    for (var i = 0; i < offerings.length; i++) {
+        let currentOffering = offerings[i];
+
+        currentOffering.addEventListener("click", function() {
+            DebugLog(`Clicked on offering for survivor ${currentOffering.dataset.survivorID}`);
+
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetSurvivor = currentOffering.dataset.survivorID;
+            perkSearchContainer.dataset.searchType = "offering";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select an Offering...";
+
+            // Reset search results
+            ForceOfferingSearch(perkSearchInput, "");
+        });
+    }
 }
 
 function LoadPerkSearchEvents() {
-    var perkSearchContainer = document.getElementById("perk-search-container");
+    const perkSearchContainer = document.getElementById("perk-search-container");
 
+    // Code to exit search menu
     perkSearchContainer.addEventListener("click", function(event) {
         if(event.target.tagName === "IMG" || event.target.classList.contains("background-blur"))
             perkSearchContainer.hidden = true;
     });
 
-    var perkSearchBar = document.getElementById("perk-search-bar");
+    const perkSearchBar = document.getElementById("perk-search-bar");
 
+    // Code to start search
     perkSearchBar.addEventListener("input", function() {
+
         ForcePerkSearch(perkSearchBar, perkSearchBar.value);
     });
 }
 
+/**
+ * Searches for perks based on a search query.
+ * @param {HTMLElement} perkSearchBar The perk search bar element.
+ * @param {*} value The value to search for. Default "".
+ */
 function ForcePerkSearch(perkSearchBar, value = "") {
     var searchResults = SearchForPerks(perkSearchBar.value, true);
+
+    perkSearchBar.placeholder = "Search Perks...";
 
     var perkSearchResultsContainer = document.getElementById("perk-search-results-module");
 
@@ -883,7 +1023,108 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     }
 }
 
-// Button Events
+function ForceOfferingSearch(perkSearchBar, value = "") {
+    let isSurvivor = true;
+
+    perkSearchBar.placeholder = "Search Offerings...";
+
+    let searchResults = SearchForOfferings(perkSearchBar.value, isSurvivor);
+
+    let offeringSearchResultsContainer = document.getElementById("perk-search-results-module");
+
+    offeringSearchResultsContainer.innerHTML = "";
+
+    // Add a blank offering to the top of the list
+    let blankOffering = document.createElement("div");
+    blankOffering.classList.add("perk-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.src = "public/Offerings/blank.webp";
+
+    blankOffering.appendChild(blankImg);
+    offeringSearchResultsContainer.appendChild(blankOffering);
+
+    let offeringSearchContainer = document.getElementById("perk-search-container");
+    blankOffering.addEventListener("click", function() {
+        let targetSurvivor = parseInt(offeringSearchContainer.dataset.targetSurvivor);
+
+        SurvivorOfferings[targetSurvivor] = undefined;
+
+        UpdatePerkUI();
+
+        offeringSearchContainer.dataset.targetSurvivor = undefined;
+
+        CheckForBalancingErrors();
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+        }
+    });
+
+    blankOffering.addEventListener("mouseover", function() {
+        let perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Offering";
+    });
+
+    const bannedOfferings = GetBannedOfferings();
+    const OfferingRole = isSurvivor ? "Survivor" : "Killer";
+    for (var i = 0; i < searchResults.length; i++) {
+        let currentOffering = searchResults[i];
+
+        let isBanned = false;
+        
+        let offeringElement = document.createElement("div");
+        offeringElement.classList.add("perk-slot-result");
+
+        DebugLog(`OfferingRole: ${OfferingRole}`)
+        // Check if the offering is banned.
+        if(bannedOfferings[OfferingRole].includes(currentOffering["id"])){
+            DebugLog(`Banned offering: ${currentOffering["id"]}`)
+            isBanned = true;
+        }
+
+        // Add classes based on offering status
+        if (isBanned) {
+            offeringElement.classList.add("offering-slot-result-banned");
+        }
+
+        offeringElement.dataset.offeringID = currentOffering["id"];
+
+        let offeringImg = document.createElement("img");
+        offeringImg.src = currentOffering["icon"];
+
+        offeringElement.appendChild(offeringImg);
+        offeringSearchResultsContainer.appendChild(offeringElement);
+
+        offeringElement.addEventListener("click", function() {
+            let targetSurvivor = parseInt(offeringSearchContainer.dataset.targetSurvivor);
+
+            SurvivorOfferings[targetSurvivor] = currentOffering;
+
+            UpdatePerkUI();
+
+            offeringSearchContainer.dataset.targetSurvivor = undefined;
+
+            CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+            }
+        });
+
+        offeringElement.addEventListener("mouseover", function() {
+            let perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerHTML = currentOffering["name"];
+
+            if (isBanned) {
+                perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+            }
+        });
+    }
+}
+
 function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
@@ -894,7 +1135,9 @@ function SearchForPerks(searchQuery, isSurvivor) {
 
     for (var i = 0; i < Perks.length; i++) {
         if(Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) continue
+
+            if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) { continue; }
+            
             if(Perks[i].survivorPerk == isSurvivor){
                 searchResults.push(Perks[i]);
             }
@@ -902,6 +1145,28 @@ function SearchForPerks(searchQuery, isSurvivor) {
     }
 
     return searchResults;   
+}
+
+function SearchForOfferings(searchQuery, isSurvivor) {
+    var searchResults = [];
+
+    let bannedOfferings = new Array()
+    if(onlyShowNonBanned){
+        bannedOfferings = GetBannedOfferings()
+    }
+
+    let OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    for (var i = 0; i < Offerings[OfferingsRole].length; i++) {
+        let bannedOffInRole = bannedOfferings[OfferingsRole];
+
+        if (Offerings[OfferingsRole][i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id + ""))) { continue; }
+            
+            searchResults.push(Offerings[OfferingsRole][i]);
+        }
+    }
+
+    return searchResults;
 }
 
 /* -------------------------------------- */
@@ -1046,16 +1311,33 @@ function GetBannedPerks(){
     return bannedPerks
 }
 
-function GetPerkIdByFileName(fileName){
-    for(const perk of Perks){
-        if(perk.icon == fileName) return perk.id
+function GetBannedOfferings() {
+    let bannedOfferings = {
+        "Survivor": new Array(),
+        "Killer": new Array()
     }
-}
 
-function GetPerkById(id){
-    for(const perk of Perks){
-        if(perk.id == id) return perk
+    // Get survivor offerings from killer override
+    let survivorOfferings = currentBalancing.KillerOverride[selectedKiller].SurvivorOfferings;
+
+    // Get killer offerings from killer override
+    let killerOfferings = currentBalancing.KillerOverride[selectedKiller].KillerOfferings;
+
+    for (const offering of Offerings["Survivor"]) {
+        // If the offering is not in the survivor offerings, add it to the banned offerings
+        if (!survivorOfferings.includes(offering.id)) {
+            bannedOfferings["Survivor"].push(offering.id);
+        }
     }
+
+    for (const offering of Offerings["Killer"]) {
+        // If the offering is not in the killer offerings, add it to the banned offerings
+        if (!killerOfferings.includes(offering.id)) {
+            bannedOfferings["Killer"].push(offering.id);
+        }
+    }
+
+    return bannedOfferings;
 }
 
 function GetBalancing() {
@@ -1609,6 +1891,26 @@ function CheckForBalancingErrors() {
         CheckForBannedComboPerks(SurvivorPerks[i], i);
     }
 
+    var currentOverride = currentBalancing.KillerOverride[selectedKiller];
+    DebugLog("Current Override:");
+    DebugLog(currentOverride);
+    // Check for banned offerings
+    for (var i = 0; i < SurvivorOfferings.length; i++) {
+        let bannedOfferings = GetBannedOfferings();
+
+        if (SurvivorOfferings[i] == undefined) { continue; }
+        if (bannedOfferings["Survivor"].includes(SurvivorOfferings[i]["id"])) {
+            MasterErrorList.push(
+                GenerateErrorObject(
+                    "Banned Offering",
+                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    console.trace(),
+                    "iconography/Error.png"
+                )
+            );
+        }
+    }
+
     UpdateErrorUI();
 }
 
@@ -1693,6 +1995,65 @@ function UpdateErrorUI() {
 /* -------------------------------------- */
 /* ------------- UTILITIES -------------- */
 /* -------------------------------------- */
+
+/**
+ * A function to get the ID of a perk based on its file name.
+ * @param {string} fileName The file name of the perk.
+ * @returns {number} The ID of the perk.
+ */
+function GetPerkIdByFileName(fileName){
+    for(const perk of Perks){
+        if(perk.icon == fileName) return perk.id
+    }
+}
+
+/**
+ * A function to get a perk object by its ID.
+ * @param {number} id The ID of the perk.
+ * @returns {object} The perk object.
+ */
+function GetPerkById(id){
+    for(const perk of Perks){
+        if(perk.id == id) return perk
+    }
+}
+
+/**
+ * A function to get the ID of an offering based on its file name.
+ * @param {string} fileName The file name of the offering.
+ * @returns {number} The ID of the offering.
+ */
+function GetOfferingIdByFileName(fileName){
+    let SurvivorOfferings = Offerings["Survivor"];
+    let KillerOfferings = Offerings["Killer"];
+
+    for(const offering of SurvivorOfferings){
+        if(offering.icon == fileName) return offering.id
+    }
+
+    for(const offering of KillerOfferings){
+        if(offering.icon == fileName) return offering.id
+    }
+
+}
+
+/**
+ * A function to get an offering object by its ID.
+ * @param {number} id The ID of the offering.
+ * @returns {object} The offering object.
+ */
+function GetOfferingById(id){
+    let SurvivorOfferings = Offerings["Survivor"];
+    let KillerOfferings = Offerings["Killer"];
+
+    for(const offering of SurvivorOfferings){
+        if(offering.id == id) return offering
+    }
+
+    for(const offering of KillerOfferings){
+        if(offering.id == id) return offering
+    }
+}
 
 /**
  * A function to print to the console if debugging is enabled.
