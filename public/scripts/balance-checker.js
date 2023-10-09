@@ -170,7 +170,7 @@ function main() {
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 
-    let loadDefaultBalance = false;
+    let loadDefaultBalance = true;
     // Load custom balancing if enabled
     if(localStorage.getItem("customBalanceOverride")) {
         // Custom balancing override is valid
@@ -179,7 +179,7 @@ function main() {
         if (localStorage.getItem("customBalanceOverride") == "true") {
             // Custom balancing is enabled
             customBalanceOverride = true;
-            loadDefaultBalance = true;
+            loadDefaultBalance = false;
 
             // Set balancing to custom balancing if it's valid
             if (localStorage.getItem("currentBalancing") &&
@@ -362,8 +362,8 @@ function UpdatePerkUI() {
         });
         offeringElement.addEventListener("dragenter", function(event){
             event.preventDefault()
-            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-offering-i-d")
-            dragTargetElement.targetOfferingId = GetPerkIdByFileName(event.target.getAttribute("src"))
+            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragTargetElement.targetOfferingId = GetOfferingIdByFileName(event.target.getAttribute("src"))
             dragTargetElement.draggable++
         });
         offeringElement.addEventListener("dragleave", function(event){
@@ -376,7 +376,7 @@ function UpdatePerkUI() {
             const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
 
             if(dragTargetElement.draggable <= 0){
-                SurvivorOfferings[sourceServ] = null
+                SurvivorOfferings[sourceSurv] = null
             }else{
                 const targetSurv = parseInt(dragTargetElement.targetSurv)
                 
@@ -754,17 +754,10 @@ function LoadPerkSelectionEvents() {
             
             perkSearchModule.style.left = "50%";
             perkSearchModule.style.top = "50%";
-            
-            // If perk module is out of bounds, move it back in bounds
-            if (parseInt(perkSearchModule.style.left) + parseInt(perkSearchModule.style.width) > window.innerWidth) {
-                perkSearchModule.style.left = window.innerWidth - parseInt(perkSearchModule.style.width);
-            }
-            if (parseInt(perkSearchModule.style.top) + parseInt(perkSearchModule.style.height) > window.innerHeight) {
-                perkSearchModule.style.top = window.innerHeight - parseInt(perkSearchModule.style.height);
-            }
 
             perkSearchContainer.dataset.targetSurvivor = currentPerk.dataset.survivorID;
             perkSearchContainer.dataset.targetPerk = currentPerk.dataset.perkID;
+            perkSearchContainer.dataset.searchType = "perk";
 
             // Get perk search input
             var perkSearchInput = document.getElementById("perk-search-bar");
@@ -779,10 +772,42 @@ function LoadPerkSelectionEvents() {
             ForcePerkSearch(perkSearchInput, "");
         });
     }
+
+    var offerings = document.getElementsByClassName("offering-slot");
+    for (var i = 0; i < offerings.length; i++) {
+        let currentOffering = offerings[i];
+
+        currentOffering.addEventListener("click", function() {
+            DebugLog(`Clicked on offering for survivor ${currentOffering.dataset.survivorID}`);
+
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetSurvivor = currentOffering.dataset.survivorID;
+            perkSearchContainer.dataset.searchType = "offering";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select an Offering...";
+
+            // Reset search results
+            ForceOfferingSearch(perkSearchInput, "");
+        });
+    }
 }
 
 function LoadPerkSearchEvents() {
-    var perkSearchContainer = document.getElementById("perk-search-container");
+    const perkSearchContainer = document.getElementById("perk-search-container");
 
     // Code to exit search menu
     perkSearchContainer.addEventListener("click", function(event) {
@@ -790,22 +815,24 @@ function LoadPerkSearchEvents() {
             perkSearchContainer.hidden = true;
     });
 
-    var perkSearchBar = document.getElementById("perk-search-bar");
+    const perkSearchBar = document.getElementById("perk-search-bar");
 
     // Code to start search
     perkSearchBar.addEventListener("input", function() {
+
         ForcePerkSearch(perkSearchBar, perkSearchBar.value);
     });
 }
 
 /**
- * Searches for perks/offerings/items based on a search query.
+ * Searches for perks based on a search query.
  * @param {HTMLElement} perkSearchBar The perk search bar element.
  * @param {*} value The value to search for. Default "".
- * @param {*} target 0 = Perks, 1 = Offerings, 2 = Items. Default 0.
  */
-function ForcePerkSearch(perkSearchBar, value = "", target = 0) {
+function ForcePerkSearch(perkSearchBar, value = "") {
     var searchResults = SearchForPerks(perkSearchBar.value, true);
+
+    perkSearchBar.placeholder = "Search Perks...";
 
     var perkSearchResultsContainer = document.getElementById("perk-search-results-module");
 
@@ -937,7 +964,108 @@ function ForcePerkSearch(perkSearchBar, value = "", target = 0) {
     }
 }
 
-// Button Events
+function ForceOfferingSearch(perkSearchBar, value = "") {
+    let isSurvivor = true;
+
+    perkSearchBar.placeholder = "Search Offerings...";
+
+    let searchResults = SearchForOfferings(perkSearchBar.value, isSurvivor);
+
+    let offeringSearchResultsContainer = document.getElementById("perk-search-results-module");
+
+    offeringSearchResultsContainer.innerHTML = "";
+
+    // Add a blank offering to the top of the list
+    let blankOffering = document.createElement("div");
+    blankOffering.classList.add("perk-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.src = "public/Offerings/blank.webp";
+
+    blankOffering.appendChild(blankImg);
+    offeringSearchResultsContainer.appendChild(blankOffering);
+
+    let offeringSearchContainer = document.getElementById("perk-search-container");
+    blankOffering.addEventListener("click", function() {
+        let targetSurvivor = parseInt(offeringSearchContainer.dataset.targetSurvivor);
+
+        SurvivorOfferings[targetSurvivor] = undefined;
+
+        UpdatePerkUI();
+
+        offeringSearchContainer.dataset.targetSurvivor = undefined;
+
+        CheckForBalancingErrors();
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+        }
+    });
+
+    blankOffering.addEventListener("mouseover", function() {
+        let perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Offering";
+    });
+
+    const bannedOfferings = GetBannedOfferings();
+    const OfferingRole = isSurvivor ? "Survivor" : "Killer";
+    for (var i = 0; i < searchResults.length; i++) {
+        let currentOffering = searchResults[i];
+
+        let isBanned = false;
+        
+        let offeringElement = document.createElement("div");
+        offeringElement.classList.add("perk-slot-result");
+
+        DebugLog(`OfferingRole: ${OfferingRole}`)
+        // Check if the offering is banned.
+        if(bannedOfferings[OfferingRole].includes(currentOffering["id"])){
+            DebugLog(`Banned offering: ${currentOffering["id"]}`)
+            isBanned = true;
+        }
+
+        // Add classes based on offering status
+        if (isBanned) {
+            offeringElement.classList.add("offering-slot-result-banned");
+        }
+
+        offeringElement.dataset.offeringID = currentOffering["id"];
+
+        let offeringImg = document.createElement("img");
+        offeringImg.src = currentOffering["icon"];
+
+        offeringElement.appendChild(offeringImg);
+        offeringSearchResultsContainer.appendChild(offeringElement);
+
+        offeringElement.addEventListener("click", function() {
+            let targetSurvivor = parseInt(offeringSearchContainer.dataset.targetSurvivor);
+
+            SurvivorOfferings[targetSurvivor] = currentOffering;
+
+            UpdatePerkUI();
+
+            offeringSearchContainer.dataset.targetSurvivor = undefined;
+
+            CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+            }
+        });
+
+        offeringElement.addEventListener("mouseover", function() {
+            let perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerHTML = currentOffering["name"];
+
+            if (isBanned) {
+                perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+            }
+        });
+    }
+}
+
 function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
@@ -948,7 +1076,9 @@ function SearchForPerks(searchQuery, isSurvivor) {
 
     for (var i = 0; i < Perks.length; i++) {
         if(Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) continue
+
+            if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) { continue; }
+            
             if(Perks[i].survivorPerk == isSurvivor){
                 searchResults.push(Perks[i]);
             }
@@ -956,6 +1086,28 @@ function SearchForPerks(searchQuery, isSurvivor) {
     }
 
     return searchResults;   
+}
+
+function SearchForOfferings(searchQuery, isSurvivor) {
+    var searchResults = [];
+
+    let bannedOfferings = new Array()
+    if(onlyShowNonBanned){
+        bannedOfferings = GetBannedOfferings()
+    }
+
+    let OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    for (var i = 0; i < Offerings[OfferingsRole].length; i++) {
+        let bannedOffInRole = bannedOfferings[OfferingsRole];
+
+        if (Offerings[OfferingsRole][i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id + ""))) { continue; }
+            
+            searchResults.push(Offerings[OfferingsRole][i]);
+        }
+    }
+
+    return searchResults;
 }
 
 /* -------------------------------------- */
@@ -1098,6 +1250,35 @@ function GetBannedPerks(){
     }
 
     return bannedPerks
+}
+
+function GetBannedOfferings() {
+    let bannedOfferings = {
+        "Survivor": new Array(),
+        "Killer": new Array()
+    }
+
+    // Get survivor offerings from killer override
+    let survivorOfferings = currentBalancing.KillerOverride[selectedKiller].SurvivorOfferings;
+
+    // Get killer offerings from killer override
+    let killerOfferings = currentBalancing.KillerOverride[selectedKiller].KillerOfferings;
+
+    for (const offering of Offerings["Survivor"]) {
+        // If the offering is not in the survivor offerings, add it to the banned offerings
+        if (!survivorOfferings.includes(offering.id)) {
+            bannedOfferings["Survivor"].push(offering.id);
+        }
+    }
+
+    for (const offering of Offerings["Killer"]) {
+        // If the offering is not in the killer offerings, add it to the banned offerings
+        if (!killerOfferings.includes(offering.id)) {
+            bannedOfferings["Killer"].push(offering.id);
+        }
+    }
+
+    return bannedOfferings;
 }
 
 function GetBalancing() {
@@ -1649,6 +1830,26 @@ function CheckForBalancingErrors() {
 
         DebugLog(`Checking for combo perk bans on build #${i}...`);
         CheckForBannedComboPerks(SurvivorPerks[i], i);
+    }
+
+    var currentOverride = currentBalancing.KillerOverride[selectedKiller];
+    DebugLog("Current Override:");
+    DebugLog(currentOverride);
+    // Check for banned offerings
+    for (var i = 0; i < SurvivorOfferings.length; i++) {
+        let bannedOfferings = GetBannedOfferings();
+
+        if (SurvivorOfferings[i] == undefined) { continue; }
+        if (bannedOfferings["Survivor"].includes(SurvivorOfferings[i]["id"])) {
+            MasterErrorList.push(
+                GenerateErrorObject(
+                    "Banned Offering",
+                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    console.trace(),
+                    "iconography/Error.png"
+                )
+            );
+        }
     }
 
     UpdateErrorUI();

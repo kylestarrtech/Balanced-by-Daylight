@@ -551,8 +551,27 @@ body {
     filter: hue-rotate(100deg) contrast(105%) saturate(140%);
 }
 
-.perk-slot-result:hover {
-    filter: drop-shadow(0px 0px 2px #cecece);
+.offering-slot-result-banned {
+    filter: grayscale(75%) brightness(50%);
+}
+
+.offering-slot-result-banned:hover img {
+    
+    -webkit-filter:
+                drop-shadow(0px 0px 2px #ffffff80)
+                drop-shadow(1px 1px 0 #cecece40)
+                drop-shadow(-1px 1px 0 #cecece40)
+                drop-shadow(1px -1px 0 #cecece40)
+                drop-shadow(-1px -1px 0 #cecece40)
+                brightness(125%) !important;
+
+    filter: 
+            drop-shadow(0px 0px 2px #ffffff80)
+            drop-shadow(1px 1px 0 #cecece40)
+            drop-shadow(-1px 1px 0 #cecece40)
+            drop-shadow(1px -1px 0 #cecece40)
+            drop-shadow(-1px -1px 0 #cecece40)
+            brightness(125%) !important;
 }
 
 .perk-slot-result:hover img {
