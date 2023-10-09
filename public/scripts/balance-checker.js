@@ -113,11 +113,8 @@ function main() {
         if(saveLoadoutsAndKiller){
             if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
             if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
-            
-            document.getElementById("character-select-grid").scrollTo({
-                top : document.querySelector(`[data-killerid="${selectedKiller}"]`).getBoundingClientRect().top - 102,
-                behavior: "smooth"
-            })
+
+            ScrollToSelectedKiller();
         }
     }
 
@@ -327,6 +324,13 @@ function UpdateKillerSelectionUI() {
     document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
+function ScrollToSelectedKiller(){
+    document.getElementById("character-select-grid").scrollTo({
+        top : document.querySelector(`[data-killerid="${selectedKiller}"]`).getBoundingClientRect().top + document.getElementById("character-select-grid").scrollTop - 102,
+        behavior: "smooth"
+    })
+}
+
 function UpdateBalancingDropdown() {
     var balancingDropdown = document.getElementById("balancing-select");
 
@@ -492,6 +496,7 @@ function LoadImportEvents() {
             UpdateBalancingDropdown();
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+            ScrollToSelectedKiller();
         } catch (error) {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.\n\nError: ${error}`);
         }
