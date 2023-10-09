@@ -1,0 +1,112 @@
+{
+    "ItemTypes": [
+        {
+            "Name": "Firecracker",
+            "Addons": []
+        },
+        {
+            "Name": "Flashlight",
+            "Addons": [
+                {
+                    "Name": "Broken Bulb",
+                    "icon": "public/Addons/Broken-Bulb.webp"
+                },
+                {
+                    "Name": "Wide Lens",
+                    "icon": "public/Addons/Wide-Lens.webp"
+                },
+                {
+                    "Name": "Power Bulb",
+                    "icon": "public/Addons/Power-Bulb.webp"
+                },
+                {
+                    "Name": "Leather Grip",
+                    "icon": "public/Addons/Leather-Grip.webp"
+                },
+                {
+                    "Name": "Battery",
+                    "icon": "public/Addons/Battery.webp"
+                },
+                {
+                    "Name": "Tir Optic",
+                    "icon": "public/Addons/Tir-Optic.webp"
+                },
+                {
+                    "Name": "Rubber Grip",
+                    "icon": "public/Addons/Rubber-Grip.webp"
+                },
+                {
+                    "Name": "Low Amp Filament",
+                    "icon": "public/Addons/Low-Amp-Filament.webp"
+                },
+                {
+                    "Name": "Heavy Duty Battery",
+                    "icon": "public/Addons/Heavy-Duty-Battery.webp"
+                },
+                {
+                    "Name": "Focus Lens",
+                    "icon": "public/Addons/Focus-Lens.webp"
+                },
+                {
+                    "Name": "Long Life Battery",
+                    "icon": "public/Addons/Long-Life-Battery.webp"
+                },
+                {
+                    "Name": "Intense Halogen",
+                    "icon": "public/Addons/Intense-Halogen.webp"
+                },
+                {
+                    "Name": "High-End Sapphire Lens",
+                    "icon": "public/Addons/High-End-Sapphire-Lens.webp"
+                },
+                {
+                    "Name": "Odd Bulb",
+                    "icon": "public/Addons/Odd-Bulb.webp"
+                }
+            ]
+        },
+        {
+            "Name": "Med-Kit",
+            "Addons": [
+                
+            ]
+        }
+    ],
+    "Items": [
+        {
+            "Name": "Firecracker",
+            "Type": "Firecracker",
+            "icon": "public/Items/Firecracker.webp"
+        },
+        {
+            "Name": "Will O' Wisp",
+            "Type": "Flashlight",
+            "icon": "public/Items/Will-O_-Wisp.webp"
+        },
+        {
+            "Name": "Masquerade Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Masquerade-Flashlight.webp"
+        },
+        {
+            "Name": "Anniversary Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Anniversary-Flashlight.webp"
+        },
+        {
+            "Name": "Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Flashlight.webp"
+        },
+        {
+            "Name": "Sport Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Sport-Flashlight.webp"
+        },
+        {
+            "Name": "Utility Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Utility-Flashlight.webp"
+        }
+    ]
+}
