@@ -557,7 +557,7 @@ body {
 }
 
 .offering-slot-result-banned {
-    filter: grayscale(75%) brightness(50%);
+    filter: grayscale(75%) brightness(33%);
 }
 
 .offering-slot-result-banned:hover img {
