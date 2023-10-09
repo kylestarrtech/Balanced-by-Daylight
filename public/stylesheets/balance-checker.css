@@ -469,6 +469,24 @@ body {
 }
 
 /* Everything prestyled for 4 columns a row */
+@media screen and (max-width: 460px) {
+    /* if screen below 460px => restyle to 2 columns in a row */
+    #perk-search-module-container {
+        min-width: 250px !important;
+        max-width: 250px !important;
+    }
+    #perk-search-results-module {
+        justify-content: center;
+    }
+
+    /* here I just removed the margins bc honestly I couldnt replicate the effect correctly and I thought it looked ok like this, at least for now*/
+    .perk-slot-result:nth-child(8n+5){
+        margin-left: 0 !important;
+    }
+    .perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+        margin-top: 0 !important;
+    }
+}
 @media screen and (min-width: 700px) {
     /* If screen minimum 700px width => restyle to 5 columns a row */
     #perk-search-module-container {
