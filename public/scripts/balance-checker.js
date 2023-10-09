@@ -72,6 +72,44 @@ SurvivorPerks = [
     ]
 ]
 
+SurvivorOfferings = [
+    null,
+    null,
+    null,
+    null
+]
+
+SurvivorItems = [
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    },
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    },
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    },
+    {
+        Item: null,
+        Addons: [
+            null,
+            null
+        ]
+    }
+]
+
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
@@ -215,6 +253,7 @@ function UpdatePerkUI() {
     validChildI = 0;
     for (var i = 0; i < children.length; i++) {
         let currentChild = children[i];
+        // Is this a valid build component?
         if (!currentChild.classList.contains("survivor-build-component")) { continue; }
         
         currentChild.innerHTML = "";
@@ -237,6 +276,7 @@ function UpdatePerkUI() {
 
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
+            perkElement.classList.add("loadout-slot");
 
             perkElement.addEventListener("dragstart", function(event){
                 event.dataTransfer.effectAllowed = "move"
@@ -293,6 +333,71 @@ function UpdatePerkUI() {
             perkElement.appendChild(perkImg);
             currentChild.appendChild(perkElement);
         }
+
+        // Get current survivor offerings
+        let currentSurvivorOffering = SurvivorOfferings[validChildI];
+
+        // Create offering element
+        let offeringElement = document.createElement("div");
+        offeringElement.classList.add("offering-slot");
+        offeringElement.classList.add("loadout-slot");
+        
+        let OffSrc = "";
+        try {
+            OffSrc = currentSurvivorOffering["icon"];    
+        } catch (error) {
+            OffSrc = "public/Offerings/blank.webp";
+        }
+        
+        offeringElement.addEventListener("dragstart", function(event){
+            event.dataTransfer.effectAllowed = "move"
+            dragTargetElement = {}
+            dragTargetElement.draggable = 0
+            event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            event.dataTransfer.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+        });
+        offeringElement.addEventListener("dragover", function(event){
+            event.preventDefault()
+            event.dataTransfer.dropEffect = "move"
+        });
+        offeringElement.addEventListener("dragenter", function(event){
+            event.preventDefault()
+            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-offering-i-d")
+            dragTargetElement.targetOfferingId = GetPerkIdByFileName(event.target.getAttribute("src"))
+            dragTargetElement.draggable++
+        });
+        offeringElement.addEventListener("dragleave", function(event){
+            event.preventDefault()
+            dragTargetElement.draggable--
+        });
+        offeringElement.addEventListener("dragend", function(event){
+            event.preventDefault()
+
+            const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+
+            if(dragTargetElement.draggable <= 0){
+                SurvivorOfferings[sourceServ] = null
+            }else{
+                const targetSurv = parseInt(dragTargetElement.targetSurv)
+                
+                SurvivorOfferings[sourceSurv] = dragTargetElement.targetOfferingId ? GetOfferingById(dragTargetElement.targetOfferingId) : null
+                SurvivorOfferings[targetSurv] = event.dataTransfer.sourceOfferingID ? GetOfferingById(event.dataTransfer.sourceOfferingID) : null
+            }
+
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+            }
+            UpdatePerkUI();
+            CheckForBalancingErrors();
+        });
+        
+        offeringElement.dataset.survivorID = validChildI;
+
+        let offeringImg = document.createElement("img");
+        offeringImg.src = OffSrc;
+
+        offeringElement.appendChild(offeringImg);
+        currentChild.appendChild(offeringElement);
 
         validChildI++;
     }
@@ -679,6 +784,7 @@ function LoadPerkSelectionEvents() {
 function LoadPerkSearchEvents() {
     var perkSearchContainer = document.getElementById("perk-search-container");
 
+    // Code to exit search menu
     perkSearchContainer.addEventListener("click", function(event) {
         if(event.target.tagName === "IMG" || event.target.classList.contains("background-blur"))
             perkSearchContainer.hidden = true;
@@ -686,12 +792,19 @@ function LoadPerkSearchEvents() {
 
     var perkSearchBar = document.getElementById("perk-search-bar");
 
+    // Code to start search
     perkSearchBar.addEventListener("input", function() {
         ForcePerkSearch(perkSearchBar, perkSearchBar.value);
     });
 }
 
-function ForcePerkSearch(perkSearchBar, value = "") {
+/**
+ * Searches for perks/offerings/items based on a search query.
+ * @param {HTMLElement} perkSearchBar The perk search bar element.
+ * @param {*} value The value to search for. Default "".
+ * @param {*} target 0 = Perks, 1 = Offerings, 2 = Items. Default 0.
+ */
+function ForcePerkSearch(perkSearchBar, value = "", target = 0) {
     var searchResults = SearchForPerks(perkSearchBar.value, true);
 
     var perkSearchResultsContainer = document.getElementById("perk-search-results-module");
@@ -985,18 +1098,6 @@ function GetBannedPerks(){
     }
 
     return bannedPerks
-}
-
-function GetPerkIdByFileName(fileName){
-    for(const perk of Perks){
-        if(perk.icon == fileName) return perk.id
-    }
-}
-
-function GetPerkById(id){
-    for(const perk of Perks){
-        if(perk.id == id) return perk
-    }
 }
 
 function GetBalancing() {
@@ -1634,6 +1735,65 @@ function UpdateErrorUI() {
 /* -------------------------------------- */
 /* ------------- UTILITIES -------------- */
 /* -------------------------------------- */
+
+/**
+ * A function to get the ID of a perk based on its file name.
+ * @param {string} fileName The file name of the perk.
+ * @returns {number} The ID of the perk.
+ */
+function GetPerkIdByFileName(fileName){
+    for(const perk of Perks){
+        if(perk.icon == fileName) return perk.id
+    }
+}
+
+/**
+ * A function to get a perk object by its ID.
+ * @param {number} id The ID of the perk.
+ * @returns {object} The perk object.
+ */
+function GetPerkById(id){
+    for(const perk of Perks){
+        if(perk.id == id) return perk
+    }
+}
+
+/**
+ * A function to get the ID of an offering based on its file name.
+ * @param {string} fileName The file name of the offering.
+ * @returns {number} The ID of the offering.
+ */
+function GetOfferingIdByFileName(fileName){
+    let SurvivorOfferings = Offerings["Survivor"];
+    let KillerOfferings = Offerings["Killer"];
+
+    for(const offering of SurvivorOfferings){
+        if(offering.icon == fileName) return offering.id
+    }
+
+    for(const offering of KillerOfferings){
+        if(offering.icon == fileName) return offering.id
+    }
+
+}
+
+/**
+ * A function to get an offering object by its ID.
+ * @param {number} id The ID of the offering.
+ * @returns {object} The offering object.
+ */
+function GetOfferingById(id){
+    let SurvivorOfferings = Offerings["Survivor"];
+    let KillerOfferings = Offerings["Killer"];
+
+    for(const offering of SurvivorOfferings){
+        if(offering.id == id) return offering
+    }
+
+    for(const offering of KillerOfferings){
+        if(offering.id == id) return offering
+    }
+}
 
 /**
  * A function to print to the console if debugging is enabled.
