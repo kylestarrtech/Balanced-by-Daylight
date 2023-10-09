@@ -1920,7 +1920,7 @@ function CheckForBalancingErrors() {
             MasterErrorList.push(
                 GenerateErrorObject(
                     "Banned Offering",
-                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     console.trace(),
                     "iconography/Error.png"
                 )
