@@ -5,7 +5,7 @@ html
         link(rel="stylesheet", href="/stylesheets/balance-checker.css")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
         script(src="/socket.io/socket.io.js" type="text/javascript")
-    body(onload="main()")
+    body(onload="amain()")
         div#primary-balance-container
             div#balance-tabs-container
                 div.tier-selector-button(onclick="alert('This feature is coming soon!')")
@@ -90,49 +90,49 @@ html
                 h2 Survivor Builds
                 div#survivor-builds-container
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
-                        div.offering-slot
-                            img(src="public/Offerings/Annotated_Blueprint.webp")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
-                        div.offering-slot
-                            img(src="public/Offerings/Annotated_Blueprint.webp")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
-                        div.offering-slot
-                            img(src="public/Offerings/Annotated_Blueprint.webp")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
-                        div.offering-slot
-                            img(src="public/Offerings/Annotated_Blueprint.webp")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
                 div#import-export-button-container
                     button#import-button Import Builds
                     button#export-button Export Builds
@@ -192,16 +192,6 @@ html
                     div#settings-button-container
                         button#settings-clear-storage-button Clear Settings
                         button#settings-cancel-button Close
-        div#import-container()
-            div#import-blur(class="background-blur")
-                div#import-menu
-                    h1#import-title Import Builds
-                    p#build-import-instructions Please paste your build JSON below. If it is valid, it will be imported into your current build.
-                    textarea#build-import-textarea(class="override-scrollbar", placeholder="Enter Build JSON...", rows="15")
-                    br
-                    div#import-button-container
-                        button#build-import-button Import
-                        button#build-import-cancel-button Cancel
         div#alert-container(hidden="hidden")
             div#alert-blur(class="background-blur")
                 div#alert-menu
