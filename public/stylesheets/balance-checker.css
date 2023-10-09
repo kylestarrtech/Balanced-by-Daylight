@@ -41,6 +41,10 @@ body {
     drop-shadow(-1px -1px 0 #ffffff)
     drop-shadow(0px 0px 5px #ffffff) !important;
 }
+.character-selected img {
+    filter: drop-shadow(0px 0px 0 #ffffff00) grayscale(0%)
+    drop-shadow(0px 0px 0 #ffffff00);
+}
 
 .character-select-button img:hover {
     width: 100%;
