@@ -405,7 +405,7 @@ function UpdatePerkUI() {
                 SurvivorOfferings[sourceSurv] = null
             }else{
                 const targetSurv = parseInt(dragTargetElement.targetSurv)
-                
+
                 SurvivorOfferings[sourceSurv] = GetOfferingById(dragTargetElement.targetOfferingId)
                 SurvivorOfferings[targetSurv] = GetOfferingById(event.dataTransfer.sourceOfferingID)
             }
@@ -1054,6 +1054,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     // Add a blank offering to the top of the list
     let blankOffering = document.createElement("div");
     blankOffering.classList.add("perk-slot-result");
+    blankOffering.classList.add("offering-slot-result");
 
     let blankImg = document.createElement("img");
     blankImg.src = "public/Offerings/blank.webp";
@@ -1092,6 +1093,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
         
         let offeringElement = document.createElement("div");
         offeringElement.classList.add("perk-slot-result");
+        offeringElement.classList.add("offering-slot-result");
 
         DebugLog(`OfferingRole: ${OfferingRole}`)
         // Check if the offering is banned.

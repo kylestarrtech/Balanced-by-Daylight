@@ -405,6 +405,9 @@ body {
 .perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
     margin-top: -32px !important;
 }
+.offering-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+    margin-top: -18px !important;
+}
 
 .background-blur-raw {
     backdrop-filter: blur(10px);
@@ -492,6 +495,9 @@ body {
     .perk-slot-result:nth-child(n+6):nth-last-child(-n+1000) {
         margin-top: -32px !important;
     }
+    .offering-slot-result:nth-child(n+6):nth-last-child(-n+1000) {
+        margin-top: -18px !important;
+    }
     
     @media screen and (min-width: 1000px) {
         /* If screen minimum 1000px width => restyle to 6 columns a row */
@@ -510,6 +516,9 @@ body {
         }
         .perk-slot-result:nth-child(n+7):nth-last-child(-n+1000) {
             margin-top: -32px !important;
+        }
+        .offering-slot-result:nth-child(n+7):nth-last-child(-n+1000) {
+            margin-top: -18px !important;
         }
     }
 }
