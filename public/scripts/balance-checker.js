@@ -138,7 +138,7 @@ function main() {
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 
-    let loadDefaultBalance = false;
+    let loadDefaultBalance = true;
     // Load custom balancing if enabled
     if(localStorage.getItem("customBalanceOverride")) {
         // Custom balancing override is valid
@@ -147,7 +147,7 @@ function main() {
         if (localStorage.getItem("customBalanceOverride") == "true") {
             // Custom balancing is enabled
             customBalanceOverride = true;
-            loadDefaultBalance = true;
+            loadDefaultBalance = false;
 
             // Set balancing to custom balancing if it's valid
             if (localStorage.getItem("currentBalancing") &&
