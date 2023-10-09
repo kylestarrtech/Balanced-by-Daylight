@@ -113,6 +113,11 @@ function main() {
         if(saveLoadoutsAndKiller){
             if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
             if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+            
+            document.getElementById("character-select-grid").scrollTo({
+                top : document.querySelector(`[data-killerid="${selectedKiller}"]`).getBoundingClientRect().top - 102,
+                behavior: "smooth"
+            })
         }
     }
 
