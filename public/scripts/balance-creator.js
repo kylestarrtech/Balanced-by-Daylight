@@ -1618,8 +1618,8 @@ function UpdateKillerDropdowns() {
 
     for (var i = 0; i < Offerings.Killer.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = Offerings.Killer[i];
-        optionsElement.innerHTML = Offerings.Killer[i];
+        optionsElement.value = Offerings.Killer[i]["name"];
+        optionsElement.innerHTML = Offerings.Killer[i]["name"];
         killerOfferingDropdown.appendChild(optionsElement);
     }
 
@@ -1628,8 +1628,8 @@ function UpdateKillerDropdowns() {
 
     for (var i = 0; i < Offerings.Survivor.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = Offerings.Survivor[i];
-        optionsElement.innerHTML = Offerings.Survivor[i];
+        optionsElement.value = Offerings.Survivor[i]["name"];
+        optionsElement.innerHTML = Offerings.Survivor[i]["name"];
         survivorOfferingDropdown.appendChild(optionsElement);
     }
 }
