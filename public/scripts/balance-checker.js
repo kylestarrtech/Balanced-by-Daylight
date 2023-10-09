@@ -222,12 +222,16 @@ function UpdatePerkUI() {
     // Get all children
     var children = buildsContainer.children;
 
+    //-20 for the 10px padding on left & right
+    const maxWidth = children[0].offsetWidth - 20;
+
     // Loop through all children
     validChildI = 0;
     for (var i = 0; i < children.length; i++) {
         let currentChild = children[i];
         if (!currentChild.classList.contains("survivor-build-component")) { continue; }
         
+        currentChild.style.maxWidth = maxWidth + "px";
         currentChild.innerHTML = "";
 
         // Get current survivor perks
