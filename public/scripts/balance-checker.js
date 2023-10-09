@@ -33,6 +33,7 @@ var BalancePresets = [
 var currentBalancingIndex = 0;
 var customBalanceOverride = false;
 var onlyShowNonBanned = false;
+var saveLoadoutsAndKiller = false;
 
 var currentBalancing = {};
 
@@ -80,6 +81,7 @@ currentBalancingIndex = 0;
 //if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
+if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
 
 var socket = null;
 var RoomID = undefined;
@@ -106,8 +108,12 @@ function main() {
 
     // Loads survivor perks from local storage if enabled
     if (Config.saveBuilds) {
-        if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
-        if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+        document.getElementById("save-loadouts-killer-container").style.display = "block";
+
+        if(saveLoadoutsAndKiller){
+            if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
+            if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
+        }
     }
 
 
@@ -163,6 +169,9 @@ function main() {
 
     // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
+
+    // Update the checkbox to save loadouts and killer selected
+    document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
 
     // Update the custom balance checkbox to show if custom balancing is enabled
     document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
@@ -277,7 +286,7 @@ function UpdatePerkUI() {
                     SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
                 }
 
-                if (Config.saveBuilds) {
+                if (Config.saveBuilds && saveLoadoutsAndKiller) {
                     localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
                 }
                 UpdatePerkUI()
@@ -465,7 +474,7 @@ function LoadImportEvents() {
             customBalanceOverride = importDataObj.customBalanceOverride;
             currentBalancing = importDataObj.currentBalancing;
 
-            if (Config.saveBuilds) {
+            if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
                 localStorage.setItem("selectedKiller", selectedKiller);
             }
@@ -622,6 +631,15 @@ function LoadSettingsEvents() {
         localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
     })
 
+    const saveLoadoutsKillerCheckbox = document.getElementById("save-loadouts-killer");
+    saveLoadoutsKillerCheckbox.addEventListener("change", function(){
+        saveLoadoutsAndKiller = saveLoadoutsKillerCheckbox.checked;
+        localStorage.setItem("saveLoadoutsAndKiller", saveLoadoutsAndKiller);
+        
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        localStorage.setItem("selectedKiller", selectedKiller);
+    })
+
     const clearStorageButton = document.getElementById("settings-clear-storage-button");
     clearStorageButton.addEventListener("click", function() {
         if (confirm("Are you sure you want to clear your local storage? This will delete all of your settings including saved custom balancing.")) {
@@ -720,7 +738,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         perkSearchContainer.dataset.targetPerk = undefined;
 
         CheckForBalancingErrors();
-        if (Config.saveBuilds) {
+        if (Config.saveBuilds && saveLoadoutsAndKiller) {
             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         }
     });
@@ -799,7 +817,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             CheckForBalancingErrors();
             
             SendRoomDataUpdate();
-            if (Config.saveBuilds) {
+            if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
             }
         });
@@ -1853,7 +1871,7 @@ function CreateSocketEvents() {
         currentBalancing = appStatus.currentBalancing;
         RoomID = appStatus.roomID;
 
-        if (Config.saveBuilds) {
+        if (Config.saveBuilds && saveLoadoutsAndKiller) {
             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
             localStorage.setItem("selectedKiller", selectedKiller);
         }
