@@ -1175,12 +1175,81 @@ body {
     }
 }
 
-/* next: */
 @media screen and (max-width: 700px) {
     body { 
         box-sizing: border-box;
         overflow: visible;
+    }
 
-        border: 1px solid green;
+    #primary-balance-container {
+        grid-template-columns: 1fr;
+        overflow: visible;
+    }
+
+    #balance-tabs-container {
+        padding: 0.5rem;
+        height: 5.75rem;
+        
+        flex-direction: row;
+    }
+
+    .tier-selector-button {
+        width: 4.3rem;
+    }
+
+    .tier-selector-button:hover {
+        width: 4.9rem;
+    }
+
+    .tier-selector-button:active {
+        width: 4.8rem;
+    }
+
+    #balance-character-select-container {
+        height: 20.375rem; 
+    }
+
+    #balance-character-select-container h1 {
+        margin: 0.5rem 0;
+    }
+
+    #character-select-grid {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+    .character-select-button { 
+        width: 10rem;
+    }
+
+    #main-balance-window {
+        max-width: 43.125rem;
+        margin-bottom: 1rem;
+    }
+
+    #main-balance-window h2 {
+        font-size: clamp(1rem, 1rem + 1vw, 2rem);
+    }
+
+    #survivor-builds-container {
+        margin-bottom: 0.625rem;
+        width: 100%;
+    }
+
+    .survivor-build-component {
+        align-items: center;
+        height: clamp(4rem, 4rem + 2vw, 7.5rem);
+    }
+
+    #perk-search-container {
+        top: 443px;
+        /* This was added bc everytime the container opened it would scroll back to top of the page which was annoying. 
+        This value was chosen "at random" (trial and error in devtools).
+        This is not working perfectly though and needs more attention*/
+    }
+
+    #errors-window {
+        height: auto;
+        display: block;
     }
 }
