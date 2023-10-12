@@ -1252,4 +1252,9 @@ body {
         height: auto;
         display: block;
     }
+
+    #settings-menu {
+        max-width: 400px;
+        width: auto;
+    }
 }
