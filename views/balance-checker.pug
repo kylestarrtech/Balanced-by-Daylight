@@ -3,6 +3,7 @@ html
     head 
         title Dead by Daylight Balance Checker
         link(rel="stylesheet", href="/stylesheets/balance-checker.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
         script(src="/socket.io/socket.io.js" type="text/javascript")
     body(onload="main()")
@@ -90,41 +91,73 @@ html
                 h2 Survivor Builds
                 div#survivor-builds-container
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
+                        div.item-slot(class="loadout-slot")
+                            img(src="public/Items/Flashlight.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Long-Life-Battery.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Low-Amp-Filament.webp")
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
+                        div.item-slot(class="loadout-slot")
+                            img(src="public/Items/Flashlight.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Long-Life-Battery.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Low-Amp-Filament.webp")
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
+                        div.item-slot(class="loadout-slot")
+                            img(src="public/Items/Flashlight.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Long-Life-Battery.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Low-Amp-Filament.webp")
                     div.survivor-build-component
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Deliverance.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Hope.png")
-                        div.perk-slot
+                        div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Kinship.png")
+                        div.offering-slot(class="loadout-slot")
+                            img(src="public/Offerings/Annotated-Blueprint.webp")
+                        div.item-slot(class="loadout-slot")
+                            img(src="public/Items/Flashlight.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Long-Life-Battery.webp")
+                        div.addon-slot(class="loadout-slot")
+                            img(src="public/Addons/Low-Amp-Filament.webp")
                 div#import-export-button-container
                     button#import-button Import Builds
                     button#export-button Export Builds
@@ -178,6 +211,10 @@ html
                     label(for="only-non-banned") Only show non-banned Perks?
                     input#only-non-banned(type="checkbox")
                     br
+                    span#save-loadouts-killer-container(hidden="hidden")
+                        label(for="save-loadouts-killer") Auto-save Loadouts & Killer?
+                        input#save-loadouts-killer(type="checkbox")
+                        br
                     div#custom-error(class="error-flash-animation" hidden="hidden")
                         p Custom Balance JSON is invalid. Please verify your JSON <a href="https://jsonlint.com/" target="_blank">here</a>.
                     p Made by Kyle Starr (v1.0)
@@ -191,4 +228,3 @@ html
                     p#alert-message Test
                     div#alert-button-container
                         button#alert-ok-button OK
-
