@@ -10,7 +10,7 @@ body {
 
 #primary-balance-container {
     display: grid;
-    grid-template-columns: 8fr 17fr 50fr 25fr;
+    grid-template-columns: 8fr 12fr 55fr 25fr;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -558,6 +558,38 @@ body {
 
 .offering-slot-result-banned {
     filter: grayscale(75%) brightness(50%);
+}
+
+.offering-slot {
+    display: flex;
+    aspect-ratio: 0.85 / 1;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.item-slot {
+    display: flex;
+    aspect-ratio: 0.75 / 1;
+
+    align-items: center;
+    justify-content: center;    
+}
+
+.item-slot img {
+    width: 90%;
+    height: 90%;
+
+    aspect-ratio: 1/1;
+
+    object-fit: contain;
+}
+
+.addon-slot {
+    display: flex;
+    aspect-ratio: 0.67 / 1;
+
+    align-items: center;
 }
 
 .banned-offering {
