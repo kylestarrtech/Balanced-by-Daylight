@@ -159,14 +159,31 @@
             "AntiFacecampPermitted": false,
             "KillerIndvPerkBans": [],
             "KillerComboPerkBans": [],
-            "SurvivorIndvPerkBans": [],
+            "SurvivorIndvPerkBans": [
+                "1",
+                "13",
+                "21",
+                "34",
+                "36",
+                "38",
+                "39",
+                "44",
+                "57",
+                "76",
+                "92",
+                "112",
+                "121"
+            ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
-            "IndividualAddonBans": [],
+            "IndividualAddonBans": [
+                "Oily Coil",
+                "Iridescent Stone"
+            ],
             "SurvivorOfferings": [
                 0,
                 2,

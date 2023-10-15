@@ -201,7 +201,9 @@ function main() {
                 ValidateCustomBalancing(JSON.parse(localStorage.getItem("currentBalancing")))) {
                     
                 currentBalancing = JSON.parse(localStorage.getItem("currentBalancing"));
+                loadDefaultBalance = false;
             }
+
         }
     }
 
@@ -210,9 +212,6 @@ function main() {
             // Set balancing to said index.
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     }
-
-
-
 
     // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
@@ -1363,6 +1362,9 @@ function GetBalancing() {
             if (this.readyState == 4) {
                 switch (this.status) {
                     case 200:
+                        DebugLog(`Loaded balancing for ${currentPreset["Name"]}`);
+                        DebugLog(`Balancing string: ${this.responseText}`);
+                        DebugLog(JSON.parse(this.responseText));
                         currentPreset["Balancing"] = JSON.parse(this.responseText);
                     break;
                     default:
