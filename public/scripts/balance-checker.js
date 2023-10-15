@@ -40,7 +40,7 @@ var customBalanceOverride = false;
 var onlyShowNonBanned = false;
 var saveLoadoutsAndKiller = false;
 
-var currentBalancing = {};
+var currentBalancing = null;
 
 mousePos = [0, 0];
 function UpdateMousePos(event) {
@@ -301,6 +301,7 @@ function UpdatePerkUI() {
 
             perkElement.addEventListener("dragstart", function(event){
                 event.dataTransfer.effectAllowed = "move"
+                event.dataTransfer.setData("text/plain", "Dummy text to allow drag");
                 dragTargetElement = {}
                 dragTargetElement.draggable = 0
                 event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
@@ -343,6 +344,8 @@ function UpdatePerkUI() {
                 }
                 UpdatePerkUI()
                 CheckForBalancingErrors()
+
+                event.dataTransfer.clearData();
             });
 
             perkElement.dataset.survivorID = validChildI;
@@ -1313,6 +1316,13 @@ function GetBannedPerks(){
 }
 
 function GetBannedOfferings() {
+
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Offerings == undefined) { return null; }
+
     let bannedOfferings = {
         "Survivor": new Array(),
         "Killer": new Array()
@@ -1901,6 +1911,10 @@ function CheckForBalancingErrors() {
 
         if (SurvivorOfferings[i] == undefined) { continue; }
         if (bannedOfferings["Survivor"].includes(SurvivorOfferings[i]["id"])) {
+            
+            let offerings = document.getElementsByClassName("offering-slot");
+            offerings[i].classList.add("banned-offering");
+
             MasterErrorList.push(
                 GenerateErrorObject(
                     "Banned Offering",

@@ -560,6 +560,10 @@ body {
     filter: grayscale(75%) brightness(50%);
 }
 
+.banned-offering {
+    filter: grayscale(100%) brightness(50%);
+}
+
 .offering-slot-result-banned:hover img {
     
     -webkit-filter:
