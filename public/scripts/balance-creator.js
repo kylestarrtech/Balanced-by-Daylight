@@ -6,6 +6,8 @@ Survivors = null;
 Maps = null;
 Addons = null;
 Offerings = null;
+Items = null;
+
 MaximumPerkRepetition = 1;
 const version = 1;
 
@@ -1267,6 +1269,8 @@ function LoadKillerOverrideUI(id) {
         addonDropdown.appendChild(optionsElement);
     }
 
+    LoadPermittedItemsDropdowns();
+
     // Load Killer Offerings Allowed
     var offeringDropdown = document.getElementById("killer-offering-selection-dropdown");
     var offeringsAllowed = KillerData.KillerOfferings;
@@ -1278,7 +1282,7 @@ function LoadKillerOverrideUI(id) {
     offeringsAllowed = KillerData.SurvivorOfferings;
 
     SelectValuesInListbox("survivor-offering-selection-dropdown", offeringsAllowed);
-    
+
     // Apply it to KillerIndvBanDropdown
     var KlrIndvPrkBanDropdown = document.getElementById("killer-tiered-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
@@ -1406,6 +1410,51 @@ function LoadKillerOverrideUI(id) {
     return "OK!";
 }
 
+function LoadPermittedItemsDropdowns() {
+    let itemTypesDropdown = document.getElementById("killer-item-type-selection-dropdown")
+
+    itemTypesDropdown.innerHTML = "";
+
+    for (const itemType of Items["ItemTypes"]) {
+        let optionsElement = document.createElement("option");
+        optionsElement.value = itemType["Name"];
+        optionsElement.innerHTML = itemType["Name"];
+        itemTypesDropdown.appendChild(optionsElement);
+    }
+
+    itemTypesDropdown.addEventListener("change", function() {
+        // Get the selected item type
+        let selectedItemType = itemTypesDropdown.value;
+
+        // Get the items of the selected type
+        let itemsOfType = FindItemsOfType(selectedItemType);
+
+        // Get the item dropdown
+        let itemDropdown = document.getElementById("killer-item-selection-dropdown");
+        itemDropdown.innerHTML = "";
+
+        for (const item of itemsOfType) {
+            let optionsElement = document.createElement("option");
+            optionsElement.value = item["Name"];
+            optionsElement.innerHTML = item["Name"];
+            itemDropdown.appendChild(optionsElement);
+        }
+
+        let itemAddonDropdown = document.getElementById("killer-item-addon-selection-dropdown");
+        itemAddonDropdown.innerHTML = "";
+
+        let addonsOfItem = FindAddonsOfType(selectedItemType);
+
+        for (const addon of addonsOfItem) {
+            let optionsElement = document.createElement("option");
+            optionsElement.value = addon["Name"];
+            optionsElement.innerHTML = addon["Name"];
+            itemAddonDropdown.appendChild(optionsElement);
+        }
+    });
+
+}
+
 // Code from RobG as of 05/03/2011 on StackOverflow
 // https://stackoverflow.com/questions/5866169/how-to-get-all-selected-values-of-a-multiple-select-box
 // Return an array of the selected option values
@@ -1439,6 +1488,14 @@ function SetKillerBalancing() {
  * @returns {object} The killer balancing
  */
 function CreateKillerOverride(name) {
+    let AddonWhitelistSkeleton = {};
+
+    for (const itemType of Items["ItemTypes"]) {
+        AddonWhitelistSkeleton[itemType["Name"]] = {};
+        
+        AddonWhitelistSkeleton[itemType["Name"]]["Addons"] = [];
+    }
+
     NewKillerBalance = {
         Name: name,
         Map: [0], // Can be empty, which means all maps are allowed.
@@ -1455,6 +1512,8 @@ function CreateKillerOverride(name) {
         KillerWhitelistedComboPerks: [], // If some Killer benefits particularly off of a perk combo.
         AddonTiersBanned: [], // 0=Common | 1=Uncommon | 2=Rare | 3=Very Rare | 4=Iridescent
         IndividualAddonBans: [], // Name of the addons that are banned.
+        ItemWhitelist: [], // IDs of the items that are whitelisted.
+        AddonWhitelist: AddonWhitelistSkeleton, // Indices of the addons that are whitelisted by item type.
         SurvivorOfferings: [],  // Name of the permitted survivor offerings
         KillerOfferings: [] // Name of the permitted killer offerings
     }
@@ -1804,10 +1863,29 @@ function GetAddons() {
                 default:
                     console.error("Error getting addons: " + this.status);
             }
-            GetOfferings();
+            GetItems();
         }
     }
     xhttp.open("GET", "Addons.json", false);
+    xhttp.send();
+}
+
+function GetItems() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Items = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting items: " + this.status);
+            }
+            GetOfferings();
+        }
+    }
+    xhttp.open("GET", "Items.json", false);
     xhttp.send();
 }
 
@@ -2010,6 +2088,9 @@ function ImportBalancing() {
         NewKillerBalance.SurvivorOfferings = curKiller.SurvivorOfferings;
         NewKillerBalance.KillerOfferings = curKiller.KillerOfferings;
 
+        NewKillerBalance.ItemWhitelist = SanitizeKillerBalanceProperty(NewKillerBalance.ItemWhitelist, curKiller.ItemWhitelist);
+        
+
         KillerBalance.push(NewKillerBalance);
     }
 
@@ -2019,6 +2100,20 @@ function ImportBalancing() {
 }
 
 /* HELPER FUNCTIONS */
+
+/**
+ * Sanitizes a killer balance property for import. This way if a new property appears old balancing remains compatible.
+ * @param {*} curProperty The current property.
+ * @param {*} newProperty The desired new property.
+ * @returns 
+ */
+function SanitizeKillerBalanceProperty(curProperty, newProperty) {
+    if (newProperty == undefined) {
+        return curProperty;
+    }
+
+    return newProperty;
+}
 
 /**
  * Returns the name of the currently selected killer.
@@ -2071,6 +2166,93 @@ function DeselectAllValuesInListbox(id) {
     for (var i = 0; i < selectOptions.length; i++) {
         selectOptions[i].selected = false;
     }
+}
+
+function FindItemsOfType(type) {
+    var items = [];
+
+    // Check if item type is valid
+    if (type == undefined) {
+        console.error(`Item type is undefined!`);
+        return items;
+    }
+
+    let foundType = false;
+    for (const itemType of Items["ItemTypes"]) {
+        DebugLog(`Checking item type ${itemType["Name"]} compared to ${type}`)
+        DebugLog(`Type of itemType: ${typeof itemType["Name"]} | Type of type: ${typeof type}`)
+        if (itemType["Name"] == type) {
+            foundType = true;
+            break;
+        }
+    }
+    if (!foundType) {
+        console.error(`Item type ${type} is not a valid item type!`);
+        return items;
+    }
+
+    // Find items of the specified type
+    for (const item of Items["Items"]) {
+        if (item["Type"] == type) {
+            items.push(item);
+        }
+    }
+
+    return items;
+}
+
+function FindItemWithID(id) {
+    // Check if item id is valid
+    if (id == undefined) {
+        console.error(`Item id is undefined!`);
+        return undefined;
+    }
+
+    // Find item with specified id
+    for (const item of Items["Items"]) {
+        if (item["id"] == id) {
+            return item;
+        }
+    }
+
+    return undefined;
+}
+
+function FindAddonsOfType(type) {
+    var addons = [];
+
+    // Check if item type is valid
+    if (type == undefined) {
+        console.error(`Item type is undefined!`);
+        return addons;
+    }
+
+    let foundType = false;
+    let typeIndex = 0;
+    for (typeIndex = 0; typeIndex < Items["ItemTypes"].length; typeIndex++) {
+        var itemType = Items["ItemTypes"][typeIndex];
+        
+        
+        DebugLog(`Checking item type ${itemType["Name"]} compared to ${type}`)
+        DebugLog(`Type of itemType: ${typeof itemType["Name"]} | Type of type: ${typeof type}`)
+        
+        if (itemType["Name"] == type) {
+            foundType = true;
+            break;
+        }
+    }
+    if (!foundType) {
+        console.error(`Item type ${type} is not a valid item type!`);
+        return addons;
+    }
+
+    // Find addons of the specified type
+    let currentItemType = Items["ItemTypes"][typeIndex];
+    for (const addon of currentItemType["Addons"]) {
+        addons.push(addon);
+    }
+
+    return addons;
 }
 
 function DebugLog(text, printStackTrace = false) {
