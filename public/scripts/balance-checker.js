@@ -7,6 +7,7 @@ var Survivors = null;
 var Maps = null;
 var Addons = null;
 var Offerings = null;
+var Items = null;
 
 var Config = null;
 
@@ -422,6 +423,29 @@ function UpdatePerkUI() {
 
         offeringElement.appendChild(offeringImg);
         currentChild.appendChild(offeringElement);
+
+        // Get current survivor item
+        let currentSurvivorItem = SurvivorItems[validChildI];
+
+        // Create item element
+        let itemElement = document.createElement("div");
+        itemElement.classList.add("item-slot");
+        itemElement.classList.add("loadout-slot");
+
+        let itemSrc = "";
+        try {
+            itemSrc = currentSurvivorItem["icon"];
+        } catch (error) {
+            itemSrc = "public/Items/blank.webp";
+        }
+
+        itemElement.dataset.survivorID = validChildI;
+
+        let itemImg = document.createElement("img");
+        itemImg.src = itemSrc;
+
+        itemElement.appendChild(itemImg);
+        currentChild.appendChild(itemElement);
 
         validChildI++;
     }
@@ -867,6 +891,38 @@ function LoadPerkSelectionEvents() {
             ForceOfferingSearch(perkSearchInput, "");
         });
     }
+
+    var items = document.getElementsByClassName("item-slot");
+    for (var i = 0; i < items.length; i++) {
+        let currentItem = items[i];
+
+        currentItem.addEventListener("click", function() {
+            DebugLog(`Clicked on item for survivor ${currentItem.dataset.survivorID}`);
+
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetSurvivor = currentItem.dataset.survivorID;
+            perkSearchContainer.dataset.searchType = "item";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select an Item...";
+
+            // Reset search results
+            ForceItemSearch(perkSearchInput, "")
+        });
+    }
 }
 
 function LoadPerkSearchEvents() {
@@ -882,8 +938,20 @@ function LoadPerkSearchEvents() {
 
     // Code to start search
     perkSearchBar.addEventListener("input", function() {
+        // Get search type from dataset
+        var searchType = perkSearchContainer.dataset.searchType;
 
-        ForcePerkSearch(perkSearchBar, perkSearchBar.value);
+        switch (searchType) {
+            case "perk":
+                ForcePerkSearch(perkSearchBar, perkSearchBar.value);
+                break;
+            case "offering":
+                ForceOfferingSearch(perkSearchBar, perkSearchBar.value);
+                break;
+            case "item":
+                ForceItemSearch(perkSearchBar, perkSearchBar.value);
+                break;
+        }
     });
 }
 
@@ -898,7 +966,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     perkSearchBar.placeholder = "Search Perks...";
 
     var perkSearchResultsContainer = document.getElementById("perk-search-results-module");
-
+    perkSearchResultsContainer.classList.remove("item-gap-format");
     perkSearchResultsContainer.innerHTML = "";
 
     // Add a blank perk to the top of the list
@@ -906,6 +974,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     blankPerk.classList.add("perk-slot-result");
 
     let blankImg = document.createElement("img");
+    blankImg.draggable = false;
     blankImg.src = "public/Perks/blank.png";
 
     blankPerk.appendChild(blankImg);
@@ -981,6 +1050,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
 
         let perkImg = document.createElement("img");
+        perkImg.draggable = false;
         perkImg.src = currentPerk["icon"];
 
         perkElement.appendChild(perkImg);
@@ -1035,7 +1105,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     let searchResults = SearchForOfferings(perkSearchBar.value, isSurvivor);
 
     let offeringSearchResultsContainer = document.getElementById("perk-search-results-module");
-
+    offeringSearchResultsContainer.classList.remove("item-gap-format");
     offeringSearchResultsContainer.innerHTML = "";
 
     // Add a blank offering to the top of the list
@@ -1043,6 +1113,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     blankOffering.classList.add("perk-slot-result");
 
     let blankImg = document.createElement("img");
+    blankImg.draggable = false;
     blankImg.src = "public/Offerings/blank.webp";
 
     blankOffering.appendChild(blankImg);
@@ -1095,6 +1166,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
         offeringElement.dataset.offeringID = currentOffering["id"];
 
         let offeringImg = document.createElement("img");
+        offeringImg.draggable = false;
         offeringImg.src = currentOffering["icon"];
 
         offeringElement.appendChild(offeringImg);
@@ -1127,6 +1199,107 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
             }
         });
     }
+}
+
+function ForceItemSearch(perkSearchBar, value = "") {
+    perkSearchBar.placeholder = "Search Items...";
+
+    let searchResults = SearchForItems(perkSearchBar.value);
+
+    let itemSearchResultsContainer = document.getElementById("perk-search-results-module");
+
+    itemSearchResultsContainer.innerHTML = "";
+    itemSearchResultsContainer.classList.add("item-gap-format");
+
+    // Add a blank item to the top of the list
+    let blankItem = document.createElement("div");
+    blankItem.classList.add("item-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.draggable = false;
+    blankImg.src = "public/Items/blank.webp";
+
+    blankItem.appendChild(blankImg);
+    itemSearchResultsContainer.appendChild(blankItem);
+
+    let itemSearchContainer = document.getElementById("perk-search-container");
+    blankItem.addEventListener("click", function() {
+        let targetSurvivor = parseInt(itemSearchContainer.dataset.targetSurvivor);
+
+        SurvivorItems[targetSurvivor] = undefined;
+
+        UpdatePerkUI();
+
+        itemSearchContainer.dataset.targetSurvivor = undefined;
+
+        CheckForBalancingErrors();
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+        }
+    });
+
+    blankItem.addEventListener("mouseover", function() {
+        let perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Item";
+    });
+
+    const bannedItems = GetBannedItems();
+    for (var i = 0; i < searchResults.length; i++) {
+        let currentItem = searchResults[i];
+
+        let isBanned = false;
+        
+        let itemElement = document.createElement("div");
+        itemElement.classList.add("item-slot-result");
+
+        // Check if the item is banned.
+        if(bannedItems.includes(currentItem["id"])){
+            isBanned = true;
+        }
+
+        // Add classes based on item status
+        if (isBanned) {
+            itemElement.classList.add("item-slot-result-banned");
+        }
+
+        itemElement.dataset.itemID = currentItem["id"];
+
+        let itemImg = document.createElement("img");
+        itemImg.draggable = false;
+        itemImg.src = currentItem["icon"];
+
+        itemElement.appendChild(itemImg);
+        itemSearchResultsContainer.appendChild(itemElement);
+
+        itemElement.addEventListener("click", function() {
+            let targetSurvivor = parseInt(itemSearchContainer.dataset.targetSurvivor);
+
+            SurvivorItems[targetSurvivor] = currentItem;
+
+            UpdatePerkUI();
+
+            itemSearchContainer.dataset.targetSurvivor = undefined;
+
+            CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            }
+        });
+
+        itemElement.addEventListener("mouseover", function() {
+            let perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerHTML = currentItem["Name"];
+
+            if (isBanned) {
+                perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+            }
+        });
+    }
+
 }
 
 function SearchForPerks(searchQuery, isSurvivor) {
@@ -1167,6 +1340,26 @@ function SearchForOfferings(searchQuery, isSurvivor) {
             if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id + ""))) { continue; }
             
             searchResults.push(Offerings[OfferingsRole][i]);
+        }
+    }
+
+    return searchResults;
+}
+
+function SearchForItems(searchQuery) {
+    var searchResults = [];
+
+    let bannedItems = new Array()
+    if(onlyShowNonBanned){
+        bannedItems = GetBannedItems()
+    }
+
+    for (var i = 0; i < Items["Items"].length; i++) {
+        let currentItem = Items["Items"][i];
+        if (currentItem["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if((onlyShowNonBanned && bannedItems.includes(currentItem.id + ""))) { continue; }
+
+            searchResults.push(currentItem);
         }
     }
 
@@ -1267,10 +1460,29 @@ function GetAddons() {
                 default:
                     console.error("Error getting addons: " + this.status);
             }
-            GetOfferings();
+            GetItems();
         }
     }
     xhttp.open("GET", "Addons.json", false);
+    xhttp.send();
+}
+
+function GetItems() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Items = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting items: " + this.status);
+            }
+            GetOfferings();
+        }
+    }
+    xhttp.open("GET", "Items.json", false);
     xhttp.send();
 }
 
@@ -1349,6 +1561,32 @@ function GetBannedOfferings() {
     }
 
     return bannedOfferings;
+}
+
+function GetBannedItems() {
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Items == undefined) { return null; }
+
+    let bannedItems = new Array()
+
+    // Get items from killer override
+    let items = currentBalancing.KillerOverride[selectedKiller].ItemWhitelist;
+    DebugLog("ITEMS:")
+    DebugLog(items);
+
+    for (const item of Items["Items"]) {
+        // If the item is not in the items, add it to the banned items
+        DebugLog(`Checking if ${item.id} is in ${items}`);
+        if (!items.includes(item.id)) {
+            DebugLog(`${item.id} is not in ${items}`);
+            bannedItems.push(item.id);
+        }
+    }
+
+    return bannedItems;
 }
 
 function GetBalancing() {
@@ -1922,6 +2160,26 @@ function CheckForBalancingErrors() {
                 GenerateErrorObject(
                     "Banned Offering",
                     `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    console.trace(),
+                    "iconography/Error.png"
+                )
+            );
+        }
+    }
+
+    // Check for banned items
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        let bannedItems = GetBannedItems();
+
+        if (SurvivorItems[i] == undefined) { continue; }
+        if (bannedItems.includes(SurvivorItems[i]["id"])) {
+            let items = document.getElementsByClassName("item-slot");
+            items[i].classList.add("banned-item");
+
+            MasterErrorList.push(
+                GenerateErrorObject(
+                    "Banned Item",
+                    `Item <b>${SurvivorItems[i]["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     console.trace(),
                     "iconography/Error.png"
                 )
