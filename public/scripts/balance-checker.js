@@ -33,6 +33,11 @@ var BalancePresets = [
         Name: "Davy Jones League",
         Path: "BalancingPresets/DavyJones.json",
         Balancing: {}
+    },
+    {
+        Name: "L-Tournament",
+        Path: "BalancingPresets/L-Tournament.json",
+        Balancing: {}
     }
 ]
 
@@ -243,7 +248,7 @@ function GetConfig() {
 /**
  * A function to update the perk frontend.
  */
-let dragTargetElement = {}
+let dragTargetElement, dragSourceElement = {}
 function UpdatePerkUI() {
     // Get the builds container
     var buildsContainer = document.getElementById("survivor-builds-container");
@@ -279,49 +284,61 @@ function UpdatePerkUI() {
             } catch (error) {
                 ImgSrc = "public/Perks/blank.png";
             }
-
+            
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
             perkElement.classList.add("loadout-slot");
 
-            perkElement.addEventListener("dragstart", function(event){
+            perkElement.addEventListener("dragstart", function(event) {
                 event.dataTransfer.effectAllowed = "move"
-                event.dataTransfer.setData("text/plain", "Dummy text to allow drag");
-                dragTargetElement = {}
+                dragSourceElement, dragTargetElement = {}
                 dragTargetElement.draggable = 0
-                event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-                event.dataTransfer.sourcePerk = event.target.parentElement.getAttribute("data-perk-i-d")
-                event.dataTransfer.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+
+                dragSourceElement.sourceSurv = event.target.parentElement.dataset.survivorID
+                dragSourceElement.sourcePerkSlot = event.target.parentElement.dataset.perkID
+                dragSourceElement.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
             });
-            perkElement.addEventListener("dragover", function(event){
+            perkElement.addEventListener("dragover", function(event) {
                 event.preventDefault()
                 event.dataTransfer.dropEffect = "move"
             });
-            perkElement.addEventListener("dragenter", function(event){
+            perkElement.addEventListener("dragenter", function(event) {
                 event.preventDefault()
-                dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-                dragTargetElement.targetPerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                dragTargetElement.targetSurv = event.target.parentElement.dataset.survivorID
+                dragTargetElement.targetPerkSlot = event.target.parentElement.dataset.perkID
                 dragTargetElement.targetPerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
                 dragTargetElement.draggable++
             });
-            perkElement.addEventListener("dragleave", function(event){
+            perkElement.addEventListener("dragleave", function(event) {
                 event.preventDefault()
                 dragTargetElement.draggable--
             });
-            perkElement.addEventListener("dragend", function(event){
+            perkElement.addEventListener("dragend", function(event) {
                 event.preventDefault()
 
-                const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
-                const sourcePerk = parseInt(event.dataTransfer.sourcePerk) 
+                let sourceSurv = parseInt(dragSourceElement.sourceSurv)
+                let sourcePerkSlot = parseInt(dragSourceElement.sourcePerkSlot)
+                let sourcePerkId = dragSourceElement.sourcePerkId
 
-                if(dragTargetElement.draggable <= 0){
-                    SurvivorPerks[sourceSurv][sourcePerk] = null
-                }else{
-                    const targetSurv = parseInt(dragTargetElement.targetSurv)
-                    const targetPerk = parseInt(dragTargetElement.targetPerk) 
+                if(dragTargetElement.draggable <= 0) { // If we're not dragging over a valid element, remove the perk
+                    SurvivorPerks[sourceSurv][sourcePerkSlot] = null
+                }
+                else {
                     
-                    SurvivorPerks[sourceSurv][sourcePerk] = dragTargetElement.targetPerkId ? GetPerkById(dragTargetElement.targetPerkId) : null
-                    SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
+                    let newSourcePerk = null;
+                    if (dragTargetElement.targetPerkId != null) {
+                        newSourcePerk = GetPerkById(dragTargetElement.targetPerkId)
+                    }
+                    SurvivorPerks[sourceSurv][sourcePerkSlot] = newSourcePerk
+
+                    let targetSurv = parseInt(dragTargetElement.targetSurv)
+                    let targetPerkSlot = parseInt(dragTargetElement.targetPerkSlot)
+                    
+                    let newTargetPerk = null
+                    if (sourcePerkId != null) {
+                        newTargetPerk = GetPerkById(sourcePerkId)
+                    }
+                    SurvivorPerks[targetSurv][targetPerkSlot] = newTargetPerk
                 }
 
                 if (Config.saveBuilds && saveLoadoutsAndKiller) {
@@ -360,10 +377,11 @@ function UpdatePerkUI() {
         
         offeringElement.addEventListener("dragstart", function(event){
             event.dataTransfer.effectAllowed = "move"
-            dragTargetElement = {}
+            dragSourceElement, dragTargetElement = {}
             dragTargetElement.draggable = 0
-            event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-            event.dataTransfer.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+
+            dragSourceElement.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragSourceElement.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
         });
         offeringElement.addEventListener("dragover", function(event){
             event.preventDefault()
@@ -371,26 +389,50 @@ function UpdatePerkUI() {
         });
         offeringElement.addEventListener("dragenter", function(event){
             event.preventDefault()
+
+            // Set the target survivor ID (where we're dragging to)
             dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-            dragTargetElement.targetOfferingId = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            
+            // Set the target offering ID (where we're dragging to)
+            dragTargetElement.targetOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            
+            // Increment the draggable counter, this is used to check if we're dragging over a valid element
             dragTargetElement.draggable++
         });
         offeringElement.addEventListener("dragleave", function(event){
             event.preventDefault()
+
+            // Decrement the draggable counter, this is used to check if we're dragging over a valid element
             dragTargetElement.draggable--
         });
         offeringElement.addEventListener("dragend", function(event){
             event.preventDefault()
 
-            const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+            // Get the source survivor ID (where we're dragging from)
+            const sourceSurv = parseInt(dragSourceElement.sourceSurv);
 
-            if(dragTargetElement.draggable <= 0){
+            // Get the source offering ID (where we're dragging from)
+            const sourceOfferingID = parseInt(dragSourceElement.sourceOfferingID);
+
+            if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the offering
                 SurvivorOfferings[sourceSurv] = null
-            }else{
+            }else{ // If we are dragging over a valid element, swap the offerings
+
+                let newSourceOffering = null;
+
+                if (dragTargetElement.targetOfferingID != null) { // If the target offering ID is not null, get the offering by ID
+                    newSourceOffering = GetOfferingById(dragTargetElement.targetOfferingID)
+                }
                 const targetSurv = parseInt(dragTargetElement.targetSurv)
+
+                let newTargetOffering = null;
+
+                if (sourceOfferingID != null) { // If the source offering ID is not null, get the offering by ID
+                    newTargetOffering = GetOfferingById(sourceOfferingID)
+                }
                 
-                SurvivorOfferings[sourceSurv] = dragTargetElement.targetOfferingId ? GetOfferingById(dragTargetElement.targetOfferingId) : null
-                SurvivorOfferings[targetSurv] = event.dataTransfer.sourceOfferingID ? GetOfferingById(event.dataTransfer.sourceOfferingID) : null
+                SurvivorOfferings[sourceSurv] = newSourceOffering;
+                SurvivorOfferings[targetSurv] = newTargetOffering;
             }
 
             if (Config.saveBuilds) {
@@ -422,6 +464,87 @@ function UpdatePerkUI() {
         } catch (error) {
             itemSrc = "public/Items/blank.webp";
         }
+
+        itemElement.addEventListener("dragstart", function(event){
+            event.dataTransfer.effectAllowed = "move"
+            dragSourceElement, dragTargetElement = {}
+            dragTargetElement.draggable = 0
+
+            dragSourceElement.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragSourceElement.sourceItemID = GetItemIdByFileName(event.target.getAttribute("src"))
+            dragSourceElement.sourceItemAddons = SurvivorAddons[dragSourceElement.sourceSurv];
+        });
+        itemElement.addEventListener("dragover", function(event){
+            event.preventDefault()
+            event.dataTransfer.dropEffect = "move"
+        });
+        itemElement.addEventListener("dragenter", function(event){
+            event.preventDefault()
+
+            // Set the target survivor ID (where we're dragging to)
+            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            
+            // Set the target item ID (where we're dragging to)
+            dragTargetElement.targetItemID = GetItemIdByFileName(event.target.getAttribute("src"))
+            
+            // Set the target item addons (where we're dragging to)
+            dragTargetElement.targetItemAddons = SurvivorAddons[dragTargetElement.targetSurv];
+
+            // Increment the draggable counter, this is used to check if we're dragging over a valid element
+            dragTargetElement.draggable++
+        });
+        itemElement.addEventListener("dragleave", function(event){
+            event.preventDefault()
+
+            // Decrement the draggable counter, this is used to check if we're dragging over a valid element
+            dragTargetElement.draggable--
+        });
+        itemElement.addEventListener("dragend", function(event){
+            event.preventDefault()
+
+            // Get the source survivor ID (where we're dragging from)
+            const sourceSurv = parseInt(dragSourceElement.sourceSurv);
+
+            // Get the source item ID (where we're dragging from)
+            const sourceItemID = parseInt(dragSourceElement.sourceItemID);
+
+            // Get the source item addons (where we're dragging from)
+            const sourceItemAddons = dragSourceElement.sourceItemAddons;
+
+            if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the item
+                SurvivorItems[sourceSurv] = null;
+                SurvivorAddons[sourceSurv] = [undefined, undefined];
+            }else{ // If we are dragging over a valid element, swap the items
+
+                let newSourceItem = null;
+                let newSourceAddons = null;
+
+                if (dragTargetElement.targetItemID != null) { // If the target item ID is not null, get the item by ID
+                    newSourceItem = GetItemById(dragTargetElement.targetItemID)
+                }
+                const targetSurv = parseInt(dragTargetElement.targetSurv)
+
+                let newTargetItem = null;
+
+                if (sourceItemID != null) { // If the source item ID is not null, get the item by ID
+                    newTargetItem = GetItemById(sourceItemID)
+                }
+                
+                SurvivorItems[sourceSurv] = newSourceItem;
+                SurvivorItems[targetSurv] = newTargetItem;
+
+                // Swap addons
+                SurvivorAddons[sourceSurv] = dragTargetElement.targetItemAddons;
+                SurvivorAddons[targetSurv] = sourceItemAddons;
+            }
+
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+            }
+            UpdatePerkUI();
+            CheckForBalancingErrors();
+        });
 
         itemElement.dataset.survivorID = validChildI;
 
@@ -467,9 +590,11 @@ function UpdatePerkUI() {
 
         let addonImg1 = document.createElement("img");
         addonImg1.src = addonSrc1;
+        addonImg1.draggable = false;
 
         let addonImg2 = document.createElement("img");
         addonImg2.src = addonSrc2;
+        addonImg2.draggable = false;
 
         addonElement1.appendChild(addonImg1);
         addonElement2.appendChild(addonImg2);
@@ -597,6 +722,8 @@ function LoadImportEvents() {
             
             let importDataObj = JSON.parse(decompressedText);
 
+            console.log(importDataObj);
+
             // Is there a valid balancing index?
             if (importDataObj.currentBalancingIndex == undefined) {
                 throw "Invalid import data. Current balancing index is undefined.";
@@ -631,8 +758,12 @@ function LoadImportEvents() {
                 throw "Invalid import data. SurvivorPerks length is not 4.";
             }
 
+            // survCpt is the current survivor we're on
             let survCpt = 0
+
+            // perkCpt is the current perk we're on
             let perkCpt = 0
+
             for(const currentSurvivor of importDataObj.survivorPerksId){
                 if (currentSurvivor.length != 4) {
                     throw "Invalid import data. SurvivorPerks length is not 4.";
@@ -649,6 +780,30 @@ function LoadImportEvents() {
                 }
                 perkCpt = 0
                 survCpt++
+            }
+
+            survCpt = 0
+            for(const offeringId of importDataObj.survivorOfferingsId){
+                SurvivorOfferings[survCpt] = GetOfferingById(offeringId)
+                survCpt++
+            }
+
+            survCpt = 0
+            for(const itemId of importDataObj.survivorItemsId){
+                SurvivorItems[survCpt] = GetItemById(itemId)
+                survCpt++
+            }
+
+            survCpt = 0
+            /*
+            AddonInfo = 
+            [Addon1, Addon2] - Array(int)
+            ItemType - String
+            */
+            for(const addonInfo of importDataObj.survivorAddonInfo){
+                console.log(addonInfo);
+                SurvivorAddons[survCpt] = [GetAddonById(addonInfo[1], addonInfo[0][0]), GetAddonById(addonInfo[1], addonInfo[0][1])];
+                survCpt++;
             }
 
             // If all checks pass, set the remaining data
@@ -670,7 +825,8 @@ function LoadImportEvents() {
             UpdateKillerSelectionUI();
             ScrollToSelectedKiller();
         } catch (error) {
-            GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.\n\nError: ${error}`);
+            GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
+            console.trace();
         }
     });
 
@@ -684,15 +840,45 @@ function LoadImportEvents() {
             survivorPerksId.push(perksId)
         }
 
+        const survivorOfferingsId = new Array()
+        for(const offering of SurvivorOfferings){
+            survivorOfferingsId.push(offering?.id)
+        }
+
+        const survivorItemsId = new Array()
+        const survivorAddonInfo = new Array()
+
+        for (var i = 0; i < SurvivorItems.length; i++) {
+            survivorItemsId.push(SurvivorItems[i]?.id);
+
+            const currentAddons = SurvivorAddons[i];
+
+            survivorAddonInfo.push(
+                [
+                    [
+                        currentAddons[0]?.id,
+                        currentAddons[1]?.id
+                    ],
+                    SurvivorItems[i]["Type"]
+                ]
+            );
+        }
+
+
         const exportJson = {
             "survivorPerksId": survivorPerksId,
+            "survivorOfferingsId": survivorOfferingsId,
+            "survivorItemsId": survivorItemsId,
+            "survivorAddonInfo": survivorAddonInfo,
             "selectedKiller": selectedKiller,
             "currentBalancingIndex": currentBalancingIndex,
             "customBalanceOverride": customBalanceOverride,
             "onlyShowNonBanned": onlyShowNonBanned,
-            "currentBalancing": customBalanceOverride ? currentBalancing : null,
-            "roomID": RoomID
+            "currentBalancing": customBalanceOverride ? currentBalancing : null
         }
+
+        console.log(exportJson);
+
         const exportData = JSON.stringify(exportJson);
 
         const deflate = pako.deflate(exportData, { to: "string" });
@@ -1188,6 +1374,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     // Add a blank offering to the top of the list
     let blankOffering = document.createElement("div");
     blankOffering.classList.add("perk-slot-result");
+    blankOffering.classList.add("offering-slot-result");
 
     let blankImg = document.createElement("img");
     blankImg.draggable = false;
@@ -1227,6 +1414,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
         
         let offeringElement = document.createElement("div");
         offeringElement.classList.add("perk-slot-result");
+        offeringElement.classList.add("offering-slot-result");
 
         DebugLog(`OfferingRole: ${OfferingRole}`)
         // Check if the offering is banned.
@@ -1536,12 +1724,12 @@ function SearchForOfferings(searchQuery, isSurvivor) {
         bannedOfferings = GetBannedOfferings()
     }
 
-    let OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    const OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    const bannedOffInRole = bannedOfferings[OfferingsRole]
     for (var i = 0; i < Offerings[OfferingsRole].length; i++) {
-        let bannedOffInRole = bannedOfferings[OfferingsRole];
 
         if (Offerings[OfferingsRole][i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id + ""))) { continue; }
+            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id))) { continue; }
             
             searchResults.push(Offerings[OfferingsRole][i]);
         }
@@ -2419,7 +2607,7 @@ function CheckForBalancingErrors() {
             MasterErrorList.push(
                 GenerateErrorObject(
                     "Banned Offering",
-                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     undefined,
                     "iconography/OfferingError.png"
                 )
@@ -2675,7 +2863,22 @@ function GetOfferingIdByFileName(fileName){
     for(const offering of KillerOfferings){
         if(offering.icon == fileName) return offering.id
     }
+}
 
+function GetItemIdByFileName(fileName) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["icon"] == fileName) {
+            return currentItem["id"];
+        }
+    }
+
+    return undefined;
 }
 
 /**
@@ -2696,19 +2899,49 @@ function GetOfferingById(id){
     }
 }
 
+function GetItemById(id) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["id"] == id) {
+            return currentItem;
+        }
+    }
+
+    return undefined;
+}
+
 /**
  * A function to get the name of an addon based on its ID.
  * @param {string} itemType The type of item the addon belongs to.
  * @param {number} id The ID of the addon.
  */
 function GetAddonById(itemType, id) {
-    if (Items == undefined) { return; }
+    if (Items == undefined) { return undefined; }
 
     let ItemTypes = Items["ItemTypes"];
-    if (ItemTypes == undefined) { return; }
+    if (ItemTypes == undefined) { return undefined; }
 
-    let addons = ItemTypes[itemType]["Addons"];
-    if (addons == undefined) { return; }
+    // Find item type index
+    let itemTypeIndex = undefined;
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            itemTypeIndex = i;
+            break;
+        }
+    }
+    if (itemTypeIndex == undefined) { return undefined; }
+
+    let addons = ItemTypes[itemTypeIndex]["Addons"];
+    if (addons == undefined) { return undefined; }
 
     for (var i = 0; i < addons.length; i++) {
         let currentAddon = addons[i];
@@ -2876,6 +3109,9 @@ function ValidateCustomBalancing(balanceObj) {
 
             if (currentOverride["AddonTiersBanned"] == undefined) { return false; }
             if (currentOverride["IndividualAddonBans"] == undefined) { return false; }
+
+            if (currentOverride["ItemWhitelist"] == undefined) { return false; }
+            if (currentOverride["AddonWhitelist"] == undefined) { return false; }
 
             if (currentOverride["SurvivorOfferings"] == undefined) { return false; }
             if (currentOverride["KillerOfferings"] == undefined) { return false; }

@@ -1,5 +1,4 @@
 FEEL FREE TO CHANGE THIS FILE FOR YOUR COMMIT IF YOU NEED TO EXPLAIN SOMETHING IN GREATER DETAIL.
 
-- Updated DBDL balancing (Resurgence for some reason was not working, I have no fucking clue what happened so I just removed it and readded it and it worked well so gg)
-- Updated COTF Xenomorph Balancing (Xenomorph was not added)
-- Added server config option decide whether or not the program should save builds, if builds need to be saved then you can just toggle this to true.
+- The previous implementation did not work on all browsers. Firefox has an issue where if you try to directly modify values of dataTransfer, the transfer didn't work. https://caniuse.com/dragndrop
+- Also the ternary operator made Ace in the Hole not swap correctly. since its ID is 0, and JavaScript interprets that as a false boolean.
