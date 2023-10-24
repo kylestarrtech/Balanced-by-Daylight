@@ -315,7 +315,7 @@ body {
 
     background-color: #ffffff04;
     margin: auto;
-    width: auto;
+    width: max-content;
     padding: 10px;
 
     gap: 10px;
@@ -566,7 +566,12 @@ body {
 }
 
 .perk-slot-result-banned{
-    filter:hue-rotate(60deg) contrast(120%);
+    --outline-color: #ff0000;
+    filter:hue-rotate(60deg) contrast(120%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
 }
 .perk-slot-result-equipped{
     filter:hue-rotate(180deg) contrast(90%);
@@ -611,13 +616,42 @@ body {
 
 .addon-slot {
     display: flex;
-    aspect-ratio: 0.67 / 1;
+    aspect-ratio: 0.5 / 1;
 
     align-items: center;
+    justify-content: center;
+}
+
+.addon-slot img {
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+    object-fit: contain;
 }
 
 .banned-offering {
-    filter: grayscale(100%) brightness(50%);
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.banned-item {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.banned-addon {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
 }
 
 .offering-slot-result-banned:hover img {
