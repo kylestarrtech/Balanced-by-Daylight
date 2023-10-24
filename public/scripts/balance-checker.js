@@ -315,7 +315,7 @@ function UpdatePerkUI() {
                 let sourcePerkSlot = parseInt(dragSourceElement.sourcePerkSlot)
                 let sourcePerkId = dragSourceElement.sourcePerkId
 
-                if(dragTargetElement.draggable <= 0) {
+                if(dragTargetElement.draggable <= 0) { // If we're not dragging over a valid element, remove the perk
                     SurvivorPerks[sourceSurv][sourcePerkSlot] = null
                 }
                 else {
@@ -372,10 +372,11 @@ function UpdatePerkUI() {
         
         offeringElement.addEventListener("dragstart", function(event){
             event.dataTransfer.effectAllowed = "move"
-            dragTargetElement = {}
+            dragSourceElement, dragTargetElement = {}
             dragTargetElement.draggable = 0
-            event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-            event.dataTransfer.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+
+            dragSourceElement.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragSourceElement.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
         });
         offeringElement.addEventListener("dragover", function(event){
             event.preventDefault()
@@ -383,26 +384,50 @@ function UpdatePerkUI() {
         });
         offeringElement.addEventListener("dragenter", function(event){
             event.preventDefault()
+
+            // Set the target survivor ID (where we're dragging to)
             dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-            dragTargetElement.targetOfferingId = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            
+            // Set the target offering ID (where we're dragging to)
+            dragTargetElement.targetOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            
+            // Increment the draggable counter, this is used to check if we're dragging over a valid element
             dragTargetElement.draggable++
         });
         offeringElement.addEventListener("dragleave", function(event){
             event.preventDefault()
+
+            // Decrement the draggable counter, this is used to check if we're dragging over a valid element
             dragTargetElement.draggable--
         });
         offeringElement.addEventListener("dragend", function(event){
             event.preventDefault()
 
-            const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+            // Get the source survivor ID (where we're dragging from)
+            const sourceSurv = parseInt(dragSourceElement.sourceSurv);
 
-            if(dragTargetElement.draggable <= 0){
+            // Get the source offering ID (where we're dragging from)
+            const sourceOfferingID = parseInt(dragSourceElement.sourceOfferingID);
+
+            if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the offering
                 SurvivorOfferings[sourceSurv] = null
-            }else{
+            }else{ // If we are dragging over a valid element, swap the offerings
+
+                let newSourceOffering = null;
+
+                if (dragTargetElement.targetOfferingID != null) { // If the target offering ID is not null, get the offering by ID
+                    newSourceOffering = GetOfferingById(dragTargetElement.targetOfferingID)
+                }
                 const targetSurv = parseInt(dragTargetElement.targetSurv)
+
+                let newTargetOffering = null;
+
+                if (sourceOfferingID != null) { // If the source offering ID is not null, get the offering by ID
+                    newTargetOffering = GetOfferingById(sourceOfferingID)
+                }
                 
-                SurvivorOfferings[sourceSurv] = dragTargetElement.targetOfferingId ? GetOfferingById(dragTargetElement.targetOfferingId) : null
-                SurvivorOfferings[targetSurv] = event.dataTransfer.sourceOfferingID ? GetOfferingById(event.dataTransfer.sourceOfferingID) : null
+                SurvivorOfferings[sourceSurv] = newSourceOffering;
+                SurvivorOfferings[targetSurv] = newTargetOffering;
             }
 
             if (Config.saveBuilds) {
