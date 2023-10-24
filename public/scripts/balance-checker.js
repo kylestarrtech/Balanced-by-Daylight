@@ -1,4 +1,4 @@
-var debugging = true;
+var debugging = false;
 var overrideStackTrace = false;
 
 var Perks = null;
@@ -7,6 +7,7 @@ var Survivors = null;
 var Maps = null;
 var Addons = null;
 var Offerings = null;
+var Items = null;
 
 var Config = null;
 
@@ -45,7 +46,7 @@ var customBalanceOverride = false;
 var onlyShowNonBanned = false;
 var saveLoadoutsAndKiller = false;
 
-var currentBalancing = {};
+var currentBalancing = null;
 
 mousePos = [0, 0];
 function UpdateMousePos(event) {
@@ -91,34 +92,17 @@ SurvivorOfferings = [
 ]
 
 SurvivorItems = [
-    {
-        Item: null,
-        Addons: [
-            null,
-            null
-        ]
-    },
-    {
-        Item: null,
-        Addons: [
-            null,
-            null
-        ]
-    },
-    {
-        Item: null,
-        Addons: [
-            null,
-            null
-        ]
-    },
-    {
-        Item: null,
-        Addons: [
-            null,
-            null
-        ]
-    }
+    undefined,
+    undefined,
+    undefined,
+    undefined
+]
+
+SurvivorAddons = [
+    [undefined, undefined],
+    [undefined, undefined],
+    [undefined, undefined],
+    [undefined, undefined]
 ]
 
 selectedKiller = 0;
@@ -162,6 +146,8 @@ function main() {
             if(localStorage.getItem("selectedKiller")) selectedKiller = parseInt(localStorage.getItem("selectedKiller"));
             if(localStorage.getItem("SurvivorPerks")) SurvivorPerks = JSON.parse(localStorage.getItem("SurvivorPerks"));
             if(localStorage.getItem("SurvivorOfferings")) SurvivorOfferings = JSON.parse(localStorage.getItem("SurvivorOfferings"));
+            if(localStorage.getItem("SurvivorItems")) SurvivorItems = JSON.parse(localStorage.getItem("SurvivorItems"));
+            if(localStorage.getItem("SurvivorAddons")) SurvivorAddons = JSON.parse(localStorage.getItem("SurvivorAddons"));
 
             ScrollToSelectedKiller();
         }
@@ -205,7 +191,9 @@ function main() {
                 ValidateCustomBalancing(JSON.parse(localStorage.getItem("currentBalancing")))) {
                     
                 currentBalancing = JSON.parse(localStorage.getItem("currentBalancing"));
+                loadDefaultBalance = false;
             }
+
         }
     }
 
@@ -214,9 +202,6 @@ function main() {
             // Set balancing to said index.
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     }
-
-
-
 
     // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
@@ -263,7 +248,7 @@ function GetConfig() {
 /**
  * A function to update the perk frontend.
  */
-let dragTargetElement = {}
+let dragTargetElement, dragSourceElement = {}
 function UpdatePerkUI() {
     // Get the builds container
     var buildsContainer = document.getElementById("survivor-builds-container");
@@ -299,48 +284,61 @@ function UpdatePerkUI() {
             } catch (error) {
                 ImgSrc = "public/Perks/blank.png";
             }
-
+            
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
             perkElement.classList.add("loadout-slot");
 
-            perkElement.addEventListener("dragstart", function(event){
+            perkElement.addEventListener("dragstart", function(event) {
                 event.dataTransfer.effectAllowed = "move"
-                dragTargetElement = {}
+                dragSourceElement, dragTargetElement = {}
                 dragTargetElement.draggable = 0
-                event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-                event.dataTransfer.sourcePerk = event.target.parentElement.getAttribute("data-perk-i-d")
-                event.dataTransfer.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+
+                dragSourceElement.sourceSurv = event.target.parentElement.dataset.survivorID
+                dragSourceElement.sourcePerkSlot = event.target.parentElement.dataset.perkID
+                dragSourceElement.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
             });
-            perkElement.addEventListener("dragover", function(event){
+            perkElement.addEventListener("dragover", function(event) {
                 event.preventDefault()
                 event.dataTransfer.dropEffect = "move"
             });
-            perkElement.addEventListener("dragenter", function(event){
+            perkElement.addEventListener("dragenter", function(event) {
                 event.preventDefault()
-                dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-                dragTargetElement.targetPerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                dragTargetElement.targetSurv = event.target.parentElement.dataset.survivorID
+                dragTargetElement.targetPerkSlot = event.target.parentElement.dataset.perkID
                 dragTargetElement.targetPerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
                 dragTargetElement.draggable++
             });
-            perkElement.addEventListener("dragleave", function(event){
+            perkElement.addEventListener("dragleave", function(event) {
                 event.preventDefault()
                 dragTargetElement.draggable--
             });
-            perkElement.addEventListener("dragend", function(event){
+            perkElement.addEventListener("dragend", function(event) {
                 event.preventDefault()
 
-                const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
-                const sourcePerk = parseInt(event.dataTransfer.sourcePerk) 
+                let sourceSurv = parseInt(dragSourceElement.sourceSurv)
+                let sourcePerkSlot = parseInt(dragSourceElement.sourcePerkSlot)
+                let sourcePerkId = dragSourceElement.sourcePerkId
 
-                if(dragTargetElement.draggable <= 0){
-                    SurvivorPerks[sourceSurv][sourcePerk] = null
-                }else{
-                    const targetSurv = parseInt(dragTargetElement.targetSurv)
-                    const targetPerk = parseInt(dragTargetElement.targetPerk) 
+                if(dragTargetElement.draggable <= 0) { // If we're not dragging over a valid element, remove the perk
+                    SurvivorPerks[sourceSurv][sourcePerkSlot] = null
+                }
+                else {
                     
-                    SurvivorPerks[sourceSurv][sourcePerk] = dragTargetElement.targetPerkId ? GetPerkById(dragTargetElement.targetPerkId) : null
-                    SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
+                    let newSourcePerk = null;
+                    if (dragTargetElement.targetPerkId != null) {
+                        newSourcePerk = GetPerkById(dragTargetElement.targetPerkId)
+                    }
+                    SurvivorPerks[sourceSurv][sourcePerkSlot] = newSourcePerk
+
+                    let targetSurv = parseInt(dragTargetElement.targetSurv)
+                    let targetPerkSlot = parseInt(dragTargetElement.targetPerkSlot)
+                    
+                    let newTargetPerk = null
+                    if (sourcePerkId != null) {
+                        newTargetPerk = GetPerkById(sourcePerkId)
+                    }
+                    SurvivorPerks[targetSurv][targetPerkSlot] = newTargetPerk
                 }
 
                 if (Config.saveBuilds && saveLoadoutsAndKiller) {
@@ -348,6 +346,8 @@ function UpdatePerkUI() {
                 }
                 UpdatePerkUI()
                 CheckForBalancingErrors()
+
+                event.dataTransfer.clearData();
             });
 
             perkElement.dataset.survivorID = validChildI;
@@ -377,10 +377,11 @@ function UpdatePerkUI() {
         
         offeringElement.addEventListener("dragstart", function(event){
             event.dataTransfer.effectAllowed = "move"
-            dragTargetElement = {}
+            dragSourceElement, dragTargetElement = {}
             dragTargetElement.draggable = 0
-            event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-            event.dataTransfer.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+
+            dragSourceElement.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragSourceElement.sourceOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
         });
         offeringElement.addEventListener("dragover", function(event){
             event.preventDefault()
@@ -388,26 +389,50 @@ function UpdatePerkUI() {
         });
         offeringElement.addEventListener("dragenter", function(event){
             event.preventDefault()
+
+            // Set the target survivor ID (where we're dragging to)
             dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-            dragTargetElement.targetOfferingId = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            
+            // Set the target offering ID (where we're dragging to)
+            dragTargetElement.targetOfferingID = GetOfferingIdByFileName(event.target.getAttribute("src"))
+            
+            // Increment the draggable counter, this is used to check if we're dragging over a valid element
             dragTargetElement.draggable++
         });
         offeringElement.addEventListener("dragleave", function(event){
             event.preventDefault()
+
+            // Decrement the draggable counter, this is used to check if we're dragging over a valid element
             dragTargetElement.draggable--
         });
         offeringElement.addEventListener("dragend", function(event){
             event.preventDefault()
 
-            const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
+            // Get the source survivor ID (where we're dragging from)
+            const sourceSurv = parseInt(dragSourceElement.sourceSurv);
 
-            if(dragTargetElement.draggable <= 0){
+            // Get the source offering ID (where we're dragging from)
+            const sourceOfferingID = parseInt(dragSourceElement.sourceOfferingID);
+
+            if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the offering
                 SurvivorOfferings[sourceSurv] = null
-            }else{
+            }else{ // If we are dragging over a valid element, swap the offerings
+
+                let newSourceOffering = null;
+
+                if (dragTargetElement.targetOfferingID != null) { // If the target offering ID is not null, get the offering by ID
+                    newSourceOffering = GetOfferingById(dragTargetElement.targetOfferingID)
+                }
                 const targetSurv = parseInt(dragTargetElement.targetSurv)
 
-                SurvivorOfferings[sourceSurv] = GetOfferingById(dragTargetElement.targetOfferingId)
-                SurvivorOfferings[targetSurv] = GetOfferingById(event.dataTransfer.sourceOfferingID)
+                let newTargetOffering = null;
+
+                if (sourceOfferingID != null) { // If the source offering ID is not null, get the offering by ID
+                    newTargetOffering = GetOfferingById(sourceOfferingID)
+                }
+                
+                SurvivorOfferings[sourceSurv] = newSourceOffering;
+                SurvivorOfferings[targetSurv] = newTargetOffering;
             }
 
             if (Config.saveBuilds) {
@@ -424,6 +449,157 @@ function UpdatePerkUI() {
 
         offeringElement.appendChild(offeringImg);
         currentChild.appendChild(offeringElement);
+
+        // Get current survivor item
+        let currentSurvivorItem = SurvivorItems[validChildI];
+
+        // Create item element
+        let itemElement = document.createElement("div");
+        itemElement.classList.add("item-slot");
+        itemElement.classList.add("loadout-slot");
+
+        let itemSrc = "";
+        try {
+            itemSrc = currentSurvivorItem["icon"];
+        } catch (error) {
+            itemSrc = "public/Items/blank.webp";
+        }
+
+        itemElement.addEventListener("dragstart", function(event){
+            event.dataTransfer.effectAllowed = "move"
+            dragSourceElement, dragTargetElement = {}
+            dragTargetElement.draggable = 0
+
+            dragSourceElement.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragSourceElement.sourceItemID = GetItemIdByFileName(event.target.getAttribute("src"))
+            dragSourceElement.sourceItemAddons = SurvivorAddons[dragSourceElement.sourceSurv];
+        });
+        itemElement.addEventListener("dragover", function(event){
+            event.preventDefault()
+            event.dataTransfer.dropEffect = "move"
+        });
+        itemElement.addEventListener("dragenter", function(event){
+            event.preventDefault()
+
+            // Set the target survivor ID (where we're dragging to)
+            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            
+            // Set the target item ID (where we're dragging to)
+            dragTargetElement.targetItemID = GetItemIdByFileName(event.target.getAttribute("src"))
+            
+            // Set the target item addons (where we're dragging to)
+            dragTargetElement.targetItemAddons = SurvivorAddons[dragTargetElement.targetSurv];
+
+            // Increment the draggable counter, this is used to check if we're dragging over a valid element
+            dragTargetElement.draggable++
+        });
+        itemElement.addEventListener("dragleave", function(event){
+            event.preventDefault()
+
+            // Decrement the draggable counter, this is used to check if we're dragging over a valid element
+            dragTargetElement.draggable--
+        });
+        itemElement.addEventListener("dragend", function(event){
+            event.preventDefault()
+
+            // Get the source survivor ID (where we're dragging from)
+            const sourceSurv = parseInt(dragSourceElement.sourceSurv);
+
+            // Get the source item ID (where we're dragging from)
+            const sourceItemID = parseInt(dragSourceElement.sourceItemID);
+
+            // Get the source item addons (where we're dragging from)
+            const sourceItemAddons = dragSourceElement.sourceItemAddons;
+
+            if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the item
+                SurvivorItems[sourceSurv] = null;
+                SurvivorAddons[sourceSurv] = [undefined, undefined];
+            }else{ // If we are dragging over a valid element, swap the items
+
+                let newSourceItem = null;
+                let newSourceAddons = null;
+
+                if (dragTargetElement.targetItemID != null) { // If the target item ID is not null, get the item by ID
+                    newSourceItem = GetItemById(dragTargetElement.targetItemID)
+                }
+                const targetSurv = parseInt(dragTargetElement.targetSurv)
+
+                let newTargetItem = null;
+
+                if (sourceItemID != null) { // If the source item ID is not null, get the item by ID
+                    newTargetItem = GetItemById(sourceItemID)
+                }
+                
+                SurvivorItems[sourceSurv] = newSourceItem;
+                SurvivorItems[targetSurv] = newTargetItem;
+
+                // Swap addons
+                SurvivorAddons[sourceSurv] = dragTargetElement.targetItemAddons;
+                SurvivorAddons[targetSurv] = sourceItemAddons;
+            }
+
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            }
+            UpdatePerkUI();
+            CheckForBalancingErrors();
+        });
+
+        itemElement.dataset.survivorID = validChildI;
+
+        let itemImg = document.createElement("img");
+        itemImg.src = itemSrc;
+
+        itemElement.appendChild(itemImg);
+        currentChild.appendChild(itemElement);
+
+        // CSS bugs out if we do this so I'm leaving it out for now.
+        //if (SurvivorItems[validChildI] == undefined) { continue; }
+
+        // Get current survivor addons
+        let currentSurvivorAddons = SurvivorAddons[validChildI];
+
+        // Create addon elements
+        let addonElement1 = document.createElement("div");
+        addonElement1.classList.add("addon-slot");
+        addonElement1.classList.add("loadout-slot");
+
+        let addonElement2 = document.createElement("div");
+        addonElement2.classList.add("addon-slot");
+        addonElement2.classList.add("loadout-slot");
+
+        let addonSrc1 = "";
+        let addonSrc2 = "";
+        try {
+            addonSrc1 = currentSurvivorAddons[0]["icon"];
+        } catch (error) {
+            addonSrc1 = "public/Addons/blank.webp";
+        }
+        try {
+            addonSrc2 = currentSurvivorAddons[1]["icon"];
+        } catch (error) {
+            addonSrc2 = "public/Addons/blank.webp";
+        }
+
+        addonElement1.dataset.survivorID = validChildI;
+        addonElement2.dataset.survivorID = validChildI;
+
+        addonElement1.dataset.addonSlot = 0;
+        addonElement2.dataset.addonSlot = 1;
+
+        let addonImg1 = document.createElement("img");
+        addonImg1.src = addonSrc1;
+        addonImg1.draggable = false;
+
+        let addonImg2 = document.createElement("img");
+        addonImg2.src = addonSrc2;
+        addonImg2.draggable = false;
+
+        addonElement1.appendChild(addonImg1);
+        addonElement2.appendChild(addonImg2);
+
+        currentChild.appendChild(addonElement1);
+        currentChild.appendChild(addonElement2);
 
         validChildI++;
     }
@@ -880,6 +1056,82 @@ function LoadPerkSelectionEvents() {
             ForceOfferingSearch(perkSearchInput, "");
         });
     }
+
+    var items = document.getElementsByClassName("item-slot");
+    for (var i = 0; i < items.length; i++) {
+        let currentItem = items[i];
+
+        currentItem.addEventListener("click", function() {
+            DebugLog(`Clicked on item for survivor ${currentItem.dataset.survivorID}`);
+
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetSurvivor = currentItem.dataset.survivorID;
+            perkSearchContainer.dataset.searchType = "item";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select an Item...";
+
+            // Reset search results
+            ForceItemSearch(perkSearchInput, "")
+        });
+    }
+
+    var addons = document.getElementsByClassName("addon-slot");
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+        let currentAddonIndex = currentAddon.dataset.survivorID; // Get the survivor index
+    
+        currentAddon.addEventListener("click", function() {
+            const currentSurvivorItem = SurvivorItems[currentAddonIndex];
+
+            if (currentSurvivorItem == undefined) {
+                GenerateAlertModal("No Item Selected", "Please select an item before selecting addons.");
+                return;
+            }
+            const itemType = currentSurvivorItem["Type"];
+
+            DebugLog(`Clicked on addon ${currentAddon.innerText} for survivor ${currentAddon.dataset.survivorID}`);
+
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetSurvivor = currentAddon.dataset.survivorID;
+            perkSearchContainer.dataset.itemType = itemType;
+            perkSearchContainer.dataset.addonSlot = currentAddon.dataset.addonSlot;
+            perkSearchContainer.dataset.searchType = "addon";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select an Addon...";
+
+            // Reset search results
+            ForceAddonSearch(perkSearchInput, "");
+        });
+    }
+
 }
 
 function LoadPerkSearchEvents() {
@@ -895,8 +1147,23 @@ function LoadPerkSearchEvents() {
 
     // Code to start search
     perkSearchBar.addEventListener("input", function() {
+        // Get search type from dataset
+        var searchType = perkSearchContainer.dataset.searchType;
 
-        ForcePerkSearch(perkSearchBar, perkSearchBar.value);
+        switch (searchType) {
+            case "perk":
+                ForcePerkSearch(perkSearchBar, perkSearchBar.value);
+                break;
+            case "offering":
+                ForceOfferingSearch(perkSearchBar, perkSearchBar.value);
+                break;
+            case "item":
+                ForceItemSearch(perkSearchBar, perkSearchBar.value);
+                break;
+            case "addon":
+                ForceAddonSearch(perkSearchBar, perkSearchBar.value);
+                break;
+        }
     });
 }
 
@@ -911,7 +1178,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     perkSearchBar.placeholder = "Search Perks...";
 
     var perkSearchResultsContainer = document.getElementById("perk-search-results-module");
-
+    perkSearchResultsContainer.classList.remove("item-gap-format");
     perkSearchResultsContainer.innerHTML = "";
 
     // Add a blank perk to the top of the list
@@ -919,6 +1186,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     blankPerk.classList.add("perk-slot-result");
 
     let blankImg = document.createElement("img");
+    blankImg.draggable = false;
     blankImg.src = "public/Perks/blank.png";
 
     blankPerk.appendChild(blankImg);
@@ -994,6 +1262,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
 
         let perkImg = document.createElement("img");
+        perkImg.draggable = false;
         perkImg.src = currentPerk["icon"];
 
         perkElement.appendChild(perkImg);
@@ -1048,7 +1317,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     let searchResults = SearchForOfferings(perkSearchBar.value, isSurvivor);
 
     let offeringSearchResultsContainer = document.getElementById("perk-search-results-module");
-
+    offeringSearchResultsContainer.classList.remove("item-gap-format");
     offeringSearchResultsContainer.innerHTML = "";
 
     // Add a blank offering to the top of the list
@@ -1057,6 +1326,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     blankOffering.classList.add("offering-slot-result");
 
     let blankImg = document.createElement("img");
+    blankImg.draggable = false;
     blankImg.src = "public/Offerings/blank.webp";
 
     blankOffering.appendChild(blankImg);
@@ -1110,6 +1380,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
         offeringElement.dataset.offeringID = currentOffering["id"];
 
         let offeringImg = document.createElement("img");
+        offeringImg.draggable = false;
         offeringImg.src = currentOffering["icon"];
 
         offeringElement.appendChild(offeringImg);
@@ -1136,6 +1407,234 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
             let perkTooltip = document.getElementById("perk-highlight-name");
 
             perkTooltip.innerHTML = currentOffering["name"];
+
+            if (isBanned) {
+                perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+            }
+        });
+    }
+}
+
+function ForceItemSearch(perkSearchBar, value = "") {
+    perkSearchBar.placeholder = "Search Items...";
+
+    let searchResults = SearchForItems(perkSearchBar.value);
+
+    let itemSearchResultsContainer = document.getElementById("perk-search-results-module");
+
+    itemSearchResultsContainer.innerHTML = "";
+    itemSearchResultsContainer.classList.add("item-gap-format");
+
+    // Add a blank item to the top of the list
+    let blankItem = document.createElement("div");
+    blankItem.classList.add("item-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.draggable = false;
+    blankImg.src = "public/Items/blank.webp";
+
+    blankItem.appendChild(blankImg);
+    itemSearchResultsContainer.appendChild(blankItem);
+
+    let itemSearchContainer = document.getElementById("perk-search-container");
+    blankItem.addEventListener("click", function() {
+        let targetSurvivor = parseInt(itemSearchContainer.dataset.targetSurvivor);
+
+        SurvivorItems[targetSurvivor] = undefined;
+
+        // Reset addons
+        SurvivorAddons[targetSurvivor] = [undefined, undefined];
+
+        UpdatePerkUI();
+
+        itemSearchContainer.dataset.targetSurvivor = undefined;
+
+        CheckForBalancingErrors();
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+        }
+    });
+
+    blankItem.addEventListener("mouseover", function() {
+        let perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Item";
+    });
+
+    const bannedItems = GetBannedItems();
+    for (var i = 0; i < searchResults.length; i++) {
+        let currentItem = searchResults[i];
+
+        let isBanned = false;
+        
+        let itemElement = document.createElement("div");
+        itemElement.classList.add("item-slot-result");
+
+        // Check if the item is banned.
+        if(bannedItems.includes(currentItem["id"])){
+            isBanned = true;
+        }
+
+        // Add classes based on item status
+        if (isBanned) {
+            itemElement.classList.add("item-slot-result-banned");
+        }
+
+        itemElement.dataset.itemID = currentItem["id"];
+
+        let itemImg = document.createElement("img");
+        itemImg.draggable = false;
+        itemImg.src = currentItem["icon"];
+
+        itemElement.appendChild(itemImg);
+        itemSearchResultsContainer.appendChild(itemElement);
+
+        itemElement.addEventListener("click", function() {
+            let targetSurvivor = parseInt(itemSearchContainer.dataset.targetSurvivor);
+
+            let currentSurvivorItem = SurvivorItems[targetSurvivor];
+            
+            let equalItemTypes = false;
+            if (currentSurvivorItem != undefined && currentItem != undefined) {
+                equalItemTypes = currentSurvivorItem["Type"] == currentItem["Type"];
+            }
+            
+            SurvivorItems[targetSurvivor] = currentItem;
+
+            // Reset addons if the item type is different
+            if (!equalItemTypes) {
+                SurvivorAddons[targetSurvivor] = [undefined, undefined];
+            }
+            UpdatePerkUI();
+
+            itemSearchContainer.dataset.targetSurvivor = undefined;
+
+            CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+            }
+        });
+
+        itemElement.addEventListener("mouseover", function() {
+            let perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerHTML = currentItem["Name"];
+
+            if (isBanned) {
+                perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+            }
+        });
+    }
+
+}
+
+function ForceAddonSearch(perkSearchBar, value = "") {
+    perkSearchBar.placeholder = "Search Addons...";
+
+    const perkSearchContainer = document.getElementById("perk-search-container");
+    
+    let filterData = {
+        "itemType": perkSearchContainer.dataset.itemType,
+        "addonSlot": perkSearchContainer.dataset.addonSlot
+    }
+
+    if (perkSearchContainer.dataset.itemType == undefined) { 
+        GenerateAlertModal("Item Persistence Error", "There was an error finding the item type to search appropriate addons. Please try again or file an issue on the GitHub page.");
+        return;
+    }
+    let searchResults = SearchForAddons(perkSearchBar.value, filterData["itemType"]);
+
+    let addonSearchResultsContainer = document.getElementById("perk-search-results-module");
+
+    addonSearchResultsContainer.innerHTML = "";
+    addonSearchResultsContainer.classList.add("item-gap-format");
+
+    // Add a blank addon to the top of the list
+    let blankAddon = document.createElement("div");
+    blankAddon.classList.add("item-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.draggable = false;
+    blankImg.src = "public/Addons/blank.webp";
+
+    blankAddon.appendChild(blankImg);
+    addonSearchResultsContainer.appendChild(blankAddon);
+
+    blankAddon.addEventListener("click", function() {
+        let targetSurvivor = parseInt(perkSearchContainer.dataset.targetSurvivor);
+
+        SurvivorAddons[targetSurvivor][filterData["addonSlot"]] = undefined;
+
+        UpdatePerkUI();
+
+        perkSearchContainer.dataset.targetSurvivor = undefined;
+
+        CheckForBalancingErrors();
+        if (Config.saveBuilds) {
+            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+        }
+    });
+
+    blankAddon.addEventListener("mouseover", function() {
+        let perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Addon";
+    });
+
+    const bannedAddons = GetBannedAddons(filterData["itemType"]);
+    for (var i = 0; i < searchResults.length; i++) {
+        let currentAddon = searchResults[i];
+
+        let isBanned = false;
+
+        let addonElement = document.createElement("div");
+        addonElement.classList.add("item-slot-result");
+
+        // Check if the addon is banned.
+        if(bannedAddons.includes(currentAddon["id"])){
+            isBanned = true;
+        }
+
+        // Add classes based on addon status
+        if (isBanned) {
+            addonElement.classList.add("item-slot-result-banned");
+        }
+
+        addonElement.dataset.addonID = currentAddon["id"];
+        addonElement.dataset.itemType = filterData["itemType"];
+
+        let addonImg = document.createElement("img");
+        addonImg.draggable = false;
+        addonImg.src = currentAddon["icon"];
+
+        addonElement.appendChild(addonImg);
+        addonSearchResultsContainer.appendChild(addonElement);
+
+        addonElement.addEventListener("click", function() {
+            let targetSurvivor = parseInt(perkSearchContainer.dataset.targetSurvivor);
+
+            SurvivorAddons[targetSurvivor][filterData["addonSlot"]] = currentAddon;
+
+            UpdatePerkUI();
+
+            perkSearchContainer.dataset.targetSurvivor = undefined;
+
+            CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+            }
+        });
+
+        addonElement.addEventListener("mouseover", function() {
+            let perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerHTML = currentAddon["Name"];
 
             if (isBanned) {
                 perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
@@ -1182,6 +1681,49 @@ function SearchForOfferings(searchQuery, isSurvivor) {
             if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id))) { continue; }
             
             searchResults.push(Offerings[OfferingsRole][i]);
+        }
+    }
+
+    return searchResults;
+}
+
+function SearchForItems(searchQuery) {
+    var searchResults = [];
+
+    let bannedItems = new Array()
+    if(onlyShowNonBanned){
+        bannedItems = GetBannedItems()
+    }
+
+    for (var i = 0; i < Items["Items"].length; i++) {
+        let currentItem = Items["Items"][i];
+        if (currentItem["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if((onlyShowNonBanned && bannedItems.includes(currentItem.id + ""))) { continue; }
+
+            searchResults.push(currentItem);
+        }
+    }
+
+    return searchResults;
+}
+
+function SearchForAddons(searchQuery, itemType) {
+    var searchResults = [];
+
+    let bannedAddons = new Array()
+    if (onlyShowNonBanned) {
+        bannedAddons = GetBannedAddons(filterData["itemType"]);
+    }
+
+    let itemTypeIndex = GetIndexOfItemType(itemType);
+    let addonList = Items["ItemTypes"][itemTypeIndex]["Addons"];
+    DebugLog(addonList);
+    for (var i = 0; i < addonList.length; i++) {
+        let currentAddon = addonList[i];
+        if (currentAddon["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if ((onlyShowNonBanned && bannedAddons.includes(currentAddon.id + ""))) { continue; }
+
+            searchResults.push(currentAddon);
         }
     }
 
@@ -1282,10 +1824,29 @@ function GetAddons() {
                 default:
                     console.error("Error getting addons: " + this.status);
             }
-            GetOfferings();
+            GetItems();
         }
     }
     xhttp.open("GET", "Addons.json", false);
+    xhttp.send();
+}
+
+function GetItems() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Items = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting items: " + this.status);
+            }
+            GetOfferings();
+        }
+    }
+    xhttp.open("GET", "Items.json", false);
     xhttp.send();
 }
 
@@ -1331,6 +1892,13 @@ function GetBannedPerks(){
 }
 
 function GetBannedOfferings() {
+
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Offerings == undefined) { return null; }
+
     let bannedOfferings = {
         "Survivor": new Array(),
         "Killer": new Array()
@@ -1359,6 +1927,57 @@ function GetBannedOfferings() {
     return bannedOfferings;
 }
 
+function GetBannedItems() {
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Items == undefined) { return null; }
+
+    let bannedItems = new Array()
+
+    // Get items from killer override
+    let items = currentBalancing.KillerOverride[selectedKiller].ItemWhitelist;
+    if (items == undefined) { return null; }
+    DebugLog("ITEMS:")
+    DebugLog(items);
+    
+    for (const item of Items["Items"]) {
+        // If the item is not in the items, add it to the banned items
+        //DebugLog(`Checking if ${item.id} is in ${items}`);
+        if (!items.includes(item.id)) {
+            //DebugLog(`${item.id} is not in ${items}`);
+            bannedItems.push(item.id);
+        }
+    }
+
+    return bannedItems;
+}
+
+function GetBannedAddons(itemType) {
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Items == undefined) { return null; }
+
+    let bannedAddons = new Array()
+
+    // Get addons from killer override
+    let whitelistedAddons = currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType]["Addons"];
+    let addonList = Items["ItemTypes"][GetIndexOfItemType(itemType)]["Addons"];
+
+    //console.log(whitelistedAddons);
+    for (const addon of addonList) {
+        // If the addon is not in the addons, add it to the banned addons
+        if (!whitelistedAddons.includes(addon.id)) {
+            bannedAddons.push(addon.id);
+        }
+    }
+
+    return bannedAddons;
+}
+
 function GetBalancing() {
     // Subtract one due to customs
     for (var i = 0; i < BalancePresets.length; i++) {
@@ -1370,6 +1989,9 @@ function GetBalancing() {
             if (this.readyState == 4) {
                 switch (this.status) {
                     case 200:
+                        DebugLog(`Loaded balancing for ${currentPreset["Name"]}`);
+                        DebugLog(`Balancing string: ${this.responseText}`);
+                        DebugLog(JSON.parse(this.responseText));
                         currentPreset["Balancing"] = JSON.parse(this.responseText);
                     break;
                     default:
@@ -1485,9 +2107,9 @@ function CheckForRepetition(builds) {
 
                     ErrorLog.push(GenerateErrorObject(
                         "Perk Repetition",
-                        `Perk ${currentPerk["name"]} is repeated ${perkRepeatAmount} times in the Survivor builds.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        `Perk <b>${currentPerk["name"]}</b> is repeated ${perkRepeatAmount} times in the Survivor builds.`,
+                        undefined,
+                        "iconography/PerkError.png"
                     ))
                 }
             }
@@ -1526,8 +2148,9 @@ function CheckForDuplicates(survIndex, build) {
                     GenerateErrorObject(
                         "Duplicate Perk",
                         `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex+1}</b>'s build.`,
-                        console.trace(),
-                        "iconography/CriticalError.png"
+                        undefined,
+                        "iconography/PerkError.png",
+                        true
                     )
                 )
             }
@@ -1718,8 +2341,8 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                     GenerateErrorObject(
                         "Banned Combo",
                         `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        undefined,
+                        "iconography/ComboError.png"
                     )
                 )
             }
@@ -1759,8 +2382,8 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                         GenerateErrorObject(
                             "Banned Combo",
                             `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                            console.trace(),
-                            "iconography/Error.png"
+                            undefined,
+                            "iconography/ComboError.png"
                         )
                     )
                 }
@@ -1826,8 +2449,8 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                     GenerateErrorObject(
                         "Banned Perk",
                         `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        undefined,
+                        "iconography/PerkError.png"
                     )
                 )
             }
@@ -1877,8 +2500,8 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                         GenerateErrorObject(
                             "Banned Perk",
                             `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                            console.trace(),
-                            "iconography/Error.png"
+                            undefined,
+                            "iconography/PerkError.png"
                         )
                     )
                 }
@@ -1913,20 +2536,153 @@ function CheckForBalancingErrors() {
     var currentOverride = currentBalancing.KillerOverride[selectedKiller];
     DebugLog("Current Override:");
     DebugLog(currentOverride);
+
+    // Reset banned offerings
+    let offerings = document.getElementsByClassName("offering-slot");
+    for (var offering of offerings) {
+        offering.classList.remove("banned-offering");
+    }
+
     // Check for banned offerings
     for (var i = 0; i < SurvivorOfferings.length; i++) {
         let bannedOfferings = GetBannedOfferings();
 
         if (SurvivorOfferings[i] == undefined) { continue; }
         if (bannedOfferings["Survivor"].includes(SurvivorOfferings[i]["id"])) {
+            
+            let offerings = document.getElementsByClassName("offering-slot");
+            offerings[i].classList.add("banned-offering");
+
             MasterErrorList.push(
                 GenerateErrorObject(
                     "Banned Offering",
-                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
-                    console.trace(),
-                    "iconography/Error.png"
+                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    undefined,
+                    "iconography/OfferingError.png"
                 )
             );
+        }
+    }
+
+    // Reset banned items
+    let items = document.getElementsByClassName("item-slot");
+    for (var item of items) {
+        item.classList.remove("banned-item");
+    }
+
+    // Check for banned items
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        let bannedItems = GetBannedItems();
+
+        if (SurvivorItems[i] == undefined) { continue; }
+        if (bannedItems.includes(SurvivorItems[i]["id"])) {
+            let items = document.getElementsByClassName("item-slot");
+            items[i].classList.add("banned-item");
+
+            MasterErrorList.push(
+                GenerateErrorObject(
+                    "Banned Item",
+                    `Item <b>${SurvivorItems[i]["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
+                    undefined,
+                    "iconography/ItemError.png"
+                )
+            );
+        }
+    }
+
+    // Reset banned addons
+    let addons = document.getElementsByClassName("addon-slot");
+    for (var addon of addons) {
+        addon.classList.remove("banned-addon");
+        addon.classList.remove("duplicate-addon");
+    }
+
+    // Check for banned addons
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        console.log(`Checking for banned addons on Survivor #${i}...`)
+        let currentItem = SurvivorItems[i];
+
+        if (currentItem == undefined) { 
+            continue; 
+        }
+        if (currentItem["Type"] == undefined) { 
+            continue; 
+        }
+
+        const itemType = currentItem["Type"];
+        const bannedAddons = GetBannedAddons(itemType);
+
+        if (bannedAddons == undefined) {
+            continue;
+        }
+
+        addonIDs = [];
+        for (var j = 0; j < SurvivorAddons[i].length; j++) {
+            console.log(`\tChecking for banned addons on Survivor #${i} at addon slot #${j}...`)
+            let currentAddon = SurvivorAddons[i][j];
+
+            if (currentAddon == undefined) {
+                continue;
+            }
+
+            addonIDs.push(currentAddon);
+            console.log(`\t\tPushed ${currentAddon["Name"]} to addonIDs.`);
+            if (bannedAddons.includes(currentAddon["id"])) {
+                let addons = document.getElementsByClassName("addon-slot");
+                for (var addon of addons) {
+                    if (addon.dataset.survivorID == i && addon.dataset.addonSlot == j) {
+                        addon.classList.add("banned-addon");
+                    }
+                }
+
+                MasterErrorList.push(
+                    GenerateErrorObject(
+                        "Banned Addon",
+                        `Addon <b>${currentAddon["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build at <b>Addon Slot #${j+1}</b>.`,
+                        undefined,
+                        "iconography/AddonError.png"
+                    )
+                );
+            }   
+        }
+
+        console.log(`\tFinal addonIDs:`);
+        console.log(addonIDs);
+
+        // Check if every size-two addon permutation is a duplicate or not
+        for (var j = 0; j < addonIDs.length; j++) {
+            for (var k = j+1; k < addonIDs.length; k++) {
+                console.log(`\t\tChecking if ${addonIDs[j]["Name"]} is a duplicate of ${addonIDs[k]["Name"]}...`)
+                let currentAddonID = addonIDs[j]["id"];
+                let otherAddonID = addonIDs[k]["id"];
+
+                if (currentAddonID == undefined || otherAddonID == undefined) { continue; }
+
+                if (currentAddonID == otherAddonID) {
+                    console.log('\t\t\t<b>Duplicate detected!</b>')
+
+                    let addons = document.getElementsByClassName("addon-slot");
+                    for (var addon of addons) {
+                        if (addon.dataset.survivorID == i && addon.dataset.addonSlot == j) {
+                            addon.classList.add("duplicate-addon");
+                        }
+                        if (addon.dataset.survivorID == i && addon.dataset.addonSlot == k) {
+                            addon.classList.add("duplicate-addon");
+                        }
+                    }
+
+                    MasterErrorList.push(
+                        GenerateErrorObject(
+                            "Duplicate Addon",
+                            `Addon <b>${addonIDs[j]["Name"]}</b> is duplicated in <b>Survivor #${i+1}</b>'s build.`,
+                            undefined,
+                            "iconography/AddonError.png",
+                            true
+                        )
+                    );
+                    console.log('\t\t\t<b>Pushed error to MasterErrorList!</b>')
+                }
+            }
         }
     }
 
@@ -1950,6 +2706,9 @@ function UpdateErrorUI() {
         let errorIcon = document.createElement("img");
         errorIcon.src = currentError["ICON"];
         errorIcon.classList.add("error-icon");
+        if (currentError["CRITICAL"]) {
+            errorIcon.classList.add("error-icon-critical");
+        }
 
         let errorTitle = document.createElement("h1");
         errorTitle.classList.add("error-title");
@@ -2053,7 +2812,22 @@ function GetOfferingIdByFileName(fileName){
     for(const offering of KillerOfferings){
         if(offering.icon == fileName) return offering.id
     }
+}
 
+function GetItemIdByFileName(fileName) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["icon"] == fileName) {
+            return currentItem["id"];
+        }
+    }
+
+    return undefined;
 }
 
 /**
@@ -2072,6 +2846,70 @@ function GetOfferingById(id){
     for(const offering of KillerOfferings){
         if(offering.id == id) return offering
     }
+}
+
+function GetItemById(id) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["id"] == id) {
+            return currentItem;
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * A function to get the name of an addon based on its ID.
+ * @param {string} itemType The type of item the addon belongs to.
+ * @param {number} id The ID of the addon.
+ */
+function GetAddonById(itemType, id) {
+    if (Items == undefined) { return; }
+
+    let ItemTypes = Items["ItemTypes"];
+    if (ItemTypes == undefined) { return; }
+
+    let addons = ItemTypes[itemType]["Addons"];
+    if (addons == undefined) { return; }
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+
+        if (currentAddon == undefined) { continue; }
+
+        if (currentAddon["id"] == id) {
+            return currentAddon;
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * A function to get the index of an item type based on its name.
+ * @param {string} itemType The name of the item type.
+ */
+function GetIndexOfItemType(itemType) {
+    if (Items == undefined) { return; }
+
+    let ItemTypes = Items["ItemTypes"];
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 /**
@@ -2114,22 +2952,25 @@ function BuildHasPerk(perkID, build) {
 
 /**
  * A function to generate an error object.
- * @param {string} name 
- * @param {string} reason 
- * @param {string} stacktrace 
- * @param {string} icon 
- * @returns 
+ * @param {string} name The title of the error.
+ * @param {string} reason The reason for the error.
+ * @param {string} stacktrace The stacktrace of the error.
+ * @param {string} icon The icon to display for the error.
+ * @param {boolean} criticalError Whether or not the error is critical.
+ * @returns {object} An object containing the error information.
  */
 function GenerateErrorObject(
     name = "Default Error",
     reason = "Default Reason",
-    stacktrace = console.trace(),
-    icon = "iconography/Error.png") {
+    stacktrace = undefined,
+    icon = "iconography/Error.png",
+    criticalError = false) {
         return {
             ERROR: name,
             REASON: reason,
             STACKTRACE: stacktrace,
-            ICON: icon
+            ICON: icon,
+            CRITICAL: criticalError
         };
     }
 
