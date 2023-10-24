@@ -722,6 +722,8 @@ function LoadImportEvents() {
             
             let importDataObj = JSON.parse(decompressedText);
 
+            console.log(importDataObj);
+
             // Is there a valid balancing index?
             if (importDataObj.currentBalancingIndex == undefined) {
                 throw "Invalid import data. Current balancing index is undefined.";
@@ -756,8 +758,12 @@ function LoadImportEvents() {
                 throw "Invalid import data. SurvivorPerks length is not 4.";
             }
 
+            // survCpt is the current survivor we're on
             let survCpt = 0
+
+            // perkCpt is the current perk we're on
             let perkCpt = 0
+
             for(const currentSurvivor of importDataObj.survivorPerksId){
                 if (currentSurvivor.length != 4) {
                     throw "Invalid import data. SurvivorPerks length is not 4.";
@@ -782,6 +788,24 @@ function LoadImportEvents() {
                 survCpt++
             }
 
+            survCpt = 0
+            for(const itemId of importDataObj.survivorItemsId){
+                SurvivorItems[survCpt] = GetItemById(itemId)
+                survCpt++
+            }
+
+            survCpt = 0
+            /*
+            AddonInfo = 
+            [Addon1, Addon2] - Array(int)
+            ItemType - String
+            */
+            for(const addonInfo of importDataObj.survivorAddonInfo){
+                console.log(addonInfo);
+                SurvivorAddons[survCpt] = [GetAddonById(addonInfo[1], addonInfo[0][0]), GetAddonById(addonInfo[1], addonInfo[0][1])];
+                survCpt++;
+            }
+
             // If all checks pass, set the remaining data
             currentBalancingIndex = importDataObj.currentBalancingIndex;
             selectedKiller = importDataObj.selectedKiller;
@@ -801,7 +825,8 @@ function LoadImportEvents() {
             UpdateKillerSelectionUI();
             ScrollToSelectedKiller();
         } catch (error) {
-            GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.\n\nError: ${error}`);
+            GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
+            console.trace();
         }
     });
 
@@ -820,15 +845,40 @@ function LoadImportEvents() {
             survivorOfferingsId.push(offering?.id)
         }
 
+        const survivorItemsId = new Array()
+        const survivorAddonInfo = new Array()
+
+        for (var i = 0; i < SurvivorItems.length; i++) {
+            survivorItemsId.push(SurvivorItems[i]?.id);
+
+            const currentAddons = SurvivorAddons[i];
+
+            survivorAddonInfo.push(
+                [
+                    [
+                        currentAddons[0]?.id,
+                        currentAddons[1]?.id
+                    ],
+                    SurvivorItems[i]["Type"]
+                ]
+            );
+        }
+
+
         const exportJson = {
             "survivorPerksId": survivorPerksId,
             "survivorOfferingsId": survivorOfferingsId,
+            "survivorItemsId": survivorItemsId,
+            "survivorAddonInfo": survivorAddonInfo,
             "selectedKiller": selectedKiller,
             "currentBalancingIndex": currentBalancingIndex,
             "customBalanceOverride": customBalanceOverride,
             "onlyShowNonBanned": onlyShowNonBanned,
             "currentBalancing": customBalanceOverride ? currentBalancing : null
         }
+
+        console.log(exportJson);
+
         const exportData = JSON.stringify(exportJson);
 
         const deflate = pako.deflate(exportData, { to: "string" });
@@ -2871,13 +2921,27 @@ function GetItemById(id) {
  * @param {number} id The ID of the addon.
  */
 function GetAddonById(itemType, id) {
-    if (Items == undefined) { return; }
+    if (Items == undefined) { return undefined; }
 
     let ItemTypes = Items["ItemTypes"];
-    if (ItemTypes == undefined) { return; }
+    if (ItemTypes == undefined) { return undefined; }
 
-    let addons = ItemTypes[itemType]["Addons"];
-    if (addons == undefined) { return; }
+    // Find item type index
+    let itemTypeIndex = undefined;
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            itemTypeIndex = i;
+            break;
+        }
+    }
+    if (itemTypeIndex == undefined) { return undefined; }
+
+    let addons = ItemTypes[itemTypeIndex]["Addons"];
+    if (addons == undefined) { return undefined; }
 
     for (var i = 0; i < addons.length; i++) {
         let currentAddon = addons[i];
@@ -3045,6 +3109,9 @@ function ValidateCustomBalancing(balanceObj) {
 
             if (currentOverride["AddonTiersBanned"] == undefined) { return false; }
             if (currentOverride["IndividualAddonBans"] == undefined) { return false; }
+
+            if (currentOverride["ItemWhitelist"] == undefined) { return false; }
+            if (currentOverride["AddonWhitelist"] == undefined) { return false; }
 
             if (currentOverride["SurvivorOfferings"] == undefined) { return false; }
             if (currentOverride["KillerOfferings"] == undefined) { return false; }
