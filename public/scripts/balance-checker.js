@@ -33,6 +33,11 @@ var BalancePresets = [
         Name: "Davy Jones League",
         Path: "BalancingPresets/DavyJones.json",
         Balancing: {}
+    },
+    {
+        Name: "L-Tournament",
+        Path: "BalancingPresets/L-Tournament.json",
+        Balancing: {}
     }
 ]
 
@@ -770,6 +775,12 @@ function LoadImportEvents() {
                 survCpt++
             }
 
+            survCpt = 0
+            for(const offeringId of importDataObj.survivorOfferingsId){
+                SurvivorOfferings[survCpt] = GetOfferingById(offeringId)
+                survCpt++
+            }
+
             // If all checks pass, set the remaining data
             currentBalancingIndex = importDataObj.currentBalancingIndex;
             selectedKiller = importDataObj.selectedKiller;
@@ -803,14 +814,19 @@ function LoadImportEvents() {
             survivorPerksId.push(perksId)
         }
 
+        const survivorOfferingsId = new Array()
+        for(const offering of SurvivorOfferings){
+            survivorOfferingsId.push(offering?.id)
+        }
+
         const exportJson = {
             "survivorPerksId": survivorPerksId,
+            "survivorOfferingsId": survivorOfferingsId,
             "selectedKiller": selectedKiller,
             "currentBalancingIndex": currentBalancingIndex,
             "customBalanceOverride": customBalanceOverride,
             "onlyShowNonBanned": onlyShowNonBanned,
-            "currentBalancing": customBalanceOverride ? currentBalancing : null,
-            "roomID": RoomID
+            "currentBalancing": customBalanceOverride ? currentBalancing : null
         }
         const exportData = JSON.stringify(exportJson);
 
@@ -1307,6 +1323,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
     // Add a blank offering to the top of the list
     let blankOffering = document.createElement("div");
     blankOffering.classList.add("perk-slot-result");
+    blankOffering.classList.add("offering-slot-result");
 
     let blankImg = document.createElement("img");
     blankImg.draggable = false;
@@ -1346,6 +1363,7 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
         
         let offeringElement = document.createElement("div");
         offeringElement.classList.add("perk-slot-result");
+        offeringElement.classList.add("offering-slot-result");
 
         DebugLog(`OfferingRole: ${OfferingRole}`)
         // Check if the offering is banned.
@@ -1655,12 +1673,12 @@ function SearchForOfferings(searchQuery, isSurvivor) {
         bannedOfferings = GetBannedOfferings()
     }
 
-    let OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    const OfferingsRole = isSurvivor ? "Survivor" : "Killer"
+    const bannedOffInRole = bannedOfferings[OfferingsRole]
     for (var i = 0; i < Offerings[OfferingsRole].length; i++) {
-        let bannedOffInRole = bannedOfferings[OfferingsRole];
 
         if (Offerings[OfferingsRole][i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id + ""))) { continue; }
+            if((onlyShowNonBanned && bannedOffInRole.includes(Offerings[OfferingsRole][i].id))) { continue; }
             
             searchResults.push(Offerings[OfferingsRole][i]);
         }
