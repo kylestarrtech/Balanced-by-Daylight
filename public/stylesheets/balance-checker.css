@@ -326,6 +326,18 @@ body {
     border-radius: 17px;
 }
 
+#image-export{
+    margin-top: -2rem !important;
+    width: fit-content;
+    margin: auto;
+    color: #100f16;
+}
+
+#image-name{
+    margin: 5px 0px 2px 10px;
+    text-align: left;
+}
+
 #survivor-builds-container {
     display: flex;
     flex-direction: column;
