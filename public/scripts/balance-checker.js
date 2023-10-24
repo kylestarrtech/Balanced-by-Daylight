@@ -660,6 +660,22 @@ function UpdateBalancingDropdown() {
         currentBalancingIndex = parseInt(balancingDropdown.value);
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
+        if (!ValidateCustomBalancing(BalancePresets[currentBalancingIndex]["Balancing"])) {
+            GenerateAlertModal(
+                "Error",
+                "This default balance profile is invalid, selecting the default balance profile. Please report this to the GitHub issues page or the Discord server.",
+                function() {
+                    currentBalancingIndex = 0;
+                    balancingDropdown.value = currentBalancingIndex;
+                    localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+                    
+                    alert("Balance profile reset to default. Close this alert to continue.");
+        
+                    // Refresh the page
+                    location.reload();
+                }
+            )
+        }
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
     });
 
@@ -3053,7 +3069,8 @@ function GenerateErrorObject(
 
 function GenerateAlertModal(
     title,
-    message
+    message,
+    closeCallback = undefined,
 ) {
     var alertContainer = document.getElementById("alert-container");
     alertContainer.hidden = false;
@@ -3067,6 +3084,12 @@ function GenerateAlertModal(
     var alertOkButton = document.getElementById("alert-ok-button");
     alertOkButton.addEventListener("click", function() {
         alertContainer.hidden = true;
+    });
+
+    if (closeCallback == undefined) { return; }
+
+    alertOkButton.addEventListener("click", function() {
+        closeCallback();
     });
 }
 
