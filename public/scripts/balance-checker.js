@@ -243,7 +243,7 @@ function GetConfig() {
 /**
  * A function to update the perk frontend.
  */
-let dragTargetElement = {}
+let dragTargetElement, dragSourceElement = {}
 function UpdatePerkUI() {
     // Get the builds container
     var buildsContainer = document.getElementById("survivor-builds-container");
@@ -279,49 +279,61 @@ function UpdatePerkUI() {
             } catch (error) {
                 ImgSrc = "public/Perks/blank.png";
             }
-
+            
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
             perkElement.classList.add("loadout-slot");
 
-            perkElement.addEventListener("dragstart", function(event){
+            perkElement.addEventListener("dragstart", function(event) {
                 event.dataTransfer.effectAllowed = "move"
-                event.dataTransfer.setData("text/plain", "Dummy text to allow drag");
-                dragTargetElement = {}
+                dragSourceElement, dragTargetElement = {}
                 dragTargetElement.draggable = 0
-                event.dataTransfer.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-                event.dataTransfer.sourcePerk = event.target.parentElement.getAttribute("data-perk-i-d")
-                event.dataTransfer.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
+
+                dragSourceElement.sourceSurv = event.target.parentElement.dataset.survivorID
+                dragSourceElement.sourcePerkSlot = event.target.parentElement.dataset.perkID
+                dragSourceElement.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
             });
-            perkElement.addEventListener("dragover", function(event){
+            perkElement.addEventListener("dragover", function(event) {
                 event.preventDefault()
                 event.dataTransfer.dropEffect = "move"
             });
-            perkElement.addEventListener("dragenter", function(event){
+            perkElement.addEventListener("dragenter", function(event) {
                 event.preventDefault()
-                dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
-                dragTargetElement.targetPerk = event.target.parentElement.getAttribute("data-perk-i-d")
+                dragTargetElement.targetSurv = event.target.parentElement.dataset.survivorID
+                dragTargetElement.targetPerkSlot = event.target.parentElement.dataset.perkID
                 dragTargetElement.targetPerkId = GetPerkIdByFileName(event.target.getAttribute("src"))
                 dragTargetElement.draggable++
             });
-            perkElement.addEventListener("dragleave", function(event){
+            perkElement.addEventListener("dragleave", function(event) {
                 event.preventDefault()
                 dragTargetElement.draggable--
             });
-            perkElement.addEventListener("dragend", function(event){
+            perkElement.addEventListener("dragend", function(event) {
                 event.preventDefault()
 
-                const sourceSurv = parseInt(event.dataTransfer.sourceSurv)
-                const sourcePerk = parseInt(event.dataTransfer.sourcePerk) 
+                let sourceSurv = parseInt(dragSourceElement.sourceSurv)
+                let sourcePerkSlot = parseInt(dragSourceElement.sourcePerkSlot)
+                let sourcePerkId = dragSourceElement.sourcePerkId
 
-                if(dragTargetElement.draggable <= 0){
-                    SurvivorPerks[sourceSurv][sourcePerk] = null
-                }else{
-                    const targetSurv = parseInt(dragTargetElement.targetSurv)
-                    const targetPerk = parseInt(dragTargetElement.targetPerk) 
+                if(dragTargetElement.draggable <= 0) {
+                    SurvivorPerks[sourceSurv][sourcePerkSlot] = null
+                }
+                else {
                     
-                    SurvivorPerks[sourceSurv][sourcePerk] = dragTargetElement.targetPerkId ? GetPerkById(dragTargetElement.targetPerkId) : null
-                    SurvivorPerks[targetSurv][targetPerk] = event.dataTransfer.sourcePerkId ? GetPerkById(event.dataTransfer.sourcePerkId) : null
+                    let newSourcePerk = null;
+                    if (dragTargetElement.targetPerkId != null) {
+                        newSourcePerk = GetPerkById(dragTargetElement.targetPerkId)
+                    }
+                    SurvivorPerks[sourceSurv][sourcePerkSlot] = newSourcePerk
+
+                    let targetSurv = parseInt(dragTargetElement.targetSurv)
+                    let targetPerkSlot = parseInt(dragTargetElement.targetPerkSlot)
+                    
+                    let newTargetPerk = null
+                    if (sourcePerkId != null) {
+                        newTargetPerk = GetPerkById(sourcePerkId)
+                    }
+                    SurvivorPerks[targetSurv][targetPerkSlot] = newTargetPerk
                 }
 
                 if (Config.saveBuilds && saveLoadoutsAndKiller) {
