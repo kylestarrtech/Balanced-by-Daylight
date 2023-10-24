@@ -1,4 +1,4 @@
-var debugging = true;
+var debugging = false;
 var overrideStackTrace = false;
 
 var Perks = null;
@@ -1315,6 +1315,7 @@ function ForceItemSearch(perkSearchBar, value = "") {
         CheckForBalancingErrors();
         if (Config.saveBuilds) {
             localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
         }
     });
 
@@ -1377,6 +1378,7 @@ function ForceItemSearch(perkSearchBar, value = "") {
             SendRoomDataUpdate();
             if (Config.saveBuilds) {
                 localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
             }
         });
 
@@ -1799,14 +1801,15 @@ function GetBannedItems() {
 
     // Get items from killer override
     let items = currentBalancing.KillerOverride[selectedKiller].ItemWhitelist;
+    if (items == undefined) { return null; }
     DebugLog("ITEMS:")
     DebugLog(items);
-
+    
     for (const item of Items["Items"]) {
         // If the item is not in the items, add it to the banned items
-        DebugLog(`Checking if ${item.id} is in ${items}`);
+        //DebugLog(`Checking if ${item.id} is in ${items}`);
         if (!items.includes(item.id)) {
-            DebugLog(`${item.id} is not in ${items}`);
+            //DebugLog(`${item.id} is not in ${items}`);
             bannedItems.push(item.id);
         }
     }
@@ -1827,7 +1830,7 @@ function GetBannedAddons(itemType) {
     let whitelistedAddons = currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType]["Addons"];
     let addonList = Items["ItemTypes"][GetIndexOfItemType(itemType)]["Addons"];
 
-    console.log(whitelistedAddons);
+    //console.log(whitelistedAddons);
     for (const addon of addonList) {
         // If the addon is not in the addons, add it to the banned addons
         if (!whitelistedAddons.includes(addon.id)) {
@@ -1967,9 +1970,9 @@ function CheckForRepetition(builds) {
 
                     ErrorLog.push(GenerateErrorObject(
                         "Perk Repetition",
-                        `Perk ${currentPerk["name"]} is repeated ${perkRepeatAmount} times in the Survivor builds.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        `Perk <b>${currentPerk["name"]}</b> is repeated ${perkRepeatAmount} times in the Survivor builds.`,
+                        undefined,
+                        "iconography/PerkError.png"
                     ))
                 }
             }
@@ -2008,8 +2011,9 @@ function CheckForDuplicates(survIndex, build) {
                     GenerateErrorObject(
                         "Duplicate Perk",
                         `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex+1}</b>'s build.`,
-                        console.trace(),
-                        "iconography/CriticalError.png"
+                        undefined,
+                        "iconography/PerkError.png",
+                        true
                     )
                 )
             }
@@ -2200,8 +2204,8 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                     GenerateErrorObject(
                         "Banned Combo",
                         `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        undefined,
+                        "iconography/ComboError.png"
                     )
                 )
             }
@@ -2241,8 +2245,8 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                         GenerateErrorObject(
                             "Banned Combo",
                             `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                            console.trace(),
-                            "iconography/Error.png"
+                            undefined,
+                            "iconography/ComboError.png"
                         )
                     )
                 }
@@ -2308,8 +2312,8 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                     GenerateErrorObject(
                         "Banned Perk",
                         `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        undefined,
+                        "iconography/PerkError.png"
                     )
                 )
             }
@@ -2359,8 +2363,8 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                         GenerateErrorObject(
                             "Banned Perk",
                             `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
-                            console.trace(),
-                            "iconography/Error.png"
+                            undefined,
+                            "iconography/PerkError.png"
                         )
                     )
                 }
@@ -2416,8 +2420,8 @@ function CheckForBalancingErrors() {
                 GenerateErrorObject(
                     "Banned Offering",
                     `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
-                    console.trace(),
-                    "iconography/Error.png"
+                    undefined,
+                    "iconography/OfferingError.png"
                 )
             );
         }
@@ -2442,8 +2446,8 @@ function CheckForBalancingErrors() {
                 GenerateErrorObject(
                     "Banned Item",
                     `Item <b>${SurvivorItems[i]["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
-                    console.trace(),
-                    "iconography/Error.png"
+                    undefined,
+                    "iconography/ItemError.png"
                 )
             );
         }
@@ -2453,24 +2457,39 @@ function CheckForBalancingErrors() {
     let addons = document.getElementsByClassName("addon-slot");
     for (var addon of addons) {
         addon.classList.remove("banned-addon");
+        addon.classList.remove("duplicate-addon");
     }
 
     // Check for banned addons
     for (var i = 0; i < SurvivorItems.length; i++) {
+        console.log(`Checking for banned addons on Survivor #${i}...`)
         let currentItem = SurvivorItems[i];
 
-        if (currentItem == undefined) { continue; }
-        if (currentItem["Type"] == undefined) { continue; }
+        if (currentItem == undefined) { 
+            continue; 
+        }
+        if (currentItem["Type"] == undefined) { 
+            continue; 
+        }
 
         const itemType = currentItem["Type"];
         const bannedAddons = GetBannedAddons(itemType);
 
-        if (bannedAddons == undefined) { continue; }
+        if (bannedAddons == undefined) {
+            continue;
+        }
 
+        addonIDs = [];
         for (var j = 0; j < SurvivorAddons[i].length; j++) {
+            console.log(`\tChecking for banned addons on Survivor #${i} at addon slot #${j}...`)
             let currentAddon = SurvivorAddons[i][j];
 
-            if (currentAddon == undefined) { continue; }
+            if (currentAddon == undefined) {
+                continue;
+            }
+
+            addonIDs.push(currentAddon);
+            console.log(`\t\tPushed ${currentAddon["Name"]} to addonIDs.`);
             if (bannedAddons.includes(currentAddon["id"])) {
                 let addons = document.getElementsByClassName("addon-slot");
                 for (var addon of addons) {
@@ -2483,11 +2502,50 @@ function CheckForBalancingErrors() {
                     GenerateErrorObject(
                         "Banned Addon",
                         `Addon <b>${currentAddon["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build at <b>Addon Slot #${j+1}</b>.`,
-                        console.trace(),
-                        "iconography/Error.png"
+                        undefined,
+                        "iconography/AddonError.png"
                     )
                 );
             }   
+        }
+
+        console.log(`\tFinal addonIDs:`);
+        console.log(addonIDs);
+
+        // Check if every size-two addon permutation is a duplicate or not
+        for (var j = 0; j < addonIDs.length; j++) {
+            for (var k = j+1; k < addonIDs.length; k++) {
+                console.log(`\t\tChecking if ${addonIDs[j]["Name"]} is a duplicate of ${addonIDs[k]["Name"]}...`)
+                let currentAddonID = addonIDs[j]["id"];
+                let otherAddonID = addonIDs[k]["id"];
+
+                if (currentAddonID == undefined || otherAddonID == undefined) { continue; }
+
+                if (currentAddonID == otherAddonID) {
+                    console.log('\t\t\t<b>Duplicate detected!</b>')
+
+                    let addons = document.getElementsByClassName("addon-slot");
+                    for (var addon of addons) {
+                        if (addon.dataset.survivorID == i && addon.dataset.addonSlot == j) {
+                            addon.classList.add("duplicate-addon");
+                        }
+                        if (addon.dataset.survivorID == i && addon.dataset.addonSlot == k) {
+                            addon.classList.add("duplicate-addon");
+                        }
+                    }
+
+                    MasterErrorList.push(
+                        GenerateErrorObject(
+                            "Duplicate Addon",
+                            `Addon <b>${addonIDs[j]["Name"]}</b> is duplicated in <b>Survivor #${i+1}</b>'s build.`,
+                            undefined,
+                            "iconography/AddonError.png",
+                            true
+                        )
+                    );
+                    console.log('\t\t\t<b>Pushed error to MasterErrorList!</b>')
+                }
+            }
         }
     }
 
@@ -2511,6 +2569,9 @@ function UpdateErrorUI() {
         let errorIcon = document.createElement("img");
         errorIcon.src = currentError["ICON"];
         errorIcon.classList.add("error-icon");
+        if (currentError["CRITICAL"]) {
+            errorIcon.classList.add("error-icon-critical");
+        }
 
         let errorTitle = document.createElement("h1");
         errorTitle.classList.add("error-title");
@@ -2636,6 +2697,33 @@ function GetOfferingById(id){
 }
 
 /**
+ * A function to get the name of an addon based on its ID.
+ * @param {string} itemType The type of item the addon belongs to.
+ * @param {number} id The ID of the addon.
+ */
+function GetAddonById(itemType, id) {
+    if (Items == undefined) { return; }
+
+    let ItemTypes = Items["ItemTypes"];
+    if (ItemTypes == undefined) { return; }
+
+    let addons = ItemTypes[itemType]["Addons"];
+    if (addons == undefined) { return; }
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+
+        if (currentAddon == undefined) { continue; }
+
+        if (currentAddon["id"] == id) {
+            return currentAddon;
+        }
+    }
+
+    return undefined;
+}
+
+/**
  * A function to get the index of an item type based on its name.
  * @param {string} itemType The name of the item type.
  */
@@ -2696,22 +2784,25 @@ function BuildHasPerk(perkID, build) {
 
 /**
  * A function to generate an error object.
- * @param {string} name 
- * @param {string} reason 
- * @param {string} stacktrace 
- * @param {string} icon 
- * @returns 
+ * @param {string} name The title of the error.
+ * @param {string} reason The reason for the error.
+ * @param {string} stacktrace The stacktrace of the error.
+ * @param {string} icon The icon to display for the error.
+ * @param {boolean} criticalError Whether or not the error is critical.
+ * @returns {object} An object containing the error information.
  */
 function GenerateErrorObject(
     name = "Default Error",
     reason = "Default Reason",
-    stacktrace = console.trace(),
-    icon = "iconography/Error.png") {
+    stacktrace = undefined,
+    icon = "iconography/Error.png",
+    criticalError = false) {
         return {
             ERROR: name,
             REASON: reason,
             STACKTRACE: stacktrace,
-            ICON: icon
+            ICON: icon,
+            CRITICAL: criticalError
         };
     }
 

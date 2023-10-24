@@ -567,11 +567,7 @@ body {
 
 .perk-slot-result-banned{
     --outline-color: #ff0000;
-    filter:hue-rotate(60deg) contrast(120%)
-    drop-shadow(1px 1px 0px #ff0000)
-    drop-shadow(-1px 1px 0px #ff0000)
-    drop-shadow(1px -1px 0px #ff0000)
-    drop-shadow(-1px -1px 0px #ff0000);
+    filter:hue-rotate(60deg) contrast(120%);
 }
 .perk-slot-result-equipped{
     filter:hue-rotate(180deg) contrast(90%);
@@ -638,6 +634,22 @@ body {
     drop-shadow(-1px -1px 0px #ff0000);
 }
 
+.banned-offering:hover, .banned-item:hover, .banned-addon:hover {
+    filter: grayscale(25%) brightness(100%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.duplicate-addon:hover {
+    filter: grayscale(25%) brightness(100%)
+    drop-shadow(1px 1px 0px #ca2f00)
+    drop-shadow(-1px 1px 0px #ca2f00)
+    drop-shadow(1px -1px 0px #ca2f00)
+    drop-shadow(-1px -1px 0px #ca2f00);
+}
+
 .banned-item {
     filter: grayscale(75%) brightness(75%)
     drop-shadow(1px 1px 0px #ff0000)
@@ -652,6 +664,14 @@ body {
     drop-shadow(-1px 1px 0px #ff0000)
     drop-shadow(1px -1px 0px #ff0000)
     drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.duplicate-addon {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ca2f00)
+    drop-shadow(-1px 1px 0px #ca2f00)
+    drop-shadow(1px -1px 0px #ca2f00)
+    drop-shadow(-1px -1px 0px #ca2f00);
 }
 
 .offering-slot-result-banned:hover img {
@@ -792,6 +812,16 @@ body {
 .error-icon {
     height: 60px;
     aspect-ratio: 1/1;
+}
+
+.error-icon-critical {
+    filter:
+    drop-shadow(1px 1px 0px #ff0000ff)
+    drop-shadow(-1px 1px 0px #ff0000ff)
+    drop-shadow(1px -1px 0px #ff0000ff)
+    drop-shadow(-1px -1px 0px #ff0000ff);
+
+
 }
 
 .error-list-item p {
