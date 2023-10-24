@@ -477,6 +477,24 @@ body {
 }
 
 /* Everything prestyled for 4 columns a row */
+@media screen and (max-width: 460px) {
+    /* if screen below 460px => restyle to 2 columns in a row */
+    #perk-search-module-container {
+        min-width: 250px !important;
+        max-width: 250px !important;
+    }
+    #perk-search-results-module {
+        justify-content: center;
+    }
+
+    /* here I just removed the margins bc honestly I couldnt replicate the effect correctly and I thought it looked ok like this, at least for now*/
+    .perk-slot-result:nth-child(8n+5){
+        margin-left: 0 !important;
+    }
+    .perk-slot-result:nth-child(n+5):nth-last-child(-n+1000) {
+        margin-top: 0 !important;
+    }
+}
 @media screen and (min-width: 700px) {
     /* If screen minimum 700px width => restyle to 5 columns a row */
     #perk-search-module-container {
@@ -1240,5 +1258,183 @@ body {
     to {
         filter: brightness(100%);
         text-shadow: #ffffff00 0px 0px 0px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+    body { 
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    #primary-balance-container {
+        grid-template-areas: 
+        "A A A A"
+        "B B B B"
+        "C C D D"
+        ;
+        grid-template-columns: 50fr 25fr;
+        overflow: visible;
+    }
+
+    #balance-tabs-container {
+        grid-area: A;
+
+        padding: 0.5rem;
+        height: 7.375rem;
+        
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .tier-selector-button {
+        width: 6.25rem;
+    }
+
+    .tier-selector-button:hover {
+        width: 6.625rem;
+    }
+
+    .tier-selector-button:active {
+        width: 6.5rem;
+    }
+
+    #balance-character-select-container {
+        grid-area: B;
+        height: 20.375rem; 
+    }
+
+    #balance-character-select-container h1 {
+        margin: 0.5rem 0;
+    }
+
+    #character-select-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .character-select-button { 
+        width: 12.5rem;
+    }
+    
+    #main-balance-window {
+        grid-area: C;
+        
+    }
+
+    #survivor-builds-container {
+        margin-bottom: 0.625rem;
+
+    }
+
+    .survivor-build-component {
+        align-items: center;
+    }
+
+    .perk-slot {
+      width: 100px;  
+      height: 100px;
+    }
+    
+    #errors-window {
+        grid-area: D;
+        width: 215px;
+    }
+
+    .error-icon {
+       height: 2.875rem;
+    }
+
+    .error-title {
+        font-size: 24px;
+    }
+
+    #perk-search-container {
+        top: 467px;
+        /* This was added bc everytime the container opened it would scroll back to top of the page which was annoying. 
+        This value was chosen "at random" (trial and error in devtools). */
+    }
+}
+
+@media screen and (max-width: 700px) {
+    body { 
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    #primary-balance-container {
+        grid-template-columns: 1fr;
+        overflow: visible;
+    }
+
+    #balance-tabs-container {
+        padding: 0.5rem;
+        height: 5.75rem;
+        
+        flex-direction: row;
+    }
+
+    .tier-selector-button {
+        width: 4.3rem;
+    }
+
+    .tier-selector-button:hover {
+        width: 4.9rem;
+    }
+
+    .tier-selector-button:active {
+        width: 4.8rem;
+    }
+
+    #balance-character-select-container {
+        height: 20.375rem; 
+    }
+
+    #balance-character-select-container h1 {
+        margin: 0.5rem 0;
+    }
+
+    #character-select-grid {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+    .character-select-button { 
+        width: 10rem;
+    }
+
+    #main-balance-window {
+        max-width: 43.125rem;
+        margin-bottom: 1rem;
+    }
+
+    #main-balance-window h2 {
+        font-size: clamp(1rem, 1rem + 1vw, 2rem);
+    }
+
+    #survivor-builds-container {
+        margin-bottom: 0.625rem;
+        width: 100%;
+    }
+
+    .survivor-build-component {
+        align-items: center;
+        height: clamp(4rem, 4rem + 2vw, 7.5rem);
+    }
+
+    #perk-search-container {
+        top: 443px;
+        /* This was added bc everytime the container opened it would scroll back to top of the page which was annoying. 
+        This value was chosen "at random" (trial and error in devtools).
+        This is not working perfectly though and needs more attention*/
+    }
+
+    #errors-window {
+        height: auto;
+        display: block;
+    }
+
+    #settings-menu {
+        max-width: 400px;
+        width: auto;
     }
 }
