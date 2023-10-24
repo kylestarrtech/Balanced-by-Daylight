@@ -540,6 +540,7 @@ function UpdatePerkUI() {
 
             if (Config.saveBuilds) {
                 localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
             }
             UpdatePerkUI();
             CheckForBalancingErrors();
@@ -2556,7 +2557,7 @@ function CheckForBalancingErrors() {
             MasterErrorList.push(
                 GenerateErrorObject(
                     "Banned Offering",
-                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>.`,
+                    `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     undefined,
                     "iconography/OfferingError.png"
                 )
