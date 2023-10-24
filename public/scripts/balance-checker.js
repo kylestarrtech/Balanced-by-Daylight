@@ -507,7 +507,8 @@ function UpdatePerkUI() {
             const sourceItemAddons = dragSourceElement.sourceItemAddons;
 
             if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the item
-                SurvivorItems[sourceSurv] = null
+                SurvivorItems[sourceSurv] = null;
+                SurvivorAddons[sourceSurv] = [undefined, undefined];
             }else{ // If we are dragging over a valid element, swap the items
 
                 let newSourceItem = null;
