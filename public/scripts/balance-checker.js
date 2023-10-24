@@ -460,6 +460,85 @@ function UpdatePerkUI() {
             itemSrc = "public/Items/blank.webp";
         }
 
+        itemElement.addEventListener("dragstart", function(event){
+            event.dataTransfer.effectAllowed = "move"
+            dragSourceElement, dragTargetElement = {}
+            dragTargetElement.draggable = 0
+
+            dragSourceElement.sourceSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            dragSourceElement.sourceItemID = GetItemIdByFileName(event.target.getAttribute("src"))
+            dragSourceElement.sourceItemAddons = SurvivorAddons[dragSourceElement.sourceSurv];
+        });
+        itemElement.addEventListener("dragover", function(event){
+            event.preventDefault()
+            event.dataTransfer.dropEffect = "move"
+        });
+        itemElement.addEventListener("dragenter", function(event){
+            event.preventDefault()
+
+            // Set the target survivor ID (where we're dragging to)
+            dragTargetElement.targetSurv = event.target.parentElement.getAttribute("data-survivor-i-d")
+            
+            // Set the target item ID (where we're dragging to)
+            dragTargetElement.targetItemID = GetItemIdByFileName(event.target.getAttribute("src"))
+            
+            // Set the target item addons (where we're dragging to)
+            dragTargetElement.targetItemAddons = SurvivorAddons[dragTargetElement.targetSurv];
+
+            // Increment the draggable counter, this is used to check if we're dragging over a valid element
+            dragTargetElement.draggable++
+        });
+        itemElement.addEventListener("dragleave", function(event){
+            event.preventDefault()
+
+            // Decrement the draggable counter, this is used to check if we're dragging over a valid element
+            dragTargetElement.draggable--
+        });
+        itemElement.addEventListener("dragend", function(event){
+            event.preventDefault()
+
+            // Get the source survivor ID (where we're dragging from)
+            const sourceSurv = parseInt(dragSourceElement.sourceSurv);
+
+            // Get the source item ID (where we're dragging from)
+            const sourceItemID = parseInt(dragSourceElement.sourceItemID);
+
+            // Get the source item addons (where we're dragging from)
+            const sourceItemAddons = dragSourceElement.sourceItemAddons;
+
+            if(dragTargetElement.draggable <= 0){ // If we're not dragging over a valid element, remove the item
+                SurvivorItems[sourceSurv] = null
+            }else{ // If we are dragging over a valid element, swap the items
+
+                let newSourceItem = null;
+                let newSourceAddons = null;
+
+                if (dragTargetElement.targetItemID != null) { // If the target item ID is not null, get the item by ID
+                    newSourceItem = GetItemById(dragTargetElement.targetItemID)
+                }
+                const targetSurv = parseInt(dragTargetElement.targetSurv)
+
+                let newTargetItem = null;
+
+                if (sourceItemID != null) { // If the source item ID is not null, get the item by ID
+                    newTargetItem = GetItemById(sourceItemID)
+                }
+                
+                SurvivorItems[sourceSurv] = newSourceItem;
+                SurvivorItems[targetSurv] = newTargetItem;
+
+                // Swap addons
+                SurvivorAddons[sourceSurv] = dragTargetElement.targetItemAddons;
+                SurvivorAddons[targetSurv] = sourceItemAddons;
+            }
+
+            if (Config.saveBuilds) {
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            }
+            UpdatePerkUI();
+            CheckForBalancingErrors();
+        });
+
         itemElement.dataset.survivorID = validChildI;
 
         let itemImg = document.createElement("img");
@@ -504,9 +583,11 @@ function UpdatePerkUI() {
 
         let addonImg1 = document.createElement("img");
         addonImg1.src = addonSrc1;
+        addonImg1.draggable = false;
 
         let addonImg2 = document.createElement("img");
         addonImg2.src = addonSrc2;
+        addonImg2.draggable = false;
 
         addonElement1.appendChild(addonImg1);
         addonElement2.appendChild(addonImg2);
@@ -2712,7 +2793,22 @@ function GetOfferingIdByFileName(fileName){
     for(const offering of KillerOfferings){
         if(offering.icon == fileName) return offering.id
     }
+}
 
+function GetItemIdByFileName(fileName) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["icon"] == fileName) {
+            return currentItem["id"];
+        }
+    }
+
+    return undefined;
 }
 
 /**
@@ -2731,6 +2827,22 @@ function GetOfferingById(id){
     for(const offering of KillerOfferings){
         if(offering.id == id) return offering
     }
+}
+
+function GetItemById(id) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["id"] == id) {
+            return currentItem;
+        }
+    }
+
+    return undefined;
 }
 
 /**
