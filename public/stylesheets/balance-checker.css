@@ -5,11 +5,12 @@ body {
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    margin: 0;
 }
 
 #primary-balance-container {
     display: grid;
-    grid-template-columns: 8fr 17fr 50fr 25fr;
+    grid-template-columns: 8fr 12fr 55fr 25fr;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -39,6 +40,10 @@ body {
     filter: /*drop-shadow(0px 0px 8px #690069)*/ drop-shadow(1px 1px 0 #ffffff) 
     drop-shadow(-1px -1px 0 #ffffff)
     drop-shadow(0px 0px 5px #ffffff) !important;
+}
+.character-selected img {
+    filter: drop-shadow(0px 0px 0 #ffffff00) grayscale(0%)
+    drop-shadow(0px 0px 0 #ffffff00);
 }
 
 .character-select-button img:hover {
@@ -310,14 +315,14 @@ body {
 
     background-color: #ffffff04;
     margin: auto;
-    width: auto;
+    width: max-content;
     padding: 10px;
 
     gap: 10px;
 
     justify-content: center;
 
-    height: 120px;
+    height: 100px;
     border-radius: 17px;
 }
 
@@ -335,7 +340,7 @@ body {
     margin: auto;
 }
 
-.perk-slot {
+.loadout-slot {
     background-color: #ffffff04;
 
     border-radius: 10px;
@@ -348,21 +353,21 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-.perk-slot:hover {
+.loadout-slot:hover {
     background-color: #ffffff10;
 
     filter:drop-shadow(0px 0px 4px #000000);
 }
 
-.perk-slot:hover img {
+.loadout-slot:hover img {
     filter:drop-shadow(0px 0px 4px #ffffff);
 }
 
-.perk-slot:active img {
+.loadout-slot:active img {
     filter:drop-shadow(0px 0px 2px #ffffff);
 }
 
-.perk-slot img {
+.loadout-slot img {
     width: 100%;
 
     transition: all 0.2s ease-in-out;
@@ -540,7 +545,28 @@ body {
     border-radius: 100%;
 }
 
+.item-slot-result {
+    min-width: 80px;
+    max-height: 80px;
+    aspect-ratio: 1/1;
+
+    cursor: pointer;
+}
+.item-slot-result, .item-slot-result img{
+    border-radius: 0%;
+    height: 100%;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.item-gap-format {
+    gap: 10px !important;
+    margin: 10px !important;
+    margin-right: 0px !important;
+}
+
 .perk-slot-result-banned{
+    --outline-color: #ff0000;
     filter:hue-rotate(60deg) contrast(120%);
 }
 .perk-slot-result-equipped{
@@ -551,8 +577,120 @@ body {
     filter: hue-rotate(100deg) contrast(105%) saturate(140%);
 }
 
-.perk-slot-result:hover {
-    filter: drop-shadow(0px 0px 2px #cecece);
+.offering-slot-result-banned {
+    filter: grayscale(75%) brightness(50%);
+}
+
+.offering-slot {
+    display: flex;
+    aspect-ratio: 0.85 / 1;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.item-slot-result-banned {
+    filter: grayscale(75%) brightness(50%);
+}
+
+.item-slot {
+    display: flex;
+    aspect-ratio: 0.75 / 1;
+
+    align-items: center;
+    justify-content: center;    
+}
+
+.item-slot img {
+    width: 90%;
+    height: 90%;
+
+    aspect-ratio: 1/1;
+
+    object-fit: contain;
+}
+
+.addon-slot {
+    display: flex;
+    aspect-ratio: 0.5 / 1;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.addon-slot img {
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+    object-fit: contain;
+}
+
+.banned-offering {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.banned-offering:hover, .banned-item:hover, .banned-addon:hover {
+    filter: grayscale(25%) brightness(100%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.duplicate-addon:hover {
+    filter: grayscale(25%) brightness(100%)
+    drop-shadow(1px 1px 0px #ca2f00)
+    drop-shadow(-1px 1px 0px #ca2f00)
+    drop-shadow(1px -1px 0px #ca2f00)
+    drop-shadow(-1px -1px 0px #ca2f00);
+}
+
+.banned-item {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.banned-addon {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ff0000)
+    drop-shadow(-1px 1px 0px #ff0000)
+    drop-shadow(1px -1px 0px #ff0000)
+    drop-shadow(-1px -1px 0px #ff0000);
+}
+
+.duplicate-addon {
+    filter: grayscale(75%) brightness(75%)
+    drop-shadow(1px 1px 0px #ca2f00)
+    drop-shadow(-1px 1px 0px #ca2f00)
+    drop-shadow(1px -1px 0px #ca2f00)
+    drop-shadow(-1px -1px 0px #ca2f00);
+}
+
+.offering-slot-result-banned:hover img {
+    
+    -webkit-filter:
+                drop-shadow(0px 0px 2px #ffffff80)
+                drop-shadow(1px 1px 0 #cecece40)
+                drop-shadow(-1px 1px 0 #cecece40)
+                drop-shadow(1px -1px 0 #cecece40)
+                drop-shadow(-1px -1px 0 #cecece40)
+                brightness(125%) !important;
+
+    filter: 
+            drop-shadow(0px 0px 2px #ffffff80)
+            drop-shadow(1px 1px 0 #cecece40)
+            drop-shadow(-1px 1px 0 #cecece40)
+            drop-shadow(1px -1px 0 #cecece40)
+            drop-shadow(-1px -1px 0 #cecece40)
+            brightness(125%) !important;
 }
 
 .perk-slot-result:hover img {
@@ -573,6 +711,29 @@ body {
 }
 
 .perk-slot-result:active img {
+    filter:drop-shadow(0px 0px 2px #ffffff);
+}
+
+.item-slot-result:hover img {
+    
+    -webkit-filter:
+                drop-shadow(0px 0px 2px #ffffff80)
+                drop-shadow(1px 1px 0 #cecece40)
+                drop-shadow(-1px 1px 0 #cecece40)
+                drop-shadow(1px -1px 0 #cecece40)
+                drop-shadow(-1px -1px 0 #cecece40)
+                brightness(125%);
+
+    filter: 
+            drop-shadow(0px 0px 2px #ffffff80)
+            drop-shadow(1px 1px 0 #cecece40)
+            drop-shadow(-1px 1px 0 #cecece40)
+            drop-shadow(1px -1px 0 #cecece40)
+            drop-shadow(-1px -1px 0 #cecece40)
+            brightness(125%);
+}
+
+.item-slot-result:active img {
     filter:drop-shadow(0px 0px 2px #ffffff);
 }
 
@@ -651,6 +812,16 @@ body {
 .error-icon {
     height: 60px;
     aspect-ratio: 1/1;
+}
+
+.error-icon-critical {
+    filter:
+    drop-shadow(1px 1px 0px #ff0000ff)
+    drop-shadow(-1px 1px 0px #ff0000ff)
+    drop-shadow(1px -1px 0px #ff0000ff)
+    drop-shadow(-1px -1px 0px #ff0000ff);
+
+
 }
 
 .error-list-item p {
