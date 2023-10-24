@@ -1761,7 +1761,7 @@ function SearchForItems(searchQuery) {
     for (var i = 0; i < Items["Items"].length; i++) {
         let currentItem = Items["Items"][i];
         if (currentItem["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
-            if((onlyShowNonBanned && bannedItems.includes(currentItem.id + ""))) { continue; }
+            if((onlyShowNonBanned && bannedItems.includes(currentItem.id))) { continue; }
 
             searchResults.push(currentItem);
         }
@@ -1775,7 +1775,7 @@ function SearchForAddons(searchQuery, itemType) {
 
     let bannedAddons = new Array()
     if (onlyShowNonBanned) {
-        bannedAddons = GetBannedAddons(filterData["itemType"]);
+        bannedAddons = GetBannedAddons(itemType);
     }
 
     let itemTypeIndex = GetIndexOfItemType(itemType);
@@ -1784,7 +1784,7 @@ function SearchForAddons(searchQuery, itemType) {
     for (var i = 0; i < addonList.length; i++) {
         let currentAddon = addonList[i];
         if (currentAddon["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
-            if ((onlyShowNonBanned && bannedAddons.includes(currentAddon.id + ""))) { continue; }
+            if ((onlyShowNonBanned && bannedAddons.includes(currentAddon.id))) { continue; }
 
             searchResults.push(currentAddon);
         }
