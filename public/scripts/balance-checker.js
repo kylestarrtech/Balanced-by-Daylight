@@ -294,7 +294,7 @@ function UpdatePerkUI() {
             try {
                 ImgSrc = currentPerk["icon"];
             } catch (error) {
-                ImgSrc = "public/Perks/blank.png";
+                ImgSrc = "public/Perks/blank.webp";
             }
             
             let perkElement = document.createElement("div");
@@ -1347,7 +1347,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
     let blankImg = document.createElement("img");
     blankImg.draggable = false;
-    blankImg.src = "public/Perks/blank.png";
+    blankImg.src = "public/Perks/blank.webp";
 
     blankPerk.appendChild(blankImg);
     perkSearchResultsContainer.appendChild(blankPerk);
