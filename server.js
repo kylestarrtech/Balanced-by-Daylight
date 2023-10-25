@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const config = require('./server-config.json');
+const canvasGen = require('./canvasGenerator.js');
 
 const app = express()
 const server=http.createServer(app);
@@ -15,6 +16,11 @@ require('./routes/viewRoutes')(app)
 // Set a static folder with all subfolders and files
 app.use(express.static('public'))
 
+// middleware 
+app.use(express.json()) //Add it first then others follw
+
+app.use(express.urlencoded({ extended: true }))
+
 // Set Pug as the view engine
 app.set('view engine', 'pug')
 
@@ -25,8 +31,32 @@ app.get('/config', (req, res) => {
   res.json(config);
 });
 
+app.post('/get-build-image', (req, res) => {
+  // Get the build data from the request body
+  const buildData = req.body;
+  console.log(buildData);
+
+  if (buildData == null) {
+    res.status(400).send("Invalid build data. Build data is null.");
+    return;
+  }
+
+  let exportData = buildData["ExportData"];
+  console.log(exportData);
+
+  // Generate the build image
+  canvasGen.BeginGenerationImport(exportData, function(data) {
+    if (data["status"] == 200) {
+      res.setHeader('Content-Type', 'image/png');
+      res.status(data["status"]).send(data["imageData"]);
+    } else {
+      res.status(data["status"]).send(data["message"]);
+    }
+  });
+});
+
 app.get('*', (req, res) => {
-    res.status(404).send('404 Not Found')
+  res.status(404).send('404 Not Found')
 })
 
 // If config shows that multiplayer is enabled, then start the server.

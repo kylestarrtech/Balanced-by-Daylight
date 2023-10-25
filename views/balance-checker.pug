@@ -159,8 +159,9 @@ html
                         div.addon-slot(class="loadout-slot" data-addonSlot="1")
                             img(src="public/Addons/Low-Amp-Filament.webp")
                 div#import-export-button-container
-                    button#import-button Import Builds
-                    button#export-button Export Builds
+                    button#import-button Import Loadout
+                    button#export-button Export Loadout
+                    button#generate-image-button Generate Image
             div#errors-window
                 h1#error-panel-title Errors
                 div#error-list-container(class="override-scrollbar")
@@ -221,6 +222,14 @@ html
                     div#settings-button-container
                         button#settings-clear-storage-button Clear Settings
                         button#settings-cancel-button Close
+        div#image-gen-container(hidden="hidden")
+            div#image-gen-blur(class="background-blur")
+                div#image-gen-menu
+                    h1#image-gen-title Test
+                    p#image-gen-message Test
+                    img#image-gen-image(hidden="hidden")
+                    div#image-gen-button-container
+                        button#image-gen-ok-button OK
         div#alert-container(hidden="hidden")
             div#alert-blur(class="background-blur")
                 div#alert-menu
