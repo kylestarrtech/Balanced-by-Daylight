@@ -411,7 +411,7 @@ async function GenerateImage(importedBuild, callback) {
 
     let logoImagePromise = loadImage('./canvas-image-library/logo/Logo-Background.png').then(image => {
         // Image aspect ratio is 1:1
-        context.drawImage(image, (width/2) - (logoWidth/2), 5, logoWidth, logoHeight);
+        context.drawImage(image, (width/2) - (logoWidth/2), 2, logoWidth, logoHeight);
     });
     promises.push(logoImagePromise);
 
@@ -429,7 +429,7 @@ async function GenerateImage(importedBuild, callback) {
     let linkHeight = linkMetrics.actualBoundingBoxAscent + linkMetrics.actualBoundingBoxDescent;
 
     locationX = width / 2;
-    context.fillText(LinkText, locationX, logoHeight, width);
+    context.fillText(LinkText, locationX, logoHeight - 2, width);
 
     // Generate Killer lore image
     let loreImagePromise = loadImage(importedBuild["KillerLoreImage"]).then(image => {
