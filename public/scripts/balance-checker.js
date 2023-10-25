@@ -887,7 +887,7 @@ function LoadImportEvents() {
                         currentAddons[0]?.id,
                         currentAddons[1]?.id
                     ],
-                    SurvivorItems[i]["Type"]
+                    SurvivorItems[i] == null ? null : SurvivorItems[i]["Type"]
                 ]
             );
         }
