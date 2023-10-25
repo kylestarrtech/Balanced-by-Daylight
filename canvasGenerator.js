@@ -84,9 +84,16 @@ function BeginGenerationImport(data, callback) {
     try {
         // Get Killer Lore Image
         // First get the killer's name without spaces and omit "The"
-        let killerName = Killers[importedBuild.selectedKiller].replace("The", "").replace(" ", "");
+        let killerName = Killers[importedBuild.selectedKiller].replace("The", "");
+        killerName = killerName.replace(/\s/g, "");
         // Then get the lore image
         exampleImageGenObject.KillerLoreImage = `./public/iconography/lore/${killerName}.png`;
+    
+        // Check if the image exists
+        if (!fs.existsSync(exampleImageGenObject.KillerLoreImage)) {
+            throw "Image does not exist!";
+        }
+    
     } catch(err) {
         callback({
             status: 400,
@@ -143,7 +150,14 @@ function BeginGenerationImport(data, callback) {
                         // Change .webp to .png
                         endIconPath = endIconPath.replace(".webp", ".png");
 
+                        // Check if the image exists
+                        if (!fs.existsSync(endIconPath)) {
+                            throw "Image does not exist!";
+                        }
+
                         exampleImageGenObject.SurvivorPerkIcons[survivorIndex].push(endIconPath);
+                        
+
                         break;
                     }
                 }
@@ -188,6 +202,11 @@ function BeginGenerationImport(data, callback) {
                     // Change .webp to .png
                     endIconPath = endIconPath.replace(".webp", ".png");
 
+                    // Check if the image exists
+                    if (!fs.existsSync(endIconPath)) {
+                        throw "Image does not exist!";
+                    }
+
                     exampleImageGenObject.SurvivorOfferingIcons.push(endIconPath);
                     break;
                 }
@@ -229,6 +248,11 @@ function BeginGenerationImport(data, callback) {
 
                     // Change .webp to .png
                     endIconPath = endIconPath.replace(".webp", ".png");
+
+                    // Check if the image exists
+                    if (!fs.existsSync(endIconPath)) {
+                        throw "Image does not exist!";
+                    }
 
                     exampleImageGenObject.SurvivorItemIcons.push(endIconPath);
                     break;
@@ -290,6 +314,11 @@ function BeginGenerationImport(data, callback) {
 
                         // Change .webp to .png
                         endIconPath = endIconPath.replace(".webp", ".png");
+
+                        // Check if the image exists
+                        if (!fs.existsSync(endIconPath)) {
+                            throw "Image does not exist!";
+                        }
 
                         exampleImageGenObject.SurvivorAddonIcons[survivorIndex].push(endIconPath);
                         break;
