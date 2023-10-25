@@ -55,11 +55,15 @@ app.post('/get-build-image', (req, res) => {
   });
 });
 
+app.get('favicon.ico', (req, res) => {
+  res.sendFile(__dirname + '/public/favicon.ico');
+});
+
 app.get('*', (req, res) => {
   res.status(404).send('404 Not Found')
 })
 
-// If config shows that multiplayer is enabled, then start the server.
+// If config shows that m ultiplayer is enabled, then start the server.
 if (config.multiplayerEnabled) {
 
   io.on("connection",(client)=>{

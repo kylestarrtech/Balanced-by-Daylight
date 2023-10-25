@@ -393,35 +393,44 @@ async function GenerateImage(importedBuild, callback) {
     const BalancingTitleText = importedBuild["BalancingTitle"];
     context.fillText(BalancingTitleText, 10 + balancingTextWidth, 20 + titleTextHeight, width);
     
-    // Generate link text
-    
-    context.font = '700 18pt Roboto'
-    context.textAlign = 'right'
-    context.textBaseline = 'top'
-    
-    const LinkText = 'balancedbydaylight.com'
-    let locationX = width - 10;
-    context.fillText(LinkText, locationX, 10, width);
-    
-    let LinkPrefixText = 'Built via: ';
-    let locationLinkPrefix = locationX - context.measureText(LinkText).width;
-    context.font = '400 18pt Roboto'
-    
-    context.fillText(LinkPrefixText, locationLinkPrefix, 10, width);
-    
-    let linkMetrics = context.measureText(LinkText);
-    let linkHeight = linkMetrics.actualBoundingBoxAscent + linkMetrics.actualBoundingBoxDescent;
-    
     // Generate date text
     
     context.font = '400 14pt Roboto'
     context.textAlign = 'right'
     context.textBaseline = 'top'
     
+    let locationX = width - 10;
     // Get current date and time formatted as YYYY-MM-DD HH:MM:SS (24 hour) UTC
     const date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    context.fillText(`Image Date: ${date} UTC`, locationX, 20 + linkHeight, width);
+    context.fillText(`Image Date: ${date} UTC`, locationX, 10, width);
     
+    // Generate logo image
+
+    const logoWidth = 82;
+    const logoHeight = 82;
+
+    let logoImagePromise = loadImage('./canvas-image-library/logo/Logo-Background.png').then(image => {
+        // Image aspect ratio is 1:1
+        context.drawImage(image, (width/2) - (logoWidth/2), 5, logoWidth, logoHeight);
+    });
+    promises.push(logoImagePromise);
+
+    // Wait until the logo image is loaded before generating the rest of the image
+    await logoImagePromise;
+
+    // Generate link text
+    
+    context.font = '700 15pt Roboto'
+    context.textAlign = 'center'
+    context.textBaseline = 'center'
+    
+    const LinkText = 'balancedbydaylight.com';
+    let linkMetrics = context.measureText(LinkText);
+    let linkHeight = linkMetrics.actualBoundingBoxAscent + linkMetrics.actualBoundingBoxDescent;
+
+    locationX = width / 2;
+    context.fillText(LinkText, locationX, logoHeight, width);
+
     // Generate Killer lore image
     let loreImagePromise = loadImage(importedBuild["KillerLoreImage"]).then(image => {
         // Image aspect ratio is 256:507

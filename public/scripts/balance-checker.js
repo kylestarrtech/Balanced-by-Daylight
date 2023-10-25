@@ -741,6 +741,11 @@ function GetExportData() {
     for(const surv of SurvivorPerks){
         const perksId = new Array()
         for(const perk of surv){
+            if (perk == null) {
+                perksId.push(null)
+                continue;
+            }
+
             perksId.push(perk.id)
         }
         survivorPerksId.push(perksId)
@@ -748,6 +753,11 @@ function GetExportData() {
 
     const survivorOfferingsId = new Array()
     for(const offering of SurvivorOfferings){
+        if (offering == null) {
+            survivorOfferingsId.push(null)
+            continue;
+        }
+
         survivorOfferingsId.push(offering?.id)
     }
 
