@@ -234,8 +234,10 @@ function DisplayCredits() {
         "<b>SHADERS (Kyle)</b> - Started the project, and leads the development of Balanced by Daylight.<br>-<br>" +
         "<b>Floliroy</b> - Assisted heavily in improvements to Perk search, import/export, added drag/drop, and SO much more...<br>-<br>" +
         "<b>S1mmyy</b> - Fixed the drag/drop functionality on Firefox and made the system much easier to work with.<br>-<br>" +
-        "<b>Vivian Sanchez</b> - Began the work on the mobile UI for Balanced by Daylight.<br>-<br><br>" +
-        "This project is open source, and contributions are welcome. If you would like to contribute, please visit the <a href='https://github.com/kylestarrtech/DBD-Balance-Checker'>GitHub</a>."
+        "<b>Vivian Sanchez</b> - Began the work on the mobile UI for Balanced by Daylight.<br>-<br>" +
+        "<b>WheatDraws</b> - Created the Balanced by Daylight logo.<br>-<br>" +
+        "<br>" + 
+        "This project is open source, and contributions are welcome. If you would like to contribute, please visit the <a target='_blank' href='https://github.com/kylestarrtech/DBD-Balance-Checker'>GitHub</a>."
     );
 }
 
