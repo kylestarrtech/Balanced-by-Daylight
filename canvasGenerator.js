@@ -312,7 +312,7 @@ function BeginGenerationImport(data, callback) {
 }
 
 
-function GenerateImage(importedBuild, callback) {
+async function GenerateImage(importedBuild, callback) {
     // Tracks all promises to be resolved before writing to file
     let promises = [];
     
@@ -393,13 +393,17 @@ function GenerateImage(importedBuild, callback) {
     context.fillText("Image Date: " + date, locationX, 20 + linkHeight, width);
     
     // Generate Killer lore image
-    promises.push(loadImage(importedBuild["KillerLoreImage"]).then(image => {
+    let loreImagePromise = loadImage(importedBuild["KillerLoreImage"]).then(image => {
         // Image aspect ratio is 256:507
-        context.globalAlpha = 1;
+        context.globalAlpha = 0.8;
         context.drawImage(image, 0, height-(761/1.25), 384, 761);
         context.globalAlpha = 1;
         //console.log("Killer lore image loaded");
-    }))
+    });
+    promises.push(loreImagePromise);
+
+    // Wait until the lore image is loaded before generating the rest of the image
+    await loreImagePromise;
     
     // Generate background for perks
     
@@ -407,7 +411,7 @@ function GenerateImage(importedBuild, callback) {
     let BuildContainerHeight = 600; //px
     let BuildContainerPadding = 5; //px
     let BuildContainerMargin = 10; //px
-    let BuildContainerColor = '#252333ff'; //hex + alpha
+    let BuildContainerColor = '#25233380'; //hex + alpha
     
     let length = 4;
     
