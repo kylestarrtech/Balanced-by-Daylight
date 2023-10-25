@@ -981,7 +981,11 @@ body {
     width: 100%;
 }
 
-#alert-container {
+#image-gen-image {
+    max-width: 100%;
+}
+
+#alert-container, #image-gen-container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -991,7 +995,7 @@ body {
     margin: 0;
 }
 
-#alert-window {
+#alert-window, #image-gen-window {
     background-color: #2b2452;
 
     position: relative;
@@ -1011,7 +1015,7 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-#alert-menu {
+#alert-menu, #image-gen-menu {
     position: absolute;
     max-height: 90vh;
     background-color: #000000aa;
@@ -1024,7 +1028,7 @@ body {
     overflow-y: auto;
 }
 
-#alert-ok-button {
+#alert-ok-button, #image-gen-ok-button {
     width: 95%;
     border-style: none;
     padding: 5px;
@@ -1039,14 +1043,14 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-#alert-ok-button:hover {
+#alert-ok-button:hover, #image-gen-ok-button:hover {
     width: 100%;
     font-size: 1.15rem;
     border-radius: 17.5px;
     border-width: 4px;
 }
 
-#alert-ok-button:active {
+#alert-ok-button:active, #image-gen-ok-button:active {
     width: 97.5%;
     font-size: 1.125rem;
     border-radius: 15px;

@@ -727,9 +727,68 @@ function LoadButtonEvents() {
 
     LoadImportEvents();
 
+    LoadImageGenEvents();
+
     LoadPerkSearchEvents();
 
     LoadRoomEvents();
+}
+
+function GetExportData() {
+    const survivorPerksId = new Array()
+    for(const surv of SurvivorPerks){
+        const perksId = new Array()
+        for(const perk of surv){
+            perksId.push(perk.id)
+        }
+        survivorPerksId.push(perksId)
+    }
+
+    const survivorOfferingsId = new Array()
+    for(const offering of SurvivorOfferings){
+        survivorOfferingsId.push(offering?.id)
+    }
+
+    const survivorItemsId = new Array()
+    const survivorAddonInfo = new Array()
+
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        survivorItemsId.push(SurvivorItems[i]?.id);
+
+        const currentAddons = SurvivorAddons[i];
+
+        survivorAddonInfo.push(
+            [
+                [
+                    currentAddons[0]?.id,
+                    currentAddons[1]?.id
+                ],
+                SurvivorItems[i] == null ? null : SurvivorItems[i]["Type"]
+            ]
+        );
+    }
+
+
+    const exportJson = {
+        "survivorPerksId": survivorPerksId,
+        "survivorOfferingsId": survivorOfferingsId,
+        "survivorItemsId": survivorItemsId,
+        "survivorAddonInfo": survivorAddonInfo,
+        "selectedKiller": selectedKiller,
+        "currentBalancingIndex": currentBalancingIndex,
+        "customBalanceOverride": customBalanceOverride,
+        "onlyShowNonBanned": onlyShowNonBanned,
+        "currentBalancing": customBalanceOverride ? currentBalancing : null
+    }
+
+    console.log(exportJson);
+
+    const exportData = JSON.stringify(exportJson);
+
+    const deflate = pako.deflate(exportData, { to: "string" });
+    const compressedText = btoa(String.fromCharCode.apply(null, deflate));
+
+    return compressedText;
 }
 
 function LoadImportEvents() {
@@ -859,58 +918,7 @@ function LoadImportEvents() {
     });
 
     exportButton.addEventListener("click", function() {
-        const survivorPerksId = new Array()
-        for(const surv of SurvivorPerks){
-            const perksId = new Array()
-            for(const perk of surv){
-                perksId.push(perk.id)
-            }
-            survivorPerksId.push(perksId)
-        }
-
-        const survivorOfferingsId = new Array()
-        for(const offering of SurvivorOfferings){
-            survivorOfferingsId.push(offering?.id)
-        }
-
-        const survivorItemsId = new Array()
-        const survivorAddonInfo = new Array()
-
-        for (var i = 0; i < SurvivorItems.length; i++) {
-            survivorItemsId.push(SurvivorItems[i]?.id);
-
-            const currentAddons = SurvivorAddons[i];
-
-            survivorAddonInfo.push(
-                [
-                    [
-                        currentAddons[0]?.id,
-                        currentAddons[1]?.id
-                    ],
-                    SurvivorItems[i] == null ? null : SurvivorItems[i]["Type"]
-                ]
-            );
-        }
-
-
-        const exportJson = {
-            "survivorPerksId": survivorPerksId,
-            "survivorOfferingsId": survivorOfferingsId,
-            "survivorItemsId": survivorItemsId,
-            "survivorAddonInfo": survivorAddonInfo,
-            "selectedKiller": selectedKiller,
-            "currentBalancingIndex": currentBalancingIndex,
-            "customBalanceOverride": customBalanceOverride,
-            "onlyShowNonBanned": onlyShowNonBanned,
-            "currentBalancing": customBalanceOverride ? currentBalancing : null
-        }
-
-        console.log(exportJson);
-
-        const exportData = JSON.stringify(exportJson);
-
-        const deflate = pako.deflate(exportData, { to: "string" });
-        const compressedText = btoa(String.fromCharCode.apply(null, deflate));
+        let compressedText = GetExportData();
 
         // Ask user if they'd like to copy to clipboard. If yes, copy to clipboard. If no, return.
         // if (!confirm("Would you like to copy your build data to your clipboard?")) {
@@ -921,6 +929,79 @@ function LoadImportEvents() {
         navigator.clipboard.writeText(compressedText);
 
         GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
+    });
+}
+
+function LoadImageGenEvents() {
+    const genImgButton = document.getElementById("generate-image-button");
+
+    genImgButton.addEventListener("click", function() {
+        let exportData = GetExportData();
+
+        const imageGenContainer = document.getElementById("image-gen-container");
+        imageGenContainer.hidden = false;
+
+        const imageGenTitle = document.getElementById("image-gen-title");
+        imageGenTitle.innerText = "Generating Image...";
+
+        const imageGenImage = document.getElementById("image-gen-image");
+        imageGenImage.hidden = true;
+
+        const imageGenMessage = document.getElementById("image-gen-message");
+        imageGenMessage.innerText = "Please wait while your loadout image is generated...";
+
+        var xhttp = new XMLHttpRequest();
+        
+        const imageGenOkButton = document.getElementById("image-gen-ok-button");
+        imageGenOkButton.innerText = "Cancel";
+
+        imageGenOkButton.addEventListener("click", function() {
+            // If the xhttp request is still running, abort it
+            if (xhttp.readyState != 4) {
+                xhttp.abort();
+            }
+
+            imageGenContainer.hidden = true;
+        });
+
+        xhttp.responseType = "arraybuffer"
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                switch (this.status) {
+                    case 200:
+                        // This is the encoded image data.
+                        let imageBuffer = this.response;
+
+                        const imageBlob = new Blob([imageBuffer], { type: "image/png" });
+
+                        const imageUrl = URL.createObjectURL(imageBlob);
+
+                        const imageElement = document.getElementById("image-gen-image");
+                        imageElement.src = imageUrl;
+                        imageElement.hidden = false;
+
+                        imageGenTitle.innerText = "Generated Loadout Image";
+
+                        imageGenMessage.innerText = "Your loadout image has been generated! Feel free to save/copy it.";
+
+                        imageGenOkButton.addEventListener("click", function() {
+                            // Revoke the image URL
+                            URL.revokeObjectURL(imageUrl);
+                        });
+                        imageGenOkButton.innerText = "Close";
+                    break;
+                    default:
+                        GenerateAlertModal("Error", "An error occurred while generating your image.");
+                        console.error("Error getting image: " + this.status);
+                }
+            }
+        };
+        xhttp.open("POST", "/get-build-image", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify({
+            ExportData: exportData
+        }));
     });
 }
 
