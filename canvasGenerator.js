@@ -86,8 +86,9 @@ function BeginGenerationImport(data, callback) {
         // First get the killer's name without spaces and omit "The"
         let killerName = Killers[importedBuild.selectedKiller].replace("The", "");
         killerName = killerName.replace(/\s/g, "");
+
         // Then get the lore image
-        exampleImageGenObject.KillerLoreImage = `./public/iconography/lore/${killerName}.png`;
+        exampleImageGenObject.KillerLoreImage = `./canvas-image-library/lore/${killerName}.png`;
     
         // Check if the image exists
         if (!fs.existsSync(exampleImageGenObject.KillerLoreImage)) {
@@ -419,7 +420,7 @@ async function GenerateImage(importedBuild, callback) {
     
     // Get current date and time formatted as YYYY-MM-DD HH:MM:SS (24 hour) UTC
     const date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    context.fillText("Image Date: " + date, locationX, 20 + linkHeight, width);
+    context.fillText(`Image Date: ${date} UTC`, locationX, 20 + linkHeight, width);
     
     // Generate Killer lore image
     let loreImagePromise = loadImage(importedBuild["KillerLoreImage"]).then(image => {
