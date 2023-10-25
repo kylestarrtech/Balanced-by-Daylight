@@ -711,33 +711,9 @@ function LoadButtonEvents() {
 
     LoadImportEvents();
 
-    LoadImageEvents();
-
     LoadPerkSearchEvents();
 
     LoadRoomEvents();
-}
-
-function LoadImageEvents(){
-    const imageButton = document.getElementById("get-image")
-
-    imageButton.addEventListener("click", function() {
-        document.getElementById("image-name").innerHTML = `${Killers[selectedKiller]}${customBalanceOverride ? "" :  " - " + BalancePresets[currentBalancingIndex].Name}`
-
-        const node = document.getElementById("image-export")
-        node.style.color = "white"
-        
-        domtoimage.toPng(node, {bgcolor: "#100f16", style: {margin: 0, color: "white"}}).then(async function(dataUrl) {
-            node.style.color = "#100f16"
-            GenerateAlertModal("Image Saved", `Your builds image has been copied to your clipboard!<br><img src="${dataUrl}">`) 
-            const image = await fetch(dataUrl)
-            const blob = await image.blob()
-            const data = [new ClipboardItem({[blob.type]: blob})]
-            navigator.clipboard.write(data)
-        }).catch(function() {
-            node.style.color = "#100f16"
-        })
-    })
 }
 
 function LoadImportEvents() {
