@@ -2269,7 +2269,7 @@ function CheckForRepetition(builds) {
                         "Perk Repetition",
                         `Perk <b>${currentPerk["name"]}</b> is repeated ${perkRepeatAmount} times in the Survivor builds.`,
                         undefined,
-                        "iconography/PerkError.png"
+                        "iconography/PerkError.webp"
                     ))
                 }
             }
@@ -2309,7 +2309,7 @@ function CheckForDuplicates(survIndex, build) {
                         "Duplicate Perk",
                         `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex+1}</b>'s build.`,
                         undefined,
-                        "iconography/PerkError.png",
+                        "iconography/PerkError.webp",
                         true
                     )
                 )
@@ -2502,7 +2502,7 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                         "Banned Combo",
                         `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                         undefined,
-                        "iconography/ComboError.png"
+                        "iconography/ComboError.webp"
                     )
                 )
             }
@@ -2543,7 +2543,7 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                             "Banned Combo",
                             `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                             undefined,
-                            "iconography/ComboError.png"
+                            "iconography/ComboError.webp"
                         )
                     )
                 }
@@ -2610,7 +2610,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                         "Banned Perk",
                         `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                         undefined,
-                        "iconography/PerkError.png"
+                        "iconography/PerkError.webp"
                     )
                 )
             }
@@ -2661,7 +2661,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                             "Banned Perk",
                             `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                             undefined,
-                            "iconography/PerkError.png"
+                            "iconography/PerkError.webp"
                         )
                     )
                 }
@@ -2718,7 +2718,7 @@ function CheckForBalancingErrors() {
                     "Banned Offering",
                     `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     undefined,
-                    "iconography/OfferingError.png"
+                    "iconography/OfferingError.webp"
                 )
             );
         }
@@ -2744,7 +2744,7 @@ function CheckForBalancingErrors() {
                     "Banned Item",
                     `Item <b>${SurvivorItems[i]["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     undefined,
-                    "iconography/ItemError.png"
+                    "iconography/ItemError.webp"
                 )
             );
         }
@@ -2800,7 +2800,7 @@ function CheckForBalancingErrors() {
                         "Banned Addon",
                         `Addon <b>${currentAddon["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build at <b>Addon Slot #${j+1}</b>.`,
                         undefined,
-                        "iconography/AddonError.png"
+                        "iconography/AddonError.webp"
                     )
                 );
             }   
@@ -2836,7 +2836,7 @@ function CheckForBalancingErrors() {
                             "Duplicate Addon",
                             `Addon <b>${addonIDs[j]["Name"]}</b> is duplicated in <b>Survivor #${i+1}</b>'s build.`,
                             undefined,
-                            "iconography/AddonError.png",
+                            "iconography/AddonError.webp",
                             true
                         )
                     );
@@ -3137,7 +3137,7 @@ function GenerateErrorObject(
     name = "Default Error",
     reason = "Default Reason",
     stacktrace = undefined,
-    icon = "iconography/Error.png",
+    icon = "iconography/Error.webp",
     criticalError = false) {
         return {
             ERROR: name,
