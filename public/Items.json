@@ -1,0 +1,494 @@
+{
+    "ItemTypes": [
+        {"Firecracker":"",
+            "id": 0,
+            "Name": "Firecracker",
+            "Addons": []
+        },
+        {"Flashlight":"",
+            "id": 1,
+            "Name": "Flashlight",
+            "Addons": [
+                {
+                    "id": 0,
+                    "Name": "Broken Bulb",
+                    "icon": "public/Addons/Broken-Bulb.webp"
+                },
+                {
+                    "id": 1,
+                    "Name": "Wide Lens",
+                    "icon": "public/Addons/Wide-Lens.webp"
+                },
+                {
+                    "id": 2,
+                    "Name": "Power Bulb",
+                    "icon": "public/Addons/Power-Bulb.webp"
+                },
+                {
+                    "id": 3,
+                    "Name": "Leather Grip",
+                    "icon": "public/Addons/Leather-Grip.webp"
+                },
+                {
+                    "id": 4,
+                    "Name": "Battery",
+                    "icon": "public/Addons/Battery.webp"
+                },
+                {
+                    "id": 5,
+                    "Name": "Tir Optic",
+                    "icon": "public/Addons/Tir-Optic.webp"
+                },
+                {
+                    "id": 6,
+                    "Name": "Rubber Grip",
+                    "icon": "public/Addons/Rubber-Grip.webp"
+                },
+                {
+                    "id": 7,
+                    "Name": "Low Amp Filament",
+                    "icon": "public/Addons/Low-Amp-Filament.webp"
+                },
+                {
+                    "id": 8,
+                    "Name": "Heavy Duty Battery",
+                    "icon": "public/Addons/Heavy-Duty-Battery.webp"
+                },
+                {
+                    "id": 9,
+                    "Name": "Focus Lens",
+                    "icon": "public/Addons/Focus-Lens.webp"
+                },
+                {
+                    "id": 10,
+                    "Name": "Long Life Battery",
+                    "icon": "public/Addons/Long-Life-Battery.webp"
+                },
+                {
+                    "id": 11,
+                    "Name": "Intense Halogen",
+                    "icon": "public/Addons/Intense-Halogen.webp"
+                },
+                {
+                    "id": 12,
+                    "Name": "High-End Sapphire Lens",
+                    "icon": "public/Addons/High-End-Sapphire-Lens.webp"
+                },
+                {
+                    "id": 13,
+                    "Name": "Odd Bulb",
+                    "icon": "public/Addons/Odd-Bulb.webp"
+                }
+            ]
+        },
+        {"Med-Kit":"",
+            "id": 2,
+            "Name": "Med-Kit",
+            "Addons": [
+                {
+                    "id": 0,
+                    "Name": "Rubber Gloves",
+                    "icon": "public/Addons/Rubber-Gloves.webp"
+                },
+                {
+                    "id": 1,
+                    "Name": "Butterfly Tape",
+                    "icon": "public/Addons/Butterfly-Tape.webp"
+                },
+                {
+                    "id": 2,
+                    "Name": "Bandages",
+                    "icon": "public/Addons/Bandages.webp"
+                },
+                {
+                    "id": 3,
+                    "Name": "Sponge",
+                    "icon": "public/Addons/Sponge.webp"
+                },
+                {
+                    "id": 4,
+                    "Name": "Self Adherent Wrap",
+                    "icon": "public/Addons/Self-Adherent-Wrap.webp"
+                },
+                {
+                    "id": 5,
+                    "Name": "Needle & Thread",
+                    "icon": "public/Addons/Needle-and-Thread.webp"
+                },
+                {
+                    "id": 6,
+                    "Name": "Medical Scissors",
+                    "icon": "public/Addons/Medical-Scissors.webp"
+                },
+                {
+                    "id": 7,
+                    "Name": "Surgical Suture",
+                    "icon": "public/Addons/Surgical-Suture.webp"
+                },
+                {
+                    "id": 8,
+                    "Name": "Gauze Roll",
+                    "icon": "public/Addons/Gauze-Roll.webp"
+                },
+                {
+                    "id": 9,
+                    "Name": "Styptic Agent",
+                    "icon": "public/Addons/Styptic-Agent.webp"
+                },
+                {
+                    "id": 10,
+                    "Name": "Abdominal Dressing",
+                    "icon": "public/Addons/Abdominal-Dressing.webp"
+                },
+                {
+                    "id": 11,
+                    "Name": "Gel Dressings",
+                    "icon": "public/Addons/Gel-Dressings.webp"
+                },
+                {
+                    "id": 12,
+                    "Name": "Anti-Haemorrhagic Syringe",
+                    "icon": "public/Addons/Anti-Haemorrhagic-Syringe.webp"
+                },
+                {
+                    "id": 13,
+                    "Name": "Refined Serum",
+                    "icon": "public/Addons/Refined-Serum.webp"
+                }
+            ]
+        },
+        {"Toolbox":"",
+            "id": 3,
+            "Name": "Toolbox",
+            "Addons": [
+                {
+                    "id": 0,
+                    "Name": "Scraps",
+                    "icon": "public/Addons/Scraps.webp"
+                },
+                {
+                    "id": 1,
+                    "Name": "Instructions",
+                    "icon": "public/Addons/Instructions.webp"
+                },
+                {
+                    "id": 2,
+                    "Name": "Clean Rag",
+                    "icon": "public/Addons/Clean-Rag.webp"
+                },
+                {
+                    "id": 3,
+                    "Name": "Wire Spool",
+                    "icon": "public/Addons/Wire-Spool.webp"
+                },
+                {
+                    "id": 4,
+                    "Name": "Spring Clamp",
+                    "icon": "public/Addons/Spring-Clamp.webp"
+                },
+                {
+                    "id": 5,
+                    "Name": "Socket Swivels",
+                    "icon": "public/Addons/Socket-Swivels.webp"
+                },
+                {
+                    "id": 6,
+                    "Name": "Protective Gloves",
+                    "icon": "public/Addons/Protective-Gloves.webp"
+                },
+                {
+                    "id": 7,
+                    "Name": "Cutting Wire",
+                    "icon": "public/Addons/Cutting-Wire.webp"
+                },
+                {
+                    "id": 8,
+                    "Name": "Hacksaw",
+                    "icon": "public/Addons/Hacksaw.webp"
+                },
+                {
+                    "id": 9,
+                    "Name": "Grip Wrench",
+                    "icon": "public/Addons/Grip-Wrench.webp"
+                },
+                {
+                    "id": 10,
+                    "Name": "Brand New Part",
+                    "icon": "public/Addons/Brand-New-Part.webp"
+                }
+            ]
+        },
+        {"Key":"",
+            "id": 4,
+            "Name": "Key",
+            "Addons": [
+                {
+                    "id": 0,
+                    "Name": "Prayer Rope",
+                    "icon": "public/Addons/Prayer-Rope.webp"
+                },
+                {
+                    "id": 1,
+                    "Name": "Scratched Pearl",
+                    "icon": "public/Addons/Scratched-Pearl.webp"
+                },
+                {
+                    "id": 2,
+                    "Name": "Prayer Beads",
+                    "icon": "public/Addons/Prayer-Beads.webp"
+                },
+                {
+                    "id": 3,
+                    "Name": "Eroded Token",
+                    "icon": "public/Addons/Eroded-Token.webp"
+                },
+                {
+                    "id": 4,
+                    "Name": "Gold Token",
+                    "icon": "public/Addons/Gold-Token.webp"
+                },
+                {
+                    "id": 5,
+                    "Name": "Weaved Ring",
+                    "icon": "public/Addons/Weaved-Ring.webp"
+                },
+                {
+                    "id": 6,
+                    "Name": "Milky Glass",
+                    "icon": "public/Addons/Milky-Glass.webp"
+                },
+                {
+                    "id": 7,
+                    "Name": "Blood Amber",
+                    "icon": "public/Addons/Blood-Amber.webp"
+                },
+                {
+                    "id": 8,
+                    "Name": "Unique Wedding Ring",
+                    "icon": "public/Addons/Unique-Wedding-Ring.webp"
+                }
+            ]
+        },
+        {"Map":"",
+            "id": 5,
+            "Name": "Map",
+            "Addons": [
+                {
+                    "id": 0,
+                    "Name": "Map Addendum",
+                    "icon": "public/Addons/Map-Addendum.webp"
+                },
+                {
+                    "id": 1,
+                    "Name": "Yellow Wire",
+                    "icon": "public/Addons/Yellow-Wire.webp"
+                },
+                {
+                    "id": 2,
+                    "Name": "Unusual Stamp",
+                    "icon": "public/Addons/Unusual-Stamp.webp"
+                },
+                {
+                    "id": 3,
+                    "Name": "Retardant Jelly",
+                    "icon": "public/Addons/Retardant-Jelly.webp"
+                },
+                {
+                    "id": 4,
+                    "Name": "Red Twine",
+                    "icon": "public/Addons/Red-Twine.webp"
+                },
+                {
+                    "id": 5,
+                    "Name": "Glass Bead",
+                    "icon": "public/Addons/Glass-Bead.webp"
+                },
+                {
+                    "id": 6,
+                    "Name": "Odd Stamp",
+                    "icon": "public/Addons/Odd-Stamp.webp"
+                },
+                {
+                    "id": 7,
+                    "Name": "Black Silk Cord",
+                    "icon": "public/Addons/Black-Silk-Cord.webp"
+                },
+                {
+                    "id": 8,
+                    "Name": "Crystal Bead",
+                    "icon": "public/Addons/Crystal-Bead.webp"
+                }
+            ]
+        }
+    ],
+    "Items": [
+        {
+            "id": 0,
+            "Name": "Firecracker",
+            "Type": "Firecracker",
+            "icon": "public/Items/Firecracker.webp"
+        },
+        {
+            "id": 1,
+            "Name": "Will O' Wisp",
+            "Type": "Flashlight",
+            "icon": "public/Items/Will-O_-Wisp.webp"
+        },
+        {
+            "id": 2,
+            "Name": "Masquerade Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Masquerade-Flashlight.webp"
+        },
+        {
+            "id": 3,
+            "Name": "Anniversary Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Anniversary-Flashlight.webp"
+        },
+        {
+            "id": 4,
+            "Name": "Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Flashlight.webp"
+        },
+        {
+            "id": 5,
+            "Name": "Sport Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Sport-Flashlight.webp"
+        },
+        {
+            "id": 6,
+            "Name": "Utility Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Utility-Flashlight.webp"
+        },
+        {
+            "id": 7,
+            "Name": "Camping Aid Kit",
+            "Type": "Med-Kit",
+            "icon": "public/Items/Camping-Aid-Kit.webp"
+        },
+        {
+            "id": 8,
+            "Name": "First Aid Kit",
+            "Type": "Med-Kit",
+            "icon": "public/Items/First-Aid-Kit.webp"
+        },
+        {
+            "id": 9,
+            "Name": "Emergency Med-Kit",
+            "Type": "Med-Kit",
+            "icon": "public/Items/Emergency-Med-Kit.webp"
+        },
+        {
+            "id": 10,
+            "Name": "Ranger Med-Kit",
+            "Type": "Med-Kit",
+            "icon": "public/Items/Ranger-Med-Kit.webp"
+        },
+        {
+            "id": 11,
+            "Name": "All Hallows' Eve Lunchbox",
+            "Type": "Med-Kit",
+            "icon": "public/Items/All-Hallows_-Eve-Lunchbox.webp"
+        },
+        {
+            "id": 12,
+            "Name": "Anniversary Med-Kit",
+            "Type": "Med-Kit",
+            "icon": "public/Items/Anniversary-Med-Kit.webp"
+        },
+        {
+            "id": 13,
+            "Name": "Masquerade Med-Kit",
+            "Type": "Med-Kit",
+            "icon": "public/Items/Masquerade-Med-Kit.webp"
+        },
+        {
+            "id": 14,
+            "Name": "Worn-Out Tools",
+            "Type": "Toolbox",
+            "icon": "public/Items/Worn-Out-Tools.webp"
+        },
+        {
+            "id": 15,
+            "Name": "Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Toolbox.webp"
+        },
+        {
+            "id": 16,
+            "Name": "Mechanic's Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Mechanic_s-Toolbox.webp"
+        },
+        {
+            "id": 17,
+            "Name": "Commodious Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Commodious-Toolbox.webp"
+        },
+        {
+            "id": 18,
+            "Name": "Engineer's Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Engineer_s-Toolbox.webp"
+        },
+        {
+            "id": 19,
+            "Name": "Alex's Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Alex_s-Toolbox.webp"
+        },
+        {
+            "id": 20,
+            "Name": "Festive Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Festive-Toolbox.webp"
+        },
+        {
+            "id": 21,
+            "Name": "Anniversary Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Anniversary-Toolbox.webp"
+        },
+        {
+            "id": 22,
+            "Name": "Masquerade Toolbox",
+            "Type": "Toolbox",
+            "icon": "public/Items/Masquerade-Toolbox.webp"
+        },
+        {
+            "id": 23,
+            "Name": "Broken Key",
+            "Type": "Key",
+            "icon": "public/Items/Broken-Key.webp"
+        },
+        {
+            "id": 24,
+            "Name": "Dull Key",
+            "Type": "Key",
+            "icon": "public/Items/Dull-Key.webp"
+        },
+        {
+            "id": 25,
+            "Name": "Skeleton Key",
+            "Type": "Key",
+            "icon": "public/Items/Skeleton-Key.webp"
+        },
+        {
+            "id": 26,
+            "Name": "Map",
+            "Type": "Map",
+            "icon": "public/Items/Map.webp"
+        },
+        {
+            "id": 27,
+            "Name": "Rainbow Map",
+            "Type": "Map",
+            "icon": "public/Items/Rainbow-Map.webp"
+        }
+    ]
+}

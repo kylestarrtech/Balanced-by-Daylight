@@ -1,4 +1,5 @@
-# The Dead by Daylight Balance Checker
+![Balanced by Daylight Logo](public/iconography/Logo-Background.webp)
+# Balanced by Daylight
 ### This is a tool designed to assist competitive Dead by Daylight players in making balancing for tournament leagues, and making sure team builds remain compliant to said balancing.
 
 This tool is in very early stages, but I decided to make the repository public nonetheless.
@@ -9,9 +10,13 @@ This tool is in very early stages, but I decided to make the repository public n
 | -------- | -------- |
 | Survivor Builds | ✅ (Fully complete!)|
 | Killer Builds | ❌ (In Creator, not Checker) |
-| Survivor Items+Addons | ❌ (Not Implemented) |
-| Offerings | ❌ (In Creator, Not Checker) |
+| Survivor Items+Addons | ✅ (Fully complete!) |
+| Offerings | ✅ (Fully complete!) |
 | Multiplayer | ❌ (Disabled, Non-Functioning) |
+
+## Discord Server
+
+If you'd like to chat, give feedback, see updates, or more - the [Discord Server](https://discord.gg/E6zfpwvCce) has all of that information!
 
 ## Reporting Issues
 

@@ -6,6 +6,8 @@ Survivors = null;
 Maps = null;
 Addons = null;
 Offerings = null;
+Items = null;
+
 MaximumPerkRepetition = 1;
 const version = 1;
 
@@ -33,6 +35,9 @@ TIER_RARITY_COLOURLIST = [
     TIER_RARITY_COLOURS.VERY_RARE,
     TIER_RARITY_COLOURS.ULTRA_RARE
 ]
+
+// Used to store what item IDs are shown in the dropdowns
+ItemIDRange = [];
 
 function main() {
     GetPerks();
@@ -667,6 +672,97 @@ function SetKillerOverrideEvents() {
         false);
     });
 
+    // Get the Killer Confirm Item(s) Button
+    var killerConfirmItemButton = document.getElementById("killer-item-confirmation-button");
+
+    killerConfirmItemButton.addEventListener("click", function() {
+        // Get the items selected
+        var itemDropdown = document.getElementById("killer-item-selection-dropdown");
+        var selectedItems = GetSelectValues(itemDropdown);
+
+        // Get the selected killer
+        var selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Get the killer's balance
+        var killerBalance = KillerBalance[killerIndex];
+
+        // Remove all items in the ID range from the whitelist
+        for (var i = 0; i < ItemIDRange.length; i++) {
+            // Remove the item from the whitelist assuming it exists
+            if (killerBalance.ItemWhitelist.includes(ItemIDRange[i])) {
+                killerBalance.ItemWhitelist.splice(killerBalance.ItemWhitelist.indexOf(ItemIDRange[i]), 1);
+            }   
+        }
+
+        // Set the killer's ItemWhitelist value to the selected items
+        for (var i = 0; i < selectedItems.length; i++) {
+            // Convert the selected item to a number
+            var itemNum = parseInt(selectedItems[i]);
+
+            // Add the item to the whitelist
+            killerBalance.ItemWhitelist.push(itemNum);
+        }
+    });
+
+    // Get the Killer Confirm Addon(s) Button
+    var killerConfirmAddonButton = document.getElementById("killer-item-addon-confirmation-button");
+
+    killerConfirmAddonButton.addEventListener("click", function() {
+        // Get the addons selected
+        const addonDropdown = document.getElementById("killer-item-addon-selection-dropdown");
+        var selectedAddons = GetSelectValues(addonDropdown);
+
+        DebugLog(selectedAddons);
+
+        // Get the selected killer
+        let selectedKiller = document.getElementById("killer-selection-dropdown").value;
+        
+        // Get the index of the killer with the same name
+        var killerIndex = -1;
+        for (var i = 0; i < Killers.length; i++) {
+            if (Killers[i] == selectedKiller) {
+                killerIndex = i;
+                continue;
+            }
+        }
+        if (killerIndex == -1) { console.error("Invalid killer name!"); return;}
+
+        // Get the killer's balance
+        let killerBalance = KillerBalance[killerIndex];
+
+        // Get the selected item type
+        const selectedItemType = document.getElementById("killer-item-type-selection-dropdown").value;
+        let addonWhitelist = killerBalance["AddonWhitelist"][selectedItemType]["Addons"];
+        DebugLog(selectedItemType);
+        DebugLog(addonWhitelist);
+
+        if (addonWhitelist == undefined) {
+            console.error("Invalid item type!");
+            return;
+        }
+
+        // Set the killer's AddonWhitelist value to the selected addons
+        KillerBalance[killerIndex]["AddonWhitelist"][selectedItemType]["Addons"] = [];
+
+        for (var i = 0; i < selectedAddons.length; i++) {
+            // Convert the selected addon to a number
+            var addonNum = parseInt(selectedAddons[i]);
+
+            // Add the addon to the whitelist
+            KillerBalance[killerIndex]["AddonWhitelist"][selectedItemType]["Addons"].push(addonNum);
+        }
+    });
+
     // Set Killer Perk Ban Events
     SetKillerOverridePerkBanEvents();
 }
@@ -1267,6 +1363,8 @@ function LoadKillerOverrideUI(id) {
         addonDropdown.appendChild(optionsElement);
     }
 
+    LoadPermittedItemsDropdowns();
+
     // Load Killer Offerings Allowed
     var offeringDropdown = document.getElementById("killer-offering-selection-dropdown");
     var offeringsAllowed = KillerData.KillerOfferings;
@@ -1278,7 +1376,7 @@ function LoadKillerOverrideUI(id) {
     offeringsAllowed = KillerData.SurvivorOfferings;
 
     SelectValuesInListbox("survivor-offering-selection-dropdown", offeringsAllowed);
-    
+
     // Apply it to KillerIndvBanDropdown
     var KlrIndvPrkBanDropdown = document.getElementById("killer-tiered-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
@@ -1406,6 +1504,71 @@ function LoadKillerOverrideUI(id) {
     return "OK!";
 }
 
+function LoadPermittedItemsDropdowns() {
+    let itemTypesDropdown = document.getElementById("killer-item-type-selection-dropdown")
+
+    itemTypesDropdown.innerHTML = "";
+
+    for (const itemType of Items["ItemTypes"]) {
+        let optionsElement = document.createElement("option");
+        optionsElement.value = itemType["Name"];
+        optionsElement.innerHTML = itemType["Name"];
+        itemTypesDropdown.appendChild(optionsElement);
+    }
+
+    itemTypesDropdown.addEventListener("change", function() {
+        // Get the selected item type
+        let selectedItemType = itemTypesDropdown.value;
+
+        // Reset the item range
+        ItemIDRange = [];
+
+        // Get the items of the selected type
+        let itemsOfType = FindItemsOfType(selectedItemType);
+
+        // Get the item dropdown
+        let itemDropdown = document.getElementById("killer-item-selection-dropdown");
+        itemDropdown.innerHTML = "";
+
+        for (const item of itemsOfType) {
+            let optionsElement = document.createElement("option");
+            optionsElement.value = item["id"];
+            ItemIDRange.push(item["id"]);
+            optionsElement.innerHTML = item["Name"];
+            optionsElement.style.backgroundImage = `url(${item["icon"]})`;
+            optionsElement.style.backgroundSize = "contain";
+            optionsElement.style.backgroundRepeat = "no-repeat";
+            optionsElement.style.backgroundPosition = "right center";
+            optionsElement.style.minHeight = "25px";
+            itemDropdown.appendChild(optionsElement);
+        }
+
+        let KillerData = KillerBalance[GetCurrentKillerIndex()];
+        DebugLog(KillerData.ItemWhitelist);
+        SelectOptionsFromValues("killer-item-selection-dropdown", KillerData.ItemWhitelist);
+
+        let itemAddonDropdown = document.getElementById("killer-item-addon-selection-dropdown");
+        itemAddonDropdown.innerHTML = "";
+
+        let addonsOfItem = FindAddonsOfType(selectedItemType);
+
+        for (const addon of addonsOfItem) {
+            let optionsElement = document.createElement("option");
+            optionsElement.value = addon["id"];
+            optionsElement.innerHTML = addon["Name"];
+            optionsElement.style.backgroundImage = `url(${addon["icon"]})`;
+            optionsElement.style.backgroundSize = "contain";
+            optionsElement.style.backgroundRepeat = "no-repeat";
+            optionsElement.style.backgroundPosition = "right center";
+            optionsElement.style.minHeight = "25px";
+            itemAddonDropdown.appendChild(optionsElement);
+        }
+
+        SelectOptionsFromValues("killer-item-addon-selection-dropdown", KillerData.AddonWhitelist[selectedItemType]["Addons"]);
+    });
+
+}
+
 // Code from RobG as of 05/03/2011 on StackOverflow
 // https://stackoverflow.com/questions/5866169/how-to-get-all-selected-values-of-a-multiple-select-box
 // Return an array of the selected option values
@@ -1439,6 +1602,14 @@ function SetKillerBalancing() {
  * @returns {object} The killer balancing
  */
 function CreateKillerOverride(name) {
+    let AddonWhitelistSkeleton = {};
+
+    for (const itemType of Items["ItemTypes"]) {
+        AddonWhitelistSkeleton[itemType["Name"]] = {};
+        
+        AddonWhitelistSkeleton[itemType["Name"]]["Addons"] = [];
+    }
+
     NewKillerBalance = {
         Name: name,
         Map: [0], // Can be empty, which means all maps are allowed.
@@ -1455,6 +1626,8 @@ function CreateKillerOverride(name) {
         KillerWhitelistedComboPerks: [], // If some Killer benefits particularly off of a perk combo.
         AddonTiersBanned: [], // 0=Common | 1=Uncommon | 2=Rare | 3=Very Rare | 4=Iridescent
         IndividualAddonBans: [], // Name of the addons that are banned.
+        ItemWhitelist: [], // IDs of the items that are whitelisted.
+        AddonWhitelist: AddonWhitelistSkeleton, // Indices of the addons that are whitelisted by item type.
         SurvivorOfferings: [],  // Name of the permitted survivor offerings
         KillerOfferings: [] // Name of the permitted killer offerings
     }
@@ -1618,8 +1791,8 @@ function UpdateKillerDropdowns() {
 
     for (var i = 0; i < Offerings.Killer.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = Offerings.Killer[i];
-        optionsElement.innerHTML = Offerings.Killer[i];
+        optionsElement.value = Offerings.Killer[i]["name"];
+        optionsElement.innerHTML = Offerings.Killer[i]["name"];
         killerOfferingDropdown.appendChild(optionsElement);
     }
 
@@ -1628,8 +1801,8 @@ function UpdateKillerDropdowns() {
 
     for (var i = 0; i < Offerings.Survivor.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = Offerings.Survivor[i];
-        optionsElement.innerHTML = Offerings.Survivor[i];
+        optionsElement.value = Offerings.Survivor[i]["name"];
+        optionsElement.innerHTML = Offerings.Survivor[i]["name"];
         survivorOfferingDropdown.appendChild(optionsElement);
     }
 }
@@ -1804,10 +1977,29 @@ function GetAddons() {
                 default:
                     console.error("Error getting addons: " + this.status);
             }
-            GetOfferings();
+            GetItems();
         }
     }
     xhttp.open("GET", "Addons.json", false);
+    xhttp.send();
+}
+
+function GetItems() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    Items = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting items: " + this.status);
+            }
+            GetOfferings();
+        }
+    }
+    xhttp.open("GET", "Items.json", false);
     xhttp.send();
 }
 
@@ -1904,6 +2096,9 @@ function ExportBalancing() {
         NewKiller.IndividualAddonBans = KillerBalance[i].IndividualAddonBans;
         NewKiller.SurvivorOfferings = KillerBalance[i].SurvivorOfferings;
         NewKiller.KillerOfferings = KillerBalance[i].KillerOfferings;
+        NewKiller.ItemWhitelist = KillerBalance[i].ItemWhitelist;
+        NewKiller.AddonWhitelist = KillerBalance[i].AddonWhitelist;
+
 
         NewKillerExport.push(NewKiller);
     }
@@ -2010,6 +2205,9 @@ function ImportBalancing() {
         NewKillerBalance.SurvivorOfferings = curKiller.SurvivorOfferings;
         NewKillerBalance.KillerOfferings = curKiller.KillerOfferings;
 
+        NewKillerBalance.ItemWhitelist = SanitizeKillerBalanceProperty(NewKillerBalance.ItemWhitelist, curKiller.ItemWhitelist);
+        NewKillerBalance.AddonWhitelist = SanitizeKillerBalanceProperty(NewKillerBalance.AddonWhitelist, curKiller.AddonWhitelist);
+
         KillerBalance.push(NewKillerBalance);
     }
 
@@ -2019,6 +2217,20 @@ function ImportBalancing() {
 }
 
 /* HELPER FUNCTIONS */
+
+/**
+ * Sanitizes a killer balance property for import. This way if a new property appears old balancing remains compatible.
+ * @param {*} curProperty The current property.
+ * @param {*} newProperty The desired new property.
+ * @returns 
+ */
+function SanitizeKillerBalanceProperty(curProperty, newProperty) {
+    if (newProperty == undefined) {
+        return curProperty;
+    }
+
+    return newProperty;
+}
 
 /**
  * Returns the name of the currently selected killer.
@@ -2064,6 +2276,28 @@ function SelectValuesInListbox(id, values) {
     }
 }
 
+/**
+ * Selects the options in a listbox based on the input values instead of indices.
+ * @param {*} id 
+ * @param {*} values 
+ */
+function SelectOptionsFromValues(id, values) {
+    DebugLog(`Selecting options ${values} in listbox ${id}`);
+
+    try {
+        const selectOptions = document.getElementById(id).options;
+        for (const value of values) {
+            for (const option of selectOptions) {
+                if (option.value == value) {
+                    option.selected = true;
+                }
+            }
+        }
+    } catch (error) {
+        console.error(`Error selecting values in listbox ${id}: ${error}`);
+    }
+}
+
 function DeselectAllValuesInListbox(id) {
     DebugLog(`Deselecting all values in listbox ${id}`);
 
@@ -2071,6 +2305,93 @@ function DeselectAllValuesInListbox(id) {
     for (var i = 0; i < selectOptions.length; i++) {
         selectOptions[i].selected = false;
     }
+}
+
+function FindItemsOfType(type) {
+    var items = [];
+
+    // Check if item type is valid
+    if (type == undefined) {
+        console.error(`Item type is undefined!`);
+        return items;
+    }
+
+    let foundType = false;
+    for (const itemType of Items["ItemTypes"]) {
+        //DebugLog(`Checking item type ${itemType["Name"]} compared to ${type}`)
+        //DebugLog(`Type of itemType: ${typeof itemType["Name"]} | Type of type: ${typeof type}`)
+        if (itemType["Name"] == type) {
+            foundType = true;
+            break;
+        }
+    }
+    if (!foundType) {
+        console.error(`Item type ${type} is not a valid item type!`);
+        return items;
+    }
+
+    // Find items of the specified type
+    for (const item of Items["Items"]) {
+        if (item["Type"] == type) {
+            items.push(item);
+        }
+    }
+
+    return items;
+}
+
+function FindItemWithID(id) {
+    // Check if item id is valid
+    if (id == undefined) {
+        console.error(`Item id is undefined!`);
+        return undefined;
+    }
+
+    // Find item with specified id
+    for (const item of Items["Items"]) {
+        if (item["id"] == id) {
+            return item;
+        }
+    }
+
+    return undefined;
+}
+
+function FindAddonsOfType(type) {
+    var addons = [];
+
+    // Check if item type is valid
+    if (type == undefined) {
+        console.error(`Item type is undefined!`);
+        return addons;
+    }
+
+    let foundType = false;
+    let typeIndex = 0;
+    for (typeIndex = 0; typeIndex < Items["ItemTypes"].length; typeIndex++) {
+        var itemType = Items["ItemTypes"][typeIndex];
+        
+        
+        DebugLog(`Checking item type ${itemType["Name"]} compared to ${type}`)
+        DebugLog(`Type of itemType: ${typeof itemType["Name"]} | Type of type: ${typeof type}`)
+        
+        if (itemType["Name"] == type) {
+            foundType = true;
+            break;
+        }
+    }
+    if (!foundType) {
+        console.error(`Item type ${type} is not a valid item type!`);
+        return addons;
+    }
+
+    // Find addons of the specified type
+    let currentItemType = Items["ItemTypes"][typeIndex];
+    for (const addon of currentItemType["Addons"]) {
+        addons.push(addon);
+    }
+
+    return addons;
 }
 
 function DebugLog(text, printStackTrace = false) {

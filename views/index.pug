@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 html 
     head 
         title Dead by Daylight Balance Checker
@@ -5,10 +6,14 @@ html
     body 
         div#main-balance-container
             div#balance-window
-                h1 Welcome to Balanced by Daylight! 
-                h2 You can either check your builds' balance or create custom balancing rules!:
+                div#header-container
+                    img#logo(src="/iconography/Logo-Shadow.webp")
+                    h1 Welcome to Balanced by Daylight! 
+                    h2 You can either check your builds' balance or create custom balancing rules!:
                 div#buttons-container
-                    form(action="/balance-checker", method="get")
-                        input(type="submit", value="Check Balance")
-                    form(action="/balance-creator", method="get")
-                        input(type="submit", value="Create Balance")
+                    div#choices-container
+                        form(action="/balance-checker", method="get")
+                            input(type="submit", value="Check Balance")
+                        form(action="/balance-creator", method="get")
+                            input(type="submit", value="Create Balance")
+                    button#discord-button(onclick="window.open('https://discord.gg/E6zfpwvCce', '_blank')") Join the Discord

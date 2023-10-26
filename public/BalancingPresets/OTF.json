@@ -335,6 +335,35 @@
             "IndividualAddonBans": [
                 "Iridescent Stone"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -373,6 +402,35 @@
                 "\"All Seeing\" - Blood",
                 "\"All Seeing\" - Spirit"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -409,6 +467,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -449,6 +536,50 @@
                 "Jenner's Last Breath",
                 "Campbell's Last Breath"
             ],
+            "ItemWhitelist": [
+                0,
+                5,
+                8,
+                14
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        8
+                    ]
+                },
+                "Toolbox": {
+                    "Addons": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -483,6 +614,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 5,
                 6
@@ -520,6 +680,35 @@
             "IndividualAddonBans": [
                 "Waterlogged Shoe"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -557,6 +746,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -603,6 +821,35 @@
                 "Leather Loop",
                 "Infantry Belt"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -641,6 +888,35 @@
             "IndividualAddonBans": [
                 "Light Chassis"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 5,
                 6
@@ -676,6 +952,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [],
             "KillerOfferings": [
                 0,
@@ -712,6 +1017,35 @@
                 "Tampered Timer",
                 "Crate of Gears"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 5,
                 6
@@ -751,6 +1085,35 @@
             "IndividualAddonBans": [
                 "Cigar Box"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -795,6 +1158,45 @@
                 4
             ],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5,
+                8
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        8
+                    ]
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -830,6 +1232,35 @@
                 "Friendship Bracelet",
                 "Fuming Mix Tape"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -869,6 +1300,35 @@
             "IndividualAddonBans": [
                 "Prayer Tablet Fragment"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -905,6 +1365,35 @@
             "IndividualAddonBans": [
                 "Outdoor Security Camera"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 5,
                 6
@@ -945,6 +1434,35 @@
             "IndividualAddonBans": [
                 "Leprose Lichen"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -982,6 +1500,35 @@
                 4
             ],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 4,
@@ -1023,6 +1570,35 @@
             "IndividualAddonBans": [
                 "Iridescent Coin"
             ],
+            "ItemWhitelist": [
+                5,
+                0
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1060,6 +1636,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1101,6 +1706,50 @@
                 "Adrenaline Vial",
                 "Alchemist's Ring"
             ],
+            "ItemWhitelist": [
+                14,
+                8,
+                5,
+                0
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        8
+                    ]
+                },
+                "Toolbox": {
+                    "Addons": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1141,6 +1790,35 @@
             "IndividualAddonBans": [
                 "Iridescent Pendant"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1180,6 +1858,35 @@
             "IndividualAddonBans": [
                 "Iridescent Photocard"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 4,
@@ -1216,6 +1923,29 @@
                 4
             ],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": []
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1255,6 +1985,35 @@
                 4
             ],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1295,6 +2054,35 @@
                 "Matias' Baby Shoes",
                 "Garden of Rot"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1328,6 +2116,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 5,
                 6
@@ -1365,6 +2182,35 @@
                 "Worry Stone",
                 "Lavalier Microphone"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 5,
                 6
@@ -1400,6 +2246,35 @@
                 4
             ],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1442,6 +2317,35 @@
             "IndividualAddonBans": [
                 "Healing Poultice"
             ],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1480,6 +2384,35 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1519,6 +2452,35 @@
             "IndividualAddonBans": [
                 "Denied Requisition Form"
             ],
+            "ItemWhitelist": [
+                5,
+                0
+            ],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [
                 2,
                 5,
@@ -1551,6 +2513,27 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
+            "ItemWhitelist": [],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": []
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
             "SurvivorOfferings": [],
             "KillerOfferings": []
         }

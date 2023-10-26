@@ -115,6 +115,25 @@ html
                             button#killer-individual-addon-ban-remove-bans-button(style="min-width: 200px;") Remove Addon(s)
                     br
                     br
+                    div#killer-items-container
+                        div#killer-item-type-selection-container
+                            label(for="killer-item-type-selection-dropdown") Item Types:
+                            br
+                            select#killer-item-type-selection-dropdown(style="min-width: 200px;" size="10")
+                        div#killer-item-selection-container
+                            label(for="killer-item-selection-dropdown") Item Whitelist:
+                            br
+                            select#killer-item-selection-dropdown(style="min-width: 200px;" size="10" multiple="multiple")
+                            br
+                            button#killer-item-confirmation-button(style="min-width: 200px;") Confirm Item(s)
+                        div#killer-item-addon-selection-container
+                            label(for="killer-item-addon-selection-dropdown") Item Addon Whitelist:
+                            br
+                            select#killer-item-addon-selection-dropdown(style="min-width: 200px;" size="10" multiple="multiple")
+                            br
+                            button#killer-item-addon-confirmation-button(style="min-width: 200px;") Confirm Addon(s)
+                    br
+                    br
                     div#killer-override-tier-selection-container
                         div#killer-individual-killer-tier-selection-container
                             label(for="killer-tier-selection-dropdown") Killer Perk Tiers: 

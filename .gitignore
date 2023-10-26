@@ -7,4 +7,15 @@ LEGAL.md
 perktojson.py
 spacetodash.py
 TestBalanceInDev.json
-/png_to_webp
+
+# Ignore everything in the png_to_webp except for the script itself
+/png_to_webp/*
+!/png_to_webp/convert_to_webp.py
+
+# Ignore everything in the webp_to_png except for the script itself
+/webp_to_png/*
+!/webp_to_png/convert_to_png.py
+
+test_item_showcase.json
+
+testImportInfo.txt
