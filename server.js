@@ -36,7 +36,7 @@ app.get('/config', (req, res) => {
 app.post('/get-build-image', (req, res) => {
   // Get the build data from the request body
   const buildData = req.body;
-  console.log(buildData);
+  //console.log(buildData);
 
   if (buildData == null) {
     res.status(400).send("Invalid build data. Build data is null.");
@@ -44,7 +44,7 @@ app.post('/get-build-image', (req, res) => {
   }
 
   let exportData = buildData["ExportData"];
-  console.log(exportData);
+  //console.log(exportData);
 
   try {
     // Generate the build image
@@ -57,7 +57,7 @@ app.post('/get-build-image', (req, res) => {
       }
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).send("Internal server error.");
   }
 });
