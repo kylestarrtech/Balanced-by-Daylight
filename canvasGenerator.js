@@ -92,14 +92,14 @@ function BeginGenerationImport(data, callback) {
     
         // Check if the image exists
         if (!fs.existsSync(exampleImageGenObject.KillerLoreImage)) {
-            throw "Image does not exist!";
+            throw `Image does not exist at path ${exampleImageGenObject.KillerLoreImage}`;
         }
     
     } catch(err) {
         callback({
             status: 400,
             imageData: null,
-            message: "Invalid build data. Could not find killer lore image."
+            message: `Invalid build data. Could not find killer lore image.\n${err}`
         })
         return;
     }
@@ -153,7 +153,7 @@ function BeginGenerationImport(data, callback) {
 
                         // Check if the image exists
                         if (!fs.existsSync(endIconPath)) {
-                            throw "Image does not exist!";
+                            throw `Perk at path ${endIconPath} does not exist!`
                         }
 
                         exampleImageGenObject.SurvivorPerkIcons[survivorIndex].push(endIconPath);
@@ -205,7 +205,7 @@ function BeginGenerationImport(data, callback) {
 
                     // Check if the image exists
                     if (!fs.existsSync(endIconPath)) {
-                        throw "Image does not exist!";
+                        throw `Offering at path ${endIconPath} does not exist!`
                     }
 
                     exampleImageGenObject.SurvivorOfferingIcons.push(endIconPath);
@@ -252,7 +252,7 @@ function BeginGenerationImport(data, callback) {
 
                     // Check if the image exists
                     if (!fs.existsSync(endIconPath)) {
-                        throw "Image does not exist!";
+                        throw `Item at path ${endIconPath} does not exist!`;
                     }
 
                     exampleImageGenObject.SurvivorItemIcons.push(endIconPath);
