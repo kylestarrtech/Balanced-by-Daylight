@@ -27,7 +27,7 @@
         {
             "id": 4,
             "name": "Shroud of Union",
-            "icon": "public/Offerings/Shroud-Of-Union.webp",
+            "icon": "public/Offerings/Shroud-of-Union.webp",
             "survivorOffering": true
         },
         {
@@ -39,7 +39,7 @@
         {
             "id": 6,
             "name": "Shroud of Binding",
-            "icon": "public/Offerings/Shroud-Of-Binding.webp",
+            "icon": "public/Offerings/Shroud-of-Binding.webp",
             "survivorOffering": true
         },
         {
@@ -75,7 +75,7 @@
         {
             "id": 12,
             "name": "Vigo's Jar of Salty Lips",
-            "icon": "public/Offerings/Vigo_S-Jar-Of-Salty-Lips.webp",
+            "icon": "public/Offerings/Vigo_S-Jar-of-Salty-Lips.webp",
             "survivorOffering": true
         },
         {
