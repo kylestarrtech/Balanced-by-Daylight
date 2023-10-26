@@ -46,15 +46,20 @@ app.post('/get-build-image', (req, res) => {
   let exportData = buildData["ExportData"];
   console.log(exportData);
 
-  // Generate the build image
-  canvasGen.BeginGenerationImport(exportData, function(data) {
-    if (data["status"] == 200) {
-      res.setHeader('Content-Type', 'image/png');
-      res.status(data["status"]).send(data["imageData"]);
-    } else {
-      res.status(data["status"]).send(data["message"]);
-    }
-  });
+  try {
+    // Generate the build image
+    canvasGen.BeginGenerationImport(exportData, function(data) {
+      if (data["status"] == 200) {
+        res.setHeader('Content-Type', 'image/png');
+        res.status(data["status"]).send(data["imageData"]);
+      } else {
+        res.status(data["status"]).send(data["message"]);
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal server error.");
+  }
 });
 
 app.get('*', (req, res) => {
