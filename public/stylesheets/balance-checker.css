@@ -981,6 +981,10 @@ body {
     width: 100%;
 }
 
+#selected-killer-title {
+    font-weight: 400;
+}
+
 #image-gen-image {
     max-width: 100%;
 }

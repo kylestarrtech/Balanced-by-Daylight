@@ -395,7 +395,7 @@ async function GenerateImage(importedBuild, callback) {
     
     // Generate date text
     
-    context.font = '400 14pt Roboto'
+    context.font = '700 14pt Roboto'
     context.textAlign = 'right'
     context.textBaseline = 'top'
     

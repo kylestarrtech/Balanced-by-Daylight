@@ -624,7 +624,7 @@ function UpdatePerkUI() {
 
 function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
-    selectedKillerTitle.innerText = `Selected Killer: ${Killers[selectedKiller]}`;
+    selectedKillerTitle.innerHTML = `Selected Killer: <span style="font-weight:700;">${Killers[selectedKiller]}</span>`;
     
     // Remove all character-selected classes
     if(document.querySelector(`.character-selected`)) {
