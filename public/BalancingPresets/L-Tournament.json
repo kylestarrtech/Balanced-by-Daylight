@@ -186,13 +186,21 @@
             "IndividualAddonBans": [
                 "Iridescent Stone"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -337,13 +345,21 @@
                 "Apex Muffler",
                 "Iridescent Brick"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -522,13 +538,21 @@
                 "Judith's Tombstone",
                 "Fragrant Tuft of Hair"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -592,7 +616,9 @@
             "IndividualAddonBans": [
                 "Mint Rag"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
@@ -670,13 +696,21 @@
             "IndividualAddonBans": [
                 "Iridescent King"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -745,13 +779,21 @@
                 "Leather Loop",
                 "Infantry Belt"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -820,13 +862,20 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -898,13 +947,21 @@
                 "Red Paint Brush",
                 "Black Box"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -981,13 +1038,21 @@
                 "Amanda's Letter",
                 "Video Tape"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1053,13 +1118,21 @@
                 "Cheap Gin Bottle",
                 "Redhead's Pinky Finger"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1210,13 +1283,21 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1277,13 +1358,21 @@
                 "Iridescent Seal",
                 "Black Incense"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1360,13 +1449,21 @@
                 "\"Ghost Face Caught on Tape\"",
                 "Outdoor Security Camera"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1427,13 +1524,21 @@
             "IndividualAddonBans": [
                 "Leprose Lichen"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1503,13 +1608,21 @@
                 "Renjiro's Bloody Glove",
                 "Iridescent Family Crest"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1574,13 +1687,21 @@
                 "Iridescent Coin",
                 "Hellshire Iron"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1642,13 +1763,21 @@
             "IndividualAddonBans": [
                 "Iridescent Seal of Metatron"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1820,16 +1949,28 @@
             "IndividualAddonBans": [
                 "Iridescent Pendant"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5,
+                9
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
-                    "Addons": []
+                    "Addons": [
+                        8,
+                        11
+                    ]
                 },
                 "Toolbox": {
                     "Addons": []
@@ -1895,13 +2036,21 @@
             "IndividualAddonBans": [
                 "Death Throes Compilation"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1968,13 +2117,21 @@
             "IndividualAddonBans": [
                 "Iridescent Umbrella Badge"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2043,13 +2200,21 @@
                 "Iridescent Lament Configuration",
                 "Engineer's Fang"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2110,7 +2275,9 @@
                 "Matias' Baby Shoes",
                 "Garden of Rot"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
@@ -2188,13 +2355,21 @@
             "IndividualAddonBans": [
                 "Iridescent Videotape"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2264,13 +2439,21 @@
             "IndividualAddonBans": [
                 "Iridescent Wooden Plank"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2330,13 +2513,21 @@
                 "Lab Photo",
                 "Iridescent Uroboros Vial"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2402,13 +2593,21 @@
             "IndividualAddonBans": [
                 "Knight's Contract"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2479,13 +2678,21 @@
                 "Expired Batteries",
                 "Iridescent Unpublished Manuscript"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -2550,16 +2757,28 @@
                 "Iridescent Crystal Shard",
                 "Denied Requisition Form"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5,
+                9
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
-                    "Addons": []
+                    "Addons": [
+                        8,
+                        11
+                    ]
                 },
                 "Toolbox": {
                     "Addons": []
@@ -2602,13 +2821,21 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []

@@ -1082,6 +1082,8 @@ function SetKillerCharacterSelectEvents() {
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
 
+            ScrollToSelectedKiller();
+
             SendRoomDataUpdate();
         });
     }
