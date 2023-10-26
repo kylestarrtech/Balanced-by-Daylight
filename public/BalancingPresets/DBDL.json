@@ -370,8 +370,8 @@
                     "Addons": []
                 }
             },
-            "SurvivorOfferings": [],
-            "KillerOfferings": []
+            "SurvivorOfferings": [0,2,5,6],
+            "KillerOfferings": [5]
         },
         {
             "Name": "The Hillbilly",
