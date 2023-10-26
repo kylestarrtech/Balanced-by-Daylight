@@ -1,4 +1,4 @@
-![Balanced by Daylight Logo]("./public/iconography/Logo-Background.webp")
+![Balanced by Daylight Logo]("public/iconography/Logo-Background.webp")
 # Balanced by Daylight
 ### This is a tool designed to assist competitive Dead by Daylight players in making balancing for tournament leagues, and making sure team builds remain compliant to said balancing.
 
