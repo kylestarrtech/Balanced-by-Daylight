@@ -62,10 +62,6 @@ app.post('/get-build-image', (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.status(404).send('404 Not Found')
-})
-
 // If config shows that m ultiplayer is enabled, then start the server.
 if (config.multiplayerEnabled) {
 
