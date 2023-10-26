@@ -21,6 +21,8 @@ app.use(express.json()) //Add it first then others follw
 
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/favicon.ico', express.static('/favicon.ico'));
+
 // Set Pug as the view engine
 app.set('view engine', 'pug')
 
@@ -53,10 +55,6 @@ app.post('/get-build-image', (req, res) => {
       res.status(data["status"]).send(data["message"]);
     }
   });
-});
-
-app.get('favicon.ico', (req, res) => {
-  res.sendFile(__dirname + '/public/favicon.ico');
 });
 
 app.get('*', (req, res) => {

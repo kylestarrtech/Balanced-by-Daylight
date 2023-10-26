@@ -7,6 +7,7 @@ html
         script(src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
         script(src="/socket.io/socket.io.js" type="text/javascript")
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     body(onload="main()")
         div#primary-balance-container
             div#balance-tabs-container
@@ -16,6 +17,8 @@ html
                     img(src="iconography/Chat.webp")
                 div#settings-button(class="tier-selector-button")
                     img(src="iconography/Settings.webp")
+                div#discord-button(class="tier-selector-button" onclick="window.open('https://discord.gg/E6zfpwvCce', '_blank')")
+                    img(src="iconography/Discord.webp")
                 div.tier-selector-button(onclick="window.location.href = '/'")
                     img(src="iconography/Home.webp")
             div#balance-character-select-container

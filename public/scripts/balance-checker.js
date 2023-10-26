@@ -912,6 +912,9 @@ function LoadImportEvents() {
 
             if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
                 localStorage.setItem("selectedKiller", selectedKiller);
             }
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
