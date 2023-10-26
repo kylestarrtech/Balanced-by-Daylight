@@ -47,6 +47,8 @@ As always, if you notice bugs or issues that are not in the Known Issues section
 * Added a Discord button to the main homepage and the balance checker.
     * I want to incentivize people to join the Discord and provide feedback/communication. To me, this is a great way to do that!
     * Feature added by SHADERSOP.
+* Added a Contributors page to the Settings menu
+    * Many folks had a hand in this tool's development - it would not be where it is without them. As such I wanted to honor them by giving credit in the Contributors section. Thanks so much <3!
 
 ### Changed
 * Reworked the Import/Export system entirely
