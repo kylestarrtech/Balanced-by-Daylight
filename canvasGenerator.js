@@ -1,6 +1,7 @@
 const fs = require('fs')
 const pako = require('pako')
 const { createCanvas, loadImage } = require('canvas')
+const qrUtility = require('./utilities/qrUtility.js');
 
 const Killers = require('./public/Killers.json');
 const Perks = require('./public/Perks/dbdperks.json');
@@ -31,7 +32,7 @@ function BeginGenerationImport(data, callback) {
         callback({
             status: 400,
             imageData: null,
-            message: "Invalid build data. Could not decrypy and decompress."
+            message: "Invalid build data. Could not decrypt and decompress."
         })
         return;
     }
@@ -68,7 +69,8 @@ function BeginGenerationImport(data, callback) {
         SurvivorPerkIcons: [[], [], [], []],
         SurvivorOfferingIcons: [],
         SurvivorItemIcons: [],
-        SurvivorAddonIcons: [[], [], [], []]
+        SurvivorAddonIcons: [[], [], [], []],
+        OriginalCompressedData: data
     }
 
     try {
@@ -341,7 +343,6 @@ function BeginGenerationImport(data, callback) {
         });
         return;
     }
-
 
     console.log("PASSED OBJECT:");
     console.log(exampleImageGenObject);
@@ -629,7 +630,39 @@ async function GenerateImage(importedBuild, callback) {
     
         previousContainerY = containerY;
     }
-    
+
+    // Generate QR Code
+
+    let QRCodeMargin = 10; //px
+    let QRCodeSize = 250; //px
+
+    let QRCodeStartX = QRCodeMargin;
+    let QRCodeStartY = height - QRCodeSize - QRCodeMargin;
+
+    let QRCodeData = importedBuild["OriginalCompressedData"];
+
+    console.log(`QR Code data: ${QRCodeData}`);
+
+    let QRImage = undefined;
+
+    await qrUtility.GenerateQRCode(QRCodeData, { width: QRCodeSize, margin: 2 }, async function(data) {
+        if (data["status"] == 200) {
+            // Convert the buffer to an image
+            let QRCodeImage = await loadImage(data["data"]);
+
+            QRImage = QRCodeImage;
+            console.log("QR Code image loaded!")
+        } else {
+            console.error(data["message"]);
+        }
+    });
+
+    if (QRImage == undefined) {
+        console.error("QR Code image is undefined!");
+    } else {
+        context.drawImage(QRImage, QRCodeStartX, QRCodeStartY, QRCodeSize, QRCodeSize);
+    }
+
     // Generates image only after all promises have been resolved
     Promise.allSettled(promises).then(() => {
         const buffer = canvas.toBuffer('image/png');
