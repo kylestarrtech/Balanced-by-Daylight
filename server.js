@@ -3,6 +3,7 @@ const http = require('http');
 const socketio = require('socket.io');
 const config = require('./server-config.json');
 const canvasGen = require('./canvasGenerator.js');
+const qrUtility = require('./utilities/qrUtility.js');
 
 const app = express()
 const server=http.createServer(app);
@@ -60,6 +61,15 @@ app.post('/get-build-image', (req, res) => {
     console.error(err);
     res.status(500).send("Internal server error.");
   }
+});
+
+/**
+ * User sends a build image to the server.
+ * Server finds the related QR code.
+ * Returns that value to client.
+ */
+app.post('/upload-build-image', (req, res) => {
+  res.status(500).send("Not implemented.");
 });
 
 app.get('*', (req, res) => {
