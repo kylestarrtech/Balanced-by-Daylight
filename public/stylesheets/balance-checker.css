@@ -340,6 +340,40 @@ body {
     margin: auto;
 }
 
+.hide-component {
+    display: none !important;
+}
+
+#killer-builds-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+
+    width: max-content;
+    margin: auto;
+}
+
+.killer-build-component {
+    display: flex;
+    flex-flow: row wrap;
+
+    background-color: #ffffff04;
+    margin: auto;
+    padding: 10px;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    height: 100px;
+    border-radius: 17px;
+}
+
 .loadout-slot {
     background-color: #ffffff04;
 

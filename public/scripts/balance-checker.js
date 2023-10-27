@@ -105,6 +105,20 @@ SurvivorAddons = [
     [undefined, undefined]
 ]
 
+KillerPerks = [
+    undefined,
+    undefined,
+    undefined,
+    undefined
+]
+
+KillerOffering = undefined;
+
+KillerAddons = [
+    undefined,
+    undefined
+]
+
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
