@@ -21,6 +21,8 @@ app.use(express.json()) //Add it first then others follw
 
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/favicon.ico', express.static('/favicon.ico'));
+
 // Set Pug as the view engine
 app.set('view engine', 'pug')
 
@@ -34,7 +36,7 @@ app.get('/config', (req, res) => {
 app.post('/get-build-image', (req, res) => {
   // Get the build data from the request body
   const buildData = req.body;
-  console.log(buildData);
+  //console.log(buildData);
 
   if (buildData == null) {
     res.status(400).send("Invalid build data. Build data is null.");
@@ -42,24 +44,29 @@ app.post('/get-build-image', (req, res) => {
   }
 
   let exportData = buildData["ExportData"];
-  console.log(exportData);
+  //console.log(exportData);
 
-  // Generate the build image
-  canvasGen.BeginGenerationImport(exportData, function(data) {
-    if (data["status"] == 200) {
-      res.setHeader('Content-Type', 'image/png');
-      res.status(data["status"]).send(data["imageData"]);
-    } else {
-      res.status(data["status"]).send(data["message"]);
-    }
-  });
+  try {
+    // Generate the build image
+    canvasGen.BeginGenerationImport(exportData, function(data) {
+      if (data["status"] == 200) {
+        res.setHeader('Content-Type', 'image/png');
+        res.status(data["status"]).send(data["imageData"]);
+      } else {
+        res.status(data["status"]).send(data["message"]);
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal server error.");
+  }
 });
 
 app.get('*', (req, res) => {
   res.status(404).send('404 Not Found')
 })
 
-// If config shows that multiplayer is enabled, then start the server.
+// If config shows that m ultiplayer is enabled, then start the server.
 if (config.multiplayerEnabled) {
 
   io.on("connection",(client)=>{

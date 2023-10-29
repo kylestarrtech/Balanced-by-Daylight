@@ -630,8 +630,8 @@ function SetKillerOverrideEvents() {
         var offeringIndexes = [];
         for (var i = 0; i < selectedOfferings.length; i++) {
             for (var j = 0; j < Offerings.Killer.length; j++) {
-                //DebugLog(`Comparing ${Offerings.Killer[j]} to ${selectedOfferings[i]}`)
-                if (Offerings.Killer[j] == selectedOfferings[i]) {
+                DebugLog(`Comparing ${Offerings.Killer[j]["name"]} to ${selectedOfferings[i]}`);
+                if (Offerings.Killer[j]["name"] == selectedOfferings[i]) {
                     offeringIndexes.push(j);
                     continue;
                 }
@@ -658,7 +658,7 @@ function SetKillerOverrideEvents() {
         for (var i = 0; i < selectedOfferings.length; i++) {
             for (var j = 0; j < Offerings.Survivor.length; j++) {
                 //DebugLog(`Comparing ${Offerings.Survivor[j]} to ${selectedOfferings[i]}`)
-                if (Offerings.Survivor[j] == selectedOfferings[i]) {
+                if (Offerings.Survivor[j]["name"] == selectedOfferings[i]) {
                     offeringIndexes.push(j);
                     continue;
                 }

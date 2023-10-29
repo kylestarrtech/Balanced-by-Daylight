@@ -234,8 +234,10 @@ function DisplayCredits() {
         "<b>SHADERS (Kyle)</b> - Started the project, and leads the development of Balanced by Daylight.<br>-<br>" +
         "<b>Floliroy</b> - Assisted heavily in improvements to Perk search, import/export, added drag/drop, and SO much more...<br>-<br>" +
         "<b>S1mmyy</b> - Fixed the drag/drop functionality on Firefox and made the system much easier to work with.<br>-<br>" +
-        "<b>Vivian Sanchez</b> - Began the work on the mobile UI for Balanced by Daylight.<br>-<br><br>" +
-        "This project is open source, and contributions are welcome. If you would like to contribute, please visit the <a href='https://github.com/kylestarrtech/DBD-Balance-Checker'>GitHub</a>."
+        "<b>Vivian Sanchez</b> - Began the work on the mobile UI for Balanced by Daylight.<br>-<br>" +
+        "<b>WheatDraws</b> - Created the Balanced by Daylight logo.<br>-<br>" +
+        "<br>" + 
+        "This project is open source, and contributions are welcome. If you would like to contribute, please visit the <a target='_blank' href='https://github.com/kylestarrtech/DBD-Balance-Checker'>GitHub</a>."
     );
 }
 
@@ -294,7 +296,7 @@ function UpdatePerkUI() {
             try {
                 ImgSrc = currentPerk["icon"];
             } catch (error) {
-                ImgSrc = "public/Perks/blank.png";
+                ImgSrc = "public/Perks/blank.webp";
             }
             
             let perkElement = document.createElement("div");
@@ -622,7 +624,7 @@ function UpdatePerkUI() {
 
 function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
-    selectedKillerTitle.innerText = `Selected Killer: ${Killers[selectedKiller]}`;
+    selectedKillerTitle.innerHTML = `Selected Killer: <span style="font-weight:700;">${Killers[selectedKiller]}</span>`;
     
     // Remove all character-selected classes
     if(document.querySelector(`.character-selected`)) {
@@ -739,6 +741,11 @@ function GetExportData() {
     for(const surv of SurvivorPerks){
         const perksId = new Array()
         for(const perk of surv){
+            if (perk == null) {
+                perksId.push(null)
+                continue;
+            }
+
             perksId.push(perk.id)
         }
         survivorPerksId.push(perksId)
@@ -746,6 +753,11 @@ function GetExportData() {
 
     const survivorOfferingsId = new Array()
     for(const offering of SurvivorOfferings){
+        if (offering == null) {
+            survivorOfferingsId.push(null)
+            continue;
+        }
+
         survivorOfferingsId.push(offering?.id)
     }
 
@@ -900,6 +912,9 @@ function LoadImportEvents() {
 
             if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
                 localStorage.setItem("selectedKiller", selectedKiller);
             }
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
@@ -1066,6 +1081,8 @@ function SetKillerCharacterSelectEvents() {
 
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+
+            ScrollToSelectedKiller();
 
             SendRoomDataUpdate();
         });
@@ -1347,7 +1364,7 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
     let blankImg = document.createElement("img");
     blankImg.draggable = false;
-    blankImg.src = "public/Perks/blank.png";
+    blankImg.src = "public/Perks/blank.webp";
 
     blankPerk.appendChild(blankImg);
     perkSearchResultsContainer.appendChild(blankPerk);
@@ -2269,7 +2286,7 @@ function CheckForRepetition(builds) {
                         "Perk Repetition",
                         `Perk <b>${currentPerk["name"]}</b> is repeated ${perkRepeatAmount} times in the Survivor builds.`,
                         undefined,
-                        "iconography/PerkError.png"
+                        "iconography/PerkError.webp"
                     ))
                 }
             }
@@ -2309,7 +2326,7 @@ function CheckForDuplicates(survIndex, build) {
                         "Duplicate Perk",
                         `Perk <b>${currentPerk["name"]}</b> is duplicated in <b>Survivor #${survIndex+1}</b>'s build.`,
                         undefined,
-                        "iconography/PerkError.png",
+                        "iconography/PerkError.webp",
                         true
                     )
                 )
@@ -2502,7 +2519,7 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                         "Banned Combo",
                         `Combo <b>${PrintCombo(currentCombo)}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                         undefined,
-                        "iconography/ComboError.png"
+                        "iconography/ComboError.webp"
                     )
                 )
             }
@@ -2543,7 +2560,7 @@ function ComboIsBannedInOverride(build, override, survivorIndex) {
                             "Banned Combo",
                             `Combo <b>${PrintCombo(currentCombo)}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                             undefined,
-                            "iconography/ComboError.png"
+                            "iconography/ComboError.webp"
                         )
                     )
                 }
@@ -2610,7 +2627,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                         "Banned Perk",
                         `Perk <b>${currentPerk["name"]}</b> is banned against <b>${override.Name}</b>. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                         undefined,
-                        "iconography/PerkError.png"
+                        "iconography/PerkError.webp"
                     )
                 )
             }
@@ -2661,7 +2678,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                             "Banned Perk",
                             `Perk <b>${currentPerk["name"]}</b> is banned in <b>${currentTier.Name}</b> Tier Balancing. It is present in <b>Survivor #${survivorIndex+1}</b>'s build.`,
                             undefined,
-                            "iconography/PerkError.png"
+                            "iconography/PerkError.webp"
                         )
                     )
                 }
@@ -2718,7 +2735,7 @@ function CheckForBalancingErrors() {
                     "Banned Offering",
                     `Offering <b>${SurvivorOfferings[i]["name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     undefined,
-                    "iconography/OfferingError.png"
+                    "iconography/OfferingError.webp"
                 )
             );
         }
@@ -2744,7 +2761,7 @@ function CheckForBalancingErrors() {
                     "Banned Item",
                     `Item <b>${SurvivorItems[i]["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build.`,
                     undefined,
-                    "iconography/ItemError.png"
+                    "iconography/ItemError.webp"
                 )
             );
         }
@@ -2800,7 +2817,7 @@ function CheckForBalancingErrors() {
                         "Banned Addon",
                         `Addon <b>${currentAddon["Name"]}</b> is banned against <b>${currentOverride["Name"]}</b>. It is present in <b>Survivor #${i+1}</b>'s build at <b>Addon Slot #${j+1}</b>.`,
                         undefined,
-                        "iconography/AddonError.png"
+                        "iconography/AddonError.webp"
                     )
                 );
             }   
@@ -2836,7 +2853,7 @@ function CheckForBalancingErrors() {
                             "Duplicate Addon",
                             `Addon <b>${addonIDs[j]["Name"]}</b> is duplicated in <b>Survivor #${i+1}</b>'s build.`,
                             undefined,
-                            "iconography/AddonError.png",
+                            "iconography/AddonError.webp",
                             true
                         )
                     );
@@ -3137,7 +3154,7 @@ function GenerateErrorObject(
     name = "Default Error",
     reason = "Default Reason",
     stacktrace = undefined,
-    icon = "iconography/Error.png",
+    icon = "iconography/Error.webp",
     criticalError = false) {
         return {
             ERROR: name,
