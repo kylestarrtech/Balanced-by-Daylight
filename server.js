@@ -4,6 +4,7 @@ const socketio = require('socket.io');
 const config = require('./server-config.json');
 const canvasGen = require('./canvasGenerator.js');
 const qrUtility = require('./utilities/qrUtility.js');
+const bodyParser = require('body-parser');
 
 const app = express()
 const server=http.createServer(app);
@@ -18,9 +19,8 @@ require('./routes/viewRoutes')(app)
 app.use(express.static('public'))
 
 // middleware 
-app.use(express.json()) //Add it first then others follw
-
-app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 
 app.use('/favicon.ico', express.static('/favicon.ico'));
 
@@ -71,7 +71,8 @@ app.post('/get-build-image', (req, res) => {
 app.post('/upload-build-image', (req, res) => {
   // Get the build image from the request body
   const buildImage = req.body;
-  console.log(buildImage);
+
+  const imageData = buildImage["imageData"];
 
   if (buildImage == null) {
     res.status(400).send("Invalid build image. Build image is null.");
@@ -79,8 +80,9 @@ app.post('/upload-build-image', (req, res) => {
   }
 
   try {
+    console.log(buffer);
     // Read QR code from the build image
-    qrUtility.GetQRCodeData(buildImage, function(data) {
+    qrUtility.GetQRCodeData(imageData, function(data) {
       if (data["status"] == 200) {
         res.status(data["status"]).send(data["data"]["result"]);
       } else {

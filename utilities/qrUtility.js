@@ -10,7 +10,7 @@ const qrWriter = require('qrcode');
  * @param {*} callback The callback function to call when the data is retrieved or when an error occurs.
  */
 function GetQRCodeData(imageBuffer, callback) {
-  jimp.read(imageBuffer, function(err, image) {
+    jimp.read(imageBuffer, function(err, image) {
         if (err) {
             console.error(err);
             callback({ "status": 500, "message": "Internal server error." });
