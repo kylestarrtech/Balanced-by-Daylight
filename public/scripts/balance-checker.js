@@ -45,6 +45,7 @@ var currentBalancingIndex = 0;
 var customBalanceOverride = false;
 var onlyShowNonBanned = false;
 var saveLoadoutsAndKiller = false;
+var genQRCode = false;
 
 var currentBalancing = null;
 
@@ -114,6 +115,7 @@ currentBalancingIndex = 0;
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
+if(localStorage.getItem("genQRCode")) genQRCode = localStorage.getItem("genQRCode") == "true";
 
 var socket = null;
 var RoomID = undefined;
@@ -208,6 +210,9 @@ function main() {
 
     // Update the checkbox to save loadouts and killer selected
     document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
+
+    // Update the checkbox to generate QR codes
+    document.getElementById("generate-qr-code-setting").checked = genQRCode;
 
     // Update the custom balance checkbox to show if custom balancing is enabled
     document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
@@ -979,8 +984,14 @@ function LoadImageGenEvents() {
             imageGenContainer.hidden = true;
         });
 
-        xhttp.responseType = "arraybuffer"
+        let imageGenBody = {
+            options: {
+                GenerateQRCode: genQRCode
+            },
+            ExportData: exportData
+        }
 
+        xhttp.responseType = "arraybuffer"
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 switch (this.status) {
@@ -1014,9 +1025,7 @@ function LoadImageGenEvents() {
         };
         xhttp.open("POST", "/get-build-image", true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify({
-            ExportData: exportData
-        }));
+        xhttp.send(JSON.stringify(imageGenBody));
     });
 }
 
@@ -1154,6 +1163,12 @@ function LoadSettingsEvents() {
         
         localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         localStorage.setItem("selectedKiller", selectedKiller);
+    })
+
+    const generateQRCodeCheckbox = document.getElementById("generate-qr-code-setting");
+    generateQRCodeCheckbox.addEventListener("change", function(){
+        genQRCode = generateQRCodeCheckbox.checked;
+        localStorage.setItem("genQRCode", genQRCode);
     })
 
     const clearStorageButton = document.getElementById("settings-clear-storage-button");

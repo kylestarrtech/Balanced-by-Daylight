@@ -989,6 +989,37 @@ body {
     max-width: 100%;
 }
 
+#import-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+}
+
+#import-menu {
+    background-color: #2b2452;
+    
+    position: relative;
+    width: 400px;
+    max-width: 650px;
+
+    text-align: center;
+
+    padding: 10px;
+    padding-top: 1px;
+
+    border-radius: 17.5px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: all 0.2s ease-in-out;
+}
+
 #alert-container, #image-gen-container {
     position: absolute;
     bottom: 0;

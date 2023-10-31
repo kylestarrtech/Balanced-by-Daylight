@@ -49,7 +49,7 @@ app.post('/get-build-image', (req, res) => {
 
   try {
     // Generate the build image
-    canvasGen.BeginGenerationImport(exportData, function(data) {
+    canvasGen.BeginGenerationImport(exportData, buildData["options"]["GenerateQRCode"], function(data) {
       if (data["status"] == 200) {
         res.setHeader('Content-Type', 'image/png');
         res.status(data["status"]).send(data["imageData"]);
@@ -69,7 +69,28 @@ app.post('/get-build-image', (req, res) => {
  * Returns that value to client.
  */
 app.post('/upload-build-image', (req, res) => {
-  res.status(500).send("Not implemented.");
+  // Get the build image from the request body
+  const buildImage = req.body;
+  console.log(buildImage);
+
+  if (buildImage == null) {
+    res.status(400).send("Invalid build image. Build image is null.");
+    return;
+  }
+
+  try {
+    // Read QR code from the build image
+    qrUtility.GetQRCodeData(buildImage, function(data) {
+      if (data["status"] == 200) {
+        res.status(data["status"]).send(data["data"]["result"]);
+      } else {
+        res.status(data["status"]).send(data["message"]);
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal server error.");
+  }
 });
 
 app.get('*', (req, res) => {

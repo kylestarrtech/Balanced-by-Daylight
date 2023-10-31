@@ -16,7 +16,7 @@ const BalancingTitles = [
     "L-Tournament"
 ]
 
-function BeginGenerationImport(data, callback) {
+function BeginGenerationImport(data, genQRCode, callback) {
     //console.log("Importing build...");
 
     let decompressedText = null;
@@ -339,11 +339,11 @@ function BeginGenerationImport(data, callback) {
     }
 
     //console.log(exampleImageGenObject);
-    GenerateImage(exampleImageGenObject, callback);
+    GenerateImage(exampleImageGenObject, genQRCode, callback);
 }
 
 
-async function GenerateImage(importedBuild, callback) {
+async function GenerateImage(importedBuild, genQRCode, callback) {
     // Tracks all promises to be resolved before writing to file
     let promises = [];
     
@@ -624,36 +624,37 @@ async function GenerateImage(importedBuild, callback) {
         previousContainerY = containerY;
     }
 
-    // Generate QR Code
-
-    let QRCodeMargin = 10; //px
-    let QRCodeSize = 250; //px
-
-    let QRCodeStartX = QRCodeMargin;
-    let QRCodeStartY = height - QRCodeSize - QRCodeMargin;
-
-    let QRCodeData = importedBuild["OriginalCompressedData"];
-
-    console.log(`QR Code data: ${QRCodeData}`);
-
-    let QRImage = undefined;
-
-    await qrUtility.GenerateQRCode(QRCodeData, { width: QRCodeSize, margin: 2 }, async function(data) {
-        if (data["status"] == 200) {
-            // Convert the buffer to an image
-            let QRCodeImage = await loadImage(data["data"]);
-
-            QRImage = QRCodeImage;
-            console.log("QR Code image loaded!")
+    // Generate QR Code if option is enabled
+    if (genQRCode) {
+        let QRCodeMargin = 10; //px
+        let QRCodeSize = 250; //px
+    
+        let QRCodeStartX = QRCodeMargin;
+        let QRCodeStartY = height - QRCodeSize - QRCodeMargin;
+    
+        let QRCodeData = importedBuild["OriginalCompressedData"];
+    
+        console.log(`QR Code data: ${QRCodeData}`);
+    
+        let QRImage = undefined;
+    
+        await qrUtility.GenerateQRCode(QRCodeData, { width: QRCodeSize, margin: 2 }, async function(data) {
+            if (data["status"] == 200) {
+                // Convert the buffer to an image
+                let QRCodeImage = await loadImage(data["data"]);
+    
+                QRImage = QRCodeImage;
+                console.log("QR Code image loaded!")
+            } else {
+                console.error(data["message"]);
+            }
+        });
+    
+        if (QRImage == undefined) {
+            console.error("QR Code image is undefined!");
         } else {
-            console.error(data["message"]);
+            context.drawImage(QRImage, QRCodeStartX, QRCodeStartY, QRCodeSize, QRCodeSize);
         }
-    });
-
-    if (QRImage == undefined) {
-        console.error("QR Code image is undefined!");
-    } else {
-        context.drawImage(QRImage, QRCodeStartX, QRCodeStartY, QRCodeSize, QRCodeSize);
     }
 
     // Generates image only after all promises have been resolved
