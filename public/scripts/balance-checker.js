@@ -38,6 +38,11 @@ var BalancePresets = [
         Name: "L-Tournament",
         Path: "BalancingPresets/L-Tournament.json",
         Balancing: {}
+    },
+    {
+        Name: "The Arkade",
+        Path: "BalancingPresets/Arkade.json",
+        Balancing: {}
     }
 ]
 
