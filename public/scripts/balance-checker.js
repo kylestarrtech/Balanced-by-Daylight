@@ -50,6 +50,7 @@ var currentBalancingIndex = 0;
 var customBalanceOverride = false;
 var onlyShowNonBanned = false;
 var saveLoadoutsAndKiller = false;
+var genQRCode = false;
 
 var currentBalancing = null;
 
@@ -119,6 +120,7 @@ currentBalancingIndex = 0;
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
+if(localStorage.getItem("genQRCode")) genQRCode = localStorage.getItem("genQRCode") == "true";
 
 var socket = null;
 var RoomID = undefined;
@@ -213,6 +215,9 @@ function main() {
 
     // Update the checkbox to save loadouts and killer selected
     document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
+
+    // Update the checkbox to generate QR codes
+    document.getElementById("generate-qr-code-setting").checked = genQRCode;
 
     // Update the custom balance checkbox to show if custom balancing is enabled
     document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
@@ -812,12 +817,18 @@ function LoadImportEvents() {
     let importButton = document.getElementById("import-button");
     let exportButton = document.getElementById("export-button");
 
-    importButton.addEventListener("click", function() {
-        let importData = prompt("Please enter your build data here.\n\nThis data can be found by clicking the 'Export' button. Please note that improper formatting may result in unexpected behavior or loss of builds!");
+    const importViaCodeButton = document.getElementById("loadout-code-import-button");
 
-        if (importData == null) {
+    importViaCodeButton.addEventListener("click", function() {
+        const importCodeInput = document.getElementById("loadout-code-input");
+
+        // Is there a value in importCodeInput?
+        if (importCodeInput.value == "") {
+            alert("Please enter a valid loadout code.");
             return;
         }
+
+        let importData = importCodeInput.value;
 
         try {
             const compressedDataDecoded = atob(importData);
@@ -935,6 +946,101 @@ function LoadImportEvents() {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
             console.trace();
         }
+
+        // Close the import menu
+        const importMenu = document.getElementById("import-container");
+        importMenu.hidden = true;
+    });
+
+    const importViaFileButton = document.getElementById("image-import-button");
+
+    importViaFileButton.addEventListener("click", function() {
+        const imageInput = document.getElementById("loadout-image-input");
+
+        // Is there a file selected?
+        if (imageInput.files.length == 0) {
+            GenerateAlertModal("Error", "Please select a valid image file.");
+            return;
+        } else if (imageInput.files.length > 1) {
+            GenerateAlertModal("Error", "Please select only one image file. Also, how did you even SELECT multiple??");
+            return;
+        }
+
+        // Get the file object
+        const file = imageInput.files[0];
+
+        // Is the file a PNG file?
+        if (file.type != "image/png") {
+            GenerateAlertModal("Error", "Please select a PNG file.");
+            return;
+        }
+
+        // Is the file less than 1MB?
+        if (file.size > 1000000) {
+            GenerateAlertModal("Error", "Please select an image file that is less than 1MB.");
+            return;
+        }
+        
+        // Read the file stream
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function() {
+            const imageBase64 = reader.result;
+
+            console.log(imageBase64);
+
+            // Send the image to the server
+            var xhttp = new XMLHttpRequest();
+
+            let imageUploadBody = {
+                imageData: imageBase64
+            }
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    switch (this.status) {
+                        case 200:
+                            let importData = this.responseText;
+
+                            const loadoutCodeInput = document.getElementById("loadout-code-input");
+                            loadoutCodeInput.value = importData;
+
+                            const importViaCodeButton = document.getElementById("loadout-code-import-button");
+                            importViaCodeButton.click();
+                        break;
+                        default:
+                            GenerateAlertModal("Error", "An error occurred while uploading your image.");
+                            console.error("Error uploading image: " + this.status);
+                        break;
+                    }
+                }
+            };
+            xhttp.open("POST", "/upload-build-image", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify(imageUploadBody));
+        };
+    });
+
+    importButton.addEventListener("click", function() {
+        const importMenu = document.getElementById("import-container");
+        importMenu.hidden = false;
+
+        const importInput = document.getElementById("loadout-code-input");
+        importInput.value = "";
+
+        // This is a file input.
+        const importImageInput = document.getElementById("loadout-image-input");
+        
+        // Make sure no files are selected
+        importImageInput.value = null;
+    });
+
+    const importCloseButton = document.getElementById("close-import-button");
+
+    importCloseButton.addEventListener("click", function() {
+        const importMenu = document.getElementById("import-container");
+        importMenu.hidden = true;
     });
 
     exportButton.addEventListener("click", function() {
@@ -984,8 +1090,14 @@ function LoadImageGenEvents() {
             imageGenContainer.hidden = true;
         });
 
-        xhttp.responseType = "arraybuffer"
+        let imageGenBody = {
+            options: {
+                GenerateQRCode: genQRCode
+            },
+            ExportData: exportData
+        }
 
+        xhttp.responseType = "arraybuffer"
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 switch (this.status) {
@@ -1019,9 +1131,7 @@ function LoadImageGenEvents() {
         };
         xhttp.open("POST", "/get-build-image", true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify({
-            ExportData: exportData
-        }));
+        xhttp.send(JSON.stringify(imageGenBody));
     });
 }
 
@@ -1159,6 +1269,12 @@ function LoadSettingsEvents() {
         
         localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         localStorage.setItem("selectedKiller", selectedKiller);
+    })
+
+    const generateQRCodeCheckbox = document.getElementById("generate-qr-code-setting");
+    generateQRCodeCheckbox.addEventListener("change", function(){
+        genQRCode = generateQRCodeCheckbox.checked;
+        localStorage.setItem("genQRCode", genQRCode);
     })
 
     const clearStorageButton = document.getElementById("settings-clear-storage-button");
