@@ -3,11 +3,11 @@ html
     head 
         title Dead by Daylight Balance Checker
         link(rel="stylesheet", href="/stylesheets/balance-checker.css")
-        link(rel="icon", href="favicon.ico" type="image/x-icon")
+        link(rel="icon", href="iconography/favicon.ico" type="image/x-icon")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
         script(src="/socket.io/socket.io.js" type="text/javascript")
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
     body(onload="main()")
         div#primary-balance-container
             div#balance-tabs-container

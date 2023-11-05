@@ -38,6 +38,11 @@ var BalancePresets = [
         Name: "L-Tournament",
         Path: "BalancingPresets/L-Tournament.json",
         Balancing: {}
+    },
+    {
+        Name: "The Arkade",
+        Path: "BalancingPresets/Arkade.json",
+        Balancing: {}
     }
 ]
 
@@ -2065,7 +2070,21 @@ function GetBannedPerks(){
         bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].KillerIndvPerkBans)
     }
 
-    return bannedPerks
+    let concatenatedWhitelist = new Array()
+
+    // Concatenate KillerWhitelistedPerks and SurvivorWhitelistedPerks
+    concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].KillerWhitelistedPerks)
+    concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorWhitelistedPerks)
+    console.log(`Concatenated whitelist: ${concatenatedWhitelist}`)
+
+    for (const perk of concatenatedWhitelist) {
+        // If the perk is in the banned perks, remove it
+        if (bannedPerks.includes(perk)) {
+            bannedPerks.splice(bannedPerks.indexOf(perk), 1);
+        }
+    }
+
+    return bannedPerks;
 }
 
 function GetBannedOfferings() {

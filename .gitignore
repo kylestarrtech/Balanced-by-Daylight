@@ -16,6 +16,8 @@ TestBalanceInDev.json
 /webp_to_png/*
 !/webp_to_png/convert_to_png.py
 
+/utilities/autobalancer/*
+
 test_item_showcase.json
 
 testImportInfo.txt
