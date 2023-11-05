@@ -930,7 +930,7 @@
 				"Key": { "Addons": [] },
 				"Map": { "Addons": [] }
 			},
-			"SurvivorOfferings": [2, 4, 5],
+			"SurvivorOfferings": [2, 5, 6],
 			"KillerOfferings": [5]
 		},
 		{
