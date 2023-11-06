@@ -58,17 +58,17 @@ function loadSmallImages(directory, size){
   return images
 }
 
+let perksCV = loadSmallImages("./canvas-image-library/Perks/Survivors", 118)
+perksCV = perksCV.sort((a, b) => {
+    return orderPerks.order.indexOf(a.imageName) - orderPerks.order.indexOf(b.imageName)
+})
+const offeringsCV = loadSmallImages("./canvas-image-library/Offerings", 118)
+const itemsCV = loadSmallImages("./canvas-image-library/Items", 88)
+const addonsCV = loadSmallImages("./canvas-image-library/Addons", 68)
+
 module.exports = async function imageExtractor(buffer){
     //const largeImage = cv.imread("./test.png")
     const largeImage = cv.imdecode(buffer)
-
-    let perksCV = loadSmallImages("./canvas-image-library/Perks/Survivors", 118)
-    perksCV = perksCV.sort((a, b) => {
-        return orderPerks.order.indexOf(a.imageName) - orderPerks.order.indexOf(b.imageName)
-    })
-    const offeringsCV = loadSmallImages("./canvas-image-library/Offerings", 118)
-    const itemsCV = loadSmallImages("./canvas-image-library/Items", 88)
-    const addonsCV = loadSmallImages("./canvas-image-library/Addons", 68)
 
     console.log("Start:", new Date())
 
