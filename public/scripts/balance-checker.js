@@ -237,6 +237,56 @@ function main() {
     CheckForBalancingErrors();
 }
 
+function ResetAllLoadouts(){
+    SurvivorPerks = [
+        [
+            null, // Perk 1
+            null, // Perk 2
+            null, // Perk 3
+            null  // Perk 4
+        ],
+        [
+            null, // Perk 1
+            null, // Perk 2
+            null, // Perk 3
+            null  // Perk 4
+        ],
+        [
+            null, // Perk 1
+            null, // Perk 2
+            null, // Perk 3
+            null  // Perk 4
+        ],
+        [
+            null, // Perk 1
+            null, // Perk 2
+            null, // Perk 3
+            null  // Perk 4
+        ]
+    ]
+    
+    SurvivorOfferings = [
+        null,
+        null,
+        null,
+        null
+    ]
+    
+    SurvivorItems = [
+        undefined,
+        undefined,
+        undefined,
+        undefined
+    ]
+    
+    SurvivorAddons = [
+        [undefined, undefined],
+        [undefined, undefined],
+        [undefined, undefined],
+        [undefined, undefined]
+    ]
+}
+
 function DisplayCredits() {
     GenerateAlertModal(
         "Credits/Contributors",
@@ -987,6 +1037,7 @@ function LoadImportEvents() {
 
         reader.onload = function() {
             const imageBase64 = reader.result;
+            const imageBuffer = new Uint8Array(atob(imageBase64.split(',')[1]).split('').map(char => char.charCodeAt(0)));
 
             console.log(imageBase64);
 
@@ -994,20 +1045,111 @@ function LoadImportEvents() {
             var xhttp = new XMLHttpRequest();
 
             let imageUploadBody = {
-                imageData: imageBase64
+                imageData: imageBase64,
+                imageBuffer: Array.from(imageBuffer)
             }
 
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4) {
                     switch (this.status) {
                         case 200:
-                            let importData = this.responseText;
+                            let importData = JSON.parse(this.responseText);
+                            console.log(importData);
 
-                            const loadoutCodeInput = document.getElementById("loadout-code-input");
+                            const survPerkY = [120, 273, 426, 579];
+                            const survPerkX = [290, 418, 546, 674];
+
+                            const survItemY = [135, 288, 441, 594];
+
+                            const survAddonY = [145, 298, 451, 604];
+                            const survAddonX = [1108, 1181];
+
+                            ResetAllLoadouts()
+                            
+                            for(const perkData of importData.Perks){
+                                const perk = GetPerkByPath(perkData.image)
+                                
+                                for(let cptSurv=0 ; cptSurv<4 ; cptSurv++){
+                                    for(let cptPerk=0 ; cptPerk<4 ; cptPerk++){
+                                        if(perkData.position.x == survPerkX[cptPerk] && perkData.position.y == survPerkY[cptSurv]){
+                                            SurvivorPerks[cptSurv][cptPerk] = perk
+                                        }
+                                    }
+                                }
+                            }
+                            for(const offeringData of importData.Offerings){
+                                const offering = GetOfferingByPath(offeringData.image)
+
+                                for(let cptSurv=0 ; cptSurv<4 ; cptSurv++){
+                                    if(offeringData.position.y == survPerkY[cptSurv]){
+                                        SurvivorOfferings[cptSurv] = offering
+                                    }
+                                }
+                            }
+                            for(const itemData of importData.Items){
+                                const item = GetItemByPath(itemData.image)
+
+                                for(let cptSurv=0 ; cptSurv<4 ; cptSurv++){
+                                    if(itemData.position.y == survItemY[cptSurv]){
+                                        SurvivorItems[cptSurv] = item
+                                    }
+                                }
+                            }
+                            for(const addonData of importData.Addons){
+                                const addon = GetAddonByPath(addonData.image)
+
+                                for(let cptSurv=0 ; cptSurv<4 ; cptSurv++){
+                                    for(let cptAddon=0 ; cptAddon<2 ; cptAddon++){
+                                        if(addonData.position.x == survAddonX[cptAddon] && addonData.position.y == survAddonY[cptSurv]){
+                                            SurvivorAddons[cptSurv][cptAddon] = addon
+                                        }
+                                    }
+                                }
+                            }
+
+                            let cpt = 0
+                            currentBalancingIndex = cpt
+                            if(!importData.Balancing.includes("(Custom)")){
+                                for(const balance of BalancePresets){
+                                    if(importData.Balancing.includes(balance.Name)){
+                                        currentBalancingIndex = cpt
+                                        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"]
+                                        customBalanceOverride = false
+                                        break
+                                    }
+                                    cpt++
+                                }
+                            }
+
+                            cpt = 0
+                            for(const killer of Killers){
+                                if(importData.Killer.includes(killer)){
+                                    selectedKiller = cpt
+                                }
+                                cpt++
+                            }
+
+                            if (Config.saveBuilds && saveLoadoutsAndKiller) {
+                                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks))
+                                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings))
+                                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems))
+                                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons))
+                                localStorage.setItem("selectedKiller", selectedKiller)
+                            }
+                            localStorage.setItem("currentBalancingIndex", currentBalancingIndex)
+                            localStorage.setItem("customBalanceOverride", customBalanceOverride)
+
+                            UpdatePerkUI()
+                            UpdateBalancingDropdown()
+                            CheckForBalancingErrors()
+                            UpdateKillerSelectionUI()
+                            ScrollToSelectedKiller()
+
+                            /*const loadoutCodeInput = document.getElementById("loadout-code-input");
                             loadoutCodeInput.value = importData;
 
                             const importViaCodeButton = document.getElementById("loadout-code-import-button");
-                            importViaCodeButton.click();
+                            importViaCodeButton.click();*/
                         break;
                         default:
                             GenerateAlertModal("Error", "An error occurred while uploading your image.");
@@ -3105,6 +3247,48 @@ function GetPerkIdByFileName(fileName){
 function GetPerkById(id){
     for(const perk of Perks){
         if(perk.id == id) return perk
+    }
+}
+
+function GetPerkByPath(imageName){
+    for(const perk of Perks){
+        if(perk.icon.includes(imageName.replace(".png", ""))) return perk
+    }
+}
+function GetOfferingByPath(imageName){
+    for(const offering of Offerings["Survivor"]){
+        if(offering.icon.includes(imageName.replace(".png", ""))) return offering
+    }
+
+    for(const offering of Offerings["Killer"]){
+        if(offering.icon.includes(imageName.replace(".png", ""))) return offering
+    }
+}
+function GetItemByPath(imageName) {
+    const itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["icon"].includes(imageName.replace(".png", ""))) {
+            return currentItem;
+        }
+    }
+}
+function GetAddonByPath(imageName) {
+    if (Items == undefined) { return undefined; }
+
+    let ItemTypes = Items["ItemTypes"];
+    if (ItemTypes == undefined) { return undefined; }
+
+    for(const type of ItemTypes){
+        for(const addon of type["Addons"]){
+            if (addon["icon"].includes(imageName.replace(".png", ""))) {
+                return addon;
+            }
+        }
     }
 }
 

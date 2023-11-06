@@ -13,7 +13,8 @@ const BalancingTitles = [
     "Dead by Daylight League (DBDL)",
     "Champions of the Fog (COTF)",
     "Davy Jones League",
-    "L-Tournament"
+    "L-Tournament",
+    "The Arkade"
 ]
 
 function BeginGenerationImport(data, genQRCode, callback) {
