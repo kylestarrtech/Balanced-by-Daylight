@@ -344,8 +344,8 @@ function BeginGenerationImport(data, genQRCode, callback) {
         });
         return;
     }
-
-    //console.log(exampleImageGenObject);
+    console.log("PASSED OBJECT:");
+    console.log(exampleImageGenObject);
     GenerateImage(exampleImageGenObject, genQRCode, callback);
 }
 

@@ -868,10 +868,8 @@ function LoadImportEvents() {
     let exportButton = document.getElementById("export-button");
 
     const importViaCodeButton = document.getElementById("loadout-code-import-button");
-
     importViaCodeButton.addEventListener("click", function() {
         const importCodeInput = document.getElementById("loadout-code-input");
-
         // Is there a value in importCodeInput?
         if (importCodeInput.value == "") {
             alert("Please enter a valid loadout code.");
