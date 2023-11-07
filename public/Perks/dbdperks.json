@@ -469,7 +469,7 @@
     },
     {
         "id": 52,
-        "name": "Guardian",
+        "name": "Babysitter",
         "icon": "public/Perks/Survivors/Guardian.webp",
         "exhaustion": false,
         "tags": [],
@@ -514,7 +514,7 @@
     },
     {
         "id": 57,
-        "name": "Inner Healing",
+        "name": "Inner Strength",
         "icon": "public/Perks/Survivors/Inner-Healing.webp",
         "exhaustion": false,
         "tags": [],
@@ -541,7 +541,7 @@
     },
     {
         "id": 60,
-        "name": "Kinship",
+        "name": "Camaraderie",
         "icon": "public/Perks/Survivors/Kinship.webp",
         "exhaustion": false,
         "tags": [],
@@ -829,7 +829,7 @@
     },
     {
         "id": 92,
-        "name": "Renewal",
+        "name": "Second Wind",
         "icon": "public/Perks/Survivors/Renewal.webp",
         "exhaustion": false,
         "tags": [],
@@ -910,7 +910,7 @@
     },
     {
         "id": 101,
-        "name": "Self-Aware",
+        "name": "Fixated",
         "icon": "public/Perks/Survivors/Self-Aware.webp",
         "exhaustion": false,
         "tags": [],
@@ -937,7 +937,7 @@
     },
     {
         "id": 104,
-        "name": "Situational Awareness",
+        "name": "Better Together",
         "icon": "public/Perks/Survivors/Situational-Awareness.webp",
         "exhaustion": false,
         "tags": [],
@@ -1297,7 +1297,7 @@
     },
     {
         "id": 144,
-        "name": "Claustrophobia",
+        "name": "Cruel Limits",
         "icon": "public/Perks/Killers/Claustrophobia.webp",
         "exhaustion": false,
         "tags": [],
@@ -1450,7 +1450,7 @@
     },
     {
         "id": 161,
-        "name": "Fearmonger",
+        "name": "Mindbreaker",
         "icon": "public/Perks/Killers/Fearmonger.webp",
         "exhaustion": false,
         "tags": [],
@@ -1738,7 +1738,7 @@
     },
     {
         "id": 193,
-        "name": "Jolt",
+        "name": "Surge",
         "icon": "public/Perks/Killers/Jolt.webp",
         "exhaustion": false,
         "tags": [],
