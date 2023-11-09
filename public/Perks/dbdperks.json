@@ -2185,5 +2185,32 @@
         "tags": [],
         "character": "The Oni",
         "survivorPerk": false
+    },
+    {
+        "id": 243,
+        "name": "Hex: Two can Play",
+        "icon": "public/Perks/Killers/Hex-Two-Can-Play.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Good Guy",
+        "survivorPerk": false
+    },
+    {
+        "id": 244,
+        "name": "Friends 'til the End",
+        "icon": "public/Perks/Killers/Friends-Till-The-End.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Good Guy",
+        "survivorPerk": false
+    },
+    {
+        "id": 245,
+        "name": "Batteries Included",
+        "icon": "public/Perks/Killers/Batteries-Included.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Good Guy",
+        "survivorPerk": false
     }
 ]

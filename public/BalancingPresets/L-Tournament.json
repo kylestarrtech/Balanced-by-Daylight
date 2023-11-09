@@ -55,13 +55,14 @@
                 "115",
                 "116",
                 "120",
-                "124",
                 "126",
                 "128",
                 "130",
                 "68",
                 "63",
-                "27"
+                "27",
+                "74",
+                "60"
             ],
             "KillerIndvPerkBans": [
                 "147",
@@ -162,7 +163,6 @@
                 "36",
                 "38",
                 "39",
-                "53",
                 "55",
                 "57",
                 "61",
@@ -261,7 +261,9 @@
                 "92",
                 "102",
                 "111",
-                "121"
+                "121",
+                "65",
+                "112"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -400,11 +402,12 @@
             "KillerIndvPerkBans": [
                 "150",
                 "151",
-                "160",
                 "178",
                 "204",
                 "219",
-                "220"
+                "220",
+                "132",
+                "136"
             ],
             "KillerComboPerkBans": [
                 [
@@ -423,7 +426,9 @@
                     "74"
                 ]
             ],
-            "SurvivorWhitelistedPerks": [],
+            "SurvivorWhitelistedPerks": [
+                "60"
+            ],
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
@@ -440,8 +445,8 @@
             "ItemWhitelist": [
                 0,
                 5,
-                9,
-                14
+                14,
+                9
             ],
             "AddonWhitelist": {
                 "Firecracker": {
@@ -990,7 +995,7 @@
         {
             "Name": "The Pig",
             "Map": [
-                20
+                34
             ],
             "BalanceTiers": [
                 0
@@ -1010,7 +1015,6 @@
                 "38",
                 "39",
                 "52",
-                "53",
                 "55",
                 "57",
                 "60",
@@ -1167,7 +1171,9 @@
             "KillerIndvPerkBans": [
                 "150",
                 "151",
-                "204"
+                "204",
+                "132",
+                "136"
             ],
             "KillerComboPerkBans": [
                 [
@@ -1187,7 +1193,9 @@
                 "103"
             ],
             "SurvivorComboPerkBans": [],
-            "SurvivorWhitelistedPerks": [],
+            "SurvivorWhitelistedPerks": [
+                "60"
+            ],
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
@@ -1244,7 +1252,7 @@
         {
             "Name": "The Legion",
             "Map": [
-                8
+                33
             ],
             "BalanceTiers": [
                 0
@@ -1262,7 +1270,6 @@
                 "36",
                 "38",
                 "39",
-                "53",
                 "55",
                 "57",
                 "60",
@@ -1820,7 +1827,9 @@
                 "178",
                 "204",
                 "219",
-                "220"
+                "220",
+                "132",
+                "136"
             ],
             "KillerComboPerkBans": [
                 [
@@ -1835,7 +1844,9 @@
                     "74"
                 ]
             ],
-            "SurvivorWhitelistedPerks": [],
+            "SurvivorWhitelistedPerks": [
+                "60"
+            ],
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
@@ -1951,8 +1962,7 @@
             ],
             "ItemWhitelist": [
                 0,
-                5,
-                9
+                5
             ],
             "AddonWhitelist": {
                 "Firecracker": {
@@ -1967,10 +1977,7 @@
                     ]
                 },
                 "Med-Kit": {
-                    "Addons": [
-                        8,
-                        11
-                    ]
+                    "Addons": []
                 },
                 "Toolbox": {
                     "Addons": []
@@ -2160,7 +2167,7 @@
         {
             "Name": "The Cenobite",
             "Map": [
-                8
+                33
             ],
             "BalanceTiers": [
                 0
@@ -2329,7 +2336,6 @@
                 "38",
                 "39",
                 "52",
-                "53",
                 "57",
                 "60",
                 "61",
@@ -2759,8 +2765,7 @@
             ],
             "ItemWhitelist": [
                 0,
-                5,
-                9
+                5
             ],
             "AddonWhitelist": {
                 "Firecracker": {
@@ -2775,10 +2780,7 @@
                     ]
                 },
                 "Med-Kit": {
-                    "Addons": [
-                        8,
-                        11
-                    ]
+                    "Addons": []
                 },
                 "Toolbox": {
                     "Addons": []
