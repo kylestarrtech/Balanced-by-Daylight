@@ -679,6 +679,10 @@ body {
     justify-content: center;
 }
 
+.addon-slot.killer-perk-slot {
+    aspect-ratio: 0.75 / 1 !important;
+}
+
 .addon-slot img {
     width: 100%;
 
