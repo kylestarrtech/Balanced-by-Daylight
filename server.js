@@ -17,7 +17,7 @@ require('./routes/viewRoutes')(app)
 app.use(express.static('public'))
 
 // middleware 
-app.use(express.json()) //Add it first then others follw
+app.use(express.json()) //Add it first then others follow
 
 app.use(express.urlencoded({ extended: true }))
 
@@ -66,7 +66,7 @@ app.get('*', (req, res) => {
   res.status(404).send('404 Not Found')
 })
 
-// If config shows that m ultiplayer is enabled, then start the server.
+// If config shows that multiplayer is enabled, then start the server.
 if (config.multiplayerEnabled) {
 
   io.on("connection",(client)=>{
