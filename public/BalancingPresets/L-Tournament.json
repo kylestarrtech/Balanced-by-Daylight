@@ -1306,7 +1306,7 @@
 				"Key": { "Addons": [] },
 				"Map": { "Addons": [] }
 			},
-			"SurvivorOfferings": [2, 3, 6],
+			"SurvivorOfferings": [2, 3, 5, 6],
 			"KillerOfferings": []
 		},
 		{
