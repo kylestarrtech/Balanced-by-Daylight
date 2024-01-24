@@ -868,6 +868,8 @@ function LoadImportEvents() {
             // perkCpt is the current perk we're on
             let perkCpt = 0
 
+            ClearSurvivorPerks();
+
             for(const currentSurvivor of importDataObj.survivorPerksId){
                 if (currentSurvivor.length != 4) {
                     throw "Invalid import data. SurvivorPerks length is not 4.";
@@ -951,6 +953,18 @@ function LoadImportEvents() {
 
         GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
     });
+}
+
+function ClearSurvivorPerks() {
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        SurvivorPerks[i] = [
+            null,
+            null,
+            null,
+            null
+        ];
+    }
+
 }
 
 function LoadImageGenEvents() {
