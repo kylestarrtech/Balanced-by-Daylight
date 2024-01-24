@@ -874,8 +874,9 @@ function LoadImportEvents() {
                 }
                 
                 for(const currentPerkId of currentSurvivor){
-                    if (currentPerkId == undefined) {
-                        throw "Invalid import data. Perk ID is undefined.";
+                    if (currentPerkId == null) {
+                        perkCpt++
+                        continue;
                     }
 
                     SurvivorPerks[survCpt][perkCpt] = GetPerkById(currentPerkId)
@@ -1398,6 +1399,19 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     });
 
     const bannedPerks = GetBannedPerks()    
+
+    searchResults = searchResults.sort((a, b) => {
+        let nameA = a["name"].toUpperCase();
+        let nameB = b["name"].toUpperCase();
+
+        if (nameA < nameB) {
+            return -1;
+        } else if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 

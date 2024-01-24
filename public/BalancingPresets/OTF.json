@@ -397,13 +397,21 @@
                 "\"All Seeing\" - Blood",
                 "\"All Seeing\" - Spirit"
             ],
-            "ItemWhitelist": [],
+            "ItemWhitelist": [
+                0,
+                5
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -1630,8 +1638,8 @@
         {
             "Name": "The Executioner",
             "Map": [
-                0,
-                6
+                6,
+                8
             ],
             "BalanceTiers": [
                 0

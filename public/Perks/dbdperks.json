@@ -2212,5 +2212,32 @@
         "tags": [],
         "character": "The Good Guy",
         "survivorPerk": false
+    },
+    {
+        "id": 246,
+        "name": "Champion of Light",
+        "icon": "public/Perks/Survivors/Champion-Of-Light.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Alan Wake",
+        "survivorPerk": true
+    },
+    {
+        "id": 247,
+        "name": "Boon: Illumination",
+        "icon": "public/Perks/Survivors/Boon-Illumination.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Alan Wake",
+        "survivorPerk": true
+    },
+    {
+        "id": 248,
+        "name": "Deadline",
+        "icon": "public/Perks/Survivors/Deadline.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Alan Wake",
+        "survivorPerk": true
     }
 ]
