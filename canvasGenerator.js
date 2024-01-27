@@ -35,9 +35,9 @@ function BeginGenerationImport(data, callback) {
         })
         return;
     }
-    //console.log("Build is decompressed, but not parsed.");
+    console.log("Build is decompressed, but not parsed.");
 
-    //console.log(decompressedText);
+    console.log(decompressedText);
     let importedBuild = null;
     try {
         importedBuild = JSON.parse(decompressedText);

@@ -1377,9 +1377,22 @@ function LoadKillerOverrideUI(id) {
 
     SelectValuesInListbox("survivor-offering-selection-dropdown", offeringsAllowed);
 
+    // Create alphabetically sorted list
+    // This will be used as a dummy list to sort the perks without affecting the original list
+    var sortedPerks = [];
+
     // Apply it to KillerIndvBanDropdown
     var KlrIndvPrkBanDropdown = document.getElementById("killer-tiered-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
+
+    sortedPerks = KillerData.KillerIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
 
     for (var i = 0; i < KillerData.KillerIndvPerkBans.length; i++) {
         var optionsElement = document.createElement("option");
@@ -1412,6 +1425,15 @@ function LoadKillerOverrideUI(id) {
     var KlrIndvPrkWhitelistDropdown = document.getElementById("killer-tiered-individual-perk-whitelist-dropdown");
     KlrIndvPrkWhitelistDropdown.innerHTML = "";
 
+    sortedPerks = KillerData.KillerWhitelistedPerks.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
     for (var i = 0; i < KillerData.KillerWhitelistedPerks.length; i++) {
         var optionsElement = document.createElement("option");
         optionsElement.value = KillerData.KillerWhitelistedPerks[i];
@@ -1443,6 +1465,15 @@ function LoadKillerOverrideUI(id) {
     var SrvIndvPrkBanDropdown = document.getElementById("survivor-tiered-individual-perk-ban-dropdown");
     SrvIndvPrkBanDropdown.innerHTML = "";
 
+    sortedPerks = KillerData.SurvivorIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
     for (var i = 0; i < KillerData.SurvivorIndvPerkBans.length; i++) {
         var optionsElement = document.createElement("option");
         optionsElement.value = KillerData.SurvivorIndvPerkBans[i];
@@ -1473,6 +1504,15 @@ function LoadKillerOverrideUI(id) {
     // Apply it to SurvivorIndvWhitelistDropdown
     var SrvIndvPrkWhitelistDropdown = document.getElementById("survivor-tiered-individual-perk-whitelist-dropdown");
     SrvIndvPrkWhitelistDropdown.innerHTML = "";
+
+    sortedPerks = KillerData.SurvivorWhitelistedPerks.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
 
     for (var i = 0; i < KillerData.SurvivorWhitelistedPerks.length; i++) {
         var optionsElement = document.createElement("option");
@@ -1657,14 +1697,31 @@ function LoadTier(id) {
     
     // Once we know tier data is legit, we can apply it to frontend.
 
+    // Dummy list to sort the perks without affecting the original list
+    sortedPerks = [];
+
     // Apply it to SurvIndvBanDropdown
     var SrvIndvPrkBanDropdown = document.getElementById("survivor-individual-perk-ban-dropdown");
     SrvIndvPrkBanDropdown.innerHTML = "";
 
-    for (var i = 0; i < TierData.SurvivorIndvPerkBans.length; i++) {
+    console.log("AAAAAAAAAWRFASIOWEFHNIOASN");
+    console.log(TierData.SurvivorIndvPerkBans);
+
+    sortedPerks = TierData.SurvivorIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
+    console.log(sortedPerks);
+
+    for (var i = 0; i < sortedPerks.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = TierData.SurvivorIndvPerkBans[i];
-        optionsElement.innerHTML = Perks[TierData.SurvivorIndvPerkBans[i]].name;
+        optionsElement.value = sortedPerks[i];
+        optionsElement.innerHTML = Perks[sortedPerks[i]].name;
         SrvIndvPrkBanDropdown.appendChild(optionsElement);
     }
 
@@ -1692,10 +1749,19 @@ function LoadTier(id) {
     var KlrIndvPrkBanDropdown = document.getElementById("killer-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
 
-    for (var i = 0; i < TierData.KillerIndvPerkBans.length; i++) {
+    sortedPerks = TierData.KillerIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
+    for (var i = 0; i < sortedPerks.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = TierData.KillerIndvPerkBans[i];
-        optionsElement.innerHTML = Perks[TierData.KillerIndvPerkBans[i]].name;
+        optionsElement.value = sortedPerks[i];
+        optionsElement.innerHTML = Perks[sortedPerks[i]].name;
         KlrIndvPrkBanDropdown.appendChild(optionsElement);
     }
 
@@ -1861,6 +1927,16 @@ function OverrideButtonSearch(query, isSurvivor) {
         optionsElement.style.backgroundPosition = "right";
         searchResultsContainer.appendChild(optionsElement);
     }
+
+    // Organize searchResults list alphabetically by the name property
+    searchResults.sort(function(a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
 
     for (var i = 0; i < searchResults.length; i++) {
         // Get the values from the search container
@@ -2105,7 +2181,7 @@ function ExportBalancing() {
 
     var FinalBalanceObj = {
         Name: document.getElementById("balance-name-textbox").value,
-        Version: version,
+        Version: GetCurrentEpochTime(),
         MaxPerkRepetition: maxPerkRepetition,
         Tiers: NewTierExport,
         KillerOverride: NewKillerExport
@@ -2113,6 +2189,10 @@ function ExportBalancing() {
 
     var balanceExportBox = document.getElementById("balance-export-textbox");
     balanceExportBox.value = JSON.stringify(FinalBalanceObj);
+}
+
+function GetCurrentEpochTime() {
+    return Math.floor(Date.now() / 1000);
 }
 
 /**

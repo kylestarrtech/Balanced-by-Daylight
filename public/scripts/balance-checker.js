@@ -868,14 +868,17 @@ function LoadImportEvents() {
             // perkCpt is the current perk we're on
             let perkCpt = 0
 
+            ClearSurvivorPerks();
+
             for(const currentSurvivor of importDataObj.survivorPerksId){
                 if (currentSurvivor.length != 4) {
                     throw "Invalid import data. SurvivorPerks length is not 4.";
                 }
                 
                 for(const currentPerkId of currentSurvivor){
-                    if (currentPerkId == undefined) {
-                        throw "Invalid import data. Perk ID is undefined.";
+                    if (currentPerkId == null) {
+                        perkCpt++
+                        continue;
                     }
 
                     SurvivorPerks[survCpt][perkCpt] = GetPerkById(currentPerkId)
@@ -950,6 +953,18 @@ function LoadImportEvents() {
 
         GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
     });
+}
+
+function ClearSurvivorPerks() {
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        SurvivorPerks[i] = [
+            null,
+            null,
+            null,
+            null
+        ];
+    }
+
 }
 
 function LoadImageGenEvents() {
@@ -1398,6 +1413,19 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     });
 
     const bannedPerks = GetBannedPerks()    
+
+    searchResults = searchResults.sort((a, b) => {
+        let nameA = a["name"].toUpperCase();
+        let nameB = b["name"].toUpperCase();
+
+        if (nameA < nameB) {
+            return -1;
+        } else if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 
