@@ -168,6 +168,9 @@ function main() {
     // Update Killer Selection UI
     UpdateKillerSelectionUI();
 
+    // Update Balancing Selection UI
+    UpdateBalanceSelectionUI();
+
     // Load button events
     LoadButtonEvents();
 
@@ -640,6 +643,11 @@ function UpdateKillerSelectionUI() {
     document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
+function UpdateBalanceSelectionUI() {
+    var selectedBalanceTitle = document.getElementById("selected-balance-title");
+    selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${BalancePresets[currentBalancingIndex]["Name"]}</span>`;
+}
+
 function ScrollToSelectedKiller(){
     document.getElementById("character-select-grid").scrollTo({
         top : document.querySelector(`[data-killerid="${selectedKiller}"]`).getBoundingClientRect().top + document.getElementById("character-select-grid").scrollTop - 102,
@@ -684,6 +692,8 @@ function UpdateBalancingDropdown() {
             )
         }
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+
+        UpdateBalanceSelectionUI();
     });
 
     // var customBalancingContainer = document.getElementById("custom-balance-select");
@@ -736,9 +746,32 @@ function LoadButtonEvents() {
 
     LoadImageGenEvents();
 
+    LoadClearLoadoutButton();
+
     LoadPerkSearchEvents();
 
     LoadRoomEvents();
+}
+
+function LoadClearLoadoutButton() {
+    let clearLoadoutButton = document.getElementById("clear-loadout-button");
+
+    clearLoadoutButton.addEventListener("click", function() {
+        ClearSurvivorPerks();
+        ClearSurvivorOfferings();
+        ClearSurvivorItems();
+        ClearSurvivorAddons();
+
+        if (Config.saveBuilds && saveLoadoutsAndKiller) {
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+            localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+        }
+
+        UpdatePerkUI();
+        CheckForBalancingErrors();
+    });
 }
 
 function GetExportData() {
@@ -933,6 +966,7 @@ function LoadImportEvents() {
             UpdateBalancingDropdown();
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+            UpdateBalanceSelectionUI();
             ScrollToSelectedKiller();
         } catch (error) {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
@@ -951,7 +985,7 @@ function LoadImportEvents() {
         // Copy exportData to clipboard
         navigator.clipboard.writeText(compressedText);
 
-        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
+        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <span class='import-code-preview'>" + compressedText + "</span>");
     });
 }
 
@@ -964,7 +998,27 @@ function ClearSurvivorPerks() {
             null
         ];
     }
+}
 
+function ClearSurvivorOfferings() {
+    for (var i = 0; i < SurvivorOfferings.length; i++) {
+        SurvivorOfferings[i] = null;
+    }
+}
+
+function ClearSurvivorItems() {
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        SurvivorItems[i] = null;
+    }
+}
+
+function ClearSurvivorAddons() {
+    for (var i = 0; i < SurvivorAddons.length; i++) {
+        SurvivorAddons[i] = [
+            undefined,
+            undefined
+        ];
+    }
 }
 
 function LoadImageGenEvents() {
