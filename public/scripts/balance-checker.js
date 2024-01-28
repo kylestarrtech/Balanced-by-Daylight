@@ -5,7 +5,7 @@ var Perks = null;
 var Killers = null;
 var Survivors = null;
 var Maps = null;
-var Addons = null;
+var KillerAddonsList = null;
 var Offerings = null;
 var Items = null;
 
@@ -171,7 +171,17 @@ function main() {
             if(localStorage.getItem("SurvivorAddons")) SurvivorAddons = JSON.parse(localStorage.getItem("SurvivorAddons"));
 
             if (localStorage.getItem("KillerPerks")) KillerPerks = JSON.parse(localStorage.getItem("KillerPerks"));
-            if (localStorage.getItem("KillerOffering")) KillerOffering = JSON.parse(localStorage.getItem("KillerOffering"));
+
+            if (localStorage.getItem("KillerOffering")) {
+                let rawSave = localStorage.getItem("KillerOffering");
+
+                if (rawSave == "undefined") {
+                    KillerOffering = undefined;
+                } else {
+                    KillerOffering = JSON.parse(rawSave);
+                }
+            }
+            
             if (localStorage.getItem("KillerAddons")) KillerAddons = JSON.parse(localStorage.getItem("KillerAddons"));
 
             ScrollToSelectedKiller();
@@ -753,12 +763,20 @@ function UpdateKillerPerkUI() {
 
     try {
         addonSrc1 = currentKillerAddons[0]["icon"];
+
+        if (addonSrc1 == undefined) {
+            throw "Addon 1 is undefined.";
+        }
     } catch (error) {
         addonSrc1 = "public/Addons/blank.webp";
     }
 
     try {
         addonSrc2 = currentKillerAddons[1]["icon"];
+
+        if (addonSrc2 == undefined) {
+            throw "Addon 2 is undefined.";
+        }
     } catch (error) {
         addonSrc2 = "public/Addons/blank.webp";
     }
@@ -2386,7 +2404,7 @@ function GetAddons() {
         if (this.readyState == 4) {
             switch (this.status) {
                 case 200:
-                    Addons = JSON.parse(this.responseText);
+                    KillerAddonsList = JSON.parse(this.responseText);
                 break;
                 default:
                     console.error("Error getting addons: " + this.status);
@@ -2554,6 +2572,85 @@ function GetBannedAddons(itemType) {
         if (!whitelistedAddons.includes(addon.id)) {
             bannedAddons.push(addon.id);
         }
+    }
+
+    return bannedAddons;
+}
+
+/**
+ * Gets the banned addons for the current killer.
+ * @returns {Array} An array of banned addons.
+ */
+function GetBannedKillerAddons() {
+    DebugLog("GetBannedKillerAddons():");
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (KillerAddonsList == undefined) { return null; }
+
+    let bannedAddons = new Array()
+
+    let currentKillerName = Killers[selectedKiller];
+
+    let curKLRAddonsList = undefined;
+
+    for (let i = 0; i < KillerAddonsList.length; i++) {
+        let currentKiller = KillerAddonsList[i];
+
+        //console.log(`currentKiller: ${currentKiller["Name"]}`);
+        
+        if (currentKiller["Name"] == currentKillerName) {
+            curKLRAddonsList = currentKiller["Addons"];
+            break;
+        }
+        // if (killer == currentKillerName) {
+        //     curKLRAddonsList = KillerAddonsList[killer];
+        // }
+    }
+
+    //console.log(`curKLRAddonsList: ${curKLRAddonsList}`);
+
+    if (curKLRAddonsList == undefined) { return null; }
+
+    // Get banned addon tiers from killer override
+    let bannedAddonTiers = currentBalancing.KillerOverride[selectedKiller]["AddonTiersBanned"];
+
+    for (let i = 0; i < curKLRAddonsList.length; i++) {
+        let currentRarity = curKLRAddonsList[i];
+        let addonList = currentRarity["Addons"]
+
+        console.log(`Checking rarity ${currentRarity["Rarity"]}`);
+
+        if (bannedAddonTiers.includes(i)) {
+            console.log(`Banning tier ${currentRarity["Rarity"]}`);
+            for (const addon of addonList) {
+                bannedAddons.push(addon);
+                console.log(`Banning addon ${addon}`);
+            }
+            continue;
+        }
+
+        console.log(`Rarity ${currentRarity["Rarity"]} is not banned.`);
+
+        // Get banned addons from killer override
+        let bannedAddonsList = currentBalancing.KillerOverride[selectedKiller]["IndividualAddonBans"];
+        console.log(addonList);
+        console.log(bannedAddonsList);
+
+        for (const addon of addonList) {
+            console.log(`Checking addon ${addon}`);
+            // Check if the addon is already in the banned addons list
+            if (bannedAddons.includes(addon)) { continue; }
+
+            console.log(`\t${addon} is not in banned addons list.`);
+
+            if (bannedAddonsList.includes(addon)) {
+                bannedAddons.push(addon);
+                console.log(`\tBanning addon ${addon}`);
+            }
+        }
+
+        console.log(`CURRENT BANNED ADDONS:`);
+        console.log(bannedAddons);
     }
 
     return bannedAddons;
