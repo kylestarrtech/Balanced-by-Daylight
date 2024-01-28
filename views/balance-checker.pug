@@ -19,6 +19,8 @@ html
                     img(src="iconography/Settings.webp")
                 div#discord-button(class="tier-selector-button" onclick="window.open('https://discord.gg/E6zfpwvCce', '_blank')")
                     img(src="iconography/Discord.webp")
+                div#role-swap-button(class="tier-selector-button")
+                    img#role-swap-icon(src="iconography/Killer.webp")
                 div.tier-selector-button(onclick="window.location.href = '/'")
                     img(src="iconography/Logo-Shadow.webp")
             div#balance-character-select-container
@@ -166,7 +168,7 @@ html
                         div.addon-slot(class="loadout-slot" data-addonSlot="1")
                             img(src="public/Addons/Low-Amp-Filament.webp")
                 div#killer-builds-container
-                    div.killer-build-component
+                    div#killer-build-component
                         div.perk-slot(class="loadout-slot killer-perk-slot")
                             img(src="public/Perks/Killers/Agitation.webp")
                         div.perk-slot(class="loadout-slot killer-perk-slot")

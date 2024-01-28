@@ -1298,7 +1298,7 @@
     {
         "id": 144,
         "name": "Cruel Limits",
-        "icon": "public/Perks/Killers/Claustrophobia.webp",
+        "icon": "public/Perks/Killers/Cruel-Limits.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
@@ -1451,7 +1451,7 @@
     {
         "id": 161,
         "name": "Mindbreaker",
-        "icon": "public/Perks/Killers/Fearmonger.webp",
+        "icon": "public/Perks/Killers/Mindbreaker.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
@@ -1739,7 +1739,7 @@
     {
         "id": 193,
         "name": "Surge",
-        "icon": "public/Perks/Killers/Jolt.webp",
+        "icon": "public/Perks/Killers/Surge.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",

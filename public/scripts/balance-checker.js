@@ -124,6 +124,8 @@ KillerAddons = [
     undefined
 ]
 
+selectedRole = 0; // 0 = Survivor, 1 = Killer
+
 selectedKiller = 0;
 currentBalancingIndex = 0;
 
@@ -172,6 +174,9 @@ function main() {
         }
     }
 
+    if (localStorage.getItem("selectedRole")) { selectedRole = parseInt(localStorage.getItem("selectedRole")); }
+
+    UpdateRoleSwapIcon();
 
     // Load data
     GetPerks();
@@ -281,11 +286,25 @@ function GetConfig() {
     xhttp.send();
 }
 
+function UpdatePerkUI() {
+    if (selectedRole == 0) {
+        document.getElementById("survivor-builds-container").classList.remove("hide-component");
+        document.getElementById("killer-builds-container").classList.add("hide-component");
+        
+        UpdateSurvivorPerkUI();
+    } else {
+        document.getElementById("killer-builds-container").classList.remove("hide-component");
+        document.getElementById("survivor-builds-container").classList.add("hide-component");
+
+        UpdateKillerPerkUI();
+    }
+}
+
 /**
  * A function to update the perk frontend.
  */
 let dragTargetElement, dragSourceElement = {}
-function UpdatePerkUI() {
+function UpdateSurvivorPerkUI() {
     // Get the builds container
     var buildsContainer = document.getElementById("survivor-builds-container");
 
@@ -324,6 +343,7 @@ function UpdatePerkUI() {
             let perkElement = document.createElement("div");
             perkElement.classList.add("perk-slot");
             perkElement.classList.add("loadout-slot");
+            perkElement.classList.add("survivor-perk-slot");
 
             perkElement.addEventListener("dragstart", function(event) {
                 event.dataTransfer.effectAllowed = "move"
@@ -644,6 +664,112 @@ function UpdatePerkUI() {
     LoadPerkSelectionEvents();
 }
 
+function UpdateKillerPerkUI() {
+    const buildsComponent = document.getElementById("killer-build-component");
+
+    //-20 for the 10px padding on left & right
+    const maxWidth = buildsComponent.offsetWidth - 20;
+
+    buildsComponent.style.maxWidth = maxWidth + "px";
+    buildsComponent.innerHTML = "";
+
+    // Get current killer perks
+    for (var i = 0; i < KillerPerks.length; i++) {
+        let currentPerk = KillerPerks[i];
+
+        ImgSrc = "";
+        try {
+            ImgSrc = currentPerk["icon"];
+        } catch (error) {
+            ImgSrc = "public/Perks/blank.webp";
+        }
+
+        let perkElement = document.createElement("div");
+        perkElement.classList.add("perk-slot");
+        perkElement.classList.add("loadout-slot");
+        perkElement.classList.add("killer-perk-slot");
+
+        perkElement.dataset.perkID = i;
+
+        let perkImg = document.createElement("img");
+        perkImg.src = ImgSrc;
+
+        perkElement.appendChild(perkImg);
+        buildsComponent.appendChild(perkElement);
+    }
+
+    // Get killer offering
+    let currentKillerOffering = KillerOffering;
+
+    // Create offering element
+    let offeringElement = document.createElement("div");
+
+    offeringElement.classList.add("offering-slot");
+    offeringElement.classList.add("loadout-slot");
+    offeringElement.classList.add("killer-offering-slot");
+
+    let OffSrc = "";
+    try {
+        OffSrc = currentKillerOffering["icon"];    
+    } catch (error) {
+        OffSrc = "public/Offerings/blank.webp";
+    }
+
+    let offeringImg = document.createElement("img");
+    offeringImg.src = OffSrc;
+
+    offeringElement.appendChild(offeringImg);
+    buildsComponent.appendChild(offeringElement);
+
+    // Get current killer addons
+    let currentKillerAddons = KillerAddons;
+
+    // Create addon elements
+    let addonElement1 = document.createElement("div");
+    addonElement1.classList.add("addon-slot");
+    addonElement1.classList.add("loadout-slot");
+    addonElement1.classList.add("killer-addon-slot");
+
+    let addonElement2 = document.createElement("div");
+    addonElement2.classList.add("addon-slot");
+    addonElement2.classList.add("loadout-slot");
+    addonElement2.classList.add("killer-addon-slot");
+
+    let addonSrc1 = "";
+    let addonSrc2 = "";
+
+    try {
+        addonSrc1 = currentKillerAddons[0]["icon"];
+    } catch (error) {
+        addonSrc1 = "public/Addons/blank.webp";
+    }
+
+    try {
+        addonSrc2 = currentKillerAddons[1]["icon"];
+    } catch (error) {
+        addonSrc2 = "public/Addons/blank.webp";
+    }
+
+    addonElement1.dataset.addonSlot = 0;
+    addonElement2.dataset.addonSlot = 1;
+
+    let addonImg1 = document.createElement("img");
+    addonImg1.src = addonSrc1;
+    addonImg1.draggable = false;
+
+    let addonImg2 = document.createElement("img");
+    addonImg2.src = addonSrc2;
+    addonImg2.draggable = false;
+
+    addonElement1.appendChild(addonImg1);
+    addonElement2.appendChild(addonImg2);
+
+    buildsComponent.appendChild(addonElement1);
+    buildsComponent.appendChild(addonElement2);
+
+    LoadPerkSelectionEvents();
+}
+
 function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
     selectedKillerTitle.innerHTML = `Selected Killer: <span style="font-weight:700;">${Killers[selectedKiller]}</span>`;
@@ -752,6 +878,8 @@ function UpdateBalancingDropdown() {
 function LoadButtonEvents() {
     LoadSettingsEvents();
 
+    LoadRoleSwapEvents();
+
     SetKillerCharacterSelectEvents();
 
     LoadPerkSelectionEvents();
@@ -765,6 +893,29 @@ function LoadButtonEvents() {
     LoadPerkSearchEvents();
 
     LoadRoomEvents();
+}
+
+function LoadRoleSwapEvents() {
+    let roleSwapButton = document.getElementById("role-swap-button");
+
+    roleSwapButton.addEventListener("click", function() {
+        console.log("Commencing role swap!");
+
+        // Swap role
+        selectedRole = selectedRole == 0 ? 1 : 0;
+
+        localStorage.setItem("selectedRole", selectedRole);
+
+        UpdateRoleSwapIcon();
+        UpdatePerkUI();
+    });
+}
+
+function UpdateRoleSwapIcon() {
+    let elementToChange = document.getElementById("role-swap-icon");
+    let elementSrc = selectedRole == 0 ? "iconography/Killer.webp" : "iconography/Survivor.webp";
+
+    elementToChange.src = elementSrc;
 }
 
 function LoadClearLoadoutButton() {
@@ -1039,6 +1190,7 @@ function LoadImageGenEvents() {
     const genImgButton = document.getElementById("generate-image-button");
 
     genImgButton.addEventListener("click", function() {
+        if (selectedRole != 0) { return; }
         let exportData = GetExportData();
 
         const imageGenContainer = document.getElementById("image-gen-container");
@@ -1254,6 +1406,14 @@ function LoadSettingsEvents() {
 }
 
 function LoadPerkSelectionEvents() {
+    if (selectedRole == 0) {
+        LoadSurvivorPerkSelectionEvents();
+    } else {
+        LoadKillerPerkSelectionEvents();
+    }
+}
+
+function LoadSurvivorPerkSelectionEvents() {
     // Set on-click for perk selection
     var perks = document.getElementsByClassName("perk-slot");
 
@@ -1399,6 +1559,46 @@ function LoadPerkSelectionEvents() {
 
 }
 
+function LoadKillerPerkSelectionEvents() {
+    // Set on-click for perk selection
+    var perks = document.getElementsByClassName("killer-perk-slot");
+
+    for (var i = 0; i < perks.length; i++) {
+        let currentPerk = perks[i];
+        console.log(currentPerk);
+
+        currentPerk.addEventListener("click", function() {
+            let curKillerName = Killers[selectedKiller];
+            console.log(`Clicked on perk ${currentPerk.dataset.perkID} for killer ${curKillerName}`);
+            
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetKiller = selectedKiller;
+            perkSearchContainer.dataset.targetPerk = currentPerk.dataset.perkID;
+            perkSearchContainer.dataset.searchType = "perk";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select a Perk...";
+
+            // Reset search results
+            ForcePerkSearch(perkSearchInput, "");
+        });
+    }
+}
+
 function LoadPerkSearchEvents() {
     const perkSearchContainer = document.getElementById("perk-search-container");
 
@@ -1438,7 +1638,7 @@ function LoadPerkSearchEvents() {
  * @param {*} value The value to search for. Default "".
  */
 function ForcePerkSearch(perkSearchBar, value = "") {
-    var searchResults = SearchForPerks(perkSearchBar.value, true);
+    var searchResults = SearchForPerks(perkSearchBar.value, selectedRole == 0);
 
     perkSearchBar.placeholder = "Search Perks...";
 
@@ -1461,7 +1661,11 @@ function ForcePerkSearch(perkSearchBar, value = "") {
         var targetSurvivor = parseInt(perkSearchContainer.dataset.targetSurvivor);
         var targetPerk = parseInt(perkSearchContainer.dataset.targetPerk);
 
-        SurvivorPerks[targetSurvivor][targetPerk] = undefined;
+        if (selectedRole == 0) {
+            SurvivorPerks[targetSurvivor][targetPerk] = undefined;
+        } else {
+            KillerPerks[targetPerk] = undefined;
+        }
 
         UpdatePerkUI();
 
@@ -1470,7 +1674,11 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
         CheckForBalancingErrors();
         if (Config.saveBuilds && saveLoadoutsAndKiller) {
-            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            if (selectedRole == 0) {
+                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            } else {
+                localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+            }
         }
     });
 
@@ -1552,7 +1760,11 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             var targetSurvivor = parseInt(perkSearchContainer.dataset.targetSurvivor);
             var targetPerk = parseInt(perkSearchContainer.dataset.targetPerk);
 
-            SurvivorPerks[targetSurvivor][targetPerk] = currentPerk;
+            if (selectedRole == 0) {
+                SurvivorPerks[targetSurvivor][targetPerk] = currentPerk;
+            } else {
+                KillerPerks[targetPerk] = currentPerk;
+            }
 
             UpdatePerkUI();
 
@@ -1563,8 +1775,11 @@ function ForcePerkSearch(perkSearchBar, value = "") {
             
             SendRoomDataUpdate();
             if (Config.saveBuilds && saveLoadoutsAndKiller) {
-                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
-            }
+                if (selectedRole == 0) {
+                    localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                } else {
+                    localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+                }            }
         });
 
         perkElement.addEventListener("mouseover", function() {

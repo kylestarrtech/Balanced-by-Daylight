@@ -358,7 +358,7 @@ body {
     margin: auto;
 }
 
-.killer-build-component {
+#killer-build-component {
     display: flex;
     flex-flow: row wrap;
 
