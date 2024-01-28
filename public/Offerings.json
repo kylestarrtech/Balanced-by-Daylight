@@ -111,103 +111,103 @@
     ],
     "Killer": [
         {
-            "id": 18,
+            "id": 0,
             "name": "Bloodied Blueprint",
             "icon": "public/Offerings/Bloodied-Blueprint.webp",
             "survivorOffering": false
         },
         {
-            "id": 19,
+            "id": 1,
             "name": "Torn Blueprint",
             "icon": "public/Offerings/Torn-Blueprint.webp",
             "survivorOffering": false
         },
         {
-            "id": 20,
+            "id": 2,
             "name": "Annotated Blueprint",
             "icon": "public/Offerings/Annotated-Blueprint.webp",
             "survivorOffering": false
         },
         {
-            "id": 21,
+            "id": 3,
             "name": "Vigo's Blueprint",
             "icon": "public/Offerings/Vigo_s-Blueprint.webp",
             "survivorOffering": false
         },
         {
-            "id": 22,
+            "id": 4,
             "name": "Scratched Coin",
             "icon": "public/Offerings/Scratched-Coin.webp",
             "survivorOffering": false
         },
         {
-            "id": 23,
+            "id": 5,
             "name": "Cut Coin",
             "icon": "public/Offerings/Cut-Coin.webp",
             "survivorOffering": false
         },
         {
-            "id": 24,
+            "id": 6,
             "name": "Mouldy Oak",
             "icon": "public/Offerings/Mouldy-Oak.webp",
             "survivorOffering": false
         },
         {
-            "id": 25,
+            "id": 7,
             "name": "Rotten Oak",
             "icon": "public/Offerings/Rotten-Oak.webp",
             "survivorOffering": false
         },
         {
-            "id": 26,
+            "id": 8,
             "name": "Putrid Oak",
             "icon": "public/Offerings/Putrid-Oak.webp",
             "survivorOffering": false
         },
         {
-            "id": 27,
+            "id": 9,
             "name": "Shroud of Separation",
             "icon": "public/Offerings/Shroud-Of-Separation.webp",
             "survivorOffering": false
         },
         {
-            "id": 28,
+            "id": 10,
             "name": "Clear Reagent",
             "icon": "public/Offerings/Clear-Reagent.webp",
             "survivorOffering": false
         },
         {
-            "id": 29,
+            "id": 11,
             "name": "Faint Reagent",
             "icon": "public/Offerings/Faint-Reagent.webp",
             "survivorOffering": false
         },
         {
-            "id": 30,
+            "id": 12,
             "name": "Hazy Reagent",
             "icon": "public/Offerings/Hazy-Reagent.webp",
             "survivorOffering": false
         },
         {
-            "id": 31,
+            "id": 13,
             "name": "Murky Reagent",
             "icon": "public/Offerings/Murky-Reagent.webp",
             "survivorOffering": false
         },
         {
-            "id": 32,
+            "id": 14,
             "name": "Cypress Memento Mori",
             "icon": "public/Offerings/Cypress-Memento-Mori.webp",
             "survivorOffering": false
         },
         {
-            "id": 33,
+            "id": 15,
             "name": "Ivory Memento Mori",
             "icon": "public/Offerings/Ivory-Memento-Mori.webp",
             "survivorOffering": false
         },
         {
-            "id": 34,
+            "id": 16,
             "name": "Ebony Memento Mori",
             "icon": "public/Offerings/Ebony-Memento-Mori.webp",
             "survivorOffering": false

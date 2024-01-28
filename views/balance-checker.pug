@@ -19,6 +19,8 @@ html
                     img(src="iconography/Settings.webp")
                 div#discord-button(class="tier-selector-button" onclick="window.open('https://discord.gg/E6zfpwvCce', '_blank')")
                     img(src="iconography/Discord.webp")
+                div#maps-button(class="tier-selector-button")
+                    img(src="iconography/Maps.webp")
                 div#role-swap-button(class="tier-selector-button")
                     img#role-swap-icon(src="iconography/Killer.webp")
                 div.tier-selector-button(onclick="window.location.href = '/'")
@@ -97,7 +99,7 @@ html
             div#main-balance-window
                 h2#selected-killer-title Selected Killer: {KILLER NAME}
                 h2#selected-balance-title Selected Balance: {BALANCE NAME}
-                h2 Survivor Builds
+                h2#selected-role-header Survivor Builds
                 div#survivor-builds-container(class="hide-component")
                     div.survivor-build-component
                         div.perk-slot(class="loadout-slot")
