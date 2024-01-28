@@ -1019,7 +1019,7 @@ body {
     width: 100%;
 }
 
-#selected-killer-title {
+#selected-killer-title, #selected-balance-title {
     font-weight: 400;
 }
 
@@ -1068,6 +1068,10 @@ body {
     text-align: center;
     padding: 20px;
     overflow-y: auto;
+}
+
+#alert-menu {
+    max-width: 90%;
 }
 
 #alert-ok-button, #image-gen-ok-button {
@@ -1143,8 +1147,20 @@ body {
     height: 100%;
 }
 
+#clear-loadout-button {
+    border-color: #ff4444 !important;
+    color: #ffbbbb !important;
+}
+
+.import-code-preview {
+    text-wrap: pretty;
+    max-width: 80%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
 #import-export-button-container {
-    width: 50%;
+    width: 67%;
     display: flex;
     margin: 5px;
     gap: 5px;

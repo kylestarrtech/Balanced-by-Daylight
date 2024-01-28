@@ -38,6 +38,11 @@ var BalancePresets = [
         Name: "L-Tournament",
         Path: "BalancingPresets/L-Tournament.json",
         Balancing: {}
+    },
+    {
+        Name: "The Arkade",
+        Path: "BalancingPresets/Arkade.json",
+        Balancing: {}
     }
 ]
 
@@ -176,6 +181,9 @@ function main() {
 
     // Update Killer Selection UI
     UpdateKillerSelectionUI();
+
+    // Update Balancing Selection UI
+    UpdateBalanceSelectionUI();
 
     // Load button events
     LoadButtonEvents();
@@ -649,6 +657,11 @@ function UpdateKillerSelectionUI() {
     document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
 }
 
+function UpdateBalanceSelectionUI() {
+    var selectedBalanceTitle = document.getElementById("selected-balance-title");
+    selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${BalancePresets[currentBalancingIndex]["Name"]}</span>`;
+}
+
 function ScrollToSelectedKiller(){
     document.getElementById("character-select-grid").scrollTo({
         top : document.querySelector(`[data-killerid="${selectedKiller}"]`).getBoundingClientRect().top + document.getElementById("character-select-grid").scrollTop - 102,
@@ -693,6 +706,8 @@ function UpdateBalancingDropdown() {
             )
         }
         currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+
+        UpdateBalanceSelectionUI();
     });
 
     // var customBalancingContainer = document.getElementById("custom-balance-select");
@@ -745,9 +760,32 @@ function LoadButtonEvents() {
 
     LoadImageGenEvents();
 
+    LoadClearLoadoutButton();
+
     LoadPerkSearchEvents();
 
     LoadRoomEvents();
+}
+
+function LoadClearLoadoutButton() {
+    let clearLoadoutButton = document.getElementById("clear-loadout-button");
+
+    clearLoadoutButton.addEventListener("click", function() {
+        ClearSurvivorPerks();
+        ClearSurvivorOfferings();
+        ClearSurvivorItems();
+        ClearSurvivorAddons();
+
+        if (Config.saveBuilds && saveLoadoutsAndKiller) {
+            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+            localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+            localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+        }
+
+        UpdatePerkUI();
+        CheckForBalancingErrors();
+    });
 }
 
 function GetExportData() {
@@ -877,14 +915,17 @@ function LoadImportEvents() {
             // perkCpt is the current perk we're on
             let perkCpt = 0
 
+            ClearSurvivorPerks();
+
             for(const currentSurvivor of importDataObj.survivorPerksId){
                 if (currentSurvivor.length != 4) {
                     throw "Invalid import data. SurvivorPerks length is not 4.";
                 }
                 
                 for(const currentPerkId of currentSurvivor){
-                    if (currentPerkId == undefined) {
-                        throw "Invalid import data. Perk ID is undefined.";
+                    if (currentPerkId == null) {
+                        perkCpt++
+                        continue;
                     }
 
                     SurvivorPerks[survCpt][perkCpt] = GetPerkById(currentPerkId)
@@ -939,6 +980,7 @@ function LoadImportEvents() {
             UpdateBalancingDropdown();
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+            UpdateBalanceSelectionUI();
             ScrollToSelectedKiller();
         } catch (error) {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
@@ -957,8 +999,40 @@ function LoadImportEvents() {
         // Copy exportData to clipboard
         navigator.clipboard.writeText(compressedText);
 
-        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!");
+        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <span class='import-code-preview'>" + compressedText + "</span>");
     });
+}
+
+function ClearSurvivorPerks() {
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        SurvivorPerks[i] = [
+            null,
+            null,
+            null,
+            null
+        ];
+    }
+}
+
+function ClearSurvivorOfferings() {
+    for (var i = 0; i < SurvivorOfferings.length; i++) {
+        SurvivorOfferings[i] = null;
+    }
+}
+
+function ClearSurvivorItems() {
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        SurvivorItems[i] = null;
+    }
+}
+
+function ClearSurvivorAddons() {
+    for (var i = 0; i < SurvivorAddons.length; i++) {
+        SurvivorAddons[i] = [
+            undefined,
+            undefined
+        ];
+    }
 }
 
 function LoadImageGenEvents() {
@@ -1407,6 +1481,19 @@ function ForcePerkSearch(perkSearchBar, value = "") {
     });
 
     const bannedPerks = GetBannedPerks()    
+
+    searchResults = searchResults.sort((a, b) => {
+        let nameA = a["name"].toUpperCase();
+        let nameB = b["name"].toUpperCase();
+
+        if (nameA < nameB) {
+            return -1;
+        } else if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+
     for (var i = 0; i < searchResults.length; i++) {
         let currentPerk = searchResults[i];
 
@@ -2079,7 +2166,21 @@ function GetBannedPerks(){
         bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].KillerIndvPerkBans)
     }
 
-    return bannedPerks
+    let concatenatedWhitelist = new Array()
+
+    // Concatenate KillerWhitelistedPerks and SurvivorWhitelistedPerks
+    concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].KillerWhitelistedPerks)
+    concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorWhitelistedPerks)
+    console.log(`Concatenated whitelist: ${concatenatedWhitelist}`)
+
+    for (const perk of concatenatedWhitelist) {
+        // If the perk is in the banned perks, remove it
+        if (bannedPerks.includes(perk)) {
+            bannedPerks.splice(bannedPerks.indexOf(perk), 1);
+        }
+    }
+
+    return bannedPerks;
 }
 
 function GetBannedOfferings() {

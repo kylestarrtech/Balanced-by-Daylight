@@ -3,11 +3,11 @@ html
     head 
         title Dead by Daylight Balance Checker
         link(rel="stylesheet", href="/stylesheets/balance-checker.css")
-        link(rel="icon", href="favicon.ico" type="image/x-icon")
+        link(rel="icon", href="iconography/favicon.ico" type="image/x-icon")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
         script(src="/socket.io/socket.io.js" type="text/javascript")
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
     body(onload="main()")
         div#primary-balance-container
             div#balance-tabs-container
@@ -90,8 +90,11 @@ html
                         img(src="iconography/portraits/Singularity.webp")
                     div.character-select-button(data-killerID="32")
                         img(src="iconography/portraits/Xenomorph.webp")
+                    div.character-select-button(data-killerID="33")
+                        img(src="iconography/portraits/GoodGuy.webp")
             div#main-balance-window
                 h2#selected-killer-title Selected Killer: {KILLER NAME}
+                h2#selected-balance-title Selected Balance: {BALANCE NAME}
                 h2 Survivor Builds
                 div#survivor-builds-container(class="hide-component")
                     div.survivor-build-component
@@ -182,6 +185,7 @@ html
                     button#import-button Import Loadout
                     button#export-button Export Loadout
                     button#generate-image-button Generate Image
+                    button#clear-loadout-button Clear Loadout
             div#errors-window
                 h1#error-panel-title Errors
                 div#error-list-container(class="override-scrollbar")

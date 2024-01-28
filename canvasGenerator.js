@@ -35,9 +35,9 @@ function BeginGenerationImport(data, callback) {
         })
         return;
     }
-    //console.log("Build is decompressed, but not parsed.");
+    console.log("Build is decompressed, but not parsed.");
 
-    //console.log(decompressedText);
+    console.log(decompressedText);
     let importedBuild = null;
     try {
         importedBuild = JSON.parse(decompressedText);
@@ -50,6 +50,8 @@ function BeginGenerationImport(data, callback) {
         })
         return;
     }
+
+    console.log(importedBuild);
 
     // What does the canvas need?
     // - Killer Name
@@ -106,8 +108,12 @@ function BeginGenerationImport(data, callback) {
 
     try {
         // Get Balancing Title
-        if (importedBuild.customBalancingOverride) {
-            exampleImageGenObject.BalancingTitle = "Custom Balancing"
+        if (importedBuild.customBalanceOverride) {
+            let truncatedTitle = importedBuild.currentBalancing["Name"].substring(0, 22);
+            if (truncatedTitle.length < importedBuild.currentBalancing["Name"].length) {
+                truncatedTitle += "...";
+            }
+            exampleImageGenObject.BalancingTitle = `${truncatedTitle} (Custom)`;
         } else {
             exampleImageGenObject.BalancingTitle = BalancingTitles[importedBuild.currentBalancingIndex];
         }
@@ -337,7 +343,8 @@ function BeginGenerationImport(data, callback) {
     }
 
 
-    //console.log(exampleImageGenObject);
+    console.log("PASSED OBJECT:");
+    console.log(exampleImageGenObject);
     GenerateImage(exampleImageGenObject, callback);
 }
 
