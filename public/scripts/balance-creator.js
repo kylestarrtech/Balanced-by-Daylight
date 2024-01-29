@@ -1598,7 +1598,7 @@ function LoadPermittedItemsDropdowns() {
 
         for (const addon of addonsOfItem) {
             let optionsElement = document.createElement("option");
-            optionsElement.value = addon["id"];
+            optionsElement.value = addon["globalID"];
             optionsElement.innerHTML = addon["Name"];
             optionsElement.style.backgroundImage = `url(${addon["icon"]})`;
             optionsElement.style.backgroundSize = "contain";
@@ -2517,7 +2517,7 @@ function GetAddonById(id) {
         for (let j = 0; j < currentKiller["Addons"].length; j++) {
             let currentAddon = currentKiller["Addons"][j];
 
-            if (currentAddon["id"] == id) {
+            if (currentAddon["globalID"] == id) {
                 return currentAddon;
             }
         }
