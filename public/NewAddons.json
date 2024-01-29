@@ -150,28 +150,28 @@
             {
                 "id": 0,
                 "globalID": 20,
-                "addonIcon": "public/PowerAddons/Wraith/\"The-Serpent\"---Soot.webp",
+                "addonIcon": "public/PowerAddons/Wraith/The-Serpent-Soot.webp",
                 "Name": "\"The Serpent\" - Soot",
                 "Rarity": 0
             },
             {
                 "id": 1,
                 "globalID": 21,
-                "addonIcon": "public/PowerAddons/Wraith/\"The-Hound\"---Soot.webp",
+                "addonIcon": "public/PowerAddons/Wraith/The-Hound-Soot.webp",
                 "Name": "\"The Hound\" - Soot",
                 "Rarity": 0
             },
             {
                 "id": 2,
                 "globalID": 22,
-                "addonIcon": "public/PowerAddons/Wraith/\"The-Ghost\"---Soot.webp",
+                "addonIcon": "public/PowerAddons/Wraith/The-Ghost-Soot.webp",
                 "Name": "\"The Ghost\" - Soot",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 23,
-                "addonIcon": "public/PowerAddons/Wraith/\"The-Beast\"---Soot.webp",
+                "addonIcon": "public/PowerAddons/Wraith/The-Beast-Soot.webp",
                 "Name": "\"The Beast\" - Soot",
                 "Rarity": 0
             },
@@ -185,91 +185,91 @@
             {
                 "id": 5,
                 "globalID": 25,
-                "addonIcon": "public/PowerAddons/Wraith/\"Blink\"---Mud.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Blink-Mud.webp",
                 "Name": "\"Blink\" - Mud",
                 "Rarity": 1
             },
             {
                 "id": 6,
                 "globalID": 26,
-                "addonIcon": "public/PowerAddons/Wraith/\"Windstorm\"---Mud.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Windstorm-Mud.webp",
                 "Name": "\"Windstorm\" - Mud",
                 "Rarity": 1
             },
             {
                 "id": 7,
                 "globalID": 27,
-                "addonIcon": "public/PowerAddons/Wraith/\"Swift-Hunt\"---Mud.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Swift-Hunt-Mud.webp",
                 "Name": "\"Swift Hunt\" - Mud",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 28,
-                "addonIcon": "public/PowerAddons/Wraith/\"Blind-Warrior\"---Mud.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Blind-Warrior-Mud.webp",
                 "Name": "\"Blind Warrior\" - Mud",
                 "Rarity": 1
             },
             {
                 "id": 9,
                 "globalID": 29,
-                "addonIcon": "public/PowerAddons/Wraith/\"Windstorm\"---White.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Windstorm-White.webp",
                 "Name": "\"Windstorm\" - White",
                 "Rarity": 2
             },
             {
                 "id": 10,
                 "globalID": 30,
-                "addonIcon": "public/PowerAddons/Wraith/\"Swift-Hunt\"---White.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Swift-Hunt-White.webp",
                 "Name": "\"Swift Hunt\" - White",
                 "Rarity": 2
             },
             {
                 "id": 11,
                 "globalID": 31,
-                "addonIcon": "public/PowerAddons/Wraith/\"Shadow-Dance\"---White.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Shadow-Dance-White.webp",
                 "Name": "\"Shadow Dance\" - White",
                 "Rarity": 2
             },
             {
                 "id": 12,
                 "globalID": 32,
-                "addonIcon": "public/PowerAddons/Wraith/\"Blink\"---White.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Blink-White.webp",
                 "Name": "\"Blink\" - White",
                 "Rarity": 2
             },
             {
                 "id": 13,
                 "globalID": 33,
-                "addonIcon": "public/PowerAddons/Wraith/\"Blind-Warrior\"---White.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Blind-Warrior-White.webp",
                 "Name": "\"Blind Warrior\" - White",
                 "Rarity": 2
             },
             {
                 "id": 14,
                 "globalID": 34,
-                "addonIcon": "public/PowerAddons/Wraith/\"Windstorm\"---Blood.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Windstorm-Blood.webp",
                 "Name": "\"Windstorm\" - Blood",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 35,
-                "addonIcon": "public/PowerAddons/Wraith/\"Swift-Hunt\"---Blood.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Swift-Hunt-Blood.webp",
                 "Name": "\"Swift Hunt\" - Blood",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 36,
-                "addonIcon": "public/PowerAddons/Wraith/\"Shadow-Dance\"---Blood.webp",
+                "addonIcon": "public/PowerAddons/Wraith/Shadow-Dance-Blood.webp",
                 "Name": "\"Shadow Dance\" - Blood",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 37,
-                "addonIcon": "public/PowerAddons/Wraith/\"All-Seeing\"---Blood.webp",
+                "addonIcon": "public/PowerAddons/Wraith/All-Seeing-Blood.webp",
                 "Name": "\"All Seeing\" - Blood",
                 "Rarity": 3
             },
@@ -283,7 +283,7 @@
             {
                 "id": 19,
                 "globalID": 39,
-                "addonIcon": "public/PowerAddons/Wraith/\"All-Seeing\"---Spirit.webp",
+                "addonIcon": "public/PowerAddons/Wraith/All-Seeing-Spirit.webp",
                 "Name": "\"All Seeing\" - Spirit",
                 "Rarity": 4
             }
@@ -559,7 +559,7 @@
             {
                 "id": 17,
                 "globalID": 77,
-                "addonIcon": "public/PowerAddons/Nurse/\"Bad-Man_S\"-Last-Breath.webp",
+                "addonIcon": "public/PowerAddons/Nurse/Bad-Man_S-Last-Breath.webp",
                 "Name": "\"Bad Man's\" Last Breath",
                 "Rarity": 3
             },
@@ -669,7 +669,7 @@
             {
                 "id": 12,
                 "globalID": 92,
-                "addonIcon": "public/PowerAddons/Shape/J.-Myers-Memorial.webp",
+                "addonIcon": "public/PowerAddons/Shape/J-Myers-Memorial.webp",
                 "Name": "J. Myers Memorial",
                 "Rarity": 2
             },
@@ -889,14 +889,14 @@
             {
                 "id": 2,
                 "globalID": 122,
-                "addonIcon": "public/PowerAddons/Doctor/\"Order\"---Class-I.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Order-Class-I.webp",
                 "Name": "\"Order\" - Class I",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 123,
-                "addonIcon": "public/PowerAddons/Doctor/\"Calm\"---Class-I.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Calm-Class-I.webp",
                 "Name": "\"Calm\" - Class I",
                 "Rarity": 0
             },
@@ -910,28 +910,28 @@
             {
                 "id": 5,
                 "globalID": 125,
-                "addonIcon": "public/PowerAddons/Doctor/\"Restraint\"---Class-Ii.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Restraint-Class-Ii.webp",
                 "Name": "\"Restraint\" - Class II",
                 "Rarity": 1
             },
             {
                 "id": 6,
                 "globalID": 126,
-                "addonIcon": "public/PowerAddons/Doctor/\"Order\"---Class-Ii.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Order-Class-Ii.webp",
                 "Name": "\"Order\" - Class II",
                 "Rarity": 1
             },
             {
                 "id": 7,
                 "globalID": 127,
-                "addonIcon": "public/PowerAddons/Doctor/\"Discipline\"---Class-Ii.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Discipline-Class-Ii.webp",
                 "Name": "\"Discipline\" - Class II",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 128,
-                "addonIcon": "public/PowerAddons/Doctor/\"Calm\"---Class-Ii.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Calm-Class-Ii.webp",
                 "Name": "\"Calm\" - Class II",
                 "Rarity": 1
             },
@@ -959,42 +959,42 @@
             {
                 "id": 12,
                 "globalID": 132,
-                "addonIcon": "public/PowerAddons/Doctor/\"Restraint\"---Class-Iii.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Restraint-Class-Iii.webp",
                 "Name": "\"Restraint\" - Class III",
                 "Rarity": 2
             },
             {
                 "id": 13,
                 "globalID": 133,
-                "addonIcon": "public/PowerAddons/Doctor/\"Discipline\"---Class-Iii.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Discipline-Class-Iii.webp",
                 "Name": "\"Discipline\" - Class III",
                 "Rarity": 2
             },
             {
                 "id": 14,
                 "globalID": 134,
-                "addonIcon": "public/PowerAddons/Doctor/\"Restraint\"---Carter_S-Notes.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Restraint-Carter_S-Notes.webp",
                 "Name": "\"Restraint\" - Carter's Notes",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 135,
-                "addonIcon": "public/PowerAddons/Doctor/\"Order\"---Carter_S-Notes.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Order-Carter_S-Notes.webp",
                 "Name": "\"Order\" - Carter's Notes",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 136,
-                "addonIcon": "public/PowerAddons/Doctor/\"Discipline\"---Carter_S-Notes.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Discipline-Carter_S-Notes.webp",
                 "Name": "\"Discipline\" - Carter's Notes",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 137,
-                "addonIcon": "public/PowerAddons/Doctor/\"Calm\"---Carter_S-Notes.webp",
+                "addonIcon": "public/PowerAddons/Doctor/Calm-Carter_S-Notes.webp",
                 "Name": "\"Calm\" - Carter's Notes",
                 "Rarity": 3
             },
@@ -1422,7 +1422,7 @@
             {
                 "id": 17,
                 "globalID": 196,
-                "addonIcon": "public/PowerAddons/Nightmare/\"Z\"-Block.webp",
+                "addonIcon": "public/PowerAddons/Nightmare/Z-Block.webp",
                 "Name": "\"Z\" Block",
                 "Rarity": 3
             },
@@ -1525,7 +1525,7 @@
             {
                 "id": 11,
                 "globalID": 210,
-                "addonIcon": "public/PowerAddons/Pig/Rules-Set-No.2.webp",
+                "addonIcon": "public/PowerAddons/Pig/Rules-Set-No_2.webp",
                 "Name": "Rules Set No.2",
                 "Rarity": 2
             },
@@ -1698,7 +1698,7 @@
             {
                 "id": 15,
                 "globalID": 234,
-                "addonIcon": "public/PowerAddons/Clown/Ether-15%-Vol.webp",
+                "addonIcon": "public/PowerAddons/Clown/Ether-15-Vol.webp",
                 "Name": "Ether 15% Vol",
                 "Rarity": 3
             },
@@ -2173,140 +2173,140 @@
             {
                 "id": 0,
                 "globalID": 299,
-                "addonIcon": "public/PowerAddons/Ghost Face/Philly.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Philly.webp",
                 "Name": "Philly",
                 "Rarity": 0
             },
             {
                 "id": 1,
                 "globalID": 300,
-                "addonIcon": "public/PowerAddons/Ghost Face/Walleye_S-Matchbook.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Walleye_S-Matchbook.webp",
                 "Name": "Walleye's Matchbook",
                 "Rarity": 0
             },
             {
                 "id": 2,
                 "globalID": 301,
-                "addonIcon": "public/PowerAddons/Ghost Face/Headline-Cut-Outs.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Headline-Cut-Outs.webp",
                 "Name": "Headline Cut-Outs",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 302,
-                "addonIcon": "public/PowerAddons/Ghost Face/Cheap-Cologne.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Cheap-Cologne.webp",
                 "Name": "Cheap Cologne",
                 "Rarity": 0
             },
             {
                 "id": 4,
                 "globalID": 303,
-                "addonIcon": "public/PowerAddons/Ghost Face/Telephoto-Lens.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Telephoto-Lens.webp",
                 "Name": "Telephoto Lens",
                 "Rarity": 1
             },
             {
                 "id": 5,
                 "globalID": 304,
-                "addonIcon": "public/PowerAddons/Ghost Face/Cinch-Straps.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Cinch-Straps.webp",
                 "Name": "Cinch Straps",
                 "Rarity": 1
             },
             {
                 "id": 6,
                 "globalID": 305,
-                "addonIcon": "public/PowerAddons/Ghost Face/Olsen_S-Journal.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Olsen_S-Journal.webp",
                 "Name": "Olsen's Journal",
                 "Rarity": 1
             },
             {
                 "id": 7,
                 "globalID": 306,
-                "addonIcon": "public/PowerAddons/Ghost Face/Olsen_S-Address-Book.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Olsen_S-Address-Book.webp",
                 "Name": "Olsen's Address Book",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 307,
-                "addonIcon": "public/PowerAddons/Ghost Face/Marked-Map.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Marked-Map.webp",
                 "Name": "Marked Map",
                 "Rarity": 1
             },
             {
                 "id": 9,
                 "globalID": 308,
-                "addonIcon": "public/PowerAddons/Ghost Face/Olsen_S-Wallet.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Olsen_S-Wallet.webp",
                 "Name": "Olsen's Wallet",
                 "Rarity": 2
             },
             {
                 "id": 10,
                 "globalID": 309,
-                "addonIcon": "public/PowerAddons/Ghost Face/Leather-Knife-Sheath.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Leather-Knife-Sheath.webp",
                 "Name": "Leather Knife Sheath",
                 "Rarity": 2
             },
             {
                 "id": 11,
                 "globalID": 310,
-                "addonIcon": "public/PowerAddons/Ghost Face/Lasting-Perfume.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Lasting-Perfume.webp",
                 "Name": "Lasting Perfume",
                 "Rarity": 2
             },
             {
                 "id": 12,
                 "globalID": 311,
-                "addonIcon": "public/PowerAddons/Ghost Face/Knife-Belt-Clip.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Knife-Belt-Clip.webp",
                 "Name": "Knife Belt Clip",
                 "Rarity": 2
             },
             {
                 "id": 13,
                 "globalID": 312,
-                "addonIcon": "public/PowerAddons/Ghost Face/Chewed-Pen.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Chewed-Pen.webp",
                 "Name": "Chewed Pen",
                 "Rarity": 2
             },
             {
                 "id": 14,
                 "globalID": 313,
-                "addonIcon": "public/PowerAddons/Ghost Face/Victim_S-Detailed-Routine.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Victim_S-Detailed-Routine.webp",
                 "Name": "Victim's Detailed Routine",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 314,
-                "addonIcon": "public/PowerAddons/Ghost Face/Night-Vision-Monocular.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Night-Vision-Monocular.webp",
                 "Name": "Night Vision Monocular",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 315,
-                "addonIcon": "public/PowerAddons/Ghost Face/Drop-Leg-Knife-Sheath.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Drop-Leg-Knife-Sheath.webp",
                 "Name": "Drop-Leg Knife Sheath",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 316,
-                "addonIcon": "public/PowerAddons/Ghost Face/Driver_S-License.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Driver_S-License.webp",
                 "Name": "Driver's License",
                 "Rarity": 3
             },
             {
                 "id": 18,
                 "globalID": 317,
-                "addonIcon": "public/PowerAddons/Ghost Face/\"Ghost-Face-Caught-On-Tape\".webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Ghost-Face-Caught-On-Tape.webp",
                 "Name": "\"Ghost Face Caught on Tape\"",
                 "Rarity": 4
             },
             {
                 "id": 19,
                 "globalID": 318,
-                "addonIcon": "public/PowerAddons/Ghost Face/Outdoor-Security-Camera.webp",
+                "addonIcon": "public/PowerAddons/GhostFace/Outdoor-Security-Camera.webp",
                 "Name": "Outdoor Security Camera",
                 "Rarity": 4
             }
@@ -2795,8 +2795,8 @@
             {
                 "id": 6,
                 "globalID": 385,
-                "addonIcon": "public/PowerAddons/Executioner/Leopart-Print-Fabric.webp",
-                "Name": "Leopart-Print Fabric",
+                "addonIcon": "public/PowerAddons/Executioner/Leopard-Print-Fabric.webp",
+                "Name": "Leopard-Print Fabric",
                 "Rarity": 1
             },
             {
@@ -2830,7 +2830,7 @@
             {
                 "id": 11,
                 "globalID": 390,
-                "addonIcon": "public/PowerAddons/Executioner/Misty-Day,-Remains-Of-Judgement.webp",
+                "addonIcon": "public/PowerAddons/Executioner/Misty-Day-Remains-Of-Judgement.webp",
                 "Name": "Misty Day, Remains of Judgement",
                 "Rarity": 2
             },
@@ -3216,8 +3216,8 @@
             {
                 "id": 4,
                 "globalID": 443,
-                "addonIcon": "public/PowerAddons/Trickster/Tequuila-Moonrock.webp",
-                "Name": "Tequuila Moonrock",
+                "addonIcon": "public/PowerAddons/Trickster/Tequila-Moonrock.webp",
+                "Name": "Tequila Moonrock",
                 "Rarity": 1
             },
             {
@@ -3340,7 +3340,7 @@
             {
                 "id": 1,
                 "globalID": 460,
-                "addonIcon": "public/PowerAddons/Nemesis/S.T.A.R.S.-Field-Combat-Manual.webp",
+                "addonIcon": "public/PowerAddons/Nemesis/STARS-Field-Combat-Manual.webp",
                 "Name": "S.T.A.R.S. Field Combat Manual",
                 "Rarity": 0
             },
@@ -3459,7 +3459,7 @@
             {
                 "id": 18,
                 "globalID": 477,
-                "addonIcon": "public/PowerAddons/Nemesis/Shattered-S.T.A.R.S.-Badge.webp",
+                "addonIcon": "public/PowerAddons/Nemesis/Shattered-STARS-Badge.webp",
                 "Name": "Shattered S.T.A.R.S. Badge",
                 "Rarity": 4
             },
@@ -3700,7 +3700,7 @@
             {
                 "id": 11,
                 "globalID": 510,
-                "addonIcon": "public/PowerAddons/Artist/O-Grief,-O-Lover.webp",
+                "addonIcon": "public/PowerAddons/Artist/O-Grief-O-Lover.webp",
                 "Name": "O Grief, O Lover",
                 "Rarity": 2
             },
@@ -4039,8 +4039,8 @@
             {
                 "id": 18,
                 "globalID": 557,
-                "addonIcon": "public/PowerAddons/Dredge/Sacrifical-Knife.webp",
-                "Name": "Sacrifical Knife",
+                "addonIcon": "public/PowerAddons/Dredge/Sacrificial-Knife.webp",
+                "Name": "Sacrificial Knife",
                 "Rarity": 4
             },
             {
@@ -4072,7 +4072,7 @@
             {
                 "id": 2,
                 "globalID": 561,
-                "addonIcon": "public/PowerAddons/Mastermind/R.P.D.-Shoulder-Walkie.webp",
+                "addonIcon": "public/PowerAddons/Mastermind/RPD-Shoulder-Walkie.webp",
                 "Name": "R.P.D. Shoulder Walkie",
                 "Rarity": 0
             },
@@ -4107,7 +4107,7 @@
             {
                 "id": 7,
                 "globalID": 566,
-                "addonIcon": "public/PowerAddons/Mastermind/Chalice-(Gold).webp",
+                "addonIcon": "public/PowerAddons/Mastermind/Chalice-Gold.webp",
                 "Name": "Chalice (Gold)",
                 "Rarity": 1
             },
@@ -4149,7 +4149,7 @@
             {
                 "id": 13,
                 "globalID": 572,
-                "addonIcon": "public/PowerAddons/Mastermind/Egg-(Gold).webp",
+                "addonIcon": "public/PowerAddons/Mastermind/Egg-Gold.webp",
                 "Name": "Egg (Gold)",
                 "Rarity": 2
             },
@@ -4348,140 +4348,140 @@
             {
                 "id": 0,
                 "globalID": 599,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Ultrasonic-Trap-Speaker.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Ultrasonic-Trap-Speaker.webp",
                 "Name": "Ultrasonic Trap Speaker",
                 "Rarity": 0
             },
             {
                 "id": 1,
                 "globalID": 600,
-                "addonIcon": "public/PowerAddons/Skull Merchant/High-Power-Floodlight.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/High-Power-Floodlight.webp",
                 "Name": "High-Power Floodlight",
                 "Rarity": 0
             },
             {
                 "id": 2,
                 "globalID": 601,
-                "addonIcon": "public/PowerAddons/Skull Merchant/High-Current-Upgrade.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/High-Current-Upgrade.webp",
                 "Name": "High-Current Upgrade",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 602,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Adi-Valente-Issue-1.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Adi-Valente-Issue-1.webp",
                 "Name": "Adi Valente Issue 1",
                 "Rarity": 0
             },
             {
                 "id": 4,
                 "globalID": 603,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Stereo-Remote-Mic.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Stereo-Remote-Mic.webp",
                 "Name": "Stereo Remote Mic",
                 "Rarity": 1
             },
             {
                 "id": 5,
                 "globalID": 604,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Shotgun-Speakers.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Shotgun-Speakers.webp",
                 "Name": "Shotgun Speakers",
                 "Rarity": 1
             },
             {
                 "id": 6,
                 "globalID": 605,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Supercharge.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Supercharge.webp",
                 "Name": "Supercharge",
                 "Rarity": 1
             },
             {
                 "id": 7,
                 "globalID": 606,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Low-Power-Mode.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Low-Power-Mode.webp",
                 "Name": "Low-Power Mode",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 607,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Adaptive-Lighting.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Adaptive-Lighting.webp",
                 "Name": "Adaptive Lighting",
                 "Rarity": 1
             },
             {
                 "id": 9,
                 "globalID": 608,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Vital-Targeting-Processor.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Vital-Targeting-Processor.webp",
                 "Name": "Vital Targeting Processor",
                 "Rarity": 2
             },
             {
                 "id": 10,
                 "globalID": 609,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Powdered-Glass.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Powdered-Glass.webp",
                 "Name": "Powdered Glass",
                 "Rarity": 2
             },
             {
                 "id": 11,
                 "globalID": 610,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Loose-Screw.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Loose-Screw.webp",
                 "Name": "Loose Screw",
                 "Rarity": 2
             },
             {
                 "id": 12,
                 "globalID": 611,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Infrared-Upgrade.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Infrared-Upgrade.webp",
                 "Name": "Infrared Upgrade",
                 "Rarity": 2
             },
             {
                 "id": 13,
                 "globalID": 612,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Brown-Noise-Generator.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Brown-Noise-Generator.webp",
                 "Name": "Brown Noise Generator",
                 "Rarity": 2
             },
             {
                 "id": 14,
                 "globalID": 613,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Randomised-Strobes.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Randomised-Strobes.webp",
                 "Name": "Randomised Strobes",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 614,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Geographical-Readout.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Geographical-Readout.webp",
                 "Name": "Geographical Readout",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 615,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Prototype-Rotor.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Prototype-Rotor.webp",
                 "Name": "Prototype Rotor",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 616,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Advanced-Movement-Prediction.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Advanced-Movement-Prediction.webp",
                 "Name": "Advanced Movement Prediction",
                 "Rarity": 3
             },
             {
                 "id": 18,
                 "globalID": 617,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Expired-Batteries.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Expired-Batteries.webp",
                 "Name": "Expired Batteries",
                 "Rarity": 4
             },
             {
                 "id": 19,
                 "globalID": 618,
-                "addonIcon": "public/PowerAddons/Skull Merchant/Iridescent-Unpublished-Manuscript.webp",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Iridescent-Unpublished-Manuscript.webp",
                 "Name": "Iridescent Unpublished Manuscript",
                 "Rarity": 4
             }
@@ -4783,140 +4783,140 @@
             {
                 "id": 0,
                 "globalID": 659,
-                "addonIcon": "public/PowerAddons/Good Guy/Tiny-Scalpel.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Tiny-Scalpel.webp",
                 "Name": "Tiny Scalpel",
                 "Rarity": 0
             },
             {
                 "id": 1,
                 "globalID": 660,
-                "addonIcon": "public/PowerAddons/Good Guy/Strobing-Light.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Strobing-Light.webp",
                 "Name": "Strobing Light",
                 "Rarity": 0
             },
             {
                 "id": 2,
                 "globalID": 661,
-                "addonIcon": "public/PowerAddons/Good Guy/Good-Guy-Box.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Good-Guy-Box.webp",
                 "Name": "Good Guy Box",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 662,
-                "addonIcon": "public/PowerAddons/Good Guy/Doll-Eyes.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Doll-Eyes.webp",
                 "Name": "Doll Eyes",
                 "Rarity": 0
             },
             {
                 "id": 4,
                 "globalID": 663,
-                "addonIcon": "public/PowerAddons/Good Guy/Power-Drill.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Power-Drill.webp",
                 "Name": "Power Drill",
                 "Rarity": 1
             },
             {
                 "id": 5,
                 "globalID": 664,
-                "addonIcon": "public/PowerAddons/Good Guy/Jump-Rope.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Jump-Rope.webp",
                 "Name": "Jump Rope",
                 "Rarity": 1
             },
             {
                 "id": 6,
                 "globalID": 665,
-                "addonIcon": "public/PowerAddons/Good Guy/Hair-Spray-And-Candle.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Hair-Spray-And-Candle.webp",
                 "Name": "Hair Spray & Candle",
                 "Rarity": 1
             },
             {
                 "id": 7,
                 "globalID": 666,
-                "addonIcon": "public/PowerAddons/Good Guy/Electric-Carving-Knife.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Electric-Carving-Knife.webp",
                 "Name": "Electric Carving Knife",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 667,
-                "addonIcon": "public/PowerAddons/Good Guy/Automatic-Screwdriver.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Automatic-Screwdriver.webp",
                 "Name": "Automatic Screwdriver",
                 "Rarity": 1
             },
             {
                 "id": 9,
                 "globalID": 668,
-                "addonIcon": "public/PowerAddons/Good Guy/Yardstick.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Yardstick.webp",
                 "Name": "Yardstick",
                 "Rarity": 2
             },
             {
                 "id": 10,
                 "globalID": 669,
-                "addonIcon": "public/PowerAddons/Good Guy/Silk-Pillow.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Silk-Pillow.webp",
                 "Name": "Silk Pillow",
                 "Rarity": 2
             },
             {
                 "id": 11,
                 "globalID": 670,
-                "addonIcon": "public/PowerAddons/Good Guy/Running-Shoes.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Running-Shoes.webp",
                 "Name": "Running Shoes",
                 "Rarity": 2
             },
             {
                 "id": 12,
                 "globalID": 671,
-                "addonIcon": "public/PowerAddons/Good Guy/Rat-Poison.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Rat-Poison.webp",
                 "Name": "Rat Poison",
                 "Rarity": 2
             },
             {
                 "id": 13,
                 "globalID": 672,
-                "addonIcon": "public/PowerAddons/Good Guy/Portable-Tv.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Portable-Tv.webp",
                 "Name": "Portable TV",
                 "Rarity": 2
             },
             {
                 "id": 14,
                 "globalID": 673,
-                "addonIcon": "public/PowerAddons/Good Guy/Straight-Razor.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Straight-Razor.webp",
                 "Name": "Straight Razor",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 674,
-                "addonIcon": "public/PowerAddons/Good Guy/Plastic-Bag.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Plastic-Bag.webp",
                 "Name": "Plastic Bag",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 675,
-                "addonIcon": "public/PowerAddons/Good Guy/Pile-Of-Nails.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Pile-Of-Nails.webp",
                 "Name": "Pile of Nails",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 676,
-                "addonIcon": "public/PowerAddons/Good Guy/Mirror-Shards.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Mirror-Shards.webp",
                 "Name": "Mirror Shards",
                 "Rarity": 3
             },
             {
                 "id": 18,
                 "globalID": 677,
-                "addonIcon": "public/PowerAddons/Good Guy/Iridescent-Amulet.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Iridescent-Amulet.webp",
                 "Name": "Iridescent Amulet",
                 "Rarity": 4
             },
             {
                 "id": 19,
                 "globalID": 678,
-                "addonIcon": "public/PowerAddons/Good Guy/Hard-Hat.webp",
+                "addonIcon": "public/PowerAddons/GoodGuy/Hard-Hat.webp",
                 "Name": "Hard Hat",
                 "Rarity": 4
             }

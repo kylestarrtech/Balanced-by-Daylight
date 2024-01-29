@@ -1666,6 +1666,44 @@ function LoadKillerPerkSelectionEvents() {
         ForceOfferingSearch(perkSearchInput, "");
     });
 
+    var addons = document.getElementsByClassName("killer-addon-slot");
+
+    if (addons.length != 2) {
+        console.error("Killer addon slots != 2! This should never happen!");
+        return;
+    }
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddonElement = addons[i];
+
+        currentAddonElement.addEventListener("click", function() {
+            DebugLog(`Clicked on addon ${currentAddonElement.innerText} for killer ${Killers[selectedKiller]}`);
+
+            var perkSearchContainer = document.getElementById("perk-search-container");
+            perkSearchContainer.hidden = false;
+            perkSearchContainer.classList.add("intro-blur-animation-class-0p5s");
+
+            var perkSearchModule = document.getElementById("perk-search-module-container");
+            perkSearchModule.style.left = "50%";
+            perkSearchModule.style.top = "50%";
+
+            perkSearchContainer.dataset.targetKiller = selectedKiller;
+            perkSearchContainer.dataset.addonSlot = currentAddonElement.dataset.addonSlot;
+            perkSearchContainer.dataset.searchType = "killer-addon";
+
+            // Get perk search input
+            var perkSearchInput = document.getElementById("perk-search-bar");
+            perkSearchInput.value = "";
+            perkSearchInput.focus();
+
+            var perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerText = "Select an Addon...";
+
+            // Reset search results
+            ForceKillerAddonSearch(perkSearchInput, "");
+        });
+    }
 
 }
 
@@ -1697,6 +1735,9 @@ function LoadPerkSearchEvents() {
                 break;
             case "addon":
                 ForceAddonSearch(perkSearchBar, perkSearchBar.value);
+                break;
+            case "killer-addon":
+                ForceKillerAddonSearch(perkSearchBar, perkSearchBar.value);
                 break;
         }
     });
@@ -2228,6 +2269,141 @@ function ForceAddonSearch(perkSearchBar, value = "") {
     }
 }
 
+function ForceKillerAddonSearch(perkSearchBar, value = "") {
+    perkSearchBar.placeholder = "Search Addons...";
+
+    const perkSearchContainer = document.getElementById("perk-search-container");
+
+    let filterData = {
+        "killer": perkSearchContainer.dataset.targetKiller,
+        "addonSlot": perkSearchContainer.dataset.addonSlot
+    }
+
+    if (perkSearchContainer.dataset.targetKiller == undefined) {
+        GenerateAlertModal("Killer Persistence Error", "There was an error finding the killer to search appropriate addons for. Please try again or file an issue on the GitHub repo/Discord server.");
+        return;
+    }
+
+    let searchResults = SearchForKillerAddons(perkSearchBar.value, filterData["killer"]);
+
+    let addonSearchResultsContainer = document.getElementById("perk-search-results-module");
+
+    addonSearchResultsContainer.innerHTML = "";
+    addonSearchResultsContainer.classList.add("item-gap-format");
+
+    // Add a blank addon to the top of the list
+    let blankAddon = document.createElement("div");
+    blankAddon.classList.add("item-slot-result");
+
+    let blankImg = document.createElement("img");
+    blankImg.draggable = false;
+    blankImg.src = "public/Addons/blank.webp";
+
+    blankAddon.appendChild(blankImg);
+    addonSearchResultsContainer.appendChild(blankAddon);
+
+    blankAddon.addEventListener("click", function() {
+        KillerAddons[filterData["addonSlot"]] = undefined;
+
+        UpdatePerkUI();
+
+        perkSearchContainer.dataset.targetKiller = undefined;
+
+        CheckForBalancingErrors();
+
+        if (Config.saveBuilds) {
+            localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+        }
+    });
+
+    blankAddon.addEventListener("mouseover", function() {
+        let perkTooltip = document.getElementById("perk-highlight-name");
+
+        perkTooltip.innerText = "Blank Addon";
+    });
+
+    const bannedAddons = GetBannedKillerAddons();
+
+    for (var i = 0; i < searchResults.length; i++) {
+        let currentAddon = searchResults[i];
+
+        let isBanned = false;
+        let isEquipped = false;
+
+        let addonElement = document.createElement("div");
+        addonElement.classList.add("item-slot-result");
+
+        // Check if the addon is banned.
+        if(bannedAddons.includes(currentAddon)) {
+            isBanned = true;
+        }
+
+        // Get current addon slot
+        let currentSlot = filterData["addonSlot"];
+        let targetSlot = currentSlot == 0 ? 1 : 0; // Get the other slot
+
+        // Check if the addon is already equipped
+        if (KillerAddons[targetSlot] != undefined) {
+            if (KillerAddons[targetSlot]["globalID"] == currentAddon["globalID"]) {
+                isEquipped = true;
+            }
+        }
+
+        // Add classes based on addon status
+        if (isBanned && isEquipped) {
+            addonElement.classList.add("item-slot-result-banned-and-equipped");
+        } else if (isBanned) {
+            addonElement.classList.add("item-slot-result-banned");
+        } else if (isEquipped) {
+            addonElement.classList.add("item-slot-result-equipped");
+        }
+
+        addonElement.dataset.addonID = currentAddon["globalID"];
+        addonElement.dataset.killer = filterData["killer"];
+
+        let addonImg = document.createElement("img");
+        addonImg.draggable = false;
+        addonImg.src = currentAddon["addonIcon"];
+
+        addonElement.appendChild(addonImg);
+        addonSearchResultsContainer.appendChild(addonElement);
+
+        addonElement.addEventListener("click", function() {
+            KillerAddons[filterData["addonSlot"]] = currentAddon;
+
+            UpdatePerkUI();
+
+            perkSearchContainer.dataset.targetKiller = undefined;
+
+            CheckForBalancingErrors();
+
+            SendRoomDataUpdate();
+
+            if (Config.saveBuilds) {
+                localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+            }
+        });
+
+        addonElement.addEventListener("mouseover", function() {
+            let perkTooltip = document.getElementById("perk-highlight-name");
+
+            perkTooltip.innerHTML = currentAddon["Name"];
+
+            if (isBanned) {
+                if (isEquipped) {
+                    perkTooltip.innerHTML += " <span style='color: #ffbd80'>(Equipped + Banned)</span>";
+                } else {
+                    perkTooltip.innerHTML += " <span style='color: #ff8080'>(Banned)</span>";
+                }
+            } else {
+                if (isEquipped) {
+                    perkTooltip.innerHTML += " <span style='color: #80ff80'>(Equipped)</span>";
+                }
+            }
+        });
+    }
+}
+
 function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
@@ -2307,6 +2483,31 @@ function SearchForAddons(searchQuery, itemType) {
         let currentAddon = addonList[i];
         if (currentAddon["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
             if ((onlyShowNonBanned && bannedAddons.includes(currentAddon.id))) { continue; }
+
+            searchResults.push(currentAddon);
+        }
+    }
+
+    return searchResults;
+}
+
+function SearchForKillerAddons(searchQuery, killer) {
+    var searchResults = [];
+
+    console.log(`Searching for killer addons for ${killer}`);
+
+    let bannedAddons = new Array()
+    if (onlyShowNonBanned) {
+        bannedAddons = GetBannedKillerAddons();
+    }
+
+    let addonList = KillerAddonsList[killer]["Addons"];
+
+    for (var i = 0; i < addonList.length; i++) {
+        let currentAddon = addonList[i];
+
+        if (currentAddon["Name"].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if ((onlyShowNonBanned && bannedAddons.includes(currentAddon))) { continue; }
 
             searchResults.push(currentAddon);
         }
@@ -2412,7 +2613,7 @@ function GetAddons() {
             GetItems();
         }
     }
-    xhttp.open("GET", "Addons.json", false);
+    xhttp.open("GET", "NewAddons.json", false);
     xhttp.send();
 }
 
@@ -2607,50 +2808,34 @@ function GetBannedKillerAddons() {
         // }
     }
 
-    //console.log(`curKLRAddonsList: ${curKLRAddonsList}`);
+    //console.log(`curKLRAddonsList:`);
 
     if (curKLRAddonsList == undefined) { return null; }
 
     // Get banned addon tiers from killer override
     let bannedAddonTiers = currentBalancing.KillerOverride[selectedKiller]["AddonTiersBanned"];
 
-    for (let i = 0; i < curKLRAddonsList.length; i++) {
-        let currentRarity = curKLRAddonsList[i];
-        let addonList = currentRarity["Addons"]
+    for (const curAddon of curKLRAddonsList) {
+        //console.log(curAddon);
+        let addonID = curAddon["globalID"];
 
-        console.log(`Checking rarity ${currentRarity["Rarity"]}`);
+        if (curAddon == undefined) { continue; }
 
-        if (bannedAddonTiers.includes(i)) {
-            console.log(`Banning tier ${currentRarity["Rarity"]}`);
-            for (const addon of addonList) {
-                bannedAddons.push(addon);
-                console.log(`Banning addon ${addon}`);
-            }
+        //console.log(`curAddon: ${curAddon["Name"]}`);
+
+        let curRarity = curAddon["Rarity"];
+
+        if (bannedAddonTiers.includes(curRarity)) {
+            bannedAddons.push(curAddon);
             continue;
         }
 
-        console.log(`Rarity ${currentRarity["Rarity"]} is not banned.`);
-
         // Get banned addons from killer override
         let bannedAddonsList = currentBalancing.KillerOverride[selectedKiller]["IndividualAddonBans"];
-        console.log(addonList);
-        console.log(bannedAddonsList);
 
-        for (const addon of addonList) {
-            console.log(`Checking addon ${addon}`);
-            // Check if the addon is already in the banned addons list
-            if (bannedAddons.includes(addon)) { continue; }
-
-            console.log(`\t${addon} is not in banned addons list.`);
-
-            if (bannedAddonsList.includes(addon)) {
-                bannedAddons.push(addon);
-                console.log(`\tBanning addon ${addon}`);
-            }
+        if (bannedAddonsList.includes(addonID) || bannedAddonsList.includes(curAddon["Name"])) {
+            bannedAddons.push(curAddon);
         }
-
-        console.log(`CURRENT BANNED ADDONS:`);
-        console.log(bannedAddons);
     }
 
     return bannedAddons;
@@ -3718,6 +3903,38 @@ function GetItemById(id) {
 
         if (currentItem["id"] == id) {
             return currentItem;
+        }
+    }
+
+    return undefined;
+}
+
+function GetKillerAddonById(id) {
+    for (let i = 0; i < KillerAddonsList.length; i++) {
+        let currentKiller = KillerAddonsList[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["globalID"] == id) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+function GetKillerAddonByName(name) {
+    for (let i = 0; i < KillerAddonsList.length; i++) {
+        let currentKiller = KillerAddonsList[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["Name"].toLowerCase() == name.toLowerCase()) {
+                return currentAddon;
+            }
         }
     }
 
