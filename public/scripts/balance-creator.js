@@ -1311,47 +1311,46 @@ function LoadKillerOverrideUI(id) {
 
     DebugLog(Addons[CurrentKiller]);
     for (var i = 0; i < Addons[CurrentKiller].Addons.length; i++) {
-        var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[i]);
+        let currentAddon = Addons[CurrentKiller].Addons[i];
+        let currentRarity = currentAddon["Rarity"];
+        
+        // Skip if the rarity is banned
+        var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[currentRarity]);
 
         if (currentCheckbox.checked) { continue; }
 
-        //DebugLog("Current Addons:");
-        //DebugLog(Addons[CurrentKiller].Addons);
-
-        CurrentAddonList = Addons[CurrentKiller].Addons[i].Addons;
         //DebugLog(CurrentAddonList);
-        for (var j = 0; j < CurrentAddonList.length; j++) {
-            var optionsElement = document.createElement("option");
-            optionsElement.value = CurrentAddonList[j];
-            optionsElement.innerHTML = CurrentAddonList[j];
-            optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[i];
-            optionsElement.style.color = "white";
-            optionsElement.style.fontWeight = 700;
-            optionsElement.style.textShadow = "0px 0px 5px black";
-            optionsElement.style.textAlign = "center";
-            optionsElement.style.border = "1px solid black";
-            optionsElement.style.padding = "5px";
-            //DebugLog(`Added Addon ${CurrentAddonList[j]} to ${KillerBalance[CurrentKiller].Name}`);
-            addonDropdown.appendChild(optionsElement);
-        }
+        var optionsElement = document.createElement("option");
+        optionsElement.value = currentAddon["globalID"];
+        optionsElement.innerHTML = currentAddon["Name"];
+        optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[currentRarity];
+        optionsElement.style.color = "white";
+        optionsElement.style.fontWeight = 700;
+        optionsElement.style.textShadow = "0px 0px 5px black";
+        optionsElement.style.textAlign = "center";
+        optionsElement.style.border = "1px solid black";
+        optionsElement.style.padding = "5px";
+        //DebugLog(`Added Addon ${CurrentAddonList[j]} to ${KillerBalance[CurrentKiller].Name}`);
+        addonDropdown.appendChild(optionsElement);
     }
 
+    // The confirmed addon bans dropdown
     addonDropdown = document.getElementById("killer-individual-addon-confirmed-bans-dropdown");
     addonDropdown.innerHTML = "";
 
     for (var i = 0; i < KillerData.IndividualAddonBans.length; i++) {
+        let currentAddonID = KillerData.IndividualAddonBans[i];
+        let currentAddon = GetAddonById(currentAddonID);
+
+        if (currentAddon == undefined) { continue; }
+
         var optionsElement = document.createElement("option");
-        optionsElement.value = KillerData.IndividualAddonBans[i];
-        optionsElement.innerHTML = KillerData.IndividualAddonBans[i];
+        optionsElement.value = currentAddon["globalID"];
+        optionsElement.innerHTML = currentAddon["Name"];
         
         // Get the rarity of the addon
-        var addonRarity = 0;
-        for (var j = 0; j < Addons[CurrentKiller].Addons.length; j++) {
-            if (Addons[CurrentKiller].Addons[j].Addons.includes(KillerData.IndividualAddonBans[i])) {
-                addonRarity = j;
-                break;
-            }
-        }
+        addonRarity = currentAddon["Rarity"];
+
         optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[addonRarity];
 
         optionsElement.style.color = "white";
@@ -2056,7 +2055,7 @@ function GetAddons() {
             GetItems();
         }
     }
-    xhttp.open("GET", "Addons.json", false);
+    xhttp.open("GET", "NewAddons.json", false);
     xhttp.send();
 }
 
@@ -2281,7 +2280,39 @@ function ImportBalancing() {
         NewKillerBalance.KillerWhitelistedPerks = curKiller.KillerWhitelistedPerks;
         NewKillerBalance.KillerWhitelistedComboPerks = curKiller.KillerWhitelistedComboPerks;
         NewKillerBalance.AddonTiersBanned = curKiller.AddonTiersBanned;
-        NewKillerBalance.IndividualAddonBans = curKiller.IndividualAddonBans;
+
+        // Check if Individual bans are parsable as integers
+        let rawIndvAddonBans = curKiller.IndividualAddonBans;
+        let sanitizedIndvAddonBanList = [];
+        for (let j = 0; j < rawIndvAddonBans.length; j++) {
+            testParse = parseInt(rawIndvAddonBans[j]);
+
+            if (isNaN(testParse)) {
+                // Using old format, so we need to convert it to the new format
+                console.log(`Converting old format ban ${rawIndvAddonBans[j]} to new format...`);
+
+                // Find addon by name
+                let addon = GetAddonByName(rawIndvAddonBans[j]);
+
+                console.log(`Addon found:`);
+                console.log(addon);
+
+                if (addon == undefined) {
+                    console.error(`Addon ${rawIndvAddonBans[j]} is not a valid addon!`);
+                    continue;
+                }
+
+                sanitizedIndvAddonBanList.push(addon["globalID"]);
+            } else {
+                // Using new format, so we can just add it to the list
+                sanitizedIndvAddonBanList.push(testParse);
+            }
+        }
+        NewKillerBalance.IndividualAddonBans = sanitizedIndvAddonBanList;
+        console.log(`Sanitized individual addon bans:`);
+        console.log(sanitizedIndvAddonBanList);
+
+
         NewKillerBalance.SurvivorOfferings = curKiller.SurvivorOfferings;
         NewKillerBalance.KillerOfferings = curKiller.KillerOfferings;
 
@@ -2472,6 +2503,38 @@ function FindAddonsOfType(type) {
     }
 
     return addons;
+}
+
+function GetAddonById(id) {
+    for (let i = 0; i < Addons.length; i++) {
+        let currentKiller = Addons[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["id"] == id) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+function GetAddonByName(name) {
+    for (let i = 0; i < Addons.length; i++) {
+        let currentKiller = Addons[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["Name"].toLowerCase() == name.toLowerCase()) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
 }
 
 function DebugLog(text, printStackTrace = false) {
