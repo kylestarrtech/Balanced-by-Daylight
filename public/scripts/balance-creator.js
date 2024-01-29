@@ -480,8 +480,13 @@ function SetKillerOverrideEvents() {
 
         // Add the addon selections to the killer if they are not already in the list
         for (var i = 0; i < selectedAddons.length; i++) {
-            if (KillerBalance[selectedKiller].IndividualAddonBans.includes(selectedAddons[i])) { continue; }
-            KillerBalance[selectedKiller].IndividualAddonBans.push(selectedAddons[i]);
+            let addonToAdd = parseInt(selectedAddons[i]);
+
+            if (isNaN(addonToAdd)) { console.error("Invalid addon ID!"); continue; }
+            
+            if (KillerBalance[selectedKiller].IndividualAddonBans.includes(addonToAdd)) { continue; }
+
+            KillerBalance[selectedKiller].IndividualAddonBans.push(addonToAdd);
         }
 
         DebugLog(`Added <b>${selectedAddons}</b> to <b>${KillerBalance[selectedKiller].Name}</b>`);
