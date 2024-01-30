@@ -952,6 +952,22 @@ function UpdateRoleSwapIcon() {
     elementToChange.src = elementSrc;
 }
 
+function GenerateMapModal() {
+    // Get maps for the selected killer
+    let maps = currentBalancing["KillerOverride"][selectedKiller]["Map"];
+
+    let mapNames = [];
+    for (var i = 0; i < maps.length; i++) {
+        mapNames.push(Maps[maps[i]]);
+    }
+
+    // Create the modal
+    GenerateAlertModal(
+        "Map Information",
+        `When ${selectedRole == 0 ? "playing against" : "playing as"} <b>${Killers[selectedKiller]}</b>, the following maps are required:<br><br><b>${mapNames.join("</b>, <b>")}</b><br><br>Note that certain maps may have different conditions, consult official balancing for more information.`
+    );
+}
+
 function LoadClearLoadoutButton() {
     let clearLoadoutButton = document.getElementById("clear-loadout-button");
 
