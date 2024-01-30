@@ -691,6 +691,7 @@ function UpdateKillerPerkUI() {
 
     //-20 for the 10px padding on left & right
     const maxWidth = buildsComponent.offsetWidth - 20;
+    //const maxWidth = 710;
 
     buildsComponent.style.maxWidth = maxWidth + "px";
     buildsComponent.innerHTML = "";
@@ -762,7 +763,7 @@ function UpdateKillerPerkUI() {
     let addonSrc2 = "";
 
     try {
-        addonSrc1 = currentKillerAddons[0]["icon"];
+        addonSrc1 = currentKillerAddons[0]["addonIcon"];
 
         if (addonSrc1 == undefined) {
             throw "Addon 1 is undefined.";
@@ -772,7 +773,7 @@ function UpdateKillerPerkUI() {
     }
 
     try {
-        addonSrc2 = currentKillerAddons[1]["icon"];
+        addonSrc2 = currentKillerAddons[1]["addonIcon"];
 
         if (addonSrc2 == undefined) {
             throw "Addon 2 is undefined.";
@@ -968,6 +969,17 @@ function LoadClearLoadoutButton() {
                 localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
             }
         } else {
+            ClearKillerPerks();
+
+            KillerOffering = undefined;
+            
+            ClearKillerAddons();
+
+            if (Config.saveBuilds && saveLoadoutsAndKiller) {
+                localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+                localStorage.setItem("KillerOffering", "undefined");
+                localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+            }
         }
 
         UpdatePerkUI();
@@ -1019,12 +1031,37 @@ function GetExportData() {
         );
     }
 
+    const killerPerksId = new Array()
+    
+    for(const perk of KillerPerks){
+        if (perk == null) {
+            killerPerksId.push(null)
+            continue;
+        }
+        killerPerksId.push(perk.id)
+    }
+
+    const killerOfferingId = KillerOffering == null ? null : KillerOffering.id
+
+    const killerAddonsId = new Array()
+
+    for(const addon of KillerAddons){
+        if (addon == null) {
+            killerAddonsId.push(null)
+            continue;
+        }
+        killerAddonsId.push(addon["globalID"])
+    }
+
 
     const exportJson = {
         "survivorPerksId": survivorPerksId,
         "survivorOfferingsId": survivorOfferingsId,
         "survivorItemsId": survivorItemsId,
         "survivorAddonInfo": survivorAddonInfo,
+        "killerPerksId": killerPerksId,
+        "killerOfferingId": killerOfferingId,
+        "killerAddonsId": killerAddonsId,
         "selectedKiller": selectedKiller,
         "currentBalancingIndex": currentBalancingIndex,
         "customBalanceOverride": customBalanceOverride,
@@ -1147,6 +1184,44 @@ function LoadImportEvents() {
                 survCpt++;
             }
 
+            // Check if importData.killerPerksId is a valid array
+            if (importDataObj.killerPerksId == undefined) {
+                throw "Invalid import data. KillerPerks is undefined.";
+            }
+
+            ClearKillerPerks();
+
+            perkCpt = 0
+            for(const currentPerkId of importDataObj.killerPerksId){
+                if (currentPerkId == null) {
+                    perkCpt++
+                    continue;
+                }
+                KillerPerks[perkCpt] = GetPerkById(currentPerkId);
+
+                perkCpt++
+            }
+
+            KillerOffering = GetOfferingById(importDataObj.killerOfferingId)
+
+            // Check if importData.killerAddonsId is a valid array
+            if (importDataObj.killerAddonsId == undefined) {
+                throw "Invalid import data. KillerAddons is undefined.";
+            }
+
+            ClearKillerAddons();
+
+            let addonCpt = 0
+            for(const currentAddonId of importDataObj.killerAddonsId){
+                if (currentAddonId == null) {
+                    addonCpt++
+                    continue;
+                }
+                KillerAddons[addonCpt] = GetKillerAddonById(currentAddonId);
+
+                addonCpt++
+            }
+
             // If all checks pass, set the remaining data
             currentBalancingIndex = importDataObj.currentBalancingIndex;
             selectedKiller = importDataObj.selectedKiller;
@@ -1157,6 +1232,11 @@ function LoadImportEvents() {
                 localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
                 localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
                 localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+                
+                localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+                localStorage.setItem("KillerOffering", JSON.stringify(KillerOffering));
+                localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+                
                 localStorage.setItem("selectedKiller", selectedKiller);
             }
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
@@ -1190,6 +1270,26 @@ function LoadImportEvents() {
     });
 }
 
+function ClearKillerPerks() {
+    for (var i = 0; i < KillerPerks.length; i++) {
+        KillerPerks[i] = null;
+    }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+    }
+}
+
+function ClearKillerAddons() {
+    KillerAddons = [undefined, undefined];
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+    }
+
+    UpdatePerkUI();
+}
+
 function ClearSurvivorPerks() {
     for (var i = 0; i < SurvivorPerks.length; i++) {
         SurvivorPerks[i] = [
@@ -1199,17 +1299,29 @@ function ClearSurvivorPerks() {
             null
         ];
     }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+    }
 }
 
 function ClearSurvivorOfferings() {
     for (var i = 0; i < SurvivorOfferings.length; i++) {
         SurvivorOfferings[i] = null;
     }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+    }
 }
 
 function ClearSurvivorItems() {
     for (var i = 0; i < SurvivorItems.length; i++) {
         SurvivorItems[i] = null;
+    }
+    
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
     }
 }
 
@@ -1219,6 +1331,10 @@ function ClearSurvivorAddons() {
             undefined,
             undefined
         ];
+    }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
     }
 }
 
@@ -1335,6 +1451,7 @@ function SetKillerCharacterSelectEvents() {
 
         let currentName = Killers[newIndex];
         currentButton.addEventListener("click", function() {
+            let currentKlr = selectedKiller;
             DebugLog(newIndex);
             DebugLog(currentName);
 
@@ -1358,8 +1475,15 @@ function SetKillerCharacterSelectEvents() {
             selectedKiller = newIndex;
             localStorage.setItem("selectedKiller", selectedKiller);
 
+            if (currentKlr != selectedKiller) {
+                if (selectedRole != 0) {
+                    ClearKillerAddons();
+                }
+            }
+
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+            
 
             ScrollToSelectedKiller();
 
@@ -3685,6 +3809,68 @@ function CheckForKillerBalanceErrors() {
         } 
     }
 
+    // Check for banned addons
+    console.log("CHECKING FOR BANNED ADDONS!!!")
+    let bannedKlrAddons = GetBannedKillerAddons();
+
+    passesGuardClause = true;
+
+    if (bannedKlrAddons == undefined) { passesGuardClause = false; }
+
+    if (passesGuardClause) {
+        console.log("PASSED GUARD CLAUSE!!!")
+        for (var i = 0; i < KillerAddons.length; i++) {
+            let currentAddon = KillerAddons[i];
+            console.log(`Checking for banned addons on addon slot #${i}...`)
+            console.log(currentAddon);
+
+            if (currentAddon == undefined) { continue; }
+
+            console.log(`Current addon is not undefined!`)
+
+            let foundBannedMatch = false;
+            for (var j = 0; j < bannedKlrAddons.length; j++) {
+                let currentBannedAddon = bannedKlrAddons[j];
+
+                if (currentBannedAddon == undefined) { continue; }
+
+                console.log(`Checking if ${currentAddon["id"]} is banned...`)
+
+                if (currentAddon["globalID"] == currentBannedAddon["globalID"]) {
+                    foundBannedMatch = true;
+                }
+            }
+
+            if (foundBannedMatch) {
+                console.log(`Banned addon detected!`)
+                let addonElements = document.getElementsByClassName("killer-addon-slot");
+
+                let targetElement = undefined;
+
+                for (var j = 0; j < addonElements.length; j++) {
+                    let currentElement = addonElements[j];
+
+                    if (currentElement.dataset.addonSlot == i) {
+                        targetElement = currentElement;
+                        break;
+                    }
+                }
+                if (targetElement == undefined) { continue; }
+
+                targetElement.classList.add("banned-addon");
+
+                MasterErrorList.push(
+                    GenerateErrorObject(
+                        "Banned Addon",
+                        `Addon <b>${currentAddon["Name"]}</b> is banned when playing as <b>${currentBalancing.KillerOverride[selectedKiller]["Name"]}</b>.`,
+                        undefined,
+                        "iconography/AddonError.webp"
+                    )
+                );
+            }
+        }
+    }
+
     UpdateErrorUI();
 }
 
@@ -3891,6 +4077,8 @@ function GetOfferingById(id){
     for(const offering of KillerOfferings){
         if(offering.id == id) return offering
     }
+
+    return undefined
 }
 
 function GetItemById(id) {
