@@ -1363,6 +1363,8 @@ function LoadKillerOverrideUI(id) {
     addonDropdown = document.getElementById("killer-individual-addon-confirmed-bans-dropdown");
     addonDropdown.innerHTML = "";
 
+    console.log(`LoadKillerOverrideUI(${id}): ${KillerData.IndividualAddonBans}`)
+
     for (var i = 0; i < KillerData.IndividualAddonBans.length; i++) {
         let currentAddonID = KillerData.IndividualAddonBans[i];
         let currentAddon = GetAddonById(currentAddonID);
@@ -1618,7 +1620,7 @@ function LoadPermittedItemsDropdowns() {
 
         for (const addon of addonsOfItem) {
             let optionsElement = document.createElement("option");
-            optionsElement.value = addon["globalID"];
+            optionsElement.value = addon["id"];
             optionsElement.innerHTML = addon["Name"];
             optionsElement.style.backgroundImage = `url(${addon["icon"]})`;
             optionsElement.style.backgroundSize = "contain";
