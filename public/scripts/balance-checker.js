@@ -1377,7 +1377,7 @@ function LoadImportEvents() {
         // Copy exportData to clipboard
         navigator.clipboard.writeText(compressedText);
 
-        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <span class='import-code-preview'>" + compressedText + "</span>");
+        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <b><span class='import-code-preview'>" + compressedText + "</span></b>");
     });
 }
 
