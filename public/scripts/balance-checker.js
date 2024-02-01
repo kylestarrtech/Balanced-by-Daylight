@@ -1288,42 +1288,49 @@ function LoadImportEvents() {
                 survCpt++;
             }
 
+            let updateKillerPerks = importDataObj.killerPerksId != undefined;
             // Check if importData.killerPerksId is a valid array
             if (importDataObj.killerPerksId == undefined) {
-                throw "Invalid import data. KillerPerks is undefined.";
+                //throw "Invalid import data. KillerPerks is undefined.";
             }
 
-            ClearKillerPerks();
-
-            perkCpt = 0
-            for(const currentPerkId of importDataObj.killerPerksId){
-                if (currentPerkId == null) {
+            if (updateKillerPerks) {
+                ClearKillerPerks();
+    
+                perkCpt = 0
+                for(const currentPerkId of importDataObj.killerPerksId){
+                    if (currentPerkId == null) {
+                        perkCpt++
+                        continue;
+                    }
+                    KillerPerks[perkCpt] = GetPerkById(currentPerkId);
+    
                     perkCpt++
-                    continue;
                 }
-                KillerPerks[perkCpt] = GetPerkById(currentPerkId);
-
-                perkCpt++
+    
             }
+            
+            KillerOffering = GetOfferingById(importDataObj.killerOfferingId);
 
-            KillerOffering = GetOfferingById(importDataObj.killerOfferingId)
-
+            let updateKillerAddons = importDataObj.killerAddonsId != undefined;
             // Check if importData.killerAddonsId is a valid array
             if (importDataObj.killerAddonsId == undefined) {
-                throw "Invalid import data. KillerAddons is undefined.";
+                //throw "Invalid import data. KillerAddons is undefined.";
             }
 
-            ClearKillerAddons();
+            if (updateKillerAddons) {
+                ClearKillerAddons();
 
-            let addonCpt = 0
-            for(const currentAddonId of importDataObj.killerAddonsId){
-                if (currentAddonId == null) {
+                let addonCpt = 0
+                for(const currentAddonId of importDataObj.killerAddonsId){
+                    if (currentAddonId == null) {
+                        addonCpt++
+                        continue;
+                    }
+                    KillerAddons[addonCpt] = GetKillerAddonById(currentAddonId);
+
                     addonCpt++
-                    continue;
                 }
-                KillerAddons[addonCpt] = GetKillerAddonById(currentAddonId);
-
-                addonCpt++
             }
 
             // If all checks pass, set the remaining data
