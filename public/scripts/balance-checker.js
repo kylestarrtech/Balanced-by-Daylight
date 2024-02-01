@@ -1642,6 +1642,8 @@ function LoadSettingsEvents() {
             settingsContainer.hidden = !settingsContainer.hidden;
         }, 500);
 
+        UpdateBalanceSelectionUI();
+
         CheckForBalancingErrors();
         SendRoomDataUpdate();
     });
