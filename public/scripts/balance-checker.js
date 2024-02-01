@@ -3988,6 +3988,34 @@ function CheckForKillerBalanceErrors() {
         }
     }
 
+    // Check for duplicate addons
+    if (KillerAddons.length == 2) {
+        let passesDupeGuardClause = true;
+
+        if (KillerAddons[0] == undefined || KillerAddons[1] == undefined) { passesDupeGuardClause = false; }
+        
+        if (passesDupeGuardClause) {
+            if (KillerAddons[0]["globalID"] == KillerAddons[1]["globalID"]) {
+                let addonElements = document.getElementsByClassName("killer-addon-slot");
+
+                for (var i = 0; i < addonElements.length; i++) {
+                    let currentElement = addonElements[i];
+                    currentElement.classList.add("banned-addon");
+                }
+
+                MasterErrorList.push(
+                    GenerateErrorObject(
+                        "Duplicate Addon",
+                        `Addon <b>${KillerAddons[0]["Name"]}</b> is duplicated in the Killer's build.`,
+                        undefined,
+                        "iconography/AddonError.webp",
+                        true
+                    )
+                );
+            }
+        }
+    }
+
     UpdateErrorUI();
 }
 
