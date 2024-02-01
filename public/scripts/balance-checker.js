@@ -1506,9 +1506,19 @@ function SetKillerCharacterSelectEvents() {
             selectedKiller = newIndex;
             localStorage.setItem("selectedKiller", selectedKiller);
 
+            let currentKillerOverride = currentBalancing.KillerOverride[selectedKiller];
+
             if (currentKlr != selectedKiller) {
                 if (selectedRole != 0) {
                     ClearKillerAddons();
+                }
+
+                if (currentKillerOverride.IsDisabled != undefined) {
+                    let isDisabled = currentKillerOverride.IsDisabled;
+
+                    if (isDisabled) {
+                        GenerateAlertModal("Killer Disabled", `Killer <b>${currentName}</b> is disabled in the current balancing! You may still select this killer, but they may be ineligible to play in official matches.`);
+                    }
                 }
             }
 

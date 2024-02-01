@@ -367,6 +367,15 @@ function SetKillerOverrideEvents() {
         KillerBalance[selectedKillerIndex].AntiFacecamp = antiFacecampCheckbox.checked;
         DebugLog(`Anti-Facecamp set to <b>${KillerBalance[selectedKillerIndex].AntiFacecamp}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
     });
+    
+    var disabledCheckbox = document.getElementById("killer-disabled-checkbox");
+    disabledCheckbox.addEventListener("change", function() {
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        KillerBalance[selectedKillerIndex].IsDisabled = disabledCheckbox.checked;
+        DebugLog(`Disabled set to <b>${KillerBalance[selectedKillerIndex].IsDisabled}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
+    });
 
     AddonCheckboxBanIDList = [
         ["killer-addon-ban-checkbox-common", "Common"],
@@ -1280,6 +1289,9 @@ function LoadKillerOverrideUI(id) {
     var antiFacecampCheckbox = document.getElementById("killer-antifacecamp-checkbox");
     antiFacecampCheckbox.checked = KillerData.AntiFacecampPermitted;
 
+    var disabledCheckbox = document.getElementById("killer-disabled-checkbox");
+    disabledCheckbox.checked = KillerData.IsDisabled;
+
     // Load Selected Tiers
     DeselectAllValuesInListbox("killer-tier-selection-dropdown");
     DeselectAllValuesInListbox("survivor-balance-tier-dropdown");
@@ -2169,6 +2181,7 @@ function ExportBalancing() {
         NewKiller = CreateKillerOverride(KillerBalance[i].Name);
         DebugLog(KillerBalance[i]);
 
+        NewKiller.IsDisabled = KillerBalance[i].IsDisabled == undefined ? false : KillerBalance[i].IsDisabled;
         NewKiller.Map = KillerBalance[i].Map;
         NewKiller.BalanceTiers = KillerBalance[i].BalanceTiers;
         NewKiller.SurvivorBalanceTiers = KillerBalance[i].SurvivorBalanceTiers;
