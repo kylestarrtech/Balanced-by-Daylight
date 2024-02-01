@@ -6,6 +6,7 @@ const Killers = require('./public/Killers.json');
 const Perks = require('./public/Perks/dbdperks.json');
 const Items = require('./public/Items.json');
 const Offerings = require('./public/Offerings.json');
+const KillerAddons = require('./public/NewAddons.json');
 
 const BalancingTitles = [
     "Outrun the Fog (OTF)",
@@ -31,7 +32,7 @@ function BeginGenerationImport(data, callback) {
         callback({
             status: 400,
             imageData: null,
-            message: "Invalid build data. Could not decrypy and decompress."
+            message: "Invalid build data. Could not decrypt and decompress."
         })
         return;
     }
@@ -47,6 +48,16 @@ function BeginGenerationImport(data, callback) {
             status: 400,
             imageData: null,
             message: "Invalid build data. Could not parse build JSON."
+        })
+        return;
+    }
+
+    if (decompressedText.selectedRole == 1) {
+        //console.log("Role is killer, not survivor.");
+        callback({
+            status: 400,
+            imageData: null,
+            message: "Invalid build data. Role is killer, not survivor."
         })
         return;
     }

@@ -340,6 +340,40 @@ body {
     margin: auto;
 }
 
+.hide-component {
+    display: none !important;
+}
+
+#killer-builds-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+
+    width: max-content;
+    margin: auto;
+}
+
+#killer-build-component {
+    display: flex;
+    flex-flow: row wrap;
+
+    background-color: #ffffff04;
+    margin: auto;
+    padding: 10px;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    height: 100px;
+    border-radius: 17px;
+}
+
 .loadout-slot {
     background-color: #ffffff04;
 
@@ -643,6 +677,10 @@ body {
 
     align-items: center;
     justify-content: center;
+}
+
+.addon-slot.killer-perk-slot {
+    aspect-ratio: 0.75 / 1 !important;
 }
 
 .addon-slot img {

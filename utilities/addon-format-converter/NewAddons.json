@@ -1,0 +1,4925 @@
+[
+    {
+        "Name": "The Trapper",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 0,
+                "addonIcon": "public/PowerAddons/Trapper/Trapper-Gloves.webp",
+                "Name": "Trapper Gloves",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 1,
+                "addonIcon": "public/PowerAddons/Trapper/Padded-Jaws.webp",
+                "Name": "Padded Jaws",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 2,
+                "addonIcon": "public/PowerAddons/Trapper/Makeshift-Wrap.webp",
+                "Name": "Makeshift Wrap",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 3,
+                "addonIcon": "public/PowerAddons/Trapper/Bear-Oil.webp",
+                "Name": "Bear Oil",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 4,
+                "addonIcon": "public/PowerAddons/Trapper/Wax-Brick.webp",
+                "Name": "Wax Brick",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 5,
+                "addonIcon": "public/PowerAddons/Trapper/Serrated-Jaws.webp",
+                "Name": "Serrated Jaws",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 6,
+                "addonIcon": "public/PowerAddons/Trapper/Lengthened-Jaws.webp",
+                "Name": "Lengthened Jaws",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 7,
+                "addonIcon": "public/PowerAddons/Trapper/Coffee-Grounds.webp",
+                "Name": "Coffee Grounds",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 8,
+                "addonIcon": "public/PowerAddons/Trapper/4-Coil-Spring-Kit.webp",
+                "Name": "4-Coil Spring Kit",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 9,
+                "addonIcon": "public/PowerAddons/Trapper/Trapper-Bag.webp",
+                "Name": "Trapper Bag",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 10,
+                "addonIcon": "public/PowerAddons/Trapper/Tar-Bottle.webp",
+                "Name": "Tar Bottle",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 11,
+                "addonIcon": "public/PowerAddons/Trapper/Secondary-Coil.webp",
+                "Name": "Secondary Coil",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 12,
+                "addonIcon": "public/PowerAddons/Trapper/Rusted-Jaws.webp",
+                "Name": "Rusted Jaws",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 13,
+                "addonIcon": "public/PowerAddons/Trapper/Fastening-Tools.webp",
+                "Name": "Fastening Tools",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 14,
+                "addonIcon": "public/PowerAddons/Trapper/Trapper-Sack.webp",
+                "Name": "Trapper Sack",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 15,
+                "addonIcon": "public/PowerAddons/Trapper/Tension-Spring.webp",
+                "Name": "Tension Spring",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 16,
+                "addonIcon": "public/PowerAddons/Trapper/Oily-Coil.webp",
+                "Name": "Oily Coil",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 17,
+                "addonIcon": "public/PowerAddons/Trapper/Honing-Stone.webp",
+                "Name": "Honing Stone",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 18,
+                "addonIcon": "public/PowerAddons/Trapper/Iridescent-Stone.webp",
+                "Name": "Iridescent Stone",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 19,
+                "addonIcon": "public/PowerAddons/Trapper/Bloody-Coil.webp",
+                "Name": "Bloody Coil",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Wraith",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 20,
+                "addonIcon": "public/PowerAddons/Wraith/\"The-Serpent\"---Soot.webp",
+                "Name": "\"The Serpent\" - Soot",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 21,
+                "addonIcon": "public/PowerAddons/Wraith/\"The-Hound\"---Soot.webp",
+                "Name": "\"The Hound\" - Soot",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 22,
+                "addonIcon": "public/PowerAddons/Wraith/\"The-Ghost\"---Soot.webp",
+                "Name": "\"The Ghost\" - Soot",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 23,
+                "addonIcon": "public/PowerAddons/Wraith/\"The-Beast\"---Soot.webp",
+                "Name": "\"The Beast\" - Soot",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 24,
+                "addonIcon": "public/PowerAddons/Wraith/Bone-Clapper.webp",
+                "Name": "Bone Clapper",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 25,
+                "addonIcon": "public/PowerAddons/Wraith/\"Blink\"---Mud.webp",
+                "Name": "\"Blink\" - Mud",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 26,
+                "addonIcon": "public/PowerAddons/Wraith/\"Windstorm\"---Mud.webp",
+                "Name": "\"Windstorm\" - Mud",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 27,
+                "addonIcon": "public/PowerAddons/Wraith/\"Swift-Hunt\"---Mud.webp",
+                "Name": "\"Swift Hunt\" - Mud",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 28,
+                "addonIcon": "public/PowerAddons/Wraith/\"Blind-Warrior\"---Mud.webp",
+                "Name": "\"Blind Warrior\" - Mud",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 29,
+                "addonIcon": "public/PowerAddons/Wraith/\"Windstorm\"---White.webp",
+                "Name": "\"Windstorm\" - White",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 30,
+                "addonIcon": "public/PowerAddons/Wraith/\"Swift-Hunt\"---White.webp",
+                "Name": "\"Swift Hunt\" - White",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 31,
+                "addonIcon": "public/PowerAddons/Wraith/\"Shadow-Dance\"---White.webp",
+                "Name": "\"Shadow Dance\" - White",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 32,
+                "addonIcon": "public/PowerAddons/Wraith/\"Blink\"---White.webp",
+                "Name": "\"Blink\" - White",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 33,
+                "addonIcon": "public/PowerAddons/Wraith/\"Blind-Warrior\"---White.webp",
+                "Name": "\"Blind Warrior\" - White",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 34,
+                "addonIcon": "public/PowerAddons/Wraith/\"Windstorm\"---Blood.webp",
+                "Name": "\"Windstorm\" - Blood",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 35,
+                "addonIcon": "public/PowerAddons/Wraith/\"Swift-Hunt\"---Blood.webp",
+                "Name": "\"Swift Hunt\" - Blood",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 36,
+                "addonIcon": "public/PowerAddons/Wraith/\"Shadow-Dance\"---Blood.webp",
+                "Name": "\"Shadow Dance\" - Blood",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 37,
+                "addonIcon": "public/PowerAddons/Wraith/\"All-Seeing\"---Blood.webp",
+                "Name": "\"All Seeing\" - Blood",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 38,
+                "addonIcon": "public/PowerAddons/Wraith/Coxcombed-Clapper.webp",
+                "Name": "Coxcombed Clapper",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 39,
+                "addonIcon": "public/PowerAddons/Wraith/\"All-Seeing\"---Spirit.webp",
+                "Name": "\"All Seeing\" - Spirit",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Hillbilly",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 40,
+                "addonIcon": "public/PowerAddons/Hillbilly/Steel-Toe-Boots.webp",
+                "Name": "Steel Toe Boots",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 41,
+                "addonIcon": "public/PowerAddons/Hillbilly/Junkyard-Air-Filter.webp",
+                "Name": "Junkyard Air Filter",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 42,
+                "addonIcon": "public/PowerAddons/Hillbilly/Heavy-Clutch.webp",
+                "Name": "Heavy Clutch",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 43,
+                "addonIcon": "public/PowerAddons/Hillbilly/Speed-Limiter.webp",
+                "Name": "Speed Limiter",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 44,
+                "addonIcon": "public/PowerAddons/Hillbilly/Dad_S-Boots.webp",
+                "Name": "Dad's Boots",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 45,
+                "addonIcon": "public/PowerAddons/Hillbilly/Punctured-Muffler.webp",
+                "Name": "Punctured Muffler",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 46,
+                "addonIcon": "public/PowerAddons/Hillbilly/Off-Brand-Motor-Oil.webp",
+                "Name": "Off-Brand Motor Oil",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 47,
+                "addonIcon": "public/PowerAddons/Hillbilly/Death-Engravings.webp",
+                "Name": "Death Engravings",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 48,
+                "addonIcon": "public/PowerAddons/Hillbilly/Big-Buckle.webp",
+                "Name": "Big Buckle",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 49,
+                "addonIcon": "public/PowerAddons/Hillbilly/Mother_S-Helpers.webp",
+                "Name": "Mother's Helpers",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 50,
+                "addonIcon": "public/PowerAddons/Hillbilly/Low-Kickback-Chains.webp",
+                "Name": "Low Kickback Chains",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 51,
+                "addonIcon": "public/PowerAddons/Hillbilly/Leafy-Mash.webp",
+                "Name": "Leafy Mash",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 52,
+                "addonIcon": "public/PowerAddons/Hillbilly/Doom-Engravings.webp",
+                "Name": "Doom Engravings",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 53,
+                "addonIcon": "public/PowerAddons/Hillbilly/Black-Grease.webp",
+                "Name": "Black Grease",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 54,
+                "addonIcon": "public/PowerAddons/Hillbilly/Tuned-Carburetor.webp",
+                "Name": "Tuned Carburetor",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 55,
+                "addonIcon": "public/PowerAddons/Hillbilly/Spiked-Boots.webp",
+                "Name": "Spiked Boots",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 56,
+                "addonIcon": "public/PowerAddons/Hillbilly/Pighouse-Gloves.webp",
+                "Name": "Pighouse Gloves",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 57,
+                "addonIcon": "public/PowerAddons/Hillbilly/Lopro-Chains.webp",
+                "Name": "LoPro Chains",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 58,
+                "addonIcon": "public/PowerAddons/Hillbilly/Apex-Muffler.webp",
+                "Name": "Apex Muffler",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 59,
+                "addonIcon": "public/PowerAddons/Hillbilly/Iridescent-Brick.webp",
+                "Name": "Iridescent Brick",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Nurse",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 60,
+                "addonIcon": "public/PowerAddons/Nurse/Wooden-Horse.webp",
+                "Name": "Wooden Horse",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 61,
+                "addonIcon": "public/PowerAddons/Nurse/White-Nit-Comb.webp",
+                "Name": "White Nit Comb",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 62,
+                "addonIcon": "public/PowerAddons/Nurse/Plaid-Flannel.webp",
+                "Name": "Plaid Flannel",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 63,
+                "addonIcon": "public/PowerAddons/Nurse/Metal-Spoon.webp",
+                "Name": "Metal Spoon",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 64,
+                "addonIcon": "public/PowerAddons/Nurse/Pocket-Watch.webp",
+                "Name": "Pocket Watch",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 65,
+                "addonIcon": "public/PowerAddons/Nurse/Dull-Bracelet.webp",
+                "Name": "Dull Bracelet",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 66,
+                "addonIcon": "public/PowerAddons/Nurse/Dark-Cincture.webp",
+                "Name": "Dark Cincture",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 67,
+                "addonIcon": "public/PowerAddons/Nurse/Catatonic-Boy_S-Treasure.webp",
+                "Name": "Catatonic Boy's Treasure",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 68,
+                "addonIcon": "public/PowerAddons/Nurse/Bad-Man-Keepsake.webp",
+                "Name": "Bad Man Keepsake",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 69,
+                "addonIcon": "public/PowerAddons/Nurse/Spasmodic-Breath.webp",
+                "Name": "Spasmodic Breath",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 70,
+                "addonIcon": "public/PowerAddons/Nurse/Heavy-Panting.webp",
+                "Name": "Heavy Panting",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 71,
+                "addonIcon": "public/PowerAddons/Nurse/Fragile-Wheeze.webp",
+                "Name": "Fragile Wheeze",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 72,
+                "addonIcon": "public/PowerAddons/Nurse/Ataxic-Respiration.webp",
+                "Name": "Ataxic Respiration",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 73,
+                "addonIcon": "public/PowerAddons/Nurse/Anxious-Gasp.webp",
+                "Name": "Anxious Gasp",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 74,
+                "addonIcon": "public/PowerAddons/Nurse/Kavanagh_S-Last-Breath.webp",
+                "Name": "Kavanagh's Last Breath",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 75,
+                "addonIcon": "public/PowerAddons/Nurse/Jenner_S-Last-Breath.webp",
+                "Name": "Jenner's Last Breath",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 76,
+                "addonIcon": "public/PowerAddons/Nurse/Campbell_S-Last-Breath.webp",
+                "Name": "Campbell's Last Breath",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 77,
+                "addonIcon": "public/PowerAddons/Nurse/\"Bad-Man_S\"-Last-Breath.webp",
+                "Name": "\"Bad Man's\" Last Breath",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 78,
+                "addonIcon": "public/PowerAddons/Nurse/Torn-Bookmark.webp",
+                "Name": "Torn Bookmark",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 79,
+                "addonIcon": "public/PowerAddons/Nurse/Matchbox.webp",
+                "Name": "Matchbox",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Shape",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 80,
+                "addonIcon": "public/PowerAddons/Shape/Tacky-Earrings.webp",
+                "Name": "Tacky Earrings",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 81,
+                "addonIcon": "public/PowerAddons/Shape/Memorial-Flower.webp",
+                "Name": "Memorial Flower",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 82,
+                "addonIcon": "public/PowerAddons/Shape/Boyfriend_S-Memo.webp",
+                "Name": "Boyfriend's Memo",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 83,
+                "addonIcon": "public/PowerAddons/Shape/Blond-Hair.webp",
+                "Name": "Blond Hair",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 84,
+                "addonIcon": "public/PowerAddons/Shape/Reflective-Fragment.webp",
+                "Name": "Reflective Fragment",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 85,
+                "addonIcon": "public/PowerAddons/Shape/Jewellery.webp",
+                "Name": "Jewellery",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 86,
+                "addonIcon": "public/PowerAddons/Shape/Hair-Brush.webp",
+                "Name": "Hair Brush",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 87,
+                "addonIcon": "public/PowerAddons/Shape/Glass-Fragment.webp",
+                "Name": "Glass Fragment",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 88,
+                "addonIcon": "public/PowerAddons/Shape/Dead-Rabbit.webp",
+                "Name": "Dead Rabbit",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 89,
+                "addonIcon": "public/PowerAddons/Shape/Mirror-Shard.webp",
+                "Name": "Mirror Shard",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 90,
+                "addonIcon": "public/PowerAddons/Shape/Judith_S-Journal.webp",
+                "Name": "Judith's Journal",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 91,
+                "addonIcon": "public/PowerAddons/Shape/Jewellery-Box.webp",
+                "Name": "Jewellery Box",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 92,
+                "addonIcon": "public/PowerAddons/Shape/J.-Myers-Memorial.webp",
+                "Name": "J. Myers Memorial",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 93,
+                "addonIcon": "public/PowerAddons/Shape/Hair-Bow.webp",
+                "Name": "Hair Bow",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 94,
+                "addonIcon": "public/PowerAddons/Shape/Vanity-Mirror.webp",
+                "Name": "Vanity Mirror",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 95,
+                "addonIcon": "public/PowerAddons/Shape/Tombstone-Piece.webp",
+                "Name": "Tombstone Piece",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 96,
+                "addonIcon": "public/PowerAddons/Shape/Scratched-Mirror.webp",
+                "Name": "Scratched Mirror",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 97,
+                "addonIcon": "public/PowerAddons/Shape/Lock-Of-Hair.webp",
+                "Name": "Lock of Hair",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 98,
+                "addonIcon": "public/PowerAddons/Shape/Judith_S-Tombstone.webp",
+                "Name": "Judith's Tombstone",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 99,
+                "addonIcon": "public/PowerAddons/Shape/Fragrant-Tuft-Of-Hair.webp",
+                "Name": "Fragrant Tuft of Hair",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Hag",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 100,
+                "addonIcon": "public/PowerAddons/Hag/Rope-Necklet.webp",
+                "Name": "Rope Necklet",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 101,
+                "addonIcon": "public/PowerAddons/Hag/Powdered-Eggshell.webp",
+                "Name": "Powdered Eggshell",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 102,
+                "addonIcon": "public/PowerAddons/Hag/Dead-Fly-Mud.webp",
+                "Name": "Dead Fly Mud",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 103,
+                "addonIcon": "public/PowerAddons/Hag/Bog-Water.webp",
+                "Name": "Bog Water",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 104,
+                "addonIcon": "public/PowerAddons/Hag/Pussy-Willow-Catkins.webp",
+                "Name": "Pussy Willow Catkins",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 105,
+                "addonIcon": "public/PowerAddons/Hag/Half-Eggshell.webp",
+                "Name": "Half Eggshell",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 106,
+                "addonIcon": "public/PowerAddons/Hag/Dragonfly-Wings.webp",
+                "Name": "Dragonfly Wings",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 107,
+                "addonIcon": "public/PowerAddons/Hag/Cypress-Necklet.webp",
+                "Name": "Cypress Necklet",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 108,
+                "addonIcon": "public/PowerAddons/Hag/Bloodied-Water.webp",
+                "Name": "Bloodied Water",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 109,
+                "addonIcon": "public/PowerAddons/Hag/Willow-Wreath.webp",
+                "Name": "Willow Wreath",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 110,
+                "addonIcon": "public/PowerAddons/Hag/Swamp-Orchid-Necklet.webp",
+                "Name": "Swamp Orchid Necklet",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 111,
+                "addonIcon": "public/PowerAddons/Hag/Dried-Cicada.webp",
+                "Name": "Dried Cicada",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 112,
+                "addonIcon": "public/PowerAddons/Hag/Cracked-Turtle-Egg.webp",
+                "Name": "Cracked Turtle Egg",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 113,
+                "addonIcon": "public/PowerAddons/Hag/Bloodied-Mud.webp",
+                "Name": "Bloodied Mud",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 114,
+                "addonIcon": "public/PowerAddons/Hag/Scarred-Hand.webp",
+                "Name": "Scarred Hand",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 115,
+                "addonIcon": "public/PowerAddons/Hag/Rusty-Shackles.webp",
+                "Name": "Rusty Shackles",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 116,
+                "addonIcon": "public/PowerAddons/Hag/Grandma_S-Heart.webp",
+                "Name": "Grandma's Heart",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 117,
+                "addonIcon": "public/PowerAddons/Hag/Disfigured-Ear.webp",
+                "Name": "Disfigured Ear",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 118,
+                "addonIcon": "public/PowerAddons/Hag/Waterlogged-Shoe.webp",
+                "Name": "Waterlogged Shoe",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 119,
+                "addonIcon": "public/PowerAddons/Hag/Mint-Rag.webp",
+                "Name": "Mint Rag",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Doctor",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 120,
+                "addonIcon": "public/PowerAddons/Doctor/Mouldy-Electrode.webp",
+                "Name": "Mouldy Electrode",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 121,
+                "addonIcon": "public/PowerAddons/Doctor/Maple-Knight.webp",
+                "Name": "Maple Knight",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 122,
+                "addonIcon": "public/PowerAddons/Doctor/\"Order\"---Class-I.webp",
+                "Name": "\"Order\" - Class I",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 123,
+                "addonIcon": "public/PowerAddons/Doctor/\"Calm\"---Class-I.webp",
+                "Name": "\"Calm\" - Class I",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 124,
+                "addonIcon": "public/PowerAddons/Doctor/Polished-Electrode.webp",
+                "Name": "Polished Electrode",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 125,
+                "addonIcon": "public/PowerAddons/Doctor/\"Restraint\"---Class-Ii.webp",
+                "Name": "\"Restraint\" - Class II",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 126,
+                "addonIcon": "public/PowerAddons/Doctor/\"Order\"---Class-Ii.webp",
+                "Name": "\"Order\" - Class II",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 127,
+                "addonIcon": "public/PowerAddons/Doctor/\"Discipline\"---Class-Ii.webp",
+                "Name": "\"Discipline\" - Class II",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 128,
+                "addonIcon": "public/PowerAddons/Doctor/\"Calm\"---Class-Ii.webp",
+                "Name": "\"Calm\" - Class II",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 129,
+                "addonIcon": "public/PowerAddons/Doctor/Scrapped-Tape.webp",
+                "Name": "Scrapped Tape",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 130,
+                "addonIcon": "public/PowerAddons/Doctor/Interview-Tape.webp",
+                "Name": "Interview Tape",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 131,
+                "addonIcon": "public/PowerAddons/Doctor/High-Stimulus-Electrode.webp",
+                "Name": "High Stimulus Electrode",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 132,
+                "addonIcon": "public/PowerAddons/Doctor/\"Restraint\"---Class-Iii.webp",
+                "Name": "\"Restraint\" - Class III",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 133,
+                "addonIcon": "public/PowerAddons/Doctor/\"Discipline\"---Class-Iii.webp",
+                "Name": "\"Discipline\" - Class III",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 134,
+                "addonIcon": "public/PowerAddons/Doctor/\"Restraint\"---Carter_S-Notes.webp",
+                "Name": "\"Restraint\" - Carter's Notes",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 135,
+                "addonIcon": "public/PowerAddons/Doctor/\"Order\"---Carter_S-Notes.webp",
+                "Name": "\"Order\" - Carter's Notes",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 136,
+                "addonIcon": "public/PowerAddons/Doctor/\"Discipline\"---Carter_S-Notes.webp",
+                "Name": "\"Discipline\" - Carter's Notes",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 137,
+                "addonIcon": "public/PowerAddons/Doctor/\"Calm\"---Carter_S-Notes.webp",
+                "Name": "\"Calm\" - Carter's Notes",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 138,
+                "addonIcon": "public/PowerAddons/Doctor/Iridescent-Queen.webp",
+                "Name": "Iridescent Queen",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 139,
+                "addonIcon": "public/PowerAddons/Doctor/Iridescent-King.webp",
+                "Name": "Iridescent King",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Huntress",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 140,
+                "addonIcon": "public/PowerAddons/Huntress/Yellowed-Cloth.webp",
+                "Name": "Yellowed Cloth",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 141,
+                "addonIcon": "public/PowerAddons/Huntress/Coarse-Stone.webp",
+                "Name": "Coarse Stone",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 142,
+                "addonIcon": "public/PowerAddons/Huntress/Bandaged-Haft.webp",
+                "Name": "Bandaged Haft",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 143,
+                "addonIcon": "public/PowerAddons/Huntress/Amanita-Toxin.webp",
+                "Name": "Amanita Toxin",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 144,
+                "addonIcon": "public/PowerAddons/Huntress/Weighted-Head.webp",
+                "Name": "Weighted Head",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 145,
+                "addonIcon": "public/PowerAddons/Huntress/Shiny-Pin.webp",
+                "Name": "Shiny Pin",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 146,
+                "addonIcon": "public/PowerAddons/Huntress/Oak-Haft.webp",
+                "Name": "Oak Haft",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 147,
+                "addonIcon": "public/PowerAddons/Huntress/Manna-Grass-Braid.webp",
+                "Name": "Manna Grass Braid",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 148,
+                "addonIcon": "public/PowerAddons/Huntress/Leather-Loop.webp",
+                "Name": "Leather Loop",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 149,
+                "addonIcon": "public/PowerAddons/Huntress/Rusty-Head.webp",
+                "Name": "Rusty Head",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 150,
+                "addonIcon": "public/PowerAddons/Huntress/Rose-Root.webp",
+                "Name": "Rose Root",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 151,
+                "addonIcon": "public/PowerAddons/Huntress/Flower-Babushka.webp",
+                "Name": "Flower Babushka",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 152,
+                "addonIcon": "public/PowerAddons/Huntress/Deerskin-Gloves.webp",
+                "Name": "Deerskin Gloves",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 153,
+                "addonIcon": "public/PowerAddons/Huntress/Wooden-Fox.webp",
+                "Name": "Wooden Fox",
+                "Rarity": 3
+            },
+            {
+                "id": 14,
+                "globalID": 154,
+                "addonIcon": "public/PowerAddons/Huntress/Infantry-Belt.webp",
+                "Name": "Infantry Belt",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 155,
+                "addonIcon": "public/PowerAddons/Huntress/Glowing-Concoction.webp",
+                "Name": "Glowing Concoction",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 156,
+                "addonIcon": "public/PowerAddons/Huntress/Begrimed-Head.webp",
+                "Name": "Begrimed Head",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 157,
+                "addonIcon": "public/PowerAddons/Huntress/Soldier_S-Puttee.webp",
+                "Name": "Soldier's Puttee",
+                "Rarity": 4
+            },
+            {
+                "id": 18,
+                "globalID": 158,
+                "addonIcon": "public/PowerAddons/Huntress/Iridescent-Head.webp",
+                "Name": "Iridescent Head",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Cannibal",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 159,
+                "addonIcon": "public/PowerAddons/Cannibal/Vegetable-Oil.webp",
+                "Name": "Vegetable Oil",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 160,
+                "addonIcon": "public/PowerAddons/Cannibal/Spark-Plug.webp",
+                "Name": "Spark Plug",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 161,
+                "addonIcon": "public/PowerAddons/Cannibal/Speed-Limiter.webp",
+                "Name": "Speed Limiter",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 162,
+                "addonIcon": "public/PowerAddons/Cannibal/Chainsaw-File.webp",
+                "Name": "Chainsaw File",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 163,
+                "addonIcon": "public/PowerAddons/Cannibal/Long-Guide-Bar.webp",
+                "Name": "Long Guide Bar",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 164,
+                "addonIcon": "public/PowerAddons/Cannibal/Primer-Bulb.webp",
+                "Name": "Primer Bulb",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 165,
+                "addonIcon": "public/PowerAddons/Cannibal/Knife-Scratches.webp",
+                "Name": "Knife Scratches",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 166,
+                "addonIcon": "public/PowerAddons/Cannibal/Homemade-Muffler.webp",
+                "Name": "Homemade Muffler",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 167,
+                "addonIcon": "public/PowerAddons/Cannibal/Chili.webp",
+                "Name": "Chili",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 168,
+                "addonIcon": "public/PowerAddons/Cannibal/The-Grease.webp",
+                "Name": "The Grease",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 169,
+                "addonIcon": "public/PowerAddons/Cannibal/The-Beast_S-Marks.webp",
+                "Name": "The Beast's Marks",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 170,
+                "addonIcon": "public/PowerAddons/Cannibal/Shop-Lubricant.webp",
+                "Name": "Shop Lubricant",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 171,
+                "addonIcon": "public/PowerAddons/Cannibal/Grisly-Chains.webp",
+                "Name": "Grisly Chains",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 172,
+                "addonIcon": "public/PowerAddons/Cannibal/Begrimed-Chains.webp",
+                "Name": "Begrimed Chains",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 173,
+                "addonIcon": "public/PowerAddons/Cannibal/Rusted-Chains.webp",
+                "Name": "Rusted Chains",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 174,
+                "addonIcon": "public/PowerAddons/Cannibal/Light-Chassis.webp",
+                "Name": "Light Chassis",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 175,
+                "addonIcon": "public/PowerAddons/Cannibal/Depth-Gauge-Rake.webp",
+                "Name": "Depth Gauge Rake",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 176,
+                "addonIcon": "public/PowerAddons/Cannibal/Award-Winning-Chili.webp",
+                "Name": "Award-winning Chili",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 177,
+                "addonIcon": "public/PowerAddons/Cannibal/Iridescent-Flesh.webp",
+                "Name": "Iridescent Flesh",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 178,
+                "addonIcon": "public/PowerAddons/Cannibal/Carburettor-Tuning-Guide.webp",
+                "Name": "Carburettor Tuning Guide",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Nightmare",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 179,
+                "addonIcon": "public/PowerAddons/Nightmare/Wool-Shirt.webp",
+                "Name": "Wool Shirt",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 180,
+                "addonIcon": "public/PowerAddons/Nightmare/Sheep-Block.webp",
+                "Name": "Sheep Block",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 181,
+                "addonIcon": "public/PowerAddons/Nightmare/Kid_S-Drawing.webp",
+                "Name": "Kid's Drawing",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 182,
+                "addonIcon": "public/PowerAddons/Nightmare/Garden-Rake.webp",
+                "Name": "Garden Rake",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 183,
+                "addonIcon": "public/PowerAddons/Nightmare/Prototype-Claws.webp",
+                "Name": "Prototype Claws",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 184,
+                "addonIcon": "public/PowerAddons/Nightmare/Outdoor-Rope.webp",
+                "Name": "Outdoor Rope",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 185,
+                "addonIcon": "public/PowerAddons/Nightmare/Nancy_S-Sketch.webp",
+                "Name": "Nancy's Sketch",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 186,
+                "addonIcon": "public/PowerAddons/Nightmare/Green-Dress.webp",
+                "Name": "Green Dress",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 187,
+                "addonIcon": "public/PowerAddons/Nightmare/Cat-Block.webp",
+                "Name": "Cat Block",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 188,
+                "addonIcon": "public/PowerAddons/Nightmare/Unicorn-Block.webp",
+                "Name": "Unicorn Block",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 189,
+                "addonIcon": "public/PowerAddons/Nightmare/Paint-Thinner.webp",
+                "Name": "Paint Thinner",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 190,
+                "addonIcon": "public/PowerAddons/Nightmare/Nancy_S-Masterpiece.webp",
+                "Name": "Nancy's Masterpiece",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 191,
+                "addonIcon": "public/PowerAddons/Nightmare/Jump-Rope.webp",
+                "Name": "Jump Rope",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 192,
+                "addonIcon": "public/PowerAddons/Nightmare/Blue-Dress.webp",
+                "Name": "Blue Dress",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 193,
+                "addonIcon": "public/PowerAddons/Nightmare/Pill-Bottle.webp",
+                "Name": "Pill Bottle",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 194,
+                "addonIcon": "public/PowerAddons/Nightmare/Swing-Chains.webp",
+                "Name": "Swing Chains",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 195,
+                "addonIcon": "public/PowerAddons/Nightmare/Class-Photo.webp",
+                "Name": "Class Photo",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 196,
+                "addonIcon": "public/PowerAddons/Nightmare/\"Z\"-Block.webp",
+                "Name": "\"Z\" Block",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 197,
+                "addonIcon": "public/PowerAddons/Nightmare/Red-Paint-Brush.webp",
+                "Name": "Red Paint Brush",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 198,
+                "addonIcon": "public/PowerAddons/Nightmare/Black-Box.webp",
+                "Name": "Black Box",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Pig",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 199,
+                "addonIcon": "public/PowerAddons/Pig/Shattered-Syringe.webp",
+                "Name": "Shattered Syringe",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 200,
+                "addonIcon": "public/PowerAddons/Pig/John_S-Medical-File.webp",
+                "Name": "John's Medical File",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 201,
+                "addonIcon": "public/PowerAddons/Pig/Interlocking-Razor.webp",
+                "Name": "Interlocking Razor",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 202,
+                "addonIcon": "public/PowerAddons/Pig/Combat-Straps.webp",
+                "Name": "Combat Straps",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 203,
+                "addonIcon": "public/PowerAddons/Pig/Workshop-Grease.webp",
+                "Name": "Workshop Grease",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 204,
+                "addonIcon": "public/PowerAddons/Pig/Utility-Blades.webp",
+                "Name": "Utility Blades",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 205,
+                "addonIcon": "public/PowerAddons/Pig/Razor-Wires.webp",
+                "Name": "Razor Wires",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 206,
+                "addonIcon": "public/PowerAddons/Pig/Last-Will.webp",
+                "Name": "Last Will",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 207,
+                "addonIcon": "public/PowerAddons/Pig/Face-Mask.webp",
+                "Name": "Face Mask",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 208,
+                "addonIcon": "public/PowerAddons/Pig/Slow-Release-Toxin.webp",
+                "Name": "Slow-Release Toxin",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 209,
+                "addonIcon": "public/PowerAddons/Pig/Rusty-Attachments.webp",
+                "Name": "Rusty Attachments",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 210,
+                "addonIcon": "public/PowerAddons/Pig/Rules-Set-No.2.webp",
+                "Name": "Rules Set No.2",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 211,
+                "addonIcon": "public/PowerAddons/Pig/Jigsaw_S-Annotated-Plan.webp",
+                "Name": "Jigsaw's Annotated Plan",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 212,
+                "addonIcon": "public/PowerAddons/Pig/Bag-Of-Gears.webp",
+                "Name": "Bag of Gears",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 213,
+                "addonIcon": "public/PowerAddons/Pig/Tampered-Timer.webp",
+                "Name": "Tampered Timer",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 214,
+                "addonIcon": "public/PowerAddons/Pig/Jigsaw_S-Sketch.webp",
+                "Name": "Jigsaw's Sketch",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 215,
+                "addonIcon": "public/PowerAddons/Pig/Crate-Of-Gears.webp",
+                "Name": "Crate of Gears",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 216,
+                "addonIcon": "public/PowerAddons/Pig/Amanda_S-Secret.webp",
+                "Name": "Amanda's Secret",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 217,
+                "addonIcon": "public/PowerAddons/Pig/Amanda_S-Letter.webp",
+                "Name": "Amanda's Letter",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 218,
+                "addonIcon": "public/PowerAddons/Pig/Video-Tape.webp",
+                "Name": "Video Tape",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Clown",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 219,
+                "addonIcon": "public/PowerAddons/Clown/Vhs-Porn.webp",
+                "Name": "VHS Porn",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 220,
+                "addonIcon": "public/PowerAddons/Clown/Robin-Feather.webp",
+                "Name": "Robin Feather",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 221,
+                "addonIcon": "public/PowerAddons/Clown/Party-Bottle.webp",
+                "Name": "Party Bottle",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 222,
+                "addonIcon": "public/PowerAddons/Clown/Fingerless-Parade-Gloves.webp",
+                "Name": "Fingerless Parade Gloves",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 223,
+                "addonIcon": "public/PowerAddons/Clown/Thick-Cork-Stopper.webp",
+                "Name": "Thick Cork Stopper",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 224,
+                "addonIcon": "public/PowerAddons/Clown/Sticky-Soda-Bottle.webp",
+                "Name": "Sticky Soda Bottle",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 225,
+                "addonIcon": "public/PowerAddons/Clown/Starling-Feather.webp",
+                "Name": "Starling Feather",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 226,
+                "addonIcon": "public/PowerAddons/Clown/Solvent-Jug.webp",
+                "Name": "Solvent Jug",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 227,
+                "addonIcon": "public/PowerAddons/Clown/Kerosene-Can.webp",
+                "Name": "Kerosene Can",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 228,
+                "addonIcon": "public/PowerAddons/Clown/Sulphuric-Acid-Vial.webp",
+                "Name": "Sulphuric Acid Vial",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 229,
+                "addonIcon": "public/PowerAddons/Clown/Spirit-Of-Hartshorn.webp",
+                "Name": "Spirit of Hartshorn",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 230,
+                "addonIcon": "public/PowerAddons/Clown/Smelly-Inner-Soles.webp",
+                "Name": "Smelly Inner Soles",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 231,
+                "addonIcon": "public/PowerAddons/Clown/Flask-Of-Bleach.webp",
+                "Name": "Flask of Bleach",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 232,
+                "addonIcon": "public/PowerAddons/Clown/Bottle-Of-Chloroform.webp",
+                "Name": "Bottle of Chloroform",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 233,
+                "addonIcon": "public/PowerAddons/Clown/Garish-Make-Up-Kit.webp",
+                "Name": "Garish Make-Up Kit",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 234,
+                "addonIcon": "public/PowerAddons/Clown/Ether-15%-Vol.webp",
+                "Name": "Ether 15% Vol",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 235,
+                "addonIcon": "public/PowerAddons/Clown/Cigar-Box.webp",
+                "Name": "Cigar Box",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 236,
+                "addonIcon": "public/PowerAddons/Clown/Cheap-Gin-Bottle.webp",
+                "Name": "Cheap Gin Bottle",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 237,
+                "addonIcon": "public/PowerAddons/Clown/Tattoo_S-Middle-Finger.webp",
+                "Name": "Tattoo's Middle Finger",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 238,
+                "addonIcon": "public/PowerAddons/Clown/Redhead_S-Pinky-Finger.webp",
+                "Name": "Redhead's Pinky Finger",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Spirit",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 239,
+                "addonIcon": "public/PowerAddons/Spirit/Zori.webp",
+                "Name": "Zori",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 240,
+                "addonIcon": "public/PowerAddons/Spirit/Shiawase-Amulet.webp",
+                "Name": "Shiawase Amulet",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 241,
+                "addonIcon": "public/PowerAddons/Spirit/Origami-Crane.webp",
+                "Name": "Origami Crane",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 242,
+                "addonIcon": "public/PowerAddons/Spirit/Gifted-Bamboo-Comb.webp",
+                "Name": "Gifted Bamboo Comb",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 243,
+                "addonIcon": "public/PowerAddons/Spirit/White-Hair-Ribbon.webp",
+                "Name": "White Hair Ribbon",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 244,
+                "addonIcon": "public/PowerAddons/Spirit/Rin_S-Broken-Watch.webp",
+                "Name": "Rin's Broken Watch",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 245,
+                "addonIcon": "public/PowerAddons/Spirit/Muddy-Sports-Day-Cap.webp",
+                "Name": "Muddy Sports Day Cap",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 246,
+                "addonIcon": "public/PowerAddons/Spirit/Kaiun-Talisman.webp",
+                "Name": "Kaiun Talisman",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 247,
+                "addonIcon": "public/PowerAddons/Spirit/Juniper-Bonsai.webp",
+                "Name": "Juniper Bonsai",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 248,
+                "addonIcon": "public/PowerAddons/Spirit/Rusty-Flute.webp",
+                "Name": "Rusty Flute",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 249,
+                "addonIcon": "public/PowerAddons/Spirit/Senko-Hanabi.webp",
+                "Name": "Senko Hanabi",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 250,
+                "addonIcon": "public/PowerAddons/Spirit/Katana-Tsuba.webp",
+                "Name": "Katana Tsuba",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 251,
+                "addonIcon": "public/PowerAddons/Spirit/Uchiwa.webp",
+                "Name": "Uchiwa",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 252,
+                "addonIcon": "public/PowerAddons/Spirit/Mother_S-Glasses.webp",
+                "Name": "Mother's Glasses",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 253,
+                "addonIcon": "public/PowerAddons/Spirit/Yakuyoke-Amulet.webp",
+                "Name": "Yakuyoke Amulet",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 254,
+                "addonIcon": "public/PowerAddons/Spirit/Wakizashi-Saya.webp",
+                "Name": "Wakizashi Saya",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 255,
+                "addonIcon": "public/PowerAddons/Spirit/Furin.webp",
+                "Name": "Furin",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 256,
+                "addonIcon": "public/PowerAddons/Spirit/Dried-Cherry-Blossom.webp",
+                "Name": "Dried Cherry Blossom",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 257,
+                "addonIcon": "public/PowerAddons/Spirit/Mother-Daughter-Ring.webp",
+                "Name": "Mother-Daughter Ring",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 258,
+                "addonIcon": "public/PowerAddons/Spirit/Kintsugi-Teacup.webp",
+                "Name": "Kintsugi Teacup",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Legion",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 259,
+                "addonIcon": "public/PowerAddons/Legion/Smiley-Face-Pin.webp",
+                "Name": "Smiley Face Pin",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 260,
+                "addonIcon": "public/PowerAddons/Legion/Scratched-Ruler.webp",
+                "Name": "Scratched Ruler",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 261,
+                "addonIcon": "public/PowerAddons/Legion/Mischief-List.webp",
+                "Name": "Mischief List",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 262,
+                "addonIcon": "public/PowerAddons/Legion/Friendship-Bracelet.webp",
+                "Name": "Friendship Bracelet",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 263,
+                "addonIcon": "public/PowerAddons/Legion/Never-Sleep-Pills.webp",
+                "Name": "Never-Sleep Pills",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 264,
+                "addonIcon": "public/PowerAddons/Legion/Mural-Sketch.webp",
+                "Name": "Mural Sketch",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 265,
+                "addonIcon": "public/PowerAddons/Legion/Julie_S-Mix-Tape.webp",
+                "Name": "Julie's Mix Tape",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 266,
+                "addonIcon": "public/PowerAddons/Legion/Etched-Ruler.webp",
+                "Name": "Etched Ruler",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 267,
+                "addonIcon": "public/PowerAddons/Legion/Defaced-Smiley-Pin.webp",
+                "Name": "Defaced Smiley Pin",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 268,
+                "addonIcon": "public/PowerAddons/Legion/The-Legion-Pin.webp",
+                "Name": "The Legion Pin",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 269,
+                "addonIcon": "public/PowerAddons/Legion/Susie_S-Mix-Tape.webp",
+                "Name": "Susie's Mix Tape",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 270,
+                "addonIcon": "public/PowerAddons/Legion/Stolen-Sketch-Book.webp",
+                "Name": "Stolen Sketch Book",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 271,
+                "addonIcon": "public/PowerAddons/Legion/Stylish-Sunglasses.webp",
+                "Name": "Stylish Sunglasses",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 272,
+                "addonIcon": "public/PowerAddons/Legion/Joey_S-Mix-Tape.webp",
+                "Name": "Joey's Mix Tape",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 273,
+                "addonIcon": "public/PowerAddons/Legion/Stab-Wounds-Study.webp",
+                "Name": "Stab Wounds Study",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 274,
+                "addonIcon": "public/PowerAddons/Legion/Frank_S-Mix-Tape.webp",
+                "Name": "Frank's Mix Tape",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 275,
+                "addonIcon": "public/PowerAddons/Legion/Filthy-Blade.webp",
+                "Name": "Filthy Blade",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 276,
+                "addonIcon": "public/PowerAddons/Legion/Bffs.webp",
+                "Name": "BFFs",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 277,
+                "addonIcon": "public/PowerAddons/Legion/Iridescent-Button.webp",
+                "Name": "Iridescent Button",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 278,
+                "addonIcon": "public/PowerAddons/Legion/Fuming-Mix-Tape.webp",
+                "Name": "Fuming Mix Tape",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Plague",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 279,
+                "addonIcon": "public/PowerAddons/Plague/Prayer-Tablet-Fragment.webp",
+                "Name": "Prayer Tablet Fragment",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 280,
+                "addonIcon": "public/PowerAddons/Plague/Olibanum-Incense.webp",
+                "Name": "Olibanum Incense",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 281,
+                "addonIcon": "public/PowerAddons/Plague/Limestone-Seal.webp",
+                "Name": "Limestone Seal",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 282,
+                "addonIcon": "public/PowerAddons/Plague/Healing-Salve.webp",
+                "Name": "Healing Salve",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 283,
+                "addonIcon": "public/PowerAddons/Plague/Prophylactic-Amulet.webp",
+                "Name": "Prophylactic Amulet",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 284,
+                "addonIcon": "public/PowerAddons/Plague/Potent-Tincture.webp",
+                "Name": "Potent Tincture",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 285,
+                "addonIcon": "public/PowerAddons/Plague/Haematite-Seal.webp",
+                "Name": "Haematite Seal",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 286,
+                "addonIcon": "public/PowerAddons/Plague/Emetic-Potion.webp",
+                "Name": "Emetic Potion",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 287,
+                "addonIcon": "public/PowerAddons/Plague/Blessed-Apple.webp",
+                "Name": "Blessed Apple",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 288,
+                "addonIcon": "public/PowerAddons/Plague/Rubbing-Oil.webp",
+                "Name": "Rubbing Oil",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 289,
+                "addonIcon": "public/PowerAddons/Plague/Infected-Emetic.webp",
+                "Name": "Infected Emetic",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 290,
+                "addonIcon": "public/PowerAddons/Plague/Incensed-Ointment.webp",
+                "Name": "Incensed Ointment",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 291,
+                "addonIcon": "public/PowerAddons/Plague/Exorcism-Amulet.webp",
+                "Name": "Exorcism Amulet",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 292,
+                "addonIcon": "public/PowerAddons/Plague/Ashen-Apple.webp",
+                "Name": "Ashen Apple",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 293,
+                "addonIcon": "public/PowerAddons/Plague/Worship-Tablet.webp",
+                "Name": "Worship Tablet",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 294,
+                "addonIcon": "public/PowerAddons/Plague/Vile-Emetic.webp",
+                "Name": "Vile Emetic",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 295,
+                "addonIcon": "public/PowerAddons/Plague/Severed-Toe.webp",
+                "Name": "Severed Toe",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 296,
+                "addonIcon": "public/PowerAddons/Plague/Devotee_S-Amulet.webp",
+                "Name": "Devotee's Amulet",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 297,
+                "addonIcon": "public/PowerAddons/Plague/Iridescent-Seal.webp",
+                "Name": "Iridescent Seal",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 298,
+                "addonIcon": "public/PowerAddons/Plague/Black-Incense.webp",
+                "Name": "Black Incense",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Ghost Face",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 299,
+                "addonIcon": "public/PowerAddons/Ghost Face/Philly.webp",
+                "Name": "Philly",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 300,
+                "addonIcon": "public/PowerAddons/Ghost Face/Walleye_S-Matchbook.webp",
+                "Name": "Walleye's Matchbook",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 301,
+                "addonIcon": "public/PowerAddons/Ghost Face/Headline-Cut-Outs.webp",
+                "Name": "Headline Cut-Outs",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 302,
+                "addonIcon": "public/PowerAddons/Ghost Face/Cheap-Cologne.webp",
+                "Name": "Cheap Cologne",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 303,
+                "addonIcon": "public/PowerAddons/Ghost Face/Telephoto-Lens.webp",
+                "Name": "Telephoto Lens",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 304,
+                "addonIcon": "public/PowerAddons/Ghost Face/Cinch-Straps.webp",
+                "Name": "Cinch Straps",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 305,
+                "addonIcon": "public/PowerAddons/Ghost Face/Olsen_S-Journal.webp",
+                "Name": "Olsen's Journal",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 306,
+                "addonIcon": "public/PowerAddons/Ghost Face/Olsen_S-Address-Book.webp",
+                "Name": "Olsen's Address Book",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 307,
+                "addonIcon": "public/PowerAddons/Ghost Face/Marked-Map.webp",
+                "Name": "Marked Map",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 308,
+                "addonIcon": "public/PowerAddons/Ghost Face/Olsen_S-Wallet.webp",
+                "Name": "Olsen's Wallet",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 309,
+                "addonIcon": "public/PowerAddons/Ghost Face/Leather-Knife-Sheath.webp",
+                "Name": "Leather Knife Sheath",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 310,
+                "addonIcon": "public/PowerAddons/Ghost Face/Lasting-Perfume.webp",
+                "Name": "Lasting Perfume",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 311,
+                "addonIcon": "public/PowerAddons/Ghost Face/Knife-Belt-Clip.webp",
+                "Name": "Knife Belt Clip",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 312,
+                "addonIcon": "public/PowerAddons/Ghost Face/Chewed-Pen.webp",
+                "Name": "Chewed Pen",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 313,
+                "addonIcon": "public/PowerAddons/Ghost Face/Victim_S-Detailed-Routine.webp",
+                "Name": "Victim's Detailed Routine",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 314,
+                "addonIcon": "public/PowerAddons/Ghost Face/Night-Vision-Monocular.webp",
+                "Name": "Night Vision Monocular",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 315,
+                "addonIcon": "public/PowerAddons/Ghost Face/Drop-Leg-Knife-Sheath.webp",
+                "Name": "Drop-Leg Knife Sheath",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 316,
+                "addonIcon": "public/PowerAddons/Ghost Face/Driver_S-License.webp",
+                "Name": "Driver's License",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 317,
+                "addonIcon": "public/PowerAddons/Ghost Face/\"Ghost-Face-Caught-On-Tape\".webp",
+                "Name": "\"Ghost Face Caught on Tape\"",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 318,
+                "addonIcon": "public/PowerAddons/Ghost Face/Outdoor-Security-Camera.webp",
+                "Name": "Outdoor Security Camera",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Demogorgon",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 319,
+                "addonIcon": "public/PowerAddons/Demogorgon/Rotten-Pumpkin.webp",
+                "Name": "Rotten Pumpkin",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 320,
+                "addonIcon": "public/PowerAddons/Demogorgon/Black-Heart.webp",
+                "Name": "Black Heart",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 321,
+                "addonIcon": "public/PowerAddons/Demogorgon/Rat-Liver.webp",
+                "Name": "Rat Liver",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 322,
+                "addonIcon": "public/PowerAddons/Demogorgon/Rat-Tail.webp",
+                "Name": "Rat Tail",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 323,
+                "addonIcon": "public/PowerAddons/Demogorgon/Sticky-Lining.webp",
+                "Name": "Sticky Lining",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 324,
+                "addonIcon": "public/PowerAddons/Demogorgon/Viscous-Webbing.webp",
+                "Name": "Viscous Webbing",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 325,
+                "addonIcon": "public/PowerAddons/Demogorgon/Rotten-Green-Tripe.webp",
+                "Name": "Rotten Green Tripe",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 326,
+                "addonIcon": "public/PowerAddons/Demogorgon/Mew_S-Guts.webp",
+                "Name": "Mew's Guts",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 327,
+                "addonIcon": "public/PowerAddons/Demogorgon/Barb_S-Glasses.webp",
+                "Name": "Barb's Glasses",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 328,
+                "addonIcon": "public/PowerAddons/Demogorgon/Eleven_S-Soda.webp",
+                "Name": "Eleven's Soda",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 329,
+                "addonIcon": "public/PowerAddons/Demogorgon/Thorny-Vines.webp",
+                "Name": "Thorny Vines",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 330,
+                "addonIcon": "public/PowerAddons/Demogorgon/Brass-Case-Lighter.webp",
+                "Name": "Brass Case Lighter",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 331,
+                "addonIcon": "public/PowerAddons/Demogorgon/Violet-Waxcap.webp",
+                "Name": "Violet Waxcap",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 332,
+                "addonIcon": "public/PowerAddons/Demogorgon/Deer-Lung.webp",
+                "Name": "Deer Lung",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 333,
+                "addonIcon": "public/PowerAddons/Demogorgon/Lifeguard-Whistle.webp",
+                "Name": "Lifeguard Whistle",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 334,
+                "addonIcon": "public/PowerAddons/Demogorgon/Vermillion-Webcap.webp",
+                "Name": "Vermillion Webcap",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 335,
+                "addonIcon": "public/PowerAddons/Demogorgon/Upside-Down-Resin.webp",
+                "Name": "Upside Down Resin",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 336,
+                "addonIcon": "public/PowerAddons/Demogorgon/Unknown-Egg.webp",
+                "Name": "Unknown Egg",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 337,
+                "addonIcon": "public/PowerAddons/Demogorgon/Leprose-Lichen.webp",
+                "Name": "Leprose Lichen",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 338,
+                "addonIcon": "public/PowerAddons/Demogorgon/Red-Moss.webp",
+                "Name": "Red Moss",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Oni",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 339,
+                "addonIcon": "public/PowerAddons/Oni/Rotting-Rope.webp",
+                "Name": "Rotting Rope",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 340,
+                "addonIcon": "public/PowerAddons/Oni/Paper-Lantern.webp",
+                "Name": "Paper Lantern",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 341,
+                "addonIcon": "public/PowerAddons/Oni/Cracked-Sakazuki.webp",
+                "Name": "Cracked Sakazuki",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 342,
+                "addonIcon": "public/PowerAddons/Oni/Blackened-Toenail.webp",
+                "Name": "Blackened Toenail",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 343,
+                "addonIcon": "public/PowerAddons/Oni/Polished-Maedate.webp",
+                "Name": "Polished Maedate",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 344,
+                "addonIcon": "public/PowerAddons/Oni/Ink-Lion.webp",
+                "Name": "Ink Lion",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 345,
+                "addonIcon": "public/PowerAddons/Oni/Chipped-Saihai.webp",
+                "Name": "Chipped Saihai",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 346,
+                "addonIcon": "public/PowerAddons/Oni/Child_S-Wooden-Sword.webp",
+                "Name": "Child's Wooden Sword",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 347,
+                "addonIcon": "public/PowerAddons/Oni/Bloody-Sash.webp",
+                "Name": "Bloody Sash",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 348,
+                "addonIcon": "public/PowerAddons/Oni/Yamaoka-Sashimono.webp",
+                "Name": "Yamaoka Sashimono",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 349,
+                "addonIcon": "public/PowerAddons/Oni/Wooden-Oni-Mask.webp",
+                "Name": "Wooden Oni Mask",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 350,
+                "addonIcon": "public/PowerAddons/Oni/Shattered-Wakizashi.webp",
+                "Name": "Shattered Wakizashi",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 351,
+                "addonIcon": "public/PowerAddons/Oni/Scalped-Topknot.webp",
+                "Name": "Scalped Topknot",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 352,
+                "addonIcon": "public/PowerAddons/Oni/Kanai-Anzen-Talisman.webp",
+                "Name": "Kanai-Anzen Talisman",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 353,
+                "addonIcon": "public/PowerAddons/Oni/Tear-Soaked-Tenugui.webp",
+                "Name": "Tear Soaked Tenugui",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 354,
+                "addonIcon": "public/PowerAddons/Oni/Splintered-Hull.webp",
+                "Name": "Splintered Hull",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 355,
+                "addonIcon": "public/PowerAddons/Oni/Lion-Fang.webp",
+                "Name": "Lion Fang",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 356,
+                "addonIcon": "public/PowerAddons/Oni/Akito_S-Crutch.webp",
+                "Name": "Akito's Crutch",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 357,
+                "addonIcon": "public/PowerAddons/Oni/Renjiro_S-Bloody-Glove.webp",
+                "Name": "Renjiro's Bloody Glove",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 358,
+                "addonIcon": "public/PowerAddons/Oni/Iridescent-Family-Crest.webp",
+                "Name": "Iridescent Family Crest",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Deathslinger",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 359,
+                "addonIcon": "public/PowerAddons/Deathslinger/Spit-Polish-Rag.webp",
+                "Name": "Spit Polish Rag",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 360,
+                "addonIcon": "public/PowerAddons/Deathslinger/Snake-Oil.webp",
+                "Name": "Snake Oil",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 361,
+                "addonIcon": "public/PowerAddons/Deathslinger/Rickety-Chain.webp",
+                "Name": "Rickety Chain",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 362,
+                "addonIcon": "public/PowerAddons/Deathslinger/Modified-Ammo-Belt.webp",
+                "Name": "Modified Ammo Belt",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 363,
+                "addonIcon": "public/PowerAddons/Deathslinger/Rusted-Spike.webp",
+                "Name": "Rusted Spike",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 364,
+                "addonIcon": "public/PowerAddons/Deathslinger/Poison-Oak-Leaves.webp",
+                "Name": "Poison Oak Leaves",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 365,
+                "addonIcon": "public/PowerAddons/Deathslinger/Marshal_S-Badge.webp",
+                "Name": "Marshal's Badge",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 366,
+                "addonIcon": "public/PowerAddons/Deathslinger/Jaw-Smasher.webp",
+                "Name": "Jaw Smasher",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 367,
+                "addonIcon": "public/PowerAddons/Deathslinger/Chewing-Tobacco.webp",
+                "Name": "Chewing Tobacco",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 368,
+                "addonIcon": "public/PowerAddons/Deathslinger/Warden_S-Keys.webp",
+                "Name": "Warden's Keys",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 369,
+                "addonIcon": "public/PowerAddons/Deathslinger/Wanted-Poster.webp",
+                "Name": "Wanted Poster",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 370,
+                "addonIcon": "public/PowerAddons/Deathslinger/Tin-Oil-Can.webp",
+                "Name": "Tin Oil Can",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 371,
+                "addonIcon": "public/PowerAddons/Deathslinger/Honey-Locust-Thorn.webp",
+                "Name": "Honey Locust Thorn",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 372,
+                "addonIcon": "public/PowerAddons/Deathslinger/Bayshore_S-Gold-Tooth.webp",
+                "Name": "Bayshore's Gold Tooth",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 373,
+                "addonIcon": "public/PowerAddons/Deathslinger/Prison-Chain.webp",
+                "Name": "Prison Chain",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 374,
+                "addonIcon": "public/PowerAddons/Deathslinger/Gold-Creek-Whiskey.webp",
+                "Name": "Gold Creek Whiskey",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 375,
+                "addonIcon": "public/PowerAddons/Deathslinger/Bayshore_S-Cigar.webp",
+                "Name": "Bayshore's Cigar",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 376,
+                "addonIcon": "public/PowerAddons/Deathslinger/Barbed-Wire.webp",
+                "Name": "Barbed Wire",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 377,
+                "addonIcon": "public/PowerAddons/Deathslinger/Iridescent-Coin.webp",
+                "Name": "Iridescent Coin",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 378,
+                "addonIcon": "public/PowerAddons/Deathslinger/Hellshire-Iron.webp",
+                "Name": "Hellshire Iron",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Executioner",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 379,
+                "addonIcon": "public/PowerAddons/Executioner/Lead-Ring.webp",
+                "Name": "Lead Ring",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 380,
+                "addonIcon": "public/PowerAddons/Executioner/Dead-Butterfly.webp",
+                "Name": "Dead Butterfly",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 381,
+                "addonIcon": "public/PowerAddons/Executioner/Copper-Ring.webp",
+                "Name": "Copper Ring",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 382,
+                "addonIcon": "public/PowerAddons/Executioner/Black-Strap.webp",
+                "Name": "Black Strap",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 383,
+                "addonIcon": "public/PowerAddons/Executioner/Wax-Doll.webp",
+                "Name": "Wax Doll",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 384,
+                "addonIcon": "public/PowerAddons/Executioner/Spearhead.webp",
+                "Name": "Spearhead",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 385,
+                "addonIcon": "public/PowerAddons/Executioner/Leopart-Print-Fabric.webp",
+                "Name": "Leopart-Print Fabric",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 386,
+                "addonIcon": "public/PowerAddons/Executioner/Forgotten-Videotape.webp",
+                "Name": "Forgotten Videotape",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 387,
+                "addonIcon": "public/PowerAddons/Executioner/Cinderella-Music-Box.webp",
+                "Name": "Cinderella Music Box",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 388,
+                "addonIcon": "public/PowerAddons/Executioner/Valtiel-Sect-Photograph.webp",
+                "Name": "Valtiel Sect Photograph",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 389,
+                "addonIcon": "public/PowerAddons/Executioner/Tablet-Of-The-Oppressor.webp",
+                "Name": "Tablet of the Oppressor",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 390,
+                "addonIcon": "public/PowerAddons/Executioner/Misty-Day,-Remains-Of-Judgement.webp",
+                "Name": "Misty Day, Remains of Judgement",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 391,
+                "addonIcon": "public/PowerAddons/Executioner/Mannequin-Foot.webp",
+                "Name": "Mannequin Foot",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 392,
+                "addonIcon": "public/PowerAddons/Executioner/Burning-Man-Painting.webp",
+                "Name": "Burning Man Painting",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 393,
+                "addonIcon": "public/PowerAddons/Executioner/Scarlet-Egg.webp",
+                "Name": "Scarlet Egg",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 394,
+                "addonIcon": "public/PowerAddons/Executioner/Rust-Coloured-Egg.webp",
+                "Name": "Rust-Coloured Egg",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 395,
+                "addonIcon": "public/PowerAddons/Executioner/Lost-Memories-Book.webp",
+                "Name": "Lost Memories Book",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 396,
+                "addonIcon": "public/PowerAddons/Executioner/Crimson-Ceremony-Book.webp",
+                "Name": "Crimson Ceremony Book",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 397,
+                "addonIcon": "public/PowerAddons/Executioner/Obsidian-Goblet.webp",
+                "Name": "Obsidian Goblet",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 398,
+                "addonIcon": "public/PowerAddons/Executioner/Iridescent-Seal-Of-Metatron.webp",
+                "Name": "Iridescent Seal of Metatron",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Blight",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 399,
+                "addonIcon": "public/PowerAddons/Blight/Placebo-Tablet.webp",
+                "Name": "Placebo Tablet",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 400,
+                "addonIcon": "public/PowerAddons/Blight/Foxglove.webp",
+                "Name": "Foxglove",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 401,
+                "addonIcon": "public/PowerAddons/Blight/Compound-Seven.webp",
+                "Name": "Compound Seven",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 402,
+                "addonIcon": "public/PowerAddons/Blight/Chipped-Monocle.webp",
+                "Name": "Chipped Monocle",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 403,
+                "addonIcon": "public/PowerAddons/Blight/Shredded-Notes.webp",
+                "Name": "Shredded Notes",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 404,
+                "addonIcon": "public/PowerAddons/Blight/Pustula-Dust.webp",
+                "Name": "Pustula Dust",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 405,
+                "addonIcon": "public/PowerAddons/Blight/Plague-Bile.webp",
+                "Name": "Plague Bile",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 406,
+                "addonIcon": "public/PowerAddons/Blight/Canker-Thorn.webp",
+                "Name": "Canker Thorn",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 407,
+                "addonIcon": "public/PowerAddons/Blight/Blighted-Rat.webp",
+                "Name": "Blighted Rat",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 408,
+                "addonIcon": "public/PowerAddons/Blight/Umbra-Salts.webp",
+                "Name": "Umbra Salts",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 409,
+                "addonIcon": "public/PowerAddons/Blight/Rose-Tonic.webp",
+                "Name": "Rose Tonic",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 410,
+                "addonIcon": "public/PowerAddons/Blight/Compound-Twenty-One.webp",
+                "Name": "Compound Twenty-One",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 411,
+                "addonIcon": "public/PowerAddons/Blight/Blighted-Crow.webp",
+                "Name": "Blighted Crow",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 412,
+                "addonIcon": "public/PowerAddons/Blight/Adrenaline-Vial.webp",
+                "Name": "Adrenaline Vial",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 413,
+                "addonIcon": "public/PowerAddons/Blight/Vigo_S-Journal.webp",
+                "Name": "Vigo's Journal",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 414,
+                "addonIcon": "public/PowerAddons/Blight/Summoning-Stone.webp",
+                "Name": "Summoning Stone",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 415,
+                "addonIcon": "public/PowerAddons/Blight/Soul-Chemical.webp",
+                "Name": "Soul Chemical",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 416,
+                "addonIcon": "public/PowerAddons/Blight/Alchemist_S-Ring.webp",
+                "Name": "Alchemist's Ring",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 417,
+                "addonIcon": "public/PowerAddons/Blight/Iridescent-Blight-Tag.webp",
+                "Name": "Iridescent Blight Tag",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 418,
+                "addonIcon": "public/PowerAddons/Blight/Compound-Thirty-Three.webp",
+                "Name": "Compound Thirty-Three",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Twins",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 419,
+                "addonIcon": "public/PowerAddons/Twins/Toy-Sword.webp",
+                "Name": "Toy Sword",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 420,
+                "addonIcon": "public/PowerAddons/Twins/Tiny-Fingernail.webp",
+                "Name": "Tiny Fingernail",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 421,
+                "addonIcon": "public/PowerAddons/Twins/Soured-Milk.webp",
+                "Name": "Soured Milk",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 422,
+                "addonIcon": "public/PowerAddons/Twins/Cat-Figurine.webp",
+                "Name": "Cat Figurine",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 423,
+                "addonIcon": "public/PowerAddons/Twins/Madeleine_S-Glove.webp",
+                "Name": "Madeleine's Glove",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 424,
+                "addonIcon": "public/PowerAddons/Twins/Ceremonial-Candelabrum.webp",
+                "Name": "Ceremonial Candelabrum",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 425,
+                "addonIcon": "public/PowerAddons/Twins/Cat_S-Eye.webp",
+                "Name": "Cat's Eye",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 426,
+                "addonIcon": "public/PowerAddons/Twins/Bloody-Black-Hood.webp",
+                "Name": "Bloody Black Hood",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 427,
+                "addonIcon": "public/PowerAddons/Twins/Baby-Teeth.webp",
+                "Name": "Baby Teeth",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 428,
+                "addonIcon": "public/PowerAddons/Twins/Weighty-Rattle.webp",
+                "Name": "Weighty Rattle",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 429,
+                "addonIcon": "public/PowerAddons/Twins/Stale-Biscuit.webp",
+                "Name": "Stale Biscuit",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 430,
+                "addonIcon": "public/PowerAddons/Twins/Sewer-Sludge.webp",
+                "Name": "Sewer Sludge",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 431,
+                "addonIcon": "public/PowerAddons/Twins/Rusted-Needle.webp",
+                "Name": "Rusted Needle",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 432,
+                "addonIcon": "public/PowerAddons/Twins/Madeleine_S-Scarf.webp",
+                "Name": "Madeleine's Scarf",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 433,
+                "addonIcon": "public/PowerAddons/Twins/Victor_S-Soldier.webp",
+                "Name": "Victor's Soldier",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 434,
+                "addonIcon": "public/PowerAddons/Twins/Spinning-Top.webp",
+                "Name": "Spinning Top",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 435,
+                "addonIcon": "public/PowerAddons/Twins/Forest-Stew.webp",
+                "Name": "Forest Stew",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 436,
+                "addonIcon": "public/PowerAddons/Twins/Drop-Of-Perfume.webp",
+                "Name": "Drop of Perfume",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 437,
+                "addonIcon": "public/PowerAddons/Twins/Silencing-Cloth.webp",
+                "Name": "Silencing Cloth",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 438,
+                "addonIcon": "public/PowerAddons/Twins/Iridescent-Pendant.webp",
+                "Name": "Iridescent Pendant",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Trickster",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 439,
+                "addonIcon": "public/PowerAddons/Trickster/Trick-Pouch.webp",
+                "Name": "Trick Pouch",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 440,
+                "addonIcon": "public/PowerAddons/Trickster/Memento-Blades.webp",
+                "Name": "Memento Blades",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 441,
+                "addonIcon": "public/PowerAddons/Trickster/Killing-Part-Chords.webp",
+                "Name": "Killing Part Chords",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 442,
+                "addonIcon": "public/PowerAddons/Trickster/Inferno-Wires.webp",
+                "Name": "Inferno Wires",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 443,
+                "addonIcon": "public/PowerAddons/Trickster/Tequuila-Moonrock.webp",
+                "Name": "Tequuila Moonrock",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 444,
+                "addonIcon": "public/PowerAddons/Trickster/On-Target-Single.webp",
+                "Name": "On Target Single",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 445,
+                "addonIcon": "public/PowerAddons/Trickster/Lucky-Blade.webp",
+                "Name": "Lucky Blade",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 446,
+                "addonIcon": "public/PowerAddons/Trickster/Ji-Woon_S-Autograph.webp",
+                "Name": "Ji-Woon's Autograph",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 447,
+                "addonIcon": "public/PowerAddons/Trickster/Caged-Heart-Shoes.webp",
+                "Name": "Caged Heart Shoes",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 448,
+                "addonIcon": "public/PowerAddons/Trickster/Melodious-Murder.webp",
+                "Name": "Melodious Murder",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 449,
+                "addonIcon": "public/PowerAddons/Trickster/Waiting-For-You-Watch.webp",
+                "Name": "Waiting For You Watch",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 450,
+                "addonIcon": "public/PowerAddons/Trickster/Ripper-Brace.webp",
+                "Name": "Ripper Brace",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 451,
+                "addonIcon": "public/PowerAddons/Trickster/Fizz-Spin-Soda.webp",
+                "Name": "Fizz-Spin Soda",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 452,
+                "addonIcon": "public/PowerAddons/Trickster/Bloody-Boa.webp",
+                "Name": "Bloody Boa",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 453,
+                "addonIcon": "public/PowerAddons/Trickster/Trick-Blades.webp",
+                "Name": "Trick Blades",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 454,
+                "addonIcon": "public/PowerAddons/Trickster/Edge-Of-Revival-Album.webp",
+                "Name": "Edge of Revival Album",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 455,
+                "addonIcon": "public/PowerAddons/Trickster/Diamond-Cufflinks.webp",
+                "Name": "Diamond Cufflinks",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 456,
+                "addonIcon": "public/PowerAddons/Trickster/Cut-Thru-U-Single.webp",
+                "Name": "Cut Thru U Single",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 457,
+                "addonIcon": "public/PowerAddons/Trickster/Iridescent-Photocard.webp",
+                "Name": "Iridescent Photocard",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 458,
+                "addonIcon": "public/PowerAddons/Trickster/Death-Throes-Compilation.webp",
+                "Name": "Death Throes Compilation",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Nemesis",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 459,
+                "addonIcon": "public/PowerAddons/Nemesis/Visitor-Wristband.webp",
+                "Name": "Visitor Wristband",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 460,
+                "addonIcon": "public/PowerAddons/Nemesis/S.T.A.R.S.-Field-Combat-Manual.webp",
+                "Name": "S.T.A.R.S. Field Combat Manual",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 461,
+                "addonIcon": "public/PowerAddons/Nemesis/Damaged-Syringe.webp",
+                "Name": "Damaged Syringe",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 462,
+                "addonIcon": "public/PowerAddons/Nemesis/Brian_S-Intestine.webp",
+                "Name": "Brian's Intestine",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 463,
+                "addonIcon": "public/PowerAddons/Nemesis/Zombie-Heart.webp",
+                "Name": "Zombie Heart",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 464,
+                "addonIcon": "public/PowerAddons/Nemesis/Mikhail_S-Eye.webp",
+                "Name": "Mikhail's Eye",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 465,
+                "addonIcon": "public/PowerAddons/Nemesis/Marvin_S-Blood.webp",
+                "Name": "Marvin's Blood",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 466,
+                "addonIcon": "public/PowerAddons/Nemesis/Adrenaline-Injector.webp",
+                "Name": "Adrenaline Injector",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 467,
+                "addonIcon": "public/PowerAddons/Nemesis/Admin-Wristband.webp",
+                "Name": "Admin Wristband",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 468,
+                "addonIcon": "public/PowerAddons/Nemesis/Tyrant-Gore.webp",
+                "Name": "Tyrant Gore",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 469,
+                "addonIcon": "public/PowerAddons/Nemesis/T-Virus-Sample.webp",
+                "Name": "T-Virus Sample",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 470,
+                "addonIcon": "public/PowerAddons/Nemesis/Serotonin-Injector.webp",
+                "Name": "Serotonin Injector",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 471,
+                "addonIcon": "public/PowerAddons/Nemesis/Plant-43-Vine.webp",
+                "Name": "Plant 43 Vine",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 472,
+                "addonIcon": "public/PowerAddons/Nemesis/Licker-Tongue.webp",
+                "Name": "Licker Tongue",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 473,
+                "addonIcon": "public/PowerAddons/Nemesis/Ne-A-Parasite.webp",
+                "Name": "NE-a Parasite",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 474,
+                "addonIcon": "public/PowerAddons/Nemesis/Jill_S-Sandwich.webp",
+                "Name": "Jill's Sandwich",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 475,
+                "addonIcon": "public/PowerAddons/Nemesis/Depleted-Ink-Ribbon.webp",
+                "Name": "Depleted Ink Ribbon",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 476,
+                "addonIcon": "public/PowerAddons/Nemesis/Broken-Recovery-Coin.webp",
+                "Name": "Broken Recovery Coin",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 477,
+                "addonIcon": "public/PowerAddons/Nemesis/Shattered-S.T.A.R.S.-Badge.webp",
+                "Name": "Shattered S.T.A.R.S. Badge",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 478,
+                "addonIcon": "public/PowerAddons/Nemesis/Iridescent-Umbrella-Badge.webp",
+                "Name": "Iridescent Umbrella Badge",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Cenobite",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 479,
+                "addonIcon": "public/PowerAddons/Cenobite/Leather-Strip.webp",
+                "Name": "Leather Strip",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 480,
+                "addonIcon": "public/PowerAddons/Cenobite/Lively-Crickets.webp",
+                "Name": "Lively Crickets",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 481,
+                "addonIcon": "public/PowerAddons/Cenobite/Burning-Candle.webp",
+                "Name": "Burning Candle",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 482,
+                "addonIcon": "public/PowerAddons/Cenobite/Bent-Nail.webp",
+                "Name": "Bent Nail",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 483,
+                "addonIcon": "public/PowerAddons/Cenobite/Wriggling-Maggots.webp",
+                "Name": "Wriggling Maggots",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 484,
+                "addonIcon": "public/PowerAddons/Cenobite/Spoiled-Meal.webp",
+                "Name": "Spoiled Meal",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 485,
+                "addonIcon": "public/PowerAddons/Cenobite/Skewered-Rat.webp",
+                "Name": "Skewered Rat",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 486,
+                "addonIcon": "public/PowerAddons/Cenobite/Liquified-Gore.webp",
+                "Name": "Liquified gORE",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 487,
+                "addonIcon": "public/PowerAddons/Cenobite/Flickering-Television.webp",
+                "Name": "Flickering Television",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 488,
+                "addonIcon": "public/PowerAddons/Cenobite/Torture-Pillar.webp",
+                "Name": "Torture Pillar",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 489,
+                "addonIcon": "public/PowerAddons/Cenobite/Slice-Of-Frank.webp",
+                "Name": "Slice of Frank",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 490,
+                "addonIcon": "public/PowerAddons/Cenobite/Larry_S-Remains.webp",
+                "Name": "Larry's Remains",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 491,
+                "addonIcon": "public/PowerAddons/Cenobite/Larry_S-Blood.webp",
+                "Name": "Larry's Blood",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 492,
+                "addonIcon": "public/PowerAddons/Cenobite/Frank_S-Heart.webp",
+                "Name": "Frank's Heart",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 493,
+                "addonIcon": "public/PowerAddons/Cenobite/Original-Pain.webp",
+                "Name": "Original Pain",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 494,
+                "addonIcon": "public/PowerAddons/Cenobite/Impaling-Wire.webp",
+                "Name": "Impaling Wire",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 495,
+                "addonIcon": "public/PowerAddons/Cenobite/Greasy-Black-Lens.webp",
+                "Name": "Greasy Black Lens",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 496,
+                "addonIcon": "public/PowerAddons/Cenobite/Chatterer_S-Tooth.webp",
+                "Name": "Chatterer's Tooth",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 497,
+                "addonIcon": "public/PowerAddons/Cenobite/Iridescent-Lament-Configuration.webp",
+                "Name": "Iridescent Lament Configuration",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 498,
+                "addonIcon": "public/PowerAddons/Cenobite/Engineer_S-Fang.webp",
+                "Name": "Engineer's Fang",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Artist",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 499,
+                "addonIcon": "public/PowerAddons/Artist/Vibrant-Obituary.webp",
+                "Name": "Vibrant Obituary",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 500,
+                "addonIcon": "public/PowerAddons/Artist/Thick-Tar.webp",
+                "Name": "Thick Tar",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 501,
+                "addonIcon": "public/PowerAddons/Artist/Oil-Paints.webp",
+                "Name": "Oil Paints",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 502,
+                "addonIcon": "public/PowerAddons/Artist/Choclo-Corn.webp",
+                "Name": "Choclo Corn",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 503,
+                "addonIcon": "public/PowerAddons/Artist/Velvet-Fabric.webp",
+                "Name": "Velvet Fabric",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 504,
+                "addonIcon": "public/PowerAddons/Artist/Untitled-Agony.webp",
+                "Name": "Untitled Agony",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 505,
+                "addonIcon": "public/PowerAddons/Artist/Still-Life-Crow.webp",
+                "Name": "Still Life Crow",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 506,
+                "addonIcon": "public/PowerAddons/Artist/Festering-Carrion.webp",
+                "Name": "Festering Carrion",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 507,
+                "addonIcon": "public/PowerAddons/Artist/Automatic-Drawing.webp",
+                "Name": "Automatic Drawing",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 508,
+                "addonIcon": "public/PowerAddons/Artist/Thorny-Nest.webp",
+                "Name": "Thorny Nest",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 509,
+                "addonIcon": "public/PowerAddons/Artist/Silver-Bell.webp",
+                "Name": "Silver Bell",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 510,
+                "addonIcon": "public/PowerAddons/Artist/O-Grief,-O-Lover.webp",
+                "Name": "O Grief, O Lover",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 511,
+                "addonIcon": "public/PowerAddons/Artist/Darkest-Ink.webp",
+                "Name": "Darkest Ink",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 512,
+                "addonIcon": "public/PowerAddons/Artist/Charcoal-Stick.webp",
+                "Name": "Charcoal Stick",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 513,
+                "addonIcon": "public/PowerAddons/Artist/Severed-Tongue.webp",
+                "Name": "Severed Tongue",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 514,
+                "addonIcon": "public/PowerAddons/Artist/Severed-Hands.webp",
+                "Name": "Severed Hands",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 515,
+                "addonIcon": "public/PowerAddons/Artist/Matias_-Baby-Shoes.webp",
+                "Name": "Matias' Baby Shoes",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 516,
+                "addonIcon": "public/PowerAddons/Artist/Ink-Egg.webp",
+                "Name": "Ink Egg",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 517,
+                "addonIcon": "public/PowerAddons/Artist/Iridescent-Feather.webp",
+                "Name": "Iridescent Feather",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 518,
+                "addonIcon": "public/PowerAddons/Artist/Garden-Of-Rot.webp",
+                "Name": "Garden of Rot",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Onryo",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 519,
+                "addonIcon": "public/PowerAddons/Onryo/Videotape-Copy.webp",
+                "Name": "Videotape Copy",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 520,
+                "addonIcon": "public/PowerAddons/Onryo/Old-Newspaper.webp",
+                "Name": "Old Newspaper",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 521,
+                "addonIcon": "public/PowerAddons/Onryo/Mother_S-Mirror.webp",
+                "Name": "Mother's Mirror",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 522,
+                "addonIcon": "public/PowerAddons/Onryo/Cabin-Sign.webp",
+                "Name": "Cabin Sign",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 523,
+                "addonIcon": "public/PowerAddons/Onryo/Yoichi_S-Fishing-Net.webp",
+                "Name": "Yoichi's Fishing Net",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 524,
+                "addonIcon": "public/PowerAddons/Onryo/Well-Stone.webp",
+                "Name": "Well Stone",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 525,
+                "addonIcon": "public/PowerAddons/Onryo/Sea-Soaked-Cloth.webp",
+                "Name": "Sea-Soaked Cloth",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 526,
+                "addonIcon": "public/PowerAddons/Onryo/Reiko_S-Watch.webp",
+                "Name": "Reiko's Watch",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 527,
+                "addonIcon": "public/PowerAddons/Onryo/Clump-Of-Hair.webp",
+                "Name": "Clump of Hair",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 528,
+                "addonIcon": "public/PowerAddons/Onryo/Well-Water.webp",
+                "Name": "Well Water",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 529,
+                "addonIcon": "public/PowerAddons/Onryo/Ring-Drawing.webp",
+                "Name": "Ring Drawing",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 530,
+                "addonIcon": "public/PowerAddons/Onryo/Rickety-Pinwheel.webp",
+                "Name": "Rickety Pinwheel",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 531,
+                "addonIcon": "public/PowerAddons/Onryo/Mother_S-Comb.webp",
+                "Name": "Mother's Comb",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 532,
+                "addonIcon": "public/PowerAddons/Onryo/Bloody-Fingernails.webp",
+                "Name": "Bloody Fingernails",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 533,
+                "addonIcon": "public/PowerAddons/Onryo/Vcr.webp",
+                "Name": "VCR",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 534,
+                "addonIcon": "public/PowerAddons/Onryo/Telephone.webp",
+                "Name": "Telephone",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 535,
+                "addonIcon": "public/PowerAddons/Onryo/Tape-Editing-Deck.webp",
+                "Name": "Tape Editing Deck",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 536,
+                "addonIcon": "public/PowerAddons/Onryo/Distorted-Photo.webp",
+                "Name": "Distorted Photo",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 537,
+                "addonIcon": "public/PowerAddons/Onryo/Remote-Control.webp",
+                "Name": "Remote Control",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 538,
+                "addonIcon": "public/PowerAddons/Onryo/Iridescent-Videotape.webp",
+                "Name": "Iridescent Videotape",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Dredge",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 539,
+                "addonIcon": "public/PowerAddons/Dredge/Wooden-Plank.webp",
+                "Name": "Wooden Plank",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 540,
+                "addonIcon": "public/PowerAddons/Dredge/Mortar-And-Pestle.webp",
+                "Name": "Mortar and Pestle",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 541,
+                "addonIcon": "public/PowerAddons/Dredge/Follower_S-Cowl.webp",
+                "Name": "Follower's Cowl",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 542,
+                "addonIcon": "public/PowerAddons/Dredge/Caffeine-Tablets.webp",
+                "Name": "Caffeine Tablets",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 543,
+                "addonIcon": "public/PowerAddons/Dredge/Malthinker_S-Skull.webp",
+                "Name": "Malthinker's Skull",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 544,
+                "addonIcon": "public/PowerAddons/Dredge/Haddie_S-Calendar.webp",
+                "Name": "Haddie's Calendar",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 545,
+                "addonIcon": "public/PowerAddons/Dredge/Fallen-Shingle.webp",
+                "Name": "Fallen Shingle",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 546,
+                "addonIcon": "public/PowerAddons/Dredge/Burnt-Letters.webp",
+                "Name": "Burnt Letters",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 547,
+                "addonIcon": "public/PowerAddons/Dredge/Air-Freshener.webp",
+                "Name": "Air Freshener",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 548,
+                "addonIcon": "public/PowerAddons/Dredge/Worry-Stone.webp",
+                "Name": "Worry Stone",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 549,
+                "addonIcon": "public/PowerAddons/Dredge/War-Helmet.webp",
+                "Name": "War Helmet",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 550,
+                "addonIcon": "public/PowerAddons/Dredge/Ottomarian-Writing.webp",
+                "Name": "Ottomarian Writing",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 551,
+                "addonIcon": "public/PowerAddons/Dredge/Destroyed-Pillow.webp",
+                "Name": "Destroyed Pillow",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 552,
+                "addonIcon": "public/PowerAddons/Dredge/Broken-Doll.webp",
+                "Name": "Broken Doll",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 553,
+                "addonIcon": "public/PowerAddons/Dredge/Tilling-Blade.webp",
+                "Name": "Tilling Blade",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 554,
+                "addonIcon": "public/PowerAddons/Dredge/Lavalier-Microphone.webp",
+                "Name": "Lavalier Microphone",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 555,
+                "addonIcon": "public/PowerAddons/Dredge/Field-Recorder.webp",
+                "Name": "Field Recorder",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 556,
+                "addonIcon": "public/PowerAddons/Dredge/Boat-Key.webp",
+                "Name": "Boat Key",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 557,
+                "addonIcon": "public/PowerAddons/Dredge/Sacrificial-Knife.webp",
+                "Name": "Sacrificial Knife",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 558,
+                "addonIcon": "public/PowerAddons/Dredge/Iridescent-Wooden-Plank.webp",
+                "Name": "Iridescent Wooden Plank",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Mastermind",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 559,
+                "addonIcon": "public/PowerAddons/Mastermind/Jewel-Beetle.webp",
+                "Name": "Jewel Beetle",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 560,
+                "addonIcon": "public/PowerAddons/Mastermind/Unicorn-Medallion.webp",
+                "Name": "Unicorn Medallion",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 561,
+                "addonIcon": "public/PowerAddons/Mastermind/R.P.D.-Shoulder-Walkie.webp",
+                "Name": "R.P.D. Shoulder Walkie",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 562,
+                "addonIcon": "public/PowerAddons/Mastermind/Uroboros-Tendril.webp",
+                "Name": "Uroboros Tendril",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 563,
+                "addonIcon": "public/PowerAddons/Mastermind/Loose-Crank.webp",
+                "Name": "Loose Crank",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 564,
+                "addonIcon": "public/PowerAddons/Mastermind/Leather-Gloves.webp",
+                "Name": "Leather Gloves",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 565,
+                "addonIcon": "public/PowerAddons/Mastermind/Lion-Medallion.webp",
+                "Name": "Lion Medallion",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 566,
+                "addonIcon": "public/PowerAddons/Mastermind/Chalice-(Gold).webp",
+                "Name": "Chalice (Gold)",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 567,
+                "addonIcon": "public/PowerAddons/Mastermind/Bullhorn.webp",
+                "Name": "Bullhorn",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 568,
+                "addonIcon": "public/PowerAddons/Mastermind/Portable-Safe.webp",
+                "Name": "Portable Safe",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 569,
+                "addonIcon": "public/PowerAddons/Mastermind/Red-Herb.webp",
+                "Name": "Red Herb",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 570,
+                "addonIcon": "public/PowerAddons/Mastermind/Maiden-Medallion.webp",
+                "Name": "Maiden Medallion",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 571,
+                "addonIcon": "public/PowerAddons/Mastermind/Video-Conference-Device.webp",
+                "Name": "Video Conference Device",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 572,
+                "addonIcon": "public/PowerAddons/Mastermind/Egg-(Gold).webp",
+                "Name": "Egg (Gold)",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 573,
+                "addonIcon": "public/PowerAddons/Mastermind/Dark-Sunglasses.webp",
+                "Name": "Dark Sunglasses",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 574,
+                "addonIcon": "public/PowerAddons/Mastermind/Green-Herb.webp",
+                "Name": "Green Herb",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 575,
+                "addonIcon": "public/PowerAddons/Mastermind/Helicopter-Stick.webp",
+                "Name": "Helicopter Stick",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 576,
+                "addonIcon": "public/PowerAddons/Mastermind/Uroboros-Virus.webp",
+                "Name": "Uroboros Virus",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 577,
+                "addonIcon": "public/PowerAddons/Mastermind/Lab-Photo.webp",
+                "Name": "Lab Photo",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 578,
+                "addonIcon": "public/PowerAddons/Mastermind/Iridescent-Uroboros-Vial.webp",
+                "Name": "Iridescent Uroboros Vial",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Knight",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 579,
+                "addonIcon": "public/PowerAddons/Knight/Tattered-Tabard.webp",
+                "Name": "Tattered Tabard",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 580,
+                "addonIcon": "public/PowerAddons/Knight/Pillaged-Mead.webp",
+                "Name": "Pillaged Mead",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 581,
+                "addonIcon": "public/PowerAddons/Knight/Map-Of-The-Realm.webp",
+                "Name": "Map of the Realm",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 582,
+                "addonIcon": "public/PowerAddons/Knight/Gritty-Lump.webp",
+                "Name": "Gritty Lump",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 583,
+                "addonIcon": "public/PowerAddons/Knight/Treated-Blade.webp",
+                "Name": "Treated Blade",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 584,
+                "addonIcon": "public/PowerAddons/Knight/Dried-Horsemeat.webp",
+                "Name": "Dried Horsemeat",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 585,
+                "addonIcon": "public/PowerAddons/Knight/Cold-Steel-Manacles.webp",
+                "Name": "Cold Steel Manacles",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 586,
+                "addonIcon": "public/PowerAddons/Knight/Call-To-Arms.webp",
+                "Name": "Call To Arms",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 587,
+                "addonIcon": "public/PowerAddons/Knight/Battle-Axe-Head.webp",
+                "Name": "Battle Axe Head",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 588,
+                "addonIcon": "public/PowerAddons/Knight/Town-Watch_S-Torch.webp",
+                "Name": "Town Watch's Torch",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 589,
+                "addonIcon": "public/PowerAddons/Knight/Ironworker_S-Tongs.webp",
+                "Name": "Ironworker's Tongs",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 590,
+                "addonIcon": "public/PowerAddons/Knight/Grim-Iron-Mask.webp",
+                "Name": "Grim Iron Mask",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 591,
+                "addonIcon": "public/PowerAddons/Knight/Chain-Mail-Fragment.webp",
+                "Name": "Chain Mail Fragment",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 592,
+                "addonIcon": "public/PowerAddons/Knight/Broken-Hilt.webp",
+                "Name": "Broken Hilt",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 593,
+                "addonIcon": "public/PowerAddons/Knight/Lightweight-Greaves.webp",
+                "Name": "Lightweight Greaves",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 594,
+                "addonIcon": "public/PowerAddons/Knight/Healing-Poultice.webp",
+                "Name": "Healing Poultice",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 595,
+                "addonIcon": "public/PowerAddons/Knight/Flint-And-Steel.webp",
+                "Name": "Flint and Steel",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 596,
+                "addonIcon": "public/PowerAddons/Knight/Blacksmith_S-Hammer.webp",
+                "Name": "Blacksmith's Hammer",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 597,
+                "addonIcon": "public/PowerAddons/Knight/Knight_S-Contract.webp",
+                "Name": "Knight's Contract",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 598,
+                "addonIcon": "public/PowerAddons/Knight/Iridescent-Company-Banner.webp",
+                "Name": "Iridescent Company Banner",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Skull Merchant",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 599,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Ultrasonic-Trap-Speaker.webp",
+                "Name": "Ultrasonic Trap Speaker",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 600,
+                "addonIcon": "public/PowerAddons/Skull Merchant/High-Power-Floodlight.webp",
+                "Name": "High-Power Floodlight",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 601,
+                "addonIcon": "public/PowerAddons/Skull Merchant/High-Current-Upgrade.webp",
+                "Name": "High-Current Upgrade",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 602,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Adi-Valente-Issue-1.webp",
+                "Name": "Adi Valente Issue 1",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 603,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Stereo-Remote-Mic.webp",
+                "Name": "Stereo Remote Mic",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 604,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Shotgun-Speakers.webp",
+                "Name": "Shotgun Speakers",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 605,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Supercharge.webp",
+                "Name": "Supercharge",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 606,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Low-Power-Mode.webp",
+                "Name": "Low-Power Mode",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 607,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Adaptive-Lighting.webp",
+                "Name": "Adaptive Lighting",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 608,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Vital-Targeting-Processor.webp",
+                "Name": "Vital Targeting Processor",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 609,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Powdered-Glass.webp",
+                "Name": "Powdered Glass",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 610,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Loose-Screw.webp",
+                "Name": "Loose Screw",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 611,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Infrared-Upgrade.webp",
+                "Name": "Infrared Upgrade",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 612,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Brown-Noise-Generator.webp",
+                "Name": "Brown Noise Generator",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 613,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Randomised-Strobes.webp",
+                "Name": "Randomised Strobes",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 614,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Geographical-Readout.webp",
+                "Name": "Geographical Readout",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 615,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Prototype-Rotor.webp",
+                "Name": "Prototype Rotor",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 616,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Advanced-Movement-Prediction.webp",
+                "Name": "Advanced Movement Prediction",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 617,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Expired-Batteries.webp",
+                "Name": "Expired Batteries",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 618,
+                "addonIcon": "public/PowerAddons/Skull Merchant/Iridescent-Unpublished-Manuscript.webp",
+                "Name": "Iridescent Unpublished Manuscript",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Singularity",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 619,
+                "addonIcon": "public/PowerAddons/Singularity/Nutritional-Slurry.webp",
+                "Name": "Nutritional Slurry",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 620,
+                "addonIcon": "public/PowerAddons/Singularity/Kid_S-Ball-Glove.webp",
+                "Name": "Kid's Ball Glove",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 621,
+                "addonIcon": "public/PowerAddons/Singularity/Heavy-Water.webp",
+                "Name": "Heavy Water",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 622,
+                "addonIcon": "public/PowerAddons/Singularity/Broken-Security-Key.webp",
+                "Name": "Broken Security Key",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 623,
+                "addonIcon": "public/PowerAddons/Singularity/Ultrasonic-Sensor.webp",
+                "Name": "Ultrasonic Sensor",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 624,
+                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(Repair).webp",
+                "Name": "Diagnostic Tool (Repair)",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 625,
+                "addonIcon": "public/PowerAddons/Singularity/Cryo-Gel.webp",
+                "Name": "Cryo Gel",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 626,
+                "addonIcon": "public/PowerAddons/Singularity/Cremated-Remains.webp",
+                "Name": "Cremated Remains",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 627,
+                "addonIcon": "public/PowerAddons/Singularity/Android-Arm.webp",
+                "Name": "Android Arm",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 628,
+                "addonIcon": "public/PowerAddons/Singularity/Spent-Oxygen-Tank.webp",
+                "Name": "Spent Oxygen Tank",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 629,
+                "addonIcon": "public/PowerAddons/Singularity/Nanomachine-Gel.webp",
+                "Name": "Nanomachine Gel",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 630,
+                "addonIcon": "public/PowerAddons/Singularity/Live-Wires.webp",
+                "Name": "Live Wires",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 631,
+                "addonIcon": "public/PowerAddons/Singularity/Hyperawareness-Spray.webp",
+                "Name": "Hyperawareness Spray",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 632,
+                "addonIcon": "public/PowerAddons/Singularity/Hologram-Generator.webp",
+                "Name": "Hologram Generator",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 633,
+                "addonIcon": "public/PowerAddons/Singularity/Soma-Family-Photo.webp",
+                "Name": "Soma Family Photo",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 634,
+                "addonIcon": "public/PowerAddons/Singularity/Foreign-Plant-Fibres.webp",
+                "Name": "Foreign Plant Fibres",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 635,
+                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(Construction).webp",
+                "Name": "Diagnostic Tool (Construction)",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 636,
+                "addonIcon": "public/PowerAddons/Singularity/Crew-Manifest.webp",
+                "Name": "Crew Manifest",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 637,
+                "addonIcon": "public/PowerAddons/Singularity/Iridescent-Crystal-Shard.webp",
+                "Name": "Iridescent Crystal Shard",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 638,
+                "addonIcon": "public/PowerAddons/Singularity/Denied-Requisition-Form.webp",
+                "Name": "Denied Requisition Form",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Xenomorph",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 639,
+                "addonIcon": "public/PowerAddons/Xenomorph/Ripley_S-Watch.webp",
+                "Name": "Ripley's Watch",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 640,
+                "addonIcon": "public/PowerAddons/Xenomorph/Ovomorph.webp",
+                "Name": "Ovomorph",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 641,
+                "addonIcon": "public/PowerAddons/Xenomorph/Drinking-Bird.webp",
+                "Name": "Drinking Bird",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 642,
+                "addonIcon": "public/PowerAddons/Xenomorph/Cereal-Rations.webp",
+                "Name": "Cereal Rations",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 643,
+                "addonIcon": "public/PowerAddons/Xenomorph/Light-Wand.webp",
+                "Name": "Light Wand",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 644,
+                "addonIcon": "public/PowerAddons/Xenomorph/Lambert_S-Star-Map.webp",
+                "Name": "Lambert's Star Map",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 645,
+                "addonIcon": "public/PowerAddons/Xenomorph/Crew-Headset.webp",
+                "Name": "Crew Headset",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 646,
+                "addonIcon": "public/PowerAddons/Xenomorph/Brett_S-Cap.webp",
+                "Name": "Brett's Cap",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 647,
+                "addonIcon": "public/PowerAddons/Xenomorph/Ash_S-Innards.webp",
+                "Name": "Ash's Innards",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 648,
+                "addonIcon": "public/PowerAddons/Xenomorph/Parker_S-Headband.webp",
+                "Name": "Parker's Headband",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 649,
+                "addonIcon": "public/PowerAddons/Xenomorph/Multipurpose-Hatchet.webp",
+                "Name": "Multipurpose Hatchet",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 650,
+                "addonIcon": "public/PowerAddons/Xenomorph/Moulted-Skin.webp",
+                "Name": "Moulted Skin",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 651,
+                "addonIcon": "public/PowerAddons/Xenomorph/Kane_S-Helmet.webp",
+                "Name": "Kane's Helmet",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 652,
+                "addonIcon": "public/PowerAddons/Xenomorph/Emergency-Helmet.webp",
+                "Name": "Emergency Helmet",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 653,
+                "addonIcon": "public/PowerAddons/Xenomorph/Semiotic-Keyboard.webp",
+                "Name": "Semiotic Keyboard",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 654,
+                "addonIcon": "public/PowerAddons/Xenomorph/Self-Destruct-Bolt.webp",
+                "Name": "Self-Destruct Bolt",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 655,
+                "addonIcon": "public/PowerAddons/Xenomorph/Harpoon-Gun.webp",
+                "Name": "Harpoon Gun",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 656,
+                "addonIcon": "public/PowerAddons/Xenomorph/Cat-Carrier.webp",
+                "Name": "Cat Carrier",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 657,
+                "addonIcon": "public/PowerAddons/Xenomorph/Improvised-Cattle-Prod.webp",
+                "Name": "Improvised Cattle Prod",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 658,
+                "addonIcon": "public/PowerAddons/Xenomorph/Acidic-Blood.webp",
+                "Name": "Acidic Blood",
+                "Rarity": 4
+            }
+        ]
+    },
+    {
+        "Name": "The Good Guy",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 659,
+                "addonIcon": "public/PowerAddons/Good Guy/Tiny-Scalpel.webp",
+                "Name": "Tiny Scalpel",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 660,
+                "addonIcon": "public/PowerAddons/Good Guy/Strobing-Light.webp",
+                "Name": "Strobing Light",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 661,
+                "addonIcon": "public/PowerAddons/Good Guy/Good-Guy-Box.webp",
+                "Name": "Good Guy Box",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 662,
+                "addonIcon": "public/PowerAddons/Good Guy/Doll-Eyes.webp",
+                "Name": "Doll Eyes",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 663,
+                "addonIcon": "public/PowerAddons/Good Guy/Power-Drill.webp",
+                "Name": "Power Drill",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 664,
+                "addonIcon": "public/PowerAddons/Good Guy/Jump-Rope.webp",
+                "Name": "Jump Rope",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 665,
+                "addonIcon": "public/PowerAddons/Good Guy/Hair-Spray-And-Candle.webp",
+                "Name": "Hair Spray & Candle",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 666,
+                "addonIcon": "public/PowerAddons/Good Guy/Electric-Carving-Knife.webp",
+                "Name": "Electric Carving Knife",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 667,
+                "addonIcon": "public/PowerAddons/Good Guy/Automatic-Screwdriver.webp",
+                "Name": "Automatic Screwdriver",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 668,
+                "addonIcon": "public/PowerAddons/Good Guy/Yardstick.webp",
+                "Name": "Yardstick",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 669,
+                "addonIcon": "public/PowerAddons/Good Guy/Silk-Pillow.webp",
+                "Name": "Silk Pillow",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 670,
+                "addonIcon": "public/PowerAddons/Good Guy/Running-Shoes.webp",
+                "Name": "Running Shoes",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 671,
+                "addonIcon": "public/PowerAddons/Good Guy/Rat-Poison.webp",
+                "Name": "Rat Poison",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 672,
+                "addonIcon": "public/PowerAddons/Good Guy/Portable-Tv.webp",
+                "Name": "Portable TV",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 673,
+                "addonIcon": "public/PowerAddons/Good Guy/Straight-Razor.webp",
+                "Name": "Straight Razor",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 674,
+                "addonIcon": "public/PowerAddons/Good Guy/Plastic-Bag.webp",
+                "Name": "Plastic Bag",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 675,
+                "addonIcon": "public/PowerAddons/Good Guy/Pile-Of-Nails.webp",
+                "Name": "Pile of Nails",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 676,
+                "addonIcon": "public/PowerAddons/Good Guy/Mirror-Shards.webp",
+                "Name": "Mirror Shards",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 677,
+                "addonIcon": "public/PowerAddons/Good Guy/Iridescent-Amulet.webp",
+                "Name": "Iridescent Amulet",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 678,
+                "addonIcon": "public/PowerAddons/Good Guy/Hard-Hat.webp",
+                "Name": "Hard Hat",
+                "Rarity": 4
+            }
+        ]
+    }
+]
