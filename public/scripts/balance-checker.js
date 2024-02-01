@@ -958,7 +958,11 @@ function GenerateMapModal() {
 
     let mapNames = [];
     for (var i = 0; i < maps.length; i++) {
-        mapNames.push(Maps[maps[i]]);
+        let map = GetMapByID(maps[i]);
+
+        let mapName = `${map["Realm"]} - ${map["Name"]}`;
+
+        mapNames.push(mapName);
     }
 
     // Create the modal
@@ -967,6 +971,17 @@ function GenerateMapModal() {
         `When ${selectedRole == 0 ? "playing against" : "playing as"} <b>${Killers[selectedKiller]}</b>, the following maps are required:<br><br><b>${mapNames.join("</b>, <b>")}</b><br><br>Note that certain maps may have different conditions, consult official balancing for more information.`
     );
 }
+
+function GetMapByID(id) {
+    for (var i = 0; i < Maps.length; i++) {
+        if (Maps[i]["ID"] == id) {
+            return Maps[i];
+        }
+    }
+
+    return null;
+}
+
 
 function LoadClearLoadoutButton() {
     let clearLoadoutButton = document.getElementById("clear-loadout-button");
@@ -2734,7 +2749,7 @@ function GetMaps() {
             GetAddons();
         }
     }
-    xhttp.open("GET", "Maps.json", false);
+    xhttp.open("GET", "NewMaps.json", false);
     xhttp.send();
 }
 

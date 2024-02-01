@@ -607,7 +607,7 @@ function SetKillerOverrideEvents() {
         var mapIndexes = [];
         for (var i = 0; i < selectedMaps.length; i++) {
             for (var j = 0; j < Maps.length; j++) {
-                if (Maps[j] == selectedMaps[i]) {
+                if (Maps[j]["ID"] == selectedMaps[i]) {
                     mapIndexes.push(j);
                     continue;
                 }
@@ -617,7 +617,15 @@ function SetKillerOverrideEvents() {
         // Set the mapIndexes to the killer
         KillerBalance[killerIndex].Map = mapIndexes;
 
-        DebugLog(`Map set to <b>${KillerBalance[killerIndex].Map}</b> for <b>${KillerBalance[killerIndex].Name}</b>`);
+        let consoleMapString = "";
+        for (var i = 0; i < mapIndexes.length; i++) {
+            consoleMapString += `${Maps[mapIndexes[i]]["Name"]}`;
+            if (i != mapIndexes.length - 1) {
+                consoleMapString += ", ";
+            }
+        }
+
+        DebugLog(`Map set to ${consoleMapString} for \"${KillerBalance[killerIndex].Name}\"`);
     });
 
     var killerConfirmOfferingButton = document.getElementById("killer-offering-confirmation-button");
@@ -1656,6 +1664,7 @@ function CreateKillerOverride(name) {
 
     NewKillerBalance = {
         Name: name,
+        IsDisabled: false, // Whether or not the killer is disabled for the purposes of the balancing.
         Map: [0], // Can be empty, which means all maps are allowed.
         BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
         SurvivorBalanceTiers: [0], // Set to 0 for General Tier, which is always created.
@@ -1884,8 +1893,8 @@ function UpdateMapDropdowns() {
 
     for (var i = 0; i < Maps.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = Maps[i];
-        optionsElement.innerHTML = Maps[i];
+        optionsElement.value = Maps[i]["ID"];
+        optionsElement.innerHTML = `${Maps[i]["Name"]}`;
         mapDropdown.appendChild(optionsElement);
     }
 }
@@ -2041,7 +2050,7 @@ function GetMaps() {
             GetAddons();
         }
     }
-    xhttp.open("GET", "Maps.json", false);
+    xhttp.open("GET", "NewMaps.json", false);
     xhttp.send();
 }
 
@@ -2271,6 +2280,10 @@ function ImportBalancing() {
         }
 
         NewKillerBalance = CreateKillerOverride(curKiller.Name);
+
+        if (curKiller.IsDisabled != undefined) {
+            NewKillerBalance.IsDisabled = curKiller.IsDisabled;
+        }
 
         NewKillerBalance.Map = curKiller.Map;
         NewKillerBalance.BalanceTiers = curKiller.BalanceTiers;

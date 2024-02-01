@@ -77,3 +77,8 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
 }
+
+#map-selection-dropdown option {
+    text-align: center;
+    font-weight: 700;
+}
