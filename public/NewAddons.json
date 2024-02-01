@@ -302,36 +302,36 @@
             {
                 "id": 1,
                 "globalID": 41,
-                "addonIcon": "public/PowerAddons/Hillbilly/Junkyard-Air-Filter.webp",
-                "Name": "Junkyard Air Filter",
+                "addonIcon": "public/PowerAddons/Hillbilly/Dad_S-Boots.webp",
+                "Name": "Dad's Boots",
                 "Rarity": 0
             },
             {
                 "id": 2,
                 "globalID": 42,
-                "addonIcon": "public/PowerAddons/Hillbilly/Heavy-Clutch.webp",
-                "Name": "Heavy Clutch",
+                "addonIcon": "public/PowerAddons/Hillbilly/Cracked-Primer-Bulb.webp",
+                "Name": "Cracked Primer Bulb",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 43,
-                "addonIcon": "public/PowerAddons/Hillbilly/Speed-Limiter.webp",
-                "Name": "Speed Limiter",
+                "addonIcon": "public/PowerAddons/Hillbilly/Counterweight.webp",
+                "Name": "Counterweight",
                 "Rarity": 0
             },
             {
                 "id": 4,
                 "globalID": 44,
-                "addonIcon": "public/PowerAddons/Hillbilly/Dad_S-Boots.webp",
-                "Name": "Dad's Boots",
+                "addonIcon": "public/PowerAddons/Hillbilly/Thermal-Casing.webp",
+                "Name": "Thermal Casing",
                 "Rarity": 1
             },
             {
                 "id": 5,
                 "globalID": 45,
-                "addonIcon": "public/PowerAddons/Hillbilly/Punctured-Muffler.webp",
-                "Name": "Punctured Muffler",
+                "addonIcon": "public/PowerAddons/Hillbilly/Spiked-Boots.webp",
+                "Name": "Spiked Boots",
                 "Rarity": 1
             },
             {
@@ -344,92 +344,92 @@
             {
                 "id": 7,
                 "globalID": 47,
-                "addonIcon": "public/PowerAddons/Hillbilly/Death-Engravings.webp",
-                "Name": "Death Engravings",
+                "addonIcon": "public/PowerAddons/Hillbilly/Greased-Throttle.webp",
+                "Name": "Greased Throttle",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 48,
-                "addonIcon": "public/PowerAddons/Hillbilly/Big-Buckle.webp",
-                "Name": "Big Buckle",
+                "addonIcon": "public/PowerAddons/Hillbilly/Clogged-Intake.webp",
+                "Name": "Clogged Intake",
                 "Rarity": 1
             },
             {
                 "id": 9,
                 "globalID": 49,
-                "addonIcon": "public/PowerAddons/Hillbilly/Mother_S-Helpers.webp",
-                "Name": "Mother's Helpers",
+                "addonIcon": "public/PowerAddons/Hillbilly/The-Thompsons_-Mix.webp",
+                "Name": "The Thompsons' Mix",
                 "Rarity": 2
             },
             {
                 "id": 10,
                 "globalID": 50,
-                "addonIcon": "public/PowerAddons/Hillbilly/Low-Kickback-Chains.webp",
-                "Name": "Low Kickback Chains",
+                "addonIcon": "public/PowerAddons/Hillbilly/Ragged-Engine.webp",
+                "Name": "Ragged Engine",
                 "Rarity": 2
             },
             {
                 "id": 11,
                 "globalID": 51,
-                "addonIcon": "public/PowerAddons/Hillbilly/Leafy-Mash.webp",
-                "Name": "Leafy Mash",
+                "addonIcon": "public/PowerAddons/Hillbilly/Low-Kickback-Chains.webp",
+                "Name": "Low Kickback Chains",
                 "Rarity": 2
             },
             {
                 "id": 12,
                 "globalID": 52,
-                "addonIcon": "public/PowerAddons/Hillbilly/Doom-Engravings.webp",
-                "Name": "Doom Engravings",
+                "addonIcon": "public/PowerAddons/Hillbilly/Discarded-Air-Filter.webp",
+                "Name": "Discarded Air Filter",
                 "Rarity": 2
             },
             {
                 "id": 13,
                 "globalID": 53,
-                "addonIcon": "public/PowerAddons/Hillbilly/Black-Grease.webp",
-                "Name": "Black Grease",
+                "addonIcon": "public/PowerAddons/Hillbilly/Begrimed-Chains.webp",
+                "Name": "Begrimed Chains",
                 "Rarity": 2
             },
             {
                 "id": 14,
                 "globalID": 54,
-                "addonIcon": "public/PowerAddons/Hillbilly/Tuned-Carburetor.webp",
-                "Name": "Tuned Carburetor",
+                "addonIcon": "public/PowerAddons/Hillbilly/Lo-Pro-Chains.webp",
+                "Name": "Lo Pro Chains",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 55,
-                "addonIcon": "public/PowerAddons/Hillbilly/Spiked-Boots.webp",
-                "Name": "Spiked Boots",
+                "addonIcon": "public/PowerAddons/Hillbilly/High-Speed-Idler-Screw.webp",
+                "Name": "High-Speed Idler Screw",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 56,
-                "addonIcon": "public/PowerAddons/Hillbilly/Pighouse-Gloves.webp",
-                "Name": "Pighouse Gloves",
+                "addonIcon": "public/PowerAddons/Hillbilly/Filthy-Slippers.webp",
+                "Name": "Filthy Slippers",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 57,
-                "addonIcon": "public/PowerAddons/Hillbilly/Lopro-Chains.webp",
-                "Name": "LoPro Chains",
+                "addonIcon": "public/PowerAddons/Hillbilly/Apex-Muffler.webp",
+                "Name": "Apex Muffler",
                 "Rarity": 3
             },
             {
                 "id": 18,
                 "globalID": 58,
-                "addonIcon": "public/PowerAddons/Hillbilly/Apex-Muffler.webp",
-                "Name": "Apex Muffler",
+                "addonIcon": "public/PowerAddons/Hillbilly/Tuned-Carburetor.webp",
+                "Name": "Tuned Carburetor",
                 "Rarity": 4
             },
             {
                 "id": 19,
                 "globalID": 59,
-                "addonIcon": "public/PowerAddons/Hillbilly/Iridescent-Brick.webp",
-                "Name": "Iridescent Brick",
+                "addonIcon": "public/PowerAddons/Hillbilly/Iridescent-Engravings.webp",
+                "Name": "Iridescent Engravings",
                 "Rarity": 4
             }
         ]
@@ -4348,8 +4348,8 @@
             {
                 "id": 0,
                 "globalID": 599,
-                "addonIcon": "public/PowerAddons/SkullMerchant/Ultrasonic-Trap-Speaker.webp",
-                "Name": "Ultrasonic Trap Speaker",
+                "addonIcon": "public/PowerAddons/SkullMerchant/Ultrasonic-Speaker.webp",
+                "Name": "Ultrasonic Speaker",
                 "Rarity": 0
             },
             {
