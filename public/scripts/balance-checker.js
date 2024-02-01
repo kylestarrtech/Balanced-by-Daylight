@@ -15,31 +15,31 @@ var AllDataLoaded = false;
 
 var BalancePresets = [
     {
+        ID: 0,
         Name: "Outrun the Fog (OTF)",
         Path: "BalancingPresets/OTF.json",
         Balancing: {}
     },
     {
+        ID: 1,
         Name: "Dead by Daylight League (DBDL)",
         Path: "BalancingPresets/DBDL.json",
         Balancing: {}
     },
     {
+        ID: 2,
         Name: "Champions of the Fog (COTF)",
         Path: "BalancingPresets/COTF.json",
         Balancing: {}
     },
     {
-        Name: "Davy Jones League",
-        Path: "BalancingPresets/DavyJones.json",
-        Balancing: {}
-    },
-    {
+        ID: 4,
         Name: "L-Tournament",
         Path: "BalancingPresets/L-Tournament.json",
         Balancing: {}
     },
     {
+        ID: 5,
         Name: "The Arkade",
         Path: "BalancingPresets/Arkade.json",
         Balancing: {}
@@ -241,7 +241,15 @@ function main() {
     // Load default balancing if custom balancing is not enabled/not saved.
     if (loadDefaultBalance) {
             // Set balancing to said index.
-        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+        if (GetBalancePresetByID(currentBalancingIndex) == undefined) {
+            console.error("Balance profile of saved selection is undefined, defaulting to 0.");
+            currentBalancingIndex = 0;
+
+            GenerateAlertModal("Error", "Could not find the balance preset previously selected - this is likely due to a change in the balance presets. Defaulting to the first balance preset.");
+            
+            localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+        }
+        currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
     }
 
     // Update Balancing Selection UI
@@ -269,6 +277,15 @@ function main() {
     }
 
     CheckForBalancingErrors();
+}
+
+function GetBalancePresetByID(id) {
+    for (var i = 0; i < BalancePresets.length; i++) {
+        if (BalancePresets[i]["ID"] == id) {
+            return BalancePresets[i];
+        }
+    }
+    return null;
 }
 
 function UpdateRoleSelectionHeaderUI() {
@@ -898,7 +915,7 @@ function UpdateBalancingDropdown() {
 
         let optionElement = document.createElement("option");
         optionElement.innerText = currentPreset["Name"];
-        optionElement.value = i;
+        optionElement.value = currentPreset["ID"];
 
         balancingDropdown.appendChild(optionElement);
     }
@@ -908,7 +925,7 @@ function UpdateBalancingDropdown() {
         currentBalancingIndex = parseInt(balancingDropdown.value);
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
-        if (!ValidateCustomBalancing(BalancePresets[currentBalancingIndex]["Balancing"])) {
+        if (!ValidateCustomBalancing(GetBalancePresetByID(currentBalancingIndex)["Balancing"])) {
             GenerateAlertModal(
                 "Error",
                 "This default balance profile is invalid, selecting the default balance profile. Please report this to the GitHub issues page or the Discord server.",
@@ -924,7 +941,7 @@ function UpdateBalancingDropdown() {
                 }
             )
         }
-        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+        currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
 
         UpdateBalanceSelectionUI();
     });
@@ -1147,6 +1164,7 @@ function GetExportData() {
 
 
     const exportJson = {
+        "selectedRole": selectedRole,
         "survivorPerksId": survivorPerksId,
         "survivorOfferingsId": survivorOfferingsId,
         "survivorItemsId": survivorItemsId,
@@ -1214,7 +1232,7 @@ function LoadImportEvents() {
                 }
                 currentBalancing = importDataObj.currentBalancing;
             }else{
-                currentBalancing = BalancePresets[importDataObj.currentBalancingIndex]["Balancing"];
+                currentBalancing = GetBalancePresetByID(importDataObj.currentBalancingIndex)["Balancing"];
             }
 
             // Check if importData.survivorPerksId is a valid array
@@ -1438,6 +1456,7 @@ function LoadImageGenEvents() {
             GenerateAlertModal("Error", "Image generation is only available for survivor builds currently!");
             return;
         }
+
         let exportData = GetExportData();
 
         const imageGenContainer = document.getElementById("image-gen-container");
@@ -1624,7 +1643,7 @@ function LoadSettingsEvents() {
             //currentBalancingIndex = -1;
         } else {
             currentBalancingIndex = parseInt(document.getElementById("balancing-select").value);
-            currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+            currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
         }
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
@@ -3139,7 +3158,7 @@ function GetCustomBalancing() {
         currentBalancingIndex = 0;
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
-        currentBalancing = BalancePresets[currentBalancingIndex]["Balancing"];
+        currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
     }
 
     return customBalanceObj;
