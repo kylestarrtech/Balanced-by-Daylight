@@ -1,6 +1,6 @@
 {
     "Name": "Outrun The Fog (2024)",
-    "Version": 1,
+    "Version": 1706773477,
     "MaxPerkRepetition": 1,
     "Tiers": [
         {
@@ -11,12 +11,15 @@
                 "16",
                 "17",
                 "18",
+                "247",
                 "19",
                 "20",
                 "22",
                 "24",
                 "25",
+                "246",
                 "28",
+                "248",
                 "40",
                 "43",
                 "46",
@@ -44,6 +47,8 @@
                 "149",
                 "151",
                 "155",
+                "244",
+                "170",
                 "171",
                 "175",
                 "186",
@@ -52,8 +57,7 @@
                 "209",
                 "227",
                 "235",
-                "238",
-                "244"
+                "238"
             ],
             "SurvivorComboPerkBans": [
                 [
@@ -300,6 +304,7 @@
     "KillerOverride": [
         {
             "Name": "The Trapper",
+            "IsDisabled": false,
             "Map": [
                 4,
                 33
@@ -322,7 +327,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Iridescent Stone"
+                18
             ],
             "ItemWhitelist": [
                 0,
@@ -365,6 +370,7 @@
         },
         {
             "Name": "The Wraith",
+            "IsDisabled": false,
             "Map": [
                 33,
                 34
@@ -394,8 +400,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "\"All Seeing\" - Blood",
-                "\"All Seeing\" - Spirit"
+                37,
+                39
             ],
             "ItemWhitelist": [
                 0,
@@ -438,6 +444,7 @@
         },
         {
             "Name": "The Hillbilly",
+            "IsDisabled": true,
             "Map": [
                 0,
                 9
@@ -504,6 +511,7 @@
         },
         {
             "Name": "The Nurse",
+            "IsDisabled": false,
             "Map": [
                 0,
                 1
@@ -530,9 +538,9 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Heavy Panting",
-                "Jenner's Last Breath",
-                "Campbell's Last Breath"
+                70,
+                75,
+                76
             ],
             "ItemWhitelist": [
                 0,
@@ -583,6 +591,7 @@
         },
         {
             "Name": "The Shape",
+            "IsDisabled": false,
             "Map": [
                 20,
                 32
@@ -651,6 +660,7 @@
         },
         {
             "Name": "The Hag",
+            "IsDisabled": false,
             "Map": [
                 8,
                 40
@@ -675,7 +685,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Waterlogged Shoe"
+                118
             ],
             "ItemWhitelist": [
                 0,
@@ -718,6 +728,7 @@
         },
         {
             "Name": "The Doctor",
+            "IsDisabled": false,
             "Map": [
                 9,
                 33
@@ -785,6 +796,7 @@
         },
         {
             "Name": "The Huntress",
+            "IsDisabled": false,
             "Map": [
                 0,
                 8
@@ -816,8 +828,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Leather Loop",
-                "Infantry Belt"
+                148,
+                154
             ],
             "ItemWhitelist": [
                 5,
@@ -860,6 +872,7 @@
         },
         {
             "Name": "The Cannibal",
+            "IsDisabled": false,
             "Map": [
                 8,
                 33
@@ -926,6 +939,7 @@
         },
         {
             "Name": "The Nightmare",
+            "IsDisabled": false,
             "Map": [
                 7,
                 33
@@ -952,7 +966,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Black Box"
+                198
             ],
             "ItemWhitelist": [
                 5,
@@ -995,6 +1009,7 @@
         },
         {
             "Name": "The Pig",
+            "IsDisabled": false,
             "Map": [
                 32,
                 34
@@ -1026,10 +1041,10 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Bag of Gears",
-                "Tampered Timer",
-                "Crate of Gears",
-                "Video Tape"
+                212,
+                213,
+                215,
+                218
             ],
             "ItemWhitelist": [
                 5,
@@ -1070,6 +1085,7 @@
         },
         {
             "Name": "The Clown",
+            "IsDisabled": false,
             "Map": [
                 6,
                 19
@@ -1098,7 +1114,7 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Cigar Box"
+                235
             ],
             "ItemWhitelist": [
                 5,
@@ -1141,6 +1157,7 @@
         },
         {
             "Name": "The Spirit",
+            "IsDisabled": false,
             "Map": [
                 8,
                 18
@@ -1225,6 +1242,7 @@
         },
         {
             "Name": "The Legion",
+            "IsDisabled": false,
             "Map": [
                 33,
                 40
@@ -1247,8 +1265,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Friendship Bracelet",
-                "Fuming Mix Tape"
+                262,
+                278
             ],
             "ItemWhitelist": [
                 5,
@@ -1291,6 +1309,7 @@
         },
         {
             "Name": "The Plague",
+            "IsDisabled": false,
             "Map": [
                 4,
                 8
@@ -1317,7 +1336,7 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Prayer Tablet Fragment"
+                279
             ],
             "ItemWhitelist": [
                 0,
@@ -1360,6 +1379,7 @@
         },
         {
             "Name": "The Ghost Face",
+            "IsDisabled": false,
             "Map": [
                 20,
                 32
@@ -1431,6 +1451,7 @@
         },
         {
             "Name": "The Demogorgon",
+            "IsDisabled": false,
             "Map": [
                 0,
                 13
@@ -1458,7 +1479,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Leprose Lichen"
+                337
             ],
             "ItemWhitelist": [
                 5,
@@ -1501,6 +1522,7 @@
         },
         {
             "Name": "The Oni",
+            "IsDisabled": false,
             "Map": [
                 0
             ],
@@ -1567,6 +1589,7 @@
         },
         {
             "Name": "The Deathslinger",
+            "IsDisabled": false,
             "Map": [
                 5,
                 8
@@ -1594,7 +1617,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Iridescent Coin"
+                377
             ],
             "ItemWhitelist": [
                 5,
@@ -1637,6 +1660,7 @@
         },
         {
             "Name": "The Executioner",
+            "IsDisabled": false,
             "Map": [
                 6,
                 8
@@ -1702,6 +1726,7 @@
         },
         {
             "Name": "The Blight",
+            "IsDisabled": false,
             "Map": [
                 6,
                 10
@@ -1726,9 +1751,9 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Compound Twenty-One",
-                "Adrenaline Vial",
-                "Alchemist's Ring"
+                410,
+                412,
+                416
             ],
             "ItemWhitelist": [
                 0,
@@ -1784,6 +1809,7 @@
         },
         {
             "Name": "The Twins",
+            "IsDisabled": false,
             "Map": [
                 0,
                 16
@@ -1808,7 +1834,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Iridescent Pendant"
+                438
             ],
             "ItemWhitelist": [
                 0,
@@ -1851,6 +1877,7 @@
         },
         {
             "Name": "The Trickster",
+            "IsDisabled": false,
             "Map": [
                 8,
                 9
@@ -1875,8 +1902,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Trick Blades",
-                "Iridescent Photocard"
+                453,
+                457
             ],
             "ItemWhitelist": [
                 0,
@@ -1919,6 +1946,7 @@
         },
         {
             "Name": "The Nemesis",
+            "IsDisabled": false,
             "Map": [
                 6,
                 16
@@ -1986,6 +2014,7 @@
         },
         {
             "Name": "The Cenobite",
+            "IsDisabled": false,
             "Map": [
                 31,
                 33
@@ -2058,6 +2087,7 @@
         },
         {
             "Name": "The Artist",
+            "IsDisabled": false,
             "Map": [
                 5,
                 8
@@ -2082,8 +2112,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Matias' Baby Shoes",
-                "Garden of Rot"
+                515,
+                518
             ],
             "ItemWhitelist": [
                 5,
@@ -2126,6 +2156,7 @@
         },
         {
             "Name": "The Onryo",
+            "IsDisabled": false,
             "Map": [
                 20,
                 32
@@ -2159,8 +2190,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Mother's Comb",
-                "Distorted Photo"
+                531,
+                536
             ],
             "ItemWhitelist": [
                 5,
@@ -2201,6 +2232,7 @@
         },
         {
             "Name": "The Dredge",
+            "IsDisabled": false,
             "Map": [
                 20,
                 34
@@ -2235,9 +2267,9 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Worry Stone",
-                "Lavalier Microphone",
-                "Field Recorder"
+                548,
+                554,
+                555
             ],
             "ItemWhitelist": [
                 5,
@@ -2278,6 +2310,7 @@
         },
         {
             "Name": "The Mastermind",
+            "IsDisabled": false,
             "Map": [
                 0,
                 9
@@ -2343,6 +2376,7 @@
         },
         {
             "Name": "The Knight",
+            "IsDisabled": false,
             "Map": [
                 9,
                 34
@@ -2372,8 +2406,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Healing Poultice",
-                "Flint and Steel"
+                594,
+                595
             ],
             "ItemWhitelist": [
                 5,
@@ -2416,6 +2450,7 @@
         },
         {
             "Name": "The Skull Merchant",
+            "IsDisabled": false,
             "Map": [
                 2,
                 9
@@ -2488,6 +2523,7 @@
         },
         {
             "Name": "The Singularity",
+            "IsDisabled": false,
             "Map": [
                 4,
                 33
@@ -2512,7 +2548,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Denied Requisition Form"
+                638
             ],
             "ItemWhitelist": [
                 0,
@@ -2555,6 +2591,7 @@
         },
         {
             "Name": "The Xenomorph",
+            "IsDisabled": false,
             "Map": [
                 0,
                 1
@@ -2581,8 +2618,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Self-Destruct Bolt",
-                "Harpoon Gun"
+                654,
+                655
             ],
             "ItemWhitelist": [
                 0,
@@ -2625,6 +2662,7 @@
         },
         {
             "Name": "The Good Guy",
+            "IsDisabled": false,
             "Map": [
                 8,
                 33
@@ -2652,9 +2690,9 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Yardstick",
-                "Rat Poison",
-                "Hard Hat"
+                668,
+                671,
+                678
             ],
             "ItemWhitelist": [
                 0,

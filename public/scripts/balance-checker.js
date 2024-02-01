@@ -400,8 +400,7 @@ function UpdateSurvivorPerkUI() {
 
                 if(dragTargetElement.draggable <= 0) { // If we're not dragging over a valid element, remove the perk
                     SurvivorPerks[sourceSurv][sourcePerkSlot] = null
-                }
-                else {
+                } else {
                     
                     let newSourcePerk = null;
                     if (dragTargetElement.targetPerkId != null) {
@@ -711,6 +710,68 @@ function UpdateKillerPerkUI() {
         perkElement.classList.add("perk-slot");
         perkElement.classList.add("loadout-slot");
         perkElement.classList.add("killer-perk-slot");
+
+        perkElement.addEventListener("dragstart", function(event){
+            event.dataTransfer.effectAllowed = "move"
+            dragSourceElement, dragTargetElement = {}
+            dragTargetElement.draggable = 0
+
+            dragSourceElement.sourcePerkSlot = event.target.parentElement.dataset.perkID;
+            dragSourceElement.sourcePerkId = GetPerkIdByFileName(event.target.getAttribute("src"));
+
+        });
+
+        perkElement.addEventListener("dragover", function(event){
+            event.preventDefault()
+            event.dataTransfer.dropEffect = "move"
+        });
+
+        perkElement.addEventListener("dragenter", function(event){
+            event.preventDefault()
+            dragTargetElement.targetPerkSlot = event.target.parentElement.dataset.perkID;
+            dragTargetElement.targetPerkId = GetPerkIdByFileName(event.target.getAttribute("src"));
+            dragTargetElement.draggable++
+        });
+
+        perkElement.addEventListener("dragleave", function(event){
+            event.preventDefault()
+            dragTargetElement.draggable--
+        });
+
+        perkElement.addEventListener("dragend", function(event){
+            event.preventDefault()
+
+            let sourcePerkSlot = parseInt(dragSourceElement.sourcePerkSlot)
+            let sourcePerkId = dragSourceElement.sourcePerkId
+
+            if(dragTargetElement.draggable <= 0) { // If we're not dragging over a valid element, remove the perk
+                KillerPerks[sourcePerkSlot] = null
+            } else {
+                let newSourcePerk = null;
+                if (dragTargetElement.targetPerkId != null) {
+                    newSourcePerk = GetPerkById(dragTargetElement.targetPerkId)
+                }
+                KillerPerks[sourcePerkSlot] = newSourcePerk
+
+                let targetPerkSlot = parseInt(dragTargetElement.targetPerkSlot)
+
+                let newTargetPerk = null
+                if (sourcePerkId != null) {
+                    newTargetPerk = GetPerkById(sourcePerkId)
+                }
+                KillerPerks[targetPerkSlot] = newTargetPerk
+
+            }
+
+            if (Config.saveBuilds && saveLoadoutsAndKiller) {
+                localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+            }
+
+            UpdatePerkUI()
+            CheckForBalancingErrors()
+
+            event.dataTransfer.clearData();
+        });
 
         perkElement.dataset.perkID = i;
 
