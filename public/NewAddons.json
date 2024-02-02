@@ -3340,7 +3340,7 @@
             {
                 "id": 1,
                 "globalID": 460,
-                "addonIcon": "public/PowerAddons/Nemesis/STARS-Field-Combat-Manual.webp",
+                "addonIcon": "public/PowerAddons/Nemesis/Stars-Field-Combat-Manual.webp",
                 "Name": "S.T.A.R.S. Field Combat Manual",
                 "Rarity": 0
             },
@@ -3459,7 +3459,7 @@
             {
                 "id": 18,
                 "globalID": 477,
-                "addonIcon": "public/PowerAddons/Nemesis/Shattered-STARS-Badge.webp",
+                "addonIcon": "public/PowerAddons/Nemesis/Shattered-Stars-Badge.webp",
                 "Name": "Shattered S.T.A.R.S. Badge",
                 "Rarity": 4
             },
@@ -4072,7 +4072,7 @@
             {
                 "id": 2,
                 "globalID": 561,
-                "addonIcon": "public/PowerAddons/Mastermind/RPD-Shoulder-Walkie.webp",
+                "addonIcon": "public/PowerAddons/Mastermind/Rpd-Shoulder-Walkie.webp",
                 "Name": "R.P.D. Shoulder Walkie",
                 "Rarity": 0
             },
@@ -4528,7 +4528,7 @@
             {
                 "id": 5,
                 "globalID": 624,
-                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(Repair).webp",
+                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(repair).webp",
                 "Name": "Diagnostic Tool (Repair)",
                 "Rarity": 1
             },
@@ -4605,7 +4605,7 @@
             {
                 "id": 16,
                 "globalID": 635,
-                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(Construction).webp",
+                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(construction).webp",
                 "Name": "Diagnostic Tool (Construction)",
                 "Rarity": 3
             },

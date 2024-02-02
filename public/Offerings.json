@@ -131,7 +131,7 @@
         {
             "id": 3,
             "name": "Vigo's Blueprint",
-            "icon": "public/Offerings/Vigo_s-Blueprint.webp",
+            "icon": "public/Offerings/Vigo_S-Blueprint.webp",
             "survivorOffering": false
         },
         {
@@ -167,7 +167,7 @@
         {
             "id": 9,
             "name": "Shroud of Separation",
-            "icon": "public/Offerings/Shroud-Of-Separation.webp",
+            "icon": "public/Offerings/Shroud-of-Separation.webp",
             "survivorOffering": false
         },
         {
