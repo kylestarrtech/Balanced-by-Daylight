@@ -1,6 +1,6 @@
 {
     "Name": "Dead by Daylight League (Winter 2024)",
-    "Version": 1706774422,
+    "Version": 1706941867,
     "MaxPerkRepetition": 1,
     "Tiers": [
         {
@@ -14,14 +14,17 @@
                 "16",
                 "17",
                 "18",
+                "247",
                 "19",
                 "20",
                 "22",
                 "23",
                 "24",
                 "60",
+                "246",
                 "27",
                 "33",
+                "248",
                 "40",
                 "43",
                 "46",
@@ -65,6 +68,7 @@
                 "155",
                 "244",
                 "168",
+                "170",
                 "171",
                 "175",
                 "195",
@@ -347,15 +351,18 @@
         },
         {
             "Name": "The Hillbilly",
-            "IsDisabled": true,
+            "IsDisabled": false,
             "Map": [
-                0
+                11,
+                12
             ],
             "BalanceTiers": [
-                0
+                0,
+                3
             ],
             "SurvivorBalanceTiers": [
-                0
+                0,
+                3
             ],
             "AntiFacecampPermitted": false,
             "KillerIndvPerkBans": [],
@@ -367,14 +374,25 @@
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
-            "IndividualAddonBans": [],
-            "ItemWhitelist": [],
+            "IndividualAddonBans": [
+                47,
+                54
+            ],
+            "ItemWhitelist": [
+                5,
+                0
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
                     "Addons": []
@@ -389,8 +407,15 @@
                     "Addons": []
                 }
             },
-            "SurvivorOfferings": [],
-            "KillerOfferings": []
+            "SurvivorOfferings": [
+                0,
+                2,
+                5,
+                6
+            ],
+            "KillerOfferings": [
+                5
+            ]
         },
         {
             "Name": "The Nurse",

@@ -1453,10 +1453,10 @@ function LoadImageGenEvents() {
     const genImgButton = document.getElementById("generate-image-button");
 
     genImgButton.addEventListener("click", function() {
-        if (selectedRole != 0) {
-            GenerateAlertModal("Error", "Image generation is only available for survivor builds currently!");
-            return;
-        }
+        // if (selectedRole != 0) {
+        //     GenerateAlertModal("Error", "Image generation is only available for survivor builds currently!");
+        //     return;
+        // }
 
         let exportData = GetExportData();
 

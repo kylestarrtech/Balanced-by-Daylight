@@ -18,6 +18,9 @@ TestBalanceInDev.json
 
 /utilities/autobalancer/*
 
+testCanvasGen.js
+test.png
+
 # Ignore everything in the addon combination folders
 utilities/addon-combine-tool/addon-list.json
 utilities/addon-combine-tool/addon-images/*

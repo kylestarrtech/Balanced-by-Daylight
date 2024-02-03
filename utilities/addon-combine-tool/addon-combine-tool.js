@@ -42,7 +42,7 @@ Promise.all(rarityImages).then(rarityImages => {
 
 function CombineAddons(addonImages, rarityImages) {
     console.log('Combining addons...');
-    const canvas = createCanvas(256, 256);
+    const canvas = createCanvas(300, 300);
     const ctx = canvas.getContext('2d');
 
     for (let i = 0; i < addonImages.length; i++) {
@@ -50,8 +50,8 @@ function CombineAddons(addonImages, rarityImages) {
         const rarityImage = rarityImages[rarityIndex];
         const addonImage = addonImages[i];
 
-        ctx.drawImage(rarityImage, 0, 0, 256, 256);
-        ctx.drawImage(addonImage, 0, 0, 256, 256);
+        ctx.drawImage(rarityImage, 22, 22, 256, 256);
+        ctx.drawImage(addonImage, 22, 22, 256, 256);
 
         const buffer = canvas.toBuffer('image/png');
         
