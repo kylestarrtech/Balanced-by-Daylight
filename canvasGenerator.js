@@ -53,9 +53,9 @@ function BeginGenerationImport(data, callback) {
         })
         return;
     }
-    console.log("Build is decompressed, but not parsed.");
+    //console.log("Build is decompressed, but not parsed.");
 
-    console.log(decompressedText);
+    //console.log(decompressedText);
     let importedBuild = null;
     try {
         importedBuild = JSON.parse(decompressedText);
@@ -69,7 +69,7 @@ function BeginGenerationImport(data, callback) {
         return;
     }
 
-    console.log(importedBuild);
+    //console.log(importedBuild);
 
     // What does the canvas need?
     // - Killer Name
@@ -493,23 +493,23 @@ function BeginGenerationImport(data, callback) {
             // Remove all spaces
             killerName = killerName.replace(/\s/g, "");
 
-            console.log(`Killer Name: ${killerName}`)
+            //console.log(`Killer Name: ${killerName}`)
 
             let desiredID = importedBuild.killerAddonsId[i];
 
-            console.log("Desired ID: " + desiredID)
+            //console.log("Desired ID: " + desiredID)
 
             let currentAddon = GetKillerAddonById(desiredID);
 
-            console.log(`Current Addon ${currentAddon}`);
+            //console.log(`Current Addon ${currentAddon}`);
 
             if (currentAddon == undefined) {
-                console.log ("Blank addon!");
+                //console.log ("Blank addon!");
                 exampleImageGenObject.KillerAddonIcons.push('./canvas-image-library/Addons/blank.png');
                 continue;
             }
 
-            console.log("Passed undefined check");
+            //console.log("Passed undefined check");
 
             let endIconPath = "";
 
@@ -522,7 +522,7 @@ function BeginGenerationImport(data, callback) {
             // Change .webp to .png
             endIconPath = endIconPath.replace(".webp", ".png");
 
-            console.log("End Icon Path: " + endIconPath)
+            //console.log("End Icon Path: " + endIconPath)
 
             // Check if the image exists
             if (!fs.existsSync(endIconPath)) {
@@ -540,8 +540,8 @@ function BeginGenerationImport(data, callback) {
         return;
     }
 
-    console.log("PASSED OBJECT:");
-    console.log(exampleImageGenObject);
+    //console.log("PASSED OBJECT:");
+    //console.log(exampleImageGenObject);
 
     GenerateImage(exampleImageGenObject, callback, importedBuild.selectedRole);
 }
@@ -558,7 +558,7 @@ function GenerateImage(importedBuild, callback, role) {
 }
 
 async function GenerateSurvivorImage(importedBuild, callback) {
-    console.log("GENERATE SURVIVOR IMAGE");
+    //console.log("GENERATE SURVIVOR IMAGE");
 
     // Tracks all promises to be resolved before writing to file
     let promises = [];
@@ -852,7 +852,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
 }
 
 async function GenerateKillerImage(importedBuild, callback) {
-    console.log("GENERATE KILLER IMAGE");
+    //console.log("GENERATE KILLER IMAGE");
 
     // Tracks all promises to be resolved before writing to file
     let promises = [];
