@@ -10,7 +10,7 @@ const KillerAddons = require('./public/NewAddons.json');
 
 const BalancingTitles = [
     "Outrun the Fog (OTF)",
-    "Dead by Daylight League (DBDL)",
+    "Dead by Daylight League",
     "Champions of the Fog (COTF)",
     "Davy Jones League",
     "L-Tournament",
@@ -871,7 +871,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     let loreImagePromise = loadImage(importedBuild["KillerLoreImage"]).then(image => {
         // Image aspect ratio is 256:507
         context.globalAlpha = 0.8;
-        context.drawImage(image, 0, height-(761/1.25), 384, 761);
+        context.drawImage(image, 0, height-(761/1.34), 384, 761);
         context.globalAlpha = 1;
         //console.log("Killer lore image loaded");
     });
