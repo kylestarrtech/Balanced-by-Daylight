@@ -25,6 +25,8 @@ test.png
 utilities/addon-combine-tool/addon-list.json
 utilities/addon-combine-tool/addon-images/*
 utilities/addon-combine-tool/output/*
+utilities/image-resizer/input/*
+utilities/image-resizer/output/*
 
 test_item_showcase.json
 

@@ -1,6 +1,6 @@
 {
     "Name": "Dead by Daylight League (Winter 2024)",
-    "Version": 1706941867,
+    "Version": 1707188642,
     "MaxPerkRepetition": 1,
     "Tiers": [
         {
@@ -448,7 +448,8 @@
             ],
             "IndividualAddonBans": [
                 70,
-                76
+                76,
+                75
             ],
             "ItemWhitelist": [
                 0,
