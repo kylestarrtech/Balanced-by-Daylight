@@ -597,7 +597,10 @@ function SetKillerOverrideEvents() {
 
     killerConfirmMapButton.addEventListener("click", function() {
         // Get the maps selected
+
         var selectedMaps = GetSelectValues(document.getElementById("map-selection-dropdown"));
+        
+        console.log(selectedMaps);
 
         // Get the selected killer
         var selectedKiller = document.getElementById("killer-selection-dropdown").value;
@@ -617,7 +620,7 @@ function SetKillerOverrideEvents() {
         for (var i = 0; i < selectedMaps.length; i++) {
             for (var j = 0; j < Maps.length; j++) {
                 if (Maps[j]["ID"] == selectedMaps[i]) {
-                    mapIndexes.push(j);
+                    mapIndexes.push(selectedMaps[i]);
                     continue;
                 }
             }
@@ -628,7 +631,7 @@ function SetKillerOverrideEvents() {
 
         let consoleMapString = "";
         for (var i = 0; i < mapIndexes.length; i++) {
-            consoleMapString += `${Maps[mapIndexes[i]]["Name"]}`;
+            consoleMapString += `${FindMapByID(mapIndexes[i])["Name"]}`;
             if (i != mapIndexes.length - 1) {
                 consoleMapString += ", ";
             }
@@ -2564,6 +2567,16 @@ function GetAddonByName(name) {
             if (currentAddon["Name"].toLowerCase() == name.toLowerCase()) {
                 return currentAddon;
             }
+        }
+    }
+
+    return undefined;
+}
+
+function FindMapByID(id) {
+    for (let i = 0; i < Maps.length; i++) {
+        if (Maps[i]["ID"] == id) {
+            return Maps[i];
         }
     }
 
