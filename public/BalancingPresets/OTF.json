@@ -1,6 +1,6 @@
 {
     "Name": "Outrun The Fog (2024)",
-    "Version": 1706773477,
+    "Version": 1708112638,
     "MaxPerkRepetition": 1,
     "Tiers": [
         {
@@ -34,6 +34,7 @@
                 "83",
                 "84",
                 "86",
+                "89",
                 "90",
                 "98",
                 "106",
@@ -306,8 +307,8 @@
             "Name": "The Trapper",
             "IsDisabled": false,
             "Map": [
-                4,
-                33
+                "4",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -372,8 +373,8 @@
             "Name": "The Wraith",
             "IsDisabled": false,
             "Map": [
-                33,
-                34
+                "6",
+                "16"
             ],
             "BalanceTiers": [
                 0
@@ -444,10 +445,10 @@
         },
         {
             "Name": "The Hillbilly",
-            "IsDisabled": true,
+            "IsDisabled": false,
             "Map": [
-                0,
-                9
+                "6",
+                "10"
             ],
             "BalanceTiers": [
                 0
@@ -513,8 +514,8 @@
             "Name": "The Nurse",
             "IsDisabled": false,
             "Map": [
-                0,
-                1
+                "0",
+                "43"
             ],
             "BalanceTiers": [
                 0,
@@ -593,8 +594,8 @@
             "Name": "The Shape",
             "IsDisabled": false,
             "Map": [
-                20,
-                32
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -662,8 +663,8 @@
             "Name": "The Hag",
             "IsDisabled": false,
             "Map": [
-                8,
-                40
+                "8",
+                "40"
             ],
             "BalanceTiers": [
                 0
@@ -730,8 +731,8 @@
             "Name": "The Doctor",
             "IsDisabled": false,
             "Map": [
-                9,
-                33
+                "9",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -798,8 +799,8 @@
             "Name": "The Huntress",
             "IsDisabled": false,
             "Map": [
-                0,
-                8
+                "0",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -941,8 +942,8 @@
             "Name": "The Nightmare",
             "IsDisabled": false,
             "Map": [
-                7,
-                33
+                "33",
+                "40"
             ],
             "BalanceTiers": [
                 0
@@ -1011,8 +1012,8 @@
             "Name": "The Pig",
             "IsDisabled": false,
             "Map": [
-                32,
-                34
+                "32",
+                "34"
             ],
             "BalanceTiers": [
                 0
@@ -1087,8 +1088,8 @@
             "Name": "The Clown",
             "IsDisabled": false,
             "Map": [
-                6,
-                19
+                "8",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -1159,8 +1160,8 @@
             "Name": "The Spirit",
             "IsDisabled": false,
             "Map": [
-                8,
-                18
+                "8",
+                "18"
             ],
             "BalanceTiers": [
                 0,
@@ -1311,8 +1312,8 @@
             "Name": "The Plague",
             "IsDisabled": false,
             "Map": [
-                4,
-                8
+                "4",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -1381,8 +1382,8 @@
             "Name": "The Ghost Face",
             "IsDisabled": false,
             "Map": [
-                20,
-                32
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -1399,11 +1400,11 @@
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
                 "3",
+                "52",
                 "33",
                 "85",
                 "97",
-                "111",
-                "52"
+                "111"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -1453,8 +1454,8 @@
             "Name": "The Demogorgon",
             "IsDisabled": false,
             "Map": [
-                0,
-                13
+                "0",
+                "13"
             ],
             "BalanceTiers": [
                 0
@@ -1524,7 +1525,8 @@
             "Name": "The Oni",
             "IsDisabled": false,
             "Map": [
-                0
+                "0",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -1591,8 +1593,8 @@
             "Name": "The Deathslinger",
             "IsDisabled": false,
             "Map": [
-                5,
-                8
+                "5",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -1662,8 +1664,8 @@
             "Name": "The Executioner",
             "IsDisabled": false,
             "Map": [
-                6,
-                8
+                "6",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -1728,8 +1730,8 @@
             "Name": "The Blight",
             "IsDisabled": false,
             "Map": [
-                6,
-                10
+                "6",
+                "10"
             ],
             "BalanceTiers": [
                 0,
@@ -1811,8 +1813,8 @@
             "Name": "The Twins",
             "IsDisabled": false,
             "Map": [
-                0,
-                16
+                "0",
+                "16"
             ],
             "BalanceTiers": [
                 0
@@ -1879,8 +1881,8 @@
             "Name": "The Trickster",
             "IsDisabled": false,
             "Map": [
-                8,
-                9
+                "8",
+                "9"
             ],
             "BalanceTiers": [
                 0
@@ -2016,8 +2018,8 @@
             "Name": "The Cenobite",
             "IsDisabled": false,
             "Map": [
-                31,
-                33
+                "31",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -2089,8 +2091,8 @@
             "Name": "The Artist",
             "IsDisabled": false,
             "Map": [
-                5,
-                8
+                "5",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -2158,8 +2160,8 @@
             "Name": "The Onryo",
             "IsDisabled": false,
             "Map": [
-                20,
-                32
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -2234,8 +2236,8 @@
             "Name": "The Dredge",
             "IsDisabled": false,
             "Map": [
-                20,
-                34
+                "20",
+                "34"
             ],
             "BalanceTiers": [
                 0
@@ -2252,11 +2254,11 @@
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
                 "3",
+                "52",
                 "33",
                 "85",
                 "97",
-                "111",
-                "52"
+                "111"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -2312,8 +2314,8 @@
             "Name": "The Mastermind",
             "IsDisabled": false,
             "Map": [
-                0,
-                9
+                "0",
+                "9"
             ],
             "BalanceTiers": [
                 0
@@ -2378,8 +2380,8 @@
             "Name": "The Knight",
             "IsDisabled": false,
             "Map": [
-                9,
-                34
+                "9",
+                "34"
             ],
             "BalanceTiers": [
                 0
@@ -2452,8 +2454,8 @@
             "Name": "The Skull Merchant",
             "IsDisabled": false,
             "Map": [
-                2,
-                9
+                "44",
+                "9"
             ],
             "BalanceTiers": [
                 0
@@ -2467,11 +2469,11 @@
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
                 "3",
+                "52",
                 "33",
                 "85",
                 "97",
-                "111",
-                "52"
+                "111"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -2525,8 +2527,8 @@
             "Name": "The Singularity",
             "IsDisabled": false,
             "Map": [
-                4,
-                33
+                "4",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -2593,8 +2595,8 @@
             "Name": "The Xenomorph",
             "IsDisabled": false,
             "Map": [
-                0,
-                1
+                "0",
+                "43"
             ],
             "BalanceTiers": [
                 0
@@ -2664,8 +2666,8 @@
             "Name": "The Good Guy",
             "IsDisabled": false,
             "Map": [
-                8,
-                33
+                "8",
+                "33"
             ],
             "BalanceTiers": [
                 0
