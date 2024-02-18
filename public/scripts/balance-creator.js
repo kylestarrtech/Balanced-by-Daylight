@@ -2193,10 +2193,14 @@ function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
     for (var i = 0; i < Perks.length; i++) {
-        if (Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if (Perks[i].survivorPerk == isSurvivor) {
+        let perkName = Perks[i].name;
+
+        if (!IsNameInSearch(searchQuery, perkName)) {
+            continue;
+        }
+
+        if (Perks[i].survivorPerk == isSurvivor) {
                 searchResults.push(Perks[i]);
-            }
         }
     }
 
