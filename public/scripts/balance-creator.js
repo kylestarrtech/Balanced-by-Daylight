@@ -9,6 +9,7 @@ Offerings = null;
 Items = null;
 
 MaximumPerkRepetition = 1;
+GlobalNotes = "";
 const version = 1;
 
 /**
@@ -42,6 +43,8 @@ ItemIDRange = [];
 function main() {
     GetPerks();
 
+    SetInitialEvents();
+
     SetSearchEvents();
     SetTierEvents();
     Tiers.push(CreateTier("General"));
@@ -67,6 +70,14 @@ function main() {
 
     // Update all tier, killer, and map dropdowns
     UpdateDropdowns();
+}
+
+function SetInitialEvents() {
+    let globalNotesArea = document.getElementById("global-notes-textarea");
+
+    globalNotesArea.addEventListener("input", function() {
+        GlobalNotes = globalNotesArea.value;
+    });
 }
 
 function SetImportExportButtonEvents() {
@@ -381,6 +392,14 @@ function SetKillerOverrideEvents() {
 
         KillerBalance[selectedKillerIndex].IsDisabled = disabledCheckbox.checked;
         DebugLog(`Disabled set to <b>${KillerBalance[selectedKillerIndex].IsDisabled}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
+    });
+    
+    var killerNotesTextArea = document.getElementById("killer-override-notes-textarea");
+    killerNotesTextArea.addEventListener("input", function() {
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        KillerBalance[selectedKillerIndex].KillerNotes = killerNotesTextArea.value;
     });
 
     AddonCheckboxBanIDList = [
@@ -1301,6 +1320,10 @@ function LoadKillerOverrideUI(id) {
     var disabledCheckbox = document.getElementById("killer-disabled-checkbox");
     disabledCheckbox.checked = KillerData.IsDisabled;
 
+    // Load Killer Notes
+    var killerNotesTextArea = document.getElementById("killer-override-notes-textarea");
+    killerNotesTextArea.value = KillerData.KillerNotes;
+
     // Load Selected Tiers
     DeselectAllValuesInListbox("killer-tier-selection-dropdown");
     DeselectAllValuesInListbox("survivor-balance-tier-dropdown");
@@ -1687,6 +1710,7 @@ function CreateKillerOverride(name) {
 
     NewKillerBalance = {
         Name: name,
+        KillerNotes: "", // Notes about the killer, e.g. specific rules/exceptions that can't be covered by the balancing system.
         IsDisabled: false, // Whether or not the killer is disabled for the purposes of the balancing.
         Map: [0], // Can be empty, which means all maps are allowed.
         BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
@@ -2215,6 +2239,9 @@ function ExportBalancing() {
         DebugLog(KillerBalance[i]);
 
         NewKiller.IsDisabled = KillerBalance[i].IsDisabled == undefined ? false : KillerBalance[i].IsDisabled;
+        
+        NewKiller.KillerNotes = KillerBalance[i].KillerNotes == undefined ? "" : KillerBalance[i].KillerNotes;
+
         NewKiller.Map = KillerBalance[i].Map;
         NewKiller.BalanceTiers = KillerBalance[i].BalanceTiers;
         NewKiller.SurvivorBalanceTiers = KillerBalance[i].SurvivorBalanceTiers;
@@ -2242,6 +2269,7 @@ function ExportBalancing() {
         Name: document.getElementById("balance-name-textbox").value,
         Version: GetCurrentEpochTime(),
         MaxPerkRepetition: maxPerkRepetition,
+        GlobalNotes: GlobalNotes,
         Tiers: NewTierExport,
         KillerOverride: NewKillerExport
     }
@@ -2294,6 +2322,16 @@ function ImportBalancing() {
     document.getElementById("balance-name-textbox").value = balanceImportObj.Name;
     KillerBalance = balanceImportObj.KillerOverride;
 
+    MaxPerkRepetition = balanceImportObj.MaxPerkRepetition;
+
+    GlobalNotes = 
+        balanceImportObj.GlobalNotes == undefined ?
+        "" :
+        balanceImportObj.GlobalNotes;
+
+    globalNotesArea = document.getElementById("global-notes-textarea");
+    globalNotesArea.value = GlobalNotes;
+
     Tiers = [];
     
     for (var i = 0; i < balanceImportObj.Tiers.length; i++) {
@@ -2329,6 +2367,14 @@ function ImportBalancing() {
 
         if (curKiller.IsDisabled != undefined) {
             NewKillerBalance.IsDisabled = curKiller.IsDisabled;
+        } else {
+            NewKillerBalance.IsDisabled = false;
+        }
+
+        if (curKiller.KillerNotes != undefined) {
+            NewKillerBalance.KillerNotes = curKiller.KillerNotes;
+        } else {
+            NewKillerBalance.KillerNotes = "";
         }
 
         NewKillerBalance.Map = curKiller.Map;

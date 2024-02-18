@@ -18,6 +18,12 @@ html
                     option(value="3") 3
                     option(value="4") 4
 
+                br
+                br
+                label(for="global-notes-textarea") Global Notes:
+                br
+                textarea#global-notes-textarea(rows="10" cols="50" placeholder="If there are any special global rules, please enter them here.")
+
                 h3 Tier Balancing
                 
                 div#tiered-balance-div
@@ -171,7 +177,11 @@ html
 
                     br
                     hr
-
+                    label(for="killer-override-notes-textarea") Killer-Specific Notes:
+                    br
+                    textarea#killer-override-notes-textarea(rows="10" cols="50" placeholder="If the killer has any special rules, please enter them here.")
+                    br
+                    hr
                     div#killer-selection-container
                         div.perk-ban-dropdown
                             //  Create a dropdown for Survivor Individual Perk Bans

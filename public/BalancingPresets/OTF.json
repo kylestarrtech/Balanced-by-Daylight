@@ -1,7 +1,8 @@
 {
     "Name": "Outrun The Fog (2024)",
-    "Version": 1708112638,
+    "Version": 1708298892,
     "MaxPerkRepetition": 1,
+    "GlobalNotes": "",
     "Tiers": [
         {
             "Name": "General",
@@ -305,6 +306,7 @@
     "KillerOverride": [
         {
             "Name": "The Trapper",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "4",
@@ -371,6 +373,7 @@
         },
         {
             "Name": "The Wraith",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "6",
@@ -445,6 +448,7 @@
         },
         {
             "Name": "The Hillbilly",
+            "KillerNotes": "Running ANY combination of addons where both addons are one of \"LoPro Chains\", \"Thompson Mix\", or \"Greased Throttle\" is prohibited.",
             "IsDisabled": false,
             "Map": [
                 "6",
@@ -512,6 +516,7 @@
         },
         {
             "Name": "The Nurse",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -592,6 +597,7 @@
         },
         {
             "Name": "The Shape",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "20",
@@ -661,6 +667,7 @@
         },
         {
             "Name": "The Hag",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "8",
@@ -729,6 +736,7 @@
         },
         {
             "Name": "The Doctor",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "9",
@@ -797,6 +805,7 @@
         },
         {
             "Name": "The Huntress",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -873,6 +882,7 @@
         },
         {
             "Name": "The Cannibal",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 8,
@@ -940,6 +950,7 @@
         },
         {
             "Name": "The Nightmare",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "33",
@@ -1010,6 +1021,7 @@
         },
         {
             "Name": "The Pig",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "32",
@@ -1086,6 +1098,7 @@
         },
         {
             "Name": "The Clown",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "8",
@@ -1158,6 +1171,7 @@
         },
         {
             "Name": "The Spirit",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "8",
@@ -1243,6 +1257,7 @@
         },
         {
             "Name": "The Legion",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 33,
@@ -1310,6 +1325,7 @@
         },
         {
             "Name": "The Plague",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "4",
@@ -1380,6 +1396,7 @@
         },
         {
             "Name": "The Ghost Face",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "20",
@@ -1452,6 +1469,7 @@
         },
         {
             "Name": "The Demogorgon",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -1523,6 +1541,7 @@
         },
         {
             "Name": "The Oni",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -1591,6 +1610,7 @@
         },
         {
             "Name": "The Deathslinger",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "5",
@@ -1662,6 +1682,7 @@
         },
         {
             "Name": "The Executioner",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "6",
@@ -1728,6 +1749,7 @@
         },
         {
             "Name": "The Blight",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "6",
@@ -1811,6 +1833,7 @@
         },
         {
             "Name": "The Twins",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -1879,6 +1902,7 @@
         },
         {
             "Name": "The Trickster",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "8",
@@ -1948,6 +1972,7 @@
         },
         {
             "Name": "The Nemesis",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 6,
@@ -2016,6 +2041,7 @@
         },
         {
             "Name": "The Cenobite",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "31",
@@ -2089,6 +2115,7 @@
         },
         {
             "Name": "The Artist",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "5",
@@ -2158,6 +2185,7 @@
         },
         {
             "Name": "The Onryo",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "20",
@@ -2234,6 +2262,7 @@
         },
         {
             "Name": "The Dredge",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "20",
@@ -2312,6 +2341,7 @@
         },
         {
             "Name": "The Mastermind",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -2378,6 +2408,7 @@
         },
         {
             "Name": "The Knight",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "9",
@@ -2452,6 +2483,7 @@
         },
         {
             "Name": "The Skull Merchant",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "44",
@@ -2525,6 +2557,7 @@
         },
         {
             "Name": "The Singularity",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "4",
@@ -2593,6 +2626,7 @@
         },
         {
             "Name": "The Xenomorph",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "0",
@@ -2664,6 +2698,7 @@
         },
         {
             "Name": "The Good Guy",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 "8",

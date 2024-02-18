@@ -1044,6 +1044,38 @@ function GenerateMapModal() {
     );
 }
 
+function GenerateNotesModal() {
+    // Get global notes
+    let globalNotes = currentBalancing["GlobalNotes"] == undefined ?
+        "No global notes for this balancing profile." :
+        currentBalancing["GlobalNotes"] == "" ?
+            "No global notes for this balancing profile." :
+            currentBalancing["GlobalNotes"];
+
+    // Get notes for the selected killer
+    let killerNotesBase = currentBalancing["KillerOverride"][selectedKiller]["KillerNotes"];
+
+    let killerNotes = killerNotesBase == undefined ?
+        "No special notes for this killer." :
+        killerNotesBase == "" ?
+            "No special notes for this killer." :
+            killerNotesBase;
+
+    // Remove any HTML from the notes
+    globalNotes = globalNotes.replace(/<[^>]*>?/gm, '');
+    killerNotes = killerNotes.replace(/<[^>]*>?/gm, '');
+
+    let noteString = `The selected balancing profile has the following special notes:<br>`;
+    noteString += `<br><hr><b>Global Notes:</b><br>${globalNotes}<br><hr><br>`;
+    noteString += `<hr><b>Killer Notes:</b><br>${killerNotes}<br><hr>`;
+
+    // Create the modal
+    GenerateAlertModal(
+        "Notes",
+        noteString
+    );
+}
+
 function GetMapByID(id) {
     for (var i = 0; i < Maps.length; i++) {
         if (Maps[i]["ID"] == id) {
@@ -4409,6 +4441,7 @@ function GenerateAlertModal(
     title,
     message,
     closeCallback = undefined,
+    noParsing = false
 ) {
     var alertContainer = document.getElementById("alert-container");
     alertContainer.hidden = false;
@@ -4417,7 +4450,9 @@ function GenerateAlertModal(
     alertTitle.innerText = title;
 
     var alertMessage = document.getElementById("alert-message");
-    alertMessage.innerHTML = message;
+    noParsing == true ?
+        alertMessage.innerText = message :
+        alertMessage.innerHTML = message;
 
     var alertOkButton = document.getElementById("alert-ok-button");
     alertOkButton.addEventListener("click", function() {

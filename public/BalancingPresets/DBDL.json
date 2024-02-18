@@ -1,7 +1,8 @@
 {
     "Name": "Dead by Daylight League (Winter 2024)",
-    "Version": 1707188642,
+    "Version": 1708299652,
     "MaxPerkRepetition": 1,
+    "GlobalNotes": "",
     "Tiers": [
         {
             "Name": "General",
@@ -42,6 +43,7 @@
                 "84",
                 "86",
                 "88",
+                "89",
                 "90",
                 "93",
                 "98",
@@ -239,6 +241,7 @@
     "KillerOverride": [
         {
             "Name": "The Trapper",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -286,6 +289,7 @@
         },
         {
             "Name": "The Wraith",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 22,
@@ -351,6 +355,7 @@
         },
         {
             "Name": "The Hillbilly",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 11,
@@ -419,6 +424,7 @@
         },
         {
             "Name": "The Nurse",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 0,
@@ -501,6 +507,7 @@
         },
         {
             "Name": "The Shape",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 20,
@@ -573,6 +580,7 @@
         },
         {
             "Name": "The Hag",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -620,6 +628,7 @@
         },
         {
             "Name": "The Doctor",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 0,
@@ -689,10 +698,11 @@
         },
         {
             "Name": "The Huntress",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
-                8,
-                20
+                "8",
+                "28"
             ],
             "BalanceTiers": [
                 0
@@ -767,6 +777,7 @@
         },
         {
             "Name": "The Cannibal",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -814,6 +825,7 @@
         },
         {
             "Name": "The Nightmare",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -861,6 +873,7 @@
         },
         {
             "Name": "The Pig",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -908,6 +921,7 @@
         },
         {
             "Name": "The Clown",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -955,6 +969,7 @@
         },
         {
             "Name": "The Spirit",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 8,
@@ -1043,6 +1058,7 @@
         },
         {
             "Name": "The Legion",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -1090,6 +1106,7 @@
         },
         {
             "Name": "The Plague",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 4,
@@ -1160,9 +1177,11 @@
         },
         {
             "Name": "The Ghost Face",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
-                20
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -1223,6 +1242,7 @@
         },
         {
             "Name": "The Demogorgon",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 0,
@@ -1290,6 +1310,7 @@
         },
         {
             "Name": "The Oni",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 0,
@@ -1357,6 +1378,7 @@
         },
         {
             "Name": "The Deathslinger",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 4
@@ -1426,6 +1448,7 @@
         },
         {
             "Name": "The Executioner",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -1473,6 +1496,7 @@
         },
         {
             "Name": "The Blight",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 4,
@@ -1555,6 +1579,7 @@
         },
         {
             "Name": "The Twins",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 4
@@ -1619,6 +1644,7 @@
         },
         {
             "Name": "The Trickster",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -1666,6 +1692,7 @@
         },
         {
             "Name": "The Nemesis",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -1713,6 +1740,7 @@
         },
         {
             "Name": "The Cenobite",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 9,
@@ -1784,6 +1812,7 @@
         },
         {
             "Name": "The Artist",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 5,
@@ -1852,6 +1881,7 @@
         },
         {
             "Name": "The Onryo",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -1899,6 +1929,7 @@
         },
         {
             "Name": "The Dredge",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 34
@@ -1967,6 +1998,7 @@
         },
         {
             "Name": "The Mastermind",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 0,
@@ -2035,6 +2067,7 @@
         },
         {
             "Name": "The Knight",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -2082,6 +2115,7 @@
         },
         {
             "Name": "The Skull Merchant",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -2129,6 +2163,7 @@
         },
         {
             "Name": "The Singularity",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 1,
@@ -2199,6 +2234,7 @@
         },
         {
             "Name": "The Xenomorph",
+            "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
                 0
@@ -2246,6 +2282,7 @@
         },
         {
             "Name": "The Good Guy",
+            "KillerNotes": "",
             "IsDisabled": false,
             "Map": [
                 33
