@@ -1988,6 +1988,14 @@ function SetSearchEvents() {
 
         OverrideButtonSearch(query, isSurvivor);
     });
+
+    var perkSearchTextbox = document.getElementById("perk-search-textbox");
+    perkSearchTextbox.addEventListener("keyup", function(event) {
+        if (event.key == "Enter") {
+            event.preventDefault();
+            searchButton.click();
+        }
+    });
 }
 
 function OverrideButtonSearch(query, isSurvivor) {
