@@ -92,6 +92,12 @@ function SetMiscDropdownEvents() {
         MaximumPerkRepetition = parseInt(perkRepetitionDropdown.value);
         DebugLog(`Maximum Perk Repetition set to <b>${MaximumPerkRepetition}</b>`);
     }); 
+
+    // Update map search event
+    var mapSearchTextbox = document.getElementById("map-search-textbox");
+    mapSearchTextbox.addEventListener("input", function() {
+        UpdateMapDropdowns();
+    });
 }
 
 function SetTierButtonEvents() {
@@ -1305,7 +1311,7 @@ function LoadKillerOverrideUI(id) {
     // Load Map Selection
     DeselectAllValuesInListbox("map-selection-dropdown");
     
-    SelectValuesInListbox("map-selection-dropdown", KillerData.Map);
+    SelectOptionsFromMaps("map-selection-dropdown", KillerData.Map);
 
     // Load Selected Offerings
     // Deselect all options first
@@ -1905,15 +1911,37 @@ function UpdateKillerDropdowns() {
 
 function UpdateMapDropdowns() {
     var mapDropdown = document.getElementById("map-selection-dropdown");
+    var mapSearchTextbox = document.getElementById("map-search-textbox");
 
     mapDropdown.innerHTML = "";
 
     for (var i = 0; i < Maps.length; i++) {
+        mapName = Maps[i]["Name"];
+
+        if (!IsNameInSearch(mapSearchTextbox.value, mapName)) {
+            continue;
+        }
+
         var optionsElement = document.createElement("option");
         optionsElement.value = Maps[i]["ID"];
         optionsElement.innerHTML = `${Maps[i]["Name"]}`;
         mapDropdown.appendChild(optionsElement);
     }
+}
+
+function IsNameInSearch(searchString, name) {
+    if (searchString == "") { return true; }
+
+    // Separate search string by commas.
+    var searchTerms = searchString.split(",");
+
+    for (var i = 0; i < searchTerms.length; i++) {
+        if (name.toLowerCase().includes(searchTerms[i].toLowerCase())) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function CreateTier(name) {
@@ -2436,6 +2464,23 @@ function SelectOptionsFromValues(id, values) {
         for (const value of values) {
             for (const option of selectOptions) {
                 if (option.value == value) {
+                    option.selected = true;
+                }
+            }
+        }
+    } catch (error) {
+        console.error(`Error selecting values in listbox ${id}: ${error}`);
+    }
+}
+
+function SelectOptionsFromMaps(id, mapIDs) {
+    DebugLog(`Selecting maps ${mapIDs} in listbox ${id}`);
+
+    try {
+        const selectOptions = document.getElementById(id).options;
+        for (const mapID of mapIDs) {
+            for (const option of selectOptions) {
+                if (option.value == mapID) {
                     option.selected = true;
                 }
             }
