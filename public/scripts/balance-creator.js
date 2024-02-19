@@ -1334,6 +1334,8 @@ function LoadKillerOverrideUI(id) {
     // Reset map search textbox
     var mapSearchTextbox = document.getElementById("map-search-textbox");
     mapSearchTextbox.value = "";
+    // Load Map Search Results
+    UpdateMapDropdowns();
 
     // Load Selected Tiers
     DeselectAllValuesInListbox("killer-tier-selection-dropdown");
