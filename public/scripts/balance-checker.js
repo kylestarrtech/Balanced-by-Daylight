@@ -1005,10 +1005,14 @@ function LoadButtonEvents() {
 function AreKillerAddonsValid() {
     let addons = KillerAddons;
 
+    let undefinedCpt = 0;
     for (var i = 0; i < addons.length; i++) {
         let currentAddon = addons[i];
 
-        if (currentAddon == undefined) { continue; }
+        if (currentAddon == undefined) { 
+            undefinedCpt++;
+            continue; 
+        }
         
         let selectedKillerName = Killers[selectedKiller];
         let selectedKillerAddons = KillerAddonsList[selectedKiller]["Addons"];
@@ -1020,6 +1024,10 @@ function AreKillerAddonsValid() {
                 return true;
             }
         }
+    }
+
+    if (undefinedCpt == addons.length) {
+        return true;
     }
 
     return false;
