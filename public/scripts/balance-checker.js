@@ -999,6 +999,32 @@ function LoadButtonEvents() {
     LoadRoomEvents();
 }
 
+/**
+ * Validates that the selected killer addons belong to the selected killer.
+ */
+function AreKillerAddonsValid() {
+    let addons = KillerAddons;
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+
+        if (currentAddon == undefined) { continue; }
+        
+        let selectedKillerName = Killers[selectedKiller];
+        let selectedKillerAddons = KillerAddonsList[selectedKiller]["Addons"];
+
+        for (var j = 0; j < selectedKillerAddons.length; j++) {
+            let currentKillerAddon = selectedKillerAddons[j];
+
+            if (currentAddon["Name"] == currentKillerAddon["Name"]) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 function LoadRoleSwapEvents() {
     let roleSwapButton = document.getElementById("role-swap-button");
 
@@ -1490,6 +1516,11 @@ function LoadImageGenEvents() {
         //     return;
         // }
 
+        if (!AreKillerAddonsValid()) {
+            GenerateAlertModal("Error", "Your killer addons are not valid for the selected killer. Please select valid addons before generating an image.");
+            return;
+        }
+
         let exportData = GetExportData();
 
         const imageGenContainer = document.getElementById("image-gen-container");
@@ -1633,6 +1664,11 @@ function SetKillerCharacterSelectEvents() {
                         GenerateAlertModal("Killer Disabled", `Killer <b>${currentName}</b> is disabled in the current balancing! You may still select this killer, but they may be ineligible to play in official matches.`);
                     }
                 }
+            }
+
+            if (!AreKillerAddonsValid()) {
+                console.log("Reset killer addons as they are not valid for the selected killer.");
+                KillerAddons = [undefined, undefined];
             }
 
             CheckForBalancingErrors();
@@ -3969,12 +4005,26 @@ function CheckForKillerBalanceErrors() {
     console.log("CHECKING FOR BANNED ADDONS!!!")
     let bannedKlrAddons = GetBannedKillerAddons();
 
+    
     passesGuardClause = true;
 
+    
     if (bannedKlrAddons == undefined) { passesGuardClause = false; }
-
+    
     if (passesGuardClause) {
         console.log("PASSED GUARD CLAUSE!!!")
+        if (!AreKillerAddonsValid()) {
+            MasterErrorList.push(
+                GenerateErrorObject(
+                    "Invalid Addon Mix",
+                    `The current addon selection is invalid for <b>${currentBalancing.KillerOverride[selectedKiller]["Name"]}</b>.`,
+                    undefined,
+                    "iconography/AddonError.webp",
+                    true
+                )
+            );
+        }
+        
         for (var i = 0; i < KillerAddons.length; i++) {
             let currentAddon = KillerAddons[i];
             console.log(`Checking for banned addons on addon slot #${i}...`)
