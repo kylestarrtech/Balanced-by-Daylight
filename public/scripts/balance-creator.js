@@ -533,14 +533,21 @@ function SetKillerOverrideEvents() {
         // Get the addons selected
         var selectedAddons = GetSelectValues(document.getElementById("killer-individual-addon-confirmed-bans-dropdown"));
         
+        console.log("REMOVING THE FOLLOWING ADDONS:");
+        console.log(selectedAddons);
+
         // Get the selected killer
         var selectedKiller = GetCurrentKillerIndex();
         if (selectedKiller == -1) { console.error("Invalid killer name!"); return;}
 
         // Remove the addon selections from the killer if they are in the list
         for (var i = 0; i < selectedAddons.length; i++) {
-            if (!KillerBalance[selectedKiller].IndividualAddonBans.includes(selectedAddons[i])) { continue; }
-            KillerBalance[selectedKiller].IndividualAddonBans.splice(KillerBalance[selectedKiller].IndividualAddonBans.indexOf(selectedAddons[i]), 1);
+            // Converty selected addon to a number
+            let addonToRemove = parseInt(selectedAddons[i]);
+
+            if (!KillerBalance[selectedKiller].IndividualAddonBans.includes(addonToRemove)) { continue; }
+            console.log(`Removing ${addonToRemove}`);
+            KillerBalance[selectedKiller].IndividualAddonBans.splice(KillerBalance[selectedKiller].IndividualAddonBans.indexOf(addonToRemove), 1);
         }
 
         DebugLog(`Removed <b>${selectedAddons}</b> from <b>${KillerBalance[selectedKiller].Name}</b>`);
@@ -1323,6 +1330,10 @@ function LoadKillerOverrideUI(id) {
     // Load Killer Notes
     var killerNotesTextArea = document.getElementById("killer-override-notes-textarea");
     killerNotesTextArea.value = KillerData.KillerNotes;
+
+    // Reset map search textbox
+    var mapSearchTextbox = document.getElementById("map-search-textbox");
+    mapSearchTextbox.value = "";
 
     // Load Selected Tiers
     DeselectAllValuesInListbox("killer-tier-selection-dropdown");
