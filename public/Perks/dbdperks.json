@@ -2239,5 +2239,59 @@
         "tags": [],
         "character": "Alan Wake",
         "survivorPerk": true
+    },
+    {
+        "id": 249,
+        "name": "Unbound",
+        "icon": "public/Perks/Killers/Unbound.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Unknown",
+        "survivorPerk": false
+    },
+    {
+        "id": 250,
+        "name": "Undone",
+        "icon": "public/Perks/Killers/Undone.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Unknown",
+        "survivorPerk": false
+    },
+    {
+        "id": 251,
+        "name": "Unforeseen",
+        "icon": "public/Perks/Killers/Unforeseen.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Unknown",
+        "survivorPerk": false
+    },
+    {
+        "id": 252,
+        "name": "Invocation: Weaving Spiders",
+        "icon": "public/Perks/Survivors/Invocation-Weaving-Spiders.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Sable Ward",
+        "survivorPerk": true
+    },
+    {
+        "id": 253,
+        "name": "Strength in Shadows",
+        "icon": "public/Perks/Survivors/Strength-In-Shadows.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Sable Ward",
+        "survivorPerk": true
+    },
+    {
+        "id": 254,
+        "name": "Wicked",
+        "icon": "public/Perks/Survivors/Wicked.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Sable Ward",
+        "survivorPerk": true
     }
 ]

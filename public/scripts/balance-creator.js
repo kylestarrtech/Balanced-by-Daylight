@@ -1312,6 +1312,7 @@ function LoadKillerOverrideUI(id) {
     
     // Guard clause to make sure the killer data is valid.
     if (KillerData == undefined) {
+        alert(`Killer \"${Killers[id]}\" does not exist in this balancing tree. This can happen if the balance export data was directly modified. Exporting the balance data again may fix this issue.`);
         console.error("Killer balance data or Killer does not exist!");
         return;
     }
@@ -2258,6 +2259,25 @@ function ExportBalancing() {
         NewTierExport.push(NewTier);
     }
 
+    // Check if any killer is missing from the KillerBalance array
+    for (var i = 0; i < Killers.length; i++) {
+        var killerExists = false;
+        for (var j = 0; j < KillerBalance.length; j++) {
+            if (KillerBalance[j].Name == Killers[i]) {
+                killerExists = true;
+                break;
+            }
+        }
+
+        if (killerExists) { continue; }
+        
+        console.error(`Killer ${Killers[i]} is missing from the KillerBalance array! Adding it now...`);
+        
+        // Add the killer at the specified index "i"
+        KillerBalance.splice(i, 0, CreateKillerOverride(Killers[i]));
+
+    }
+
     NewKillerExport = [];
     for (var i = 0; i < KillerBalance.length; i++) {
         NewKiller = CreateKillerOverride(KillerBalance[i].Name);
@@ -2345,7 +2365,11 @@ function ImportBalancing() {
     var balanceImportObj = JSON.parse(balanceImportBox.value);
 
     document.getElementById("balance-name-textbox").value = balanceImportObj.Name;
-    KillerBalance = balanceImportObj.KillerOverride;
+
+    console.log("KILLER BALANCE:");
+    console.log(KillerBalance);
+    console.log("BALANCE IMPORT OBJ:");
+    console.log(balanceImportObj.KillerOverride);
 
     MaxPerkRepetition = balanceImportObj.MaxPerkRepetition;
 
@@ -2376,6 +2400,25 @@ function ImportBalancing() {
         NewTier.KillerComboPerkBans = curTier.KillerComboPerkBans;
 
         Tiers.push(NewTier);
+    }
+
+    // Check to see if any Killers exist in KillerBalance that don't exist in the imported balance
+    for (var i = 0; i < KillerBalance.length; i++) {
+        let killerExists = false;
+
+        for (var j = 0; j < balanceImportObj.KillerOverride.length; j++) {
+            if (KillerBalance[i].Name == balanceImportObj.KillerOverride[j].Name) {
+                killerExists = true;
+                break;
+            }
+        }
+        
+        if (killerExists) { continue; }
+
+        // Add the killer to the balance if it doesn't exist
+        console.log(`Killer ${KillerBalance[i].Name} does not exist in the imported balance! Adding...`);
+        balanceImportObj.KillerOverride.push(CreateKillerOverride(KillerBalance[i].Name));
+
     }
 
     KillerBalance = [];

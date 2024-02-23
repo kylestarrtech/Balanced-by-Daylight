@@ -14,7 +14,9 @@ const BalancingTitles = [
     "Champions of the Fog (COTF)",
     "Davy Jones League",
     "L-Tournament",
-    "The Arkade"
+    "The Arkade",
+    "Wave League",
+    "Jack Daniel's League (JDL)"
 ]
 
 function GetKillerAddonById(id) {

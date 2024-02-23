@@ -25,7 +25,7 @@ newAddonFile = open("NewAddons.json", "w")
 
 finalFileObject = []
 
-globalAddonID = 0
+globalAddonID = 679
 for killer in legacyAddonData:
     killerName = killer["Name"]
 

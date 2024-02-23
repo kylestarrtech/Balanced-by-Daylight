@@ -4921,5 +4921,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Unknown",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 679,
+                "addonIcon": "public/PowerAddons/Unknown/Sketch-Attempt.webp",
+                "Name": "Sketch Attempt",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 680,
+                "addonIcon": "public/PowerAddons/Unknown/Rabbit_S-Foot.webp",
+                "Name": "Rabbit's Foot",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 681,
+                "addonIcon": "public/PowerAddons/Unknown/Punctured-Eyeball.webp",
+                "Name": "Punctured Eyeball",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 682,
+                "addonIcon": "public/PowerAddons/Unknown/Blurry-Photo.webp",
+                "Name": "Blurry Photo",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 683,
+                "addonIcon": "public/PowerAddons/Unknown/Victim_S-Map.webp",
+                "Name": "Victim's Map",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 684,
+                "addonIcon": "public/PowerAddons/Unknown/Slashed-Backpack.webp",
+                "Name": "Slashed Backpack",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 685,
+                "addonIcon": "public/PowerAddons/Unknown/Notebook-Of-Theories.webp",
+                "Name": "Notebook of Theories",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 686,
+                "addonIcon": "public/PowerAddons/Unknown/Last-Known-Recording.webp",
+                "Name": "Last Known Recording",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 687,
+                "addonIcon": "public/PowerAddons/Unknown/Device-Of-Undisclosed-Origin.webp",
+                "Name": "Device of Undisclosed Origin",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 688,
+                "addonIcon": "public/PowerAddons/Unknown/Vanishing-Box.webp",
+                "Name": "Vanishing Box",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 689,
+                "addonIcon": "public/PowerAddons/Unknown/Hypnotist_S-Watch.webp",
+                "Name": "Hypnotist's Watch",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 690,
+                "addonIcon": "public/PowerAddons/Unknown/Front-Page-Article.webp",
+                "Name": "Front-Page Article",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 691,
+                "addonIcon": "public/PowerAddons/Unknown/Footprint-Cast.webp",
+                "Name": "Footprint Cast",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 692,
+                "addonIcon": "public/PowerAddons/Unknown/B-Movie-Poster.webp",
+                "Name": "B-Movie Poster",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 693,
+                "addonIcon": "public/PowerAddons/Unknown/Serum-Vial.webp",
+                "Name": "Serum Vial",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 694,
+                "addonIcon": "public/PowerAddons/Unknown/Obscure-Game-Cartridge.webp",
+                "Name": "Obscure Game Cartridge",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 695,
+                "addonIcon": "public/PowerAddons/Unknown/Homemade-Mask.webp",
+                "Name": "Homemade Mask",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 696,
+                "addonIcon": "public/PowerAddons/Unknown/Discarded-Milk-Carton.webp",
+                "Name": "Discarded Milk Carton",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 697,
+                "addonIcon": "public/PowerAddons/Unknown/Iridescent-Oss-Report.webp",
+                "Name": "Iridescent OSS Report",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 698,
+                "addonIcon": "public/PowerAddons/Unknown/Captured-By-The-Dark.webp",
+                "Name": "Captured by the Dark",
+                "Rarity": 4
+            }
+        ]
     }
 ]

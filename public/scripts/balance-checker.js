@@ -37,6 +37,18 @@ var BalancePresets = [
         Name: "The Arkade",
         Path: "BalancingPresets/Arkade.json",
         Balancing: {}
+    },
+    {
+        ID: 6,
+        Name: "Wave League",
+        Path: "BalancingPresets/WaveLeague.json",
+        Balancing: {}
+    },
+    {
+        ID: 7,
+        Name: "Jack Daniel's League (JDL)",
+        Path: "BalancingPresets/JDL.json",
+        Balancing: {}
     }
 ]
 

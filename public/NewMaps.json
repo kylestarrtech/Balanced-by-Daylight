@@ -374,5 +374,13 @@
         "Type": "outdoor",
         "Icon": "N/A",
         "ClockImage": "N/A"
+    },
+    {
+        "ID": 47,
+        "Name": "Greenville Square",
+        "Realm": "Withered Isle",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
     }
 ]
