@@ -9,6 +9,7 @@ Offerings = null;
 Items = null;
 
 MaximumPerkRepetition = 1;
+GlobalNotes = "";
 const version = 1;
 
 /**
@@ -42,6 +43,8 @@ ItemIDRange = [];
 function main() {
     GetPerks();
 
+    SetInitialEvents();
+
     SetSearchEvents();
     SetTierEvents();
     Tiers.push(CreateTier("General"));
@@ -69,6 +72,14 @@ function main() {
     UpdateDropdowns();
 }
 
+function SetInitialEvents() {
+    let globalNotesArea = document.getElementById("global-notes-textarea");
+
+    globalNotesArea.addEventListener("input", function() {
+        GlobalNotes = globalNotesArea.value;
+    });
+}
+
 function SetImportExportButtonEvents() {
     // Import Button
     var importButton = document.getElementById("balance-import-button");
@@ -92,6 +103,12 @@ function SetMiscDropdownEvents() {
         MaximumPerkRepetition = parseInt(perkRepetitionDropdown.value);
         DebugLog(`Maximum Perk Repetition set to <b>${MaximumPerkRepetition}</b>`);
     }); 
+
+    // Update map search event
+    var mapSearchTextbox = document.getElementById("map-search-textbox");
+    mapSearchTextbox.addEventListener("input", function() {
+        UpdateMapDropdowns();
+    });
 }
 
 function SetTierButtonEvents() {
@@ -367,6 +384,23 @@ function SetKillerOverrideEvents() {
         KillerBalance[selectedKillerIndex].AntiFacecamp = antiFacecampCheckbox.checked;
         DebugLog(`Anti-Facecamp set to <b>${KillerBalance[selectedKillerIndex].AntiFacecamp}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
     });
+    
+    var disabledCheckbox = document.getElementById("killer-disabled-checkbox");
+    disabledCheckbox.addEventListener("change", function() {
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        KillerBalance[selectedKillerIndex].IsDisabled = disabledCheckbox.checked;
+        DebugLog(`Disabled set to <b>${KillerBalance[selectedKillerIndex].IsDisabled}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
+    });
+    
+    var killerNotesTextArea = document.getElementById("killer-override-notes-textarea");
+    killerNotesTextArea.addEventListener("input", function() {
+        var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
+        if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
+
+        KillerBalance[selectedKillerIndex].KillerNotes = killerNotesTextArea.value;
+    });
 
     AddonCheckboxBanIDList = [
         ["killer-addon-ban-checkbox-common", "Common"],
@@ -480,8 +514,13 @@ function SetKillerOverrideEvents() {
 
         // Add the addon selections to the killer if they are not already in the list
         for (var i = 0; i < selectedAddons.length; i++) {
-            if (KillerBalance[selectedKiller].IndividualAddonBans.includes(selectedAddons[i])) { continue; }
-            KillerBalance[selectedKiller].IndividualAddonBans.push(selectedAddons[i]);
+            let addonToAdd = parseInt(selectedAddons[i]);
+
+            if (isNaN(addonToAdd)) { console.error("Invalid addon ID!"); continue; }
+            
+            if (KillerBalance[selectedKiller].IndividualAddonBans.includes(addonToAdd)) { continue; }
+
+            KillerBalance[selectedKiller].IndividualAddonBans.push(addonToAdd);
         }
 
         DebugLog(`Added <b>${selectedAddons}</b> to <b>${KillerBalance[selectedKiller].Name}</b>`);
@@ -494,14 +533,21 @@ function SetKillerOverrideEvents() {
         // Get the addons selected
         var selectedAddons = GetSelectValues(document.getElementById("killer-individual-addon-confirmed-bans-dropdown"));
         
+        console.log("REMOVING THE FOLLOWING ADDONS:");
+        console.log(selectedAddons);
+
         // Get the selected killer
         var selectedKiller = GetCurrentKillerIndex();
         if (selectedKiller == -1) { console.error("Invalid killer name!"); return;}
 
         // Remove the addon selections from the killer if they are in the list
         for (var i = 0; i < selectedAddons.length; i++) {
-            if (!KillerBalance[selectedKiller].IndividualAddonBans.includes(selectedAddons[i])) { continue; }
-            KillerBalance[selectedKiller].IndividualAddonBans.splice(KillerBalance[selectedKiller].IndividualAddonBans.indexOf(selectedAddons[i]), 1);
+            // Converty selected addon to a number
+            let addonToRemove = parseInt(selectedAddons[i]);
+
+            if (!KillerBalance[selectedKiller].IndividualAddonBans.includes(addonToRemove)) { continue; }
+            console.log(`Removing ${addonToRemove}`);
+            KillerBalance[selectedKiller].IndividualAddonBans.splice(KillerBalance[selectedKiller].IndividualAddonBans.indexOf(addonToRemove), 1);
         }
 
         DebugLog(`Removed <b>${selectedAddons}</b> from <b>${KillerBalance[selectedKiller].Name}</b>`);
@@ -583,7 +629,10 @@ function SetKillerOverrideEvents() {
 
     killerConfirmMapButton.addEventListener("click", function() {
         // Get the maps selected
+
         var selectedMaps = GetSelectValues(document.getElementById("map-selection-dropdown"));
+        
+        console.log(selectedMaps);
 
         // Get the selected killer
         var selectedKiller = document.getElementById("killer-selection-dropdown").value;
@@ -602,8 +651,8 @@ function SetKillerOverrideEvents() {
         var mapIndexes = [];
         for (var i = 0; i < selectedMaps.length; i++) {
             for (var j = 0; j < Maps.length; j++) {
-                if (Maps[j] == selectedMaps[i]) {
-                    mapIndexes.push(j);
+                if (Maps[j]["ID"] == selectedMaps[i]) {
+                    mapIndexes.push(selectedMaps[i]);
                     continue;
                 }
             }
@@ -612,7 +661,15 @@ function SetKillerOverrideEvents() {
         // Set the mapIndexes to the killer
         KillerBalance[killerIndex].Map = mapIndexes;
 
-        DebugLog(`Map set to <b>${KillerBalance[killerIndex].Map}</b> for <b>${KillerBalance[killerIndex].Name}</b>`);
+        let consoleMapString = "";
+        for (var i = 0; i < mapIndexes.length; i++) {
+            consoleMapString += `${FindMapByID(mapIndexes[i])["Name"]}`;
+            if (i != mapIndexes.length - 1) {
+                consoleMapString += ", ";
+            }
+        }
+
+        DebugLog(`Map set to ${consoleMapString} for \"${KillerBalance[killerIndex].Name}\"`);
     });
 
     var killerConfirmOfferingButton = document.getElementById("killer-offering-confirmation-button");
@@ -1255,6 +1312,7 @@ function LoadKillerOverrideUI(id) {
     
     // Guard clause to make sure the killer data is valid.
     if (KillerData == undefined) {
+        alert(`Killer \"${Killers[id]}\" does not exist in this balancing tree. This can happen if the balance export data was directly modified. Exporting the balance data again may fix this issue.`);
         console.error("Killer balance data or Killer does not exist!");
         return;
     }
@@ -1267,6 +1325,19 @@ function LoadKillerOverrideUI(id) {
     var antiFacecampCheckbox = document.getElementById("killer-antifacecamp-checkbox");
     antiFacecampCheckbox.checked = KillerData.AntiFacecampPermitted;
 
+    var disabledCheckbox = document.getElementById("killer-disabled-checkbox");
+    disabledCheckbox.checked = KillerData.IsDisabled;
+
+    // Load Killer Notes
+    var killerNotesTextArea = document.getElementById("killer-override-notes-textarea");
+    killerNotesTextArea.value = KillerData.KillerNotes;
+
+    // Reset map search textbox
+    var mapSearchTextbox = document.getElementById("map-search-textbox");
+    mapSearchTextbox.value = "";
+    // Load Map Search Results
+    UpdateMapDropdowns();
+
     // Load Selected Tiers
     DeselectAllValuesInListbox("killer-tier-selection-dropdown");
     DeselectAllValuesInListbox("survivor-balance-tier-dropdown");
@@ -1277,7 +1348,7 @@ function LoadKillerOverrideUI(id) {
     // Load Map Selection
     DeselectAllValuesInListbox("map-selection-dropdown");
     
-    SelectValuesInListbox("map-selection-dropdown", KillerData.Map);
+    SelectOptionsFromMaps("map-selection-dropdown", KillerData.Map);
 
     // Load Selected Offerings
     // Deselect all options first
@@ -1311,47 +1382,48 @@ function LoadKillerOverrideUI(id) {
 
     DebugLog(Addons[CurrentKiller]);
     for (var i = 0; i < Addons[CurrentKiller].Addons.length; i++) {
-        var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[i]);
+        let currentAddon = Addons[CurrentKiller].Addons[i];
+        let currentRarity = currentAddon["Rarity"];
+        
+        // Skip if the rarity is banned
+        var currentCheckbox = document.getElementById(AddonCheckboxBanIDList[currentRarity]);
 
         if (currentCheckbox.checked) { continue; }
 
-        //DebugLog("Current Addons:");
-        //DebugLog(Addons[CurrentKiller].Addons);
-
-        CurrentAddonList = Addons[CurrentKiller].Addons[i].Addons;
         //DebugLog(CurrentAddonList);
-        for (var j = 0; j < CurrentAddonList.length; j++) {
-            var optionsElement = document.createElement("option");
-            optionsElement.value = CurrentAddonList[j];
-            optionsElement.innerHTML = CurrentAddonList[j];
-            optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[i];
-            optionsElement.style.color = "white";
-            optionsElement.style.fontWeight = 700;
-            optionsElement.style.textShadow = "0px 0px 5px black";
-            optionsElement.style.textAlign = "center";
-            optionsElement.style.border = "1px solid black";
-            optionsElement.style.padding = "5px";
-            //DebugLog(`Added Addon ${CurrentAddonList[j]} to ${KillerBalance[CurrentKiller].Name}`);
-            addonDropdown.appendChild(optionsElement);
-        }
+        var optionsElement = document.createElement("option");
+        optionsElement.value = currentAddon["globalID"];
+        optionsElement.innerHTML = currentAddon["Name"];
+        optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[currentRarity];
+        optionsElement.style.color = "white";
+        optionsElement.style.fontWeight = 700;
+        optionsElement.style.textShadow = "0px 0px 5px black";
+        optionsElement.style.textAlign = "center";
+        optionsElement.style.border = "1px solid black";
+        optionsElement.style.padding = "5px";
+        //DebugLog(`Added Addon ${CurrentAddonList[j]} to ${KillerBalance[CurrentKiller].Name}`);
+        addonDropdown.appendChild(optionsElement);
     }
 
+    // The confirmed addon bans dropdown
     addonDropdown = document.getElementById("killer-individual-addon-confirmed-bans-dropdown");
     addonDropdown.innerHTML = "";
 
+    console.log(`LoadKillerOverrideUI(${id}): ${KillerData.IndividualAddonBans}`)
+
     for (var i = 0; i < KillerData.IndividualAddonBans.length; i++) {
+        let currentAddonID = KillerData.IndividualAddonBans[i];
+        let currentAddon = GetAddonById(currentAddonID);
+
+        if (currentAddon == undefined) { continue; }
+
         var optionsElement = document.createElement("option");
-        optionsElement.value = KillerData.IndividualAddonBans[i];
-        optionsElement.innerHTML = KillerData.IndividualAddonBans[i];
+        optionsElement.value = currentAddon["globalID"];
+        optionsElement.innerHTML = currentAddon["Name"];
         
         // Get the rarity of the addon
-        var addonRarity = 0;
-        for (var j = 0; j < Addons[CurrentKiller].Addons.length; j++) {
-            if (Addons[CurrentKiller].Addons[j].Addons.includes(KillerData.IndividualAddonBans[i])) {
-                addonRarity = j;
-                break;
-            }
-        }
+        addonRarity = currentAddon["Rarity"];
+
         optionsElement.style.backgroundColor = TIER_RARITY_COLOURLIST[addonRarity];
 
         optionsElement.style.color = "white";
@@ -1377,9 +1449,22 @@ function LoadKillerOverrideUI(id) {
 
     SelectValuesInListbox("survivor-offering-selection-dropdown", offeringsAllowed);
 
+    // Create alphabetically sorted list
+    // This will be used as a dummy list to sort the perks without affecting the original list
+    var sortedPerks = [];
+
     // Apply it to KillerIndvBanDropdown
     var KlrIndvPrkBanDropdown = document.getElementById("killer-tiered-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
+
+    sortedPerks = KillerData.KillerIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
 
     for (var i = 0; i < KillerData.KillerIndvPerkBans.length; i++) {
         var optionsElement = document.createElement("option");
@@ -1412,6 +1497,15 @@ function LoadKillerOverrideUI(id) {
     var KlrIndvPrkWhitelistDropdown = document.getElementById("killer-tiered-individual-perk-whitelist-dropdown");
     KlrIndvPrkWhitelistDropdown.innerHTML = "";
 
+    sortedPerks = KillerData.KillerWhitelistedPerks.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
     for (var i = 0; i < KillerData.KillerWhitelistedPerks.length; i++) {
         var optionsElement = document.createElement("option");
         optionsElement.value = KillerData.KillerWhitelistedPerks[i];
@@ -1443,6 +1537,15 @@ function LoadKillerOverrideUI(id) {
     var SrvIndvPrkBanDropdown = document.getElementById("survivor-tiered-individual-perk-ban-dropdown");
     SrvIndvPrkBanDropdown.innerHTML = "";
 
+    sortedPerks = KillerData.SurvivorIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
     for (var i = 0; i < KillerData.SurvivorIndvPerkBans.length; i++) {
         var optionsElement = document.createElement("option");
         optionsElement.value = KillerData.SurvivorIndvPerkBans[i];
@@ -1473,6 +1576,15 @@ function LoadKillerOverrideUI(id) {
     // Apply it to SurvivorIndvWhitelistDropdown
     var SrvIndvPrkWhitelistDropdown = document.getElementById("survivor-tiered-individual-perk-whitelist-dropdown");
     SrvIndvPrkWhitelistDropdown.innerHTML = "";
+
+    sortedPerks = KillerData.SurvivorWhitelistedPerks.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
 
     for (var i = 0; i < KillerData.SurvivorWhitelistedPerks.length; i++) {
         var optionsElement = document.createElement("option");
@@ -1612,6 +1724,8 @@ function CreateKillerOverride(name) {
 
     NewKillerBalance = {
         Name: name,
+        KillerNotes: "", // Notes about the killer, e.g. specific rules/exceptions that can't be covered by the balancing system.
+        IsDisabled: false, // Whether or not the killer is disabled for the purposes of the balancing.
         Map: [0], // Can be empty, which means all maps are allowed.
         BalanceTiers: [0], //Set to 0 for General Tier, which is always created.
         SurvivorBalanceTiers: [0], // Set to 0 for General Tier, which is always created.
@@ -1657,14 +1771,31 @@ function LoadTier(id) {
     
     // Once we know tier data is legit, we can apply it to frontend.
 
+    // Dummy list to sort the perks without affecting the original list
+    sortedPerks = [];
+
     // Apply it to SurvIndvBanDropdown
     var SrvIndvPrkBanDropdown = document.getElementById("survivor-individual-perk-ban-dropdown");
     SrvIndvPrkBanDropdown.innerHTML = "";
 
-    for (var i = 0; i < TierData.SurvivorIndvPerkBans.length; i++) {
+    console.log("AAAAAAAAAWRFASIOWEFHNIOASN");
+    console.log(TierData.SurvivorIndvPerkBans);
+
+    sortedPerks = TierData.SurvivorIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
+    console.log(sortedPerks);
+
+    for (var i = 0; i < sortedPerks.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = TierData.SurvivorIndvPerkBans[i];
-        optionsElement.innerHTML = Perks[TierData.SurvivorIndvPerkBans[i]].name;
+        optionsElement.value = sortedPerks[i];
+        optionsElement.innerHTML = Perks[sortedPerks[i]].name;
         SrvIndvPrkBanDropdown.appendChild(optionsElement);
     }
 
@@ -1692,10 +1823,19 @@ function LoadTier(id) {
     var KlrIndvPrkBanDropdown = document.getElementById("killer-individual-perk-ban-dropdown");
     KlrIndvPrkBanDropdown.innerHTML = "";
 
-    for (var i = 0; i < TierData.KillerIndvPerkBans.length; i++) {
+    sortedPerks = TierData.KillerIndvPerkBans.sort(function(a, b) {
+        var nameA = Perks[a].name.toUpperCase();
+        var nameB = Perks[b].name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
+
+    for (var i = 0; i < sortedPerks.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = TierData.KillerIndvPerkBans[i];
-        optionsElement.innerHTML = Perks[TierData.KillerIndvPerkBans[i]].name;
+        optionsElement.value = sortedPerks[i];
+        optionsElement.innerHTML = Perks[sortedPerks[i]].name;
         KlrIndvPrkBanDropdown.appendChild(optionsElement);
     }
 
@@ -1809,15 +1949,37 @@ function UpdateKillerDropdowns() {
 
 function UpdateMapDropdowns() {
     var mapDropdown = document.getElementById("map-selection-dropdown");
+    var mapSearchTextbox = document.getElementById("map-search-textbox");
 
     mapDropdown.innerHTML = "";
 
     for (var i = 0; i < Maps.length; i++) {
+        mapName = Maps[i]["Name"];
+
+        if (!IsNameInSearch(mapSearchTextbox.value, mapName)) {
+            continue;
+        }
+
         var optionsElement = document.createElement("option");
-        optionsElement.value = Maps[i];
-        optionsElement.innerHTML = Maps[i];
+        optionsElement.value = Maps[i]["ID"];
+        optionsElement.innerHTML = `${Maps[i]["Name"]}`;
         mapDropdown.appendChild(optionsElement);
     }
+}
+
+function IsNameInSearch(searchString, name) {
+    if (searchString == "") { return true; }
+
+    // Separate search string by commas.
+    var searchTerms = searchString.split(",");
+
+    for (var i = 0; i < searchTerms.length; i++) {
+        if (name.toLowerCase().includes(searchTerms[i].toLowerCase())) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function CreateTier(name) {
@@ -1840,6 +2002,14 @@ function SetSearchEvents() {
 
         OverrideButtonSearch(query, isSurvivor);
     });
+
+    var perkSearchTextbox = document.getElementById("perk-search-textbox");
+    perkSearchTextbox.addEventListener("keyup", function(event) {
+        if (event.key == "Enter") {
+            event.preventDefault();
+            searchButton.click();
+        }
+    });
 }
 
 function OverrideButtonSearch(query, isSurvivor) {
@@ -1861,6 +2031,16 @@ function OverrideButtonSearch(query, isSurvivor) {
         optionsElement.style.backgroundPosition = "right";
         searchResultsContainer.appendChild(optionsElement);
     }
+
+    // Organize searchResults list alphabetically by the name property
+    searchResults.sort(function(a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+    });
 
     for (var i = 0; i < searchResults.length; i++) {
         // Get the values from the search container
@@ -1961,7 +2141,7 @@ function GetMaps() {
             GetAddons();
         }
     }
-    xhttp.open("GET", "Maps.json", false);
+    xhttp.open("GET", "NewMaps.json", false);
     xhttp.send();
 }
 
@@ -1980,7 +2160,7 @@ function GetAddons() {
             GetItems();
         }
     }
-    xhttp.open("GET", "Addons.json", false);
+    xhttp.open("GET", "NewAddons.json", false);
     xhttp.send();
 }
 
@@ -2027,10 +2207,14 @@ function SearchForPerks(searchQuery, isSurvivor) {
     var searchResults = [];
 
     for (var i = 0; i < Perks.length; i++) {
-        if (Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            if (Perks[i].survivorPerk == isSurvivor) {
+        let perkName = Perks[i].name;
+
+        if (!IsNameInSearch(searchQuery, perkName)) {
+            continue;
+        }
+
+        if (Perks[i].survivorPerk == isSurvivor) {
                 searchResults.push(Perks[i]);
-            }
         }
     }
 
@@ -2075,10 +2259,33 @@ function ExportBalancing() {
         NewTierExport.push(NewTier);
     }
 
+    // Check if any killer is missing from the KillerBalance array
+    for (var i = 0; i < Killers.length; i++) {
+        var killerExists = false;
+        for (var j = 0; j < KillerBalance.length; j++) {
+            if (KillerBalance[j].Name == Killers[i]) {
+                killerExists = true;
+                break;
+            }
+        }
+
+        if (killerExists) { continue; }
+        
+        console.error(`Killer ${Killers[i]} is missing from the KillerBalance array! Adding it now...`);
+        
+        // Add the killer at the specified index "i"
+        KillerBalance.splice(i, 0, CreateKillerOverride(Killers[i]));
+
+    }
+
     NewKillerExport = [];
     for (var i = 0; i < KillerBalance.length; i++) {
         NewKiller = CreateKillerOverride(KillerBalance[i].Name);
         DebugLog(KillerBalance[i]);
+
+        NewKiller.IsDisabled = KillerBalance[i].IsDisabled == undefined ? false : KillerBalance[i].IsDisabled;
+        
+        NewKiller.KillerNotes = KillerBalance[i].KillerNotes == undefined ? "" : KillerBalance[i].KillerNotes;
 
         NewKiller.Map = KillerBalance[i].Map;
         NewKiller.BalanceTiers = KillerBalance[i].BalanceTiers;
@@ -2105,14 +2312,19 @@ function ExportBalancing() {
 
     var FinalBalanceObj = {
         Name: document.getElementById("balance-name-textbox").value,
-        Version: version,
+        Version: GetCurrentEpochTime(),
         MaxPerkRepetition: maxPerkRepetition,
+        GlobalNotes: GlobalNotes,
         Tiers: NewTierExport,
         KillerOverride: NewKillerExport
     }
 
     var balanceExportBox = document.getElementById("balance-export-textbox");
     balanceExportBox.value = JSON.stringify(FinalBalanceObj);
+}
+
+function GetCurrentEpochTime() {
+    return Math.floor(Date.now() / 1000);
 }
 
 /**
@@ -2153,7 +2365,21 @@ function ImportBalancing() {
     var balanceImportObj = JSON.parse(balanceImportBox.value);
 
     document.getElementById("balance-name-textbox").value = balanceImportObj.Name;
-    KillerBalance = balanceImportObj.KillerOverride;
+
+    console.log("KILLER BALANCE:");
+    console.log(KillerBalance);
+    console.log("BALANCE IMPORT OBJ:");
+    console.log(balanceImportObj.KillerOverride);
+
+    MaxPerkRepetition = balanceImportObj.MaxPerkRepetition;
+
+    GlobalNotes = 
+        balanceImportObj.GlobalNotes == undefined ?
+        "" :
+        balanceImportObj.GlobalNotes;
+
+    globalNotesArea = document.getElementById("global-notes-textarea");
+    globalNotesArea.value = GlobalNotes;
 
     Tiers = [];
     
@@ -2176,6 +2402,25 @@ function ImportBalancing() {
         Tiers.push(NewTier);
     }
 
+    // Check to see if any Killers exist in KillerBalance that don't exist in the imported balance
+    for (var i = 0; i < KillerBalance.length; i++) {
+        let killerExists = false;
+
+        for (var j = 0; j < balanceImportObj.KillerOverride.length; j++) {
+            if (KillerBalance[i].Name == balanceImportObj.KillerOverride[j].Name) {
+                killerExists = true;
+                break;
+            }
+        }
+        
+        if (killerExists) { continue; }
+
+        // Add the killer to the balance if it doesn't exist
+        console.log(`Killer ${KillerBalance[i].Name} does not exist in the imported balance! Adding...`);
+        balanceImportObj.KillerOverride.push(CreateKillerOverride(KillerBalance[i].Name));
+
+    }
+
     KillerBalance = [];
     for (var i = 0; i < balanceImportObj.KillerOverride.length; i++) {
         var curKiller = balanceImportObj.KillerOverride[i];
@@ -2187,6 +2432,18 @@ function ImportBalancing() {
         }
 
         NewKillerBalance = CreateKillerOverride(curKiller.Name);
+
+        if (curKiller.IsDisabled != undefined) {
+            NewKillerBalance.IsDisabled = curKiller.IsDisabled;
+        } else {
+            NewKillerBalance.IsDisabled = false;
+        }
+
+        if (curKiller.KillerNotes != undefined) {
+            NewKillerBalance.KillerNotes = curKiller.KillerNotes;
+        } else {
+            NewKillerBalance.KillerNotes = "";
+        }
 
         NewKillerBalance.Map = curKiller.Map;
         NewKillerBalance.BalanceTiers = curKiller.BalanceTiers;
@@ -2201,7 +2458,39 @@ function ImportBalancing() {
         NewKillerBalance.KillerWhitelistedPerks = curKiller.KillerWhitelistedPerks;
         NewKillerBalance.KillerWhitelistedComboPerks = curKiller.KillerWhitelistedComboPerks;
         NewKillerBalance.AddonTiersBanned = curKiller.AddonTiersBanned;
-        NewKillerBalance.IndividualAddonBans = curKiller.IndividualAddonBans;
+
+        // Check if Individual bans are parsable as integers
+        let rawIndvAddonBans = curKiller.IndividualAddonBans;
+        let sanitizedIndvAddonBanList = [];
+        for (let j = 0; j < rawIndvAddonBans.length; j++) {
+            testParse = parseInt(rawIndvAddonBans[j]);
+
+            if (isNaN(testParse)) {
+                // Using old format, so we need to convert it to the new format
+                console.log(`Converting old format ban ${rawIndvAddonBans[j]} to new format...`);
+
+                // Find addon by name
+                let addon = GetAddonByName(rawIndvAddonBans[j]);
+
+                console.log(`Addon found:`);
+                console.log(addon);
+
+                if (addon == undefined) {
+                    console.error(`Addon ${rawIndvAddonBans[j]} is not a valid addon!`);
+                    continue;
+                }
+
+                sanitizedIndvAddonBanList.push(addon["globalID"]);
+            } else {
+                // Using new format, so we can just add it to the list
+                sanitizedIndvAddonBanList.push(testParse);
+            }
+        }
+        NewKillerBalance.IndividualAddonBans = sanitizedIndvAddonBanList;
+        console.log(`Sanitized individual addon bans:`);
+        console.log(sanitizedIndvAddonBanList);
+
+
         NewKillerBalance.SurvivorOfferings = curKiller.SurvivorOfferings;
         NewKillerBalance.KillerOfferings = curKiller.KillerOfferings;
 
@@ -2289,6 +2578,23 @@ function SelectOptionsFromValues(id, values) {
         for (const value of values) {
             for (const option of selectOptions) {
                 if (option.value == value) {
+                    option.selected = true;
+                }
+            }
+        }
+    } catch (error) {
+        console.error(`Error selecting values in listbox ${id}: ${error}`);
+    }
+}
+
+function SelectOptionsFromMaps(id, mapIDs) {
+    DebugLog(`Selecting maps ${mapIDs} in listbox ${id}`);
+
+    try {
+        const selectOptions = document.getElementById(id).options;
+        for (const mapID of mapIDs) {
+            for (const option of selectOptions) {
+                if (option.value == mapID) {
                     option.selected = true;
                 }
             }
@@ -2392,6 +2698,48 @@ function FindAddonsOfType(type) {
     }
 
     return addons;
+}
+
+function GetAddonById(id) {
+    for (let i = 0; i < Addons.length; i++) {
+        let currentKiller = Addons[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["globalID"] == id) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+function GetAddonByName(name) {
+    for (let i = 0; i < Addons.length; i++) {
+        let currentKiller = Addons[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["Name"].toLowerCase() == name.toLowerCase()) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+function FindMapByID(id) {
+    for (let i = 0; i < Maps.length; i++) {
+        if (Maps[i]["ID"] == id) {
+            return Maps[i];
+        }
+    }
+
+    return undefined;
 }
 
 function DebugLog(text, printStackTrace = false) {

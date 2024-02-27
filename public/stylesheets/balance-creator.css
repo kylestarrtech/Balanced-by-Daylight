@@ -2,6 +2,8 @@ body {
     text-align: center;
     height: 100%;
     overflow-y: hidden;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 #column-flow-container {
@@ -76,4 +78,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
+}
+
+#map-selection-dropdown option {
+    text-align: center;
+    font-weight: 700;
+}
+
+#map-search-textbox {
+    min-width: 300px;
 }

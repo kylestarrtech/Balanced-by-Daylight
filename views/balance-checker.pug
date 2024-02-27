@@ -11,10 +11,12 @@ html
     body(onload="main()")
         div#primary-balance-container
             div#balance-tabs-container
-                div.tier-selector-button(hidden="hidden" onclick="alert('This feature is coming soon!')")
-                    img(src="iconography/Multiplayer.webp")
-                div.tier-selector-button(hidden="hidden" onclick="alert('This feature is coming soon!')")
-                    img(src="iconography/Chat.webp")
+                div#role-swap-button(class="tier-selector-button")
+                    img#role-swap-icon(src="iconography/Killer.webp")
+                div#notes-button(class="tier-selector-button" onclick="GenerateNotesModal()")
+                    img(src="iconography/Info.webp")
+                div#maps-button(class="tier-selector-button" onclick="GenerateMapModal()")
+                    img(src="iconography/Maps.webp")
                 div#settings-button(class="tier-selector-button")
                     img(src="iconography/Settings.webp")
                 div#discord-button(class="tier-selector-button" onclick="window.open('https://discord.gg/E6zfpwvCce', '_blank')")
@@ -90,10 +92,15 @@ html
                         img(src="iconography/portraits/Singularity.webp")
                     div.character-select-button(data-killerID="32")
                         img(src="iconography/portraits/Xenomorph.webp")
+                    div.character-select-button(data-killerID="33")
+                        img(src="iconography/portraits/GoodGuy.webp")
+                    div.character-select-button(data-killerID="34")
+                        img(src="iconography/portraits/Unknown.webp")
             div#main-balance-window
                 h2#selected-killer-title Selected Killer: {KILLER NAME}
-                h2 Survivor Builds
-                div#survivor-builds-container
+                h2#selected-balance-title Selected Balance: {BALANCE NAME}
+                h2#selected-role-header Survivor Builds
+                div#survivor-builds-container(class="hide-component")
                     div.survivor-build-component
                         div.perk-slot(class="loadout-slot")
                             img(src="public/Perks/Survivors/Adrenaline.webp")
@@ -162,10 +169,27 @@ html
                             img(src="public/Addons/Long-Life-Battery.webp")
                         div.addon-slot(class="loadout-slot" data-addonSlot="1")
                             img(src="public/Addons/Low-Amp-Filament.webp")
+                div#killer-builds-container
+                    div#killer-build-component
+                        div.perk-slot(class="loadout-slot killer-perk-slot")
+                            img(src="public/Perks/Killers/Agitation.webp")
+                        div.perk-slot(class="loadout-slot killer-perk-slot")
+                            img(src="public/Perks/Killers/Brutal-Strength.webp")
+                        div.perk-slot(class="loadout-slot killer-perk-slot")
+                            img(src="public/Perks/Killers/Enduring.webp")
+                        div.perk-slot(class="loadout-slot killer-perk-slot")
+                            img(src="public/Perks/Killers/Insidious.webp")
+                        div.power-slot(class="loadout-slot killer-perk-slot")
+                            img(src="public/Powers/Trapper.webp")
+                        div.addon-slot(class="loadout-slot killer-perk-slot" data-addonSlot="0")
+                            img(src="public/PowerAddons/Trapper/4-Coil-Spring-Kit.webp")
+                        div.addon-slot(class="loadout-slot killer-perk-slot" data-addonSlot="1")
+                            img(src="public/PowerAddons/Trapper/Bear-Oil.webp")
                 div#import-export-button-container
                     button#import-button Import Loadout
                     button#export-button Export Loadout
                     button#generate-image-button Generate Image
+                    button#clear-loadout-button Clear Loadout
             div#errors-window
                 h1#error-panel-title Errors
                 div#error-list-container(class="override-scrollbar")
@@ -235,10 +259,11 @@ html
                         label(for="save-loadouts-killer") Auto-save Loadouts & Killer selected?
                         input#save-loadouts-killer(type="checkbox")
                         br
-                    span#generate-qr-code-container()
-                        label(for="generate-qr-code-setting") Generate QR Code during Image Generation?
-                        input#generate-qr-code-setting(type="checkbox")
-                        br
+                    label(for="enable-survivor-markers" hidden="hidden") Enable Survivor Markers?
+                    input#enable-survivor-markers(type="checkbox")
+                    br
+                    div#custom-error(class="error-flash-animation" hidden="hidden")
+                        p Custom Balance JSON is invalid. Please verify your JSON <a href="https://jsonlint.com/" target="_blank">here</a>.
                     p Made by Kyle Starr and <span style="color:#30beff;cursor:pointer;text-decoration:underline;" onclick="DisplayCredits()">Contributors</span> (v1.1)
                     div#settings-button-container
                         button#settings-clear-storage-button Clear Settings

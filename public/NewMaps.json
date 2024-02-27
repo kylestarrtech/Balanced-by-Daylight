@@ -1,0 +1,386 @@
+[
+    {
+        "ID": 0,
+        "Name": "Coal Tower I",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 1,
+        "Name": "Groaning Storehouse I",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 2,
+        "Name": "Ironworks of Misery I",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 3,
+        "Name": "Shelter Woods I",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 4,
+        "Name": "Suffocation Pit I",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 42,
+        "Name": "Coal Tower II",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 43,
+        "Name": "Groaning Storehouse II",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 44,
+        "Name": "Ironworks of Misery II",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 45,
+        "Name": "Shelter Woods II",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 46,
+        "Name": "Suffocation Pit II",
+        "Realm": "MacMillan Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 5,
+        "Name": "Azarov's Resting Place",
+        "Realm": "Autohaven Wreckers",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 6,
+        "Name": "Blood Lodge",
+        "Realm": "Autohaven Wreckers",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 7,
+        "Name": "Gas Heaven",
+        "Realm": "Autohaven Wreckers",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 8,
+        "Name": "Wrecker's Yard",
+        "Realm": "Autohaven Wreckers",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 9,
+        "Name": "Wretched Shop",
+        "Realm": "Autohaven Wreckers",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 10,
+        "Name": "Fractured Cowshed",
+        "Realm": "Coldwind Farm",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 11,
+        "Name": "Rancid Abattoir",
+        "Realm": "Coldwind Farm",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 12,
+        "Name": "Rotten Fields",
+        "Realm": "Coldwind Farm",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 13,
+        "Name": "The Thompson House",
+        "Realm": "Coldwind Farm",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 14,
+        "Name": "Torment Creek",
+        "Realm": "Coldwind Farm",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 15,
+        "Name": "Disturbed Ward",
+        "Realm": "Crotus Prenn Asylum",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 16,
+        "Name": "Father Campbell's Chapel",
+        "Realm": "Crotus Prenn Asylum",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 17,
+        "Name": "Lampkin Lane",
+        "Realm": "Haddonfield",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 18,
+        "Name": "The Pale Rose",
+        "Realm": "Backwater Swamp",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 19,
+        "Name": "Grim Pantry",
+        "Realm": "Backwater Swamp",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 20,
+        "Name": "Treatment Theatre",
+        "Realm": "Léry's Memorial Institute",
+        "Type": "indoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 21,
+        "Name": "Mother's Dwelling",
+        "Realm": "Red Forest",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 22,
+        "Name": "The Temple of Purgation",
+        "Realm": "Red Forest",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 23,
+        "Name": "Badham Preschool I",
+        "Realm": "Springwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 24,
+        "Name": "Badham Preschool II",
+        "Realm": "Springwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 25,
+        "Name": "Badham Preschool III",
+        "Realm": "Springwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 26,
+        "Name": "Badham Preschool IV",
+        "Realm": "Springwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 27,
+        "Name": "Badham Preschool V",
+        "Realm": "Springwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 28,
+        "Name": "The Game",
+        "Realm": "Gideon Meat Plant",
+        "Type": "indoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 29,
+        "Name": "Family Residence",
+        "Realm": "Yamaoka Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 30,
+        "Name": "Sanctum of Wrath",
+        "Realm": "Yamaoka Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 31,
+        "Name": "Mount Ormond Resort",
+        "Realm": "Ormond",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 32,
+        "Name": "The Underground Complex",
+        "Realm": "Hawkins National Laboratory",
+        "Type": "indoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 33,
+        "Name": "Dead Dawg Saloon",
+        "Realm": "Grave of Glenvale",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 34,
+        "Name": "Midwich Elementary School",
+        "Realm": "Silent Hill",
+        "Type": "hybrid",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 35,
+        "Name": "R.C.P.S. East Wing",
+        "Realm": "Raccoon City",
+        "Type": "hybrid",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 36,
+        "Name": "R.C.P.S. West Wing",
+        "Realm": "Raccoon City",
+        "Type": "hybrid",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 37,
+        "Name": "Eyrie of Crows",
+        "Realm": "Forsaken Boneyard",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 38,
+        "Name": "Garden of Joy",
+        "Realm": "Withered Isle",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 39,
+        "Name": "The Shattered Square",
+        "Realm": "The Decimated Borgo",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 40,
+        "Name": "Toba Landing",
+        "Realm": "Dvarka Deepwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 41,
+        "Name": "Nostromo Wreckage",
+        "Realm": "Dvarka Deepwood",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 47,
+        "Name": "Greenville Square",
+        "Realm": "Withered Isle",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    }
+]

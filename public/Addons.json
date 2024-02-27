@@ -1647,5 +1647,55 @@
                 ]
             }
         ]
+    },
+    {
+        "Name": "The Good Guy",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Tiny Scalpel",
+                    "Strobing Light",
+                    "Good Guy Box",
+                    "Doll Eyes"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Power Drill",
+                    "Jump Rope",
+                    "Hair Spray & Candle",
+                    "Electric Carving Knife",
+                    "Automatic Screwdriver"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Yardstick",
+                    "Silk Pillow",
+                    "Running Shoes",
+                    "Rat Poison",
+                    "Portable TV"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Straight Razor",
+                    "Plastic Bag",
+                    "Pile of Nails",
+                    "Mirror Shards"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent Amulet",
+                    "Hard Hat"
+                ]
+            }
+        ]
     }
 ]
