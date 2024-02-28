@@ -86,18 +86,18 @@ function getIdListByNames(baseList, nameList, search){
 }
 
 function replacePerkNamesById(tier){
-    tier.SurvivorIndvPerkBans = getIdListByNames(perksName, tier.SurvivorIndvPerkBans, getPerkIdByName)
-    tier.KillerIndvPerkBans = getIdListByNames(perksName, tier.KillerIndvPerkBans, getPerkIdByName)
+    tier.SurvivorIndvPerkBans = getIdListByNames(perksName, tier.SurvivorIndvPerkBans, getPerkIdByName).map(id => id.toString())
+    tier.KillerIndvPerkBans = getIdListByNames(perksName, tier.KillerIndvPerkBans, getPerkIdByName).map(id => id.toString())
 
     let combos = new Array()
     for(const combo of tier.SurvivorComboPerkBans){
-        combos.push(getIdListByNames(perksName, combo, getPerkIdByName))
+        combos.push(getIdListByNames(perksName, combo, getPerkIdByName).map(id => id.toString()))
     }
     tier.SurvivorComboPerkBans = combos
 
     combos = new Array()
     for(const combo of tier.KillerComboPerkBans){
-        combos.push(getIdListByNames(perksName, combo, getPerkIdByName))
+        combos.push(getIdListByNames(perksName, combo, getPerkIdByName).map(id => id.toString()))
     }
     tier.KillerComboPerkBans = combos
 }
