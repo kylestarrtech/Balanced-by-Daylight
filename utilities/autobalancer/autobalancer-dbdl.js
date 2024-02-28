@@ -157,7 +157,7 @@ module.exports = function(balancingText) {
         }
         killer.ItemWhitelist = getIdListByNames(itemsName, items, getItemIdByName)
 
-        addonWhitelist = {
+        const addonWhitelist = {
             "Firecracker": { Addons: [] },
             "Flashlight": { Addons: [] },
             "Med-Kit": { Addons: [] },
