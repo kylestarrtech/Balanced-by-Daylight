@@ -1,0 +1,28 @@
+#What I did on Ubuntu
+
+cd /usr/local/lib
+mkdir opencv
+cd opencv
+
+sudo apt update && sudo apt install -y cmake g++ wget unzip
+wget -O opencv.zip https://github.com/opencv/opencv/archive/5.x.zip
+unzip opencv.zip
+
+mkdir -p build && cd build
+cmake  ../opencv-5.x
+cmake --build .
+
+sudo make install
+
+
+
+#At this point go back to your project directory
+
+npm install opencv4nodejs
+cd node_modules/opencv4nodejs/
+npm run build
+npm install
+
+
+
+#Should be good !!

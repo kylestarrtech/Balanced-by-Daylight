@@ -1,8 +1,13 @@
+require('dotenv').config()
+
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const config = require('./server-config.json');
 const canvasGen = require('./canvasGenerator.js');
+const qrUtility = require('./utilities/qrUtility.js');
+const bodyParser = require('body-parser');
+const imageExtractor = require('./imageExtractor.js');
 
 const app = express()
 const server=http.createServer(app);
@@ -48,7 +53,7 @@ app.post('/get-build-image', (req, res) => {
 
   try {
     // Generate the build image
-    canvasGen.BeginGenerationImport(exportData, function(data) {
+    canvasGen.BeginGenerationImport(exportData, buildData["options"]["GenerateQRCode"], function(data) {
       if (data["status"] == 200) {
         res.setHeader('Content-Type', 'image/png');
         res.status(data["status"]).send(data["imageData"]);
@@ -56,6 +61,41 @@ app.post('/get-build-image', (req, res) => {
         res.status(data["status"]).send(data["message"]);
       }
     });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal server error.");
+  }
+});
+
+/**
+ * User sends a build image to the server.
+ * Server finds the related QR code.
+ * Returns that value to client.
+ */
+app.post('/upload-build-image', async (req, res) => {
+  // Get the build image from the request body
+  const buildImage = req.body;
+
+  const imageData = buildImage["imageData"];
+  const imageBuffer = new Uint8Array(buildImage["imageBuffer"]);
+
+  if (buildImage == null) {
+    res.status(400).send("Invalid build image. Build image is null.");
+    return;
+  }
+
+  try {
+    const data = await imageExtractor(imageBuffer)
+    res.status(200).send(data)
+    
+    // Read QR code from the build image
+    /*qrUtility.GetQRCodeData(imageData, function(data) {
+      if (data["status"] == 200) {
+        res.status(data["status"]).send(data["data"]["result"]);
+      } else {
+        res.status(data["status"]).send(data["message"]);
+      }
+    });*/
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal server error.");
