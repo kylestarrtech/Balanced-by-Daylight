@@ -1,6 +1,6 @@
 {
     "Name": "The Arkade (2024)",
-    "Version": 1708308499,
+    "Version": 1709522106,
     "MaxPerkRepetition": 1,
     "GlobalNotes": "",
     "Tiers": [
@@ -32,6 +32,7 @@
                 "51",
                 "55",
                 "56",
+                "252",
                 "59",
                 "63",
                 "66",
@@ -53,11 +54,13 @@
                 "108",
                 "110",
                 "113",
+                "253",
                 "115",
                 "116",
                 "120",
                 "124",
                 "128",
+                "254",
                 "130"
             ],
             "KillerIndvPerkBans": [
@@ -3150,6 +3153,54 @@
             "KillerOfferings": [
                 5
             ]
+        },
+        {
+            "Name": "The Unknown",
+            "KillerNotes": "",
+            "IsDisabled": false,
+            "Map": [
+                0
+            ],
+            "BalanceTiers": [
+                0
+            ],
+            "SurvivorBalanceTiers": [
+                0
+            ],
+            "AntiFacecampPermitted": false,
+            "KillerIndvPerkBans": [],
+            "KillerComboPerkBans": [],
+            "SurvivorIndvPerkBans": [],
+            "SurvivorComboPerkBans": [],
+            "SurvivorWhitelistedPerks": [],
+            "SurvivorWhitelistedComboPerks": [],
+            "KillerWhitelistedPerks": [],
+            "KillerWhitelistedComboPerks": [],
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [],
+            "ItemWhitelist": [],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": []
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
+            "SurvivorOfferings": [],
+            "KillerOfferings": []
         }
     ]
 }
