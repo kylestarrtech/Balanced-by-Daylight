@@ -1,7 +1,8 @@
 {
-    "Name": "OTF2023",
-    "Version": 1,
+    "Name": "Outrun The Fog (2024)",
+    "Version": 1708920169,
     "MaxPerkRepetition": 1,
+    "GlobalNotes": "",
     "Tiers": [
         {
             "Name": "General",
@@ -11,12 +12,15 @@
                 "16",
                 "17",
                 "18",
+                "247",
                 "19",
                 "20",
                 "22",
                 "24",
                 "25",
+                "246",
                 "28",
+                "248",
                 "40",
                 "43",
                 "46",
@@ -31,6 +35,7 @@
                 "83",
                 "84",
                 "86",
+                "89",
                 "90",
                 "98",
                 "106",
@@ -44,6 +49,8 @@
                 "149",
                 "151",
                 "155",
+                "244",
+                "170",
                 "171",
                 "175",
                 "186",
@@ -52,8 +59,7 @@
                 "209",
                 "227",
                 "235",
-                "238",
-                "244"
+                "238"
             ],
             "SurvivorComboPerkBans": [
                 [
@@ -300,9 +306,11 @@
     "KillerOverride": [
         {
             "Name": "The Trapper",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                4,
-                33
+                "4",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -322,7 +330,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Iridescent Stone"
+                18
             ],
             "ItemWhitelist": [
                 0,
@@ -365,9 +373,11 @@
         },
         {
             "Name": "The Wraith",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                33,
-                34
+                "6",
+                "16"
             ],
             "BalanceTiers": [
                 0
@@ -394,8 +404,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "\"All Seeing\" - Blood",
-                "\"All Seeing\" - Spirit"
+                37,
+                39
             ],
             "ItemWhitelist": [
                 0,
@@ -438,16 +448,18 @@
         },
         {
             "Name": "The Hillbilly",
+            "KillerNotes": "Running ANY combination of addons where both addons are one of \"LoPro Chains\", \"Thompson Mix\", or \"Greased Throttle\" is prohibited.",
+            "IsDisabled": false,
             "Map": [
-                0,
-                9
+                "6",
+                "10"
             ],
             "BalanceTiers": [
                 0
             ],
             "SurvivorBalanceTiers": [
                 0,
-                3
+                5
             ],
             "AntiFacecampPermitted": false,
             "KillerIndvPerkBans": [
@@ -504,9 +516,11 @@
         },
         {
             "Name": "The Nurse",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0,
-                1
+                "0",
+                "43"
             ],
             "BalanceTiers": [
                 0,
@@ -530,9 +544,9 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Heavy Panting",
-                "Jenner's Last Breath",
-                "Campbell's Last Breath"
+                70,
+                75,
+                76
             ],
             "ItemWhitelist": [
                 0,
@@ -583,9 +597,11 @@
         },
         {
             "Name": "The Shape",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                20,
-                32
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -651,9 +667,11 @@
         },
         {
             "Name": "The Hag",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                8,
-                40
+                "8",
+                "40"
             ],
             "BalanceTiers": [
                 0
@@ -675,7 +693,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Waterlogged Shoe"
+                118
             ],
             "ItemWhitelist": [
                 0,
@@ -718,9 +736,11 @@
         },
         {
             "Name": "The Doctor",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                9,
-                33
+                "9",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -785,9 +805,11 @@
         },
         {
             "Name": "The Huntress",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0,
-                8
+                "0",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -816,8 +838,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Leather Loop",
-                "Infantry Belt"
+                148,
+                154
             ],
             "ItemWhitelist": [
                 5,
@@ -860,6 +882,8 @@
         },
         {
             "Name": "The Cannibal",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
                 8,
                 33
@@ -926,9 +950,11 @@
         },
         {
             "Name": "The Nightmare",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                7,
-                33
+                "33",
+                "40"
             ],
             "BalanceTiers": [
                 0
@@ -952,7 +978,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Black Box"
+                198
             ],
             "ItemWhitelist": [
                 5,
@@ -995,9 +1021,11 @@
         },
         {
             "Name": "The Pig",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                32,
-                34
+                "32",
+                "34"
             ],
             "BalanceTiers": [
                 0
@@ -1026,10 +1054,10 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Bag of Gears",
-                "Tampered Timer",
-                "Crate of Gears",
-                "Video Tape"
+                212,
+                213,
+                215,
+                218
             ],
             "ItemWhitelist": [
                 5,
@@ -1070,9 +1098,11 @@
         },
         {
             "Name": "The Clown",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                6,
-                19
+                "8",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -1098,7 +1128,7 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Cigar Box"
+                235
             ],
             "ItemWhitelist": [
                 5,
@@ -1141,9 +1171,11 @@
         },
         {
             "Name": "The Spirit",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                8,
-                18
+                "8",
+                "18"
             ],
             "BalanceTiers": [
                 0,
@@ -1225,6 +1257,8 @@
         },
         {
             "Name": "The Legion",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
                 33,
                 40
@@ -1247,8 +1281,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Friendship Bracelet",
-                "Fuming Mix Tape"
+                262,
+                278
             ],
             "ItemWhitelist": [
                 5,
@@ -1291,9 +1325,11 @@
         },
         {
             "Name": "The Plague",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                4,
-                8
+                "4",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -1317,7 +1353,7 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Prayer Tablet Fragment"
+                279
             ],
             "ItemWhitelist": [
                 0,
@@ -1360,9 +1396,11 @@
         },
         {
             "Name": "The Ghost Face",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                20,
-                32
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -1379,11 +1417,11 @@
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
                 "3",
+                "52",
                 "33",
                 "85",
                 "97",
-                "111",
-                "52"
+                "111"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -1431,9 +1469,11 @@
         },
         {
             "Name": "The Demogorgon",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0,
-                13
+                "0",
+                "13"
             ],
             "BalanceTiers": [
                 0
@@ -1458,7 +1498,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Leprose Lichen"
+                337
             ],
             "ItemWhitelist": [
                 5,
@@ -1501,8 +1541,11 @@
         },
         {
             "Name": "The Oni",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0
+                "0",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -1567,9 +1610,11 @@
         },
         {
             "Name": "The Deathslinger",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                5,
-                8
+                "5",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -1594,7 +1639,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Iridescent Coin"
+                377
             ],
             "ItemWhitelist": [
                 5,
@@ -1637,9 +1682,11 @@
         },
         {
             "Name": "The Executioner",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                6,
-                8
+                "6",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -1702,9 +1749,11 @@
         },
         {
             "Name": "The Blight",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                6,
-                10
+                "6",
+                "10"
             ],
             "BalanceTiers": [
                 0,
@@ -1726,9 +1775,9 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Compound Twenty-One",
-                "Adrenaline Vial",
-                "Alchemist's Ring"
+                410,
+                412,
+                416
             ],
             "ItemWhitelist": [
                 0,
@@ -1784,9 +1833,11 @@
         },
         {
             "Name": "The Twins",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0,
-                16
+                "0",
+                "16"
             ],
             "BalanceTiers": [
                 0
@@ -1808,7 +1859,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Iridescent Pendant"
+                438
             ],
             "ItemWhitelist": [
                 0,
@@ -1851,9 +1902,11 @@
         },
         {
             "Name": "The Trickster",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                8,
-                9
+                "8",
+                "9"
             ],
             "BalanceTiers": [
                 0
@@ -1875,8 +1928,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Trick Blades",
-                "Iridescent Photocard"
+                453,
+                457
             ],
             "ItemWhitelist": [
                 0,
@@ -1919,6 +1972,8 @@
         },
         {
             "Name": "The Nemesis",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
                 6,
                 16
@@ -1986,9 +2041,11 @@
         },
         {
             "Name": "The Cenobite",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                31,
-                33
+                "31",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -2058,9 +2115,11 @@
         },
         {
             "Name": "The Artist",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                5,
-                8
+                "5",
+                "8"
             ],
             "BalanceTiers": [
                 0
@@ -2082,8 +2141,8 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Matias' Baby Shoes",
-                "Garden of Rot"
+                515,
+                518
             ],
             "ItemWhitelist": [
                 5,
@@ -2126,9 +2185,11 @@
         },
         {
             "Name": "The Onryo",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                20,
-                32
+                "20",
+                "32"
             ],
             "BalanceTiers": [
                 0
@@ -2159,8 +2220,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Mother's Comb",
-                "Distorted Photo"
+                531,
+                536
             ],
             "ItemWhitelist": [
                 5,
@@ -2201,9 +2262,11 @@
         },
         {
             "Name": "The Dredge",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                20,
-                34
+                "20",
+                "34"
             ],
             "BalanceTiers": [
                 0
@@ -2220,11 +2283,11 @@
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
                 "3",
+                "52",
                 "33",
                 "85",
                 "97",
-                "111",
-                "52"
+                "111"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -2235,9 +2298,9 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Worry Stone",
-                "Lavalier Microphone",
-                "Field Recorder"
+                548,
+                554,
+                555
             ],
             "ItemWhitelist": [
                 5,
@@ -2278,9 +2341,11 @@
         },
         {
             "Name": "The Mastermind",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0,
-                9
+                "0",
+                "9"
             ],
             "BalanceTiers": [
                 0
@@ -2343,9 +2408,11 @@
         },
         {
             "Name": "The Knight",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                9,
-                34
+                "9",
+                "34"
             ],
             "BalanceTiers": [
                 0
@@ -2372,8 +2439,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Healing Poultice",
-                "Flint and Steel"
+                594,
+                595
             ],
             "ItemWhitelist": [
                 5,
@@ -2416,9 +2483,11 @@
         },
         {
             "Name": "The Skull Merchant",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                2,
-                9
+                "44",
+                "9"
             ],
             "BalanceTiers": [
                 0
@@ -2432,11 +2501,11 @@
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
                 "3",
+                "52",
                 "33",
                 "85",
                 "97",
-                "111",
-                "52"
+                "111"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -2488,9 +2557,11 @@
         },
         {
             "Name": "The Singularity",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                4,
-                33
+                "4",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -2512,7 +2583,7 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Denied Requisition Form"
+                638
             ],
             "ItemWhitelist": [
                 0,
@@ -2555,9 +2626,11 @@
         },
         {
             "Name": "The Xenomorph",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                0,
-                1
+                "0",
+                "43"
             ],
             "BalanceTiers": [
                 0
@@ -2581,8 +2654,8 @@
                 4
             ],
             "IndividualAddonBans": [
-                "Self-Destruct Bolt",
-                "Harpoon Gun"
+                654,
+                655
             ],
             "ItemWhitelist": [
                 0,
@@ -2625,9 +2698,11 @@
         },
         {
             "Name": "The Good Guy",
+            "KillerNotes": "",
+            "IsDisabled": false,
             "Map": [
-                8,
-                33
+                "8",
+                "33"
             ],
             "BalanceTiers": [
                 0
@@ -2652,9 +2727,9 @@
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                "Yardstick",
-                "Rat Poison",
-                "Hard Hat"
+                668,
+                671,
+                678
             ],
             "ItemWhitelist": [
                 0,
@@ -2694,6 +2769,54 @@
             "KillerOfferings": [
                 5
             ]
+        },
+        {
+            "Name": "The Unknown",
+            "KillerNotes": "",
+            "IsDisabled": false,
+            "Map": [
+                0
+            ],
+            "BalanceTiers": [
+                0
+            ],
+            "SurvivorBalanceTiers": [
+                0
+            ],
+            "AntiFacecampPermitted": false,
+            "KillerIndvPerkBans": [],
+            "KillerComboPerkBans": [],
+            "SurvivorIndvPerkBans": [],
+            "SurvivorComboPerkBans": [],
+            "SurvivorWhitelistedPerks": [],
+            "SurvivorWhitelistedComboPerks": [],
+            "KillerWhitelistedPerks": [],
+            "KillerWhitelistedComboPerks": [],
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [],
+            "ItemWhitelist": [],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": []
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
+            "SurvivorOfferings": [],
+            "KillerOfferings": []
         }
     ]
 }

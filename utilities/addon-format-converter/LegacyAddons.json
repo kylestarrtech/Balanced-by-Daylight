@@ -1,0 +1,52 @@
+[
+    {
+        "Name": "The Unknown",
+        "Addons": [
+            {
+                "Rarity": "Common",
+                "Addons": [
+                    "Sketch Attempt",
+                    "Rabbit's Foot",
+                    "Punctured Eyeball",
+                    "Blurry Photo"
+                ]
+            },
+            {
+                "Rarity": "Uncommon",
+                "Addons": [
+                    "Victim's Map",
+                    "Slashed Backpack",
+                    "Notebook of Theories",
+                    "Last Known Recording",
+                    "Device of Undisclosed Origin"
+                ]
+            },
+            {
+                "Rarity": "Rare",
+                "Addons": [
+                    "Vanishing Box",
+                    "Hypnotist's Watch",
+                    "Front-Page Article",
+                    "Footprint Cast",
+                    "B-Movie Poster"
+                ]
+            },
+            {
+                "Rarity": "Very Rare",
+                "Addons": [
+                    "Serum Vial",
+                    "Obscure Game Cartridge",
+                    "Homemade Mask",
+                    "Discarded Milk Carton"
+                ]
+            },
+            {
+                "Rarity": "Ultra Rare",
+                "Addons": [
+                    "Iridescent OSS Report",
+                    "Captured by the Dark"
+                ]
+            }
+        ]
+    }
+]

@@ -9,10 +9,9 @@ This tool is in very early stages, but I decided to make the repository public n
 | Feature | Complete |
 | -------- | -------- |
 | Survivor Builds | ✅ (Fully complete!)|
-| Killer Builds | ❌ (In Creator, not Checker) |
+| Killer Builds | ✅ (Fully complete!) |
 | Survivor Items+Addons | ✅ (Fully complete!) |
 | Offerings | ✅ (Fully complete!) |
-| Multiplayer | ❌ (Disabled, Non-Functioning) |
 
 ## Discord Server
 

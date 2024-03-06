@@ -340,6 +340,40 @@ body {
     margin: auto;
 }
 
+.hide-component {
+    display: none !important;
+}
+
+#killer-builds-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+
+    width: max-content;
+    margin: auto;
+}
+
+#killer-build-component {
+    display: flex;
+    flex-flow: row wrap;
+
+    background-color: #ffffff04;
+    margin: auto;
+    padding: 10px;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    height: 100px;
+    border-radius: 17px;
+}
+
 .loadout-slot {
     background-color: #ffffff04;
 
@@ -643,6 +677,10 @@ body {
 
     align-items: center;
     justify-content: center;
+}
+
+.addon-slot.killer-perk-slot {
+    aspect-ratio: 0.75 / 1 !important;
 }
 
 .addon-slot img {
@@ -981,7 +1019,7 @@ body {
     width: 100%;
 }
 
-#selected-killer-title {
+#selected-killer-title, #selected-balance-title {
     font-weight: 400;
 }
 
@@ -1030,6 +1068,10 @@ body {
     text-align: center;
     padding: 20px;
     overflow-y: auto;
+}
+
+#alert-menu {
+    max-width: 90%;
 }
 
 #alert-ok-button, #image-gen-ok-button {
@@ -1105,8 +1147,20 @@ body {
     height: 100%;
 }
 
+#clear-loadout-button {
+    border-color: #ff4444 !important;
+    color: #ffbbbb !important;
+}
+
+.import-code-preview {
+    text-wrap: pretty;
+    max-width: 80%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
 #import-export-button-container {
-    width: 50%;
+    width: 67%;
     display: flex;
     margin: 5px;
     gap: 5px;
