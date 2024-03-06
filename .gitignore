@@ -16,8 +16,6 @@ TestBalanceInDev.json
 /webp_to_png/*
 !/webp_to_png/convert_to_png.py
 
-/utilities/autobalancer/*
-
 testCanvasGen.js
 test.png
 

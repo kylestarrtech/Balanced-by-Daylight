@@ -1208,6 +1208,36 @@ body {
     padding: 6px;
 }
 
+#balance-type-box {
+    background-color: #00000040;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+}
+
+#balance-type-icon {
+    width: 75%;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    margin: 0;
+}
+
+#balance-type-text {
+    font-size: 0.75rem;
+
+    height: 100%;
+
+    padding-top: 9px;
+    padding-right: 15px;
+    
+    margin: 0;
+    margin-top: 5px;
+}
+
 /* Intro animation for settings menu */
 @keyframes intro-blur {
     from {backdrop-filter: blur(0px);}
