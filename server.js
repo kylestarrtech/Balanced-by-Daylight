@@ -2,7 +2,9 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const config = require('./server-config.json');
+
 const canvasGen = require('./canvasGenerator.js');
+const autobalanceAPI = require('./autobalance-api.js');
 
 const app = express()
 const server=http.createServer(app);
@@ -23,11 +25,16 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/favicon.ico', express.static('/favicon.ico'));
 
+
+
 // Set Pug as the view engine
 app.set('view engine', 'pug')
 
 // Set views folder as the default folder for views
 app.set('views', './views')
+
+// Set the autobalance API
+autobalanceAPI(app);
 
 app.get('/config', (req, res) => {
   res.json(config);

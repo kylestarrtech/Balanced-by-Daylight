@@ -24,7 +24,7 @@ var BalancePresets = [
     {
         ID: 1,
         Name: "Dead by Daylight League (DBDL)",
-        Path: "BalancingPresets/DBDL.json",
+        Path: "BalancingPresets/Autobalance/DBDL.json",
         Type: "Automated",
         Balancing: {}
     },
