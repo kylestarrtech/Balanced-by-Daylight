@@ -1,6 +1,6 @@
 {
     "Name": "Jack Daniel's League (JDL)",
-    "Version": 1708394531,
+    "Version": 1710377761,
     "MaxPerkRepetition": 1,
     "GlobalNotes": "",
     "Tiers": [
@@ -34,6 +34,7 @@
                 "49",
                 "51",
                 "55",
+                "252",
                 "61",
                 "62",
                 "63",
@@ -60,12 +61,15 @@
                 "108",
                 "110",
                 "111",
+                "253",
                 "115",
                 "116",
                 "120",
                 "122",
+                "124",
                 "126",
                 "128",
+                "254",
                 "130"
             ],
             "KillerIndvPerkBans": [
@@ -103,6 +107,7 @@
                 "196",
                 "197",
                 "198",
+                "199",
                 "202",
                 "205",
                 "213",
@@ -115,7 +120,10 @@
                 "229",
                 "231",
                 "235",
-                "238"
+                "238",
+                "249",
+                "250",
+                "251"
             ],
             "SurvivorComboPerkBans": [
                 [
@@ -123,8 +131,8 @@
                     "67"
                 ],
                 [
-                    "67",
-                    "77"
+                    "76",
+                    "67"
                 ]
             ],
             "KillerComboPerkBans": [
@@ -253,6 +261,7 @@
                 "36",
                 "38",
                 "39",
+                "56",
                 "57",
                 "64",
                 "76",
@@ -331,17 +340,11 @@
             ],
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
-                "1",
-                "34",
                 "36",
                 "38",
                 "39",
                 "57",
-                "76",
-                "92",
-                "112",
-                "121",
-                "127"
+                "76"
             ],
             "SurvivorComboPerkBans": [],
             "SurvivorWhitelistedPerks": [],
@@ -349,14 +352,16 @@
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [
-                4,
                 3
             ],
             "IndividualAddonBans": [
-                55,
-                56,
+                53,
+                59,
+                58,
                 57,
-                53
+                56,
+                55,
+                54
             ],
             "ItemWhitelist": [
                 0,
@@ -424,12 +429,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4,
-                3
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                70
+                70,
+                79,
+                78,
+                77,
+                76,
+                75,
+                74
             ],
             "ItemWhitelist": [
                 0,
@@ -515,11 +523,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                3,
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                99,
+                98,
+                97,
+                96,
+                95,
+                94
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -594,11 +606,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                3,
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                119,
+                118,
+                117,
+                116,
+                115,
+                114
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -841,10 +857,12 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                177,
+                178,
+                176
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -1009,13 +1027,13 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
                 215,
                 213,
-                212
+                212,
+                217,
+                218
             ],
             "ItemWhitelist": [
                 0,
@@ -1089,12 +1107,12 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
                 235,
-                236
+                236,
+                237,
+                238
             ],
             "ItemWhitelist": [
                 0,
@@ -1171,12 +1189,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4,
-                3
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                251
+                251,
+                257,
+                258,
+                256,
+                255,
+                254,
+                253
             ],
             "ItemWhitelist": [
                 0,
@@ -1259,10 +1280,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                277,
+                278
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -1336,12 +1358,12 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
                 293,
-                279
+                279,
+                297,
+                298
             ],
             "ItemWhitelist": [
                 0,
@@ -1423,11 +1445,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                316
+                316,
+                317,
+                318
             ],
             "ItemWhitelist": [
                 0,
@@ -1585,10 +1607,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                357,
+                358
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5,
@@ -1666,10 +1689,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                377,
+                378
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5,
@@ -1829,13 +1853,16 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4,
-                3
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
                 412,
-                410
+                410,
+                418,
+                417,
+                416,
+                415,
+                414,
+                413
             ],
             "ItemWhitelist": [
                 0,
@@ -1919,10 +1946,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                437,
+                438
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5,
@@ -2007,11 +2035,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                3,
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                458,
+                457,
+                456,
+                455,
+                454,
+                453
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -2071,7 +2103,6 @@
             "SurvivorIndvPerkBans": [
                 "1",
                 "52",
-                "20",
                 "34",
                 "36",
                 "38",
@@ -2088,10 +2119,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                477,
+                478
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -2150,7 +2182,6 @@
             ],
             "KillerComboPerkBans": [],
             "SurvivorIndvPerkBans": [
-                "20",
                 "34",
                 "36",
                 "38",
@@ -2164,11 +2195,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                493
+                493,
+                498,
+                497
             ],
             "ItemWhitelist": [
                 0,
@@ -2241,11 +2272,11 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                515
+                515,
+                517,
+                518
             ],
             "ItemWhitelist": [
                 0,
@@ -2319,20 +2350,43 @@
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
             "AddonTiersBanned": [],
-            "IndividualAddonBans": [],
-            "ItemWhitelist": [],
+            "IndividualAddonBans": [
+                538,
+                537,
+                536,
+                535,
+                534,
+                533
+            ],
+            "ItemWhitelist": [
+                7,
+                14
+            ],
             "AddonWhitelist": {
                 "Firecracker": {
                     "Addons": []
                 },
                 "Flashlight": {
-                    "Addons": []
+                    "Addons": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
                 },
                 "Med-Kit": {
-                    "Addons": []
+                    "Addons": [
+                        0,
+                        1,
+                        2
+                    ]
                 },
                 "Toolbox": {
-                    "Addons": []
+                    "Addons": [
+                        0,
+                        1,
+                        2
+                    ]
                 },
                 "Key": {
                     "Addons": []
@@ -2365,7 +2419,6 @@
             "SurvivorIndvPerkBans": [
                 "1",
                 "10",
-                "20",
                 "34",
                 "36",
                 "38",
@@ -2382,12 +2435,12 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
                 548,
-                554
+                554,
+                557,
+                558
             ],
             "ItemWhitelist": [
                 0,
@@ -2468,12 +2521,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4,
-                3
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                571
+                571,
+                578,
+                577,
+                576,
+                575,
+                574,
+                573
             ],
             "ItemWhitelist": [
                 0,
@@ -2557,11 +2613,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4,
-                3
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [
+                598,
+                597,
+                596,
+                595,
+                594,
+                593
             ],
-            "IndividualAddonBans": [],
             "ItemWhitelist": [
                 0,
                 5
@@ -2735,12 +2795,15 @@
             "SurvivorWhitelistedComboPerks": [],
             "KillerWhitelistedPerks": [],
             "KillerWhitelistedComboPerks": [],
-            "AddonTiersBanned": [
-                4,
-                3
-            ],
+            "AddonTiersBanned": [],
             "IndividualAddonBans": [
-                648
+                648,
+                658,
+                657,
+                656,
+                655,
+                654,
+                653
             ],
             "ItemWhitelist": [
                 0,
@@ -2783,6 +2846,54 @@
         },
         {
             "Name": "The Good Guy",
+            "KillerNotes": "",
+            "IsDisabled": true,
+            "Map": [
+                0
+            ],
+            "BalanceTiers": [
+                0
+            ],
+            "SurvivorBalanceTiers": [
+                0
+            ],
+            "AntiFacecampPermitted": false,
+            "KillerIndvPerkBans": [],
+            "KillerComboPerkBans": [],
+            "SurvivorIndvPerkBans": [],
+            "SurvivorComboPerkBans": [],
+            "SurvivorWhitelistedPerks": [],
+            "SurvivorWhitelistedComboPerks": [],
+            "KillerWhitelistedPerks": [],
+            "KillerWhitelistedComboPerks": [],
+            "AddonTiersBanned": [],
+            "IndividualAddonBans": [],
+            "ItemWhitelist": [],
+            "AddonWhitelist": {
+                "Firecracker": {
+                    "Addons": []
+                },
+                "Flashlight": {
+                    "Addons": []
+                },
+                "Med-Kit": {
+                    "Addons": []
+                },
+                "Toolbox": {
+                    "Addons": []
+                },
+                "Key": {
+                    "Addons": []
+                },
+                "Map": {
+                    "Addons": []
+                }
+            },
+            "SurvivorOfferings": [],
+            "KillerOfferings": []
+        },
+        {
+            "Name": "The Unknown",
             "KillerNotes": "",
             "IsDisabled": true,
             "Map": [
