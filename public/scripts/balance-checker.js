@@ -13,50 +13,7 @@ var Config = null;
 
 var AllDataLoaded = false;
 
-var BalancePresets = [
-    {
-        ID: 0,
-        Name: "Outrun the Fog (OTF)",
-        Path: "BalancingPresets/OTF.json",
-        Type: "Manual",
-        Balancing: {}
-    },
-    {
-        ID: 1,
-        Name: "Dead by Daylight League (DBDL)",
-        Path: "BalancingPresets/Autobalance/DBDL.json",
-        Type: "Automated",
-        Balancing: {}
-    },
-    {
-        ID: 2,
-        Name: "Champions of the Fog (COTF)",
-        Path: "BalancingPresets/COTF.json",
-        Type: "Manual",
-        Balancing: {}
-    },
-    {
-        ID: 5,
-        Name: "The Arkade",
-        Path: "BalancingPresets/Arkade.json",
-        Type: "Manual",
-        Balancing: {}
-    },
-    {
-        ID: 6,
-        Name: "Wave League",
-        Path: "BalancingPresets/WaveLeague.json",
-        Type: "Manual",
-        Balancing: {}
-    },
-    {
-        ID: 7,
-        Name: "Jack Daniel's League (JDL)",
-        Path: "BalancingPresets/JDL.json",
-        Type: "Hybrid",
-        Balancing: {}
-    }
-]
+var BalancePresets = [];
 
 var currentBalancingIndex = 0;
 var customBalanceOverride = false;
@@ -205,7 +162,7 @@ function main() {
     UpdateRoleSwapIcon();
 
     // Load data
-    GetPerks();
+    GetBalancings();
 
     // Update Perk Page
     UpdatePerkUI();
@@ -2903,6 +2860,25 @@ function SearchForKillerAddons(searchQuery, killer) {
 /* -------------------------------------- */
 /* ------------- GET DATA --------------- */
 /* -------------------------------------- */
+
+function GetBalancings() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    BalancePresets = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting balancings: " + this.status);
+            }
+            GetPerks();
+        }
+    }
+    xhttp.open("GET", "Balancings.json", false);
+    xhttp.send();
+}
 
 function GetPerks() {
     var xhttp = new XMLHttpRequest();

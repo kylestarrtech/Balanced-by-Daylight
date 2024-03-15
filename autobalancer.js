@@ -1,33 +1,82 @@
-const fs = require('fs');
-
 // Access .env file
 const dotenv = require('dotenv');
+dotenv.config();
 
+const fetch = require('node-fetch');
+const fs = require('fs');
+
+const {GoogleSpreadsheet} = require('google-spreadsheet');
+const doc = new GoogleSpreadsheet('10N1VSWuxk1uALAiqSsgaI0Yp_BmevWhc1jgj1JyCWvE');
+  
 const dbdlConverter = require('./utilities/autobalancer/autobalancer-dbdl.js');
+const converterMap = new Map()
+    .set("DBDL", dbdlConverter)
 
-
-const autobalancePrefix = "AUTOBALANCE-";
-const autobalanceURLSuffix = "-URL";
+const autoBalanceEnabled = process.env.AUTOBALANCE_ENABLED;
 
 const autobalanceSaveLocation = "./public/BalancingPresets/Autobalance/";
 
 const autobalanceObjLocation = "./autobalance-info/";
 
-const autobalanceLeagues = [
-    {
-        Name: "DBDL",
-        ConversionFunc: dbdlConverter
+let autobalanceLeagues = new Array()
+
+let autobalanceObjs = new Array()
+
+let fetchIntervals = new Array()
+
+let googleLoaded = false
+async function getLeagues(){
+    if(!googleLoaded){
+        await doc.useServiceAccountAuth({
+            client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+            private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
+        })
+        await doc.loadInfo()
+
+        googleLoaded = true
     }
-]
 
-let autobalanceObjs = [];
+    const balancings = new Array()
+    autobalanceLeagues = new Array()
 
-let fetchIntervals = [];
+    const sheet = doc.sheetsByTitle["Database"]
+    const rows = await sheet.getRows()
+    
+    let cpt = 0
+    for(const row of rows){
+        if(!row.Enabled || row.Enabled == "FALSE") continue
+
+        balancings.push({
+            ID: cpt,
+            Name: row.Name,
+            Path: `BalancingPresets/${row.Type != "Stored" ? "Autobalance/" : ""}${row.Filename}.json`,
+            Type: row.Type == "Stored" ? "Manual" : "Automated",
+            Balancing: {}
+        })
+
+        if(row.Type != "Stored"){
+            autobalanceLeagues.push({
+                Name: row.Filename,
+                URL: row.URL,
+                Frequency: row.Frequency,
+                ConversionFunc: converterMap.get(row.Filename)
+            })
+        }
+        cpt++
+    }
+
+    fs.writeFile("./public/Balancings.json", JSON.stringify(balancings), function (err) {
+        if (err) throw err
+        console.log('Saved new balancings file!')
+    })
+}
+
+// Run it each hours
+setInterval(async function(){
+    getLeagues()
+}, 1000 * 60 * 60)
 
 function InitAutobalance() {
-    // Load the .env file
-    dotenv.config();
-
     // Clear all intervals
     fetchIntervals.forEach(interval => {
         clearInterval(interval);
@@ -37,41 +86,41 @@ function InitAutobalance() {
     // Clear autobalance objects
     autobalanceObjs = [];
 
-    let autoBalanceEnabled = process.env["AUTOBALANCE-ENABLED"];
     if (autoBalanceEnabled != "true") {
         console.log("The autobalancer feature is disabled!");
         return;
     }
 
-    autobalanceLeagues.forEach(league => {
+    for(const league of autobalanceLeagues){
         const leagueName = league.Name;
-        const leagueConvFunc = league.ConversionFunc;
+        let leagueURL = league.URL;
+        if(leagueName == "DBDL"){
+            leagueURL += process.env.DBDL_API_KEY;
+        }
         
-        let leagueObjPath = `${autobalanceObjLocation}${leagueName}.json`;
+        const leagueObjPath = `${autobalanceObjLocation}${leagueName}.json`;
 
-        const objContent = fs.readFileSync(leagueObjPath);
-        const balanceObj = JSON.parse(objContent);
-
-        const leagueEnabled = balanceObj["Enabled"];
-        const leagueURL = process.env[`${autobalancePrefix}${leagueName}${autobalanceURLSuffix}`];
-        const leagueFreq = balanceObj["Frequency"];
-        const leagueLastRun = balanceObj["LastRun"];
-        const leagueSaveFile = balanceObj["FileName"];
+        let leagueLastRun 
+        try{
+            const balanceObj = JSON.parse(fs.readFileSync(leagueObjPath));
+            leagueLastRun = balanceObj.LastRun;
+        }catch{
+            leagueLastRun = 0;
+        }
         
         let leagueObj = {
-            "Enabled": leagueEnabled,
             "Name": leagueName,
             "URL": leagueURL,
-            "Frequency": leagueFreq,
+            "Frequency": league.Frequency,
             "LastRun": leagueLastRun,
-            "Path": `${autobalanceSaveLocation}${leagueSaveFile}`,
-            "FileName": leagueSaveFile,
+            "Path": `${autobalanceSaveLocation}${leagueName}.json`,
+            "FileName": leagueName + ".json",
             "ObjPath": leagueObjPath,
-            "ConvFunc": leagueConvFunc
+            "ConvFunc": league.ConversionFunc
         };
 
         autobalanceObjs.push(leagueObj);
-    });
+    }
 
     autobalanceObjs.forEach(league => {
         const frequency = league.Frequency;
@@ -83,6 +132,12 @@ function InitAutobalance() {
         }, frequency * 1000));
     });
 }
+
+async function onStartup(){
+    await getLeagues()
+    InitAutobalance()
+}
+onStartup()
 
 function FindAutobalanceIndex(name) {
     for (let i = 0; i < autobalanceObjs.length; i++) {
@@ -104,15 +159,15 @@ function FetchAutobalance(index) {
 
     console.log(`Fetching autobalance for ${balanceObject.Name}...`);
 
-    if (!balanceObject.Enabled) {
-        console.log(`The autobalancer for ${balanceObject.Name} is disabled!`);
-        return;
-    }
-
     console.log(`Fetching URL data...`);
     // Fetch the data from the URL
     fetch(balanceObject.URL).then(response => response.json()).then(data => {
-        let convertedData = balanceObject.ConvFunc(data);
+        let convertedData;
+        if(balanceObject.ConvFunc){
+            convertedData = balanceObject.ConvFunc(data);
+        }else{
+            convertedData = data;
+        }
         
         console.log(`Data fetched and converted for ${balanceObject.Name}!`);
 
@@ -129,7 +184,7 @@ function FetchAutobalance(index) {
             balanceObject.LastRun = epochTime;
 
             let newObjConfig = {
-                "Enabled": balanceObject.Enabled,
+                "Enabled": true,
                 "Frequency": balanceObject.Frequency,
                 "LastRun": balanceObject.LastRun,
                 "FileName": balanceObject.FileName
@@ -198,8 +253,6 @@ function SetAutobalanceFrequency(index, frequency) {
         InitAutobalance();
     });
 }
-
-InitAutobalance();
 
 module.exports = {
     FindAutobalanceIndex,
