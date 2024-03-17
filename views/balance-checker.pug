@@ -232,6 +232,9 @@ html
                     label#balance-mode-label(for="balancing-select") Balancing Mode: 
                     select#balancing-select
                     br
+                    div#balance-type-box
+                        img#balance-type-icon(src="iconography/BalancingTypes/Automated.png")
+                        p#balance-type-text This balancing is [X]. This means it is/isn't managed by the league associated with it and is/isn't managed by the developers of Balanced by Daylight.
                     label(for="custom-balancing-checkbox") Enable Custom Balancing?
                     input#custom-balancing-checkbox(type="checkbox")
                     br
@@ -245,7 +248,7 @@ html
                         input#save-loadouts-killer(type="checkbox")
                         br
                     label(for="enable-survivor-markers" hidden="hidden") Enable Survivor Markers?
-                    input#enable-survivor-markers(type="checkbox")
+                    input#enable-survivor-markers(type="checkbox" hidden="hidden")
                     br
                     div#custom-error(class="error-flash-animation" hidden="hidden")
                         p Custom Balance JSON is invalid. Please verify your JSON <a href="https://jsonlint.com/" target="_blank">here</a>.
