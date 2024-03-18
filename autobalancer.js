@@ -18,6 +18,9 @@ const autobalanceSaveLocation = "./public/BalancingPresets/Autobalance/";
 
 const autobalanceObjLocation = "./autobalance-info/";
 
+const storedBalanceURLPrefix = "https://raw.githubusercontent.com/kylestarrtech/Balanced-By-Daylight-Presets/main/";
+const storedBalanceURLSuffix = ".json";
+
 let autobalanceLeagues = new Array()
 
 let autobalanceObjs = new Array()
@@ -25,13 +28,19 @@ let autobalanceObjs = new Array()
 let fetchIntervals = new Array()
 
 let googleLoaded = false
+
+/**
+ * Fetches the leagues from the Google Sheet and saves them to a JSON file.
+ */
 async function getLeagues(){
-    if(!googleLoaded){
+    if(!googleLoaded){ // If Google hasn't been loaded yet, load it
         await doc.useServiceAccountAuth({
             client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
             private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
         })
         await doc.loadInfo()
+
+        // Loads the Google Sheet
 
         googleLoaded = true
     }
@@ -49,7 +58,7 @@ async function getLeagues(){
         balancings.push({
             ID: cpt,
             Name: row.Name,
-            Path: `BalancingPresets/${row.Type != "Stored" ? "Autobalance/" : ""}${row.Filename}.json`,
+            Path: `BalancingPresets/Autobalance/${row.Filename}.json`,
             Type: row.Type == "Stored" ? "Manual" : "Automated",
             Balancing: {}
         })
@@ -58,8 +67,14 @@ async function getLeagues(){
             autobalanceLeagues.push({
                 Name: row.Filename,
                 URL: row.URL,
-                Frequency: row.Frequency,
+                Frequency: parseInt(row.Frequency),
                 ConversionFunc: converterMap.get(row.Filename)
+            })
+        } else {
+            autobalanceLeagues.push({
+                Name: row.Filename,
+                URL: `${storedBalanceURLPrefix}${row.Filename}${storedBalanceURLSuffix}`,
+                Frequency: 3600, // Every hour
             })
         }
         cpt++
