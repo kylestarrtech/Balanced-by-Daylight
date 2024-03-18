@@ -27,6 +27,7 @@ utilities/image-resizer/input/*
 utilities/image-resizer/output/*
 
 public/BalancingPresets/Autobalance/*
+autobalance-info/*
 
 test_item_showcase.json
 
