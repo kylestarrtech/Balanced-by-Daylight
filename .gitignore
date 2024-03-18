@@ -26,6 +26,8 @@ utilities/addon-combine-tool/output/*
 utilities/image-resizer/input/*
 utilities/image-resizer/output/*
 
+public/BalancingPresets/Autobalance/*
+
 test_item_showcase.json
 
 testImportInfo.txt
