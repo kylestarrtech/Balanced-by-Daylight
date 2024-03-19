@@ -13,44 +13,7 @@ var Config = null;
 
 var AllDataLoaded = false;
 
-var BalancePresets = [
-    {
-        ID: 0,
-        Name: "Outrun the Fog (OTF)",
-        Path: "BalancingPresets/OTF.json",
-        Balancing: {}
-    },
-    {
-        ID: 1,
-        Name: "Dead by Daylight League (DBDL)",
-        Path: "BalancingPresets/DBDL.json",
-        Balancing: {}
-    },
-    {
-        ID: 2,
-        Name: "Champions of the Fog (COTF)",
-        Path: "BalancingPresets/COTF.json",
-        Balancing: {}
-    },
-    {
-        ID: 5,
-        Name: "The Arkade",
-        Path: "BalancingPresets/Arkade.json",
-        Balancing: {}
-    },
-    {
-        ID: 6,
-        Name: "Wave League",
-        Path: "BalancingPresets/WaveLeague.json",
-        Balancing: {}
-    },
-    {
-        ID: 7,
-        Name: "Jack Daniel's League (JDL)",
-        Path: "BalancingPresets/JDL.json",
-        Balancing: {}
-    }
-]
+var BalancePresets = [];
 
 var currentBalancingIndex = 0;
 var customBalanceOverride = false;
@@ -199,7 +162,7 @@ function main() {
     UpdateRoleSwapIcon();
 
     // Load data
-    GetPerks();
+    GetBalancings();
 
     // Update Perk Page
     UpdatePerkUI();
@@ -277,6 +240,8 @@ function main() {
         // Hide the balancing select dropdown
         document.getElementById("balancing-select").hidden = true;
         document.getElementById("balance-mode-label").hidden = true;
+
+        document.getElementById("balance-type-box").style.display = "none";
 
         // Show the custom balancing text area
         document.getElementById("custom-balance-select").hidden = false;
@@ -902,6 +867,47 @@ function UpdateKillerSelectionUI() {
 function UpdateBalanceSelectionUI() {
     var selectedBalanceTitle = document.getElementById("selected-balance-title");
     selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${currentBalancing["Name"]}</span>`;
+
+    SetBalanceTypeDisclaimer();
+}
+
+function SetBalanceTypeDisclaimer() {
+    if (customBalanceOverride) { return; }
+
+    let balanceTypeIcon = document.getElementById("balance-type-icon");
+    let balanceTypeText = document.getElementById("balance-type-text");
+
+    let balanceType = GetBalancePresetByID(currentBalancingIndex)["Type"];
+
+    let lastUpdated = currentBalancing["Version"];
+    
+    // Convert epoch to human-readable date (MM/DD/YYYY HH:MM:SS AM/PM)
+    let lastUpdatedDate = new Date(lastUpdated * 1000);
+    let formattedDate = lastUpdatedDate.toLocaleString(navigator.language, { 
+        month: '2-digit', 
+        day: '2-digit', 
+        year: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit'
+    });
+
+    switch (balanceType) {
+        case "Automated":
+            balanceTypeIcon.src = "iconography/BalancingTypes/Automated.webp";
+            balanceTypeText.innerHTML = "This balancing is of type <b>Automated</b>, meaning it is pulled from an API managed by the associated league. It is not managed by the Balanced by Daylight team.";
+        break;
+        case "Hybrid":
+            balanceTypeIcon.src = "iconography/BalancingTypes/Hybrid.webp";
+            balanceTypeText.innerHTML = "This balancing is of type <b>Hybrid</b>. The associated league is responsible for creating/updating the balancing, but the Balanced by Daylight team implements it.";
+        break;
+        default:
+            balanceTypeIcon.src = "iconography/BalancingTypes/Manual.webp";
+            balanceTypeText.innerHTML = "This balancing is of type <b>Manual</b>, meaning it is managed by the Balanced by Daylight team. It may not be as accurate as automated or hybrid balancings if rapid adjustments are made.";
+        break;
+    }
+
+    balanceTypeText.innerHTML += `<br><br><b>Last Updated:</b> ${formattedDate}`;
 }
 
 function ScrollToSelectedKiller(){
@@ -971,16 +977,23 @@ function UpdateBalancingDropdown() {
         var customBalanceLabel = document.getElementById("balance-mode-label");
         var customBalanceDropdown = document.getElementById("balancing-select");
 
+        var balanceTypeBox = document.getElementById("balance-type-box");
+
         if (customBalanceOverride) {
             // Show custom balancing
             customBalancingContainer.hidden = false;
             customBalanceDropdown.hidden = true;
             customBalanceLabel.hidden = true;
+
+            balanceTypeBox.style.display = "none";
         } else {
             // Hide custom balancing
             customBalancingContainer.hidden = true;
             customBalanceDropdown.hidden = false;
             customBalanceLabel.hidden = false;
+
+            balanceTypeBox.style.display = "";
+            SetBalanceTypeDisclaimer();
 
             customBalancingContainer.innerHTML = "";
         }
@@ -2856,6 +2869,25 @@ function SearchForKillerAddons(searchQuery, killer) {
 /* ------------- GET DATA --------------- */
 /* -------------------------------------- */
 
+function GetBalancings() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    BalancePresets = JSON.parse(this.responseText);
+                break;
+                default:
+                    console.error("Error getting balancings: " + this.status);
+            }
+            GetPerks();
+        }
+    }
+    xhttp.open("GET", "Balancings.json", false);
+    xhttp.send();
+}
+
 function GetPerks() {
     var xhttp = new XMLHttpRequest();
 
@@ -3210,6 +3242,8 @@ function GetCustomBalancing() {
     var customBalanceLabel = document.getElementById("balance-mode-label");
     var customBalanceDropdown = document.getElementById("balancing-select");
 
+    var balanceTypeBox = document.getElementById("balance-type-box");
+
     var customBalanceObj = {};
     
     // 0 = Invalid JSON | 1 = Valid JSON, but invalid balance format
@@ -3238,6 +3272,7 @@ function GetCustomBalancing() {
 
         customBalanceDropdown.hidden = false;
         customBalanceLabel.hidden = false;
+        balanceTypeBox.hidden = false;
 
         var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
         customBalanceCheckbox.checked = false;

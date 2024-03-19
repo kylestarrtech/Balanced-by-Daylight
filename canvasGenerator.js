@@ -8,17 +8,6 @@ const Items = require('./public/Items.json');
 const Offerings = require('./public/Offerings.json');
 const KillerAddons = require('./public/NewAddons.json');
 
-const BalancingTitles = [
-    "Outrun the Fog (OTF)",
-    "Dead by Daylight League",
-    "Champions of the Fog (COTF)",
-    "Davy Jones League",
-    "L-Tournament",
-    "The Arkade",
-    "Wave League",
-    "Jack Daniel's League (JDL)"
-]
-
 function GetKillerAddonById(id) {
     for (let i = 0; i < KillerAddons.length; i++) {
         let currentKiller = KillerAddons[i];
@@ -139,6 +128,8 @@ function BeginGenerationImport(data, callback) {
             }
             exampleImageGenObject.BalancingTitle = `${truncatedTitle} (Custom)`;
         } else {
+            const Balancings = require('./public/Balancings.json');
+            const BalancingTitles = Balancings.map(balancing => balancing.Name);
             exampleImageGenObject.BalancingTitle = BalancingTitles[importedBuild.currentBalancingIndex];
         }
     } catch(err) {
