@@ -90,6 +90,34 @@ module.exports = function(app) {
         }
     });
 
+    app.get('/autobalance/reinit', function(req, res) {
+        let verified = VerifyAutobalanceKey(req.query.key);
+
+        let resultFormat = {
+            Success: false,
+            Message: "Invalid API Key"
+        }
+
+        if (!verified) {
+            res.status(401).send(resultFormat);
+            return;
+        }
+
+        try {
+            console.log("-=-=[ Reinitializing Autobalance ]=-=-=-");
+            autobalancer.InitAutobalance();
+            console.log("-=-=[ Autobalance Reinitialized ]=-=-=-");
+            
+            resultFormat.Success = true;
+            resultFormat.Message = "Autobalance reinitialized!";
+            res.status(200).send(resultFormat);
+        } catch (err) {
+            resultFormat.Message = "Internal Server Error, cannot reinitialize autobalance";
+            console.error(err);
+            res.status(500).send(resultFormat);
+        }
+    });
+
     app.post('/autobalance/:league/modify', function(req, res) {
         let verified = VerifyAutobalanceKey(req.query.key);
 
@@ -137,4 +165,5 @@ module.exports = function(app) {
             res.status(500).send(resultFormat);
         }
     });
+
 }
