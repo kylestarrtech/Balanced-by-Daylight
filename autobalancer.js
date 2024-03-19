@@ -178,7 +178,8 @@ function FetchAutobalance(index) {
     // Fetch the data from the URL
     fetch(balanceObject.URL).then(response => response.json()).then(data => {
         let convertedData;
-        if(balanceObject.ConvFunc){
+
+        if(balanceObject.ConvFunc){ // If there is a conversion function, use it.
             convertedData = balanceObject.ConvFunc(data);
         }else{
             convertedData = data;
