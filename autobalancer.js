@@ -174,7 +174,7 @@ function FetchAutobalance(index) {
 
     console.log(`Fetching autobalance for ${balanceObject.Name}...`);
 
-    console.log(`Fetching URL data...`);
+    //console.log(`Fetching URL data...`);
     // Fetch the data from the URL
     fetch(balanceObject.URL).then(response => response.json()).then(data => {
         let convertedData;
@@ -189,7 +189,7 @@ function FetchAutobalance(index) {
         // Save the data to the file
         fs.writeFile(balanceObject.Path, JSON.stringify(convertedData), function (err) {
             if (err) throw err;
-            console.log('Saved file! Saving last run...');
+            //console.log('Saved file! Saving last run...');
 
             
             // Update the last run time in the .env file (epoch time)
