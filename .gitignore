@@ -29,6 +29,8 @@ utilities/image-resizer/output/*
 public/BalancingPresets/Autobalance/*
 autobalance-info/*
 
+public/Balancings.json
+
 test_item_showcase.json
 
 testImportInfo.txt

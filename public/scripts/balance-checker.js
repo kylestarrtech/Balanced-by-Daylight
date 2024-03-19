@@ -241,6 +241,8 @@ function main() {
         document.getElementById("balancing-select").hidden = true;
         document.getElementById("balance-mode-label").hidden = true;
 
+        document.getElementById("balance-type-box").style.display = "none";
+
         // Show the custom balancing text area
         document.getElementById("custom-balance-select").hidden = false;
     }
@@ -881,14 +883,13 @@ function SetBalanceTypeDisclaimer() {
     
     // Convert epoch to human-readable date (MM/DD/YYYY HH:MM:SS AM/PM)
     let lastUpdatedDate = new Date(lastUpdated * 1000);
-    let formattedDate = lastUpdatedDate.toLocaleString('en-US', { 
+    let formattedDate = lastUpdatedDate.toLocaleString(navigator.language, { 
         month: '2-digit', 
         day: '2-digit', 
         year: 'numeric', 
         hour: '2-digit', 
         minute: '2-digit', 
-        second: '2-digit', 
-        hour12: true 
+        second: '2-digit'
     });
 
     switch (balanceType) {
@@ -976,16 +977,23 @@ function UpdateBalancingDropdown() {
         var customBalanceLabel = document.getElementById("balance-mode-label");
         var customBalanceDropdown = document.getElementById("balancing-select");
 
+        var balanceTypeBox = document.getElementById("balance-type-box");
+
         if (customBalanceOverride) {
             // Show custom balancing
             customBalancingContainer.hidden = false;
             customBalanceDropdown.hidden = true;
             customBalanceLabel.hidden = true;
+
+            balanceTypeBox.style.display = "none";
         } else {
             // Hide custom balancing
             customBalancingContainer.hidden = true;
             customBalanceDropdown.hidden = false;
             customBalanceLabel.hidden = false;
+
+            balanceTypeBox.style.display = "";
+            SetBalanceTypeDisclaimer();
 
             customBalancingContainer.innerHTML = "";
         }
@@ -3234,6 +3242,8 @@ function GetCustomBalancing() {
     var customBalanceLabel = document.getElementById("balance-mode-label");
     var customBalanceDropdown = document.getElementById("balancing-select");
 
+    var balanceTypeBox = document.getElementById("balance-type-box");
+
     var customBalanceObj = {};
     
     // 0 = Invalid JSON | 1 = Valid JSON, but invalid balance format
@@ -3262,6 +3272,7 @@ function GetCustomBalancing() {
 
         customBalanceDropdown.hidden = false;
         customBalanceLabel.hidden = false;
+        balanceTypeBox.hidden = false;
 
         var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
         customBalanceCheckbox.checked = false;
