@@ -903,7 +903,7 @@ function SetBalanceTypeDisclaimer() {
         break;
         default:
             balanceTypeIcon.src = "iconography/BalancingTypes/Manual.webp";
-            balanceTypeText.innerHTML = "This balancing is of type <b>Manual</b>, meaning it is managed by the Balanced by Daylight team. It may not be as accurate as automated or hybrid balancings if rapid adjustments are made.";
+            balanceTypeText.innerHTML = "This balancing is of type <b>Manual</b>, meaning it is managed by the Balanced by Daylight team. It may not be as accurate as automated balancing if rapid adjustments are made.";
         break;
     }
 
