@@ -14,6 +14,7 @@ const converterMap = new Map()
 
 const autoBalanceEnabled = process.env.AUTOBALANCE_ENABLED;
 
+const balancingPresetLocation = "./public/BalancingPresets/";
 const autobalanceSaveLocation = "./public/BalancingPresets/Autobalance/";
 
 const autobalanceObjLocation = "./autobalance-info/";
@@ -148,7 +149,27 @@ function InitAutobalance() {
     });
 }
 
+/** Ensures all folders are created on startup.
+ * 
+ * This is to prevent any issues with the autobalancer not being able to save files.
+ */ 
+function InitialFolderSetup() {
+    if (!fs.existsSync(balancingPresetLocation)) {
+        fs.mkdirSync(balancingPresetLocation);
+    }
+    
+    if (!fs.existsSync(autobalanceSaveLocation)) {
+        fs.mkdirSync(autobalanceSaveLocation);
+    }
+
+    if (!fs.existsSync(autobalanceObjLocation)) {
+        fs.mkdirSync(autobalanceObjLocation);
+    }
+}
+
 async function onStartup(){
+    InitialFolderSetup();
+
     await getLeagues()
     InitAutobalance()
 }
