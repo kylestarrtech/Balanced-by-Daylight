@@ -85,10 +85,10 @@ async function getLeagues(){
     })
 }
 
-// Run it each hours
+// Run it every 6 hours
 setInterval(async function(){
     getLeagues()
-}, 1000 * 60 * 60)
+}, 3600 * 6)
 
 function InitAutobalance() {
     // Clear all intervals
@@ -295,5 +295,6 @@ module.exports = {
     EnableAutobalance,
     DisableAutobalance,
     SetAutobalanceFrequency,
-    InitAutobalance
+    InitAutobalance,
+    onStartup
 }

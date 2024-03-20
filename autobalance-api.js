@@ -104,9 +104,9 @@ module.exports = function(app) {
         }
 
         try {
-            console.log("-=-=[ Reinitializing Autobalance ]=-=-=-");
-            autobalancer.InitAutobalance();
-            console.log("-=-=[ Autobalance Reinitialized ]=-=-=-");
+            console.log("-=-=[ Calling onStartup ]=-=-=-");
+            autobalancer.onStartup();
+            console.log("-=-=[ onStartup Called ]=-=-=-");
             
             resultFormat.Success = true;
             resultFormat.Message = "Autobalance reinitialized!";
