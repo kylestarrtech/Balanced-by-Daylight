@@ -52,12 +52,11 @@ async function getLeagues(){
     const sheet = doc.sheetsByTitle["Database"]
     const rows = await sheet.getRows()
     
-    let cpt = 0
     for(const row of rows){
         if(!row.Enabled || row.Enabled == "FALSE") continue
 
         balancings.push({
-            ID: cpt,
+            ID: parseInt(row.ID),
             Name: row.Name,
             Path: `BalancingPresets/Autobalance/${row.Filename}.json`,
             Type: row.Type == "Stored" ? "Manual" : "Automated",
@@ -78,7 +77,6 @@ async function getLeagues(){
                 Frequency: 3600, // Every hour
             })
         }
-        cpt++
     }
 
     fs.writeFile("./public/Balancings.json", JSON.stringify(balancings), function (err) {
