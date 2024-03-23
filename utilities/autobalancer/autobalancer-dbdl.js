@@ -186,5 +186,11 @@ module.exports = function(balancingText) {
         killer.AddonWhitelist = addonWhitelist
     }
 
+    // Sorts based on the original order in the Killers array.
+    // Uses a comparison function to sort the array by the index of the killer in the Killers array.
+    balancingText.KillerOverride.sort((a, b) => {
+        return Killers.indexOf(a.Name) - Killers.indexOf(b.Name)
+    });
+
     return balancingText
 }
