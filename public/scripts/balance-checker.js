@@ -97,18 +97,11 @@ if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseI
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
 
-var socket = null;
-var RoomID = undefined;
-
 function main() {
     document.body.addEventListener("mousemove", UpdateMousePos);
 
     // Get config
     GetConfig();
-
-    if (Config.multiplayerEnabled) {
-        socket = io();
-    }
 
     // Initialize Survivor Perks
     for (var i = 0; i < SurvivorPerks.length; i++) {
@@ -1012,8 +1005,6 @@ function LoadButtonEvents() {
     LoadClearLoadoutButton();
 
     LoadPerkSearchEvents();
-
-    LoadRoomEvents();
 }
 
 /**
@@ -1615,33 +1606,6 @@ function LoadImageGenEvents() {
     });
 }
 
-function LoadRoomEvents() {
-    let roomIDInput = document.getElementById("room-code-input");
-    let joinRoomButton = document.getElementById("join-room-button");
-
-    joinRoomButton.addEventListener("click", function() {
-        if (roomIDInput.value == "") {
-            GenerateAlertModal("Room ID Empty", "Please enter a room ID.");
-            return;
-        }
-
-        socket.emit("clientJoinRoom", roomIDInput.value);
-    });
-
-    let leaveRoomButton = document.getElementById("leave-room-button");
-
-    leaveRoomButton.addEventListener("click", function() {
-        socket.emit("clientLeaveRoom", CreateStatusObject());
-    });
-
-    let closeRoomButton = document.getElementById("close-room-button");
-
-    closeRoomButton.addEventListener("click", function() {
-        let roomContainer = document.getElementById("room-container");
-        roomContainer.hidden = true;
-    });
-}
-
 function SetKillerCharacterSelectEvents() {
     var GetCharacterSelectButtons = document.getElementsByClassName("character-select-button");
 
@@ -1701,8 +1665,6 @@ function SetKillerCharacterSelectEvents() {
             
 
             ScrollToSelectedKiller();
-
-            SendRoomDataUpdate();
         });
     }
 }
@@ -1758,7 +1720,6 @@ function LoadSettingsEvents() {
         UpdateBalanceSelectionUI();
 
         CheckForBalancingErrors();
-        SendRoomDataUpdate();
     });
 
     const onlyNonBannedCheckbox = document.getElementById("only-non-banned");
@@ -2236,7 +2197,6 @@ function ForcePerkSearch(perkSearchBar, value = "") {
 
             CheckForBalancingErrors();
             
-            SendRoomDataUpdate();
             if (Config.saveBuilds && saveLoadoutsAndKiller) {
                 if (selectedRole == 0) {
                     localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
@@ -2363,7 +2323,6 @@ function ForceOfferingSearch(perkSearchBar, value = "") {
 
             CheckForBalancingErrors();
 
-            SendRoomDataUpdate();
             if (Config.saveBuilds) {
                 localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
                 localStorage.setItem("KillerOffering", JSON.stringify(KillerOffering));
@@ -2479,7 +2438,6 @@ function ForceItemSearch(perkSearchBar, value = "") {
 
             CheckForBalancingErrors();
 
-            SendRoomDataUpdate();
             if (Config.saveBuilds) {
                 localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
                 localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
@@ -2592,7 +2550,6 @@ function ForceAddonSearch(perkSearchBar, value = "") {
 
             CheckForBalancingErrors();
 
-            SendRoomDataUpdate();
             if (Config.saveBuilds) {
                 localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
             }
@@ -2718,7 +2675,6 @@ function ForceKillerAddonSearch(perkSearchBar, value = "") {
 
             CheckForBalancingErrors();
 
-            SendRoomDataUpdate();
 
             if (Config.saveBuilds) {
                 localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
@@ -4476,96 +4432,4 @@ function ValidateCustomBalancing(balanceObj) {
     }
 
     return true;
-}
-
-/**
- * A function to create a status object for the app.
- * @returns {object} An object containing the current status of the app. Is used for multiplayer builds.
- */
-function CreateStatusObject() {
-    var buildStatus = {
-        "SurvivorPerks": SurvivorPerks,
-        "selectedKiller": selectedKiller,
-        "currentBalancingIndex": currentBalancingIndex,
-        "customBalanceOverride": customBalanceOverride,
-        "onlyShowNonBanned": onlyShowNonBanned,
-        "currentBalancing": currentBalancing,
-        "roomID": RoomID
-    }
-
-    return buildStatus;
-}
-
-/* -------------------------------------- */
-/* -------------- SOCKET ---------------- */
-/* -------------------------------------- */
-
-// Socket Events
-
-function SendRoomDataUpdate() {
-    DebugLog("Multiplayer not enabled!");
-}
-
-function JoinRoom(roomID) {
-    DebugLog("Multiplayer not enabled!");
-}
-
-function CreateSocketEvents() {
-    if (!Config.multiplayerEnabled) { return; }
-
-    SendRoomDataUpdate = function() {
-        DebugLog("Sending room update to server!");
-        socket.emit('clientRoomDataUpdate', CreateStatusObject());
-    }
-
-    JoinRoom = function(roomID) {
-        DebugLog(`Joining room ${roomID}...`);
-        socket.emit('clientJoinRoom', roomID);
-    }
-
-    socket.on("connect", function() {
-        DebugLog("Connected to server!");
-    });
-    
-    socket.on('serverRequestRoomData', function() {
-        DebugLog("Room data requested!");
-        socket.emit('clientRoomDataResponse', CreateStatusObject());
-    });
-    
-    socket.on('serverRoomDataResponse', function(data) {
-        DebugLog("Room Data Received from server!");
-        DebugLog(data);
-    
-        // Update local data
-        DebugLog("Updating local data...");
-        let appStatus = data.appStatus;
-    
-        SurvivorPerks = appStatus.builds;
-        selectedKiller = appStatus.selectedKiller;
-        currentBalancingIndex = appStatus.currentBalancingIndex;
-        customBalanceOverride = appStatus.customBalanceOverride;
-        onlyShowNonBanned = appStatus.onlyShowNonBanned;
-        currentBalancing = appStatus.currentBalancing;
-        RoomID = appStatus.roomID;
-
-        if (Config.saveBuilds && saveLoadoutsAndKiller) {
-            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
-            localStorage.setItem("selectedKiller", selectedKiller);
-        }
-
-        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
-        localStorage.setItem("customBalanceOverride", customBalanceOverride);
-        localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
-    
-        // Update UI
-        UpdateBalancingDropdown();
-        UpdateKillerSelectionUI();
-        UpdatePerkUI();
-        CheckForBalancingErrors();
-    });
-    
-    socket.on('roomID', function(id) {
-        RoomID = id;
-        DebugLog(`Room ID: ${RoomID}`);
-    });
 }

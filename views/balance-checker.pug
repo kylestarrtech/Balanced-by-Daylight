@@ -7,7 +7,6 @@ html
         script(src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js")
         script(src="/scripts/get-resources.js", type="text/javascript")
         script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
-        script(src="/socket.io/socket.io.js" type="text/javascript")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
     body(onload="main()")
         div#primary-balance-container
@@ -214,18 +213,6 @@ html
                     div.perk-slot-result
                         img(src="public/Perks/Survivors/Adrenaline.webp")
                 h3#perk-highlight-name Select a Perk...
-        div#room-container(hidden="hidden")
-            div#room-blur(class="background-blur")
-                div#room-menu
-                    h1 Room Menu
-                    h2 Room Code: {ROOM CODE}
-                    p You can share this code with your friends to create builds together!
-                    input#room-code-input(type="text", placeholder="Enter Room Code...")
-                    button#join-room-button Join Room
-                    br
-                    button#leave-room-button Leave Room
-                    br
-                    button#close-room-button Close
         div#settings-container(hidden="hidden")
             div#settings-blur(class="background-blur")
                 div#settings-menu
