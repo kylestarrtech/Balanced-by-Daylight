@@ -2999,34 +2999,6 @@ function GetBannedKillerAddons() {
     return bannedAddons;
 }
 
-function GetBalancing() {
-    // Subtract one due to customs
-    for (var i = 0; i < BalancePresets.length; i++) {
-        let currentPreset = BalancePresets[i];
-
-        var xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                switch (this.status) {
-                    case 200:
-                        DebugLog(`Loaded balancing for ${currentPreset["Name"]}`);
-                        DebugLog(`Balancing string: ${this.responseText}`);
-                        DebugLog(JSON.parse(this.responseText));
-                        currentPreset["Balancing"] = JSON.parse(this.responseText);
-                    break;
-                    default:
-                        console.error("Error getting balancing: " + this.status);
-                }
-            }
-        }
-        xhttp.open("GET", currentPreset["Path"], false);
-        xhttp.send();
-    }
-
-    AllDataLoaded = true;
-}
-
 function GetCustomBalancing() {
     var customBalanceInput = document.getElementById("custom-balance-select");
     var customBalanceLabel = document.getElementById("balance-mode-label");

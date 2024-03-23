@@ -88,7 +88,7 @@ async function getLeagues(){
 // Run it every 6 hours
 setInterval(async function(){
     getLeagues()
-}, 3600 * 6)
+}, 21600 * 1000);
 
 function InitAutobalance() {
     // Clear all intervals
