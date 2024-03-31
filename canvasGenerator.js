@@ -128,9 +128,19 @@ function BeginGenerationImport(data, callback) {
             }
             exampleImageGenObject.BalancingTitle = `${truncatedTitle} (Custom)`;
         } else {
-            const Balancings = require('./public/Balancings.json');
-            const BalancingTitles = Balancings.map(balancing => balancing.Name);
-            exampleImageGenObject.BalancingTitle = BalancingTitles[importedBuild.currentBalancingIndex];
+            const Balancings = JSON.parse(
+                fs.readFileSync('./public/Balancings.json',
+                { encoding: 'utf8', flag: 'r' })
+            );
+
+            exampleImageGenObject.BalancingTitle = `Unknown (ID=${importedBuild.currentBalancingIndex})`;
+
+            for (var balance of Balancings) {
+                if (balance["ID"] == importedBuild.currentBalancingIndex) {
+                    exampleImageGenObject.BalancingTitle = balance["Name"];
+                    break;
+                }
+            }
         }
     } catch(err) {
         callback({
