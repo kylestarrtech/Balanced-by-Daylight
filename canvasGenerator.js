@@ -1042,7 +1042,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     // Generate Killer Power Image
 
     let PowerImageMargin = 15; //px
-    let PowerImageWidth = PowerContainerHeight - 30;
+    let PowerImageWidth = PowerContainerHeight - 20;
     
     let PowerImageX = powerContainerX + PowerImageMargin;
     let PowerImageY = powerContainerCenterY - (PowerImageWidth / 2);

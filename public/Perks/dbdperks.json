@@ -2293,5 +2293,59 @@
         "tags": [],
         "character": "Sable Ward",
         "survivorPerk": true
+    },
+    {
+        "id": 255,
+        "name": "Dark Arrogance",
+        "icon": "public/Perks/Killers/Dark-Arrogance.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Lich",
+        "survivorPerk": false
+    },
+    {
+        "id": 256,
+        "name": "Languid Touch",
+        "icon": "public/Perks/Killers/Languid-Touch.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Lich",
+        "survivorPerk": false
+    },
+    {
+        "id": 257,
+        "name": "Weave Attunement",
+        "icon": "public/Perks/Killers/Weave-Attunement.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Lich",
+        "survivorPerk": false
+    },
+    {
+        "id": 258,
+        "name": "Bardic Inspiration",
+        "icon": "public/Perks/Survivors/Bardic-Inspiration.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Aestri Yazar",
+        "survivorPerk": true
+    },
+    {
+        "id": 259,
+        "name": "Mirrored Illusion",
+        "icon": "public/Perks/Survivors/Mirrored-Illusion.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Aestri Yazar",
+        "survivorPerk": true
+    },
+    {
+        "id": 260,
+        "name": "Still Sight",
+        "icon": "public/Perks/Survivors/Still-Sight.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Aestri Yazar",
+        "survivorPerk": true
     }
 ]

@@ -5066,5 +5066,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Lich",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 699,
+                "addonIcon": "public/PowerAddons/Lich/Crystal-Ball.webp",
+                "Name": "Crystal Ball",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 700,
+                "addonIcon": "public/PowerAddons/Lich/Raven_S-Feather.webp",
+                "Name": "Raven's Feather",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 701,
+                "addonIcon": "public/PowerAddons/Lich/Tattered-Headband.webp",
+                "Name": "Tattered Headband",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 702,
+                "addonIcon": "public/PowerAddons/Lich/Trickster_S-Glove.webp",
+                "Name": "Trickster's Glove",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 703,
+                "addonIcon": "public/PowerAddons/Lich/Glass-Eye.webp",
+                "Name": "Glass Eye",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 704,
+                "addonIcon": "public/PowerAddons/Lich/Lantern-Of-Revealing.webp",
+                "Name": "Lantern of Revealing",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 705,
+                "addonIcon": "public/PowerAddons/Lich/Potion-Of-Speed.webp",
+                "Name": "Potion of Speed",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 706,
+                "addonIcon": "public/PowerAddons/Lich/Ring-Of-Spell-Storing.webp",
+                "Name": "Ring of Spell Storing",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 707,
+                "addonIcon": "public/PowerAddons/Lich/Ring-Of-Telekinesis.webp",
+                "Name": "Ring of Telekinesis",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 708,
+                "addonIcon": "public/PowerAddons/Lich/Boots-Of-Speed.webp",
+                "Name": "Boots of Speed",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 709,
+                "addonIcon": "public/PowerAddons/Lich/Cloak-Of-Elvenkind.webp",
+                "Name": "Cloak of Elvenkind",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 710,
+                "addonIcon": "public/PowerAddons/Lich/Ornate-Horn.webp",
+                "Name": "Ornate Horn",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 711,
+                "addonIcon": "public/PowerAddons/Lich/Pearl-Of-Power.webp",
+                "Name": "Pearl of Power",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 712,
+                "addonIcon": "public/PowerAddons/Lich/Staff-Of-Withering.webp",
+                "Name": "Staff of Withering",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 713,
+                "addonIcon": "public/PowerAddons/Lich/Bag-Of-Holding.webp",
+                "Name": "Bag of Holding",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 714,
+                "addonIcon": "public/PowerAddons/Lich/Cloak-Of-Invisibility.webp",
+                "Name": "Cloak of Invisibility",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 715,
+                "addonIcon": "public/PowerAddons/Lich/Dragontooth-Dagger.webp",
+                "Name": "Dragontooth Dagger",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 716,
+                "addonIcon": "public/PowerAddons/Lich/Robe-Of-Eyes.webp",
+                "Name": "Robe of Eyes",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 717,
+                "addonIcon": "public/PowerAddons/Lich/Iridescent-Book-Of-Vile-Darkness.webp",
+                "Name": "Iridescent Book of Vile Darkness",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 718,
+                "addonIcon": "public/PowerAddons/Lich/Vorpal-Sword.webp",
+                "Name": "Vorpal Sword",
+                "Rarity": 4
+            }
+        ]
     }
 ]
