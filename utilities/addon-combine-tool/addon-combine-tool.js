@@ -11,7 +11,7 @@ const { createCanvas, loadImage } = require('canvas');
 const addonList = require('./addon-list.json');
 const outputFolder = path.join(__dirname, 'output');
 
-const combineMode = "readList";
+const combineMode = "bruteForce";
 
 let rarityPaths = [];
 if (combineMode == "readList") {

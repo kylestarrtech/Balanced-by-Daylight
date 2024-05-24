@@ -81,7 +81,8 @@ function BeginGenerationImport(data, callback) {
         KillerPerkIcons: [],
         KillerAddonIcons: [],
         KillerOfferingIcon: "",
-        KillerPowerIcon: ""
+        KillerPowerIcon: "",
+        NumErrors: 0
     }
 
     try {
@@ -92,6 +93,23 @@ function BeginGenerationImport(data, callback) {
             status: 400,
             imageData: null,
             message: "Invalid build data. Could not find killer name."
+        })
+        return;
+    }
+
+    try {
+        // Get Number of Errors
+
+        if (importedBuild.numErrors != undefined) {
+            exampleImageGenObject.NumErrors = importedBuild.numErrors;
+        } else {
+            exampleImageGenObject.NumErrors = 0;
+        }
+    } catch(err) {
+        callback({
+            status: 400,
+            imageData: null,
+            message: "Invalid build data. Could not find number of errors."
         })
         return;
     }
@@ -618,11 +636,36 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     context.font = '700 14pt Roboto'
     context.textAlign = 'right'
     context.textBaseline = 'top'
+
     
     let locationX = width - 10;
     // Get current date and time formatted as YYYY-MM-DD HH:MM:SS (24 hour) UTC
     const date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    context.fillText(`Image Date: ${date} UTC`, locationX, 10, width);
+    let dateText = `Image Date: ${date} UTC`;
+    context.fillText(dateText, locationX, 10, width);
+
+    let dateTextHeight = context.measureText(dateText).height;
+
+    // Generate numError text
+
+    context.font = '700 14pt Roboto'
+    context.textAlign = 'right'
+    context.textBaseline = 'top'
+
+    let numErrors = importedBuild["NumErrors"];
+    
+    let numErrorsText = numErrors == 0 ?
+                            "Build valid at time of image generation" :
+                                numErrors == 1 ?
+                                    "1 error found at image generation" :
+                                    `${numErrors} errors found at image generation`;
+
+    const errorColor = numErrors == 0 ? '#80ff80' : '#ff8080';
+    context.fillStyle = errorColor;
+
+    context.fillText(numErrorsText, locationX, 40, width);
+
+    context.fillStyle = '#fff';
     
     // Generate logo image
 
@@ -932,6 +975,27 @@ async function GenerateKillerImage(importedBuild, callback) {
     // Get current date and time formatted as YYYY-MM-DD HH:MM:SS (24 hour) UTC
     const date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
     context.fillText(`Image Date: ${date} UTC`, locationX, 10, width);
+
+    // Generate numError text
+
+    context.font = '700 14pt Roboto'
+    context.textAlign = 'right'
+    context.textBaseline = 'top'
+
+    let numErrors = importedBuild["NumErrors"];
+    
+    let numErrorsText = numErrors == 0 ?
+                            "Build valid at time of image generation" :
+                                numErrors == 1 ?
+                                    "1 error found at image generation" :
+                                    `${numErrors} errors found at image generation`;
+
+    const errorColor = numErrors == 0 ? '#80ff80' : '#ff8080';
+    context.fillStyle = errorColor;
+
+    context.fillText(numErrorsText, locationX, 40, width);
+
+    context.fillStyle = '#fff';
     
     // Generate logo image
 

@@ -1261,7 +1261,8 @@ function GetExportData() {
         "currentBalancingIndex": currentBalancingIndex,
         "customBalanceOverride": customBalanceOverride,
         "onlyShowNonBanned": onlyShowNonBanned,
-        "currentBalancing": customBalanceOverride ? currentBalancing : null
+        "currentBalancing": customBalanceOverride ? currentBalancing : null,
+        "numErrors": MasterErrorList.length,
     }
 
     console.log(exportJson);
