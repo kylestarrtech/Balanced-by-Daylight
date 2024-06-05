@@ -19,6 +19,7 @@ var currentBalancingIndex = 0;
 var customBalanceOverride = false;
 var onlyShowNonBanned = false;
 var saveLoadoutsAndKiller = false;
+var showNotesOnLaunch = true;
 
 var currentBalancing = null;
 
@@ -104,6 +105,7 @@ currentBalancingIndex = 0;
 if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
+if (localStorage.getItem("showNotesOnLaunch")) showNotesOnLaunch = localStorage.getItem("showNotesOnLaunch") == "true";
 
 var socket = null;
 var RoomID = undefined;
@@ -226,6 +228,9 @@ function main() {
 
     // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
+
+    // Update the auto-show notes checkbox
+    document.getElementById("auto-show-notes").checked = showNotesOnLaunch;
 
     // Update the checkbox to save loadouts and killer selected
     document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
@@ -868,7 +873,31 @@ function UpdateBalanceSelectionUI() {
     var selectedBalanceTitle = document.getElementById("selected-balance-title");
     selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${currentBalancing["Name"]}</span>`;
 
+    CheckGlobalBalanceNotes();
     SetBalanceTypeDisclaimer();
+}
+
+function CheckGlobalBalanceNotes() {
+    if (!showNotesOnLaunch) { return; }
+    if (currentBalancing == null) { return; }
+
+    if (currentBalancing["GlobalNotes"] == undefined) { return; }
+    if (currentBalancing["GlobalNotes"].length == 0) { return; }
+
+    GenerateNotesModal();
+    return;
+}
+
+function CheckIndividualKillerNotes() {
+    if (!showNotesOnLaunch) { return; }
+    if (currentBalancing == null) { return; }
+    if (currentBalancing["KillerOverride"] == undefined) { return; }
+    if (currentBalancing["KillerOverride"][selectedKiller] == undefined) { return; }
+    if (currentBalancing["KillerOverride"][selectedKiller]["KillerNotes"] == undefined) { return; }
+
+    if (currentBalancing["KillerOverride"][selectedKiller]["KillerNotes"].length == 0) { return; }
+
+    GenerateNotesModal();
 }
 
 function SetBalanceTypeDisclaimer() {
@@ -1705,6 +1734,8 @@ function SetKillerCharacterSelectEvents() {
                 KillerAddons = [undefined, undefined];
             }
 
+            CheckIndividualKillerNotes(); // If autoshow notes setting is enabled, show notes for the selected killer.
+
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
             
@@ -1774,6 +1805,12 @@ function LoadSettingsEvents() {
     onlyNonBannedCheckbox.addEventListener("change", function(){
         onlyShowNonBanned = onlyNonBannedCheckbox.checked;
         localStorage.setItem("onlyShowNonBanned", onlyShowNonBanned);
+    })
+
+    const autoShowNotesCheckbox = document.getElementById("auto-show-notes");
+    autoShowNotesCheckbox.addEventListener("change", function(){
+        showNotesOnLaunch = autoShowNotesCheckbox.checked;
+        localStorage.setItem("showNotesOnLaunch", showNotesOnLaunch);
     })
 
     const saveLoadoutsKillerCheckbox = document.getElementById("save-loadouts-killer");
