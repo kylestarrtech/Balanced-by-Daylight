@@ -3795,16 +3795,20 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
         let currentWhitelist = []
         currentWhitelist = selectedRole == 0 ? override.SurvivorWhitelistedPerks : override.KillerWhitelistedPerks;
 
-        // DebugLog(`Checking if ${currentPerk["name"]} is whitelisted explicitly against ${override.Name}...`);
+        DebugLog(`Checking if ${currentPerk["name"]} is whitelisted explicitly against ${override.Name}...`);
         for (var j = 0; j < currentWhitelist.length; j++) {
-            var currentWhitelistedPerk = parseInt(currentWhitelist);
+            var currentWhitelistedPerk = parseInt(currentWhitelist[j]);
+            DebugLog(`perkName: ${currentPerk["name"]}`);
+            DebugLog(`currentWhitelist: ${currentWhitelist}`);
+            DebugLog(`currentWhitelistedPerk: ${currentWhitelistedPerk}`);
 
             if (currentPerk == undefined) { continue; }
 
-            // DebugLog(`Checking if ${currentPerk["name"]} is whitelisted against ${override.Name}...`)
+            DebugLog(`Checking if ${currentPerk["name"]} is whitelisted against ${override.Name}...`)
             if (currentPerk["id"] == currentWhitelistedPerk) {
                 perkWhitelisted = true;
-                // DebugLog(`Perk ${currentPerk["name"]} is whitelisted against ${override.Name}!`);
+                DebugLog(`Perk ${currentPerk["name"]} is whitelisted against ${override.Name}!`);
+                break;
             }
         }
 
@@ -3817,13 +3821,13 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
         appliedTierList = selectedRole == 0 ? override.SurvivorBalanceTiers : override.BalanceTiers;
         
         for (var j = 0; j < appliedTierList.length; j++) {
-            // DebugLog(`Current Balance Tier: ${currentBalancing.Tiers[j].Name}`);
+            DebugLog(`Current Balance Tier: ${currentBalancing.Tiers[j].Name}`);
             if (perkWhitelisted) { break; }
 
             var currentTierIndex = appliedTierList[j];
             var currentTier = currentBalancing.Tiers[currentTierIndex];
 
-            // DebugLog(`Checking if ${currentPerk["name"]} is banned in ${currentTier.Name} Tier Balancing...`);
+            DebugLog(`Checking if ${currentPerk["name"]} is banned in ${currentTier.Name} Tier Balancing...`);
 
             if (currentTier == undefined) { continue; }
 
@@ -3837,7 +3841,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                 if (currentPerk == undefined) { continue; }
                 if (currentBannedPerk == undefined) { continue; }
 
-                //DebugLog(`Checking if ${currentPerk["name"]} is banned in ${currentTier.Name} Tier Balancing...`);
+                DebugLog(`Checking if ${currentPerk["name"]} is banned in ${currentTier.Name} Tier Balancing...`);
                 if (currentPerk["id"] == currentBannedPerk) {
                     if (selectedRole == 0) {
                         ErrorList.push(
