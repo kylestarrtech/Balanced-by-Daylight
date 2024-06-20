@@ -3351,9 +3351,10 @@ function CheckForRepetition(builds) {
 
             if (currentPerk == undefined) { continue; }
 
+            var perkRepeatAmount = 0;
+
             // Loop through other builds
             for (var k = i+1; k < builds.length; k++) {
-                var perkRepeatAmount = 0;
 
                 let otherBuild = builds[k];
 
@@ -3366,13 +3367,13 @@ function CheckForRepetition(builds) {
                     perkRepeatAmount++;
                 }
 
+                DebugLog(`Perk repeat amount: ${perkRepeatAmount}`);
                 DebugLog(perkRepeated);
                 DebugLog(currentBalancing.MaxPerkRepetition)
                 if (perkRepeatAmount >= currentBalancing.MaxPerkRepetition) {
-
                     ErrorLog.push(GenerateErrorObject(
                         "Perk Repetition",
-                        `Perk <b>${currentPerk["name"]}</b> is repeated ${perkRepeatAmount} ${perkRepeatAmount > 1 ? "times" : "time"} in the Survivor builds.`,
+                        `Perk <b>${currentPerk["name"]}</b> is repeated more than ${currentBalancing.MaxPerkRepetition} ${currentBalancing.MaxPerkRepetition > 1 ? "times" : "time"} in Survivor builds.`,
                         undefined,
                         "iconography/PerkError.webp"
                     ))
@@ -3380,6 +3381,14 @@ function CheckForRepetition(builds) {
             }
         }
     }
+
+    // Remove duplicates from ErrorLog
+    ErrorLog = ErrorLog.filter(
+        (currentErr, index, errLog) => 
+            errLog.findIndex(
+                comparisonErr => (comparisonErr.message === currentErr.message)
+            ) === index
+    );
 
     for (var i = 0; i < ErrorLog.length; i++) {
         MasterErrorList.push(ErrorLog[i]);
