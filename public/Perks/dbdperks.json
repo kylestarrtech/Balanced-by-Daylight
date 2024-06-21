@@ -1262,7 +1262,7 @@
     {
         "id": 140,
         "name": "Blood Warden",
-        "icon": "public/Perks/Killers/Bloodwarden.webp",
+        "icon": "public/Perks/Killers/Blood-Warden.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Nightmare",
