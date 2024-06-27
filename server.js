@@ -33,6 +33,8 @@ app.set('view engine', 'pug')
 // Set views folder as the default folder for views
 app.set('views', './views')
 
+// Check the command line argument for "--disable-autobalance" to disable the autobalance API
+
 // Set the autobalance API
 autobalanceAPI(app);
 

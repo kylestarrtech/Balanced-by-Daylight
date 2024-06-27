@@ -29,8 +29,10 @@ Here are the steps:
 1. You must have Node.js installed and ready for this. You can do that by following this guide [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 2. Clone the GitHub repository through your method of choice (CLI, GUI, .etc).
 3. Use the command in your terminal `npm i` to install all of the node packages required.
-4. Use `node server.js` to run it, or configure with your favourite live-server application of choice (I used nodemon for the development of this).
-5. The server is now running! You should be able to connect to `http://localhost:3000/` and see the project active!
+4. The server will likely complain if you try to launch via `node server.js` that there are non-existant environment variables. This is due to the autobalancer requiring a .env file, which essentially stores key-value pairs of data meant to be accessible by the entire codebase. This file is kept secure outside of the public codebase for security reasons. As a result, **the server has to be run without the Autobalancer**.
+    * To run the server without the Autobalancer, the `--disable-autobalance` argument may be used at launch. This will generate a default balance preset to be used on the Balance Checker.
+5. If you have autobalancer access, use `node server.js` to launch the server. Otherwise (basically everyone) should use `node server.js --disable-autobalance`.
+5. The server is now running! You should be able to connect to `http://localhost:3000/` on any browser you have running and see the project active!
 
 ### Issues?
 

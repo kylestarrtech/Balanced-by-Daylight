@@ -5,6 +5,32 @@ dotenv.config();
 const fetch = require('node-fetch');
 const fs = require('fs');
 
+const disableAutobalance = process.argv.includes("--disable-autobalance");
+console.log("Is autobalance manually disabled? " + disableAutobalance);
+
+function SetupDefaultBalanceProfile() {
+    let balancingsObj = [
+        {
+            ID: 0,
+            Name: "Debug League",
+            Path: "BalancingPresets/DEBUG.json",
+            Type: "Automated",
+            Balancing: {}
+        }
+    ];
+
+    fs.writeFile("./public/Balancings.json", JSON.stringify(balancingsObj), function (err) {
+        if (err) throw err
+        console.log('Saved new balancings file!')
+    })
+}
+
+if (disableAutobalance) {
+    console.log("The autobalancer feature is manually disabled!");
+    SetupDefaultBalanceProfile();
+    return;
+}
+
 const {GoogleSpreadsheet} = require('google-spreadsheet');
 const doc = new GoogleSpreadsheet('10N1VSWuxk1uALAiqSsgaI0Yp_BmevWhc1jgj1JyCWvE');
   
@@ -12,7 +38,12 @@ const dbdlConverter = require('./utilities/autobalancer/autobalancer-dbdl.js');
 const converterMap = new Map()
     .set("DBDL", dbdlConverter)
 
-const autoBalanceEnabled = process.env.AUTOBALANCE_ENABLED;
+
+// Check if the autobalancer is enabled via the .env file
+console.log(`Disable autobalance?: ${disableAutobalance}`);
+console.log(`autoBalanceEnabled = ${process.env.AUTOBALANCE_ENABLED} && ${!disableAutobalance}`)
+const autoBalanceEnabled = process.env.AUTOBALANCE_ENABLED && !disableAutobalance;
+console.log(`autoBalanceEnabled = ${autoBalanceEnabled}`)
 
 const balancingPresetLocation = "./public/BalancingPresets/";
 const autobalanceSaveLocation = "./public/BalancingPresets/Autobalance/";
@@ -100,7 +131,7 @@ function InitAutobalance() {
     // Clear autobalance objects
     autobalanceObjs = [];
 
-    if (autoBalanceEnabled != "true") {
+    if (autoBalanceEnabled != true) {
         console.log("The autobalancer feature is disabled!");
         return;
     }

@@ -1496,9 +1496,19 @@ function LoadImportEvents() {
         // }
 
         // Copy exportData to clipboard
-        navigator.clipboard.writeText(compressedText);
+        var wasErr = false;
+        try {
+            navigator.clipboard.writeText(compressedText);
+        } catch (error) {
+            wasErr = true;
+        }
 
-        GenerateAlertModal("Export Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <b><span class='import-code-preview'>" + compressedText + "</span></b>");
+        if (!wasErr) {
+            GenerateAlertModal("Export and Copy Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <b><span class='import-code-preview'>" + compressedText + "</span></b>");
+            return;
+        }
+
+        GenerateAlertModal("Export Successful", "Your builds data has been exported! <b>Copying to the clipboard was unsuccessful, please copy your import code manually.</b><br><br>Import Data:<br> <b><span class='import-code-preview'>" + compressedText + "</span></b>");
     });
 }
 

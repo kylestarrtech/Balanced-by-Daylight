@@ -100,8 +100,8 @@ function SetMiscDropdownEvents() {
     // Update perk repetition event
     var perkRepetitionDropdown = document.getElementById("maximum-perk-repetition-dropdown");
     perkRepetitionDropdown.addEventListener("change", function() {
-        MaximumPerkRepetition = parseInt(perkRepetitionDropdown.value);
-        DebugLog(`Maximum Perk Repetition set to <b>${MaximumPerkRepetition}</b>`);
+        SetMaximumPerkRepetition(perkRepetitionDropdown.value);
+        SyncMaxRepetitionDropdownValue();
     }); 
 
     // Update map search event
@@ -109,6 +109,38 @@ function SetMiscDropdownEvents() {
     mapSearchTextbox.addEventListener("input", function() {
         UpdateMapDropdowns();
     });
+}
+
+/// Sometimes the maximum perk repetition dropdown will desync from the value of its variable. This function will sync the dropdown value to the variable value.
+function SyncMaxRepetitionDropdownValue() {
+    var perkRepetitionDropdown = document.getElementById("maximum-perk-repetition-dropdown");
+    perkRepetitionDropdown.value = MaximumPerkRepetition;
+    DebugLog(`Maximum Perk Repetition set to <b>${MaximumPerkRepetition}</b>`);
+}
+
+/// Sets the maximum perk repetition variable with the appropriate restrictions.
+function SetMaximumPerkRepetition(newVal) {
+    MaximumPerkRepetition = parseInt(newVal);
+
+    if (MaximumPerkRepetition == undefined) {
+        console.error(`Maximum perk repetition is undefined! Defaulting to 1`);
+        MaximumPerkRepetition = 1;
+    }
+
+    if (isNaN(MaximumPerkRepetition)) {
+        console.error(`Maximum perk repetition is not a number! Defaulting to 1`);
+        MaximumPerkRepetition = 1;
+    } else {
+        if (MaximumPerkRepetition < 1) {
+            console.error(`Maximum perk repetition is less than 1! Defaulting to 1`);
+            MaximumPerkRepetition = 1;
+        }
+
+        if (MaximumPerkRepetition > 4) {
+            console.error(`Maximum perk repetition is greater than 4! Defaulting to 4`);
+            MaximumPerkRepetition = 4;
+        }
+    }
 }
 
 function SetTierButtonEvents() {
@@ -1864,8 +1896,7 @@ function LoadTier(id) {
 
 function UpdateDropdowns() {
     // Update the perk repetition dropdown
-    var perkRepetitionDropdown = document.getElementById("maximum-perk-repetition-dropdown");
-    perkRepetitionDropdown.value = MaximumPerkRepetition;
+    SyncMaxRepetitionDropdownValue();
 
     // Update Tiers Dropdowns
     UpdateTierDropdowns();
@@ -2243,7 +2274,7 @@ function ExportBalancing() {
         return;
     }
 
-    maxPerkRepetition = document.getElementById("maximum-perk-repetition-dropdown").value;
+    let maxPerkRepetition = document.getElementById("maximum-perk-repetition-dropdown").value;
     // Convert maxPerkRepetition to an integer
     maxPerkRepetition = parseInt(maxPerkRepetition);
 
@@ -2371,7 +2402,10 @@ function ImportBalancing() {
     console.log("BALANCE IMPORT OBJ:");
     console.log(balanceImportObj.KillerOverride);
 
-    MaxPerkRepetition = balanceImportObj.MaxPerkRepetition;
+    SetMaximumPerkRepetition(balanceImportObj.MaxPerkRepetition);
+
+    console.log(`Setting max perk repetition: ${MaximumPerkRepetition}`);
+    SyncMaxRepetitionDropdownValue();
 
     GlobalNotes = 
         balanceImportObj.GlobalNotes == undefined ?
