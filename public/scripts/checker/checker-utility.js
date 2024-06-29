@@ -622,3 +622,623 @@ function AreKillerAddonsValid() {
 
     return false;
 }
+
+function ClearKillerPerks() {
+    for (var i = 0; i < KillerPerks.length; i++) {
+        KillerPerks[i] = null;
+    }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+    }
+}
+
+function ClearKillerAddons() {
+    KillerAddons = [undefined, undefined];
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+    }
+
+    UpdatePerkUI();
+}
+
+function ClearSurvivorPerks() {
+    for (var i = 0; i < SurvivorPerks.length; i++) {
+        SurvivorPerks[i] = [
+            null,
+            null,
+            null,
+            null
+        ];
+    }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+    }
+}
+
+function ClearSurvivorOfferings() {
+    for (var i = 0; i < SurvivorOfferings.length; i++) {
+        SurvivorOfferings[i] = null;
+    }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+    }
+}
+
+function ClearSurvivorItems() {
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        SurvivorItems[i] = null;
+    }
+    
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+    }
+}
+
+function ClearSurvivorAddons() {
+    for (var i = 0; i < SurvivorAddons.length; i++) {
+        SurvivorAddons[i] = [
+            undefined,
+            undefined
+        ];
+    }
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+    }
+}
+
+/**
+ * Gets the export data for a loadout and compresses it into an import code.
+ * @returns {String} The compressed import code.
+ */
+function GetExportData() {
+    const survivorPerksId = new Array()
+    for(const surv of SurvivorPerks){
+        const perksId = new Array()
+        for(const perk of surv){
+            if (perk == null) {
+                perksId.push(null)
+                continue;
+            }
+
+            perksId.push(perk.id)
+        }
+        survivorPerksId.push(perksId)
+    }
+
+    const survivorOfferingsId = new Array()
+    for(const offering of SurvivorOfferings){
+        if (offering == null) {
+            survivorOfferingsId.push(null)
+            continue;
+        }
+
+        survivorOfferingsId.push(offering?.id)
+    }
+
+    const survivorItemsId = new Array()
+    const survivorAddonInfo = new Array()
+
+    for (var i = 0; i < SurvivorItems.length; i++) {
+        survivorItemsId.push(SurvivorItems[i]?.id);
+
+        const currentAddons = SurvivorAddons[i];
+
+        survivorAddonInfo.push(
+            [
+                [
+                    currentAddons[0]?.id,
+                    currentAddons[1]?.id
+                ],
+                SurvivorItems[i] == null ? null : SurvivorItems[i]["Type"]
+            ]
+        );
+    }
+
+    const killerPerksId = new Array()
+    
+    for(const perk of KillerPerks){
+        if (perk == null) {
+            killerPerksId.push(null)
+            continue;
+        }
+        killerPerksId.push(perk.id)
+    }
+
+    const killerOfferingId = KillerOffering == null ? null : KillerOffering.id
+
+    const killerAddonsId = new Array()
+
+    for(const addon of KillerAddons){
+        if (addon == null) {
+            killerAddonsId.push(null)
+            continue;
+        }
+        killerAddonsId.push(addon["globalID"])
+    }
+
+
+    const exportJson = {
+        "selectedRole": selectedRole,
+        "survivorPerksId": survivorPerksId,
+        "survivorOfferingsId": survivorOfferingsId,
+        "survivorItemsId": survivorItemsId,
+        "survivorAddonInfo": survivorAddonInfo,
+        "killerPerksId": killerPerksId,
+        "killerOfferingId": killerOfferingId,
+        "killerAddonsId": killerAddonsId,
+        "selectedKiller": selectedKiller,
+        "currentBalancingIndex": currentBalancingIndex,
+        "customBalanceOverride": customBalanceOverride,
+        "onlyShowNonBanned": onlyShowNonBanned,
+        "currentBalancing": customBalanceOverride ? currentBalancing : null,
+        "numErrors": MasterErrorList.length,
+    }
+
+    console.log(exportJson);
+
+    const exportData = JSON.stringify(exportJson);
+
+    const deflate = pako.deflate(exportData, { to: "string" });
+    const compressedText = btoa(String.fromCharCode.apply(null, deflate));
+
+    return compressedText;
+}
+
+/**
+ * Generates and returns a list of banned perks as and against the selected killer.
+ * @returns {Array} The list of banned perks.
+ */
+function GetBannedPerks() {
+    let bannedPerks = new Array()
+    
+    // Concatenate survivor perk bans
+    bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorIndvPerkBans)
+
+    // Concatenate tier survivor bans based on killer overrides
+    for(const tier of currentBalancing.KillerOverride[selectedKiller].SurvivorBalanceTiers){
+        bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].SurvivorIndvPerkBans)
+    }
+
+    // Concatenate killer perk bans
+    bannedPerks = bannedPerks.concat(currentBalancing.KillerOverride[selectedKiller].KillerIndvPerkBans)
+
+    // Concatenate tier killer bans based on killer overrides
+    for(const tier of currentBalancing.KillerOverride[selectedKiller].BalanceTiers){
+        bannedPerks = bannedPerks.concat(currentBalancing.Tiers[tier].KillerIndvPerkBans)
+    }
+
+    let concatenatedWhitelist = new Array()
+
+    // Concatenate KillerWhitelistedPerks and SurvivorWhitelistedPerks
+    concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].KillerWhitelistedPerks)
+    concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorWhitelistedPerks)
+    console.log(`Concatenated whitelist: ${concatenatedWhitelist}`)
+
+    for (const perk of concatenatedWhitelist) {
+        // If the perk is in the banned perks, remove it
+        if (bannedPerks.includes(perk)) {
+            bannedPerks.splice(bannedPerks.indexOf(perk), 1);
+        }
+    }
+
+    return bannedPerks;
+}
+
+/**
+ * Generates and returns a list of all offerings banned as and against the selected killer.
+ * @returns {Array} The list of banned offerings.
+ */
+function GetBannedOfferings() {
+
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Offerings == undefined) { return null; }
+
+    let bannedOfferings = {
+        "Survivor": new Array(),
+        "Killer": new Array()
+    }
+
+    // Get survivor offerings from killer override
+    let survivorOfferings = currentBalancing.KillerOverride[selectedKiller].SurvivorOfferings;
+
+    // Get killer offerings from killer override
+    let killerOfferings = currentBalancing.KillerOverride[selectedKiller].KillerOfferings;
+
+    for (const offering of Offerings["Survivor"]) {
+        // If the offering is not in the survivor offerings, add it to the banned offerings
+        if (!survivorOfferings.includes(offering.id)) {
+            bannedOfferings["Survivor"].push(offering.id);
+        }
+    }
+
+    for (const offering of Offerings["Killer"]) {
+        // If the offering is not in the killer offerings, add it to the banned offerings
+        if (!killerOfferings.includes(offering.id)) {
+            bannedOfferings["Killer"].push(offering.id);
+        }
+    }
+
+    return bannedOfferings;
+}
+
+/**
+ * Generates and returns a list of all banned items against the selected killer.
+ * @returns {Array} The list of banned items.
+ */
+function GetBannedItems() {
+    DebugLog("Is current balancing set?");
+    DebugLog(currentBalancing);
+
+    if (currentBalancing == undefined || currentBalancing == {}) { return null; }
+    if (Items == undefined) { return null; }
+
+    let bannedItems = new Array()
+
+    // Get items from killer override
+    let items = currentBalancing.KillerOverride[selectedKiller].ItemWhitelist;
+    if (items == undefined) { return null; }
+    DebugLog("ITEMS:")
+    DebugLog(items);
+    
+    for (const item of Items["Items"]) {
+        // If the item is not in the items, add it to the banned items
+        //DebugLog(`Checking if ${item.id} is in ${items}`);
+        if (!items.includes(item.id)) {
+            //DebugLog(`${item.id} is not in ${items}`);
+            bannedItems.push(item.id);
+        }
+    }
+
+    return bannedItems;
+}
+
+/**
+ * A function to get the ID of a perk based on its file name.
+ * @param {string} fileName The file name of the perk.
+ * @returns {number} The ID of the perk.
+ */
+function GetPerkIdByFileName(fileName){
+    for(const perk of Perks){
+        if(perk.icon == fileName) return perk.id
+    }
+}
+
+/**
+ * A function to get a perk object by its ID.
+ * @param {number} id The ID of the perk.
+ * @returns {object} The perk object.
+ */
+function GetPerkById(id){
+    for(const perk of Perks){
+        if(perk.id == id) return perk
+    }
+}
+
+/**
+ * A function to get the ID of an offering based on its file name.
+ * @param {string} fileName The file name of the offering.
+ * @returns {number} The ID of the offering.
+ */
+function GetOfferingIdByFileName(fileName){
+    let SurvivorOfferings = Offerings["Survivor"];
+    let KillerOfferings = Offerings["Killer"];
+
+    for(const offering of SurvivorOfferings){
+        if(offering.icon == fileName) return offering.id
+    }
+
+    for(const offering of KillerOfferings){
+        if(offering.icon == fileName) return offering.id
+    }
+}
+
+/**
+ * Gets the ID of an item based on the file path of its icon.
+ * @param {string} fileName 
+ * @returns 
+ */
+function GetItemIdByFileName(fileName) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["icon"] == fileName) {
+            return currentItem["id"];
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * A function to get an offering object by its ID.
+ * @param {number} id The ID of the offering.
+ * @returns {object} The offering object.
+ */
+function GetOfferingById(id){
+    let SurvivorOfferings = Offerings["Survivor"];
+    let KillerOfferings = Offerings["Killer"];
+
+    for(const offering of SurvivorOfferings){
+        if(offering.id == id) return offering
+    }
+
+    for(const offering of KillerOfferings){
+        if(offering.id == id) return offering
+    }
+
+    return undefined
+}
+
+/**
+ * Gets an item's details based on its ID.
+ * @param {number} id 
+ * @returns {object}
+ */
+function GetItemById(id) {
+    let itemsList = Items["Items"];
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["id"] == id) {
+            return currentItem;
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * Gets a killer add-on's details based on its ID.
+ * @param {number} id 
+ * @returns {object}
+ */
+function GetKillerAddonById(id) {
+    for (let i = 0; i < KillerAddonsList.length; i++) {
+        let currentKiller = KillerAddonsList[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["globalID"] == id) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * Gets a killer add-on's details based on its name.
+ * 
+ * If two add-ons share the same name the first one will be returned (e.g. Speed Limiter).
+ * @param {string} name 
+ * @returns {object}
+ */
+function GetKillerAddonByName(name) {
+    for (let i = 0; i < KillerAddonsList.length; i++) {
+        let currentKiller = KillerAddonsList[i];
+
+        for (let j = 0; j < currentKiller["Addons"].length; j++) {
+            let currentAddon = currentKiller["Addons"][j];
+
+            if (currentAddon["Name"].toLowerCase() == name.toLowerCase()) {
+                return currentAddon;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * A function to get the name of an addon based on its ID.
+ * @param {string} itemType The type of item the addon belongs to.
+ * @param {number} id The ID of the addon.
+ */
+function GetAddonById(itemType, id) {
+    if (Items == undefined) { return undefined; }
+
+    let ItemTypes = Items["ItemTypes"];
+    if (ItemTypes == undefined) { return undefined; }
+
+    // Find item type index
+    let itemTypeIndex = undefined;
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            itemTypeIndex = i;
+            break;
+        }
+    }
+    if (itemTypeIndex == undefined) { return undefined; }
+
+    let addons = ItemTypes[itemTypeIndex]["Addons"];
+    if (addons == undefined) { return undefined; }
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+
+        if (currentAddon == undefined) { continue; }
+
+        if (currentAddon["id"] == id) {
+            return currentAddon;
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * A function to get the index of an item type based on its name.
+ * @param {string} itemType The name of the item type.
+ */
+function GetIndexOfItemType(itemType) {
+    if (Items == undefined) { return; }
+
+    let ItemTypes = Items["ItemTypes"];
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+/**
+ * A function to print to the console if debugging is enabled.
+ * @param {object} text The text to print to the console.
+ * @param {boolean} printStackTrace Whether or not to print the current stack trace.
+ * @returns 
+ */
+function DebugLog(text, printStackTrace = false) {
+    if (!debugging) { return; }
+
+    console.log(text);
+
+    if (!printStackTrace && !overrideStackTrace) { return; }
+    // Print current stack trace
+    console.trace();
+}
+
+/**
+ * A function to check if a build contains a perk.
+ * @param {number} perkID The ID of the perk to check for.
+ * @param {object} build The build to check for the perk in.
+ * @returns {boolean} Whether or not the build contains the perk.
+ */
+function BuildHasPerk(perkID, build) {
+    if (build == undefined) { return false; }
+
+    for (var i = 0; i < build.length; i++) {
+        let currentPerk = build[i];
+
+        if (currentPerk == undefined) { continue; }
+
+        if (currentPerk["id"] == perkID) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * A function to generate an error object.
+ * @param {string} name The title of the error.
+ * @param {string} reason The reason for the error.
+ * @param {string} stacktrace The stacktrace of the error.
+ * @param {string} icon The icon to display for the error.
+ * @param {boolean} criticalError Whether or not the error is critical.
+ * @returns {object} An object containing the error information.
+ */
+function GenerateErrorObject(
+    name = "Default Error",
+    reason = "Default Reason",
+    stacktrace = undefined,
+    icon = "iconography/Error.webp",
+    criticalError = false) {
+        return {
+            ERROR: name,
+            REASON: reason,
+            STACKTRACE: stacktrace,
+            ICON: icon,
+            CRITICAL: criticalError
+        };
+    }
+
+/**
+ * A function to validate a custom balancing object.
+ * @param {object} balanceObj The balance object to validate.
+ * @returns {boolean} Whether or not the balance object is valid.
+ */
+function ValidateCustomBalancing(balanceObj) {
+    if (balanceObj == undefined) { return false; }
+
+    if (balanceObj["Name"] == undefined) { return false; }
+    if (balanceObj["MaxPerkRepetition"] == undefined) { return false; }
+
+    if (balanceObj["Tiers"] == undefined) { return false; }
+    try {
+
+        for (var i = 0; i < balanceObj["Tiers"].length; i++) {
+            let currentTier = balanceObj["Tiers"][i];
+
+            if (currentTier["Name"] == undefined) { return false; }
+
+            if (currentTier["SurvivorIndvPerkBans"] == undefined) { return false; }
+            if (currentTier["SurvivorComboPerkBans"] == undefined) { return false; }
+            if (currentTier["KillerIndvPerkBans"] == undefined) { return false; }
+            if (currentTier["KillerComboPerkBans"] == undefined) { return false; }
+        }
+    } catch (error) {
+        return false;
+    }
+
+    if (balanceObj["KillerOverride"] == undefined) { return false; }
+
+    try {
+        for (var i = 0; i < balanceObj["KillerOverride"].length; i++) {
+            let currentOverride = balanceObj["KillerOverride"][i];
+    
+            if (currentOverride["Name"] == undefined) { return false; }
+            if (currentOverride["Map"] == undefined) { return false; }
+            if (currentOverride["BalanceTiers"] == undefined) { return false; }
+            if (currentOverride["SurvivorBalanceTiers"] == undefined) { return false; }
+
+            if (currentOverride["SurvivorIndvPerkBans"] == undefined) { return false; }
+            if (currentOverride["SurvivorComboPerkBans"] == undefined) { return false; }
+            if (currentOverride["KillerIndvPerkBans"] == undefined) { return false; }
+            if (currentOverride["KillerComboPerkBans"] == undefined) { return false; }
+
+            if (currentOverride["SurvivorWhitelistedPerks"] == undefined) { return false; }
+            if (currentOverride["SurvivorWhitelistedComboPerks"] == undefined) { return false; }
+            if (currentOverride["KillerWhitelistedPerks"] == undefined) { return false; }
+            if (currentOverride["KillerWhitelistedComboPerks"] == undefined) { return false; }
+
+            if (currentOverride["AddonTiersBanned"] == undefined) { return false; }
+            if (currentOverride["IndividualAddonBans"] == undefined) { return false; }
+
+            if (currentOverride["ItemWhitelist"] == undefined) { return false; }
+            if (currentOverride["AddonWhitelist"] == undefined) { return false; }
+
+            if (currentOverride["SurvivorOfferings"] == undefined) { return false; }
+            if (currentOverride["KillerOfferings"] == undefined) { return false; }
+        }
+
+        if (balanceObj["KillerOverride"].length <= 0) { return false; }
+        
+        // Check which killer overrides are valid
+
+        for (var i = 0; i < balanceObj["KillerOverride"].length; i++) {
+            
+        }
+    } catch (error) {
+        return false;
+    }
+
+    return true;
+}
