@@ -1242,3 +1242,78 @@ function ValidateCustomBalancing(balanceObj) {
 
     return true;
 }
+
+function GenerateImageFromButtonPress() {
+    if (!AreKillerAddonsValid()) {
+        GenerateAlertModal("Error", "Your killer addons are not valid for the selected killer. Please select valid addons before generating an image.");
+        return;
+    }
+
+    let exportData = GetExportData();
+
+    const imageGenContainer = document.getElementById("image-gen-container");
+    imageGenContainer.hidden = false;
+
+    const imageGenTitle = document.getElementById("image-gen-title");
+    imageGenTitle.innerText = "Generating Image...";
+
+    const imageGenImage = document.getElementById("image-gen-image");
+    imageGenImage.hidden = true;
+
+    const imageGenMessage = document.getElementById("image-gen-message");
+    imageGenMessage.innerText = "Please wait while your loadout image is generated...";
+
+    var xhttp = new XMLHttpRequest();
+    
+    const imageGenOkButton = document.getElementById("image-gen-ok-button");
+    imageGenOkButton.innerText = "Cancel";
+
+    imageGenOkButton.addEventListener("click", function() {
+        // If the xhttp request is still running, abort it
+        if (xhttp.readyState != 4) {
+            xhttp.abort();
+        }
+
+        imageGenContainer.hidden = true;
+    });
+
+    xhttp.responseType = "arraybuffer"
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    // This is the encoded image data.
+                    let imageBuffer = this.response;
+
+                    const imageBlob = new Blob([imageBuffer], { type: "image/png" });
+
+                    const imageUrl = URL.createObjectURL(imageBlob);
+
+                    const imageElement = document.getElementById("image-gen-image");
+                    imageElement.src = imageUrl;
+                    imageElement.hidden = false;
+
+                    imageGenTitle.innerText = "Generated Loadout Image";
+
+                    imageGenMessage.innerText = "Your loadout image has been generated! Feel free to save/copy it.";
+
+                    imageGenOkButton.addEventListener("click", function() {
+                        // Revoke the image URL
+                        URL.revokeObjectURL(imageUrl);
+                    });
+                    imageGenOkButton.innerText = "Close";
+                break;
+                default:
+                    GenerateAlertModal("Error", "An error occurred while generating your image.");
+                    console.error("Error getting image: " + this.status);
+            }
+        }
+    };
+    xhttp.open("POST", "/get-build-image", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    
+    xhttp.send(JSON.stringify({
+        ExportData: exportData
+    }));
+}

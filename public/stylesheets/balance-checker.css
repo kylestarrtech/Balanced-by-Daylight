@@ -1065,12 +1065,27 @@ body {
     max-height: 90vh;
     background-color: #000000aa;
     border-radius: 20px;
+    border: solid 1px #e0e0e0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
     overflow-y: auto;
+
+    animation: alert_modal_fadein 0.75s ease-in-out;
+}
+
+@keyframes alert_modal_fadein {
+    from {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0px);
+    }
 }
 
 #alert-menu {
