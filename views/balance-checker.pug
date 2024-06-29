@@ -5,8 +5,18 @@ html
         link(rel="stylesheet", href="/stylesheets/balance-checker.css")
         link(rel="icon", href="iconography/favicon.ico" type="image/x-icon")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js")
-        script(src="/scripts/balance-checker.js", type="text/javascript", defer="defer")
-        script(src="/socket.io/socket.io.js" type="text/javascript")
+
+        script(src="/scripts/checker/checker-globals.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-utility.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-modal.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-search.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-events.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-error-validation.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-frontend.js", type="text/javascript", defer="defer")
+        script(src="/scripts/checker/checker-resources.js", type="text/javascript", defer="defer")
+
+        script(src="/scripts/checker/checker-main.js", type="text/javascript", defer="defer")
+
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
     body(onload="main()")
         div#primary-balance-container
