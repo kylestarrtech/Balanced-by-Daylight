@@ -451,7 +451,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
 
             if (currentBannedPerk == undefined) { continue; }
  
-            console.log(`Checking if ${currentPerk["name"]} is banned explicitly against ${override.Name}...`);
+            DebugLog(`Checking if ${currentPerk["name"]} is banned explicitly against ${override.Name}...`);
 
             // DebugLog(`Checking if ${currentPerk["name"]} is banned against ${override.Name}...`);
             if (currentPerk["id"] == currentBannedPerk) {
@@ -779,7 +779,7 @@ function GetExportData() {
         "numErrors": MasterErrorList.length,
     }
 
-    console.log(exportJson);
+    DebugLog(exportJson);
 
     const exportData = JSON.stringify(exportJson);
 
@@ -817,7 +817,7 @@ function GetBannedPerks() {
     // Concatenate KillerWhitelistedPerks and SurvivorWhitelistedPerks
     concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].KillerWhitelistedPerks)
     concatenatedWhitelist = concatenatedWhitelist.concat(currentBalancing.KillerOverride[selectedKiller].SurvivorWhitelistedPerks)
-    console.log(`Concatenated whitelist: ${concatenatedWhitelist}`)
+    DebugLog(`Concatenated whitelist: ${concatenatedWhitelist}`)
 
     for (const perk of concatenatedWhitelist) {
         // If the perk is in the banned perks, remove it
@@ -1312,7 +1312,7 @@ function GenerateImageFromButtonPress() {
     };
     xhttp.open("POST", "/get-build-image", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    
+
     xhttp.send(JSON.stringify({
         ExportData: exportData
     }));

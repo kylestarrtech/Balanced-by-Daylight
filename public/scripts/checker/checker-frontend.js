@@ -1400,8 +1400,8 @@ function UpdateErrorUI() {
         }
     } else {
         for(const perk of KillerPerks){
-            console.log(`Checking for banned perk on perk slot #${perkCpt} - Perk:`);
-            console.log(perk);
+            DebugLog(`Checking for banned perk on perk slot #${perkCpt} - Perk:`);
+            DebugLog(perk);
 
             /*
             Need to get all potentially valid perk slot elements
@@ -1425,11 +1425,11 @@ function UpdateErrorUI() {
             }
 
             for(const error of MasterErrorList){
-                console.log("CHECKING ERROR:");
-                console.log(error);
+                DebugLog("CHECKING ERROR:");
+                DebugLog(error);
 
                 if (perk) {
-                    console.log(`"KILLERPERK: ${killerPerk} - PERK: ${perk} - ERROR: ${error.REASON} - INCLUDES: ${error.REASON.includes(perk.name)} - CLASSLIST: ${killerPerk.classList} = ${killerPerk && killerPerk.classList && perk && error.REASON.includes(perk.name)}"`);
+                    DebugLog(`"KILLERPERK: ${killerPerk} - PERK: ${perk} - ERROR: ${error.REASON} - INCLUDES: ${error.REASON.includes(perk.name)} - CLASSLIST: ${killerPerk.classList} = ${killerPerk && killerPerk.classList && perk && error.REASON.includes(perk.name)}"`);
                 }
                 if(killerPerk && killerPerk.classList && perk && error.REASON.includes(perk.name)){
                     killerPerk.classList.add("perk-slot-result-banned")

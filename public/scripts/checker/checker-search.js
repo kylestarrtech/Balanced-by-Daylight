@@ -112,7 +112,7 @@ function SearchForAddons(searchQuery, itemType) {
 function SearchForKillerAddons(searchQuery, killer) {
     var searchResults = [];
 
-    console.log(`Searching for killer addons for ${killer}`);
+    DebugLog(`Searching for killer addons for ${killer}`);
 
     let bannedAddons = new Array()
     if (onlyShowNonBanned) {

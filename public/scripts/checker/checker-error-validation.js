@@ -275,7 +275,7 @@ function CheckForSurvivorBalanceErrors() {
 
     // Check for banned addons
     for (var i = 0; i < SurvivorItems.length; i++) {
-        console.log(`Checking for banned addons on Survivor #${i}...`)
+        DebugLog(`Checking for banned addons on Survivor #${i}...`)
         let currentItem = SurvivorItems[i];
 
         if (currentItem == undefined) { 
@@ -294,7 +294,7 @@ function CheckForSurvivorBalanceErrors() {
 
         addonIDs = [];
         for (var j = 0; j < SurvivorAddons[i].length; j++) {
-            console.log(`\tChecking for banned addons on Survivor #${i} at addon slot #${j}...`)
+            DebugLog(`\tChecking for banned addons on Survivor #${i} at addon slot #${j}...`)
             let currentAddon = SurvivorAddons[i][j];
 
             if (currentAddon == undefined) {
@@ -302,7 +302,7 @@ function CheckForSurvivorBalanceErrors() {
             }
 
             addonIDs.push(currentAddon);
-            console.log(`\t\tPushed ${currentAddon["Name"]} to addonIDs.`);
+            DebugLog(`\t\tPushed ${currentAddon["Name"]} to addonIDs.`);
             if (bannedAddons.includes(currentAddon["id"])) {
                 let addons = document.getElementsByClassName("addon-slot");
                 for (var addon of addons) {
@@ -322,20 +322,20 @@ function CheckForSurvivorBalanceErrors() {
             }   
         }
 
-        console.log(`\tFinal addonIDs:`);
-        console.log(addonIDs);
+        DebugLog(`\tFinal addonIDs:`);
+        DebugLog(addonIDs);
 
         // Check if every size-two addon permutation is a duplicate or not
         for (var j = 0; j < addonIDs.length; j++) {
             for (var k = j+1; k < addonIDs.length; k++) {
-                console.log(`\t\tChecking if ${addonIDs[j]["Name"]} is a duplicate of ${addonIDs[k]["Name"]}...`)
+                DebugLog(`\t\tChecking if ${addonIDs[j]["Name"]} is a duplicate of ${addonIDs[k]["Name"]}...`)
                 let currentAddonID = addonIDs[j]["id"];
                 let otherAddonID = addonIDs[k]["id"];
 
                 if (currentAddonID == undefined || otherAddonID == undefined) { continue; }
 
                 if (currentAddonID == otherAddonID) {
-                    console.log('\t\t\t<b>Duplicate detected!</b>')
+                    DebugLog('\t\t\t<b>Duplicate detected!</b>')
 
                     let addons = document.getElementsByClassName("addon-slot");
                     for (var addon of addons) {
@@ -356,7 +356,7 @@ function CheckForSurvivorBalanceErrors() {
                             true
                         )
                     );
-                    console.log('\t\t\t<b>Pushed error to MasterErrorList!</b>')
+                    DebugLog('\t\t\t<b>Pushed error to MasterErrorList!</b>')
                 }
             }
         }
@@ -416,7 +416,7 @@ function CheckForKillerBalanceErrors() {
     }
 
     // Check for banned addons
-    console.log("CHECKING FOR BANNED ADDONS!!!")
+    DebugLog("CHECKING FOR BANNED ADDONS!!!")
     let bannedKlrAddons = GetBannedKillerAddons();
 
     
@@ -426,7 +426,7 @@ function CheckForKillerBalanceErrors() {
     if (bannedKlrAddons == undefined) { passesGuardClause = false; }
     
     if (passesGuardClause) {
-        console.log("PASSED GUARD CLAUSE!!!")
+        DebugLog("PASSED GUARD CLAUSE!!!")
         if (!AreKillerAddonsValid()) {
             MasterErrorList.push(
                 GenerateErrorObject(
@@ -441,12 +441,12 @@ function CheckForKillerBalanceErrors() {
         
         for (var i = 0; i < KillerAddons.length; i++) {
             let currentAddon = KillerAddons[i];
-            console.log(`Checking for banned addons on addon slot #${i}...`)
-            console.log(currentAddon);
+            DebugLog(`Checking for banned addons on addon slot #${i}...`)
+            DebugLog(currentAddon);
 
             if (currentAddon == undefined) { continue; }
 
-            console.log(`Current addon is not undefined!`)
+            DebugLog(`Current addon is not undefined!`)
 
             let foundBannedMatch = false;
             for (var j = 0; j < bannedKlrAddons.length; j++) {
@@ -454,7 +454,7 @@ function CheckForKillerBalanceErrors() {
 
                 if (currentBannedAddon == undefined) { continue; }
 
-                console.log(`Checking if ${currentAddon["id"]} is banned...`)
+                DebugLog(`Checking if ${currentAddon["id"]} is banned...`)
 
                 if (currentAddon["globalID"] == currentBannedAddon["globalID"]) {
                     foundBannedMatch = true;
@@ -462,7 +462,7 @@ function CheckForKillerBalanceErrors() {
             }
 
             if (foundBannedMatch) {
-                console.log(`Banned addon detected!`)
+                DebugLog(`Banned addon detected!`)
                 let addonElements = document.getElementsByClassName("killer-addon-slot");
 
                 let targetElement = undefined;

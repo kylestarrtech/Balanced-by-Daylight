@@ -102,7 +102,7 @@ function LoadRoleSwapEvents() {
     let roleSwapButton = document.getElementById("role-swap-button");
 
     roleSwapButton.addEventListener("click", function() {
-        console.log("Commencing role swap!");
+        DebugLog("Commencing role swap!");
 
         // Swap role
         selectedRole = selectedRole == 0 ? 1 : 0;
@@ -175,7 +175,7 @@ function LoadImportEvents() {
             
             let importDataObj = JSON.parse(decompressedText);
 
-            console.log(importDataObj);
+            DebugLog(importDataObj);
 
             // Is there a valid balancing index?
             if (importDataObj.currentBalancingIndex == undefined) {
@@ -257,7 +257,7 @@ function LoadImportEvents() {
             ItemType - String
             */
             for(const addonInfo of importDataObj.survivorAddonInfo){
-                console.log(addonInfo);
+                DebugLog(addonInfo);
                 SurvivorAddons[survCpt] = [GetAddonById(addonInfo[1], addonInfo[0][0]), GetAddonById(addonInfo[1], addonInfo[0][1])];
                 survCpt++;
             }
@@ -429,7 +429,7 @@ function SetKillerCharacterSelectEvents() {
             }
 
             if (!AreKillerAddonsValid()) {
-                console.log("Reset killer addons as they are not valid for the selected killer.");
+                DebugLog("Reset killer addons as they are not valid for the selected killer.");
                 KillerAddons = [undefined, undefined];
             }
 
@@ -688,11 +688,11 @@ function LoadKillerPerkSelectionEvents() {
 
     for (var i = 0; i < perks.length; i++) {
         let currentPerk = perks[i];
-        console.log(currentPerk);
+        DebugLog(currentPerk);
 
         currentPerk.addEventListener("click", function() {
             let curKillerName = Killers[selectedKiller];
-            console.log(`Clicked on perk ${currentPerk.dataset.perkID} for killer ${curKillerName}`);
+            DebugLog(`Clicked on perk ${currentPerk.dataset.perkID} for killer ${curKillerName}`);
             
             var perkSearchContainer = document.getElementById("perk-search-container");
             perkSearchContainer.hidden = false;
