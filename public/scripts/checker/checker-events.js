@@ -20,7 +20,7 @@ function SetBalancingSelectButtonEvents() {
         let optionsContainer = document.getElementById("balancing-select-options-container");
         let balanceOptions = optionsContainer.children;
 
-        PopulateBalancingSelectMenuFromSearch(searchQuery);
+        PopulateBalancingSelectMenuFromSearch(searchQuery.toLowerCase());
     });
 
     openButton.addEventListener("click", function() {

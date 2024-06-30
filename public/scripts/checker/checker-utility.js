@@ -1322,9 +1322,10 @@ function GenerateImageFromButtonPress() {
  * Returns true or false depending on whether or not the option should be visible when searched with query.
  * @param {Number} presetID 
  * @param {String} query 
+ * @param {Boolean} showIfProposed Whether to ignore queries and return true if the current preset ID is the same as the proposed one.
  * @returns {Boolean}
  */
-function GetBalanceSelectOptionVisibilityInSearch(presetID, query) {
+function GetBalanceSelectOptionVisibilityInSearch(presetID, query, showIfProposed = true) {
     /**
      * Does the name include the query? True.
      * Loop through every alias.
@@ -1338,10 +1339,20 @@ function GetBalanceSelectOptionVisibilityInSearch(presetID, query) {
 
     if (currentPreset == undefined) { return false; }
 
-    const name = currentPreset["Name"];
+    const name = currentPreset["Name"].toLowerCase();
     const aliases = currentPreset["Aliases"];
     let splitAliases = undefined;
 
+    if (showIfProposed) {
+        let currentBalancingMenu = document.getElementById("balancing-select-menu");
+        let proposedID = parseInt(currentBalancingMenu.dataset.proposedPresetID);
+
+        if (!isNaN(proposedID)) {
+            if (proposedID === presetID) {
+                return true;
+            }
+        }
+    }
     
     if (aliases != undefined) {
         try {
@@ -1357,7 +1368,7 @@ function GetBalanceSelectOptionVisibilityInSearch(presetID, query) {
 
     if (splitAliases != undefined) {
         for (let i = 0; i < splitAliases.length; i++) {
-            const alias = splitAliases[i];
+            const alias = splitAliases[i].toLowerCase();
 
             if (alias.includes(query)) {
                 return true;
