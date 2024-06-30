@@ -857,10 +857,13 @@ function ApplyBalancingOptionEvents(optionNode, presetIndex) {
         3. Add the "proposed-league-selection" class to this option.
         */
         let balancingSelectMenu = document.getElementById("balancing-select-menu");
-        
+        let closeButton = document.getElementById("balancing-select-close-button");
+
         if (optionNode.dataset.balancePresetID == balancingSelectMenu.dataset.proposedPresetID) {
             delete balancingSelectMenu.dataset.proposedPresetID;
             optionNode.classList.remove("proposed-league-selection");
+            
+            closeButton.innerText = "Cancel";
             return;
         }
 
@@ -872,6 +875,8 @@ function ApplyBalancingOptionEvents(optionNode, presetIndex) {
         balancingSelectMenu.dataset.proposedPresetID = optionNode.dataset.balancePresetID;
 
         optionNode.classList.add("proposed-league-selection");
+
+        closeButton.innerText = "Confirm Changes";
     });
 
     return optionNode;
