@@ -67,7 +67,7 @@ function main() {
     LoadButtonEvents();
 
     // Update balancing dropdown
-    UpdateBalancingDropdown();
+    SetBalancingSelectButtonEvents();
 
     // Set current balancing
 

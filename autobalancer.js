@@ -15,6 +15,8 @@ function SetupDefaultBalanceProfile() {
             Name: "Debug League",
             Path: "BalancingPresets/DEBUG.json",
             Type: "Automated",
+            LastUpdated: 0,
+            Aliases: "",
             Balancing: {}
         }
     ];
@@ -45,6 +47,7 @@ console.log(`autoBalanceEnabled = ${process.env.AUTOBALANCE_ENABLED} && ${!disab
 const autoBalanceEnabled = process.env.AUTOBALANCE_ENABLED && !disableAutobalance;
 console.log(`autoBalanceEnabled = ${autoBalanceEnabled}`)
 
+const publicDataLocation = "./public/";
 const balancingPresetLocation = "./public/BalancingPresets/";
 const autobalanceSaveLocation = "./public/BalancingPresets/Autobalance/";
 
@@ -86,13 +89,25 @@ async function getLeagues(){
     for(const row of rows){
         if(!row.Enabled || row.Enabled == "FALSE") continue
 
-        balancings.push({
+        balancingsObj = {
             ID: parseInt(row.ID),
             Name: row.Name,
             Path: `BalancingPresets/Autobalance/${row.Filename}.json`,
             Type: row.Type == "Stored" ? "Manual" : "Automated",
+            LastUpdated: 0,
+            Aliases: row.Aliases,
             Balancing: {}
-        })
+        };
+
+        // Try to get LastUpdated
+        try {
+            const balanceData = fs.readFileSync(`${publicDataLocation}${balancingsObj["Path"]}`, { encoding: 'utf8', flag: 'r' });
+            balancingsObj["LastUpdated"] = JSON.parse(balanceData)["Version"];
+        } catch (err) {
+            console.error(`There was an issue updating the LastUpdated property on the "${balancingsObj["Name"]}" preset. Trying again next time!`);
+        }
+
+        balancings.push(balancingsObj);
 
         if(row.Type != "Stored"){
             autobalanceLeagues.push({
@@ -112,14 +127,14 @@ async function getLeagues(){
 
     fs.writeFile("./public/Balancings.json", JSON.stringify(balancings), function (err) {
         if (err) throw err
-        console.log('Saved new balancings file!')
+        console.log(`[${Date.now()} Saved new balancings file!`)
     })
 }
 
 // Run it every 6 hours
 setInterval(async function(){
     getLeagues()
-}, 3600 * 6)
+}, 36000 * 6)
 
 function InitAutobalance() {
     // Clear all intervals

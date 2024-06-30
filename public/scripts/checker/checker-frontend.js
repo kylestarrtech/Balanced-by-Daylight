@@ -598,49 +598,6 @@ function UpdateBalanceSelectionUI() {
     selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${currentBalancing["Name"]}</span>`;
 
     CheckGlobalBalanceNotes();
-    SetBalanceTypeDisclaimer();
-}
-
-/**
- * Responsible for displaying the information below the selected balancing profile describing whether it is Automated, Hybrid, or Manual. All balancing at this stage should show as automatic.
- */
-function SetBalanceTypeDisclaimer() {
-    if (customBalanceOverride) { return; }
-
-    let balanceTypeIcon = document.getElementById("balance-type-icon");
-    let balanceTypeText = document.getElementById("balance-type-text");
-
-    let balanceType = GetBalancePresetByID(currentBalancingIndex)["Type"];
-
-    let lastUpdated = currentBalancing["Version"];
-    
-    // Convert epoch to human-readable date (MM/DD/YYYY HH:MM:SS AM/PM)
-    let lastUpdatedDate = new Date(lastUpdated * 1000);
-    let formattedDate = lastUpdatedDate.toLocaleString(navigator.language, { 
-        month: '2-digit', 
-        day: '2-digit', 
-        year: 'numeric', 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit'
-    });
-
-    switch (balanceType) {
-        case "Automated":
-            balanceTypeIcon.src = "iconography/BalancingTypes/Automated.webp";
-            balanceTypeText.innerHTML = "This balancing is of type <b>Automated</b>, meaning it is pulled from an API managed by the associated league. It is not managed by the Balanced by Daylight team.";
-        break;
-        case "Hybrid":
-            balanceTypeIcon.src = "iconography/BalancingTypes/Hybrid.webp";
-            balanceTypeText.innerHTML = "This balancing is of type <b>Hybrid</b>. The associated league is responsible for creating/updating the balancing, but the Balanced by Daylight team implements it.";
-        break;
-        default:
-            balanceTypeIcon.src = "iconography/BalancingTypes/Manual.webp";
-            balanceTypeText.innerHTML = "This balancing is of type <b>Manual</b>, meaning it is managed by the Balanced by Daylight team. It may not be as accurate as automated balancing if rapid adjustments are made.";
-        break;
-    }
-
-    balanceTypeText.innerHTML += `<br><br><b>Last Updated:</b> ${formattedDate}`;
 }
 
 /**
@@ -1497,4 +1454,130 @@ function GenerateAlertModal(
     alertOkButton.addEventListener("click", function() {
         closeCallback();
     });
+}
+
+/**
+ * Generates the HTML for a balancing select option and returns it.
+ * 
+ * Adds the league-selected class if the currentBalancingIndex is equivalent to it and the customBalanceOverride is false.
+ * @param {number} presetIndex The index of the balancing preset in the Balancings object.
+ */
+function GenerateBalancingSelectOption(presetIndex) {
+    const currentPreset = BalancePresets[presetIndex];
+    if (currentPreset == undefined) { return null; }
+    
+    let baseOption = document.createElement("button");
+    baseOption.classList.add("balancing-select-option");
+
+    let optionIconContainer = document.createElement("div");
+    optionIconContainer.classList.add("balancing-select-option-icon");
+    
+    let optionIcon = document.createElement("img");
+
+    const balanceType = currentPreset["Type"];
+    switch (balanceType) {
+        case "Automated":
+            optionIcon.src = "iconography/BalancingTypes/Automated.webp";
+        break;
+        case "Hybrid":
+            optionIcon.src = "iconography/BalancingTypes/Hybrid.webp";
+        break;
+        default:
+            optionIcon.src = "iconography/BalancingTypes/Manual.webp";
+        break;
+    }
+
+    optionIconContainer.appendChild(optionIcon);
+    baseOption.appendChild(optionIconContainer);
+
+    let optionTextContainer = document.createElement("div");
+    optionTextContainer.classList.add("balancing-select-option-text-container");
+
+    let optionTextTitle = document.createElement("p");
+    optionTextTitle.classList.add("balancing-select-option-title");
+    optionTextTitle.innerText = currentPreset["Name"];
+
+    optionTextContainer.appendChild(optionTextTitle);
+    
+    let optionTextLastUpdated = document.createElement("p");
+    optionTextLastUpdated.classList.add("balancing-select-last-updated");
+
+    // Convert epoch to human-readable date (MM/DD/YYYY HH:MM:SS AM/PM)
+    const lastUpdated = currentPreset["LastUpdated"];
+
+    let lastUpdatedDate = new Date(lastUpdated * 1000);
+    let formattedDate = lastUpdatedDate.toLocaleString(navigator.language, { 
+        month: '2-digit', 
+        day: '2-digit', 
+        year: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit'
+    });
+
+    optionTextLastUpdated.innerHTML = `<b>Last Updated:</b> ${formattedDate}`;
+
+    optionTextContainer.appendChild(optionTextLastUpdated);
+
+    baseOption.appendChild(optionTextContainer);
+    
+    baseOption.dataset.balancePresetID = currentPreset["ID"];
+    baseOption.dataset.aliases = currentPreset["Aliases"];
+    baseOption.dataset.name = currentPreset["Name"];
+
+    if (currentBalancingIndex == currentPreset["ID"]) {
+        baseOption.classList.add("league-selected");
+    }
+
+    baseOption = ApplyBalancingOptionEvents(baseOption, presetIndex);
+
+    return baseOption;
+}
+
+/**
+ * Clears and repopulates the balancing select menu with all of the balancing select options.
+ * @param {function} generationCondition Returns true if the element is to be generated, otherwise returns false.
+*/
+function PopulateBalancingSelectMenu() {
+    PopulateBalancingSelectMenuFromSearch("");
+}
+
+function PopulateBalancingSelectMenuFromSearch(searchQuery) {
+    const balanceOptionsContainer = document.getElementById("balancing-select-options-container");
+    const balancingSelectMenu = document.getElementById("balancing-select-menu");
+    
+    RemoveAllBalancingSelectMenuChildren();
+
+    for (let i = 0; i < BalancePresets.length; i++) {
+        const currentID = BalancePresets[i]["ID"];
+
+        if (currentID == currentBalancingIndex) {
+            continue;
+        }
+
+        if (!GetBalanceSelectOptionVisibilityInSearch(currentID, searchQuery)) {
+            continue;
+        }
+
+        let newOption = GenerateBalancingSelectOption(i);
+        if (balancingSelectMenu.dataset.proposedPresetID != undefined) {
+            const proposedID = balancingSelectMenu.dataset.proposedPresetID;
+
+            if (!isNaN(proposedID)) { // If the ID is a number
+                if (currentID == proposedID) {
+                    newOption.classList.add("proposed-league-selection");
+                }
+            } else {
+                delete balancingSelectMenu.dataset.proposedPresetID;
+            }
+        }
+
+        balanceOptionsContainer.appendChild(newOption);
+    }
+}
+
+function RemoveAllBalancingSelectMenuChildren() {
+    const balanceOptionsContainer = document.getElementById("balancing-select-options-container");
+
+    balanceOptionsContainer.innerHTML = ""; // Clear the container
 }

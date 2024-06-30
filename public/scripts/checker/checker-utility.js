@@ -1317,3 +1317,61 @@ function GenerateImageFromButtonPress() {
         ExportData: exportData
     }));
 }
+
+/**
+ * Returns true or false depending on whether or not the option should be visible when searched with query.
+ * @param {Number} presetID 
+ * @param {String} query 
+ * @returns {Boolean}
+ */
+function GetBalanceSelectOptionVisibilityInSearch(presetID, query) {
+    /**
+     * Does the name include the query? True.
+     * Loop through every alias.
+     *      Does this alias include the query? True.
+     * Are we searching for specifically an ID? (isNumber?)
+     * 
+     * False.
+     */
+
+    const currentPreset = GetBalancePresetByID(presetID);
+
+    if (currentPreset == undefined) { return false; }
+
+    const name = currentPreset["Name"];
+    const aliases = currentPreset["Aliases"];
+    let splitAliases = undefined;
+
+    
+    if (aliases != undefined) {
+        try {
+            splitAliases = aliases.split(",");
+        } catch {
+            console.error("Aliases value was undefined! This has been handled appropriately!");
+        }
+    }
+
+    if (name.includes(query)) {
+        return true;
+    }
+
+    if (splitAliases != undefined) {
+        for (let i = 0; i < splitAliases.length; i++) {
+            const alias = splitAliases[i];
+
+            if (alias.includes(query)) {
+                return true;
+            }
+        }
+    }
+
+    if (!isNaN(query)) { // If the query is numeric
+        const queryNum = Math.round(parseFloat(query));
+
+        if (queryNum == presetID) {
+            return true;
+        }
+    }
+
+    return false;
+}

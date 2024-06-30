@@ -241,12 +241,8 @@ html
             div#settings-blur(class="background-blur")
                 div#settings-menu
                     h1 Settings Menu
-                    label#balance-mode-label(for="balancing-select") Balancing Mode: 
-                    select#balancing-select
+                    button#balancing-select-button Select a Preset...
                     br
-                    div#balance-type-box
-                        img#balance-type-icon(src="iconography/BalancingTypes/Automated.webp")
-                        p#balance-type-text This balancing is [X]. This means it is/isn't managed by the league associated with it and is/isn't managed by the developers of Balanced by Daylight.
                     label(for="custom-balancing-checkbox") Enable Custom Balancing?
                     input#custom-balancing-checkbox(type="checkbox")
                     br
@@ -271,7 +267,7 @@ html
                     div#settings-button-container
                         button#settings-clear-storage-button Clear Settings
                         button#settings-cancel-button Close
-        div#balancing-select-container()
+        div#balancing-select-container(hidden="hidden")
             div#balancing-select-blur(class="background-blur")
                 div#balancing-select-menu
                     h1#balancing-select-title Balancing Select
