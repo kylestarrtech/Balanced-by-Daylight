@@ -26,6 +26,12 @@ function SetBalancingSelectButtonEvents() {
     openButton.addEventListener("click", function() {
         balancingSelectContainer.hidden = false;
 
+        let balancingSelectMenu = document.getElementById("balancing-select-menu");
+        delete balancingSelectMenu.dataset.proposedPresetID;
+
+        let closeButton = document.getElementById("balancing-select-close-button");
+        closeButton.innerText = "Cancel";
+
         let balanceSubtitleText = document.getElementById("balancing-select-subtitle");
         const currentBalanceName = GetBalancePresetByID(currentBalancingIndex)["Name"];
 
