@@ -357,7 +357,7 @@ function LoadImportEvents() {
             ScrollToSelectedKiller();
         } catch (error) {
             GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
-            console.trace();
+            console.error("Error importing loadout!");
         }
     });
 
