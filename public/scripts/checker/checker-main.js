@@ -4,10 +4,6 @@ function main() {
     // Get config
     GetConfig();
 
-    if (Config.multiplayerEnabled) {
-        socket = io();
-    }
-
     // Initialize Survivor Perks
     for (var i = 0; i < SurvivorPerks.length; i++) {
         SurvivorPerks[i] = [
@@ -51,9 +47,6 @@ function main() {
 
     UpdateRoleSwapIcon();
 
-    // Load data
-    GetBalancings();
-
     // Update Perk Page
     UpdatePerkUI();
 
@@ -67,13 +60,22 @@ function main() {
     LoadButtonEvents();
 
     // Update balancing dropdown
-    UpdateBalancingDropdown();
+    SetBalancingSelectButtonEvents();
 
     // Set current balancing
 
     // Sets balancing to either local storage or default, in this case we're doing local storage since it's default balancing.
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
+
+    TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
+        function() {
+            TrySetCurrentBalancing();
+        },
+        function() {
+            console.error("Could not set balancing!");
+        }
+    );
 
     let loadDefaultBalance = true;
     // Load custom balancing if enabled
@@ -108,7 +110,8 @@ function main() {
             
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
         }
-        currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
+        //currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
+        TrySetCurrentBalancing();
     }
 
     // Update Balancing Selection UI
@@ -129,12 +132,6 @@ function main() {
     // Update the custom balance text area to show the current custom balancing
     if (customBalanceOverride) {
         document.getElementById("custom-balance-select").value = JSON.stringify(currentBalancing, null, 4);
-        
-        // Hide the balancing select dropdown
-        document.getElementById("balancing-select").hidden = true;
-        document.getElementById("balance-mode-label").hidden = true;
-
-        document.getElementById("balance-type-box").style.display = "none";
 
         // Show the custom balancing text area
         document.getElementById("custom-balance-select").hidden = false;

@@ -7,30 +7,69 @@ Purpose:
     Please see the method mapper for more information.
 */
 
-/**
- * Updates the settings balancing dropdown and also adds the change event to it.
- * 
- * TODO: See Github Issue #40 (https://github.com/kylestarrtech/DBD-Balance-Checker/issues/40)
- */
-function UpdateBalancingDropdown() {
-    var balancingDropdown = document.getElementById("balancing-select");
+function SetBalancingSelectButtonEvents() {
+    const openButton = document.getElementById("balancing-select-button");
 
-    balancingDropdown.innerHTML = "";
+    const balancingSelectContainer = document.getElementById("balancing-select-container");
+    
+    let balanceSearchInput = document.getElementById("balancing-select-search-input");
+    
+    balanceSearchInput.addEventListener("input", function() {
+        let searchQuery = balanceSearchInput.value;
 
-    for (var i = 0; i < BalancePresets.length; i++) {
-        let currentPreset = BalancePresets[i];
+        let optionsContainer = document.getElementById("balancing-select-options-container");
+        let balanceOptions = optionsContainer.children;
 
-        let optionElement = document.createElement("option");
-        optionElement.innerText = currentPreset["Name"];
-        optionElement.value = currentPreset["ID"];
+        PopulateBalancingSelectMenuFromSearch(searchQuery.toLowerCase());
+    });
 
-        balancingDropdown.appendChild(optionElement);
-    }
-    balancingDropdown.value = currentBalancingIndex;
+    openButton.addEventListener("click", function() {
+        balancingSelectContainer.hidden = false;
 
-    balancingDropdown.addEventListener("change", function() {
-        currentBalancingIndex = parseInt(balancingDropdown.value);
+        let balancingSelectMenu = document.getElementById("balancing-select-menu");
+        delete balancingSelectMenu.dataset.proposedPresetID;
+
+        let closeButton = document.getElementById("balancing-select-close-button");
+        closeButton.innerText = "Cancel";
+
+        let balanceSubtitleText = document.getElementById("balancing-select-subtitle");
+        const currentBalanceName = GetBalancePresetByID(currentBalancingIndex)["Name"];
+
+        balanceSubtitleText.innerHTML = `Current Preset: <b><u>${currentBalanceName}</u></b><br>` +
+            `Select your desired balancing preset from the options below:`;
+
+        PopulateBalancingSelectMenu();
+
+        balanceSearchInput.value = "";
+        balanceSearchInput.focus();
+    })
+
+    const closeButton = document.getElementById("balancing-select-close-button");
+
+    closeButton.addEventListener("click", function() {
+        balancingSelectContainer.hidden = true;
+
+        RemoveAllBalancingSelectMenuChildren();
+        
+        let balancingSelectMenu = document.getElementById("balancing-select-menu");
+        let proposedPresetID = balancingSelectMenu.dataset.proposedPresetID;
+
+        if (proposedPresetID == undefined) { return; }
+
+        let settingsMenu = document.getElementById("settings-menu");
+        settingsMenu.dataset.balancingHasChanged = "true";
+
+        currentBalancingIndex = proposedPresetID
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+
+        TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
+            function() {
+                TrySetCurrentBalancing();
+            },
+            function() {
+                console.error("Could not set balancing!")
+            }
+        );
 
         if (!ValidateCustomBalancing(GetBalancePresetByID(currentBalancingIndex)["Balancing"])) {
             GenerateAlertModal(
@@ -38,7 +77,6 @@ function UpdateBalancingDropdown() {
                 "This default balance profile is invalid, selecting the default balance profile. Please report this to the GitHub issues page or the Discord server.",
                 function() {
                     currentBalancingIndex = 0;
-                    balancingDropdown.value = currentBalancingIndex;
                     localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
                     
                     alert("Balance profile reset to default. Close this alert to continue.");
@@ -49,49 +87,33 @@ function UpdateBalancingDropdown() {
             )
         }
         currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
-
-        UpdateBalanceSelectionUI();
     });
 
-    // var customBalancingContainer = document.getElementById("custom-balance-select");
-    // if (currentBalancingIndex == -1) {
-    //     // Show custom balancing
-    //     customBalancingContainer.hidden = false;
-    // } else {
-    //     // Hide custom balancing
-    //     customBalancingContainer.hidden = true;
-    // }
-
-    var customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
+    let customBalanceCheckbox = document.getElementById("custom-balancing-checkbox");
 
     customBalanceCheckbox.addEventListener("change", function() {
         customBalanceOverride = customBalanceCheckbox.checked;
         localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
-        var customBalancingContainer = document.getElementById("custom-balance-select");
-        var customBalanceLabel = document.getElementById("balance-mode-label");
-        var customBalanceDropdown = document.getElementById("balancing-select");
-
-        var balanceTypeBox = document.getElementById("balance-type-box");
+        let customBalancingContainer = document.getElementById("custom-balance-select");
+        let selectPresetButton = document.getElementById("balancing-select-button");
 
         if (customBalanceOverride) {
             // Show custom balancing
+            selectPresetButton.hidden = true;
+            
             customBalancingContainer.hidden = false;
-            customBalanceDropdown.hidden = true;
-            customBalanceLabel.hidden = true;
-
-            balanceTypeBox.style.display = "none";
         } else {
             // Hide custom balancing
+            selectPresetButton.hidden = false;
+
             customBalancingContainer.hidden = true;
-            customBalanceDropdown.hidden = false;
-            customBalanceLabel.hidden = false;
-
-            balanceTypeBox.style.display = "";
-            SetBalanceTypeDisclaimer();
-
             customBalancingContainer.innerHTML = "";
         }
+
+        let settingsMenu = document.getElementById("settings-menu");
+        settingsMenu.dataset.balancingHasChanged = "true";
+        settingsMenu.dataset.setCustomBalanceOverride = customBalanceOverride;
     });
 }
 
@@ -329,7 +351,6 @@ function LoadImportEvents() {
 
             // Update UI
             UpdatePerkUI();
-            UpdateBalancingDropdown();
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
             UpdateBalanceSelectionUI();
@@ -449,23 +470,23 @@ function SetKillerCharacterSelectEvents() {
  */
 function LoadSettingsEvents() {
     // Load settings button
-    var settingsButton = document.getElementById("settings-button");
+    let settingsButton = document.getElementById("settings-button");
     settingsButton.addEventListener("click", function() {
         var settingsContainer = document.getElementById("settings-container");
         settingsContainer.hidden = !settingsContainer.hidden;
         
-        var settingsBlur = document.getElementById("settings-blur");
+        let settingsBlur = document.getElementById("settings-blur");
         settingsBlur.classList.remove("background-blur");
         settingsBlur.classList.remove("background-outro-blur");
         settingsBlur.classList.add("background-blur");
 
-        var settingsMenu = document.getElementById("settings-menu");
+        let settingsMenu = document.getElementById("settings-menu");
         settingsMenu.classList.remove("intro-blur-animation-class-1p0s");
         settingsMenu.classList.remove("outro-blur-animation-class-0p5s");
         settingsMenu.classList.add("intro-blur-animation-class-1p0s");
     });
 
-    var settingsCancelButton = document.getElementById("settings-cancel-button");
+    let settingsCancelButton = document.getElementById("settings-cancel-button");
     settingsCancelButton.addEventListener("click", function() {
 
         if (customBalanceOverride) {
@@ -475,11 +496,7 @@ function LoadSettingsEvents() {
             localStorage.setItem("currentBalancing", JSON.stringify(currentBalancing));
 
             //currentBalancingIndex = -1;
-        } else {
-            currentBalancingIndex = parseInt(document.getElementById("balancing-select").value);
-            currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
         }
-        localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
         var settingsMenu = document.getElementById("settings-menu");
         settingsMenu.classList.remove("outro-blur-animation-class-0p5s");
@@ -495,7 +512,23 @@ function LoadSettingsEvents() {
             settingsContainer.hidden = !settingsContainer.hidden;
         }, 500);
 
-        UpdateBalanceSelectionUI();
+        if (settingsMenu.dataset.balancingHasChanged === "true") {
+            UpdateBalanceSelectionUI();
+            delete settingsMenu.dataset.balancingHasChanged;
+        }
+
+        if (settingsMenu.dataset.setCustomBalanceOverride === "false") {
+            TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
+                function() {
+                    TrySetCurrentBalancing();
+                    UpdateBalanceSelectionUI();
+                },
+                function() {
+                    console.error("Could not set balancing!")
+                }
+            );
+        }
+        delete settingsMenu.dataset.setCustomBalanceOverride;
 
         CheckForBalancingErrors();
     });
@@ -828,4 +861,46 @@ function LoadPerkSearchEvents() {
                 break;
         }
     });
+}
+
+/**
+ * Applies the related selection events to the option node.
+ * 
+ * It then returns the updated node (as JS is pass-by-value (unfortunately))
+ * @param {Node} optionNode The node to have the events applied to.
+ * @param {Number} presetIndex The index of the balance preset in the BalancePresets array.
+ */
+function ApplyBalancingOptionEvents(optionNode, presetIndex) {
+    if (optionNode == undefined) { return null; }
+
+    optionNode.addEventListener("click", function() {
+        /*
+        1. Set balancing select menu dataset's proposed new ID to the preset ID.
+        2. Go through all existing balancing options and remove the "proposed-league-selection" class.
+        3. Add the "proposed-league-selection" class to this option.
+        */
+        let balancingSelectMenu = document.getElementById("balancing-select-menu");
+        let closeButton = document.getElementById("balancing-select-close-button");
+
+        if (optionNode.dataset.balancePresetID == balancingSelectMenu.dataset.proposedPresetID) {
+            delete balancingSelectMenu.dataset.proposedPresetID;
+            optionNode.classList.remove("proposed-league-selection");
+            
+            closeButton.innerText = "Cancel";
+            return;
+        }
+
+        const optionsContainer = document.getElementById("balancing-select-options-container");
+        for (let child of optionsContainer.children) {
+            child.classList.remove("proposed-league-selection");
+        }
+
+        balancingSelectMenu.dataset.proposedPresetID = optionNode.dataset.balancePresetID;
+
+        optionNode.classList.add("proposed-league-selection");
+
+        closeButton.innerText = "Confirm Changes";
+    });
+
+    return optionNode;
 }

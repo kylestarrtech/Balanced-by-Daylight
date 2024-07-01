@@ -18,7 +18,7 @@ html
         script(src="/scripts/checker/checker-main.js", type="text/javascript", defer="defer")
 
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    body(onload="main()")
+    body(onload="BeginResourceChain()")
         div#primary-balance-container
             div#balance-tabs-container
                 div#role-swap-button(class="tier-selector-button")
@@ -212,41 +212,13 @@ html
                 div#perk-search-results-module(class="override-scrollbar")
                     div.perk-slot-result
                         img(src="public/Perks/Survivors/Adrenaline.webp")
-                    div.perk-slot-result
-                        img(src="public/Perks/Survivors/Adrenaline.webp")
-                    div.perk-slot-result
-                        img(src="public/Perks/Survivors/Adrenaline.webp")
-                    div.perk-slot-result
-                        img(src="public/Perks/Survivors/Adrenaline.webp")
-                    div.perk-slot-result
-                        img(src="public/Perks/Survivors/Adrenaline.webp")
-                    div.perk-slot-result
-                        img(src="public/Perks/Survivors/Adrenaline.webp")
-                    div.perk-slot-result
-                        img(src="public/Perks/Survivors/Adrenaline.webp")
                 h3#perk-highlight-name Select a Perk...
-        div#room-container(hidden="hidden")
-            div#room-blur(class="background-blur")
-                div#room-menu
-                    h1 Room Menu
-                    h2 Room Code: {ROOM CODE}
-                    p You can share this code with your friends to create builds together!
-                    input#room-code-input(type="text", placeholder="Enter Room Code...")
-                    button#join-room-button Join Room
-                    br
-                    button#leave-room-button Leave Room
-                    br
-                    button#close-room-button Close
         div#settings-container(hidden="hidden")
             div#settings-blur(class="background-blur")
                 div#settings-menu
                     h1 Settings Menu
-                    label#balance-mode-label(for="balancing-select") Balancing Mode: 
-                    select#balancing-select
+                    button#balancing-select-button Select a Preset...
                     br
-                    div#balance-type-box
-                        img#balance-type-icon(src="iconography/BalancingTypes/Automated.webp")
-                        p#balance-type-text This balancing is [X]. This means it is/isn't managed by the league associated with it and is/isn't managed by the developers of Balanced by Daylight.
                     label(for="custom-balancing-checkbox") Enable Custom Balancing?
                     input#custom-balancing-checkbox(type="checkbox")
                     br
@@ -271,6 +243,14 @@ html
                     div#settings-button-container
                         button#settings-clear-storage-button Clear Settings
                         button#settings-cancel-button Close
+        div#balancing-select-container(hidden="hidden")
+            div#balancing-select-blur(class="background-blur")
+                div#balancing-select-menu
+                    h1#balancing-select-title Balancing Select
+                    p#balancing-select-subtitle Select your desired balancing preset from the options below:
+                    input#balancing-select-search-input(type="search" placeholder="Search for Balancing Presets...")
+                    div#balancing-select-options-container
+                    button#balancing-select-close-button Cancel
         div#image-gen-container(hidden="hidden")
             div#image-gen-blur(class="background-blur")
                 div#image-gen-menu

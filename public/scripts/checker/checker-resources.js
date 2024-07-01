@@ -5,6 +5,10 @@ Purpose:
     This file is designed to contain all of the methods that are designed to get key resources from the server.
 */
 
+function BeginResourceChain() {
+    GetBalancings();
+}
+
 function GetBalancings() {
     var xhttp = new XMLHttpRequest();
 
@@ -13,6 +17,12 @@ function GetBalancings() {
             switch (this.status) {
                 case 200:
                     BalancePresets = JSON.parse(this.responseText);
+
+                    for (let i = 0; i < BalancePresets.length; i++) {
+                        let currentPreset = BalancePresets[i];
+
+                        currentPreset["Balancing"] = undefined;
+                    }
                 break;
                 default:
                     console.error("Error getting balancings: " + this.status);
@@ -152,39 +162,43 @@ function GetOfferings() {
                 default:
                     console.error("Error getting offerings: " + this.status);
             }
-            GetBalancing();
+            
+            AllDataLoaded = true;
+            main();
         }
     }
     xhttp.open("GET", "Offerings.json", false);
     xhttp.send();
 }
 
-function GetBalancing() {
-    // Subtract one due to customs
-    for (var i = 0; i < BalancePresets.length; i++) {
-        let currentPreset = BalancePresets[i];
+function GetBalancingFromPresetID(presetID, success, error) {
+    let currentPreset = GetBalancePresetByID(presetID);
 
-        var xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                switch (this.status) {
-                    case 200:
-                        DebugLog(`Loaded balancing for ${currentPreset["Name"]}`);
-                        DebugLog(`Balancing string: ${this.responseText}`);
-                        DebugLog(JSON.parse(this.responseText));
-                        currentPreset["Balancing"] = JSON.parse(this.responseText);
-                    break;
-                    default:
-                        console.error("Error getting balancing: " + this.status);
-                }
-            }
-        }
-        xhttp.open("GET", currentPreset["Path"], false);
-        xhttp.send();
+    if (currentPreset["Balancing"] !== undefined) {
+        success();
+        return;
     }
 
-    AllDataLoaded = true;
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    DebugLog(`Loaded balancing for ${currentPreset["Name"]}`);
+                    DebugLog(`Balancing string: ${this.responseText}`);
+                    DebugLog(JSON.parse(this.responseText));
+                    currentPreset["Balancing"] = JSON.parse(this.responseText);
+                    success();
+                break;
+                default:
+                    console.error("Error getting balancing: " + this.status);
+                    error();
+            }
+        }
+    }
+    xhttp.open("GET", currentPreset["Path"], false);
+    xhttp.send();
 }
 
 function GetConfig() {

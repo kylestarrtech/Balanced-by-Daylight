@@ -1317,3 +1317,116 @@ function GenerateImageFromButtonPress() {
         ExportData: exportData
     }));
 }
+
+/**
+ * Returns true or false depending on whether or not the option should be visible when searched with query.
+ * @param {Number} presetID 
+ * @param {String} query 
+ * @param {Boolean} showIfProposed Whether to ignore queries and return true if the current preset ID is the same as the proposed one.
+ * @returns {Boolean}
+ */
+function GetBalanceSelectOptionVisibilityInSearch(presetID, query, showIfProposed = true) {
+    /**
+     * Does the name include the query? True.
+     * Loop through every alias.
+     *      Does this alias include the query? True.
+     * Are we searching for specifically an ID? (isNumber?)
+     * 
+     * False.
+     */
+
+    const currentPreset = GetBalancePresetByID(presetID);
+
+    if (currentPreset == undefined) { return false; }
+
+    const name = currentPreset["Name"].toLowerCase();
+    const aliases = currentPreset["Aliases"];
+    let splitAliases = undefined;
+
+    if (showIfProposed) {
+        let currentBalancingMenu = document.getElementById("balancing-select-menu");
+        let proposedID = parseInt(currentBalancingMenu.dataset.proposedPresetID);
+
+        if (!isNaN(proposedID)) {
+            if (proposedID === presetID) {
+                return true;
+            }
+        }
+    }
+    
+    if (aliases != undefined) {
+        try {
+            splitAliases = aliases.split(",");
+        } catch {
+            console.error("Aliases value was undefined! This has been handled appropriately!");
+        }
+    }
+
+    if (name.includes(query)) {
+        return true;
+    }
+
+    if (splitAliases != undefined) {
+        for (let i = 0; i < splitAliases.length; i++) {
+            const alias = splitAliases[i].toLowerCase();
+
+            if (alias.includes(query)) {
+                return true;
+            }
+        }
+    }
+
+    if (!isNaN(query)) { // If the query is numeric
+        const queryNum = Math.round(parseFloat(query));
+
+        if (queryNum == presetID) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Attempts to populate the balancing property of a balance preset from its preset ID.
+ * @param {Number} presetID 
+ * @param {function} success The code that should run once a result has been reached.
+ * @param {function} error The code that should run if this fails.
+ */
+function TryLoadBalanceProfileFromPresetID(presetID, success, error) {
+    let preset = GetBalancePresetByID(presetID);
+
+    if (preset["Balancing"] !== undefined) {
+        success();
+        return;
+    }
+
+    GetBalancingFromPresetID(presetID, function() {
+        success();
+    },
+    function() {
+        error();
+    });
+}
+
+/**
+ * Attempts to set the currentBalancing variable via the currentBalancingIndex.
+ */
+function TrySetCurrentBalancing() {
+    let currentPreset = GetBalancePresetByID(currentBalancingIndex);
+
+    if (currentPreset["Balancing"] === undefined) {
+        console.error(`Balancing is undefined for preset "${currentPreset["Name"]}"!`);
+        TryLoadBalanceProfileFromPresetID(currentBalancing,
+            function() {
+                console.log("Successfully retrieved balancing!")
+            }, function() {
+                console.error("Could not load balance preset resource!");
+            }
+        )
+
+        return;
+    }
+
+    currentBalancing = currentPreset["Balancing"];
+}
