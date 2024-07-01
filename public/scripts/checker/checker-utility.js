@@ -1430,3 +1430,215 @@ function TrySetCurrentBalancing() {
 
     currentBalancing = currentPreset["Balancing"];
 }
+
+function GetLoadoutFromImportCode(importCode) {
+    const compressedDataDecoded = atob(importCode);
+    const inflate = pako.inflate(new Uint8Array([...compressedDataDecoded].map(char => char.charCodeAt(0))));
+    const decompressedText = new TextDecoder().decode(inflate);
+    
+    let importDataObj = JSON.parse(decompressedText);
+
+    DebugLog(importDataObj);
+
+    // Is there a valid balancing index?
+    if (importDataObj.currentBalancingIndex == undefined) {
+        throw "Invalid import data. Current balancing index is undefined.";
+    }
+
+    // Is there a valid selected killer?
+    if (importDataObj.selectedKiller == undefined) {
+        throw "Invalid import data. Selected killer is undefined.";
+    }
+
+    // Is custom balancing enabled?
+    if (importDataObj.customBalanceOverride == undefined) {
+        throw "Invalid import data. Custom balancing is undefined.";
+    }
+
+    if (importDataObj.customBalanceOverride) {
+        // Check if current balancing is valid
+        let currentBalance = importDataObj.currentBalancing;
+        if (!ValidateCustomBalancing(currentBalance)) {
+            throw "Invalid import data. Current balancing is invalid.";
+        }
+        currentBalancing = importDataObj.currentBalancing;
+    }else{
+        currentBalancing = GetBalancePresetByID(importDataObj.currentBalancingIndex)["Balancing"];
+    }
+
+    // Check if importData.survivorPerksId is a valid array
+    if (importDataObj.survivorPerksId == undefined) {
+        throw "Invalid import data. SurvivorPerks is undefined.";
+    }
+    if (importDataObj.survivorPerksId.length != 4) {
+        throw "Invalid import data. SurvivorPerks length is not 4.";
+    }
+
+    // survCpt is the current survivor we're on
+    let survCpt = 0
+
+    // perkCpt is the current perk we're on
+    let perkCpt = 0
+
+    ClearSurvivorPerks();
+
+    for(const currentSurvivor of importDataObj.survivorPerksId){
+        if (currentSurvivor.length != 4) {
+            throw "Invalid import data. SurvivorPerks length is not 4.";
+        }
+        
+        for(const currentPerkId of currentSurvivor){
+            if (currentPerkId == null) {
+                perkCpt++
+                continue;
+            }
+
+            SurvivorPerks[survCpt][perkCpt] = GetPerkById(currentPerkId)
+
+            perkCpt++
+        }
+        perkCpt = 0
+        survCpt++
+    }
+
+    survCpt = 0
+    for(const offeringId of importDataObj.survivorOfferingsId){
+        SurvivorOfferings[survCpt] = GetOfferingById(offeringId)
+        survCpt++
+    }
+
+    survCpt = 0
+    for(const itemId of importDataObj.survivorItemsId){
+        SurvivorItems[survCpt] = GetItemById(itemId)
+        survCpt++
+    }
+
+    survCpt = 0
+    /*
+    AddonInfo = 
+    [Addon1, Addon2] - Array(int)
+    ItemType - String
+    */
+    for(const addonInfo of importDataObj.survivorAddonInfo){
+        DebugLog(addonInfo);
+        SurvivorAddons[survCpt] = [GetAddonById(addonInfo[1], addonInfo[0][0]), GetAddonById(addonInfo[1], addonInfo[0][1])];
+        survCpt++;
+    }
+
+    let updateKillerPerks = importDataObj.killerPerksId != undefined;
+    // Check if importData.killerPerksId is a valid array
+    if (importDataObj.killerPerksId == undefined) {
+        //throw "Invalid import data. KillerPerks is undefined.";
+    }
+
+    if (updateKillerPerks) {
+        ClearKillerPerks();
+
+        perkCpt = 0
+        for(const currentPerkId of importDataObj.killerPerksId){
+            if (currentPerkId == null) {
+                perkCpt++
+                continue;
+            }
+            KillerPerks[perkCpt] = GetPerkById(currentPerkId);
+
+            perkCpt++
+        }
+
+    }
+    
+    KillerOffering = GetOfferingById(importDataObj.killerOfferingId);
+
+    let updateKillerAddons = importDataObj.killerAddonsId != undefined;
+    // Check if importData.killerAddonsId is a valid array
+    if (importDataObj.killerAddonsId == undefined) {
+        //throw "Invalid import data. KillerAddons is undefined.";
+    }
+
+    if (updateKillerAddons) {
+        ClearKillerAddons();
+
+        let addonCpt = 0
+        for(const currentAddonId of importDataObj.killerAddonsId){
+            if (currentAddonId == null) {
+                addonCpt++
+                continue;
+            }
+            KillerAddons[addonCpt] = GetKillerAddonById(currentAddonId);
+
+            addonCpt++
+        }
+    }
+
+    // If all checks pass, set the remaining data
+    currentBalancingIndex = importDataObj.currentBalancingIndex;
+    selectedKiller = importDataObj.selectedKiller;
+    customBalanceOverride = importDataObj.customBalanceOverride;
+
+    if (Config.saveBuilds && saveLoadoutsAndKiller) {
+        localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+        localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+        localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+        localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+        
+        localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
+        localStorage.setItem("KillerOffering", JSON.stringify(KillerOffering));
+        localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
+        
+        localStorage.setItem("selectedKiller", selectedKiller);
+    }
+    localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+    localStorage.setItem("customBalanceOverride", customBalanceOverride);
+
+    TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
+        function() {
+            TrySetCurrentBalancing();
+            UpdateBalanceSelectionUI();
+        },
+        function() {
+            console.error("Could not set balancing!")
+        }
+    );
+
+    // Update UI
+    UpdatePerkUI();
+    CheckForBalancingErrors();
+    UpdateKillerSelectionUI();
+    UpdateBalanceSelectionUI();
+    ScrollToSelectedKiller();
+}
+
+function AttemptApplyURLImport() {
+    // Get URL parameters
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+
+    const importCode = params.get("loadout");
+    console.log(`Sent import code: ${importCode}`);
+
+    if (importCode != undefined) {
+        if (importCode.length >= maxImportURLLength) {
+            GenerateAlertModal(
+                "An Error Occurred",
+                `Unfortunately, the import code shared with you was greater than its maximum allowed length of ${maxImportURLLength} characters. Therefore, this code cannot be imported automatically.<br>Please use the traditional import process.`
+            );
+            ClearURLParams();
+            return;
+        }
+        console.log(`Importing data from URL (${importCode.length} / ${maxImportURLLength})...`);
+        
+        try {
+            GetLoadoutFromImportCode(importCode);
+        } catch (error) {
+            console.error(error);
+            GenerateAlertModal("An Error Occurred", `An error occurred while attempting to quick import the loadout.<br><br><b>${error}</b>`);
+        }
+
+        ClearURLParams();
+    }
+}
+
+function ClearURLParams() {
+    // Clear URL parameters
+    window.history.replaceState({}, document.title, window.location.pathname);
+}

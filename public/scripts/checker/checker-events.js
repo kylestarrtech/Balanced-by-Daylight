@@ -190,199 +190,64 @@ function LoadImportEvents() {
             return;
         }
 
-        try {
-            const compressedDataDecoded = atob(importData);
-            const inflate = pako.inflate(new Uint8Array([...compressedDataDecoded].map(char => char.charCodeAt(0))));
-            const decompressedText = new TextDecoder().decode(inflate);
-            
-            let importDataObj = JSON.parse(decompressedText);
-
-            DebugLog(importDataObj);
-
-            // Is there a valid balancing index?
-            if (importDataObj.currentBalancingIndex == undefined) {
-                throw "Invalid import data. Current balancing index is undefined.";
-            }
-
-            // Is there a valid selected killer?
-            if (importDataObj.selectedKiller == undefined) {
-                throw "Invalid import data. Selected killer is undefined.";
-            }
-
-            // Is custom balancing enabled?
-            if (importDataObj.customBalanceOverride == undefined) {
-                throw "Invalid import data. Custom balancing is undefined.";
-            }
-
-            if (importDataObj.customBalanceOverride) {
-                // Check if current balancing is valid
-                let currentBalance = importDataObj.currentBalancing;
-                if (!ValidateCustomBalancing(currentBalance)) {
-                    throw "Invalid import data. Current balancing is invalid.";
-                }
-                currentBalancing = importDataObj.currentBalancing;
-            }else{
-                currentBalancing = GetBalancePresetByID(importDataObj.currentBalancingIndex)["Balancing"];
-            }
-
-            // Check if importData.survivorPerksId is a valid array
-            if (importDataObj.survivorPerksId == undefined) {
-                throw "Invalid import data. SurvivorPerks is undefined.";
-            }
-            if (importDataObj.survivorPerksId.length != 4) {
-                throw "Invalid import data. SurvivorPerks length is not 4.";
-            }
-
-            // survCpt is the current survivor we're on
-            let survCpt = 0
-
-            // perkCpt is the current perk we're on
-            let perkCpt = 0
-
-            ClearSurvivorPerks();
-
-            for(const currentSurvivor of importDataObj.survivorPerksId){
-                if (currentSurvivor.length != 4) {
-                    throw "Invalid import data. SurvivorPerks length is not 4.";
-                }
-                
-                for(const currentPerkId of currentSurvivor){
-                    if (currentPerkId == null) {
-                        perkCpt++
-                        continue;
-                    }
-
-                    SurvivorPerks[survCpt][perkCpt] = GetPerkById(currentPerkId)
-
-                    perkCpt++
-                }
-                perkCpt = 0
-                survCpt++
-            }
-
-            survCpt = 0
-            for(const offeringId of importDataObj.survivorOfferingsId){
-                SurvivorOfferings[survCpt] = GetOfferingById(offeringId)
-                survCpt++
-            }
-
-            survCpt = 0
-            for(const itemId of importDataObj.survivorItemsId){
-                SurvivorItems[survCpt] = GetItemById(itemId)
-                survCpt++
-            }
-
-            survCpt = 0
-            /*
-            AddonInfo = 
-            [Addon1, Addon2] - Array(int)
-            ItemType - String
-            */
-            for(const addonInfo of importDataObj.survivorAddonInfo){
-                DebugLog(addonInfo);
-                SurvivorAddons[survCpt] = [GetAddonById(addonInfo[1], addonInfo[0][0]), GetAddonById(addonInfo[1], addonInfo[0][1])];
-                survCpt++;
-            }
-
-            let updateKillerPerks = importDataObj.killerPerksId != undefined;
-            // Check if importData.killerPerksId is a valid array
-            if (importDataObj.killerPerksId == undefined) {
-                //throw "Invalid import data. KillerPerks is undefined.";
-            }
-
-            if (updateKillerPerks) {
-                ClearKillerPerks();
-    
-                perkCpt = 0
-                for(const currentPerkId of importDataObj.killerPerksId){
-                    if (currentPerkId == null) {
-                        perkCpt++
-                        continue;
-                    }
-                    KillerPerks[perkCpt] = GetPerkById(currentPerkId);
-    
-                    perkCpt++
-                }
-    
-            }
-            
-            KillerOffering = GetOfferingById(importDataObj.killerOfferingId);
-
-            let updateKillerAddons = importDataObj.killerAddonsId != undefined;
-            // Check if importData.killerAddonsId is a valid array
-            if (importDataObj.killerAddonsId == undefined) {
-                //throw "Invalid import data. KillerAddons is undefined.";
-            }
-
-            if (updateKillerAddons) {
-                ClearKillerAddons();
-
-                let addonCpt = 0
-                for(const currentAddonId of importDataObj.killerAddonsId){
-                    if (currentAddonId == null) {
-                        addonCpt++
-                        continue;
-                    }
-                    KillerAddons[addonCpt] = GetKillerAddonById(currentAddonId);
-
-                    addonCpt++
-                }
-            }
-
-            // If all checks pass, set the remaining data
-            currentBalancingIndex = importDataObj.currentBalancingIndex;
-            selectedKiller = importDataObj.selectedKiller;
-            customBalanceOverride = importDataObj.customBalanceOverride;
-
-            if (Config.saveBuilds && saveLoadoutsAndKiller) {
-                localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
-                localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
-                localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
-                localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
-                
-                localStorage.setItem("KillerPerks", JSON.stringify(KillerPerks));
-                localStorage.setItem("KillerOffering", JSON.stringify(KillerOffering));
-                localStorage.setItem("KillerAddons", JSON.stringify(KillerAddons));
-                
-                localStorage.setItem("selectedKiller", selectedKiller);
-            }
-            localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
-            localStorage.setItem("customBalanceOverride", customBalanceOverride);
-
-            // Update UI
-            UpdatePerkUI();
-            CheckForBalancingErrors();
-            UpdateKillerSelectionUI();
-            UpdateBalanceSelectionUI();
-            ScrollToSelectedKiller();
-        } catch (error) {
-            GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
-            console.error("Error importing loadout!");
-        }
+        GetLoadoutFromImportCode(importData);
+        // try {
+        //     GetLoadoutFromImportCode(importData);
+        // } catch (error) {
+        //     GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
+        //     console.error("Error importing loadout!");
+        // }
     });
 
     exportButton.addEventListener("click", function() {
-        let compressedText = GetExportData();
+        const compressedText = GetExportData();
 
-        // Ask user if they'd like to copy to clipboard. If yes, copy to clipboard. If no, return.
-        // if (!confirm("Would you like to copy your build data to your clipboard?")) {
-        //     return;
-        // }
+        let textToCopy = compressedText;
+
+        // Determine whether it is short enough to be a URL encoded.
+        const encodedText = encodeURIComponent(compressedText);
+        let isURL = false;
+        if (encodedText.length < maxImportURLLength) {
+            let url = window.location.href.split("?")[0] + "?loadout=" + encodedText;
+            textToCopy = url;
+
+            isURL = true;
+        }
 
         // Copy exportData to clipboard
         var wasErr = false;
         try {
-            navigator.clipboard.writeText(compressedText);
+            navigator.clipboard.writeText(textToCopy);
         } catch (error) {
             wasErr = true;
         }
 
         if (!wasErr) {
-            GenerateAlertModal("Export and Copy Successful", "Your builds data has been copied to your clipboard!<br><br>Import Data:<br> <b><span class='import-code-preview'>" + compressedText + "</span></b>");
+            if (isURL) {
+                GenerateAlertModal(
+                    "Exported as URL and Copied!",
+                    `Your import code has been copied as a link to your clipboard. Share this link and others can directly import it!<br><br>Import URL:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
+                );
+            } else {
+                GenerateAlertModal(
+                    "Export and Copy Successful",
+                    `Your import code has been copied to your clipboard! It was not exported as a URL due to its length, but you can still import it manually!<br><br>Import Data:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
+                );
+            }
             return;
         }
 
-        GenerateAlertModal("Export Successful", "Your builds data has been exported! <b>Copying to the clipboard was unsuccessful, please copy your import code manually.</b><br><br>Import Data:<br> <b><span class='import-code-preview'>" + compressedText + "</span></b>");
+        if (isURL) {
+            GenerateAlertModal(
+                "Exported as URL",
+                `Your import code has been generated as a URL, but copying to the clipboard was unsuccessful. Please copy the URL manually.<br><br>Import URL:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
+            );
+        } else {
+            GenerateAlertModal(
+                "Export Successful",
+                `Your import code has been exported! Copying to the clipboard was unsuccessful, please copy the import code manually.<br><br>Import Data:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
+            );
+        }
     });
 }
 

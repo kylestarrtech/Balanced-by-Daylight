@@ -137,6 +137,8 @@ function main() {
         document.getElementById("custom-balance-select").hidden = false;
     }
 
+    AttemptApplyURLImport();
+
     CheckForBalancingErrors();
 }
 
