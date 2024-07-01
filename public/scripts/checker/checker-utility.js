@@ -1386,3 +1386,47 @@ function GetBalanceSelectOptionVisibilityInSearch(presetID, query, showIfPropose
 
     return false;
 }
+
+/**
+ * Attempts to populate the balancing property of a balance preset from its preset ID.
+ * @param {Number} presetID 
+ * @param {function} success The code that should run once a result has been reached.
+ * @param {function} error The code that should run if this fails.
+ */
+function TryLoadBalanceProfileFromPresetID(presetID, success, error) {
+    let preset = GetBalancePresetByID(presetID);
+
+    if (preset["Balancing"] !== undefined) {
+        success();
+        return;
+    }
+
+    GetBalancingFromPresetID(presetID, function() {
+        success();
+    },
+    function() {
+        error();
+    });
+}
+
+/**
+ * Attempts to set the currentBalancing variable via the currentBalancingIndex.
+ */
+function TrySetCurrentBalancing() {
+    let currentPreset = GetBalancePresetByID(currentBalancingIndex);
+
+    if (currentPreset["Balancing"] === undefined) {
+        console.error(`Balancing is undefined for preset "${currentPreset["Name"]}"!`);
+        TryLoadBalanceProfileFromPresetID(currentBalancing,
+            function() {
+                console.log("Successfully retrieved balancing!")
+            }, function() {
+                console.error("Could not load balance preset resource!");
+            }
+        )
+
+        return;
+    }
+
+    currentBalancing = currentPreset["Balancing"];
+}

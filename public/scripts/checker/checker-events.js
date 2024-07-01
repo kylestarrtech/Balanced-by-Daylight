@@ -56,13 +56,21 @@ function SetBalancingSelectButtonEvents() {
         currentBalancingIndex = proposedPresetID
         localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
 
+        TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
+            function() {
+                TrySetCurrentBalancing();
+            },
+            function() {
+                console.error("Could not set balancing!")
+            }
+        );
+
         if (!ValidateCustomBalancing(GetBalancePresetByID(currentBalancingIndex)["Balancing"])) {
             GenerateAlertModal(
                 "Error",
                 "This default balance profile is invalid, selecting the default balance profile. Please report this to the GitHub issues page or the Discord server.",
                 function() {
                     currentBalancingIndex = 0;
-                    balancingDropdown.value = currentBalancingIndex;
                     localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
                     
                     alert("Balance profile reset to default. Close this alert to continue.");
@@ -81,29 +89,25 @@ function SetBalancingSelectButtonEvents() {
         customBalanceOverride = customBalanceCheckbox.checked;
         localStorage.setItem("customBalanceOverride", customBalanceOverride);
 
-        var customBalancingContainer = document.getElementById("custom-balance-select");
-        var customBalanceLabel = document.getElementById("balance-mode-label");
-        var customBalanceDropdown = document.getElementById("balancing-select");
-
-        var balanceTypeBox = document.getElementById("balance-type-box");
+        let customBalancingContainer = document.getElementById("custom-balance-select");
+        let selectPresetButton = document.getElementById("balancing-select-button");
 
         if (customBalanceOverride) {
             // Show custom balancing
+            selectPresetButton.hidden = true;
+            
             customBalancingContainer.hidden = false;
-            customBalanceDropdown.hidden = true;
-            customBalanceLabel.hidden = true;
-
-            balanceTypeBox.style.display = "none";
         } else {
             // Hide custom balancing
+            selectPresetButton.hidden = false;
+
             customBalancingContainer.hidden = true;
-            customBalanceDropdown.hidden = false;
-            customBalanceLabel.hidden = false;
-
-            balanceTypeBox.style.display = "";
-
             customBalancingContainer.innerHTML = "";
         }
+
+        let settingsMenu = document.getElementById("settings-menu");
+        settingsMenu.dataset.balancingHasChanged = "true";
+        settingsMenu.dataset.setCustomBalanceOverride = customBalanceOverride;
     });
 }
 
@@ -502,10 +506,23 @@ function LoadSettingsEvents() {
             settingsContainer.hidden = !settingsContainer.hidden;
         }, 500);
 
-        if (settingsMenu.dataset.balancingHasChanged == "true") {
+        if (settingsMenu.dataset.balancingHasChanged === "true") {
             UpdateBalanceSelectionUI();
             delete settingsMenu.dataset.balancingHasChanged;
         }
+
+        if (settingsMenu.dataset.setCustomBalanceOverride === "false") {
+            TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
+                function() {
+                    TrySetCurrentBalancing();
+                    UpdateBalanceSelectionUI();
+                },
+                function() {
+                    console.error("Could not set balancing!")
+                }
+            );
+        }
+        delete settingsMenu.dataset.setCustomBalanceOverride;
 
         CheckForBalancingErrors();
     });

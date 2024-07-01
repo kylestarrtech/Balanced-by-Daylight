@@ -281,39 +281,6 @@ button {
     text-decoration: underline;
 }
 
-#balancing-select {
-
-    background-color: #ffffff00;
-    color: #ffffff;
-    font-weight: 700;
-
-    margin-left: 5px;
-
-    padding: 5px;
-
-    border-radius: 10px;
-    border-color: #ffffff;
-    border-width: 2px;
-    border-style: solid;
-
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-
-    transition: all 0.2s ease-in-out;
-
-    cursor: pointer;
-}
-
-#balancing-select option {
-    color: white;
-    background-color: #16151f;
-    font-weight: 500;
-
-    height: 100%;
-    font-size: 0.9rem;
-}
-
 #main-balance-window {
     text-align: center;
 }
@@ -1230,36 +1197,6 @@ button {
     filter:drop-shadow(0px 0px 2px #000000);
     
     padding: 6px;
-}
-
-#balance-type-box {
-    background-color: #00000040;
-    border-radius: 20px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    align-items: center;
-}
-
-#balance-type-icon {
-    width: 75%;
-    padding-left: 12.5%;
-    padding-right: 12.5%;
-    margin: 0;
-}
-
-#balance-type-text {
-    font-size: 0.75rem;
-
-    height: 100%;
-
-    padding-top: 9px;
-    padding-right: 15px;
-    
-    margin: 0;
-    margin-top: 5px;
 }
 
 #balancing-select-container {
