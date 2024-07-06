@@ -7,6 +7,7 @@ const Offerings = require('../../public/Offerings.json')
 const KillerAddons = require('../../public/NewAddons.json')
 const Maps = require('../../public/NewMaps.json')
 
+const klrNames = Killers.map(killer => killer.Name)
 const perksName = Perks.map(perk => perk.name)
 const mapsName = Maps.map(map => map.Name)
 const killerOfferingsName = Offerings.Killer.map(offering => offering.name)
@@ -114,7 +115,7 @@ module.exports = function(balancingText) {
     }
 
     for(const killer of balancingText.KillerOverride){
-        const similarities = Killers.map(text => ({
+        const similarities = klrNames.map(text => ({
             text: text,
             similarity: natural.JaroWinklerDistance(killer.Name, text)
         }))
@@ -189,7 +190,7 @@ module.exports = function(balancingText) {
     // Sorts based on the original order in the Killers array.
     // Uses a comparison function to sort the array by the index of the killer in the Killers array.
     balancingText.KillerOverride.sort((a, b) => {
-        return Killers.indexOf(a.Name) - Killers.indexOf(b.Name)
+        return klrNames.indexOf(a.Name) - klrNames.indexOf(b.Name)
     });
 
     return balancingText

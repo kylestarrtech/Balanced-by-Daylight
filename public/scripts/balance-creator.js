@@ -602,7 +602,7 @@ function SetKillerOverrideEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -634,7 +634,7 @@ function SetKillerOverrideEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -672,7 +672,7 @@ function SetKillerOverrideEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -775,7 +775,7 @@ function SetKillerOverrideEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -819,7 +819,7 @@ function SetKillerOverrideEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -896,7 +896,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -922,7 +922,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -956,7 +956,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -982,7 +982,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1016,7 +1016,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1042,7 +1042,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1076,7 +1076,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1102,7 +1102,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1137,7 +1137,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1161,7 +1161,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1185,7 +1185,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1209,7 +1209,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < Killers.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1233,7 +1233,7 @@ function SetKillerOverridePerkBanEvents() {
         // Get the index of the killer with the same name
         var killerIndex = -1;
         for (var i = 0; i < KillerBalance.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1258,7 +1258,7 @@ function SetKillerOverridePerkBanEvents() {
         var killerIndex = -1;
 
         for (var i = 0; i < KillerBalance.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1283,7 +1283,7 @@ function SetKillerOverridePerkBanEvents() {
 
         var killerIndex = -1;
         for (var i = 0; i < KillerBalance.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1308,7 +1308,7 @@ function SetKillerOverridePerkBanEvents() {
 
         var killerIndex = -1;
         for (var i = 0; i < KillerBalance.length; i++) {
-            if (Killers[i] == selectedKiller) {
+            if (Killers[i].Name === selectedKiller) {
                 killerIndex = i;
                 continue;
             }
@@ -1328,8 +1328,8 @@ function LoadKillerOverrideUIByName(name) {
     // Get the index of the killer with the same name
     var killerIndex = -1;
     for (var i = 0; i < Killers.length; i++) {
-        if (Killers[i] == name) {
-            killerIndex = i;
+        if (Killers[i].Name === name) {
+            killerIndex = Killers[i].ID;
             continue;
         }
     }
@@ -1735,7 +1735,7 @@ function GetSelectValues(select) {
 function SetKillerBalancing() {
     // Loop through all killers
     for (var i = 0; i < Killers.length; i++) {
-        NewKillerBalance = CreateKillerOverride(Killers[i]);
+        NewKillerBalance = CreateKillerOverride(Killers[i].Name);
         KillerBalance.push(NewKillerBalance);
     }
 }
@@ -1951,8 +1951,8 @@ function UpdateKillerDropdowns() {
 
     for (var i = 0; i < Killers.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = Killers[i];
-        optionsElement.innerHTML = Killers[i];
+        optionsElement.value = Killers[i].Name;
+        optionsElement.innerHTML = Killers[i].Name;
         killerDropdown.appendChild(optionsElement);
     }
 
@@ -2294,7 +2294,7 @@ function ExportBalancing() {
     for (var i = 0; i < Killers.length; i++) {
         var killerExists = false;
         for (var j = 0; j < KillerBalance.length; j++) {
-            if (KillerBalance[j].Name == Killers[i]) {
+            if (KillerBalance[j].Name === Killers[i].Name) {
                 killerExists = true;
                 break;
             }
@@ -2302,10 +2302,10 @@ function ExportBalancing() {
 
         if (killerExists) { continue; }
         
-        console.error(`Killer ${Killers[i]} is missing from the KillerBalance array! Adding it now...`);
+        console.error(`Killer ${Killers[i].Name} is missing from the KillerBalance array! Adding it now...`);
         
         // Add the killer at the specified index "i"
-        KillerBalance.splice(i, 0, CreateKillerOverride(Killers[i]));
+        KillerBalance.splice(i, 0, CreateKillerOverride(Killers[i].Name));
 
     }
 
@@ -2570,7 +2570,7 @@ function GetCurrentKiller() {
 function GetCurrentKillerIndex() {
     var killerName = GetCurrentKiller();
     for (var i = 0; i < Killers.length; i++) {
-        if (Killers[i] == killerName) {
+        if (Killers[i].Name == killerName) {
             return i;
         }
     }

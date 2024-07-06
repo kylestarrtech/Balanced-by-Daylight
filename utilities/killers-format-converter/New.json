@@ -1,7 +1,7 @@
 [
     {
         "ID": 0,
-        "Name": "The Trapper",
+        "Name": "Trapper",
         "Portrait": "public/iconography/portraits/Trapper.webp",
         "LorePortrait": "public/iconography/lore/Trapper.webp",
         "PowerIcon": "public/public/Powers/Trapper.webp",
@@ -10,7 +10,7 @@
     },
     {
         "ID": 1,
-        "Name": "The Wraith",
+        "Name": "Wraith",
         "Portrait": "public/iconography/portraits/Wraith.webp",
         "LorePortrait": "public/iconography/lore/Wraith.webp",
         "PowerIcon": "public/public/Powers/Wraith.webp",
@@ -19,7 +19,7 @@
     },
     {
         "ID": 2,
-        "Name": "The Hillbilly",
+        "Name": "Hillbilly",
         "Portrait": "public/iconography/portraits/Hillbilly.webp",
         "LorePortrait": "public/iconography/lore/Hillbilly.webp",
         "PowerIcon": "public/public/Powers/Hillbilly.webp",
@@ -28,7 +28,7 @@
     },
     {
         "ID": 3,
-        "Name": "The Nurse",
+        "Name": "Nurse",
         "Portrait": "public/iconography/portraits/Nurse.webp",
         "LorePortrait": "public/iconography/lore/Nurse.webp",
         "PowerIcon": "public/public/Powers/Nurse.webp",
@@ -37,7 +37,7 @@
     },
     {
         "ID": 4,
-        "Name": "The Shape",
+        "Name": "Shape",
         "Portrait": "public/iconography/portraits/Shape.webp",
         "LorePortrait": "public/iconography/lore/Shape.webp",
         "PowerIcon": "public/public/Powers/Shape.webp",
@@ -46,7 +46,7 @@
     },
     {
         "ID": 5,
-        "Name": "The Hag",
+        "Name": "Hag",
         "Portrait": "public/iconography/portraits/Hag.webp",
         "LorePortrait": "public/iconography/lore/Hag.webp",
         "PowerIcon": "public/public/Powers/Hag.webp",
@@ -55,7 +55,7 @@
     },
     {
         "ID": 6,
-        "Name": "The Doctor",
+        "Name": "Doctor",
         "Portrait": "public/iconography/portraits/Doctor.webp",
         "LorePortrait": "public/iconography/lore/Doctor.webp",
         "PowerIcon": "public/public/Powers/Doctor.webp",
@@ -64,7 +64,7 @@
     },
     {
         "ID": 7,
-        "Name": "The Huntress",
+        "Name": "Huntress",
         "Portrait": "public/iconography/portraits/Huntress.webp",
         "LorePortrait": "public/iconography/lore/Huntress.webp",
         "PowerIcon": "public/public/Powers/Huntress.webp",
@@ -73,7 +73,7 @@
     },
     {
         "ID": 8,
-        "Name": "The Cannibal",
+        "Name": "Cannibal",
         "Portrait": "public/iconography/portraits/Cannibal.webp",
         "LorePortrait": "public/iconography/lore/Cannibal.webp",
         "PowerIcon": "public/public/Powers/Cannibal.webp",
@@ -82,7 +82,7 @@
     },
     {
         "ID": 9,
-        "Name": "The Nightmare",
+        "Name": "Nightmare",
         "Portrait": "public/iconography/portraits/Nightmare.webp",
         "LorePortrait": "public/iconography/lore/Nightmare.webp",
         "PowerIcon": "public/public/Powers/Nightmare.webp",
@@ -91,7 +91,7 @@
     },
     {
         "ID": 10,
-        "Name": "The Pig",
+        "Name": "Pig",
         "Portrait": "public/iconography/portraits/Pig.webp",
         "LorePortrait": "public/iconography/lore/Pig.webp",
         "PowerIcon": "public/public/Powers/Pig.webp",
@@ -100,7 +100,7 @@
     },
     {
         "ID": 11,
-        "Name": "The Clown",
+        "Name": "Clown",
         "Portrait": "public/iconography/portraits/Clown.webp",
         "LorePortrait": "public/iconography/lore/Clown.webp",
         "PowerIcon": "public/public/Powers/Clown.webp",
@@ -109,7 +109,7 @@
     },
     {
         "ID": 12,
-        "Name": "The Spirit",
+        "Name": "Spirit",
         "Portrait": "public/iconography/portraits/Spirit.webp",
         "LorePortrait": "public/iconography/lore/Spirit.webp",
         "PowerIcon": "public/public/Powers/Spirit.webp",
@@ -118,7 +118,7 @@
     },
     {
         "ID": 13,
-        "Name": "The Legion",
+        "Name": "Legion",
         "Portrait": "public/iconography/portraits/Legion.webp",
         "LorePortrait": "public/iconography/lore/Legion.webp",
         "PowerIcon": "public/public/Powers/Legion.webp",
@@ -127,7 +127,7 @@
     },
     {
         "ID": 14,
-        "Name": "The Plague",
+        "Name": "Plague",
         "Portrait": "public/iconography/portraits/Plague.webp",
         "LorePortrait": "public/iconography/lore/Plague.webp",
         "PowerIcon": "public/public/Powers/Plague.webp",
@@ -136,7 +136,7 @@
     },
     {
         "ID": 15,
-        "Name": "The Ghost Face",
+        "Name": "Ghost Face",
         "Portrait": "public/iconography/portraits/GhostFace.webp",
         "LorePortrait": "public/iconography/lore/GhostFace.webp",
         "PowerIcon": "public/public/Powers/GhostFace.webp",
@@ -145,7 +145,7 @@
     },
     {
         "ID": 16,
-        "Name": "The Demogorgon",
+        "Name": "Demogorgon",
         "Portrait": "public/iconography/portraits/Demogorgon.webp",
         "LorePortrait": "public/iconography/lore/Demogorgon.webp",
         "PowerIcon": "public/public/Powers/Demogorgon.webp",
@@ -154,7 +154,7 @@
     },
     {
         "ID": 17,
-        "Name": "The Oni",
+        "Name": "Oni",
         "Portrait": "public/iconography/portraits/Oni.webp",
         "LorePortrait": "public/iconography/lore/Oni.webp",
         "PowerIcon": "public/public/Powers/Oni.webp",
@@ -163,7 +163,7 @@
     },
     {
         "ID": 18,
-        "Name": "The Deathslinger",
+        "Name": "Deathslinger",
         "Portrait": "public/iconography/portraits/Deathslinger.webp",
         "LorePortrait": "public/iconography/lore/Deathslinger.webp",
         "PowerIcon": "public/public/Powers/Deathslinger.webp",
@@ -172,7 +172,7 @@
     },
     {
         "ID": 19,
-        "Name": "The Executioner",
+        "Name": "Executioner",
         "Portrait": "public/iconography/portraits/Executioner.webp",
         "LorePortrait": "public/iconography/lore/Executioner.webp",
         "PowerIcon": "public/public/Powers/Executioner.webp",
@@ -181,7 +181,7 @@
     },
     {
         "ID": 20,
-        "Name": "The Blight",
+        "Name": "Blight",
         "Portrait": "public/iconography/portraits/Blight.webp",
         "LorePortrait": "public/iconography/lore/Blight.webp",
         "PowerIcon": "public/public/Powers/Blight.webp",
@@ -190,7 +190,7 @@
     },
     {
         "ID": 21,
-        "Name": "The Twins",
+        "Name": "Twins",
         "Portrait": "public/iconography/portraits/Twins.webp",
         "LorePortrait": "public/iconography/lore/Twins.webp",
         "PowerIcon": "public/public/Powers/Twins.webp",
@@ -199,7 +199,7 @@
     },
     {
         "ID": 22,
-        "Name": "The Trickster",
+        "Name": "Trickster",
         "Portrait": "public/iconography/portraits/Trickster.webp",
         "LorePortrait": "public/iconography/lore/Trickster.webp",
         "PowerIcon": "public/public/Powers/Trickster.webp",
@@ -208,7 +208,7 @@
     },
     {
         "ID": 23,
-        "Name": "The Nemesis",
+        "Name": "Nemesis",
         "Portrait": "public/iconography/portraits/Nemesis.webp",
         "LorePortrait": "public/iconography/lore/Nemesis.webp",
         "PowerIcon": "public/public/Powers/Nemesis.webp",
@@ -217,7 +217,7 @@
     },
     {
         "ID": 24,
-        "Name": "The Cenobite",
+        "Name": "Cenobite",
         "Portrait": "public/iconography/portraits/Cenobite.webp",
         "LorePortrait": "public/iconography/lore/Cenobite.webp",
         "PowerIcon": "public/public/Powers/Cenobite.webp",
@@ -226,7 +226,7 @@
     },
     {
         "ID": 25,
-        "Name": "The Artist",
+        "Name": "Artist",
         "Portrait": "public/iconography/portraits/Artist.webp",
         "LorePortrait": "public/iconography/lore/Artist.webp",
         "PowerIcon": "public/public/Powers/Artist.webp",
@@ -235,7 +235,7 @@
     },
     {
         "ID": 26,
-        "Name": "The Onryo",
+        "Name": "Onryo",
         "Portrait": "public/iconography/portraits/Onryo.webp",
         "LorePortrait": "public/iconography/lore/Onryo.webp",
         "PowerIcon": "public/public/Powers/Onryo.webp",
@@ -244,7 +244,7 @@
     },
     {
         "ID": 27,
-        "Name": "The Dredge",
+        "Name": "Dredge",
         "Portrait": "public/iconography/portraits/Dredge.webp",
         "LorePortrait": "public/iconography/lore/Dredge.webp",
         "PowerIcon": "public/public/Powers/Dredge.webp",
@@ -253,7 +253,7 @@
     },
     {
         "ID": 28,
-        "Name": "The Mastermind",
+        "Name": "Mastermind",
         "Portrait": "public/iconography/portraits/Mastermind.webp",
         "LorePortrait": "public/iconography/lore/Mastermind.webp",
         "PowerIcon": "public/public/Powers/Mastermind.webp",
@@ -262,7 +262,7 @@
     },
     {
         "ID": 29,
-        "Name": "The Knight",
+        "Name": "Knight",
         "Portrait": "public/iconography/portraits/Knight.webp",
         "LorePortrait": "public/iconography/lore/Knight.webp",
         "PowerIcon": "public/public/Powers/Knight.webp",
@@ -271,7 +271,7 @@
     },
     {
         "ID": 30,
-        "Name": "The Skull Merchant",
+        "Name": "Skull Merchant",
         "Portrait": "public/iconography/portraits/SkullMerchant.webp",
         "LorePortrait": "public/iconography/lore/SkullMerchant.webp",
         "PowerIcon": "public/public/Powers/SkullMerchant.webp",
@@ -280,7 +280,7 @@
     },
     {
         "ID": 31,
-        "Name": "The Singularity",
+        "Name": "Singularity",
         "Portrait": "public/iconography/portraits/Singularity.webp",
         "LorePortrait": "public/iconography/lore/Singularity.webp",
         "PowerIcon": "public/public/Powers/Singularity.webp",
@@ -289,7 +289,7 @@
     },
     {
         "ID": 32,
-        "Name": "The Xenomorph",
+        "Name": "Xenomorph",
         "Portrait": "public/iconography/portraits/Xenomorph.webp",
         "LorePortrait": "public/iconography/lore/Xenomorph.webp",
         "PowerIcon": "public/public/Powers/Xenomorph.webp",
@@ -298,7 +298,7 @@
     },
     {
         "ID": 33,
-        "Name": "The Good Guy",
+        "Name": "Good Guy",
         "Portrait": "public/iconography/portraits/GoodGuy.webp",
         "LorePortrait": "public/iconography/lore/GoodGuy.webp",
         "PowerIcon": "public/public/Powers/GoodGuy.webp",
@@ -307,7 +307,7 @@
     },
     {
         "ID": 34,
-        "Name": "The Unknown",
+        "Name": "Unknown",
         "Portrait": "public/iconography/portraits/Unknown.webp",
         "LorePortrait": "public/iconography/lore/Unknown.webp",
         "PowerIcon": "public/public/Powers/Unknown.webp",
@@ -316,7 +316,7 @@
     },
     {
         "ID": 35,
-        "Name": "The Lich",
+        "Name": "Lich",
         "Portrait": "public/iconography/portraits/Lich.webp",
         "LorePortrait": "public/iconography/lore/Lich.webp",
         "PowerIcon": "public/public/Powers/Lich.webp",
