@@ -127,7 +127,7 @@ async function getLeagues(){
 
     fs.writeFile("./public/Balancings.json", JSON.stringify(balancings), function (err) {
         if (err) throw err
-        console.log(`[${Date.now()} Saved new balancings file!`)
+        console.log(`[${Date.now()}] Saved new balancings file!`)
     })
 }
 
