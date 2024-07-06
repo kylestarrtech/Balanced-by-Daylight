@@ -87,7 +87,7 @@ function BeginGenerationImport(data, callback) {
 
     try {
         // Get Killer Name
-        exampleImageGenObject.KillerName = Killers[importedBuild.selectedKiller];
+        exampleImageGenObject.KillerName = Killers[importedBuild.selectedKiller].Name;
     } catch(err) {
         callback({
             status: 400,
@@ -117,7 +117,7 @@ function BeginGenerationImport(data, callback) {
     try {
         // Get Killer Lore Image
         // First get the killer's name without spaces and omit "The"
-        let killerName = Killers[importedBuild.selectedKiller].replace("The", "");
+        let killerName = Killers[importedBuild.selectedKiller].Name.replace("The", "");
         killerName = killerName.replace(/\s/g, "");
 
         // Then get the lore image
@@ -435,7 +435,7 @@ function BeginGenerationImport(data, callback) {
     try {
         // Get Killer Power Image
         // First get the killer's name without spaces and omit "The"
-        let killerName = Killers[importedBuild.selectedKiller].replace("The", "");
+        let killerName = Killers[importedBuild.selectedKiller].Name.replace("The", "");
 
         // Remove all spaces
         killerName = killerName.replace(/\s/g, "");
@@ -509,7 +509,7 @@ function BeginGenerationImport(data, callback) {
         for (var i = 0; i < importedBuild.killerAddonsId.length; i++) {
 
             // First get the killer's name without spaces and omit "The"
-            let killerName = Killers[importedBuild.selectedKiller].replace("The", "");
+            let killerName = Killers[importedBuild.selectedKiller].Name.replace("The", "");
 
             // Remove all spaces
             killerName = killerName.replace(/\s/g, "");
