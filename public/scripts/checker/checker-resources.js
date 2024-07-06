@@ -65,6 +65,7 @@ function GetKillers() {
                 default:
                     console.error("Error getting killers: " + this.status);
             }
+            GenerateAllKillerPortraits();
             GetSurvivors();
         }
     }

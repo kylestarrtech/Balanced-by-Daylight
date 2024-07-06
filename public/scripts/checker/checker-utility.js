@@ -18,7 +18,7 @@ function GetBannedKillerAddons() {
 
     let bannedAddons = new Array()
 
-    let currentKillerName = Killers[selectedKiller];
+    let currentKillerName = Killers[selectedKiller].Name;
 
     let curKLRAddonsList = undefined;
 
@@ -604,7 +604,7 @@ function AreKillerAddonsValid() {
             continue; 
         }
         
-        let selectedKillerName = Killers[selectedKiller];
+        let selectedKillerName = Killers[selectedKiller].Name;
         let selectedKillerAddons = KillerAddonsList[selectedKiller]["Addons"];
 
         for (var j = 0; j < selectedKillerAddons.length; j++) {
