@@ -137,9 +137,9 @@
     {
         "ID": 15,
         "Name": "The Ghost Face",
-        "Portrait": "iconography/portraits/GhostFace.webp",
-        "LorePortrait": "iconography/lore/GhostFace.webp",
-        "PowerIcon": "public/Powers/GhostFace.webp",
+        "Portrait": "iconography/portraits/Ghostface.webp",
+        "LorePortrait": "iconography/lore/Ghostface.webp",
+        "PowerIcon": "public/Powers/Ghostface.webp",
         "Aliases": ["Danny", "GF"],
         "AdditionalData": {}
     },
