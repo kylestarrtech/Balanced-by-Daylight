@@ -14,7 +14,7 @@
         "Portrait": "iconography/portraits/Wraith.webp",
         "LorePortrait": "iconography/lore/Wraith.webp",
         "PowerIcon": "public/Powers/Wraith.webp",
-        "Aliases": ["Philip"],
+        "Aliases": ["Philip", "Ojomo"],
         "AdditionalData": {}
     },
     {
@@ -59,7 +59,7 @@
         "Portrait": "iconography/portraits/Doctor.webp",
         "LorePortrait": "iconography/lore/Doctor.webp",
         "PowerIcon": "public/Powers/Doctor.webp",
-        "Aliases": ["Herman"],
+        "Aliases": ["Herman", "Packwatch"],
         "AdditionalData": {}
     },
     {
@@ -86,7 +86,7 @@
         "Portrait": "iconography/portraits/Nightmare.webp",
         "LorePortrait": "iconography/lore/Nightmare.webp",
         "PowerIcon": "public/Powers/Nightmare.webp",
-        "Aliases": ["Freddy"],
+        "Aliases": ["Freddy", "Kreuger"],
         "AdditionalData": {}
     },
     {
