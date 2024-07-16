@@ -65,7 +65,7 @@ function CheckForRepetition(builds) {
     ErrorLog = ErrorLog.filter(
         (currentErr, index, errLog) => 
             errLog.findIndex(
-                comparisonErr => (comparisonErr.message === currentErr.message)
+                comparisonErr => (comparisonErr.REASON === currentErr.REASON)
             ) === index
     );
 
