@@ -71,7 +71,7 @@ function GenerateMapModal() {
     // Create the modal
     GenerateAlertModal(
         "Map Information",
-        `When ${selectedRole == 0 ? "playing against" : "playing as"} <b>${Killers[selectedKiller]}</b>, the following maps are required:<br><br><hr><b>${mapNames.join("</b>,<br> <b>")}</b><br><hr><br>Note that certain maps may have different conditions, consult official balancing for more information.`
+        `When ${selectedRole == 0 ? "playing against" : "playing as"} <b>${Killers[selectedKiller].Name}</b>, the following maps are required:<br><br><hr><b>${mapNames.join("</b>,<br> <b>")}</b><br><hr><br>Note that certain maps may have different conditions, consult official balancing for more information.`
     );
 }
 

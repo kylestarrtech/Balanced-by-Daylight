@@ -2347,5 +2347,32 @@
         "tags": [],
         "character": "Aestri Yazar",
         "survivorPerk": true
+    },
+    {
+        "id": 261,
+        "name": "Finesse",
+        "icon": "public/Perks/Survivors/Finesse.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Lara Croft",
+        "survivorPerk": true
+    },
+    {
+        "id": 262,
+        "name": "Hardened",
+        "icon": "public/Perks/Survivors/Hardened.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Lara Croft",
+        "survivorPerk": true
+    },
+    {
+        "id": 263,
+        "name": "Specialist",
+        "icon": "public/Perks/Survivors/Specialist.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Lara Croft",
+        "survivorPerk": true
     }
 ]

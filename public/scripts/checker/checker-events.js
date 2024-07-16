@@ -272,7 +272,7 @@ function SetKillerCharacterSelectEvents() {
         let newIndex = i;
         let currentButton = GetCharacterSelectButtons[newIndex];
 
-        let currentName = Killers[newIndex];
+        let currentName = Killers[newIndex].Name;
         currentButton.addEventListener("click", function() {
             let currentKlr = selectedKiller;
             DebugLog(newIndex);
@@ -589,7 +589,7 @@ function LoadKillerPerkSelectionEvents() {
         DebugLog(currentPerk);
 
         currentPerk.addEventListener("click", function() {
-            let curKillerName = Killers[selectedKiller];
+            let curKillerName = Killers[selectedKiller].Name;
             DebugLog(`Clicked on perk ${currentPerk.dataset.perkID} for killer ${curKillerName}`);
             
             var perkSearchContainer = document.getElementById("perk-search-container");
@@ -659,7 +659,7 @@ function LoadKillerPerkSelectionEvents() {
         let currentAddonElement = addons[i];
 
         currentAddonElement.addEventListener("click", function() {
-            DebugLog(`Clicked on addon ${currentAddonElement.innerText} for killer ${Killers[selectedKiller]}`);
+            DebugLog(`Clicked on addon ${currentAddonElement.innerText} for killer ${Killers[selectedKiller].Name}`);
 
             var perkSearchContainer = document.getElementById("perk-search-container");
             perkSearchContainer.hidden = false;

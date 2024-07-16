@@ -579,7 +579,7 @@ function UpdateKillerPerkUI() {
  */
 function UpdateKillerSelectionUI() {
     var selectedKillerTitle = document.getElementById("selected-killer-title");
-    selectedKillerTitle.innerHTML = `Selected Killer: <span style="font-weight:700;">${Killers[selectedKiller]}</span>`;
+    selectedKillerTitle.innerHTML = `Selected Killer: <span style="font-weight:700;">${Killers[selectedKiller].Name}</span>`;
     
     // Remove all character-selected classes
     if(document.querySelector(`.character-selected`)) {
@@ -1580,4 +1580,41 @@ function RemoveAllBalancingSelectMenuChildren() {
     const balanceOptionsContainer = document.getElementById("balancing-select-options-container");
 
     balanceOptionsContainer.innerHTML = ""; // Clear the container
+}
+
+function GenerateAllKillerPortraits() {
+    if (Killers == undefined) {
+        console.error("Killers file is not retrieved or is undefined! No portraits will be generated!");
+        return;
+    }
+
+    const characterGrid = document.getElementById("character-select-grid");
+    characterGrid.innerHTML = ""; // Clear current grid
+
+    for (let i = 0; i < Killers.length; i++) {
+        characterGrid.appendChild(GenerateKillerPortrait(Killers[i]));
+    }
+}
+
+/**
+ * 
+ * @param {Object} killerObj The killer data object. Specifically the one retrieved from the killer's file. 
+ * @returns 
+ */
+function GenerateKillerPortrait(killerObj) {
+    /*
+    div.character-select-button(data-killerID="1")
+    img(src="iconography/portraits/Wraith.webp")
+    */
+
+    const selectButtonHolder = document.createElement("div");
+    selectButtonHolder.classList.add("character-select-button");
+    selectButtonHolder.dataset.killerid = killerObj.ID;
+
+    const img = document.createElement("img");
+    img.src = killerObj.Portrait;
+
+    selectButtonHolder.appendChild(img);
+
+    return selectButtonHolder;
 }

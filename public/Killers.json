@@ -1,38 +1,326 @@
 [
-    "The Trapper",
-    "The Wraith",
-    "The Hillbilly",
-    "The Nurse",
-    "The Shape",
-    "The Hag",
-    "The Doctor",
-    "The Huntress",
-    "The Cannibal",
-    "The Nightmare",
-    "The Pig",
-    "The Clown",
-    "The Spirit",
-    "The Legion",
-    "The Plague",
-    "The Ghost Face",
-    "The Demogorgon",
-    "The Oni",
-    "The Deathslinger",
-    "The Executioner",
-    "The Blight",
-    "The Twins",
-    "The Trickster",
-    "The Nemesis",
-    "The Cenobite",
-    "The Artist",
-    "The Onryo",
-    "The Dredge",
-    "The Mastermind",
-    "The Knight",
-    "The Skull Merchant",
-    "The Singularity",
-    "The Xenomorph",
-    "The Good Guy",
-    "The Unknown",
-    "The Lich"
+    {
+        "ID": 0,
+        "Name": "The Trapper",
+        "Portrait": "iconography/portraits/Trapper.webp",
+        "LorePortrait": "iconography/lore/Trapper.webp",
+        "PowerIcon": "public/Powers/Trapper.webp",
+        "Aliases": ["Evan", "Strong"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 1,
+        "Name": "The Wraith",
+        "Portrait": "iconography/portraits/Wraith.webp",
+        "LorePortrait": "iconography/lore/Wraith.webp",
+        "PowerIcon": "public/Powers/Wraith.webp",
+        "Aliases": ["Philip", "Ojomo"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 2,
+        "Name": "The Hillbilly",
+        "Portrait": "iconography/portraits/Hillbilly.webp",
+        "LorePortrait": "iconography/lore/Hillbilly.webp",
+        "PowerIcon": "public/Powers/Hillbilly.webp",
+        "Aliases": ["Max"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 3,
+        "Name": "The Nurse",
+        "Portrait": "iconography/portraits/Nurse.webp",
+        "LorePortrait": "iconography/lore/Nurse.webp",
+        "PowerIcon": "public/Powers/Nurse.webp",
+        "Aliases": ["Sally"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 4,
+        "Name": "The Shape",
+        "Portrait": "iconography/portraits/Shape.webp",
+        "LorePortrait": "iconography/lore/Shape.webp",
+        "PowerIcon": "public/Powers/Shape.webp",
+        "Aliases": ["Myers", "Michael"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 5,
+        "Name": "The Hag",
+        "Portrait": "iconography/portraits/Hag.webp",
+        "LorePortrait": "iconography/lore/Hag.webp",
+        "PowerIcon": "public/Powers/Hag.webp",
+        "Aliases": ["Lisa"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 6,
+        "Name": "The Doctor",
+        "Portrait": "iconography/portraits/Doctor.webp",
+        "LorePortrait": "iconography/lore/Doctor.webp",
+        "PowerIcon": "public/Powers/Doctor.webp",
+        "Aliases": ["Herman", "Packwatch"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 7,
+        "Name": "The Huntress",
+        "Portrait": "iconography/portraits/Huntress.webp",
+        "LorePortrait": "iconography/lore/Huntress.webp",
+        "PowerIcon": "public/Powers/Huntress.webp",
+        "Aliases": ["Anna"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 8,
+        "Name": "The Cannibal",
+        "Portrait": "iconography/portraits/Cannibal.webp",
+        "LorePortrait": "iconography/lore/Cannibal.webp",
+        "PowerIcon": "public/Powers/Cannibal.webp",
+        "Aliases": ["Bubba"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 9,
+        "Name": "The Nightmare",
+        "Portrait": "iconography/portraits/Nightmare.webp",
+        "LorePortrait": "iconography/lore/Nightmare.webp",
+        "PowerIcon": "public/Powers/Nightmare.webp",
+        "Aliases": ["Freddy", "Kreuger"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 10,
+        "Name": "The Pig",
+        "Portrait": "iconography/portraits/Pig.webp",
+        "LorePortrait": "iconography/lore/Pig.webp",
+        "PowerIcon": "public/Powers/Pig.webp",
+        "Aliases": ["Amanda"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 11,
+        "Name": "The Clown",
+        "Portrait": "iconography/portraits/Clown.webp",
+        "LorePortrait": "iconography/lore/Clown.webp",
+        "PowerIcon": "public/Powers/Clown.webp",
+        "Aliases": ["Kenneth", "Jeffrey"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 12,
+        "Name": "The Spirit",
+        "Portrait": "iconography/portraits/Spirit.webp",
+        "LorePortrait": "iconography/lore/Spirit.webp",
+        "PowerIcon": "public/Powers/Spirit.webp",
+        "Aliases": ["Rin", "Yamaoka"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 13,
+        "Name": "The Legion",
+        "Portrait": "iconography/portraits/Legion.webp",
+        "LorePortrait": "iconography/lore/Legion.webp",
+        "PowerIcon": "public/Powers/Legion.webp",
+        "Aliases": ["Frank", "Julie", "Joey", "Susie"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 14,
+        "Name": "The Plague",
+        "Portrait": "iconography/portraits/Plague.webp",
+        "LorePortrait": "iconography/lore/Plague.webp",
+        "PowerIcon": "public/Powers/Plague.webp",
+        "Aliases": ["Adiris"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 15,
+        "Name": "The Ghost Face",
+        "Portrait": "iconography/portraits/GhostFace.webp",
+        "LorePortrait": "iconography/lore/GhostFace.webp",
+        "PowerIcon": "public/Powers/GhostFace.webp",
+        "Aliases": ["Danny", "GF"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 16,
+        "Name": "The Demogorgon",
+        "Portrait": "iconography/portraits/Demogorgon.webp",
+        "LorePortrait": "iconography/lore/Demogorgon.webp",
+        "PowerIcon": "public/Powers/Demogorgon.webp",
+        "Aliases": ["Demo"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 17,
+        "Name": "The Oni",
+        "Portrait": "iconography/portraits/Oni.webp",
+        "LorePortrait": "iconography/lore/Oni.webp",
+        "PowerIcon": "public/Powers/Oni.webp",
+        "Aliases": ["Kazan", "Yamaoka"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 18,
+        "Name": "The Deathslinger",
+        "Portrait": "iconography/portraits/Deathslinger.webp",
+        "LorePortrait": "iconography/lore/Deathslinger.webp",
+        "PowerIcon": "public/Powers/Deathslinger.webp",
+        "Aliases": ["Caleb"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 19,
+        "Name": "The Executioner",
+        "Portrait": "iconography/portraits/Executioner.webp",
+        "LorePortrait": "iconography/lore/Executioner.webp",
+        "PowerIcon": "public/Powers/Executioner.webp",
+        "Aliases": ["Pyramid Head", "PHead"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 20,
+        "Name": "The Blight",
+        "Portrait": "iconography/portraits/Blight.webp",
+        "LorePortrait": "iconography/lore/Blight.webp",
+        "PowerIcon": "public/Powers/Blight.webp",
+        "Aliases": ["Talbot"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 21,
+        "Name": "The Twins",
+        "Portrait": "iconography/portraits/Twins.webp",
+        "LorePortrait": "iconography/lore/Twins.webp",
+        "PowerIcon": "public/Powers/Twins.webp",
+        "Aliases": ["Charlotte", "Victor", "Viktor"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 22,
+        "Name": "The Trickster",
+        "Portrait": "iconography/portraits/Trickster.webp",
+        "LorePortrait": "iconography/lore/Trickster.webp",
+        "PowerIcon": "public/Powers/Trickster.webp",
+        "Aliases": ["Ji-Woon", "Jiwoon"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 23,
+        "Name": "The Nemesis",
+        "Portrait": "iconography/portraits/Nemesis.webp",
+        "LorePortrait": "iconography/lore/Nemesis.webp",
+        "PowerIcon": "public/Powers/Nemesis.webp",
+        "Aliases": ["Nemmy", "Balumba"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 24,
+        "Name": "The Cenobite",
+        "Portrait": "iconography/portraits/Cenobite.webp",
+        "LorePortrait": "iconography/lore/Cenobite.webp",
+        "PowerIcon": "public/Powers/Cenobite.webp",
+        "Aliases": ["Pinhead", "PHead"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 25,
+        "Name": "The Artist",
+        "Portrait": "iconography/portraits/Artist.webp",
+        "LorePortrait": "iconography/lore/Artist.webp",
+        "PowerIcon": "public/Powers/Artist.webp",
+        "Aliases": ["Carmina", "Caw"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 26,
+        "Name": "The Onryo",
+        "Portrait": "iconography/portraits/Onryo.webp",
+        "LorePortrait": "iconography/lore/Onryo.webp",
+        "PowerIcon": "public/Powers/Onryo.webp",
+        "Aliases": ["Sadako"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 27,
+        "Name": "The Dredge",
+        "Portrait": "iconography/portraits/Dredge.webp",
+        "LorePortrait": "iconography/lore/Dredge.webp",
+        "PowerIcon": "public/Powers/Dredge.webp",
+        "Aliases": ["Gregory", "Greg"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 28,
+        "Name": "The Mastermind",
+        "Portrait": "iconography/portraits/Mastermind.webp",
+        "LorePortrait": "iconography/lore/Mastermind.webp",
+        "PowerIcon": "public/Powers/Mastermind.webp",
+        "Aliases": ["Albert", "Wesker"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 29,
+        "Name": "The Knight",
+        "Portrait": "iconography/portraits/Knight.webp",
+        "LorePortrait": "iconography/lore/Knight.webp",
+        "PowerIcon": "public/Powers/Knight.webp",
+        "Aliases": ["Tarhos"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 30,
+        "Name": "The Skull Merchant",
+        "Portrait": "iconography/portraits/SkullMerchant.webp",
+        "LorePortrait": "iconography/lore/SkullMerchant.webp",
+        "PowerIcon": "public/Powers/SkullMerchant.webp",
+        "Aliases": ["Adriana", "SM"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 31,
+        "Name": "The Singularity",
+        "Portrait": "iconography/portraits/Singularity.webp",
+        "LorePortrait": "iconography/lore/Singularity.webp",
+        "PowerIcon": "public/Powers/Singularity.webp",
+        "Aliases": ["Larry"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 32,
+        "Name": "The Xenomorph",
+        "Portrait": "iconography/portraits/Xenomorph.webp",
+        "LorePortrait": "iconography/lore/Xenomorph.webp",
+        "PowerIcon": "public/Powers/Xenomorph.webp",
+        "Aliases": ["Alien"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 33,
+        "Name": "The Good Guy",
+        "Portrait": "iconography/portraits/GoodGuy.webp",
+        "LorePortrait": "iconography/lore/GoodGuy.webp",
+        "PowerIcon": "public/Powers/GoodGuy.webp",
+        "Aliases": ["Chucky", "Doll", "Charles"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 34,
+        "Name": "The Unknown",
+        "Portrait": "iconography/portraits/Unknown.webp",
+        "LorePortrait": "iconography/lore/Unknown.webp",
+        "PowerIcon": "public/Powers/Unknown.webp",
+        "Aliases": ["Lenny"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 35,
+        "Name": "The Lich",
+        "Portrait": "iconography/portraits/Lich.webp",
+        "LorePortrait": "iconography/lore/Lich.webp",
+        "PowerIcon": "public/Powers/Lich.webp",
+        "Aliases": ["Vecna"],
+        "AdditionalData": {}
+    }
 ]
