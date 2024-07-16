@@ -4492,16 +4492,16 @@
         "Addons": [
             {
                 "id": 0,
-                "globalID": 619,
-                "addonIcon": "public/PowerAddons/Singularity/Nutritional-Slurry.webp",
-                "Name": "Nutritional Slurry",
+                "globalID": 622,
+                "addonIcon": "public/PowerAddons/Singularity/Broken-Security-Key.webp",
+                "Name": "Broken Security Key",
                 "Rarity": 0
             },
             {
                 "id": 1,
-                "globalID": 620,
-                "addonIcon": "public/PowerAddons/Singularity/Kid_S-Ball-Glove.webp",
-                "Name": "Kid's Ball Glove",
+                "globalID": 624,
+                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(repair).webp",
+                "Name": "Diagnostic Tool (Repair)",
                 "Rarity": 0
             },
             {
@@ -4513,23 +4513,23 @@
             },
             {
                 "id": 3,
-                "globalID": 622,
-                "addonIcon": "public/PowerAddons/Singularity/Broken-Security-Key.webp",
-                "Name": "Broken Security Key",
+                "globalID": 619,
+                "addonIcon": "public/PowerAddons/Singularity/Nutritional-Slurry.webp",
+                "Name": "Nutritional Slurry",
                 "Rarity": 0
             },
             {
                 "id": 4,
-                "globalID": 623,
-                "addonIcon": "public/PowerAddons/Singularity/Ultrasonic-Sensor.webp",
-                "Name": "Ultrasonic Sensor",
+                "globalID": 627,
+                "addonIcon": "public/PowerAddons/Singularity/Android-Arm.webp",
+                "Name": "Android Arm",
                 "Rarity": 1
             },
             {
                 "id": 5,
-                "globalID": 624,
-                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(repair).webp",
-                "Name": "Diagnostic Tool (Repair)",
+                "globalID": 626,
+                "addonIcon": "public/PowerAddons/Singularity/Cremated-Remains.webp",
+                "Name": "Cremated Remains",
                 "Rarity": 1
             },
             {
@@ -4541,30 +4541,30 @@
             },
             {
                 "id": 7,
-                "globalID": 626,
-                "addonIcon": "public/PowerAddons/Singularity/Cremated-Remains.webp",
-                "Name": "Cremated Remains",
+                "globalID": 620,
+                "addonIcon": "public/PowerAddons/Singularity/Kid_S-Ball-Glove.webp",
+                "Name": "Kid's Ball Glove",
                 "Rarity": 1
             },
             {
                 "id": 8,
-                "globalID": 627,
-                "addonIcon": "public/PowerAddons/Singularity/Android-Arm.webp",
-                "Name": "Android Arm",
+                "globalID": 623,
+                "addonIcon": "public/PowerAddons/Singularity/Ultrasonic-Sensor.webp",
+                "Name": "Ultrasonic Sensor",
                 "Rarity": 1
             },
             {
                 "id": 9,
-                "globalID": 628,
-                "addonIcon": "public/PowerAddons/Singularity/Spent-Oxygen-Tank.webp",
-                "Name": "Spent Oxygen Tank",
+                "globalID": 632,
+                "addonIcon": "public/PowerAddons/Singularity/Hologram-Generator.webp",
+                "Name": "Hologram Generator",
                 "Rarity": 2
             },
             {
                 "id": 10,
-                "globalID": 629,
-                "addonIcon": "public/PowerAddons/Singularity/Nanomachine-Gel.webp",
-                "Name": "Nanomachine Gel",
+                "globalID": 631,
+                "addonIcon": "public/PowerAddons/Singularity/Hyperawareness-Spray.webp",
+                "Name": "Hyperawareness Spray",
                 "Rarity": 2
             },
             {
@@ -4576,58 +4576,58 @@
             },
             {
                 "id": 12,
-                "globalID": 631,
-                "addonIcon": "public/PowerAddons/Singularity/Hyperawareness-Spray.webp",
-                "Name": "Hyperawareness Spray",
+                "globalID": 629,
+                "addonIcon": "public/PowerAddons/Singularity/Nanomachine-Gel.webp",
+                "Name": "Nanomachine Gel",
                 "Rarity": 2
             },
             {
                 "id": 13,
-                "globalID": 632,
-                "addonIcon": "public/PowerAddons/Singularity/Hologram-Generator.webp",
-                "Name": "Hologram Generator",
+                "globalID": 628,
+                "addonIcon": "public/PowerAddons/Singularity/Spent-Oxygen-Tank.webp",
+                "Name": "Spent Oxygen Tank",
                 "Rarity": 2
             },
             {
                 "id": 14,
-                "globalID": 633,
-                "addonIcon": "public/PowerAddons/Singularity/Soma-Family-Photo.webp",
-                "Name": "Soma Family Photo",
-                "Rarity": 3
-            },
-            {
-                "id": 15,
-                "globalID": 634,
-                "addonIcon": "public/PowerAddons/Singularity/Foreign-Plant-Fibres.webp",
-                "Name": "Foreign Plant Fibres",
-                "Rarity": 3
-            },
-            {
-                "id": 16,
-                "globalID": 635,
-                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(construction).webp",
-                "Name": "Diagnostic Tool (Construction)",
-                "Rarity": 3
-            },
-            {
-                "id": 17,
                 "globalID": 636,
                 "addonIcon": "public/PowerAddons/Singularity/Crew-Manifest.webp",
                 "Name": "Crew Manifest",
                 "Rarity": 3
             },
             {
+                "id": 15,
+                "globalID": 635,
+                "addonIcon": "public/PowerAddons/Singularity/Diagnostic-Tool-(construction).webp",
+                "Name": "Diagnostic Tool (Construction)",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 634,
+                "addonIcon": "public/PowerAddons/Singularity/Foreign-Plant-Fibres.webp",
+                "Name": "Foreign Plant Fibres",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 633,
+                "addonIcon": "public/PowerAddons/Singularity/Soma-Family-Photo.webp",
+                "Name": "Soma Family Photo",
+                "Rarity": 3
+            },
+            {
                 "id": 18,
-                "globalID": 637,
-                "addonIcon": "public/PowerAddons/Singularity/Iridescent-Crystal-Shard.webp",
-                "Name": "Iridescent Crystal Shard",
+                "globalID": 638,
+                "addonIcon": "public/PowerAddons/Singularity/Denied-Requisition-Form.webp",
+                "Name": "Denied Requisition Form",
                 "Rarity": 4
             },
             {
                 "id": 19,
-                "globalID": 638,
-                "addonIcon": "public/PowerAddons/Singularity/Denied-Requisition-Form.webp",
-                "Name": "Denied Requisition Form",
+                "globalID": 637,
+                "addonIcon": "public/PowerAddons/Singularity/Iridescent-Crystal-Shard.webp",
+                "Name": "Iridescent Crystal Shard",
                 "Rarity": 4
             }
         ]
@@ -4637,44 +4637,44 @@
         "Addons": [
             {
                 "id": 0,
-                "globalID": 639,
-                "addonIcon": "public/PowerAddons/Xenomorph/Ripley_S-Watch.webp",
-                "Name": "Ripley's Watch",
-                "Rarity": 0
-            },
-            {
-                "id": 1,
-                "globalID": 640,
-                "addonIcon": "public/PowerAddons/Xenomorph/Ovomorph.webp",
-                "Name": "Ovomorph",
-                "Rarity": 0
-            },
-            {
-                "id": 2,
-                "globalID": 641,
-                "addonIcon": "public/PowerAddons/Xenomorph/Drinking-Bird.webp",
-                "Name": "Drinking Bird",
-                "Rarity": 0
-            },
-            {
-                "id": 3,
                 "globalID": 642,
                 "addonIcon": "public/PowerAddons/Xenomorph/Cereal-Rations.webp",
                 "Name": "Cereal Rations",
                 "Rarity": 0
             },
             {
+                "id": 1,
+                "globalID": 641,
+                "addonIcon": "public/PowerAddons/Xenomorph/Drinking-Bird.webp",
+                "Name": "Drinking Bird",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 640,
+                "addonIcon": "public/PowerAddons/Xenomorph/Ovomorph.webp",
+                "Name": "Ovomorph",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 639,
+                "addonIcon": "public/PowerAddons/Xenomorph/Ripley_S-Watch.webp",
+                "Name": "Ripley's Watch",
+                "Rarity": 0
+            },
+            {
                 "id": 4,
-                "globalID": 643,
-                "addonIcon": "public/PowerAddons/Xenomorph/Light-Wand.webp",
-                "Name": "Light Wand",
+                "globalID": 647,
+                "addonIcon": "public/PowerAddons/Xenomorph/Ash_S-Innards.webp",
+                "Name": "Ash's Innards",
                 "Rarity": 1
             },
             {
                 "id": 5,
-                "globalID": 644,
-                "addonIcon": "public/PowerAddons/Xenomorph/Lambert_S-Star-Map.webp",
-                "Name": "Lambert's Star Map",
+                "globalID": 646,
+                "addonIcon": "public/PowerAddons/Xenomorph/Brett_S-Cap.webp",
+                "Name": "Brett's Cap",
                 "Rarity": 1
             },
             {
@@ -4686,30 +4686,30 @@
             },
             {
                 "id": 7,
-                "globalID": 646,
-                "addonIcon": "public/PowerAddons/Xenomorph/Brett_S-Cap.webp",
-                "Name": "Brett's Cap",
+                "globalID": 644,
+                "addonIcon": "public/PowerAddons/Xenomorph/Lambert_S-Star-Map.webp",
+                "Name": "Lambert's Star Map",
                 "Rarity": 1
             },
             {
                 "id": 8,
-                "globalID": 647,
-                "addonIcon": "public/PowerAddons/Xenomorph/Ash_S-Innards.webp",
-                "Name": "Ash's Innards",
+                "globalID": 643,
+                "addonIcon": "public/PowerAddons/Xenomorph/Light-Wand.webp",
+                "Name": "Light Wand",
                 "Rarity": 1
             },
             {
                 "id": 9,
-                "globalID": 648,
-                "addonIcon": "public/PowerAddons/Xenomorph/Parker_S-Headband.webp",
-                "Name": "Parker's Headband",
+                "globalID": 652,
+                "addonIcon": "public/PowerAddons/Xenomorph/Emergency-Helmet.webp",
+                "Name": "Emergency Helmet",
                 "Rarity": 2
             },
             {
                 "id": 10,
-                "globalID": 649,
-                "addonIcon": "public/PowerAddons/Xenomorph/Multipurpose-Hatchet.webp",
-                "Name": "Multipurpose Hatchet",
+                "globalID": 651,
+                "addonIcon": "public/PowerAddons/Xenomorph/Kane_S-Helmet.webp",
+                "Name": "Kane's Helmet",
                 "Rarity": 2
             },
             {
@@ -4721,58 +4721,58 @@
             },
             {
                 "id": 12,
-                "globalID": 651,
-                "addonIcon": "public/PowerAddons/Xenomorph/Kane_S-Helmet.webp",
-                "Name": "Kane's Helmet",
+                "globalID": 649,
+                "addonIcon": "public/PowerAddons/Xenomorph/Multipurpose-Hatchet.webp",
+                "Name": "Multipurpose Hatchet",
                 "Rarity": 2
             },
             {
                 "id": 13,
-                "globalID": 652,
-                "addonIcon": "public/PowerAddons/Xenomorph/Emergency-Helmet.webp",
-                "Name": "Emergency Helmet",
+                "globalID": 648,
+                "addonIcon": "public/PowerAddons/Xenomorph/Parker_S-Headband.webp",
+                "Name": "Parker's Headband",
                 "Rarity": 2
             },
             {
                 "id": 14,
-                "globalID": 653,
-                "addonIcon": "public/PowerAddons/Xenomorph/Semiotic-Keyboard.webp",
-                "Name": "Semiotic Keyboard",
-                "Rarity": 3
-            },
-            {
-                "id": 15,
-                "globalID": 654,
-                "addonIcon": "public/PowerAddons/Xenomorph/Self-Destruct-Bolt.webp",
-                "Name": "Self-Destruct Bolt",
-                "Rarity": 3
-            },
-            {
-                "id": 16,
-                "globalID": 655,
-                "addonIcon": "public/PowerAddons/Xenomorph/Harpoon-Gun.webp",
-                "Name": "Harpoon Gun",
-                "Rarity": 3
-            },
-            {
-                "id": 17,
                 "globalID": 656,
                 "addonIcon": "public/PowerAddons/Xenomorph/Cat-Carrier.webp",
                 "Name": "Cat Carrier",
                 "Rarity": 3
             },
             {
+                "id": 15,
+                "globalID": 655,
+                "addonIcon": "public/PowerAddons/Xenomorph/Harpoon-Gun.webp",
+                "Name": "Harpoon Gun",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 654,
+                "addonIcon": "public/PowerAddons/Xenomorph/Self-Destruct-Bolt.webp",
+                "Name": "Self-Destruct Bolt",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 653,
+                "addonIcon": "public/PowerAddons/Xenomorph/Semiotic-Keyboard.webp",
+                "Name": "Semiotic Keyboard",
+                "Rarity": 3
+            },
+            {
                 "id": 18,
-                "globalID": 657,
-                "addonIcon": "public/PowerAddons/Xenomorph/Improvised-Cattle-Prod.webp",
-                "Name": "Improvised Cattle Prod",
+                "globalID": 658,
+                "addonIcon": "public/PowerAddons/Xenomorph/Acidic-Blood.webp",
+                "Name": "Acidic Blood",
                 "Rarity": 4
             },
             {
                 "id": 19,
-                "globalID": 658,
-                "addonIcon": "public/PowerAddons/Xenomorph/Acidic-Blood.webp",
-                "Name": "Acidic Blood",
+                "globalID": 657,
+                "addonIcon": "public/PowerAddons/Xenomorph/Improvised-Cattle-Prod.webp",
+                "Name": "Improvised Cattle Prod",
                 "Rarity": 4
             }
         ]
