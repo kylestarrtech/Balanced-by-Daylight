@@ -90,6 +90,10 @@ function BeginGenerationImport(data, callback) {
         // Get Killer Name
         exampleImageGenObject.KillerName = Killers[importedBuild.selectedKiller].Name;
     } catch(err) {
+        console.error(`Image data could not find killer name.`)
+        console.error(Killers);
+        console.error(importedBuild);
+        console.error(Killers[importedBuild.selectedKiller]);
         callback({
             status: 400,
             imageData: null,
