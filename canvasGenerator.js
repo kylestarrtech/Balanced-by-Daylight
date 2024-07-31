@@ -97,7 +97,7 @@ function BeginGenerationImport(data, callback) {
         callback({
             status: 400,
             imageData: null,
-            message: "Invalid build data. Could not find killer name."
+            message: `Invalid build data. Could not find killer name. -- ${err} -- ${JSON.stringify(Killers[importedBuild.selectedKiller])}`
         })
         return;
     }
