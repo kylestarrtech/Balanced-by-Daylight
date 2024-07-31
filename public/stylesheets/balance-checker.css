@@ -1006,8 +1006,15 @@ button {
     width: 100%;
 }
 
-#selected-killer-title, #selected-balance-title {
+#selected-killer-title, #selected-balance-title, #anti-facecamp-permitted {
     font-weight: 400;
+    margin-bottom: 0px;
+}
+
+#anti-facecamp-permitted {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 3px;
 }
 
 #image-gen-image {

@@ -413,7 +413,7 @@ function SetKillerOverrideEvents() {
         var selectedKillerIndex = GetCurrentKillerIndex(GetCurrentKiller());
         if (selectedKillerIndex == -1) { console.error("Invalid killer name!"); return; }
 
-        KillerBalance[selectedKillerIndex].AntiFacecamp = antiFacecampCheckbox.checked;
+        KillerBalance[selectedKillerIndex]["AntiFacecampPermitted"] = antiFacecampCheckbox.checked;
         DebugLog(`Anti-Facecamp set to <b>${KillerBalance[selectedKillerIndex].AntiFacecamp}</b> for <b>${KillerBalance[selectedKillerIndex].Name}</b>`);
     });
     

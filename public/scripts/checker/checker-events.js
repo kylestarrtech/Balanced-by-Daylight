@@ -323,6 +323,7 @@ function SetKillerCharacterSelectEvents() {
 
             CheckForBalancingErrors();
             UpdateKillerSelectionUI();
+            UpdateAntiFacecampUI();
             
 
             ScrollToSelectedKiller();
@@ -379,6 +380,7 @@ function LoadSettingsEvents() {
 
         if (settingsMenu.dataset.balancingHasChanged === "true") {
             UpdateBalanceSelectionUI();
+            UpdateAntiFacecampUI();
             delete settingsMenu.dataset.balancingHasChanged;
         }
 
@@ -387,6 +389,7 @@ function LoadSettingsEvents() {
                 function() {
                     TrySetCurrentBalancing();
                     UpdateBalanceSelectionUI();
+                    UpdateAntiFacecampUI();
                 },
                 function() {
                     console.error("Could not set balancing!")

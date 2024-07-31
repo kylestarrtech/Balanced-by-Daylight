@@ -594,10 +594,27 @@ function UpdateKillerSelectionUI() {
  * Updates the selected balance title and also calls CheckGlobalBalanceNotes() and SetBalanceTypeDisclaimer().
  */
 function UpdateBalanceSelectionUI() {
-    var selectedBalanceTitle = document.getElementById("selected-balance-title");
+    const selectedBalanceTitle = document.getElementById("selected-balance-title");
     selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${currentBalancing["Name"]}</span>`;
 
     CheckGlobalBalanceNotes();
+}
+
+function UpdateAntiFacecampUI() {
+    const antiFacecampText = document.getElementById("anti-facecamp-permitted");
+
+    if (currentBalancing == null) {
+        antiFacecampText.hidden = true;
+        return;
+    } else {
+        antiFacecampText.hidden = false;
+    }
+
+    const antiFacecampAllowed = currentBalancing.KillerOverride[selectedKiller]["AntiFacecampPermitted"];
+
+    antiFacecampText.innerHTML = `Anti-Facecamp: ` +
+    `<span style="color:${antiFacecampAllowed ? "#88ff88" : "#ff8888"};">` +
+    `${antiFacecampAllowed ? "Permitted" : "Prohibited"}</span>`
 }
 
 /**

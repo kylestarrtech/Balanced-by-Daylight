@@ -117,6 +117,9 @@ function main() {
     // Update Balancing Selection UI
     UpdateBalanceSelectionUI();
 
+    // Update Anti-Facecamp UI
+    UpdateAntiFacecampUI();
+
     // Update the checkbox to show non-banned perks in the search
     document.getElementById("only-non-banned").checked = onlyShowNonBanned;
 

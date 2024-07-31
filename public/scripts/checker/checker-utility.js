@@ -1604,6 +1604,7 @@ function GetLoadoutFromImportCode(importCode) {
     UpdatePerkUI();
     CheckForBalancingErrors();
     UpdateKillerSelectionUI();
+    UpdateAntiFacecampUI();
     UpdateBalanceSelectionUI();
     ScrollToSelectedKiller();
 }
