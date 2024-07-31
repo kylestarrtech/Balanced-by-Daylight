@@ -1011,10 +1011,26 @@ button {
     margin-bottom: 0px;
 }
 
+#selected-killer-title {
+    margin-top: 0px !important;
+}
+
 #anti-facecamp-permitted {
     font-size: 0.95rem;
     font-weight: 500;
     margin-top: 3px;
+}
+
+.horizontal-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+#anticamp-badge {
+    max-height: 45px;
 }
 
 #image-gen-image {

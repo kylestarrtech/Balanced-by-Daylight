@@ -82,12 +82,26 @@ function BeginGenerationImport(data, callback) {
         KillerAddonIcons: [],
         KillerOfferingIcon: "",
         KillerPowerIcon: "",
-        NumErrors: 0
+        NumErrors: 0,
+        AntiFacecampPermitted: false
     }
 
     try {
         // Get Killer Name
         exampleImageGenObject.KillerName = Killers[importedBuild.selectedKiller].Name;
+    } catch(err) {
+        callback({
+            status: 400,
+            imageData: null,
+            message: "Invalid build data. Could not find killer name."
+        })
+        return;
+    }
+
+    try {
+        // Get Anti-Facecamp settings
+        let antiFacecampAllowed = importedBuild["currentBalancing"]["KillerOverride"][importedBuild.selectedKiller].AntiFacecampPermitted;
+        exampleImageGenObject.AntiFacecampPermitted = antiFacecampAllowed;
     } catch(err) {
         callback({
             status: 400,
@@ -140,7 +154,7 @@ function BeginGenerationImport(data, callback) {
     try {
         // Get Balancing Title
         if (importedBuild.customBalanceOverride) {
-            let truncatedTitle = importedBuild.currentBalancing["Name"].substring(0, 22);
+            let truncatedTitle = importedBuild.currentBalancing["Name"].substring(0, 18);
             if (truncatedTitle.length < importedBuild.currentBalancing["Name"].length) {
                 truncatedTitle += "...";
             }
@@ -612,6 +626,20 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     
     const KillerTitleText = importedBuild["KillerName"];
     context.fillText(KillerTitleText, 10 + titleTextWidth, 10, width);
+
+    // Generate Anti-Facecamp Badge
+
+    const badgeSize = 38;
+    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Permitted.png' : './canvas-image-library/icons/Anticamp-Prohibited.png';
+    let badgeXPos = 10 + titleTextWidth + context.measureText(KillerTitleText).width + 10;
+
+    let badgeImagePromise = loadImage(badgePath).then(image => {
+        // Image aspect ratio is 1:1
+        context.drawImage(image, badgeXPos, 10, badgeSize, badgeSize);
+    });
+    promises.push(badgeImagePromise);
+    
+    await badgeImagePromise;
     
     // Generate Balancing type text
     
@@ -946,6 +974,20 @@ async function GenerateKillerImage(importedBuild, callback) {
     
     const KillerTitleText = importedBuild["KillerName"];
     context.fillText(KillerTitleText, 10 + titleTextWidth, 10, width);
+
+    // Generate Anti-Facecamp Badge
+
+    const badgeSize = 38;
+    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Permitted.png' : './canvas-image-library/icons/Anticamp-Prohibited.png';
+    let badgeXPos = 10 + titleTextWidth + context.measureText(KillerTitleText).width + 10;
+
+    let badgeImagePromise = loadImage(badgePath).then(image => {
+        // Image aspect ratio is 1:1
+        context.drawImage(image, badgeXPos, 10, badgeSize, badgeSize);
+    });
+    promises.push(badgeImagePromise);
+    
+    await badgeImagePromise;
 
     // Generate Balancing type text
     

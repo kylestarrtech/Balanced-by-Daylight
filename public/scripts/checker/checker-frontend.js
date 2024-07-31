@@ -601,20 +601,18 @@ function UpdateBalanceSelectionUI() {
 }
 
 function UpdateAntiFacecampUI() {
-    const antiFacecampText = document.getElementById("anti-facecamp-permitted");
+    const anticampBadge = document.getElementById("anticamp-badge");
 
     if (currentBalancing == null) {
-        antiFacecampText.hidden = true;
+        anticampBadge.hidden = true;
         return;
     } else {
-        antiFacecampText.hidden = false;
+        anticampBadge.hidden = false;
     }
 
     const antiFacecampAllowed = currentBalancing.KillerOverride[selectedKiller]["AntiFacecampPermitted"];
 
-    antiFacecampText.innerHTML = `Anti-Facecamp: ` +
-    `<span style="color:${antiFacecampAllowed ? "#88ff88" : "#ff8888"};">` +
-    `${antiFacecampAllowed ? "Permitted" : "Prohibited"}</span>`
+    anticampBadge.src = antiFacecampAllowed ? "iconography/Anticamp-Permitted.webp" : "iconography/Anticamp-Prohibited.webp";
 }
 
 /**
