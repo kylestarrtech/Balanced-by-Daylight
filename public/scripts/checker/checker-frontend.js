@@ -612,6 +612,8 @@ function UpdateAntiFacecampUI() {
 
     const antiFacecampAllowed = currentBalancing.KillerOverride[selectedKiller]["AntiFacecampPermitted"];
 
+    anticampBadge.title = antiFacecampAllowed ? "Anti-Facecamp Permitted" : "Anti-Facecamp Prohibited";
+
     anticampBadge.src = antiFacecampAllowed ? "iconography/Anticamp-Small-Colorized-Permitted.webp" : "iconography/Anticamp-Small-Colorized-Prohibited.webp";
 }
 

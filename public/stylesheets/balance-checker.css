@@ -1031,6 +1031,15 @@ button {
 
 #anticamp-badge {
     max-height: 45px;
+    cursor: help;
+
+    border-radius: 100%;
+
+    transition: background-color 0.1s;
+}
+
+#anticamp-badge:hover {
+    background-color: #ffffff20;
 }
 
 #image-gen-image {
