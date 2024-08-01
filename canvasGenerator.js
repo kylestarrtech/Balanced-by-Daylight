@@ -630,7 +630,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     // Generate Anti-Facecamp Badge
 
     const badgeSize = 38;
-    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Permitted.png' : './canvas-image-library/icons/Anticamp-Prohibited.png';
+    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Small-Permitted.png' : './canvas-image-library/icons/Anticamp-Small-Prohibited.png';
     let badgeXPos = 10 + titleTextWidth + context.measureText(KillerTitleText).width + 10;
 
     let badgeImagePromise = loadImage(badgePath).then(image => {
