@@ -772,3 +772,32 @@ function ApplyBalancingOptionEvents(optionNode, presetIndex) {
 
     return optionNode;
 }
+
+function SetAntiFacecampBadgeEvents() {
+    let timer = undefined;
+
+    const anticampBadge = document.getElementById("anticamp-badge");
+    const anticampTooltip = document.getElementById("anticamp-tooltip");
+
+    
+    let badgePos = getOffset(anticampBadge);
+    
+    anticampTooltip.style.position = "absolute";
+
+    anticampBadge.addEventListener("mouseenter", function(event) {
+        anticampTooltip.innerText = anticampBadge.ariaLabel;
+
+        anticampTooltip.style.left = event.clientX;
+        anticampTooltip.style.top = event.clientY;
+
+        anticampTooltip.hidden = false;
+    });
+
+    anticampBadge.addEventListener("mouseleave", function(event) {
+        anticampTooltip.innerText = "";
+        
+        anticampTooltip.hidden = true;
+
+        clearTimeout(timer);
+    });
+}

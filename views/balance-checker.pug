@@ -46,7 +46,9 @@ html
                 h2#selected-balance-title Selected Balance: {BALANCE NAME}
                 div.horizontal-flex
                     h2#selected-killer-title Selected Killer: {KILLER NAME}
-                    img#anticamp-badge(src="iconography/Anticamp-Permitted.webp")
+                    div#anticamp-icon-container
+                        img#anticamp-badge(src="iconography/Anticamp-Permitted.webp")
+                        div#anticamp-tooltip(hidden="true")
                 h2#selected-role-header Survivor Builds
                 div#survivor-builds-container(class="hide-component")
                     div.survivor-build-component

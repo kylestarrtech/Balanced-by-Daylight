@@ -117,6 +117,9 @@ function main() {
     // Update Balancing Selection UI
     UpdateBalanceSelectionUI();
 
+    // Set Anti-Facecamp Badge Events
+    SetAntiFacecampBadgeEvents();
+
     // Update Anti-Facecamp UI
     UpdateAntiFacecampUI();
 

@@ -1038,6 +1038,19 @@ button {
     transition: background-color 0.1s;
 }
 
+#anticamp-tooltip {
+    background-color: #00000020;
+    backdrop-filter: blur(100px);
+    
+    border-radius: 10px;
+    padding: 5px;
+
+    user-select: none;
+    pointer-events: none;
+
+    z-index: 999;
+}
+
 #anticamp-badge:hover {
     background-color: #ffffff20;
 }

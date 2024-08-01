@@ -1644,3 +1644,17 @@ function ClearURLParams() {
     // Clear URL parameters
     window.history.replaceState({}, document.title, window.location.pathname);
 }
+
+/**
+ * Gets the X/Y position of an HTMl element.
+ * From Adam Grant via https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
+ * @param {Element} el 
+ * @returns 
+ */
+function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+      x: rect.left + window.scrollX,
+      y: rect.top + window.scrollY
+    };
+  }
