@@ -772,6 +772,7 @@ function GetExportData() {
         "killerOfferingId": killerOfferingId,
         "killerAddonsId": killerAddonsId,
         "selectedKiller": selectedKiller,
+        "AntiFacecampPermitted": currentBalancing.KillerOverride[selectedKiller].AntiFacecampPermitted,
         "currentBalancingIndex": currentBalancingIndex,
         "customBalanceOverride": customBalanceOverride,
         "onlyShowNonBanned": onlyShowNonBanned,

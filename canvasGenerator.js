@@ -97,20 +97,20 @@ function BeginGenerationImport(data, callback) {
         callback({
             status: 400,
             imageData: null,
-            message: `Invalid build data. Could not find killer name. -- ${err} -- ${JSON.stringify(Killers[importedBuild.selectedKiller])}`
+            message: `Invalid build data. Could not find killer name.`
         })
         return;
     }
 
     try {
         // Get Anti-Facecamp settings
-        let antiFacecampAllowed = importedBuild["currentBalancing"]["KillerOverride"][importedBuild.selectedKiller].AntiFacecampPermitted;
+        let antiFacecampAllowed = importedBuild["AntiFacecampPermitted"];
         exampleImageGenObject.AntiFacecampPermitted = antiFacecampAllowed;
     } catch(err) {
         callback({
             status: 400,
             imageData: null,
-            message: "Invalid build data. Could not find killer name."
+            message: "Invalid build data. Anti-Facecamp Data not present. "
         })
         return;
     }
