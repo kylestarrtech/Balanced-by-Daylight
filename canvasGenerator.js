@@ -630,7 +630,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     // Generate Anti-Facecamp Badge
 
     const badgeSize = 38;
-    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Small-Permitted.png' : './canvas-image-library/icons/Anticamp-Small-Prohibited.png';
+    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Small-Colorized-Permitted.png' : './canvas-image-library/icons/Anticamp-Small-Colorized-Prohibited.png';
     let badgeXPos = 10 + titleTextWidth + context.measureText(KillerTitleText).width + 10;
 
     let badgeImagePromise = loadImage(badgePath).then(image => {
@@ -978,8 +978,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     // Generate Anti-Facecamp Badge
 
     const badgeSize = 38;
-    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Permitted.png' : './canvas-image-library/icons/Anticamp-Prohibited.png';
-    let badgeXPos = 10 + titleTextWidth + context.measureText(KillerTitleText).width + 10;
+    const badgePath = importedBuild["AntiFacecampPermitted"] ? './canvas-image-library/icons/Anticamp-Small-Colorized-Permitted.png' : './canvas-image-library/icons/Anticamp-Small-Colorized-Prohibited.png';    let badgeXPos = 10 + titleTextWidth + context.measureText(KillerTitleText).width + 10;
 
     let badgeImagePromise = loadImage(badgePath).then(image => {
         // Image aspect ratio is 1:1
