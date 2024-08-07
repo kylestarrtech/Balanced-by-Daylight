@@ -5211,5 +5211,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Lich",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Cerberus-Talon.webp",
+                "Name": "Cerberus Talon",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Clock-Tower-Gear.webp",
+                "Name": "Clock Tower Gear",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Ruby-Circlet.webp",
+                "Name": "Ruby Circlet",
+                "Rarity": 0
+            },
+            {
+                "id": 32,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Sylph-Feather.webp",
+                "Name": "Sylpth Feather",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Blood-Filled-Goblet.webp",
+                "Name": "Blood-Filled Goblet",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Magical-Ticket.webp",
+                "Name": "Magical Ticket",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/Moonstone-Necklace.webp",
+                "Name": "Moonstone Necklace",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 719,
+                "addonIcon": "public/PowerAddons/DarkLord/.webp",
+                "Name": "",
+                "Rarity": 4
+            }
+        ]
     }
 ]
