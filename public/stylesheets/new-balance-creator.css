@@ -1,0 +1,59 @@
+:root {
+    --max-header-size-fr: 8fr;
+    --max-header-size-vh: 8vh;
+    --remaining-percentage-header-fr: calc(100fr - var(--max-header-size-fr));
+    --remaining-percentage-header-vh: calc(100vh - var(--max-header-size-vh));
+}
+
+#main-container {
+    display: grid;
+    grid-template-rows: var(--max-header-size-fr) 92fr;
+    height: 100vh;
+}
+
+#primary-header {
+    background-color: #ff000080;
+
+    display: grid;
+    grid-template-columns: 40fr 60fr;
+
+    width: 100vw;
+}
+
+#header-branding {
+    display: grid;
+    grid-template-columns: 1fr var(--max-header-size-fr);
+    align-items: center;
+    justify-content: start;
+    justify-items: start;
+    align-content: center;
+
+    gap: 15px;
+
+    margin-left: 20px;
+}
+
+#header-logo {
+    height: var(--max-header-size-vh);
+}
+
+#header-tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+
+    margin-right: 20px;
+
+    gap: 10px;
+}
+
+.header-tab-button {
+    
+}
+
+#main-content {
+    background-color: #0000ff80;
+}
