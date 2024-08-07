@@ -2374,5 +2374,59 @@
         "tags": [],
         "character": "Lara Croft",
         "survivorPerk": true
+    },
+    {
+        "id": 264,
+        "name": "Hex: Wretched Fate",
+        "icon": "public/Perks/Killers/Hex-Wretched-Fate.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Dark Lord",
+        "survivorPerk": false
+    },
+    {
+        "id": 265,
+        "name": "Human Greed",
+        "icon": "public/Perks/Killers/Human-Greed.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Dark Lord",
+        "survivorPerk": false
+    },
+    {
+        "id": 266,
+        "name": "Dominance",
+        "icon": "public/Perks/Killers/Dominance.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Dark Lord",
+        "survivorPerk": false
+    },
+    {
+        "id": 267,
+        "name": "Eyes of Belmont",
+        "icon": "public/Perks/Survivors/Eyes-Of-Belmont.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Trevor Belmont",
+        "survivorPerk": true
+    },
+    {
+        "id": 268,
+        "name": "Exultation",
+        "icon": "public/Perks/Survivors/Exultation.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Trevor Belmont",
+        "survivorPerk": true
+    },
+    {
+        "id": 269,
+        "name": "Moment-Of-Glory",
+        "icon": "public/Perks/Survivors/Moment-Of-Glory.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Trevor Belmont",
+        "survivorPerk": true
     }
 ]

@@ -5213,7 +5213,7 @@
         ]
     },
     {
-        "Name": "The Lich",
+        "Name": "The Dark Lord",
         "Addons": [
             {
                 "id": 0,
@@ -5224,135 +5224,135 @@
             },
             {
                 "id": 1,
-                "globalID": 719,
+                "globalID": 720,
                 "addonIcon": "public/PowerAddons/DarkLord/Clock-Tower-Gear.webp",
                 "Name": "Clock Tower Gear",
                 "Rarity": 0
             },
             {
                 "id": 2,
-                "globalID": 719,
+                "globalID": 721,
                 "addonIcon": "public/PowerAddons/DarkLord/Ruby-Circlet.webp",
                 "Name": "Ruby Circlet",
                 "Rarity": 0
             },
             {
-                "id": 32,
-                "globalID": 719,
+                "id": 3,
+                "globalID": 722,
                 "addonIcon": "public/PowerAddons/DarkLord/Sylph-Feather.webp",
                 "Name": "Sylpth Feather",
                 "Rarity": 0
             },
             {
                 "id": 4,
-                "globalID": 719,
+                "globalID": 723,
                 "addonIcon": "public/PowerAddons/DarkLord/Blood-Filled-Goblet.webp",
                 "Name": "Blood-Filled Goblet",
                 "Rarity": 1
             },
             {
                 "id": 5,
-                "globalID": 719,
+                "globalID": 724,
                 "addonIcon": "public/PowerAddons/DarkLord/Magical-Ticket.webp",
                 "Name": "Magical Ticket",
                 "Rarity": 1
             },
             {
                 "id": 6,
-                "globalID": 719,
+                "globalID": 725,
                 "addonIcon": "public/PowerAddons/DarkLord/Moonstone-Necklace.webp",
                 "Name": "Moonstone Necklace",
                 "Rarity": 1
             },
             {
                 "id": 7,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 726,
+                "addonIcon": "public/PowerAddons/DarkLord/Traveler_S-Hat.webp",
+                "Name": "Traveler's Hat",
                 "Rarity": 1
             },
             {
                 "id": 8,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 727,
+                "addonIcon": "public/PowerAddons/DarkLord/Winged-Boots.webp",
+                "Name": "Winged Boots",
                 "Rarity": 1
             },
             {
                 "id": 9,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 728,
+                "addonIcon": "public/PowerAddons/DarkLord/Force-Of-Echo.webp",
+                "Name": "Force of Echo",
                 "Rarity": 2
             },
             {
                 "id": 10,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 729,
+                "addonIcon": "public/PowerAddons/DarkLord/Killer-Doll.webp",
+                "Name": "Killer Doll",
                 "Rarity": 2
             },
             {
                 "id": 11,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 730,
+                "addonIcon": "public/PowerAddons/DarkLord/Pocket-Watch.webp",
+                "Name": "Pocket Watch",
                 "Rarity": 2
             },
             {
                 "id": 12,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 731,
+                "addonIcon": "public/PowerAddons/DarkLord/Sunglasses.webp",
+                "Name": "Sunglasses",
                 "Rarity": 2
             },
             {
                 "id": 13,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 732,
+                "addonIcon": "public/PowerAddons/DarkLord/White-Wolf-Medallion.webp",
+                "Name": "White Wolf Medallion",
                 "Rarity": 2
             },
             {
                 "id": 14,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 733,
+                "addonIcon": "public/PowerAddons/DarkLord/Cube-Of-Zoe.webp",
+                "Name": "Cube of Zoe",
                 "Rarity": 3
             },
             {
                 "id": 15,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 734,
+                "addonIcon": "public/PowerAddons/DarkLord/Lapis-Lazuli.webp",
+                "Name": "Lapis Lazuli",
                 "Rarity": 3
             },
             {
                 "id": 16,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 735,
+                "addonIcon": "public/PowerAddons/DarkLord/Medusa_S-Hair.webp",
+                "Name": "Medusa's Hair",
                 "Rarity": 3
             },
             {
                 "id": 17,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 736,
+                "addonIcon": "public/PowerAddons/DarkLord/Warg_S-Fang.webp",
+                "Name": "Warg's Fang",
                 "Rarity": 3
             },
             {
                 "id": 18,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 737,
+                "addonIcon": "public/PowerAddons/DarkLord/Alucard_S-Shield.webp",
+                "Name": "Alucard's Shield",
                 "Rarity": 4
             },
             {
                 "id": 19,
-                "globalID": 719,
-                "addonIcon": "public/PowerAddons/DarkLord/.webp",
-                "Name": "",
+                "globalID": 738,
+                "addonIcon": "public/PowerAddons/DarkLord/Iridescent-Ring-Of-Vlad.webp",
+                "Name": "Iridescent Ring of Vlad",
                 "Rarity": 4
             }
         ]
