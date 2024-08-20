@@ -111,6 +111,7 @@ async function getLeagues(){
 
         if(row.Type != "Stored"){
             autobalanceLeagues.push({
+                FullTitle: row.Name,
                 Name: row.Filename,
                 URL: row.URL,
                 Frequency: parseInt(row.Frequency),
@@ -118,6 +119,7 @@ async function getLeagues(){
             })
         } else {
             autobalanceLeagues.push({
+                FullTitle: row.Name,
                 Name: row.Filename,
                 URL: `${storedBalanceURLPrefix}${row.Filename}${storedBalanceURLSuffix}`,
                 Frequency: 3600, // Every hour
@@ -169,6 +171,7 @@ function InitAutobalance() {
         }
         
         let leagueObj = {
+            "FullTitle": league.FullTitle,
             "Name": leagueName,
             "URL": leagueURL,
             "Frequency": league.Frequency,
@@ -248,6 +251,9 @@ function FetchAutobalance(index) {
             convertedData = balanceObject.ConvFunc(data);
         }else{
             convertedData = data;
+            
+            // Change the balancing title to be equivalent to the FullTitle property.
+            convertedData.Name = balanceObject.FullTitle.toString();
         }
         
         console.log(`Data fetched and converted for ${balanceObject.Name}!`);
