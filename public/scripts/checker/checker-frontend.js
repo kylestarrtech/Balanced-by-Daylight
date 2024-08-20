@@ -1448,7 +1448,8 @@ function GenerateAlertModal(
     title,
     message,
     closeCallback = undefined,
-    noParsing = false
+    noParsing = false,
+    hideCloseButton = false
 ) {
     var alertContainer = document.getElementById("alert-container");
     alertContainer.hidden = false;
@@ -1462,6 +1463,10 @@ function GenerateAlertModal(
         alertMessage.innerHTML = message;
 
     var alertOkButton = document.getElementById("alert-ok-button");
+
+    alertOkButton.style.display = hideCloseButton ? "none" : "inline-block";
+    alertOkButton.style.maxHeight = hideCloseButton ? "0px" : "unset";
+    
     alertOkButton.addEventListener("click", function() {
         alertContainer.hidden = true;
     });

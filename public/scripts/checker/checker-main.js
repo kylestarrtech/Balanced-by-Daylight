@@ -103,12 +103,25 @@ function main() {
     if (loadDefaultBalance) {
             // Set balancing to said index.
         if (GetBalancePresetByID(currentBalancingIndex) == undefined) {
+            if (currentBalancingIndex == 0) {
+                GenerateAlertModal("Critical Backend Error", `Could not find the associated balancing preset, but the balancing preset is already set to the default. This should <b>never</b> happen.<br><br>If this occurs, please contact "shaders" on Discord immediately, use the #support channel on the Balanced by Daylight Discord server, or contact @SHADERSOP on Twitter/X via a public tweet.<br><br><a href="https://discord.gg/XC5spf5GkA">Discord Server</a>`,
+                    undefined,
+                    false,
+                    true
+                );
+                return;
+            }
+
             console.error("Balance profile of saved selection is undefined, defaulting to 0.");
             currentBalancingIndex = 0;
-
-            GenerateAlertModal("Error", "Could not find the balance preset previously selected - this is likely due to a change in the balance presets. Defaulting to the first balance preset.");
-            
             localStorage.setItem("currentBalancingIndex", currentBalancingIndex);
+
+            GenerateAlertModal("Error", "Could not find the balance preset previously selected - this is likely due to a change in the balance presets. Defaulting to the first balancing preset. Closing this alert reloads the page.",
+                closeCallback=function() {
+                    location.reload();
+                }
+            );
+            
         }
         //currentBalancing = GetBalancePresetByID(currentBalancingIndex)["Balancing"];
         TrySetCurrentBalancing();

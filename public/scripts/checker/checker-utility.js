@@ -1397,6 +1397,12 @@ function GetBalanceSelectOptionVisibilityInSearch(presetID, query, showIfPropose
 function TryLoadBalanceProfileFromPresetID(presetID, success, error) {
     let preset = GetBalancePresetByID(presetID);
 
+    if (preset == undefined) {
+        console.error("Preset does not exist.");
+        error();
+        return;
+    }
+
     if (preset["Balancing"] !== undefined) {
         success();
         return;
