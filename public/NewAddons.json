@@ -5237,10 +5237,10 @@
                 "Rarity": 0
             },
             {
-                "id": 3,
-                "globalID": 722,
-                "addonIcon": "public/PowerAddons/DarkLord/Sylph-Feather.webp",
-                "Name": "Sylpth Feather",
+                "id": 7,
+                "globalID": 726,
+                "addonIcon": "public/PowerAddons/DarkLord/Traveler_S-Hat.webp",
+                "Name": "Traveler's Hat",
                 "Rarity": 0
             },
             {
@@ -5265,10 +5265,10 @@
                 "Rarity": 1
             },
             {
-                "id": 7,
-                "globalID": 726,
-                "addonIcon": "public/PowerAddons/DarkLord/Traveler_S-Hat.webp",
-                "Name": "Traveler's Hat",
+                "id": 13,
+                "globalID": 732,
+                "addonIcon": "public/PowerAddons/DarkLord/White-Wolf-Medallion.webp",
+                "Name": "White Wolf Medallion",
                 "Rarity": 1
             },
             {
@@ -5307,10 +5307,10 @@
                 "Rarity": 2
             },
             {
-                "id": 13,
-                "globalID": 732,
-                "addonIcon": "public/PowerAddons/DarkLord/White-Wolf-Medallion.webp",
-                "Name": "White Wolf Medallion",
+                "id": 3,
+                "globalID": 722,
+                "addonIcon": "public/PowerAddons/DarkLord/Sylph-Feather.webp",
+                "Name": "Sylpth Feather",
                 "Rarity": 2
             },
             {
