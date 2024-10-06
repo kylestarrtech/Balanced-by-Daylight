@@ -446,6 +446,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
         let perkBanList = [];
         perkBanList = selectedRole == 0 ? override.SurvivorIndvPerkBans : override.KillerIndvPerkBans;
 
+        // Loop through banned perks
         for (var j = 0; j < perkBanList.length; j++) {
             var currentBannedPerk = parseInt(perkBanList[j]);
 
@@ -540,6 +541,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                                 "iconography/PerkError.webp"
                             )
                         )
+                        break;
                     } else {
                         ErrorList.push(
                             GenerateErrorObject(
@@ -549,6 +551,7 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
                                 "iconography/PerkError.webp"
                             )
                         )
+                        break;
                     }
                 }
             }
