@@ -302,8 +302,8 @@
             {
                 "id": 1,
                 "globalID": 41,
-                "addonIcon": "public/PowerAddons/Hillbilly/Dad_S-Boots.webp",
-                "Name": "Dad's Boots",
+                "addonIcon": "public/PowerAddons/Hillbilly/Discarded-Air-Filter.webp",
+                "Name": "Discarded Air Filter",
                 "Rarity": 0
             },
             {
@@ -330,8 +330,8 @@
             {
                 "id": 5,
                 "globalID": 45,
-                "addonIcon": "public/PowerAddons/Hillbilly/Spiked-Boots.webp",
-                "Name": "Spiked Boots",
+                "addonIcon": "public/PowerAddons/Hillbilly/High-Speed-Idler-Screw.webp",
+                "Name": "High-Speed Idler Screw",
                 "Rarity": 1
             },
             {
@@ -377,10 +377,10 @@
                 "Rarity": 2
             },
             {
-                "id": 12,
+                "id": 1,
                 "globalID": 52,
-                "addonIcon": "public/PowerAddons/Hillbilly/Discarded-Air-Filter.webp",
-                "Name": "Discarded Air Filter",
+                "addonIcon": "public/PowerAddons/Hillbilly/Dad_S-Boots.webp",
+                "Name": "Dad's Boots",
                 "Rarity": 2
             },
             {
@@ -398,10 +398,10 @@
                 "Rarity": 3
             },
             {
-                "id": 15,
+                "id": 5,
                 "globalID": 55,
-                "addonIcon": "public/PowerAddons/Hillbilly/High-Speed-Idler-Screw.webp",
-                "Name": "High-Speed Idler Screw",
+                "addonIcon": "public/PowerAddons/Hillbilly/Spiked-Boots.webp",
+                "Name": "Spiked Boots",
                 "Rarity": 3
             },
             {

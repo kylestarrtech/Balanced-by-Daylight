@@ -12,6 +12,9 @@ MaximumPerkRepetition = 1;
 GlobalNotes = "";
 const version = 1;
 
+const presetLimit = 100; // The number of balancing presets that can be saved.
+let currentPresetIndex = -1; // The index of the currently selected preset
+
 /**
  * @type {boolean} AllDataLoaded - Used to check if all data (perks, addons, offerings, maps .etc) has been loaded
  */
@@ -41,6 +44,10 @@ TIER_RARITY_COLOURLIST = [
 ItemIDRange = [];
 
 function main() {
+    if (localStorage.getItem("presets") == null) {
+        localStorage.setItem("presets", "[]");
+    }
+
     GetPerks();
 
     SetInitialEvents();
@@ -64,6 +71,7 @@ function main() {
     }, 100);
 
     SetImportExportButtonEvents();
+    SetPresetEvents();
 
     // Fill listbox with all Survivor perks by default.
     OverrideButtonSearch("", true);
@@ -110,6 +118,77 @@ function SetImportExportButtonEvents() {
         });
         console.log("Done!");
     });
+}
+
+function SetPresetEvents() {
+
+    return;
+
+    const presetDropdown = document.getElementById("preset-select-textbox");
+    const loadPresetButton = document.getElementById("preset-load-button");
+    const savePresetButton = document.getElementById("preset-save-button");
+    const saveAsPresetButton = document.getElementById("preset-save-as-button");
+
+    let balanceImportBox = document.getElementById("balance-import-textbox");
+
+    loadPresetButton.addEventListener("click", function() {
+        const targetIndex = presetDropdown.selectedIndex;
+
+        if (targetIndex == -1) {
+            console.error("No preset is selected!");
+            return;
+        }
+
+        let presetStorage = localStorage.getItem("presets");
+        if (presetStorage == null) {
+            console.error("Presets don't exist! Refresh page to reset presets!");
+        }
+
+        try {
+            let presetObj = JSON.parse(presetStorage);
+            if (presetObj[targetIndex] == null) {
+                throw "Preset at the desired index does not exist!";
+            }
+
+            let desiredPreset = presetObj[targetIndex];
+
+            balanceImportBox.value = JSON.stringify(desiredPreset);
+            ImportBalancing();
+        } catch (err) {
+            console.error(err);
+        }
+    });
+
+    savePresetButton.addEventListener("click", function() {
+        const targetIndex = presetDropdown.selectedIndex;
+
+        if (targetIndex == -1) {
+            console.error("No preset is selected!");
+            alert("In order to overwrite a preset, one must be selected!");
+            return;
+        }
+
+        let presetStorage = localStorage.getItem("presets");
+        if (presetStorage == null) {
+            console.error("Presets don't exist! Refresh page to reset presets!");
+        }
+
+        try {
+            let presetObj = JSON.parse(presetStorage);
+            if (presetObj[targetIndex] == null) {
+                throw "Preset at the desired index does not exist!";
+            }
+
+            let desiredPreset = presetObj[targetIndex];
+
+            let exportData = GetExportedBalanceObject();
+            
+        } catch (err) {
+            console.error(err);
+        }
+    })
+
+
 }
 
 function SetMiscDropdownEvents() {
@@ -2268,14 +2347,7 @@ function SearchForPerks(searchQuery, isSurvivor) {
     return searchResults;   
 }
 
-/**
- * Exports the balancing to a JSON string.
- * 
- * Goes property by property to ensure that if something is added to the balancing, it won't break the export.
- * @returns {void}
- */
-function ExportBalancing(downloadFile = true) {
-
+function GetExportedBalanceObject() {
     // Validate the killer balance
     KillerValidityErrors = [];
     for (var i = 0; i < KillerBalance.length; i++) {
@@ -2368,13 +2440,25 @@ function ExportBalancing(downloadFile = true) {
         KillerOverride: NewKillerExport
     }
 
-    var finalValue = JSON.stringify(FinalBalanceObj, null, '\t');
+    return FinalBalanceObj;
+}
+
+/**
+ * Exports the balancing to a JSON string.
+ * 
+ * Goes property by property to ensure that if something is added to the balancing, it won't break the export.
+ * @returns {void}
+ */
+function ExportBalancing(downloadFile = true) {
+    let balanceObj = GetExportedBalanceObject();
+
+    var finalValue = JSON.stringify(balanceObj, null, '\t');
 
     var balanceExportBox = document.getElementById("balance-export-textbox");
     balanceExportBox.value = finalValue;
 
     if (downloadFile) {
-        DownloadData(FinalBalanceObj);
+        DownloadData(balanceObj);
     }
 }
 
