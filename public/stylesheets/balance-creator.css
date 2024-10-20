@@ -88,3 +88,27 @@ body {
 #map-search-textbox {
     min-width: 300px;
 }
+
+#restricted-space-header {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.small-label {
+    font-size: 0.8rem;
+}
+
+#balance-export-textbox {
+    background-color: rgb(16, 16, 16);
+    color: rgb(239, 239, 239);
+    border: 10px solid rgb(16, 16, 16);
+    border-radius: 10px;
+    
+    opacity: 0.5;
+
+    transition: opacity ease-in-out 0.15s;
+}
+
+#balance-export-textbox:focus {
+    opacity: 1;
+}

@@ -5,7 +5,7 @@ Purpose:
     This file is designed to contain all of the global variables and very trivial initial setups for the balance checker.
 */
 
-var debugging = false;
+var debugging = true;
 var overrideStackTrace = false;
 
 var Perks = null;

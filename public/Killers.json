@@ -322,5 +322,14 @@
         "PowerIcon": "public/Powers/Lich.webp",
         "Aliases": ["Vecna"],
         "AdditionalData": {}
+    },
+    {
+        "ID": 36,
+        "Name": "The Dark Lord",
+        "Portrait": "iconography/portraits/DarkLord.webp",
+        "LorePortrait": "iconography/lore/DarkLord.webp",
+        "PowerIcon": "public/Powers/DarkLord.webp",
+        "Aliases": ["Dracula"],
+        "AdditionalData": {}
     }
 ]

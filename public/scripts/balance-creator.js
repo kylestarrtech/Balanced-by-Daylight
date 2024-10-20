@@ -12,6 +12,9 @@ MaximumPerkRepetition = 1;
 GlobalNotes = "";
 const version = 1;
 
+const presetLimit = 100; // The number of balancing presets that can be saved.
+let currentPresetIndex = -1; // The index of the currently selected preset
+
 /**
  * @type {boolean} AllDataLoaded - Used to check if all data (perks, addons, offerings, maps .etc) has been loaded
  */
@@ -41,6 +44,10 @@ TIER_RARITY_COLOURLIST = [
 ItemIDRange = [];
 
 function main() {
+    if (localStorage.getItem("presets") == null) {
+        localStorage.setItem("presets", "[]");
+    }
+
     GetPerks();
 
     SetInitialEvents();
@@ -64,6 +71,7 @@ function main() {
     }, 100);
 
     SetImportExportButtonEvents();
+    SetPresetEvents();
 
     // Fill listbox with all Survivor perks by default.
     OverrideButtonSearch("", true);
@@ -86,14 +94,101 @@ function SetImportExportButtonEvents() {
 
     // Export Button
     var exportButton = document.getElementById("balance-export-button");
+    var exportTextboxButton = document.getElementById("balance-textbox-export");
+    var exportTextbox = document.getElementById("balance-export-textbox");
 
     exportButton.addEventListener("click", function() {
         ExportBalancing();
     });
 
-    importButton.addEventListener("click", function() {
-        ImportBalancing();
+    exportTextboxButton.addEventListener("click", function() {
+        ExportBalancing(downloadFile=false);
+        exportTextbox.style.display = "";
     });
+
+    exportTextbox.addEventListener("focusout", function() {
+        exportTextbox.style.display = "none";
+    })
+
+    importButton.addEventListener("click", function() {
+        console.log("Getting file contents");
+        GetFileContents(function() {
+            console.log("Completed!");
+            ImportBalancing(); // Import balancing upon completion.
+        });
+        console.log("Done!");
+    });
+}
+
+function SetPresetEvents() {
+
+    return;
+
+    const presetDropdown = document.getElementById("preset-select-textbox");
+    const loadPresetButton = document.getElementById("preset-load-button");
+    const savePresetButton = document.getElementById("preset-save-button");
+    const saveAsPresetButton = document.getElementById("preset-save-as-button");
+
+    let balanceImportBox = document.getElementById("balance-import-textbox");
+
+    loadPresetButton.addEventListener("click", function() {
+        const targetIndex = presetDropdown.selectedIndex;
+
+        if (targetIndex == -1) {
+            console.error("No preset is selected!");
+            return;
+        }
+
+        let presetStorage = localStorage.getItem("presets");
+        if (presetStorage == null) {
+            console.error("Presets don't exist! Refresh page to reset presets!");
+        }
+
+        try {
+            let presetObj = JSON.parse(presetStorage);
+            if (presetObj[targetIndex] == null) {
+                throw "Preset at the desired index does not exist!";
+            }
+
+            let desiredPreset = presetObj[targetIndex];
+
+            balanceImportBox.value = JSON.stringify(desiredPreset);
+            ImportBalancing();
+        } catch (err) {
+            console.error(err);
+        }
+    });
+
+    savePresetButton.addEventListener("click", function() {
+        const targetIndex = presetDropdown.selectedIndex;
+
+        if (targetIndex == -1) {
+            console.error("No preset is selected!");
+            alert("In order to overwrite a preset, one must be selected!");
+            return;
+        }
+
+        let presetStorage = localStorage.getItem("presets");
+        if (presetStorage == null) {
+            console.error("Presets don't exist! Refresh page to reset presets!");
+        }
+
+        try {
+            let presetObj = JSON.parse(presetStorage);
+            if (presetObj[targetIndex] == null) {
+                throw "Preset at the desired index does not exist!";
+            }
+
+            let desiredPreset = presetObj[targetIndex];
+
+            let exportData = GetExportedBalanceObject();
+            
+        } catch (err) {
+            console.error(err);
+        }
+    })
+
+
 }
 
 function SetMiscDropdownEvents() {
@@ -2252,14 +2347,7 @@ function SearchForPerks(searchQuery, isSurvivor) {
     return searchResults;   
 }
 
-/**
- * Exports the balancing to a JSON string.
- * 
- * Goes property by property to ensure that if something is added to the balancing, it won't break the export.
- * @returns {void}
- */
-function ExportBalancing() {
-
+function GetExportedBalanceObject() {
     // Validate the killer balance
     KillerValidityErrors = [];
     for (var i = 0; i < KillerBalance.length; i++) {
@@ -2277,6 +2365,8 @@ function ExportBalancing() {
     let maxPerkRepetition = document.getElementById("maximum-perk-repetition-dropdown").value;
     // Convert maxPerkRepetition to an integer
     maxPerkRepetition = parseInt(maxPerkRepetition);
+
+    RemoveAllDuplicates(); // Remove all duplicates from the balancing.
 
     NewTierExport = [];
     for (var i = 0; i < Tiers.length; i++) {
@@ -2350,8 +2440,59 @@ function ExportBalancing() {
         KillerOverride: NewKillerExport
     }
 
+    return FinalBalanceObj;
+}
+
+/**
+ * Exports the balancing to a JSON string.
+ * 
+ * Goes property by property to ensure that if something is added to the balancing, it won't break the export.
+ * @returns {void}
+ */
+function ExportBalancing(downloadFile = true) {
+    let balanceObj = GetExportedBalanceObject();
+
+    var finalValue = JSON.stringify(balanceObj, null, '\t');
+
     var balanceExportBox = document.getElementById("balance-export-textbox");
-    balanceExportBox.value = JSON.stringify(FinalBalanceObj);
+    balanceExportBox.value = finalValue;
+
+    if (downloadFile) {
+        DownloadData(balanceObj);
+    }
+}
+
+
+function DownloadData(obj) {
+    let balanceExportButton = document.getElementById("balance-export-button");
+
+    balanceExportButton.style.display = "hidden";
+
+    try {
+        const stringified = JSON.stringify(obj, null, '\t');
+    
+        const blob = new Blob([stringified], {type: "application/json"});
+    
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+    
+        let fileName = document.getElementById("balance-name-textbox").value;
+        if (fileName == "") { fileName = "preset.json"; }
+    
+        // Sanitize the title such that it can be used as a file name.
+        fileName = fileName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    
+        link.download = `${fileName}.json`;
+    
+        link.click();
+    
+        URL.revokeObjectURL(link.href);
+    } catch (err) {
+        alert("There was an error exporting this balancing. Please hit Ctrl+Shift+J (open the Inspect Element console), copy the full error (or take a screenshot) and report it as an issue!");
+        console.error(err);
+    }
+
+    balanceExportButton.style.display = "";
 }
 
 function GetCurrentEpochTime() {
@@ -2387,13 +2528,55 @@ function ValidateKillerBalance(id) {
 }
 
 /**
+ * 
+ * @param {function} completed 
+ */
+function GetFileContents(completed) {
+    const targetTextbox = document.getElementById("balance-import-textbox");
+
+    const fileInput = document.getElementById("import-balancing-file");
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            try {
+                const jsonString = e.target.result;
+                
+                // Set textbox import field
+                targetTextbox.value = jsonString;
+                console.log("Value set!");
+            } catch (err) {
+                console.error("Error reading file:", err);
+                alert(`There was an error reading the file contents! Defaulting to textbox. Error is below:\n\n${err}`)
+            }
+            completed();
+        };
+
+        reader.readAsText(file);
+    } else {
+        console.log("No file selected!");
+        completed();
+    }
+}
+
+/**
  * Import a balancing from a JSON string.
  * 
  * Goes property by property to ensure that if something is added to the balancing, it won't break the import.
  */
 function ImportBalancing() {
     var balanceImportBox = document.getElementById("balance-import-textbox");
-    var balanceImportObj = JSON.parse(balanceImportBox.value);
+    var balanceImportObj = undefined;
+
+    try {
+        balanceImportObj = JSON.parse(balanceImportBox.value);
+    } catch (err) {
+        console.error(`Invalid JSON: ${err}`)
+        alert(`Invalid import parameters (Invalid JSON). Error is below:\n\n${err}`);
+        return;
+    }
 
     document.getElementById("balance-name-textbox").value = balanceImportObj.Name;
 
@@ -2537,6 +2720,86 @@ function ImportBalancing() {
     UpdateDropdowns();
     LoadTier(0);
     LoadKillerOverrideUI(0);
+
+    RemoveAllDuplicates();
+}
+
+function RemoveAllDuplicates() {
+    
+    // Remove duplicates from all Tiers
+    for (let i = 0; i < Tiers.length; i++) {
+        RemoveDuplicatesFromTier(i);
+    }
+
+    for (let i = 0; i < KillerBalance.length; i++) {
+        RemoveDuplicatesFromKiller(i);
+    }
+
+    UpdateDropdowns();
+    LoadTier(GetCurrentTierIndex());
+    LoadKillerOverrideUI(GetCurrentKillerIndex());
+}
+
+function RemoveDuplicatesFromTier(index) {
+    let target = Tiers[index];
+
+    let newHolderList = undefined;
+
+    // -=-=-=-=-=-=-=-=[ SURV ]=-=-=-=-=-=-=-=-
+
+    newHolderList = RemoveDuplicatesFromList(target["SurvivorIndvPerkBans"]);
+    target["SurvivorIndvPerkBans"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromListInList(target["SurvivorComboPerkBans"])
+    target["SurvivorComboPerkBans"] = newHolderList;
+
+    // -=-=-=-=-=-=-=-=[KILLER]=-=-=-=-=-=-=-=-
+
+    newHolderList = RemoveDuplicatesFromList(target["KillerIndvPerkBans"]);
+    target["KillerIndvPerkBans"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromListInList(target["KillerComboPerkBans"]);
+    target["KillerComboPerkBans"] = newHolderList;
+
+
+    Tiers[index] = target;
+}
+
+function RemoveDuplicatesFromKiller(index) {
+    let target = KillerBalance[index];
+
+    let newHolderList = undefined;
+
+    // -=-=-=-=-=-=-=-=[ SURV ]=-=-=-=-=-=-=-=-
+
+    newHolderList = RemoveDuplicatesFromList(target["SurvivorIndvPerkBans"]);
+    target["SurvivorIndvPerkBans"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromListInList(target["SurvivorComboPerkBans"])
+    target["SurvivorComboPerkBans"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromList(target["SurvivorWhitelistedPerks"]);
+    target["SurvivorWhitelistedPerks"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromListInList(target["SurvivorWhitelistedComboPerks"])
+    target["SurvivorWhitelistedComboPerks"] = newHolderList;
+
+    // -=-=-=-=-=-=-=-=[KILLER]=-=-=-=-=-=-=-=-
+
+    newHolderList = RemoveDuplicatesFromList(target["KillerIndvPerkBans"]);
+    target["KillerIndvPerkBans"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromListInList(target["KillerComboPerkBans"]);
+    target["KillerComboPerkBans"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromList(target["KillerWhitelistedPerks"]);
+    target["KillerWhitelistedPerks"] = newHolderList;
+
+    newHolderList = RemoveDuplicatesFromListInList(target["KillerWhitelistedComboPerks"])
+    target["KillerWhitelistedComboPerks"] = newHolderList;
+
+
+    KillerBalance[index] = target;
 }
 
 /* HELPER FUNCTIONS */
@@ -2553,6 +2816,50 @@ function SanitizeKillerBalanceProperty(curProperty, newProperty) {
     }
 
     return newProperty;
+}
+
+/**
+ * Removes duplicates from a list by iteratively adding the values to a Hashtable then returning the Hashtable (as they cannot have duplicates).
+ * @param {Array} list 
+ */
+function RemoveDuplicatesFromList(list) {
+    const map = new Map();
+    return list.filter(item => !map.has(item) && map.set(item, true));
+}
+
+/**
+ * To be used for lists that other lists. Adds all stringified values to a set, which cannot have duplicates. Order DOES matter (e.g. ["67", "76"] != ["76", "67"]).
+ * @param {Array} list 
+ */
+function RemoveDuplicatesFromListInList(list) {
+    const uniqueLists = new Set(list.map(JSON.stringify));
+    return Array.from(uniqueLists, JSON.parse);
+}
+
+/**
+ * Extrapolate's the Cantor Pairing Function to n>2 entries (4 Perks max) and iteratively reduces them until they reach a single value. The issue is this cannot be reversed.
+ * @param {*} list 
+ */
+function GenerateUniquePairing(list) {
+    if (list.length > 4 || list.length == 0) {
+        console.error("List is not within 1-4 in length!");
+        return;
+    }
+
+    //f(a,b) = (1/2)(a+b)(a+b+1)+b
+    while (list.length > 1) {
+        const valueA = list[0];
+        const valueB = list[1];
+
+        let outcome = (1/2) * (valueA + valueB) * (valueA + valueB + 1) + valueB; // Pairing function
+
+        list = list.slice(1);
+        list[0] = outcome; // Replace second element with the pairing function (now the first element)
+        console.log(list);
+    }
+    
+    console.log(`OUTPUT: ${list[0]}`);
+    return list[0];
 }
 
 /**
@@ -2583,6 +2890,10 @@ function GetCurrentKillerIndex() {
  */
 function GetCurrentTier() {
     return document.getElementById("tier-selection-dropdown").value;
+}
+
+function GetCurrentTierIndex() {
+    return document.getElementById("tier-selection-dropdown").selectedIndex;
 }
 
 function SelectValuesInListbox(id, values) {

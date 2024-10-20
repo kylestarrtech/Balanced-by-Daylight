@@ -263,18 +263,38 @@ html
                         br
 
                     hr
-
+                    //- h4#restricted-space-header Presets
+                    //- br
+                    //- label(class="small-label" for="preset-select-textbox") Current Preset Selected: {PRESET}
+                    //- br
+                    //- select#preset-select-textbox(style="min-width: 200px;")
+                    //- button#preset-load-button Load Preset
+                    //- button#preset-save-button Save Preset
+                    //- br
+                    //- button#preset-save-as-button Save Preset As...
+                    hr
+                    h4#restricted-space-header Importing
+                    label(class="small-label" for="balance-import-textbox") Import via textbox:
+                    br
                     textarea#balance-import-textbox(rows="5" cols="50")
+                    br
+                    br
+                    label(class="small-label" for="balance-import-file") Import via file (Recommended):
+                    br
+                    input(type="file" id="import-balancing-file" accept=".json")
+                    br
                     br
                     button(id="balance-import-button") Import Balancing Sheet 
                     hr
+                    h4#restricted-space-header Exporting
                     label(for="balance-name-textbox") Balancing Title: 
                     input#balance-name-textbox(type="text")
                     br
-                    button(id="balance-export-button") Export Balancing Sheet 
+                    button(id="balance-export-button") Export Balancing Sheet to File
+                    button(id="balance-textbox-export") Export Balancing Sheet to Textbox
                     br
                     // Create a readonly textbox for the exported balancing sheet with 10 rows and 50 columns
-                    textarea#balance-export-textbox(rows="5" cols="50" readonly="readonly")
+                    textarea#balance-export-textbox(rows="30" cols="80" readonly="readonly" style="display:none;")
                     - var i = 0;
                     while i < 10
                         br
