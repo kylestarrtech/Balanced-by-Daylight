@@ -66,7 +66,7 @@
         "id": 7,
         "name": "Background Player",
         "icon": "public/Perks/Survivors/Background-Player.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "Renato Lyra",
         "survivorPerk": true
@@ -75,7 +75,7 @@
         "id": 8,
         "name": "Balanced Landing",
         "icon": "public/Perks/Survivors/Balanced-Landing.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "Nea Karlsson",
         "survivorPerk": true
@@ -309,7 +309,7 @@
         "id": 34,
         "name": "Dead Hard",
         "icon": "public/Perks/Survivors/Dead-Hard.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "David King",
         "survivorPerk": true
@@ -390,7 +390,7 @@
         "id": 43,
         "name": "Dramaturgy",
         "icon": "public/Perks/Survivors/Dramaturgy.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "Nicolas Cage",
         "survivorPerk": true
@@ -588,7 +588,7 @@
         "id": 65,
         "name": "Lithe",
         "icon": "public/Perks/Survivors/Lithe.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "Feng Min",
         "survivorPerk": true
@@ -966,7 +966,7 @@
         "id": 107,
         "name": "Smash Hit",
         "icon": "public/Perks/Survivors/Smash-Hit.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "Yun-Jin Lee",
         "survivorPerk": true
@@ -1011,7 +1011,7 @@
         "id": 112,
         "name": "Sprint Burst",
         "icon": "public/Perks/Survivors/Sprint-Burst.webp",
-        "exhaustion": false,
+        "exhaustion": true,
         "tags": [],
         "character": "Meg Thomas",
         "survivorPerk": true

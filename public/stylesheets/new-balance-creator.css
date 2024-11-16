@@ -12,7 +12,7 @@
 }
 
 #primary-header {
-    background-color: #ff000080;
+    background-color: #16151f;
 
     display: grid;
     grid-template-columns: 40fr 60fr;
@@ -55,5 +55,5 @@
 }
 
 #main-content {
-    background-color: #0000ff80;
+    background-color: #100f16;
 }
