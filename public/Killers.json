@@ -331,5 +331,14 @@
         "PowerIcon": "public/Powers/DarkLord.webp",
         "Aliases": ["Dracula"],
         "AdditionalData": {}
+    },
+    {
+        "ID": 37,
+        "Name": "The Houndmaster",
+        "Portrait": "iconography/portraits/Houndmaster.webp",
+        "LorePortrait": "iconography/lore/Houndmaster.webp",
+        "PowerIcon": "public/Powers/Houndmaster.webp",
+        "Aliases": ["HM", "Portia"],
+        "AdditionalData": {}
     }
 ]

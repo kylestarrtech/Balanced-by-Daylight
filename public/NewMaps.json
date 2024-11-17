@@ -273,7 +273,15 @@
     },
     {
         "ID": 29,
-        "Name": "Family Residence",
+        "Name": "Family Residence I",
+        "Realm": "Yamaoka Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 50,
+        "Name": "Family Residence II",
         "Realm": "Yamaoka Estate",
         "Type": "outdoor",
         "Icon": "N/A",
@@ -281,7 +289,15 @@
     },
     {
         "ID": 30,
-        "Name": "Sanctum of Wrath",
+        "Name": "Sanctum of Wrath I",
+        "Realm": "Yamaoka Estate",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 51,
+        "Name": "Sanctum of Wrath II",
         "Realm": "Yamaoka Estate",
         "Type": "outdoor",
         "Icon": "N/A",
@@ -290,6 +306,22 @@
     {
         "ID": 31,
         "Name": "Mount Ormond Resort",
+        "Realm": "Ormond",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 52,
+        "Name": "Mount Ormond Resort II",
+        "Realm": "Ormond",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 53,
+        "Name": "Mount Ormond Resort III",
         "Realm": "Ormond",
         "Type": "outdoor",
         "Icon": "N/A",
@@ -388,6 +420,14 @@
         "Name": "Forgotten Ruins",
         "Realm": "The Decimated Borgo",
         "Type": "hybrid",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 49,
+        "Name": "Ormond Lake Mine",
+        "Realm": "Ormond",
+        "Type": "outdoor",
         "Icon": "N/A",
         "ClockImage": "N/A"
     }

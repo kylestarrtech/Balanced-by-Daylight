@@ -5356,5 +5356,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Houndmaster",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 739,
+                "addonIcon": "public/PowerAddons/Houndmaster/Creature_S-Bone.webp",
+                "Name": "Creature's Bone",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 740,
+                "addonIcon": "public/PowerAddons/Houndmaster/Sticky-Pitch.webp",
+                "Name": "Sticky Pitch",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 741,
+                "addonIcon": "public/PowerAddons/Houndmaster/Trainer_S-Book.webp",
+                "Name": "Trainer's Book",
+                "Rarity": 0
+            },
+            {
+                "id": 7,
+                "globalID": 742,
+                "addonIcon": "public/PowerAddons/Houndmaster/Young-Coconut.webp",
+                "Name": "Young Coconut",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 743,
+                "addonIcon": "public/PowerAddons/Houndmaster/Barley-Meal.webp",
+                "Name": "Barley Meal",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 744,
+                "addonIcon": "public/PowerAddons/Houndmaster/Belaying-Pins.webp",
+                "Name": "Belaying Pins",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 745,
+                "addonIcon": "public/PowerAddons/Houndmaster/Knotted-Rope.webp",
+                "Name": "Knotted Rope",
+                "Rarity": 1
+            },
+            {
+                "id": 13,
+                "globalID": 746,
+                "addonIcon": "public/PowerAddons/Houndmaster/Smoked-Snapper.webp",
+                "Name": "Smoked Snapper",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 747,
+                "addonIcon": "public/PowerAddons/Houndmaster/Spyglass.webp",
+                "Name": "Spyglass",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 748,
+                "addonIcon": "public/PowerAddons/Houndmaster/Fatty-Meat.webp",
+                "Name": "Fatty Meat",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 749,
+                "addonIcon": "public/PowerAddons/Houndmaster/Spiked-Collar.webp",
+                "Name": "Spiked Collar",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 750,
+                "addonIcon": "public/PowerAddons/Houndmaster/Training-Bell.webp",
+                "Name": "Training Bell",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 751,
+                "addonIcon": "public/PowerAddons/Houndmaster/Unfinished-Map.webp",
+                "Name": "Unfinished Map",
+                "Rarity": 2
+            },
+            {
+                "id": 3,
+                "globalID": 752,
+                "addonIcon": "public/PowerAddons/Houndmaster/Waterskin.webp",
+                "Name": "Waterskin",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 753,
+                "addonIcon": "public/PowerAddons/Houndmaster/Gunpowder-Tin.webp",
+                "Name": "Gunpowder Tin",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 754,
+                "addonIcon": "public/PowerAddons/Houndmaster/Leather-Harness.webp",
+                "Name": "Leather Harness",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 755,
+                "addonIcon": "public/PowerAddons/Houndmaster/Marlinspike.webp",
+                "Name": "Marlinspike",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 756,
+                "addonIcon": "public/PowerAddons/Houndmaster/Ship-Figurehead.webp",
+                "Name": "Ship Figurehead",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 757,
+                "addonIcon": "public/PowerAddons/Houndmaster/Iridescent-Wheel-Handle.webp",
+                "Name": "Iridescent Wheel Handle",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 758,
+                "addonIcon": "public/PowerAddons/Houndmaster/Torn-Novel.webp",
+                "Name": "Torn Novel",
+                "Rarity": 4
+            }
+        ]
     }
 ]

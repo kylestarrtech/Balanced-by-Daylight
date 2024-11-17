@@ -2428,5 +2428,59 @@
         "tags": [],
         "character": "Trevor Belmont",
         "survivorPerk": true
+    },
+    {
+        "id": 270,
+        "name": "All-Shaking Thunder",
+        "icon": "public/Perks/Killers/All-Shaking-Thunder.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Houndmaster",
+        "survivorPerk": false
+    },
+    {
+        "id": 271,
+        "name": "No Quarter",
+        "icon": "public/Perks/Killers/No-Quarter.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Houndmaster",
+        "survivorPerk": false
+    },
+    {
+        "id": 272,
+        "name": "Scourge Hook: Jagged Compass",
+        "icon": "public/Perks/Killers/Scourge-Hook-Jagged-Compass.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Houndmaster",
+        "survivorPerk": false
+    },
+    {
+        "id": 273,
+        "name": "Clean Break",
+        "icon": "public/Perks/Survivors/Clean-Break.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Taurie Cain",
+        "survivorPerk": true
+    },
+    {
+        "id": 274,
+        "name": "Invocation: Treacherous Crows",
+        "icon": "public/Perks/Survivors/Invocation-Treacherous-Crows.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Taurie Cain",
+        "survivorPerk": true
+    },
+    {
+        "id": 275,
+        "name": "Shoulder the Burden",
+        "icon": "public/Perks/Survivors/Shoulder-The-Burden.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Taurie Cain",
+        "survivorPerk": true
     }
 ]

@@ -101,6 +101,8 @@ function BruteForceCombine(addonImages, rarityImages) {
 
     for (let i = 0; i < addonImages.length; i++) {
         for (let j = 0; j < rarityImages.length; j++) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
             const rarityImage = rarityImages[j];
             const addonImage = addonImages[i];
 
