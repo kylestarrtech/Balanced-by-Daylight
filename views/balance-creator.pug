@@ -74,7 +74,8 @@ html
                 hr
                 hr
                 h3 Killer Balancing
-
+                hr
+                hr
                 div#killer-balance-div
                     label(for="killer-selection-dropdown") Killer:
                     select#killer-selection-dropdown(style="min-width: 200px;")
@@ -94,6 +95,7 @@ html
                     br
                     button#map-confirmation-button(style="min-width: 252px;") Confirm Map(s)
                     br
+                    hr
                     br
                     div#killer-addon-container
                         div#killer-addon-ban-container
@@ -125,6 +127,7 @@ html
                             br
                             button#killer-individual-addon-ban-remove-bans-button(style="min-width: 200px;") Remove Addon(s)
                     br
+                    hr
                     br
                     div#killer-items-container
                         div#killer-item-type-selection-container
@@ -144,7 +147,11 @@ html
                             br
                             button#killer-item-addon-confirmation-button(style="min-width: 200px;") Confirm Addon(s)
                     br
+                    hr
                     br
+                    h4#killer-tier-alerts(style="display:none;color:#ff0000" hidden="true") General tier is not selected for the Killer! If this is intentional, ignore this alert.
+                    br
+                    h4#survivor-tier-alerts(style="display:none;color:#ff0000" hidden="true") General tier is not selected for the Survivor! If this is intentional, ignore this alert.
                     div#killer-override-tier-selection-container
                         div#killer-individual-killer-tier-selection-container
                             label(for="killer-tier-selection-dropdown") Killer Perk Tiers: 
@@ -159,6 +166,7 @@ html
                             br
                             button#survivor-tier-confirmation-button(style="min-width: 200px;") Confirm Tier(s)
                     br
+                    hr
                     br
                     div#killer-override-offering-selection-container
                         div#killer-individual-offering-selection-container

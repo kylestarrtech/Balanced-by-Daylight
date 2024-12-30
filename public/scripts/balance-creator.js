@@ -715,6 +715,32 @@ function SetKillerOverrideEvents() {
             }
         }
 
+        /* GENERAL CHECK */
+        
+        // Check if there's a general tier.
+        let generalTier = -1;
+        for (let i = 0; i < Tiers.length; i++) {
+            if (Tiers[i]["Name"] == "General") {
+                generalTier = i;
+                break;
+            }
+        }
+
+        if (generalTier != -1) {
+            // Determine if general is selected.
+            const NoGeneralSelectedAlert = document.getElementById("killer-tier-alerts");
+            
+            if (!tierIndexes.includes(generalTier)) {
+                NoGeneralSelectedAlert.hidden = "";
+                NoGeneralSelectedAlert.style.display = "initial";
+            } else {
+                NoGeneralSelectedAlert.hidden = "true";
+                NoGeneralSelectedAlert.style.display = "none";
+            }
+        }
+
+        /* GENERAL CHECK DONE */
+
         // Set the tierIndexes to the killer
         KillerBalance[killerIndex].BalanceTiers = tierIndexes;
     });
@@ -746,6 +772,32 @@ function SetKillerOverrideEvents() {
                 }
             }
         }
+
+        /* GENERAL CHECK */
+        
+        // Check if there's a general tier.
+        let generalTier = -1;
+        for (let i = 0; i < Tiers.length; i++) {
+            if (Tiers[i]["Name"] == "General") {
+                generalTier = i;
+                break;
+            }
+        }
+
+        if (generalTier != -1) {
+            // Determine if general is selected.
+            const NoGeneralSelectedAlert = document.getElementById("survivor-tier-alerts");
+            
+            if (!tierIndexes.includes(generalTier)) {
+                NoGeneralSelectedAlert.hidden = "";
+                NoGeneralSelectedAlert.style.display = "initial";
+            } else {
+                NoGeneralSelectedAlert.hidden = "true";
+                NoGeneralSelectedAlert.style.display = "none";
+            }
+        }
+
+        /* GENERAL CHECK DONE */
 
         // Set the tierIndexes to the killer
         KillerBalance[killerIndex].SurvivorBalanceTiers = tierIndexes;
