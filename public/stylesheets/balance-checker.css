@@ -34,6 +34,8 @@ button {
 
 .character-select-button {
     width: 10vw;
+
+    transition: all 0.2s ease-in-out !important;
 }
 
 .character-select-button img {
@@ -46,15 +48,30 @@ button {
 
     cursor: pointer;
 
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.character-disabled-flag img {
+    filter: brightness(0.25) blur(2px) !important;
+    -webkit-filter: brightness(0.3) blur(2px) !important;
+}
+
+.character-disabled-flag img:hover {
+    filter: brightness(0.5) blur(0px) !important;
+    -webkit-filter: brightness(0.7) blur(0px) !important;
+}
+
+.character-disabled-flag img:active {
+    filter: brightness(0.35) blur(1px) !important;
+    -webkit-filter: brightness(0.5) blur(1px) !important;
 }
 
 .character-selected{
     -webkit-filter: drop-shadow(1px 1px 0 #ffffff)
-    drop-shadow(-1px -1px 0 #ffffff) !important;
+    drop-shadow(-1px -1px 0 #ffffff) blur(0px) !important;
     filter: /*drop-shadow(0px 0px 8px #690069)*/ drop-shadow(1px 1px 0 #ffffff) 
     drop-shadow(-1px -1px 0 #ffffff)
-    drop-shadow(0px 0px 5px #ffffff) !important;
+    drop-shadow(0px 0px 5px #ffffff) blur(0px) !important;
 
     -webkit-transform: translate3d(0, 0, 0); /* Hacky solution to enable GPU acceleration because Safari sucks */
     transform: translate3d(0, 0, 0);

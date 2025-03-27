@@ -587,7 +587,43 @@ function UpdateKillerSelectionUI() {
     }
     
     // Add character-selected class to selected killer
-    document.querySelector(`[data-killerid="${selectedKiller}"]`).classList.add("character-selected")
+    let selectedKillerElement = document.querySelector(`[data-killerid="${selectedKiller}"]`);
+    selectedKillerElement.classList.add("character-selected");
+    selectedKillerElement.classList.remove("character-disabled-flag")
+
+    SetDisabledKillers();
+}
+
+/**
+ * Applies a small brightness reduction to disabled killers.
+ */
+function SetDisabledKillers() {
+    const selectGrid = document.getElementById("character-select-grid");
+
+    if (currentBalancing == null) { return; }
+    if (!selectGrid) { return; }
+
+    const characterButtons = selectGrid.querySelectorAll(':scope > .character-select-button');
+
+    characterButtons.forEach((button, index) => {
+        const killerID = button.dataset.killerid
+
+        const killer = currentBalancing.KillerOverride[killerID];
+
+        if (killer != null) {
+            // Sorry, can't break or continue, and return makes this useless.
+
+            if (killer.IsDisabled) {
+                button.classList.add("character-disabled-flag");
+            } else {
+                button.classList.remove("character-disabled-flag");
+            }
+
+            if (button.classList.contains("character-selected")) {
+                button.classList.remove("character-disabled-flag");
+            }
+        }
+    })
 }
 
 /**
@@ -597,6 +633,7 @@ function UpdateBalanceSelectionUI() {
     const selectedBalanceTitle = document.getElementById("selected-balance-title");
     selectedBalanceTitle.innerHTML = `Selected Balance: <span style="font-weight:700;">${currentBalancing["Name"]}</span>`;
 
+    SetDisabledKillers();
     CheckGlobalBalanceNotes();
 }
 
@@ -606,9 +643,9 @@ function UpdateAntiFacecampUI() {
     if (currentBalancing == null) {
         anticampBadge.hidden = true;
         return;
-    } else {
-        anticampBadge.hidden = false;
     }
+    
+    anticampBadge.hidden = false;
 
     const antiFacecampAllowed = currentBalancing.KillerOverride[selectedKiller]["AntiFacecampPermitted"];
 
