@@ -328,6 +328,14 @@
         "ClockImage": "N/A"
     },
     {
+        "ID": 49,
+        "Name": "Ormond Lake Mine",
+        "Realm": "Ormond",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
         "ID": 32,
         "Name": "The Underground Complex",
         "Realm": "Hawkins National Laboratory",
@@ -376,8 +384,24 @@
         "ClockImage": "N/A"
     },
     {
+        "ID": 54,
+        "Name": "Dead Sands",
+        "Realm": "Forsaken Boneyard",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
         "ID": 38,
         "Name": "Garden of Joy",
+        "Realm": "Withered Isle",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 47,
+        "Name": "Greenville Square",
         "Realm": "Withered Isle",
         "Type": "outdoor",
         "Icon": "N/A",
@@ -388,6 +412,14 @@
         "Name": "The Shattered Square",
         "Realm": "The Decimated Borgo",
         "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
+        "ID": 48,
+        "Name": "Forgotten Ruins",
+        "Realm": "The Decimated Borgo",
+        "Type": "hybrid",
         "Icon": "N/A",
         "ClockImage": "N/A"
     },
@@ -403,30 +435,6 @@
         "ID": 41,
         "Name": "Nostromo Wreckage",
         "Realm": "Dvarka Deepwood",
-        "Type": "outdoor",
-        "Icon": "N/A",
-        "ClockImage": "N/A"
-    },
-    {
-        "ID": 47,
-        "Name": "Greenville Square",
-        "Realm": "Withered Isle",
-        "Type": "outdoor",
-        "Icon": "N/A",
-        "ClockImage": "N/A"
-    },
-    {
-        "ID": 48,
-        "Name": "Forgotten Ruins",
-        "Realm": "The Decimated Borgo",
-        "Type": "hybrid",
-        "Icon": "N/A",
-        "ClockImage": "N/A"
-    },
-    {
-        "ID": 49,
-        "Name": "Ormond Lake Mine",
-        "Realm": "Ormond",
         "Type": "outdoor",
         "Icon": "N/A",
         "ClockImage": "N/A"

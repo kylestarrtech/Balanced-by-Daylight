@@ -311,7 +311,7 @@
         "Portrait": "iconography/portraits/Unknown.webp",
         "LorePortrait": "iconography/lore/Unknown.webp",
         "PowerIcon": "public/Powers/Unknown.webp",
-        "Aliases": ["Lenny"],
+        "Aliases": ["Lenny", "Lenney"],
         "AdditionalData": {}
     },
     {
@@ -339,6 +339,15 @@
         "LorePortrait": "iconography/lore/Houndmaster.webp",
         "PowerIcon": "public/Powers/Houndmaster.webp",
         "Aliases": ["HM", "Portia"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 38,
+        "Name": "The Ghoul",
+        "Portrait": "iconography/portraits/Ghoul.webp",
+        "LorePortrait": "iconography/lore/Ghoul.webp",
+        "PowerIcon": "public/Powers/Ghoul.webp",
+        "Aliases": ["Ken", "Kaneki", "Tentacle Guy", "The Tokyo Ghoul", "Peak"],
         "AdditionalData": {}
     }
 ]

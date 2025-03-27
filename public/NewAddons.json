@@ -5501,5 +5501,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Ghoul",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 759,
+                "addonIcon": "public/PowerAddons/Ghoul/Anteiku-Apron.webp",
+                "Name": "Anteiku Apron",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 760,
+                "addonIcon": "public/PowerAddons/Ghoul/Fresh-Coffee.webp",
+                "Name": "Fresh Coffee",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 761,
+                "addonIcon": "public/PowerAddons/Ghoul/Kaneki_S-Wallet.webp",
+                "Name": "Kaneki's Wallet",
+                "Rarity": 0
+            },
+            {
+                "id": 7,
+                "globalID": 762,
+                "addonIcon": "public/PowerAddons/Ghoul/The-Black-Goat_S-Egg.webp",
+                "Name": "The Black Goat's Egg",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 763,
+                "addonIcon": "public/PowerAddons/Ghoul/Blood-Stained-Handkerchief.webp",
+                "Name": "Blood-Stained Handkerchief",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 764,
+                "addonIcon": "public/PowerAddons/Ghoul/Broken-Chain.webp",
+                "Name": "Broken Chain",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 765,
+                "addonIcon": "public/PowerAddons/Ghoul/Hide_S-Headphones.webp",
+                "Name": "Hide's Headphones",
+                "Rarity": 1
+            },
+            {
+                "id": 13,
+                "globalID": 766,
+                "addonIcon": "public/PowerAddons/Ghoul/Kaneki_S-Satchel.webp",
+                "Name": "Kaneki's Satchel",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 767,
+                "addonIcon": "public/PowerAddons/Ghoul/Taiyaki.webp",
+                "Name": "Taiyaki",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 768,
+                "addonIcon": "public/PowerAddons/Ghoul/Amon_S-Necktie.webp",
+                "Name": "Amon's Necktie",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 769,
+                "addonIcon": "public/PowerAddons/Ghoul/Aogiri-Tree-Robe.webp",
+                "Name": "Aogiri Tree Robe",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 770,
+                "addonIcon": "public/PowerAddons/Ghoul/Hinami_S-Umbrella.webp",
+                "Name": "Hinami's Umbrella",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 771,
+                "addonIcon": "public/PowerAddons/Ghoul/Mado_S-Glove.webp",
+                "Name": "Mado's Glove",
+                "Rarity": 2
+            },
+            {
+                "id": 3,
+                "globalID": 772,
+                "addonIcon": "public/PowerAddons/Ghoul/Rize_S-Glasses.webp",
+                "Name": "Rize's Glasses",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 773,
+                "addonIcon": "public/PowerAddons/Ghoul/Ccg-Id-Card.webp",
+                "Name": "CCG ID Card",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 774,
+                "addonIcon": "public/PowerAddons/Ghoul/Red-Spider-Lily.webp",
+                "Name": "Red Spider Lily",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 775,
+                "addonIcon": "public/PowerAddons/Ghoul/Red-Headed-Centipede.webp",
+                "Name": "Red-Headed Centipede",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 776,
+                "addonIcon": "public/PowerAddons/Ghoul/Torture-Apparatus.webp",
+                "Name": "Torture Apparatus",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 777,
+                "addonIcon": "public/PowerAddons/Ghoul/Iridescent-Eye-Patch.webp",
+                "Name": "Iridescent Eye Patch",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 778,
+                "addonIcon": "public/PowerAddons/Ghoul/Yamori_S-Mask.webp",
+                "Name": "Yamori's Mask",
+                "Rarity": 4
+            }
+        ]
     }
 ]

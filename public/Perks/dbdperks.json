@@ -2482,5 +2482,32 @@
         "tags": [],
         "character": "Taurie Cain",
         "survivorPerk": true
+    },
+    {
+        "id": 276,
+        "name": "Forever Entwined",
+        "icon": "public/Perks/Killers/Forever-Entwined.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Ghoul",
+        "survivorPerk": false
+    },
+    {
+        "id": 277,
+        "name": "Hex: Nothing but Misery",
+        "icon": "public/Perks/Killers/Hex-Nothing-But-Misery.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Ghoul",
+        "survivorPerk": false
+    },
+    {
+        "id": 278,
+        "name": "None Are Free",
+        "icon": "public/Perks/Killers/None-Are-Free.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Ghoul",
+        "survivorPerk": false
     }
 ]
