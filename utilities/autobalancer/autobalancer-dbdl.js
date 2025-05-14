@@ -17,8 +17,8 @@ const itemsName = Items.Items.map(item => item.Name)
 const replaceItemName = new Map()
     .set("Purple Medkit", "Ranger Med-Kit")
     .set("Brown Medkit", "Camping Aid Kit")
-    .set("Yellow Toolbox", "Toolbox")
-    .set("Green Flashlight", "Sport Flashlight")
+    .set("Green Toolbox", "Toolbox")
+    .set("Blue Flashlight", "Sport Flashlight")
     .set("Firecracker", "Firecracker")
 
 function getPerkIdByName(name){

@@ -5513,17 +5513,17 @@
                 "Rarity": 0
             },
             {
-                "id": 1,
-                "globalID": 760,
-                "addonIcon": "public/PowerAddons/Ghoul/Fresh-Coffee.webp",
-                "Name": "Fresh Coffee",
-                "Rarity": 0
-            },
-            {
                 "id": 2,
                 "globalID": 761,
                 "addonIcon": "public/PowerAddons/Ghoul/Kaneki_S-Wallet.webp",
                 "Name": "Kaneki's Wallet",
+                "Rarity": 0
+            },
+            {
+                "id": 8,
+                "globalID": 767,
+                "addonIcon": "public/PowerAddons/Ghoul/Taiyaki.webp",
+                "Name": "Taiyaki",
                 "Rarity": 0
             },
             {
@@ -5555,17 +5555,17 @@
                 "Rarity": 1
             },
             {
+                "id": 11,
+                "globalID": 770,
+                "addonIcon": "public/PowerAddons/Ghoul/Hinami_S-Umbrella.webp",
+                "Name": "Hinami's Umbrella",
+                "Rarity": 1
+            },
+            {
                 "id": 13,
                 "globalID": 766,
                 "addonIcon": "public/PowerAddons/Ghoul/Kaneki_S-Satchel.webp",
                 "Name": "Kaneki's Satchel",
-                "Rarity": 1
-            },
-            {
-                "id": 8,
-                "globalID": 767,
-                "addonIcon": "public/PowerAddons/Ghoul/Taiyaki.webp",
-                "Name": "Taiyaki",
                 "Rarity": 1
             },
             {
@@ -5583,17 +5583,17 @@
                 "Rarity": 2
             },
             {
-                "id": 11,
-                "globalID": 770,
-                "addonIcon": "public/PowerAddons/Ghoul/Hinami_S-Umbrella.webp",
-                "Name": "Hinami's Umbrella",
-                "Rarity": 2
-            },
-            {
                 "id": 12,
                 "globalID": 771,
                 "addonIcon": "public/PowerAddons/Ghoul/Mado_S-Glove.webp",
                 "Name": "Mado's Glove",
+                "Rarity": 2
+            },
+            {
+                "id": 15,
+                "globalID": 774,
+                "addonIcon": "public/PowerAddons/Ghoul/Red-Spider-Lily.webp",
+                "Name": "Red Spider Lily",
                 "Rarity": 2
             },
             {
@@ -5611,10 +5611,10 @@
                 "Rarity": 3
             },
             {
-                "id": 15,
-                "globalID": 774,
-                "addonIcon": "public/PowerAddons/Ghoul/Red-Spider-Lily.webp",
-                "Name": "Red Spider Lily",
+                "id": 1,
+                "globalID": 760,
+                "addonIcon": "public/PowerAddons/Ghoul/Fresh-Coffee.webp",
+                "Name": "Fresh Coffee",
                 "Rarity": 3
             },
             {

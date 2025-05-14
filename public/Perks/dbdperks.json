@@ -2509,5 +2509,32 @@
         "tags": [],
         "character": "The Ghoul",
         "survivorPerk": false
+    },
+    {
+        "id": 279,
+        "name": "Do No Harm",
+        "icon": "public/Perks/Survivors/Do-No-Harm.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Orela Rose",
+        "survivorPerk": true
+    },
+    {
+        "id": 280,
+        "name": "Duty of Care",
+        "icon": "public/Perks/Survivors/Duty-Of-Care.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Orela Rose",
+        "survivorPerk": true
+    },
+    {
+        "id": 281,
+        "name": "Rapid Response",
+        "icon": "public/Perks/Survivors/Rapid-Response.webp",
+        "exhaustion": true,
+        "tags": [],
+        "character": "Orela Rose",
+        "survivorPerk": true
     }
 ]
