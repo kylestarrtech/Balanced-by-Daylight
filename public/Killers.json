@@ -349,5 +349,14 @@
         "PowerIcon": "public/Powers/Ghoul.webp",
         "Aliases": ["Ken", "Kaneki", "Tentacle Guy", "The Tokyo Ghoul", "Peak"],
         "AdditionalData": {}
+    },
+    {
+        "ID": 39,
+        "Name": "The Animatronic",
+        "Portrait": "iconography/portraits/Animatronic.webp",
+        "LorePortrait": "iconography/lore/Animatronic.webp",
+        "PowerIcon": "public/Powers/Animatronic.webp",
+        "Aliases": ["Springtrap", "William", "Afton", "Spingtap", ":3", "Feddy Fabear"],
+        "AdditionalData": {}
     }
 ]

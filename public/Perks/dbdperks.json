@@ -2536,5 +2536,32 @@
         "tags": [],
         "character": "Orela Rose",
         "survivorPerk": true
+    },
+    {
+        "id": 282,
+        "name": "Haywire",
+        "icon": "public/Perks/Killers/Haywire.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Animatronic",
+        "survivorPerk": false
+    },
+    {
+        "id": 283,
+        "name": "Help Wanted",
+        "icon": "public/Perks/Killers/Help-Wanted.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Animatronic",
+        "survivorPerk": false
+    },
+    {
+        "id": 284,
+        "name": "Phantom Fear",
+        "icon": "public/Perks/Killers/Phantom-Fear.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Animatronic",
+        "survivorPerk": false
     }
 ]

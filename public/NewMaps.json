@@ -408,6 +408,14 @@
         "ClockImage": "N/A"
     },
     {
+        "ID": 55,
+        "Name": "Freddy Fazbear's Pizza",
+        "Realm": "Withered Isle",
+        "Type": "outdoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
+    },
+    {
         "ID": 39,
         "Name": "The Shattered Square",
         "Realm": "The Decimated Borgo",

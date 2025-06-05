@@ -5646,5 +5646,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Animatronic",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 779,
+                "addonIcon": "public/PowerAddons/Animatronic/Greasy-Paper-Plate.webp",
+                "Name": "Greasy Paper Plate",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 780,
+                "addonIcon": "public/PowerAddons/Animatronic/Help-Wanted-Ad.webp",
+                "Name": "Help Wanted Ad",
+                "Rarity": 0
+            },
+            {
+                "id": 8,
+                "globalID": 781,
+                "addonIcon": "public/PowerAddons/Animatronic/Restaurant-Menu.webp",
+                "Name": "Restaurant Menu",
+                "Rarity": 0
+            },
+            {
+                "id": 7,
+                "globalID": 782,
+                "addonIcon": "public/PowerAddons/Animatronic/Rotten-Pizza.webp",
+                "Name": "Rotten Pizza",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 783,
+                "addonIcon": "public/PowerAddons/Animatronic/Office-Phone.webp",
+                "Name": "Office Phone",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 784,
+                "addonIcon": "public/PowerAddons/Animatronic/Party-Hat.webp",
+                "Name": "Party Hat",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 785,
+                "addonIcon": "public/PowerAddons/Animatronic/Ripped-Curtain.webp",
+                "Name": "Ripped Curtain",
+                "Rarity": 1
+            },
+            {
+                "id": 11,
+                "globalID": 786,
+                "addonIcon": "public/PowerAddons/Animatronic/Security-Guard_S-Badge.webp",
+                "Name": "Security Guard's Badge",
+                "Rarity": 1
+            },
+            {
+                "id": 13,
+                "globalID": 787,
+                "addonIcon": "public/PowerAddons/Animatronic/Streamers.webp",
+                "Name": "Streamers",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 788,
+                "addonIcon": "public/PowerAddons/Animatronic/Bonnie_S-Guitar-Strings.webp",
+                "Name": "Bonnie's Guitar Strings",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 789,
+                "addonIcon": "public/PowerAddons/Animatronic/Chica_S-Bib.webp",
+                "Name": "Chica's Bib",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 790,
+                "addonIcon": "public/PowerAddons/Animatronic/Foxy_S-Hook.webp",
+                "Name": "Foxy's Hook",
+                "Rarity": 2
+            },
+            {
+                "id": 15,
+                "globalID": 791,
+                "addonIcon": "public/PowerAddons/Animatronic/Freddy_S-Hat.webp",
+                "Name": "Freddy's Hat",
+                "Rarity": 2
+            },
+            {
+                "id": 3,
+                "globalID": 792,
+                "addonIcon": "public/PowerAddons/Animatronic/Purple-Guy-Drawing.webp",
+                "Name": "Purple Guy Drawing",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 793,
+                "addonIcon": "public/PowerAddons/Animatronic/Access-Panel.webp",
+                "Name": "Access Panel",
+                "Rarity": 3
+            },
+            {
+                "id": 1,
+                "globalID": 794,
+                "addonIcon": "public/PowerAddons/Animatronic/Celebrate-Poster.webp",
+                "Name": "Celebrate! Poster",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 795,
+                "addonIcon": "public/PowerAddons/Animatronic/Endo-Cpu.webp",
+                "Name": "Endo CPU",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 796,
+                "addonIcon": "public/PowerAddons/Animatronic/Loot-Bag.webp",
+                "Name": "Loot Bag",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 797,
+                "addonIcon": "public/PowerAddons/Animatronic/Faz-Coin.webp",
+                "Name": "Faz-Coin",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 798,
+                "addonIcon": "public/PowerAddons/Animatronic/Iridescent-Remnant.webp",
+                "Name": "Iridescent Remnant",
+                "Rarity": 4
+            }
+        ]
     }
 ]

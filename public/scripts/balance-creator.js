@@ -26,8 +26,8 @@ KillerBalance = [];
 // Constant Variable to reference rarity colours
 TIER_RARITY_COLOURS = {
     "COMMON": "#614022",
-    "UNCOMMON": "#937c34",
-    "RARE": "#116814",
+    "UNCOMMON": "#116814",
+    "RARE": "#326fa8",
     "VERY_RARE": "#1d1b6a",
     "ULTRA_RARE": "#e6064d"
 }
