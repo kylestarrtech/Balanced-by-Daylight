@@ -7,10 +7,18 @@ const sharp = require('sharp'); // Use sharp instead of jimp
 const INPUT_DIR = 'input';
 const OUTPUT_DIR = 'output';
 
-const HUE_SHIFT_DEGREES = 60;
-const SATURATION_MULTIPLIER = 2;
-const BRIGHTNESS_MULTIPLIER = 0.9;
-const CONTRAST_MULTIPLIER = 1.25;
+const HUE_SHIFT_DEGREES = 40;
+const SATURATION_MULTIPLIER = 1;
+
+const DARKEN_FACTOR = 0.8;
+const CONTRAST_MULTIPLIER = 1.54;
+
+// Normalize Upper Percentile:
+// Determines the white point for normalization. Range 0-100.
+// 100 means the absolute brightest pixel becomes white.
+// Values like 99.5 or 99.8 can help make more of the brightest areas pure white.
+// Lowering this value "increases the amount of white".
+const NORMALIZE_UPPER_PERCENTILE = 90; // Try values like 99.0, 99.5, 99.8, or 100
 
 // --- End Configuration ---
 
@@ -32,15 +40,24 @@ async function processImageWithSharp(imagePath, relativePath) {
         const contrast_a = CONTRAST_MULTIPLIER;
         const contrast_b = 128 * (1 - CONTRAST_MULTIPLIER);
 
-        // Read the image, apply hue shift, and save using Sharp
-        await sharp(imagePath)
-            .modulate({
-                hue: HUE_SHIFT_DEGREES,
-                saturation: SATURATION_MULTIPLIER,
-                brightness: BRIGHTNESS_MULTIPLIER
-            }) // Rotate hue by specified degrees
-            .linear(contrast_a, contrast_b) // Contrast adjustment
-            .toFile(outputPath);
+        let sharpInstance = sharp(imagePath);
+
+        // 1. Apply initial darkening, hue, and saturation
+        sharpInstance = sharpInstance.modulate({
+            brightness: DARKEN_FACTOR, // Initial darkening
+            hue: HUE_SHIFT_DEGREES,
+            saturation: SATURATION_MULTIPLIER
+        });
+
+        // 2. Normalize the image
+        // This stretches the intensity range: lightest pixels become white, darkest become black.
+        // This helps restore highlights to white after the initial darkening.
+        sharpInstance = sharpInstance.normalize({ upper: NORMALIZE_UPPER_PERCENTILE });
+
+        // 3. Apply Contrast
+        sharpInstance = sharpInstance.linear(contrast_a, contrast_b);
+
+        await sharpInstance.toFile(outputPath);
 
         console.log(`✅ Processed (Sharp) and saved: ${outputPath}`);
 
@@ -83,7 +100,7 @@ async function main() {
     console.log(`📂 Output directory: ${path.resolve(OUTPUT_DIR)}`);
     console.log(`🎨 Hue shift: ${HUE_SHIFT_DEGREES} degrees`);
     console.log(`🎨 Saturation multiplier: ${SATURATION_MULTIPLIER}`);
-    console.log(`🎨 Brightness multiplier: ${BRIGHTNESS_MULTIPLIER}`);
+    console.log(`🎨 Brightness multiplier: ${DARKEN_FACTOR}`);
     console.log(`🎨 Contrast multiplier: ${CONTRAST_MULTIPLIER}`);
     console.log("--------------------------------------------------");
 
