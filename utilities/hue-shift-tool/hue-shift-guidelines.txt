@@ -1,0 +1,11 @@
+Old Rare -> New Rare
+Hue Shift: 140 Degrees
+Saturation: 0.7
+Brightness: 1
+Contrast: 1
+
+Old Uncommon -> New Uncommon
+Hue Shift: 60 Degrees
+Saturation: 2
+Brightness: 0.9
+Contrast: 1.25

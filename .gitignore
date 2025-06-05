@@ -10,6 +10,8 @@ perktojson.py
 spacetodash.py
 TestBalanceInDev.json
 
+AddonUpdate
+
 # Ignore everything in the png_to_webp except for the script itself
 /png_to_webp/*
 !/png_to_webp/convert_to_webp.py
@@ -27,6 +29,9 @@ utilities/addon-combine-tool/addon-images/*
 utilities/addon-combine-tool/output/*
 utilities/image-resizer/input/*
 utilities/image-resizer/output/*
+
+utilities/hue-shift-tool/input/*
+utilities/hue-shift-tool/output/*
 
 public/BalancingPresets/Autobalance/*
 autobalance-info/*
