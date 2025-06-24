@@ -38,8 +38,8 @@
         },
         {
             "id": 6,
-            "name": "Shroud of Binding",
-            "icon": "public/Offerings/Shroud-of-Binding.webp",
+            "name": "Shroud of Separation",
+            "icon": "public/Offerings/Shroud-of-Separation.webp",
             "survivorOffering": true
         },
         {
@@ -166,8 +166,8 @@
         },
         {
             "id": 9,
-            "name": "Shroud of Separation",
-            "icon": "public/Offerings/Shroud-of-Separation.webp",
+            "name": "Shroud of Vanishing",
+            "icon": "public/Offerings/Shroud-of-Vanishing.webp",
             "survivorOffering": false
         },
         {
