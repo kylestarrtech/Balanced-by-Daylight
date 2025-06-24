@@ -7,11 +7,11 @@ const sharp = require('sharp'); // Use sharp instead of jimp
 const INPUT_DIR = 'input';
 const OUTPUT_DIR = 'output';
 
-const HUE_SHIFT_DEGREES = 40;
-const SATURATION_MULTIPLIER = 1;
+const HUE_SHIFT_DEGREES = 140;
+const SATURATION_MULTIPLIER = 0.8;
 
-const DARKEN_FACTOR = 0.8;
-const CONTRAST_MULTIPLIER = 1.54;
+const DARKEN_FACTOR = 0.3;
+const CONTRAST_MULTIPLIER = 1;
 
 // Normalize Upper Percentile:
 // Determines the white point for normalization. Range 0-100.
