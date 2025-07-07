@@ -1360,7 +1360,7 @@
     },
     {
         "id": 151,
-        "name": "Deadlock",
+        "name": "No Holds Barred",
         "icon": "public/Perks/Killers/Deadlock.webp",
         "exhaustion": false,
         "tags": [],
@@ -1612,7 +1612,7 @@
     },
     {
         "id": 179,
-        "name": "Hex: Plaything",
+        "name": "Hex: Fortune's Fool",
         "icon": "public/Perks/Killers/Hex-Plaything.webp",
         "exhaustion": false,
         "tags": [],
@@ -1954,7 +1954,7 @@
     },
     {
         "id": 217,
-        "name": "Scourge Hook: Gift of Pain",
+        "name": "Scourge Hook: Weeping Wounds",
         "icon": "public/Perks/Killers/Scourge-Hook-Gift-Of-Pain.webp",
         "exhaustion": false,
         "tags": [],
