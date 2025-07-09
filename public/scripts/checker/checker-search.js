@@ -20,7 +20,7 @@ function SearchForPerks(searchQuery, isSurvivor) {
     }
 
     for (var i = 0; i < Perks.length; i++) {
-        if(Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
+        if(Perks[i].name.toLowerCase().includes(searchQuery.toLowerCase()) || Perks[i].aliases?.toLowerCase().includes(searchQuery.toLowerCase())) {
 
             if((onlyShowNonBanned && bannedPerks.includes(Perks[i].id + ""))) { continue; }
             

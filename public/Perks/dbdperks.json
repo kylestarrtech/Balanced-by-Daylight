@@ -78,7 +78,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Nea Karlsson",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "BL"
     },
     {
         "id": 9,
@@ -150,7 +151,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Mikaela Reid",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "CoH"
     },
     {
         "id": 17,
@@ -186,7 +188,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "William \"Bill\" Overbeck",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "BT"
     },
     {
         "id": 21,
@@ -312,7 +315,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "David King",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "DH"
     },
     {
         "id": 35,
@@ -330,7 +334,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Laurie Strode",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "DS"
     },
     {
         "id": 37,
@@ -384,7 +389,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Adam Francis",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Pebble"
     },
     {
         "id": 43,
@@ -456,7 +462,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Zarina Kassir",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "FTP"
     },
     {
         "id": 51,
@@ -474,7 +481,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Steve Harrington",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Guardian"
     },
     {
         "id": 53,
@@ -519,7 +527,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Nancy Wheeler",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Inner Healing"
     },
     {
         "id": 58,
@@ -546,7 +555,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Steve Harrington",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Kinship"
     },
     {
         "id": 61,
@@ -627,7 +637,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Gabriel Soma",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "MFT"
     },
     {
         "id": 70,
@@ -672,7 +683,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Zarina Kassir",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "OTR"
     },
     {
         "id": 75,
@@ -834,7 +846,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Steve Harrington",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Renewal"
     },
     {
         "id": 93,
@@ -915,7 +928,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Nancy Wheeler",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Self Aware"
     },
     {
         "id": 102,
@@ -942,7 +956,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Nancy Wheeler",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Situational Awareness"
     },
     {
         "id": 105,
@@ -1014,7 +1029,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Meg Thomas",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "SB"
     },
     {
         "id": 113,
@@ -1095,7 +1111,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "William \"Bill\" Overbeck",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "UB"
     },
     {
         "id": 122,
@@ -1167,7 +1184,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "Kate Denson",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Run to Yellow"
     },
     {
         "id": 130,
@@ -1302,7 +1320,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Claustrophobia"
     },
     {
         "id": 145,
@@ -1356,7 +1375,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Deathslinger",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "DMS"
     },
     {
         "id": 151,
@@ -1365,7 +1385,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Cenobite",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Deadlock"
     },
     {
         "id": 152,
@@ -1455,7 +1476,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Mindbreaker"
     },
     {
         "id": 162,
@@ -1599,7 +1621,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "NOED"
     },
     {
         "id": 178,
@@ -1617,7 +1640,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Cenobite",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Hex: Plaything"
     },
     {
         "id": 180,
@@ -1743,7 +1767,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Demogorgon",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Jolt"
     },
     {
         "id": 194,
@@ -1752,7 +1777,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Cannibal",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "KO"
     },
     {
         "id": 195,
@@ -1851,7 +1877,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Knight",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "NWtH"
     },
     {
         "id": 206,
@@ -1887,7 +1914,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "PWYF"
     },
     {
         "id": 210,
@@ -1941,7 +1969,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "STBFL"
     },
     {
         "id": 216,
@@ -1959,7 +1988,8 @@
         "exhaustion": false,
         "tags": [],
         "character": "The Cenobite",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Scourge Hook: Gift of Pain"
     },
     {
         "id": 218,
@@ -2422,7 +2452,7 @@
     },
     {
         "id": 269,
-        "name": "Moment-Of-Glory",
+        "name": "Moment of Glory",
         "icon": "public/Perks/Survivors/Moment-Of-Glory.webp",
         "exhaustion": false,
         "tags": [],
