@@ -8,7 +8,7 @@ const sharp = require('sharp');
 // --- Configuration ---
 const inputDir = path.join(__dirname, 'input');      // Directory where your original icons are
 const outputDir = path.join(__dirname, 'output'); // Directory to save corrected icons
-const logFilePath = path.join(__dirname, 'affected_perks.log'); // File to log the names of changed icons
+const logFilePath = path.join(__dirname, 'affected-images.log'); // File to log the names of changed icons
 const TARGET_SIZE = 256; // The correct dimension for width and height
 
 /**
