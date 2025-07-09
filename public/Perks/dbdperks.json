@@ -2563,5 +2563,59 @@
         "tags": [],
         "character": "The Animatronic",
         "survivorPerk": false
+    },
+    {
+        "id": 285,
+        "name": "Apocalyptic Ingenuity",
+        "icon": "public/Perks/Survivors/Apocalyptic-Ingenuity.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Rick Grimes",
+        "survivorPerk": true
+    },
+    {
+        "id": 286,
+        "name": "Come and Get Me!",
+        "icon": "public/Perks/Survivors/Come-And-Get-Me.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Rick Grimes",
+        "survivorPerk": true
+    },
+    {
+        "id": 287,
+        "name": "Teamwork: Toughen Up",
+        "icon": "public/Perks/Survivors/Teamwork-Toughen-Up.webp",
+        "exhaustion": true,
+        "tags": [],
+        "character": "Rick Grimes",
+        "survivorPerk": true
+    },
+    {
+        "id": 288,
+        "name": "Conviction",
+        "icon": "public/Perks/Survivors/Conviction.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Michonne Grimes",
+        "survivorPerk": true
+    },
+    {
+        "id": 289,
+        "name": "Last Stand",
+        "icon": "public/Perks/Survivors/Last-Stand.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Michonne Grimes",
+        "survivorPerk": true
+    },
+    {
+        "id": 290,
+        "name": "Teamwork: Throw Down",
+        "icon": "public/Perks/Survivors/Teamwork-Throw-Down.webp",
+        "exhaustion": true,
+        "tags": [],
+        "character": "Michonne Grimes",
+        "survivorPerk": true
     }
 ]
