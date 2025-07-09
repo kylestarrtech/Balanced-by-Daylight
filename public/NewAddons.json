@@ -1110,41 +1110,48 @@
             },
             {
                 "id": 13,
+                "globalID": 799,
+                "addonIcon": "public/PowerAddons/Huntress/Venomous-Concoction.webp",
+                "Name": "Venomous Concoction",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
                 "globalID": 153,
                 "addonIcon": "public/PowerAddons/Huntress/Wooden-Fox.webp",
                 "Name": "Wooden Fox",
                 "Rarity": 3
             },
             {
-                "id": 14,
+                "id": 15,
                 "globalID": 154,
                 "addonIcon": "public/PowerAddons/Huntress/Infantry-Belt.webp",
                 "Name": "Infantry Belt",
                 "Rarity": 3
             },
             {
-                "id": 15,
+                "id": 16,
                 "globalID": 155,
                 "addonIcon": "public/PowerAddons/Huntress/Glowing-Concoction.webp",
                 "Name": "Glowing Concoction",
                 "Rarity": 3
             },
             {
-                "id": 16,
+                "id": 17,
                 "globalID": 156,
                 "addonIcon": "public/PowerAddons/Huntress/Begrimed-Head.webp",
                 "Name": "Begrimed Head",
                 "Rarity": 3
             },
             {
-                "id": 17,
+                "id": 18,
                 "globalID": 157,
                 "addonIcon": "public/PowerAddons/Huntress/Soldier_S-Puttee.webp",
                 "Name": "Soldier's Puttee",
                 "Rarity": 4
             },
             {
-                "id": 18,
+                "id": 19,
                 "globalID": 158,
                 "addonIcon": "public/PowerAddons/Huntress/Iridescent-Head.webp",
                 "Name": "Iridescent Head",

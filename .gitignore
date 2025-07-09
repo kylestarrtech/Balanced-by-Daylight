@@ -29,6 +29,9 @@ utilities/addon-combine-tool/addon-images/*
 utilities/addon-combine-tool/output/*
 utilities/image-resizer/input/*
 utilities/image-resizer/output/*
+utilities/image-crop-tool/input/*
+utilities/image-crop-tool/output/*
+utilities/image-crop-tool/affected_perks.log
 
 utilities/hue-shift-tool/input/*
 utilities/hue-shift-tool/output/*
