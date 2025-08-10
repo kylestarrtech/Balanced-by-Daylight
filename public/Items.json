@@ -224,48 +224,28 @@
             "Addons": [
                 {
                     "id": 0,
-                    "Name": "Prayer Rope",
-                    "icon": "public/Addons/Prayer-Rope.webp"
+                    "Name": "Friendship Charm",
+                    "icon": "public/Addons/Friendship-Charm.webp"
                 },
                 {
                     "id": 1,
-                    "Name": "Scratched Pearl",
-                    "icon": "public/Addons/Scratched-Pearl.webp"
+                    "Name": "Shrill Whistle",
+                    "icon": "public/Addons/Shrill-Whistle.webp"
                 },
                 {
                     "id": 2,
-                    "Name": "Prayer Beads",
-                    "icon": "public/Addons/Prayer-Beads.webp"
+                    "Name": "Braided Bauble",
+                    "icon": "public/Addons/Braided-Bauble.webp"
                 },
                 {
                     "id": 3,
-                    "Name": "Eroded Token",
-                    "icon": "public/Addons/Eroded-Token.webp"
+                    "Name": "Unique Wedding Ring",
+                    "icon": "public/Addons/Unique-Wedding-Ring.webp"
                 },
                 {
                     "id": 4,
-                    "Name": "Gold Token",
-                    "icon": "public/Addons/Gold-Token.webp"
-                },
-                {
-                    "id": 5,
-                    "Name": "Weaved Ring",
-                    "icon": "public/Addons/Weaved-Ring.webp"
-                },
-                {
-                    "id": 6,
-                    "Name": "Milky Glass",
-                    "icon": "public/Addons/Milky-Glass.webp"
-                },
-                {
-                    "id": 7,
-                    "Name": "Blood Amber",
+                    "Name": "Blood-Amber",
                     "icon": "public/Addons/Blood-Amber.webp"
-                },
-                {
-                    "id": 8,
-                    "Name": "Unique Wedding Ring",
-                    "icon": "public/Addons/Unique-Wedding-Ring.webp"
                 }
             ]
         },
@@ -275,48 +255,59 @@
             "Addons": [
                 {
                     "id": 0,
-                    "Name": "Map Addendum",
-                    "icon": "public/Addons/Map-Addendum.webp"
+                    "Name": "Glowing Ink",
+                    "icon": "public/Addons/Glowing-Ink.webp"
                 },
                 {
                     "id": 1,
-                    "Name": "Yellow Wire",
-                    "icon": "public/Addons/Yellow-Wire.webp"
+                    "Name": "Gnarled Compass",
+                    "icon": "public/Addons/Gnarled-Compass.webp"
                 },
                 {
                     "id": 2,
-                    "Name": "Unusual Stamp",
-                    "icon": "public/Addons/Unusual-Stamp.webp"
+                    "Name": "Battered Tape",
+                    "icon": "public/Addons/Battered-Tape.webp"
                 },
                 {
                     "id": 3,
-                    "Name": "Retardant Jelly",
-                    "icon": "public/Addons/Retardant-Jelly.webp"
+                    "Name": "Sharpened Flint",
+                    "icon": "public/Addons/Sharpened-Flint.webp"
                 },
                 {
                     "id": 4,
-                    "Name": "Red Twine",
-                    "icon": "public/Addons/Red-Twine.webp"
+                    "Name": "Crimson Stamp",
+                    "icon": "public/Addons/Crimson-Stamp.webp"
+                }
+            ]
+        },
+        {"Fog Vial":"",
+            "id": 6,
+            "Name": "Fog Vial",
+            "Addons": [
+                {
+                    "id": 0,
+                    "Name": "Volcanic Stone",
+                    "icon": "public/Addons/Volcanic-Stone.webp"
                 },
                 {
-                    "id": 5,
-                    "Name": "Glass Bead",
-                    "icon": "public/Addons/Glass-Bead.webp"
+                    "id": 1,
+                    "Name": "Reactive Compound",
+                    "icon": "public/Addons/Reactive-Compound.webp"
                 },
                 {
-                    "id": 6,
-                    "Name": "Odd Stamp",
-                    "icon": "public/Addons/Odd-Stamp.webp"
+                    "id": 2,
+                    "Name": "Oily Sap",
+                    "icon": "public/Addons/Oily-Sap.webp"
                 },
                 {
-                    "id": 7,
-                    "Name": "Black Silk Cord",
-                    "icon": "public/Addons/Black-Silk-Cord.webp"
+                    "id": 3,
+                    "Name": "Mushroom Formula",
+                    "icon": "public/Addons/Mushroom-Formula.webp"
                 },
                 {
-                    "id": 8,
-                    "Name": "Crystal Bead",
-                    "icon": "public/Addons/Crystal-Bead.webp"
+                    "id": 4,
+                    "Name": "Potent Extract",
+                    "icon": "public/Addons/Potent-Extract.webp"
                 }
             ]
         }
@@ -327,24 +318,6 @@
             "Name": "Firecracker",
             "Type": "Firecracker",
             "icon": "public/Items/Firecracker.webp"
-        },
-        {
-            "id": 1,
-            "Name": "Will O' Wisp",
-            "Type": "Flashlight",
-            "icon": "public/Items/Will-O_-Wisp.webp"
-        },
-        {
-            "id": 2,
-            "Name": "Masquerade Flashlight",
-            "Type": "Flashlight",
-            "icon": "public/Items/Masquerade-Flashlight.webp"
-        },
-        {
-            "id": 3,
-            "Name": "Anniversary Flashlight",
-            "Type": "Flashlight",
-            "icon": "public/Items/Anniversary-Flashlight.webp"
         },
         {
             "id": 4,
@@ -363,6 +336,24 @@
             "Name": "Utility Flashlight",
             "Type": "Flashlight",
             "icon": "public/Items/Utility-Flashlight.webp"
+        },
+        {
+            "id": 1,
+            "Name": "Will O' Wisp",
+            "Type": "Flashlight",
+            "icon": "public/Items/Will-O_-Wisp.webp"
+        },
+        {
+            "id": 2,
+            "Name": "Masquerade Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Masquerade-Flashlight.webp"
+        },
+        {
+            "id": 3,
+            "Name": "Anniversary Flashlight",
+            "Type": "Flashlight",
+            "icon": "public/Items/Anniversary-Flashlight.webp"
         },
         {
             "id": 7,
@@ -480,15 +471,45 @@
         },
         {
             "id": 26,
-            "Name": "Map",
+            "Name": "Cryptic Map",
             "Type": "Map",
-            "icon": "public/Items/Map.webp"
+            "icon": "public/Items/Cryptic-Map.webp"
         },
         {
             "id": 27,
-            "Name": "Rainbow Map",
+            "Name": "Scribbled Map",
             "Type": "Map",
-            "icon": "public/Items/Rainbow-Map.webp"
+            "icon": "public/Items/Scribbled-Map.webp"
+        },
+        {
+            "id": 28,
+            "Name": "Annotated Map",
+            "Type": "Map",
+            "icon": "public/Items/Annotated-Map.webp"
+        },
+        {
+            "id": 29,
+            "Name": "Bloodsense Map",
+            "Type": "Map",
+            "icon": "public/Items/Bloodsense-Map.webp"
+        },
+        {
+            "id": 30,
+            "Name": "Apprentice's Fog Vial",
+            "Type": "Fog Vial",
+            "icon": "public/Items/Apprentice_S-Fog-Vial.webp"
+        },
+        {
+            "id": 31,
+            "Name": "Artisan's Fog Vial",
+            "Type": "Fog Vial",
+            "icon": "public/Items/Artisan_S-Fog-Vial.webp"
+        },
+        {
+            "id": 32,
+            "Name": "Vigo's Fog Vial",
+            "Type": "Fog Vial",
+            "icon": "public/Items/Vigo_S-Fog-Vial.webp"
         }
     ]
 }

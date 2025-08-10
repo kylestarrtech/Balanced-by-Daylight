@@ -2063,6 +2063,44 @@ function SetTierEvents() {
         Tiers.push(CreateTier(tierName));
         UpdateDropdowns();
     });
+
+    var tierRemoveButton = document.getElementById("tier-removal-button");
+
+    tierRemoveButton.addEventListener("click", function() {
+        // Get the selected tier
+        const tierSelectionDropdown = document.getElementById("tier-selection-dropdown");
+        var selectedTier = tierSelectionDropdown.value;
+
+        let indexOfTier = -1;
+        for (let i = 0; i < Tiers.length; i++) {
+            let currentTier = Tiers[i];
+
+            if (currentTier["Name"] == selectedTier) {
+                indexOfTier = i;
+            }
+        }
+
+        if (indexOfTier == -1) {
+            alert("There was an error finding the specified tier!");
+            return;
+        }
+
+        if (selectedTier == "General") {
+            alert("You cannot remove the General tier!");
+            return;
+        }
+
+        if (Tiers.length <= 1) {
+            alert("The number of tiers is too small for any to be deleted!");
+            return;
+        }
+
+        Tiers.splice(indexOfTier, 1);
+        alert(`Removed tier \"${selectedTier}\"`);
+
+        UpdateDropdowns();
+        LoadTierByName(tierSelectionDropdown.value);
+    });
 }
 
 function UpdateTierDropdowns() {

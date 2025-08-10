@@ -20,7 +20,7 @@ if (combineMode == "readList") {
         { path: `${__dirname}/rarity-images/uncommon.png`, index: 1 }, // This is the uncommon rarity
         { path: `${__dirname}/rarity-images/rare.png`, index: 2 }, // This is the rare rarity
         { path: `${__dirname}/rarity-images/veryrare.png`, index: 3 }, // This is the very rare rarity
-        { path: `${__dirname}/rarity-images/ultrarare.png`, index: 4 } // This is the ultra rare rarity
+        { path: `${__dirname}/rarity-images/visceral.png`, index: 4 } // This is the ultra rare rarity
     ];
 } else if (combineMode == "bruteForce") {
     rarityPaths = fs.readdirSync(path.join(__dirname, 'rarity-images')).map(rarity => {
