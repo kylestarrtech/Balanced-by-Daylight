@@ -265,7 +265,8 @@ function LoadImportEvents() {
                         }
 
                         UpdatePerkUI()
-
+                        CheckForBalancingErrors()
+                        
                     break
                     default:
                         GenerateAlertModal("Error", "An error occurred while importing your image.")
