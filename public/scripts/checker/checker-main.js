@@ -68,6 +68,12 @@ function main() {
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 
+    // Set balancing to the one sent in URL if there is one
+    const params = new URLSearchParams(window.location.search);
+    if(params.get("balancing")){
+        currentBalancingIndex = params.get("balancing");
+    }
+
     TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
         function() {
             TrySetCurrentBalancing();
