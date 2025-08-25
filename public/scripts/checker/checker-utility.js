@@ -904,6 +904,87 @@ function GetBannedItems() {
     return bannedItems;
 }
 
+function normalizeFileName(fileName){
+    const splittedFilename = fileName.split("/")
+    return splittedFilename[splittedFilename.length - 1].replace(/\.[^/.]+$/, "")
+}
+
+function GetPerkByPNGFileName(fileName){
+    const convertedFilename = normalizeFileName(fileName)
+
+    for(const perk of Perks){
+        if(normalizeFileName(perk.icon) == convertedFilename) return perk
+    }
+    
+    return undefined
+}
+
+function GetOfferingByPNGFileName(fileName){
+    const convertedFilename = normalizeFileName(fileName)
+
+    for(const offering of Offerings["Survivor"]){
+        if(normalizeFileName(offering.icon) == convertedFilename) return offering
+    }
+    
+    return undefined
+}
+
+function GetItemByPNGFileName(fileName){
+    const convertedFilename = normalizeFileName(fileName)
+
+    let itemsList = Items["Items"]
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i]
+
+        if(currentItem == undefined) { continue }
+
+        if(normalizeFileName(currentItem["icon"]) == convertedFilename) {
+            return currentItem
+        }
+    }
+
+    return undefined
+}
+
+function GetAddonByPNGFileName(fileName, itemType){
+    const convertedFilename = normalizeFileName(fileName)
+    
+    if (Items == undefined) { return undefined; }
+
+    let ItemTypes = Items["ItemTypes"];
+    if (ItemTypes == undefined) { return undefined; }
+
+    // Find item type index
+    let itemTypeIndex = undefined;
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            itemTypeIndex = i;
+            break;
+        }
+    }
+    if (itemTypeIndex == undefined) { return undefined; }
+
+    let addons = ItemTypes[itemTypeIndex]["Addons"];
+    if (addons == undefined) { return undefined; }
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+
+        if (currentAddon == undefined) { continue; }
+
+        if (normalizeFileName(currentAddon["icon"]) == convertedFilename) {
+            return currentAddon;
+        }
+    }
+
+    return undefined
+}
+
 /**
  * A function to get the ID of a perk based on its file name.
  * @param {string} fileName The file name of the perk.

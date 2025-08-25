@@ -2,14 +2,17 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const config = require('./server-config.json');
+const multer = require('multer');
 
 const canvasGen = require('./canvasGenerator.js');
 const autobalanceAPI = require('./autobalance-api.js');
+const imageExtractor = require('./imageExtractor.js')
 
 const app = express()
 const server=http.createServer(app);
 const io=socketio(server);
 const port = 3000
+const upload = multer({ storage: multer.memoryStorage() })
 
 const activeBuilds = {};
 
@@ -70,6 +73,23 @@ app.post('/get-build-image', (req, res) => {
     res.status(500).send("Internal server error.");
   }
 });
+
+app.post('/image-extractor', upload.single("image"), async (req, res) => {
+  if(!req.file){
+    res.status(400).send("Invalid import data. No image received.");
+    return;
+  }
+  try {
+    const imageBuffer = req.file.buffer
+    const importData = await imageExtractor(imageBuffer)
+
+    res.status(200).json(importData)
+
+  } catch (err) {
+    console.error(err)
+    res.status(500).send("Internal server error.")
+  }
+})
 
 app.get('*', (req, res) => {
   res.status(404).send('404 Not Found')
