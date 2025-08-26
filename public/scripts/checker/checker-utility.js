@@ -84,7 +84,8 @@ function GetBannedAddons(itemType) {
     let bannedAddons = new Array()
 
     // Get addons from killer override
-    let whitelistedAddons = currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType]["Addons"];
+    let whitelistedAddons = currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType] ?
+        currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType]["Addons"] : [];
     let addonList = Items["ItemTypes"][GetIndexOfItemType(itemType)]["Addons"];
 
     //console.log(whitelistedAddons);
