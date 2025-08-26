@@ -54,21 +54,21 @@ async function compareImagePosition(mainSharp, bank, x, y, imageSize){
         .toBuffer({ resolveWithObject: true })
 
     //To debug if you want to check the compared image
-    await mainSharp
+    /*await mainSharp
         .clone()
         .extract({ left: x, top: y, width: imageSize, height: imageSize })
         .ensureAlpha()
         .toFile(`./tmp/snippet_debug_${x}_${y}.png`)
+    */
 
     let bestMatch = { file: null, score: Infinity }
-
     //Compare the extracted image to our preloaded bank
-    /*for (const [file, { bankData }] of bank) {
+    for (const [file, { bankData }] of bank) {
         const diff = await compareImages(snippetData, bankData, imageSize)
         if (diff < bestMatch.score) {
             bestMatch = { file, score: diff }
         }
-    }*/
+    }
 
     return bestMatch
 }
@@ -95,7 +95,7 @@ async function extractTextInMemory(mainSharp) {
 
 module.exports = async (image) => {
     //Load full image
-    console.time("main")
+    console.time("imageExtractor")
     const mainSharp = sharp(image)
 
     //Check killer & balancing texts
@@ -146,6 +146,6 @@ module.exports = async (image) => {
     //console.log("Balancing:", balancing)
     //console.log("Loadouts:", survLoadouts)
 
-    console.timeEnd("main")
+    console.timeEnd("imageExtractor")
     return ({killer, balancing, survLoadouts})
 }
