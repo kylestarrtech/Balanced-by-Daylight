@@ -95,7 +95,7 @@ async function extractTextInMemory(mainSharp) {
 
 module.exports = async (image) => {
     //Load full image
-    console.time("imageExtractor")
+    //console.time("imageExtractor")
     const mainSharp = sharp(image)
 
     //Check killer & balancing texts
