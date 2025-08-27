@@ -151,6 +151,8 @@ function main() {
     // Update the checkbox to save loadouts and killer selected
     document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
 
+    document.getElementById("import-killer-choice-input").checked = importKillerChoice;
+
     // Update the custom balance checkbox to show if custom balancing is enabled
     document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;
 

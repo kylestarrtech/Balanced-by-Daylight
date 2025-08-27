@@ -146,6 +146,6 @@ module.exports = async (image) => {
     //console.log("Balancing:", balancing)
     //console.log("Loadouts:", survLoadouts)
 
-    console.timeEnd("imageExtractor")
+    //console.timeEnd("imageExtractor")
     return ({killer, balancing, survLoadouts})
 }

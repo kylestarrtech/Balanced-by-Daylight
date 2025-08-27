@@ -1523,6 +1523,90 @@ function TrySetCurrentBalancing() {
     currentBalancing = currentPreset["Balancing"];
 }
 
+/**
+ * Used by the image importer, it attempts to set the current Killer's index based on their estimated name.
+ * @param {string} approximatedName 
+ */
+function TryGetKillerByNameApproximation(approximatedName) {
+    let allKillers = Killers;
+    let bestMatch = null;
+    let bestMatchScore = 0;
+
+    for (let killer of allKillers) {
+        let score = GetNameSimilarityScore(killer["Name"], approximatedName);
+        if (score > bestMatchScore) {
+            bestMatchScore = score;
+            bestMatch = killer;
+        }
+    }
+
+    return bestMatch;
+}
+
+function GetNameSimilarityScore(name1, name2) {
+    let score = 0;
+    let minLength = Math.min(name1.length, name2.length);
+
+    for (let i = 0; i < minLength; i++) {
+        if (name1[i] === name2[i]) {
+            score++;
+        }
+    }
+
+    return score;
+}
+
+function SetSelectedKillerByName(currentName) {
+    let currentKlr = selectedKiller
+
+    // If killer with currentName is not in the list, return
+    let currentOverrides = currentBalancing.KillerOverride;
+    let killerFound = false;
+    let killerID = -1;
+    for (var i = 0; i < currentOverrides.length; i++) {
+        let currentOverride = currentOverrides[i];
+
+        if (currentOverride.Name == currentName) {
+            killerFound = true;
+            break;
+        }
+    }
+
+    if (!killerFound) {
+        GenerateAlertModal("Killer Not Found", `Killer <b>${currentName}</b> not found in current balancing! Please select a different killer or change the balancing.`);
+        return;
+    }
+
+    selectedKiller = currentOverrides.findIndex(override => override.Name == currentName);
+    localStorage.setItem("selectedKiller", selectedKiller);
+
+    let currentKillerOverride = currentBalancing.KillerOverride[selectedKiller];
+
+    if (currentKlr != selectedKiller) {
+        if (selectedRole != 0) {
+            ClearKillerAddons();
+        }
+        if (currentKillerOverride.IsDisabled != undefined) {
+            let isDisabled = currentKillerOverride.IsDisabled;
+            if (isDisabled) {
+                GenerateAlertModal("Killer Disabled", `Killer <b>${currentName}</b> is disabled in the current balancing! You may still select this killer, but they may be ineligible to play in official matches.`);
+            }
+        }
+    }
+
+    if (!AreKillerAddonsValid()) {
+        DebugLog("Reset killer addons as they are not valid for the selected killer.");
+        KillerAddons = [undefined, undefined];
+    }
+
+    CheckIndividualKillerNotes(); // If autoshow notes setting is enabled, show notes for the selected killer.
+    CheckForBalancingErrors();
+    UpdateKillerSelectionUI();
+    UpdateAntiFacecampUI();
+                
+    ScrollToSelectedKiller();
+}
+
 function GetLoadoutFromImportCode(importCode) {
     const compressedDataDecoded = atob(importCode);
     const inflate = pako.inflate(new Uint8Array([...compressedDataDecoded].map(char => char.charCodeAt(0))));

@@ -138,8 +138,10 @@ function LoadRoleSwapEvents() {
 
         if(selectedRole == 0){
             document.getElementById("import-button").style.display = "block"
+            document.getElementById("export-button").style.display = "block"
         } else {
             document.getElementById("import-button").style.display = "none"
+            document.getElementById("export-button").style.display = "none"
         }
     });
 }
@@ -191,17 +193,24 @@ function LoadImportEvents() {
 
     importButton.addEventListener("click", () => {
         document.getElementById("import-image").click()
+        console.log("image click");
     })
     document.getElementById("import-image").addEventListener("change", async function(event){
         const file = event.target.files[0]
+        console.log("file targeting done")
         if(!file) {
+            console.log("file error");
             GenerateAlertModal("Error", "An error occurred while importing your image.")
             console.error("Error importing image: " + this.status)
-            return
+            return;
         }
 
-        GenerateAlertModal("Importing Image...", "Please wait while your loadout image is importing...")
+        console.log("no error")
 
+        GenerateAlertModal("Importing Image...", "Please wait while your loadout image is importing...", undefined, false, true);
+
+        console.log("modal generated");
+        
         const formData = new FormData()
         formData.append("image", file)
 
@@ -257,6 +266,17 @@ function LoadImportEvents() {
 
                             survCpt++
                         }
+
+                        let estimatedKillerChoice = result.killer;
+                        
+                        let finalChoice = TryGetKillerByNameApproximation(estimatedKillerChoice);
+                        
+                        if (importKillerChoice) {
+                            SetSelectedKillerByName(finalChoice["Name"]);
+                        }
+
+
+
                         if (Config.saveBuilds && saveLoadoutsAndKiller) {
                             localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
                             localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
@@ -266,7 +286,8 @@ function LoadImportEvents() {
 
                         UpdatePerkUI()
                         CheckForBalancingErrors()
-                        
+
+                        document.getElementById("import-image").value = "";
                     break
                     default:
                         GenerateAlertModal("Error", "An error occurred while importing your image.")
@@ -275,8 +296,8 @@ function LoadImportEvents() {
             }
         }
 
-        xhttp.open("POST", "/image-extractor", true)
-        xhttp.send(formData)
+        xhttp.open("POST", "/image-extractor", true);
+        xhttp.send(formData);
     })
 
     exportButton.addEventListener("click", function() {
@@ -297,7 +318,11 @@ function LoadImportEvents() {
         // Copy exportData to clipboard
         var wasErr = false;
         try {
-            navigator.clipboard.writeText(textToCopy);
+            if (isURL) {
+                navigator.clipboard.writeText(textToCopy);
+            } else {
+                throw error;
+            }
         } catch (error) {
             wasErr = true;
         }
@@ -307,11 +332,6 @@ function LoadImportEvents() {
                 GenerateAlertModal(
                     "Exported as URL and Copied!",
                     `Your import code has been copied as a link to your clipboard. Share this link and others can directly import it!<br><br>Import URL:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
-                );
-            } else {
-                GenerateAlertModal(
-                    "Export and Copy Successful",
-                    `Your import code has been copied to your clipboard! It was not exported as a URL due to its length, but you can still import it manually!<br><br>Import Data:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
                 );
             }
             return;
@@ -324,8 +344,8 @@ function LoadImportEvents() {
             );
         } else {
             GenerateAlertModal(
-                "Export Successful",
-                `Your import code has been exported! Copying to the clipboard was unsuccessful, please copy the import code manually.<br><br>Import Data:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
+                "Export Unsuccessful",
+                `Exporting this loadout as a URL was unsuccessful due to its size. It is likely custom balancing is enabled and causing the issue.<br><br>Please consider using an official balancing preset to use the exporting feature.`
             );
         }
     });
@@ -500,6 +520,12 @@ function LoadSettingsEvents() {
         
         localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         localStorage.setItem("selectedKiller", selectedKiller);
+    })
+
+    const loadKillerChoiceImportCheckbox = document.getElementById("import-killer-choice-input");
+    loadKillerChoiceImportCheckbox.addEventListener("change", function() {
+        importKillerChoice = loadKillerChoiceImportCheckbox.checked;
+        localStorage.setItem("importKillerChoice", importKillerChoice);        
     })
 
     const clearStorageButton = document.getElementById("settings-clear-storage-button");
