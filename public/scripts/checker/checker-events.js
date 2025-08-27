@@ -135,6 +135,14 @@ function LoadRoleSwapEvents() {
         UpdateRoleSelectionHeaderUI();
         UpdatePerkUI();
         CheckForBalancingErrors();
+
+        if(selectedRole == 0){
+            document.getElementById("import-button").style.display = "block"
+            document.getElementById("export-button").style.display = "block"
+        } else {
+            document.getElementById("import-button").style.display = "none"
+            document.getElementById("export-button").style.display = "none"
+        }
     });
 }
 
@@ -183,21 +191,114 @@ function LoadImportEvents() {
     let importButton = document.getElementById("import-button");
     let exportButton = document.getElementById("export-button");
 
-    importButton.addEventListener("click", function() {
-        let importData = prompt("Please enter your build data here.\n\nThis data can be found by clicking the 'Export' button. Please note that improper formatting may result in unexpected behavior or loss of builds!");
-
-        if (importData == null) {
+    importButton.addEventListener("click", () => {
+        document.getElementById("import-image").click()
+        console.log("image click");
+    })
+    document.getElementById("import-image").addEventListener("change", async function(event){
+        const file = event.target.files[0]
+        console.log("file targeting done")
+        if(!file) {
+            console.log("file error");
+            GenerateAlertModal("Error", "An error occurred while importing your image.")
+            console.error("Error importing image: " + this.status)
             return;
         }
 
-        GetLoadoutFromImportCode(importData);
-        // try {
-        //     GetLoadoutFromImportCode(importData);
-        // } catch (error) {
-        //     GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
-        //     console.error("Error importing loadout!");
-        // }
-    });
+        console.log("no error")
+
+        GenerateAlertModal("Importing Image...", "Please wait while your loadout image is importing...", undefined, false, true);
+
+        console.log("modal generated");
+        
+        const formData = new FormData()
+        formData.append("image", file)
+
+        var xhttp = new XMLHttpRequest()
+
+        if(xhttp.readyState !== 4){
+            xhttp.abort()
+        }
+        xhttp.responseType = "json"
+
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4){
+                document.getElementById("alert-container").hidden = true
+
+                switch(this.status){
+                    case 200:
+                        const result = this.response
+                        console.log("Image Extractor:", result)
+
+                        let survCpt = 0
+                        for(const loadout of result.survLoadouts){
+                            let cpt = 0
+                            for(const perk of loadout.perks){
+                                if(perk == "blank.png"){
+                                    SurvivorPerks[survCpt][cpt] = undefined
+                                }else{
+                                    SurvivorPerks[survCpt][cpt] = GetPerkByPNGFileName(perk)
+                                }
+                                cpt++
+                            }
+
+                            if(loadout.offering == "blank.png"){
+                                SurvivorOfferings[survCpt] = undefined
+                            }else{
+                                SurvivorOfferings[survCpt] = GetOfferingByPNGFileName(loadout.offering)
+                            }
+
+                            if(loadout.item == "blank.png"){
+                                SurvivorItems[survCpt] = undefined
+                            }else{
+                                SurvivorItems[survCpt] = GetItemByPNGFileName(loadout.item)
+
+                                cpt = 0
+                                for(const addon of loadout.addons){
+                                    if(addon == "blank.png"){
+                                        SurvivorAddons[survCpt][cpt] = undefined
+                                    }else{
+                                        SurvivorAddons[survCpt][cpt] = GetAddonByPNGFileName(addon, SurvivorItems[survCpt].Type)
+                                    }
+                                    cpt++
+                                }
+                            }
+
+                            survCpt++
+                        }
+
+                        let estimatedKillerChoice = result.killer;
+                        
+                        let finalChoice = TryGetKillerByNameApproximation(estimatedKillerChoice);
+                        
+                        if (importKillerChoice) {
+                            SetSelectedKillerByName(finalChoice["Name"]);
+                        }
+
+
+
+                        if (Config.saveBuilds && saveLoadoutsAndKiller) {
+                            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                            localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+                            localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+                        }
+
+                        UpdatePerkUI()
+                        CheckForBalancingErrors()
+
+                        document.getElementById("import-image").value = "";
+                    break
+                    default:
+                        GenerateAlertModal("Error", "An error occurred while importing your image.")
+                        console.error("Error importing image: " + this.status)
+                }
+            }
+        }
+
+        xhttp.open("POST", "/image-extractor", true);
+        xhttp.send(formData);
+    })
 
     exportButton.addEventListener("click", function() {
         const compressedText = GetExportData();
@@ -217,7 +318,11 @@ function LoadImportEvents() {
         // Copy exportData to clipboard
         var wasErr = false;
         try {
-            navigator.clipboard.writeText(textToCopy);
+            if (isURL) {
+                navigator.clipboard.writeText(textToCopy);
+            } else {
+                throw error;
+            }
         } catch (error) {
             wasErr = true;
         }
@@ -227,11 +332,6 @@ function LoadImportEvents() {
                 GenerateAlertModal(
                     "Exported as URL and Copied!",
                     `Your import code has been copied as a link to your clipboard. Share this link and others can directly import it!<br><br>Import URL:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
-                );
-            } else {
-                GenerateAlertModal(
-                    "Export and Copy Successful",
-                    `Your import code has been copied to your clipboard! It was not exported as a URL due to its length, but you can still import it manually!<br><br>Import Data:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
                 );
             }
             return;
@@ -244,8 +344,8 @@ function LoadImportEvents() {
             );
         } else {
             GenerateAlertModal(
-                "Export Successful",
-                `Your import code has been exported! Copying to the clipboard was unsuccessful, please copy the import code manually.<br><br>Import Data:<br> <b><span class='import-code-preview'>${textToCopy}</span></b>`
+                "Export Unsuccessful",
+                `Exporting this loadout as a URL was unsuccessful due to its size. It is likely custom balancing is enabled and causing the issue.<br><br>Please consider using an official balancing preset to use the exporting feature.`
             );
         }
     });
@@ -420,6 +520,12 @@ function LoadSettingsEvents() {
         
         localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
         localStorage.setItem("selectedKiller", selectedKiller);
+    })
+
+    const loadKillerChoiceImportCheckbox = document.getElementById("import-killer-choice-input");
+    loadKillerChoiceImportCheckbox.addEventListener("change", function() {
+        importKillerChoice = loadKillerChoiceImportCheckbox.checked;
+        localStorage.setItem("importKillerChoice", importKillerChoice);        
     })
 
     const clearStorageButton = document.getElementById("settings-clear-storage-button");

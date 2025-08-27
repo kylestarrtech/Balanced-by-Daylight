@@ -27,6 +27,7 @@ var customBalanceOverride = false;
 var onlyShowNonBanned = false;
 var saveLoadoutsAndKiller = false;
 var showNotesOnLaunch = true;
+var importKillerChoice = true;
 
 var currentBalancing = null;
 
@@ -113,3 +114,4 @@ if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseI
 if(localStorage.getItem("onlyShowNonBanned")) onlyShowNonBanned = localStorage.getItem("onlyShowNonBanned") == "true";
 if(localStorage.getItem("saveLoadoutsAndKiller")) saveLoadoutsAndKiller = localStorage.getItem("saveLoadoutsAndKiller") == "true";
 if (localStorage.getItem("showNotesOnLaunch")) showNotesOnLaunch = localStorage.getItem("showNotesOnLaunch") == "true";
+if (localStorage.getItem("importKillerChoice")) importKillerChoice = localStorage.getItem("importKillerChoice") == "true";

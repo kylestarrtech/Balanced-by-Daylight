@@ -68,6 +68,12 @@ function main() {
     currentBalancingIndex = 0;
     if(localStorage.getItem("currentBalancingIndex")) currentBalancingIndex = parseInt(localStorage.getItem("currentBalancingIndex"));
 
+    // Set balancing to the one sent in URL if there is one
+    const params = new URLSearchParams(window.location.search);
+    if(params.get("balancing")){
+        currentBalancingIndex = params.get("balancing");
+    }
+
     TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
         function() {
             TrySetCurrentBalancing();
@@ -144,6 +150,8 @@ function main() {
 
     // Update the checkbox to save loadouts and killer selected
     document.getElementById("save-loadouts-killer").checked = saveLoadoutsAndKiller;
+
+    document.getElementById("import-killer-choice-input").checked = importKillerChoice;
 
     // Update the custom balance checkbox to show if custom balancing is enabled
     document.getElementById("custom-balancing-checkbox").checked = customBalanceOverride;

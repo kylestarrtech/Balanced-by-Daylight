@@ -84,7 +84,8 @@ function GetBannedAddons(itemType) {
     let bannedAddons = new Array()
 
     // Get addons from killer override
-    let whitelistedAddons = currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType]["Addons"];
+    let whitelistedAddons = currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType] ?
+        currentBalancing.KillerOverride[selectedKiller].AddonWhitelist[itemType]["Addons"] : [];
     let addonList = Items["ItemTypes"][GetIndexOfItemType(itemType)]["Addons"];
 
     //console.log(whitelistedAddons);
@@ -904,6 +905,87 @@ function GetBannedItems() {
     return bannedItems;
 }
 
+function normalizeFileName(fileName){
+    const splittedFilename = fileName.split("/")
+    return splittedFilename[splittedFilename.length - 1].replace(/\.[^/.]+$/, "")
+}
+
+function GetPerkByPNGFileName(fileName){
+    const convertedFilename = normalizeFileName(fileName)
+
+    for(const perk of Perks){
+        if(normalizeFileName(perk.icon) == convertedFilename) return perk
+    }
+    
+    return undefined
+}
+
+function GetOfferingByPNGFileName(fileName){
+    const convertedFilename = normalizeFileName(fileName)
+
+    for(const offering of Offerings["Survivor"]){
+        if(normalizeFileName(offering.icon) == convertedFilename) return offering
+    }
+    
+    return undefined
+}
+
+function GetItemByPNGFileName(fileName){
+    const convertedFilename = normalizeFileName(fileName)
+
+    let itemsList = Items["Items"]
+
+    for (var i = 0; i < itemsList.length; i++) {
+        let currentItem = itemsList[i]
+
+        if(currentItem == undefined) { continue }
+
+        if(normalizeFileName(currentItem["icon"]) == convertedFilename) {
+            return currentItem
+        }
+    }
+
+    return undefined
+}
+
+function GetAddonByPNGFileName(fileName, itemType){
+    const convertedFilename = normalizeFileName(fileName)
+    
+    if (Items == undefined) { return undefined; }
+
+    let ItemTypes = Items["ItemTypes"];
+    if (ItemTypes == undefined) { return undefined; }
+
+    // Find item type index
+    let itemTypeIndex = undefined;
+    for (var i = 0; i < ItemTypes.length; i++) {
+        let currentItem = ItemTypes[i];
+
+        if (currentItem == undefined) { continue; }
+
+        if (currentItem["Name"] == itemType) {
+            itemTypeIndex = i;
+            break;
+        }
+    }
+    if (itemTypeIndex == undefined) { return undefined; }
+
+    let addons = ItemTypes[itemTypeIndex]["Addons"];
+    if (addons == undefined) { return undefined; }
+
+    for (var i = 0; i < addons.length; i++) {
+        let currentAddon = addons[i];
+
+        if (currentAddon == undefined) { continue; }
+
+        if (normalizeFileName(currentAddon["icon"]) == convertedFilename) {
+            return currentAddon;
+        }
+    }
+
+    return undefined
+}
+
 /**
  * A function to get the ID of a perk based on its file name.
  * @param {string} fileName The file name of the perk.
@@ -1439,6 +1521,90 @@ function TrySetCurrentBalancing() {
     }
 
     currentBalancing = currentPreset["Balancing"];
+}
+
+/**
+ * Used by the image importer, it attempts to set the current Killer's index based on their estimated name.
+ * @param {string} approximatedName 
+ */
+function TryGetKillerByNameApproximation(approximatedName) {
+    let allKillers = Killers;
+    let bestMatch = null;
+    let bestMatchScore = 0;
+
+    for (let killer of allKillers) {
+        let score = GetNameSimilarityScore(killer["Name"], approximatedName);
+        if (score > bestMatchScore) {
+            bestMatchScore = score;
+            bestMatch = killer;
+        }
+    }
+
+    return bestMatch;
+}
+
+function GetNameSimilarityScore(name1, name2) {
+    let score = 0;
+    let minLength = Math.min(name1.length, name2.length);
+
+    for (let i = 0; i < minLength; i++) {
+        if (name1[i] === name2[i]) {
+            score++;
+        }
+    }
+
+    return score;
+}
+
+function SetSelectedKillerByName(currentName) {
+    let currentKlr = selectedKiller
+
+    // If killer with currentName is not in the list, return
+    let currentOverrides = currentBalancing.KillerOverride;
+    let killerFound = false;
+    let killerID = -1;
+    for (var i = 0; i < currentOverrides.length; i++) {
+        let currentOverride = currentOverrides[i];
+
+        if (currentOverride.Name == currentName) {
+            killerFound = true;
+            break;
+        }
+    }
+
+    if (!killerFound) {
+        GenerateAlertModal("Killer Not Found", `Killer <b>${currentName}</b> not found in current balancing! Please select a different killer or change the balancing.`);
+        return;
+    }
+
+    selectedKiller = currentOverrides.findIndex(override => override.Name == currentName);
+    localStorage.setItem("selectedKiller", selectedKiller);
+
+    let currentKillerOverride = currentBalancing.KillerOverride[selectedKiller];
+
+    if (currentKlr != selectedKiller) {
+        if (selectedRole != 0) {
+            ClearKillerAddons();
+        }
+        if (currentKillerOverride.IsDisabled != undefined) {
+            let isDisabled = currentKillerOverride.IsDisabled;
+            if (isDisabled) {
+                GenerateAlertModal("Killer Disabled", `Killer <b>${currentName}</b> is disabled in the current balancing! You may still select this killer, but they may be ineligible to play in official matches.`);
+            }
+        }
+    }
+
+    if (!AreKillerAddonsValid()) {
+        DebugLog("Reset killer addons as they are not valid for the selected killer.");
+        KillerAddons = [undefined, undefined];
+    }
+
+    CheckIndividualKillerNotes(); // If autoshow notes setting is enabled, show notes for the selected killer.
+    CheckForBalancingErrors();
+    UpdateKillerSelectionUI();
+    UpdateAntiFacecampUI();
+                
+    ScrollToSelectedKiller();
 }
 
 function GetLoadoutFromImportCode(importCode) {
