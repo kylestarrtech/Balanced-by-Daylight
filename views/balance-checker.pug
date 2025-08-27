@@ -136,7 +136,8 @@ html
                         div.addon-slot(class="loadout-slot killer-perk-slot" data-addonSlot="1")
                             img(src="public/PowerAddons/Trapper/Bear-Oil.webp")
                 div#import-export-button-container
-                    button#import-button Import Loadout
+                    button#import-button(type="button") Import Image
+                        input#import-image(type="file" name="image" accept="image/*" hidden)
                     button#export-button Export Loadout
                     button#generate-image-button Generate Image
                     button#clear-loadout-button Clear Loadout

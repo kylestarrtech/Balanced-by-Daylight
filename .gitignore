@@ -45,3 +45,5 @@ test_item_showcase.json
 
 testImportInfo.txt
 
+eng.traineddata
+tmp/*

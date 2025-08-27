@@ -135,6 +135,12 @@ function LoadRoleSwapEvents() {
         UpdateRoleSelectionHeaderUI();
         UpdatePerkUI();
         CheckForBalancingErrors();
+
+        if(selectedRole == 0){
+            document.getElementById("import-button").style.display = "block"
+        } else {
+            document.getElementById("import-button").style.display = "none"
+        }
     });
 }
 
@@ -183,21 +189,95 @@ function LoadImportEvents() {
     let importButton = document.getElementById("import-button");
     let exportButton = document.getElementById("export-button");
 
-    importButton.addEventListener("click", function() {
-        let importData = prompt("Please enter your build data here.\n\nThis data can be found by clicking the 'Export' button. Please note that improper formatting may result in unexpected behavior or loss of builds!");
-
-        if (importData == null) {
-            return;
+    importButton.addEventListener("click", () => {
+        document.getElementById("import-image").click()
+    })
+    document.getElementById("import-image").addEventListener("change", async function(event){
+        const file = event.target.files[0]
+        if(!file) {
+            GenerateAlertModal("Error", "An error occurred while importing your image.")
+            console.error("Error importing image: " + this.status)
+            return
         }
 
-        GetLoadoutFromImportCode(importData);
-        // try {
-        //     GetLoadoutFromImportCode(importData);
-        // } catch (error) {
-        //     GenerateAlertModal("Error", `An error occurred while importing your builds. Please ensure that the data is in the correct format.<br>Error: ${error}`);
-        //     console.error("Error importing loadout!");
-        // }
-    });
+        GenerateAlertModal("Importing Image...", "Please wait while your loadout image is importing...")
+
+        const formData = new FormData()
+        formData.append("image", file)
+
+        var xhttp = new XMLHttpRequest()
+
+        if(xhttp.readyState !== 4){
+            xhttp.abort()
+        }
+        xhttp.responseType = "json"
+
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4){
+                document.getElementById("alert-container").hidden = true
+
+                switch(this.status){
+                    case 200:
+                        const result = this.response
+                        console.log("Image Extractor:", result)
+
+                        let survCpt = 0
+                        for(const loadout of result.survLoadouts){
+                            let cpt = 0
+                            for(const perk of loadout.perks){
+                                if(perk == "blank.png"){
+                                    SurvivorPerks[survCpt][cpt] = undefined
+                                }else{
+                                    SurvivorPerks[survCpt][cpt] = GetPerkByPNGFileName(perk)
+                                }
+                                cpt++
+                            }
+
+                            if(loadout.offering == "blank.png"){
+                                SurvivorOfferings[survCpt] = undefined
+                            }else{
+                                SurvivorOfferings[survCpt] = GetOfferingByPNGFileName(loadout.offering)
+                            }
+
+                            if(loadout.item == "blank.png"){
+                                SurvivorItems[survCpt] = undefined
+                            }else{
+                                SurvivorItems[survCpt] = GetItemByPNGFileName(loadout.item)
+
+                                cpt = 0
+                                for(const addon of loadout.addons){
+                                    if(addon == "blank.png"){
+                                        SurvivorAddons[survCpt][cpt] = undefined
+                                    }else{
+                                        SurvivorAddons[survCpt][cpt] = GetAddonByPNGFileName(addon, SurvivorItems[survCpt].Type)
+                                    }
+                                    cpt++
+                                }
+                            }
+
+                            survCpt++
+                        }
+                        if (Config.saveBuilds && saveLoadoutsAndKiller) {
+                            localStorage.setItem("SurvivorPerks", JSON.stringify(SurvivorPerks));
+                            localStorage.setItem("SurvivorOfferings", JSON.stringify(SurvivorOfferings));
+                            localStorage.setItem("SurvivorItems", JSON.stringify(SurvivorItems));
+                            localStorage.setItem("SurvivorAddons", JSON.stringify(SurvivorAddons));
+                        }
+
+                        UpdatePerkUI()
+                        CheckForBalancingErrors()
+                        
+                    break
+                    default:
+                        GenerateAlertModal("Error", "An error occurred while importing your image.")
+                        console.error("Error importing image: " + this.status)
+                }
+            }
+        }
+
+        xhttp.open("POST", "/image-extractor", true)
+        xhttp.send(formData)
+    })
 
     exportButton.addEventListener("click", function() {
         const compressedText = GetExportData();
