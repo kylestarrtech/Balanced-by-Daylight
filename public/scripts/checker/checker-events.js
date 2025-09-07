@@ -250,6 +250,8 @@ function LoadImportEvents() {
 
                             if(loadout.item == "blank.png"){
                                 SurvivorItems[survCpt] = undefined
+                                SurvivorAddons[survCpt][0] = undefined
+                                SurvivorAddons[survCpt][1] = undefined
                             }else{
                                 SurvivorItems[survCpt] = GetItemByPNGFileName(loadout.item)
 
