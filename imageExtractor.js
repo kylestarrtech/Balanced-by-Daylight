@@ -97,6 +97,8 @@ module.exports = async (image) => {
     //Load full image
     //console.time("imageExtractor")
     const mainSharp = sharp(image)
+        .resize(1280, 720)
+        .withMetadata({ density: 70 })
 
     //Check killer & balancing texts
     const text = await extractTextInMemory(mainSharp)
