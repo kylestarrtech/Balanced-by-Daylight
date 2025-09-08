@@ -66,10 +66,15 @@ async function compareImagePosition(mainSharp, bank, x, y, imageSize){
     for (const [file, { bankData }] of bank) {
         const diff = await compareImages(snippetData, bankData, imageSize)
         if (diff < bestMatch.score) {
+            //For testing puprose on the threshold
+            /*if(diff <= 15){
+                console.log("prev", bestMatch)
+                console.log("new", { file, score: diff })
+            }*/
             bestMatch = { file, score: diff }
+            if(diff <= 15) break
         }
     }
-
     return bestMatch
 }
 
