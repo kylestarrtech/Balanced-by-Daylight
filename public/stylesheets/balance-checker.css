@@ -1076,7 +1076,7 @@ button {
     max-width: 100%;
 }
 
-#alert-container, #image-gen-container {
+#alert-container, #image-gen-container, #modal-import-container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1086,7 +1086,7 @@ button {
     margin: 0;
 }
 
-#alert-window, #image-gen-window {
+#alert-window, #image-gen-window{
     background-color: #2b2452;
 
     position: relative;
@@ -1106,7 +1106,7 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
-#alert-menu, #image-gen-menu {
+#alert-menu, #image-gen-menu, #modal-import-content  {
     position: absolute;
     max-height: 90vh;
     background-color: #000000aa;
@@ -1138,7 +1138,7 @@ button {
     max-width: 90%;
 }
 
-#alert-ok-button, #image-gen-ok-button {
+#alert-ok-button, #image-gen-ok-button, #modal-import-cancel-button {
     width: 95%;
     border-style: none;
     padding: 5px;
@@ -1153,18 +1153,42 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
-#alert-ok-button:hover, #image-gen-ok-button:hover {
+#alert-ok-button:hover, #image-gen-ok-button:hover, #modal-import-cancel-button:hover {
     width: 100%;
     font-size: 1.15rem;
     border-radius: 17.5px;
     border-width: 4px;
 }
 
-#alert-ok-button:active, #image-gen-ok-button:active {
+#alert-ok-button:active, #image-gen-ok-button:active, #modal-import-cancel-button:active {
     width: 97.5%;
     font-size: 1.125rem;
     border-radius: 15px;
     border-width: 3px;
+}
+
+#modal-import-drop-zone {
+    border: 2px dashed #999;
+    border-radius: 10px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 1.5rem;
+}
+#modal-import-drop-zone span {
+    display: inline-flex;
+}
+#modal-import-drop-zone.dragover {
+    background: #2b2452;
+}
+#modal-import-drop-zone img {
+    max-height: 180px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 #room-container {

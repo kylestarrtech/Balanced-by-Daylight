@@ -66,10 +66,15 @@ async function compareImagePosition(mainSharp, bank, x, y, imageSize){
     for (const [file, { bankData }] of bank) {
         const diff = await compareImages(snippetData, bankData, imageSize)
         if (diff < bestMatch.score) {
+            //For testing puprose on the threshold
+            /*if(diff <= 15){
+                console.log("prev", bestMatch)
+                console.log("new", { file, score: diff })
+            }*/
             bestMatch = { file, score: diff }
+            if(diff <= 15) break
         }
     }
-
     return bestMatch
 }
 
@@ -97,6 +102,8 @@ module.exports = async (image) => {
     //Load full image
     //console.time("imageExtractor")
     const mainSharp = sharp(image)
+        .resize(1280, 720)
+        .withMetadata({ density: 70 })
 
     //Check killer & balancing texts
     const text = await extractTextInMemory(mainSharp)

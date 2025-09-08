@@ -91,6 +91,17 @@ app.post('/image-extractor', upload.single("image"), async (req, res) => {
   }
 })
 
+app.get("/imageProxy", async (req, res) => {
+  const url = req.query.url
+  const response = await fetch(url)
+  if(!response.ok){
+    res.status(response.status).send("Erreur Discord");
+    return
+  }
+  res.setHeader("Content-Type", response.headers.get("content-type"))
+  res.send(Buffer.from(await response.arrayBuffer()))
+})
+
 app.get('*', (req, res) => {
   res.status(404).send('404 Not Found')
 })
