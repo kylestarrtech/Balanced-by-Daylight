@@ -191,11 +191,76 @@ function LoadImportEvents() {
     let importButton = document.getElementById("import-button");
     let exportButton = document.getElementById("export-button");
 
+    const fileInput = document.getElementById("import-image")
+    const dropZone = document.getElementById("modal-import-drop-zone")
+
+
     importButton.addEventListener("click", () => {
-        document.getElementById("import-image").click()
-        console.log("image click");
+        document.getElementById("modal-import-container").hidden = false
+
+        document.getElementById("modal-import-cancel-button").addEventListener("click", function() {
+            document.getElementById("modal-import-container").hidden = true
+        })
     })
+
+    dropZone.addEventListener("click", () => {
+        document.getElementById("import-image").click()
+    })
+    dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault()
+        dropZone.classList.add("dragover")
+    })
+    dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("dragover")
+    })
+
+    function getItemUrl(dataTransfer){
+        const items = Array.from(dataTransfer.items)
+
+        const plain  = items.find(item => item.type == "text/plain")
+        if(plain ) return plain 
+
+        const mozUrl = items.find(item => item.type == "text/x-moz-url")
+        if(mozUrl) return mozUrl
+
+        return items.length > 0 ? items[0] : null
+    }
+
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault()
+        dropZone.classList.remove("dragover")
+        
+        if(e.dataTransfer.files.length > 0){
+            fileInput.files = e.dataTransfer.files
+            fileInput.dispatchEvent(new Event("change"))
+        }else{
+            const item = getItemUrl(e.dataTransfer)
+            if(item.kind == "string") {
+                item.getAsString(async (str) => {
+                    let url = str
+                    const match = str.match(/src="(.+?)"/)
+                    if(match) url = match[1]
+
+                    try {
+                        const res = await fetch(`/imageProxy?url=${encodeURIComponent(url)}`)
+                        const blob = await res.blob()
+                        const file = new File([blob], "image.png", { type: blob.type })
+                        
+                        const dataTransfer = new DataTransfer()
+                        dataTransfer.items.add(file)
+                        fileInput.files = dataTransfer.files
+                        fileInput.dispatchEvent(new Event("change"))
+                    } catch (err) {
+                        console.error("Error trying to get image", err)
+                    }
+                })
+            }
+        }
+    })
+    
     document.getElementById("import-image").addEventListener("change", async function(event){
+        document.getElementById("modal-import-container").hidden = true
+
         const file = event.target.files[0]
         console.log("file targeting done")
         if(!file) {

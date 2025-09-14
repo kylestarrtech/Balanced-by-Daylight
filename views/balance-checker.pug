@@ -190,6 +190,7 @@ html
                     input#balancing-select-search-input(type="search" placeholder="Search for Balancing Presets...")
                     div#balancing-select-options-container
                     button#balancing-select-close-button Cancel
+                    
         div#image-gen-container(hidden="hidden")
             div#image-gen-blur(class="background-blur")
                 div#image-gen-menu
@@ -198,6 +199,22 @@ html
                     img#image-gen-image(hidden="hidden")
                     div#image-gen-button-container
                         button#image-gen-ok-button OK
+
+        div#modal-import-container(hidden="hidden")
+            div#modal-import-blur(class="background-blur")
+                div#modal-import-content
+                    h1#modal-import-title Import Image
+                    div#modal-import-drop-zone
+                        span 
+                            | Click here
+                            br
+                            | or
+                            br
+                            | Drag & Drop an image
+                    div#modal-import-button
+                        input#import-image(type="file" name="image" accept="image/*" hidden)
+                        button#modal-import-cancel-button Cancel
+
         div#alert-container(hidden="hidden")
             div#alert-blur(class="background-blur")
                 div#alert-menu
