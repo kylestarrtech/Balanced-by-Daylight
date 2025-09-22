@@ -8,8 +8,11 @@ let bankPerks, bankOfferings, bankItems, bankAddons
 async function init(){
     pixelmatch = (await import('pixelmatch')).default
 
+
     //Preload all images
-    bankPerks = await loadImagesFromDir("./canvas-image-library/Perks/Survivors", 118)
+    const preloadPerks = await loadImagesFromDir("./canvas-image-library/Perks/Survivors", 118)
+    const preloadBlank = await loadImagesFromDir("./canvas-image-library/Perks", 118)
+    bankPerks = new Map([...preloadPerks, ...preloadBlank])
     bankOfferings = await loadImagesFromDir("./canvas-image-library/Offerings", 118)
     bankItems = await loadImagesFromDir("./canvas-image-library/Items", 88)
     bankAddons = await loadImagesFromDir("./canvas-image-library/Addons", 68)
@@ -32,6 +35,7 @@ async function loadImagesFromDir(directory, imageSize){
     const images = new Map()
     const files = fs.readdirSync(directory)
     for (const file of files) {
+        if(!file.endsWith(".png")) continue
         const bankPath = path.join(directory, file)
         const { data: bankData, info: bankInfo } = await getImageBuffer(bankPath, imageSize)
 
