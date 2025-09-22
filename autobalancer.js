@@ -39,6 +39,7 @@ const doc = new GoogleSpreadsheet('10N1VSWuxk1uALAiqSsgaI0Yp_BmevWhc1jgj1JyCWvE'
 const dbdlConverter = require('./utilities/autobalancer/autobalancer-dbdl.js');
 const converterMap = new Map()
     .set("DBDL", dbdlConverter)
+    .set("DBDL-AHL", dbdlConverter)
 
 
 // Check if the autobalancer is enabled via the .env file
@@ -156,7 +157,7 @@ function InitAutobalance() {
     for(const league of autobalanceLeagues){
         const leagueName = league.Name;
         let leagueURL = league.URL;
-        if(leagueName == "DBDL"){
+        if(leagueName.startsWith("DBDL")){
             leagueURL += process.env.DBDL_API_KEY;
         }
         
