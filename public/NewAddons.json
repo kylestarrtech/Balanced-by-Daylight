@@ -5798,5 +5798,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Krasue",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 799,
+                "addonIcon": "public/PowerAddons/Krasue/Broken-Tiara.webp",
+                "Name": "Broken Tiara",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 800,
+                "addonIcon": "public/PowerAddons/Krasue/First-Libretto.webp",
+                "Name": "First Libretto",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 801,
+                "addonIcon": "public/PowerAddons/Krasue/Luckless-Mouse.webp",
+                "Name": "Luckless Mouse",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 802,
+                "addonIcon": "public/PowerAddons/Krasue/Sticky-Lozenge.webp",
+                "Name": "Sticky Lozenge",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 803,
+                "addonIcon": "public/PowerAddons/Krasue/Chunk-Of-Malai.webp",
+                "Name": "Chunk of Malai",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 804,
+                "addonIcon": "public/PowerAddons/Krasue/Crumpled-Sheet-Music.webp",
+                "Name": "Crumpled Sheet Music",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 805,
+                "addonIcon": "public/PowerAddons/Krasue/Defective-Metronome.webp",
+                "Name": "Defective Metronome",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 806,
+                "addonIcon": "public/PowerAddons/Krasue/Pig_S-Eye.webp",
+                "Name": "Pig's Eye",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 807,
+                "addonIcon": "public/PowerAddons/Krasue/Wriggling-Parasite.webp",
+                "Name": "Wriggling Parasite",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 808,
+                "addonIcon": "public/PowerAddons/Krasue/Dulled-Knife.webp",
+                "Name": "Dulled Knife",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 809,
+                "addonIcon": "public/PowerAddons/Krasue/Framed-Newspaper.webp",
+                "Name": "Framed Newspaper",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 810,
+                "addonIcon": "public/PowerAddons/Krasue/Janjira_S-Hand.webp",
+                "Name": "Janjira's Hand",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 811,
+                "addonIcon": "public/PowerAddons/Krasue/Spattered-Handkerchief.webp",
+                "Name": "Spattered Handkerchief",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 812,
+                "addonIcon": "public/PowerAddons/Krasue/Theatre-Binoculars.webp",
+                "Name": "Theatre Binoculars",
+                "Rarity": 2
+            },
+            {
+                "id": 15,
+                "globalID": 813,
+                "addonIcon": "public/PowerAddons/Krasue/Lorenza_S-Remains.webp",
+                "Name": "Lorenza's Remains",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 814,
+                "addonIcon": "public/PowerAddons/Krasue/Mysterious-Elixir.webp",
+                "Name": "Mysterious Elixir",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 815,
+                "addonIcon": "public/PowerAddons/Krasue/Queen_S-Sceptre.webp",
+                "Name": "Queen's Sceptre",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 816,
+                "addonIcon": "public/PowerAddons/Krasue/Rotten-Swine.webp",
+                "Name": "Rotten Swine",
+                "Rarity": 3
+            },
+            {
+                "id": 19,
+                "globalID": 817,
+                "addonIcon": "public/PowerAddons/Krasue/Chicken-Head.webp",
+                "Name": "Chicken Head",
+                "Rarity": 4
+            },
+            {
+                "id": 20,
+                "globalID": 818,
+                "addonIcon": "public/PowerAddons/Krasue/Shredded-Gown.webp",
+                "Name": "Shredded Gown",
+                "Rarity": 4
+            }
+        ]
     }
 ]

@@ -46,6 +46,8 @@ button {
     filter: drop-shadow(0px 0px 0 #ffffff00) grayscale(50%)
     drop-shadow(0px 0px 0 #ffffff00);
 
+    user-select: none;
+
     cursor: pointer;
 
     transition: all 0.2s ease-in-out !important;
@@ -602,6 +604,8 @@ button {
     min-width: 96px;
     max-width: 96px;
 
+    user-select: none;
+
     transition: all 0.2s ease-in-out;
 
     cursor: pointer;
@@ -614,6 +618,8 @@ button {
     min-width: 80px;
     max-height: 80px;
     aspect-ratio: 1/1;
+
+    user-select: none;
 
     cursor: pointer;
 }
@@ -640,6 +646,10 @@ button {
 
 .perk-slot-result-banned-and-equipped {
     filter: hue-rotate(100deg) contrast(105%) saturate(140%);
+}
+
+.offering-slot-result {
+    user-select: none;
 }
 
 .offering-slot-result-banned {
@@ -687,10 +697,24 @@ button {
     aspect-ratio: 0.75 / 1 !important;
 }
 
+.perk-slot img {
+    user-select: none;
+}
+
+.offering-slot img {
+    user-select: none;
+}
+
+.item-slot img {
+    user-select: none;
+}
+
 .addon-slot img {
     width: 100%;
 
     aspect-ratio: 1/1;
+
+    user-select: none;
 
     object-fit: contain;
 }

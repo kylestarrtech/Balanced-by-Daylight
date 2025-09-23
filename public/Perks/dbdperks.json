@@ -2596,6 +2596,7 @@
     },
     {
         "id": 285,
+        "dateAdded": 1753801200,
         "name": "Apocalyptic Ingenuity",
         "icon": "public/Perks/Survivors/Apocalyptic-Ingenuity.webp",
         "exhaustion": false,
@@ -2605,6 +2606,7 @@
     },
     {
         "id": 286,
+        "dateAdded": 1753801200,
         "name": "Come and Get Me!",
         "icon": "public/Perks/Survivors/Come-And-Get-Me.webp",
         "exhaustion": false,
@@ -2614,6 +2616,7 @@
     },
     {
         "id": 287,
+        "dateAdded": 1753801200,
         "name": "Teamwork: Toughen Up",
         "icon": "public/Perks/Survivors/Teamwork-Toughen-Up.webp",
         "exhaustion": true,
@@ -2623,6 +2626,7 @@
     },
     {
         "id": 288,
+        "dateAdded": 1753801200,
         "name": "Conviction",
         "icon": "public/Perks/Survivors/Conviction.webp",
         "exhaustion": false,
@@ -2632,6 +2636,7 @@
     },
     {
         "id": 289,
+        "dateAdded": 1753801200,
         "name": "Last Stand",
         "icon": "public/Perks/Survivors/Last-Stand.webp",
         "exhaustion": false,
@@ -2641,11 +2646,72 @@
     },
     {
         "id": 290,
+        "dateAdded": 1753801200,
         "name": "Teamwork: Throw Down",
         "icon": "public/Perks/Survivors/Teamwork-Throw-Down.webp",
         "exhaustion": true,
         "tags": [],
         "character": "Michonne Grimes",
+        "survivorPerk": true
+    },
+    {
+        "id": 291,
+        "dateAdded": 1758635414,
+        "name": "Hex: Overture of Doom",
+        "icon": "public/Perks/Killers/Hex-Overture-Of-Doom.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Krasue",
+        "survivorPerk": false
+    },
+    {
+        "id": 292,
+        "dateAdded": 1758635414,
+        "name": "Ravenous",
+        "icon": "public/Perks/Killers/Ravenous.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Krasue",
+        "survivorPerk": false
+    },
+    {
+        "id": 293,
+        "dateAdded": 1758635414,
+        "name": "Wandering Eye",
+        "icon": "public/Perks/Killers/Wandering-Eye.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Krasue",
+        "survivorPerk": false
+    },
+    {
+        "id": 294,
+        "dateAdded": 1758635414,
+        "name": "Ghost Notes",
+        "icon": "public/Perks/Survivors/Ghost-Notes.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Vee Boonyasak",
+        "survivorPerk": true
+    },
+    {
+        "id": 295,
+        "dateAdded": 1758635414,
+        "name": "One-Two-Three-Four!",
+        "icon": "public/Perks/Survivors/One-Two-Three-Four.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Vee Boonyasak",
+        "survivorPerk": true
+    },
+    {
+        "id": 296,
+        "dateAdded": 1758635414,
+        "name": "Road Life",
+        "icon": "public/Perks/Survivors/Road-Life.webp",
+        "exhaustion": true,
+        "tags": [],
+        "character": "Vee Boonyasak",
         "survivorPerk": true
     }
 ]

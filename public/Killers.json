@@ -338,7 +338,7 @@
         "Portrait": "iconography/portraits/Houndmaster.webp",
         "LorePortrait": "iconography/lore/Houndmaster.webp",
         "PowerIcon": "public/Powers/Houndmaster.webp",
-        "Aliases": ["HM", "Portia"],
+        "Aliases": ["HM", "Portia", "Dog Lady", "Butter Dog"],
         "AdditionalData": {}
     },
     {
@@ -347,7 +347,7 @@
         "Portrait": "iconography/portraits/Ghoul.webp",
         "LorePortrait": "iconography/lore/Ghoul.webp",
         "PowerIcon": "public/Powers/Ghoul.webp",
-        "Aliases": ["Ken", "Kaneki", "Tentacle Guy", "The Tokyo Ghoul", "Peak"],
+        "Aliases": ["Ken", "Kaneki", "Tentacle Guy", "The Tokyo Ghoul", "Peak", "John Ghoul"],
         "AdditionalData": {}
     },
     {
@@ -357,6 +357,15 @@
         "LorePortrait": "iconography/lore/Animatronic.webp",
         "PowerIcon": "public/Powers/Animatronic.webp",
         "Aliases": ["Springtrap", "William", "Afton", "Spingtap", ":3", "Feddy Fabear"],
+        "AdditionalData": {}
+    },
+    {
+        "ID": 40,
+        "Name": "The Krasue",
+        "Portrait": "iconography/portraits/Krasue.webp",
+        "LorePortrait": "iconography/lore/Krasue.webp",
+        "PowerIcon": "public/Powers/Krasue.webp",
+        "Aliases": ["Burong", "Sukapat", "Head Lady"],
         "AdditionalData": {}
     }
 ]

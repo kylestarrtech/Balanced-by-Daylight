@@ -447,6 +447,36 @@ function IndividualIsBannedInOverride(build, override, survivorIndex) {
         let perkBanList = [];
         perkBanList = selectedRole == 0 ? override.SurvivorIndvPerkBans : override.KillerIndvPerkBans;
 
+        var dateAdded = currentPerk["dateAdded"];
+        var balancingDate = currentBalancing["Version"];
+
+        console.log(`Perk Added: ${dateAdded}`);
+        console.log(`Balancing Date: ${balancingDate}`);
+        if (dateAdded != undefined && balancingDate != undefined) {
+            if (new Date(dateAdded) > new Date(balancingDate)) {
+                // Perk was added after balancing was last updated, so it is banned by default.
+                if (selectedRole == 0) {
+                    ErrorList.push(
+                        GenerateErrorObject(
+                            "Banned Perk",
+                            `Perk <b>${currentPerk["name"]}</b> was added after the balancing was last updated. It is present in <b>Survivor #${survivorIndex+1}</b>'s build. Therefore it is banned by default.`,
+                            undefined,
+                            "iconography/PerkError.webp"
+                        )
+                    )
+                } else {
+                    ErrorList.push(
+                        GenerateErrorObject(
+                            "Banned Perk",
+                            `Perk <b>${currentPerk["name"]}</b> was added after the balancing was last updated. Therefore it is banned by default.`,
+                            undefined,
+                            "iconography/PerkError.webp"
+                        )
+                    )
+                }
+            }
+        }
+
         // Loop through banned perks
         for (var j = 0; j < perkBanList.length; j++) {
             var currentBannedPerk = parseInt(perkBanList[j]);
