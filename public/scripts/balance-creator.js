@@ -459,9 +459,15 @@ function SetTierButtonEvents() {
         if (tierIndex == -1) { console.error("Invalid tier name!"); return;}
 
         // Remove the perks from the tier
-        for (var i = 0; i < selectedPerks.length; i++) {
-            Tiers[tierIndex].SurvivorComboPerkBans.splice(Tiers[tierIndex].SurvivorComboPerkBans.indexOf(selectedPerks[i]), 1);
-        }
+                for (var i = 0; i < selectedPerks.length; i++) {
+                    var toRemove = selectedPerks[i];
+                    for (var j = 0; j < Tiers[tierIndex].SurvivorComboPerkBans.length; j++) {
+                        if (JSON.stringify(Tiers[tierIndex].SurvivorComboPerkBans[j]) === toRemove) {
+                            Tiers[tierIndex].SurvivorComboPerkBans.splice(j, 1);
+                            break; // stop after removing this combo
+                        }
+                    }
+                }
 
         LoadTier(tierIndex);
     });
@@ -484,9 +490,15 @@ function SetTierButtonEvents() {
         if (tierIndex == -1) { console.error("Invalid tier name!"); return;}
 
         // Remove the perks from the tier
-        for (var i = 0; i < selectedPerks.length; i++) {
-            Tiers[tierIndex].KillerComboPerkBans.splice(Tiers[tierIndex].KillerComboPerkBans.indexOf(selectedPerks[i]), 1);
-        }
+                for (var i = 0; i < selectedPerks.length; i++) {
+                    var toRemove = selectedPerks[i];
+                    for (var j = 0; j < Tiers[tierIndex].KillerComboPerkBans.length; j++) {
+                        if (JSON.stringify(Tiers[tierIndex].KillerComboPerkBans[j]) === toRemove) {
+                            Tiers[tierIndex].KillerComboPerkBans.splice(j, 1);
+                            break; // stop after removing this combo
+                        }
+                    }
+                }
 
         LoadTier(tierIndex);
     });
@@ -1316,7 +1328,13 @@ function SetKillerOverridePerkBanEvents() {
 
         // Remove the perks from the killer
         for (var i = 0; i < selectedPerks.length; i++) {
-            KillerBalance[killerIndex].KillerComboPerkBans.splice(KillerBalance[killerIndex].KillerComboPerkBans.indexOf(selectedPerks[i]), 1);
+            var toRemove = selectedPerks[i];
+            for (var j = 0; j < KillerBalance[killerIndex].KillerComboPerkBans.length; j++) {
+                if (JSON.stringify(KillerBalance[killerIndex].KillerComboPerkBans[j]) === toRemove) {
+                    KillerBalance[killerIndex].KillerComboPerkBans.splice(j, 1);
+                    break;
+                }
+            }
         }
 
         LoadKillerOverrideUI(killerIndex);
@@ -1364,7 +1382,13 @@ function SetKillerOverridePerkBanEvents() {
 
         // Remove the perks from the killer
         for (var i = 0; i < selectedPerks.length; i++) {
-            KillerBalance[killerIndex].SurvivorComboPerkBans.splice(KillerBalance[killerIndex].SurvivorComboPerkBans.indexOf(selectedPerks[i]), 1);
+            var toRemove = selectedPerks[i];
+            for (var j = 0; j < KillerBalance[killerIndex].SurvivorComboPerkBans.length; j++) {
+                if (JSON.stringify(KillerBalance[killerIndex].SurvivorComboPerkBans[j]) === toRemove) {
+                    KillerBalance[killerIndex].SurvivorComboPerkBans.splice(j, 1);
+                    break;
+                }
+            }
         }
 
         LoadKillerOverrideUI(killerIndex);
@@ -1411,9 +1435,15 @@ function SetKillerOverridePerkBanEvents() {
             }
         }
 
-        // Remove the perks from the killer
+        // Remove the perks from the killer (match by stringified combo)
         for (var i = 0; i < selectedPerks.length; i++) {
-            KillerBalance[killerIndex].KillerWhitelistedComboPerks.splice(KillerBalance[killerIndex].KillerWhitelistedComboPerks.indexOf(selectedPerks[i]), 1);
+            var toRemove = selectedPerks[i];
+            for (var j = 0; j < KillerBalance[killerIndex].KillerWhitelistedComboPerks.length; j++) {
+                if (JSON.stringify(KillerBalance[killerIndex].KillerWhitelistedComboPerks[j]) === toRemove) {
+                    KillerBalance[killerIndex].KillerWhitelistedComboPerks.splice(j, 1);
+                    break;
+                }
+            }
         }
 
         LoadKillerOverrideUI(killerIndex);
@@ -1461,9 +1491,15 @@ function SetKillerOverridePerkBanEvents() {
             }
         }
 
-        // Remove the perks from the killer
+        // Remove the perks from the killer (match by stringified combo)
         for (var i = 0; i < selectedPerks.length; i++) {
-            KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.splice(KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.indexOf(selectedPerks[i]), 1);
+            var toRemove = selectedPerks[i];
+            for (var j = 0; j < KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.length; j++) {
+                if (JSON.stringify(KillerBalance[killerIndex].SurvivorWhitelistedComboPerks[j]) === toRemove) {
+                    KillerBalance[killerIndex].SurvivorWhitelistedComboPerks.splice(j, 1);
+                    break;
+                }
+            }
         }
 
         LoadKillerOverrideUI(killerIndex);
@@ -1658,7 +1694,8 @@ function LoadKillerOverrideUI(id) {
 
     for (var i = 0; i < KillerData.KillerComboPerkBans.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = KillerData.KillerComboPerkBans[i];
+        // store a stable string representation to compare later
+        optionsElement.value = JSON.stringify(KillerData.KillerComboPerkBans[i]);
 
         // Get the string representation of the perk combo
         var comboString = "";
@@ -1698,7 +1735,7 @@ function LoadKillerOverrideUI(id) {
 
     for (var i = 0; i < KillerData.KillerWhitelistedComboPerks.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = KillerData.KillerWhitelistedComboPerks[i];
+        optionsElement.value = JSON.stringify(KillerData.KillerWhitelistedComboPerks[i]);
 
         // Get the string representation of the perk combo
         var comboString = "";
@@ -1738,7 +1775,7 @@ function LoadKillerOverrideUI(id) {
 
     for (var i = 0; i < KillerData.SurvivorComboPerkBans.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = KillerData.SurvivorComboPerkBans[i];
+        optionsElement.value = JSON.stringify(KillerData.SurvivorComboPerkBans[i]);
 
         // Get the string representation of the perk combo
         var comboString = "";
@@ -1778,7 +1815,7 @@ function LoadKillerOverrideUI(id) {
 
     for (var i = 0; i < KillerData.SurvivorWhitelistedComboPerks.length; i++) {
         var optionsElement = document.createElement("option");
-        optionsElement.value = KillerData.SurvivorWhitelistedComboPerks[i];
+        optionsElement.value = JSON.stringify(KillerData.SurvivorWhitelistedComboPerks[i]);
 
         // Get the string representation of the perk combo
         var comboString = "";
@@ -1983,8 +2020,8 @@ function LoadTier(id) {
     SrvComboBanDropdown.innerHTML = "";
 
     for (var i = 0; i < TierData.SurvivorComboPerkBans.length; i++) {
-        var optionsElement = document.createElement("option");
-        optionsElement.value = TierData.SurvivorComboPerkBans[i];
+    var optionsElement = document.createElement("option");
+    optionsElement.value = JSON.stringify(TierData.SurvivorComboPerkBans[i]);
 
         // Get the string representation of the perk combo
         var comboString = "";
@@ -2023,8 +2060,8 @@ function LoadTier(id) {
     KlrComboBanDropdown.innerHTML = "";
 
     for (var i = 0; i < TierData.KillerComboPerkBans.length; i++) {
-        var optionsElement = document.createElement("option");
-        optionsElement.value = TierData.KillerComboPerkBans[i];
+    var optionsElement = document.createElement("option");
+    optionsElement.value = JSON.stringify(TierData.KillerComboPerkBans[i]);
 
         // Get the string representation of the perk combo
         var comboString = "";
