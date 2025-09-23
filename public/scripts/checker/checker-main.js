@@ -72,6 +72,15 @@ function main() {
     const params = new URLSearchParams(window.location.search);
     if(params.get("balancing")){
         currentBalancingIndex = params.get("balancing");
+
+        // Remove the balancing param from the URL
+        // This is done because if the ID is invalid the site refreshes, causing an infinite loop.
+        // This way, if the ID is invalid it only happens once.
+        // If the user wants to try again they can just re-add the param.
+        const newParams = new URLSearchParams(window.location.search);
+        newParams.delete("balancing");
+        const newUrl = window.location.pathname + '?' + newParams.toString();
+        window.history.replaceState({}, document.title, newUrl);
     }
 
     TryLoadBalanceProfileFromPresetID(currentBalancingIndex,
