@@ -105,7 +105,7 @@ function replacePerkNamesById(tier){
 
 module.exports = function(balancingText) {
     
-    balancingText.Name = "Dead by Daylight League";
+    balancingText.Name = balancingText.Name && balancingText.Name != "" ? balancingText.Name : "Dead by Daylight League";
 
     // balancingText.Version is in epoch ms, convert to seconds
     balancingText.Version = Math.floor(balancingText.Version / 1000)
