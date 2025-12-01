@@ -612,37 +612,37 @@
             },
             {
                 "id": 4,
-                "globalID": 84,
-                "addonIcon": "public/PowerAddons/Shape/Reflective-Fragment.webp",
-                "Name": "Reflective Fragment",
-                "Rarity": 1
-            },
-            {
-                "id": 5,
                 "globalID": 85,
                 "addonIcon": "public/PowerAddons/Shape/Jewellery.webp",
                 "Name": "Jewellery",
                 "Rarity": 1
             },
             {
-                "id": 6,
+                "id": 5,
                 "globalID": 86,
                 "addonIcon": "public/PowerAddons/Shape/Hair-Brush.webp",
                 "Name": "Hair Brush",
                 "Rarity": 1
             },
             {
-                "id": 7,
+                "id": 6,
                 "globalID": 87,
                 "addonIcon": "public/PowerAddons/Shape/Glass-Fragment.webp",
                 "Name": "Glass Fragment",
                 "Rarity": 1
             },
             {
-                "id": 8,
+                "id": 7,
                 "globalID": 88,
                 "addonIcon": "public/PowerAddons/Shape/Dead-Rabbit.webp",
                 "Name": "Dead Rabbit",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 99,
+                "addonIcon": "public/PowerAddons/Shape/Fragrant-Tuft-Of-Hair.webp",
+                "Name": "Fragrant Tuft of Hair",
                 "Rarity": 1
             },
             {
@@ -696,9 +696,9 @@
             },
             {
                 "id": 16,
-                "globalID": 96,
-                "addonIcon": "public/PowerAddons/Shape/Scratched-Mirror.webp",
-                "Name": "Scratched Mirror",
+                "globalID": 84,
+                "addonIcon": "public/PowerAddons/Shape/Reflective-Fragment.webp",
+                "Name": "Reflective Fragment",
                 "Rarity": 3
             },
             {
@@ -717,9 +717,9 @@
             },
             {
                 "id": 19,
-                "globalID": 99,
-                "addonIcon": "public/PowerAddons/Shape/Fragrant-Tuft-Of-Hair.webp",
-                "Name": "Fragrant Tuft of Hair",
+                "globalID": 96,
+                "addonIcon": "public/PowerAddons/Shape/Scratched-Mirror.webp",
+                "Name": "Scratched Mirror",
                 "Rarity": 4
             }
         ]

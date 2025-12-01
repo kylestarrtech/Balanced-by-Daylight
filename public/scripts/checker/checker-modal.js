@@ -99,6 +99,10 @@ function GenerateNotesModal() {
     globalNotes = globalNotes.replace(/<[^>]*>?/gm, '');
     killerNotes = killerNotes.replace(/<[^>]*>?/gm, '');
 
+    // Replace newlines with <br>
+    globalNotes = globalNotes.replace(/\n/g, '<br>');
+    killerNotes = killerNotes.replace(/\n/g, '<br>');
+
     let noteString = `The selected balancing profile has the following special notes:<br>`;
     noteString += `<br><hr><b>Global Notes:</b><br>${globalNotes}<br><hr><br>`;
     noteString += `<hr><b>Killer Notes:</b><br>${killerNotes}<br><hr>`;
