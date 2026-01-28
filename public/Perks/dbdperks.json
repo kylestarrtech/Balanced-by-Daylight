@@ -2713,5 +2713,95 @@
         "tags": [],
         "character": "Vee Boonyasak",
         "survivorPerk": true
+    },
+    {
+        "id": 297,
+        "dateAdded": 1769536463,
+        "name": "Turn Back the Clock",
+        "icon": "public/Perks/Killers/Turn-Back-The-Clock.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The First",
+        "survivorPerk": false
+    },
+    {
+        "id": 298,
+        "dateAdded": 1769536463,
+        "name": "Secret Project",
+        "icon": "public/Perks/Killers/Secret-Project.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The First",
+        "survivorPerk": false
+    },
+    {
+        "id": 299,
+        "dateAdded": 1769536463,
+        "name": "Hex: Hive Mind",
+        "icon": "public/Perks/Killers/Hex-Hive-Mind.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The First",
+        "survivorPerk": false
+    },
+    {
+        "id": 300,
+        "dateAdded": 1769536463,
+        "name": "Bada Bada Boom",
+        "icon": "public/Perks/Survivors/Bada-Bada-Boom.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Dustin Henderson",
+        "survivorPerk": true
+    },
+    {
+        "id": 301,
+        "dateAdded": 1769536463,
+        "name": "Change of Plan",
+        "icon": "public/Perks/Survivors/Change-Of-Plan.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Dustin Henderson",
+        "survivorPerk": true
+    },
+    {
+        "id": 302,
+        "dateAdded": 1769536463,
+        "name": "Teamwork: Full Circuit",
+        "icon": "public/Perks/Survivors/Teamwork-Full-Circuit.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Dustin Henderson",
+        "survivorPerk": true
+    },
+    {
+        "id": 303,
+        "dateAdded": 1769536463,
+        "name": "Extrasensory Perception",
+        "icon": "public/Perks/Survivors/Extrasensory-Perception.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Eleven",
+        "survivorPerk": true
+    },
+    {
+        "id": 304,
+        "dateAdded": 1769536463,
+        "name": "We See You",
+        "icon": "public/Perks/Survivors/We-See-You.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Eleven",
+        "survivorPerk": true
+    },
+    {
+        "id": 305,
+        "dateAdded": 1769536463,
+        "name": "Teamwork: Soft-Spoken",
+        "icon": "public/Perks/Survivors/Teamwork-Soft-Spoken.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Eleven",
+        "survivorPerk": true
     }
 ]

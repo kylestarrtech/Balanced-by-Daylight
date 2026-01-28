@@ -367,5 +367,14 @@
         "PowerIcon": "public/Powers/Krasue.webp",
         "Aliases": ["Burong", "Sukapat", "Head Lady"],
         "AdditionalData": {}
+    },
+    {
+        "ID": 41,
+        "Name": "The First",
+        "Portrait": "iconography/portraits/First.webp",
+        "LorePortrait": "iconography/lore/First.webp",
+        "PowerIcon": "public/Powers/First.webp",
+        "Aliases": ["Vecna", "Henry Creel", "ST Vecna", "001", "Mr. Whatsit"],
+        "AdditionalData": {}
     }
 ]

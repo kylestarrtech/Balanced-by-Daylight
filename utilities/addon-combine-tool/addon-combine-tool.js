@@ -8,7 +8,10 @@ const fs = require('fs');
 const path = require('path');
 const { createCanvas, loadImage } = require('canvas');
 
-const addonList = require('./addon-list.json');
+let addonList = [];
+try{
+   addonList = require('./addon-list.json');
+}catch(e){}
 const outputFolder = path.join(__dirname, 'output');
 
 const combineMode = "bruteForce";
@@ -112,6 +115,7 @@ function BruteForceCombine(addonImages, rarityImages) {
             const buffer = canvas.toBuffer('image/png');
             
             let fileName = addonPaths[i].split('\\').pop();
+            fileName = fileName.split('/').pop();
             if (j > 0) {
                 fileName = fileName.replace('.png', `-${j}.png`);
             }
