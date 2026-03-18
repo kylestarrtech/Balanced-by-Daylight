@@ -32,6 +32,7 @@ utilities/image-resizer/output/*
 utilities/image-crop-tool/input/*
 utilities/image-crop-tool/output/*
 utilities/image-crop-tool/affected_perks.log
+utilities/image-crop-tool/affected_images.log
 
 utilities/hue-shift-tool/input/*
 utilities/hue-shift-tool/output/*

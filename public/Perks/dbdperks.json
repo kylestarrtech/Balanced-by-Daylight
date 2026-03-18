@@ -2803,5 +2803,35 @@
         "tags": [],
         "character": "Eleven",
         "survivorPerk": true
+    },
+    {
+        "id": 306,
+        "dateAdded": 1773859180,
+        "name": "A Place For Us",
+        "icon": "public/Perks/Survivors/A-Place-For-Us.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Kwon Tae-young",
+        "survivorPerk": true
+    },
+    {
+        "id": 307,
+        "dateAdded": 1773859180,
+        "name": "Five Moves Ahead",
+        "icon": "public/Perks/Survivors/Five-Moves-Ahead.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Kwon Tae-young",
+        "survivorPerk": true
+    },
+    {
+        "id": 308,
+        "dateAdded": 1773859180,
+        "name": "Flow State",
+        "icon": "public/Perks/Survivors/Flow-State.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Kwon Tae-young",
+        "survivorPerk": true
     }
 ]

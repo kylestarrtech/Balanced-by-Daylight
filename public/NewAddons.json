@@ -3228,10 +3228,10 @@
                 "Rarity": 1
             },
             {
-                "id": 5,
-                "globalID": 444,
-                "addonIcon": "public/PowerAddons/Trickster/On-Target-Single.webp",
-                "Name": "On Target Single",
+                "id": 13,
+                "globalID": 452,
+                "addonIcon": "public/PowerAddons/Trickster/Bloody-Boa.webp",
+                "Name": "Bloody Boa",
                 "Rarity": 1
             },
             {
@@ -3284,10 +3284,10 @@
                 "Rarity": 2
             },
             {
-                "id": 13,
-                "globalID": 452,
-                "addonIcon": "public/PowerAddons/Trickster/Bloody-Boa.webp",
-                "Name": "Bloody Boa",
+                "id": 5,
+                "globalID": 444,
+                "addonIcon": "public/PowerAddons/Trickster/On-Target-Single.webp",
+                "Name": "On Target Single",
                 "Rarity": 2
             },
             {
@@ -5950,140 +5950,140 @@
             {
                 "id": 0,
                 "globalID": 819,
-                "addonIcon": "public/PowerAddons/First/StainedGlassMural.webp",
+                "addonIcon": "public/PowerAddons/First/Stained-Glass-Mural.webp",
                 "Name": "Stained Glass Mural",
                 "Rarity": 0
             },
             {
-                "id": 1,
-                "globalID": 820,
-                "addonIcon": "public/PowerAddons/First/ShatteredWristRocket.webp",
-                "Name": "Shattered Wrist Rocket",
+                "id": 5,
+                "globalID": 824,
+                "addonIcon": "public/PowerAddons/First/Mid-Century-Radio.webp",
+                "Name": "Mid-Century Radio",
                 "Rarity": 0
             },
             {
                 "id": 2,
                 "globalID": 821,
-                "addonIcon": "public/PowerAddons/First/OrderlyID.webp",
+                "addonIcon": "public/PowerAddons/First/Orderly-ID.webp",
                 "Name": "Orderly ID",
                 "Rarity": 0
             },
             {
                 "id": 3,
                 "globalID": 822,
-                "addonIcon": "public/PowerAddons/First/BeadMaze.webp",
+                "addonIcon": "public/PowerAddons/First/Bead-Maze.webp",
                 "Name": "Bead Maze",
                 "Rarity": 0
             },
             {
                 "id": 4,
                 "globalID": 823,
-                "addonIcon": "public/PowerAddons/First/SmashedCassetteDeck.webp",
+                "addonIcon": "public/PowerAddons/First/Smashed-Cassette-Deck.webp",
                 "Name": "Smashed Cassette Deck",
                 "Rarity": 1
             },
             {
-                "id": 5,
-                "globalID": 824,
-                "addonIcon": "public/PowerAddons/First/Mid-CenturyRadio.webp",
-                "Name": "Mid-Century Radio",
+                "id": 1,
+                "globalID": 820,
+                "addonIcon": "public/PowerAddons/First/Shattered-Wrist-Rocket.webp",
+                "Name": "Shattered Wrist Rocket",
                 "Rarity": 1
             },
             {
                 "id": 6,
                 "globalID": 825,
-                "addonIcon": "public/PowerAddons/First/GuttedSupercom.webp",
+                "addonIcon": "public/PowerAddons/First/Gutted-Supercom.webp",
                 "Name": "Gutted Supercom",
                 "Rarity": 1
             },
             {
                 "id": 7,
                 "globalID": 826,
-                "addonIcon": "public/PowerAddons/First/ClockHands.webp",
+                "addonIcon": "public/PowerAddons/First/Clock-Hands.webp",
                 "Name": "Clock Hands",
                 "Rarity": 1
             },
             {
                 "id": 8,
                 "globalID": 827,
-                "addonIcon": "public/PowerAddons/First/BloodyRollerSkate.webp",
+                "addonIcon": "public/PowerAddons/First/Bloody-Roller-Skate.webp",
                 "Name": "Bloody Roller Skate",
                 "Rarity": 1
             },
             {
                 "id": 9,
                 "globalID": 828,
-                "addonIcon": "public/PowerAddons/First/VictorsRazorBlade.webp",
+                "addonIcon": "public/PowerAddons/First/Victor_S-Razor-Blade.webp",
                 "Name": "Victor's Razor Blade",
                 "Rarity": 2
             },
             {
-                "id": 10,
-                "globalID": 829,
-                "addonIcon": "public/PowerAddons/First/RabbitRemains.webp",
-                "Name": "Rabbit Remains",
+                "id": 13,
+                "globalID": 833,
+                "addonIcon": "public/PowerAddons/First/Pizza-Goggles.webp",
+                "Name": "Pizza Goggles",
                 "Rarity": 2
             },
             {
                 "id": 11,
                 "globalID": 830,
-                "addonIcon": "public/PowerAddons/First/NeckTendril.webp",
+                "addonIcon": "public/PowerAddons/First/Neck-Tendril.webp",
                 "Name": "Neck Tendril",
                 "Rarity": 2
             },
             {
                 "id": 12,
                 "globalID": 831,
-                "addonIcon": "public/PowerAddons/First/ForgedDeathCertificate.webp",
+                "addonIcon": "public/PowerAddons/First/Forged-Death-Certificate.webp",
                 "Name": "Forged Death Certificate",
                 "Rarity": 2
             },
             {
                 "id": 3,
                 "globalID": 832,
-                "addonIcon": "public/PowerAddons/First/ElectrodeCap.webp",
+                "addonIcon": "public/PowerAddons/First/Electrode-Cap.webp",
                 "Name": "Electrode Cap",
                 "Rarity": 2
             },
             {
-                "id": 13,
-                "globalID": 833,
-                "addonIcon": "public/PowerAddons/First/PizzaGoggles.webp",
-                "Name": "Pizza Goggles",
+                "id": 10,
+                "globalID": 829,
+                "addonIcon": "public/PowerAddons/First/Rabbit-Remains.webp",
+                "Name": "Rabbit Remains",
                 "Rarity": 3
             },
             {
                 "id": 14,
                 "globalID": 834,
-                "addonIcon": "public/PowerAddons/First/ElectroshockCollar.webp",
+                "addonIcon": "public/PowerAddons/First/Electroshock-Collar.webp",
                 "Name": "Electroshock Collar",
                 "Rarity": 3
             },
             {
                 "id": 15,
                 "globalID": 835,
-                "addonIcon": "public/PowerAddons/First/BrokenSkateboard.webp",
+                "addonIcon": "public/PowerAddons/First/Broken-Skateboard.webp",
                 "Name": "Broken Skateboard",
                 "Rarity": 3
             },
             {
                 "id": 16,
                 "globalID": 836,
-                "addonIcon": "public/PowerAddons/First/BlackWidowSpider.webp",
+                "addonIcon": "public/PowerAddons/First/Black-Widow-Spider.webp",
                 "Name": "Black Widow Spider",
                 "Rarity": 3
             },
             {
                 "id": 17,
                 "globalID": 837,
-                "addonIcon": "public/PowerAddons/First/IridescentSoteriaChip.webp",
+                "addonIcon": "public/PowerAddons/First/Iridescent-Soteria-Chip.webp",
                 "Name": "Iridescent Soteria Chip",
                 "Rarity": 4
             },
             {
                 "id": 18,
                 "globalID": 838,
-                "addonIcon": "public/PowerAddons/First/ChessPiece.webp",
+                "addonIcon": "public/PowerAddons/First/Chess-Piece.webp",
                 "Name": "Chess Piece",
                 "Rarity": 4
             }
