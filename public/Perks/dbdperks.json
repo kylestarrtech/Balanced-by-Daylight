@@ -335,7 +335,7 @@
         "tags": [],
         "character": "Laurie Strode",
         "survivorPerk": true,
-        "aliases": "Decisive Strike"
+        "aliases": "Decisive Strike,DS"
     },
     {
         "id": 37,
@@ -675,7 +675,7 @@
         "tags": [],
         "character": "Laurie Strode",
         "survivorPerk": true,
-        "aliases": "Object of Obsession"
+        "aliases": "Object of Obsession,OOO"
     },
     {
         "id": 74,
@@ -1918,7 +1918,7 @@
         "tags": [],
         "character": "The Shape",
         "survivorPerk": false,
-        "aliases": "Play With Your Food"
+        "aliases": "Play With Your Food,PWYF"
     },
     {
         "id": 210,
@@ -1973,7 +1973,7 @@
         "tags": [],
         "character": "The Shape",
         "survivorPerk": false,
-        "aliases": "Save The Best For Last"
+        "aliases": "Save The Best For Last,STBFL"
     },
     {
         "id": 216,
