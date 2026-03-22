@@ -329,13 +329,13 @@
     },
     {
         "id": 36,
-        "name": "Decisive Strike",
+        "name": "Will to Live",
         "icon": "public/Perks/Survivors/Decisive-Strike.webp",
         "exhaustion": false,
         "tags": [],
         "character": "Laurie Strode",
         "survivorPerk": true,
-        "aliases": "DS"
+        "aliases": "Decisive Strike"
     },
     {
         "id": 37,
@@ -669,12 +669,13 @@
     },
     {
         "id": 73,
-        "name": "Object of Obsession",
+        "name": "Bound by Obsession",
         "icon": "public/Perks/Survivors/Object-Of-Obsession.webp",
         "exhaustion": false,
         "tags": [],
         "character": "Laurie Strode",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Object of Obsession"
     },
     {
         "id": 74,
@@ -988,12 +989,13 @@
     },
     {
         "id": 108,
-        "name": "Sole Survivor",
+        "name": "Down to the Last",
         "icon": "public/Perks/Survivors/Sole-Survivor.webp",
         "exhaustion": false,
         "tags": [],
         "character": "Laurie Strode",
-        "survivorPerk": true
+        "survivorPerk": true,
+        "aliases": "Sole Survivor"
     },
     {
         "id": 109,
@@ -1444,12 +1446,13 @@
     },
     {
         "id": 158,
-        "name": "Dying Light",
+        "name": "Cull the Weak",
         "icon": "public/Perks/Killers/Dying-Light.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
-        "survivorPerk": false
+        "survivorPerk": false,
+        "aliases": "Dying Light"
     },
     {
         "id": 159,
@@ -1909,13 +1912,13 @@
     },
     {
         "id": 209,
-        "name": "Play with your Food",
+        "name": "See How They Run",
         "icon": "public/Perks/Killers/Play-With-Your-Food.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
         "survivorPerk": false,
-        "aliases": "PWYF"
+        "aliases": "Play With Your Food"
     },
     {
         "id": 210,
@@ -1964,13 +1967,13 @@
     },
     {
         "id": 215,
-        "name": "Save the Best for Last",
+        "name": "Keep Them Waiting",
         "icon": "public/Perks/Killers/Save-The-Best-For-Last.webp",
         "exhaustion": false,
         "tags": [],
         "character": "The Shape",
         "survivorPerk": false,
-        "aliases": "STBFL"
+        "aliases": "Save The Best For Last"
     },
     {
         "id": 216,
