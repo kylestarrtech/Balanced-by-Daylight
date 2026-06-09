@@ -14,7 +14,24 @@ try{
 }catch(e){}
 const outputFolder = path.join(__dirname, 'output');
 
-const combineMode = "bruteForce";
+const combineMode = "characterMatch";
+const characterName = "The Slasher";
+
+let newAddonsList = [];
+try {
+    const rawData = fs.readFileSync(path.join(__dirname, '../../public/NewAddons.json'));
+    newAddonsList = JSON.parse(rawData);
+} catch (e) {
+    console.error("Could not load NewAddons.json", e);
+}
+
+let charAddons = [];
+if (combineMode === "characterMatch") {
+    const charData = newAddonsList.find(c => c.Name === characterName);
+    if (charData) {
+        charAddons = charData.Addons;
+    }
+}
 
 let rarityPaths = [];
 if (combineMode == "readList") {
@@ -25,10 +42,12 @@ if (combineMode == "readList") {
         { path: `${__dirname}/rarity-images/veryrare.png`, index: 3 }, // This is the very rare rarity
         { path: `${__dirname}/rarity-images/visceral.png`, index: 4 } // This is the ultra rare rarity
     ];
-} else if (combineMode == "bruteForce") {
+} else if (combineMode == "bruteForce" || combineMode == "characterMatch") {
+    // Collect paths and sort by their filename (assuming they are named like '0.png', '1.png', etc.)
     rarityPaths = fs.readdirSync(path.join(__dirname, 'rarity-images')).map(rarity => {
-        return { path: path.join(__dirname, 'rarity-images', rarity), index: 0 };
+        return { path: path.join(__dirname, 'rarity-images', rarity), index: parseInt(rarity.split('.')[0]) || 0 };
     });
+    rarityPaths.sort((a, b) => a.index - b.index);
 }
 
 let addonPaths = [];
@@ -39,7 +58,7 @@ if (combineMode == "readList") {
         const addonPath = path.join(__dirname, addon.addonIcon);
         addonPaths.push(addonPath);
     }
-} else if (combineMode == "bruteForce") {
+} else if (combineMode == "bruteForce" || combineMode == "characterMatch") {
     addonPaths = fs.readdirSync(path.join(__dirname, 'addon-images')).map(addon => {
         return path.join(__dirname, 'addon-images', addon);
     });
@@ -56,6 +75,7 @@ const addonImages = addonPaths.map(addon => {
 /**
  * "readList": Combines the addons based on the addon-list.json file.
  * "bruteForce": Creates every possible combination of addons and rarities.
+ * "characterMatch": Matches images by name to a character in NewAddons.json and combines with the correct rarity, or creates every possible combination if no match is found.
  */
 
 if (combineMode == "readList") {
@@ -68,6 +88,12 @@ if (combineMode == "readList") {
     Promise.all(rarityImages).then(rarityImages => {
         Promise.all(addonImages).then(addonImages => {
             BruteForceCombine(addonImages, rarityImages);
+        });
+    });
+} else if (combineMode == "characterMatch") {
+    Promise.all(rarityImages).then(rarityImages => {
+        Promise.all(addonImages).then(addonImages => {
+            CharacterMatchCombine(addonImages, rarityImages);
         });
     });
 }
@@ -125,6 +151,72 @@ function BruteForceCombine(addonImages, rarityImages) {
             console.log(`Writing file: ${outputFilePath}`);
 
             fs.writeFileSync(outputFilePath, buffer);
+        }
+    }
+}
+
+function CharacterMatchCombine(addonImages, rarityImages) {
+    console.log(`Character match combining addons for ${characterName}...`);
+    const canvas = createCanvas(300, 300);
+    const ctx = canvas.getContext('2d');
+
+    for (let i = 0; i < addonImages.length; i++) {
+        let fullFileName = addonPaths[i].split('\\').pop();
+        fullFileName = fullFileName.split('/').pop();
+        const baseName = fullFileName.substring(0, fullFileName.lastIndexOf('.'));
+
+        const matchedAddon = charAddons.find(a => {
+            if (!a.addonIcon) return false;
+            let jsonFileName = a.addonIcon.split('\\').pop();
+            jsonFileName = jsonFileName.split('/').pop();
+            const jsonBaseName = jsonFileName.substring(0, jsonFileName.lastIndexOf('.'));
+            return jsonBaseName === baseName;
+        });
+
+        if (matchedAddon) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const rarityIndex = matchedAddon.Rarity;
+            let rarityImageIndex = rarityPaths.findIndex(p => p.index === rarityIndex);
+            if (rarityImageIndex === -1) {
+                rarityImageIndex = rarityIndex; // fallback
+            }
+            const rarityImage = rarityImages[rarityImageIndex];
+            const addonImage = addonImages[i];
+
+            if (rarityImage) {
+                ctx.drawImage(rarityImage, 22, 22, 256, 256);
+            }
+            ctx.drawImage(addonImage, 22, 22, 256, 256);
+
+            const buffer = canvas.toBuffer('image/png');
+            const outputFilePath = path.join(outputFolder, fullFileName);
+            
+            console.log(`Writing file (matched): ${outputFilePath}`);
+            fs.writeFileSync(outputFilePath, buffer);
+        } else {
+            console.log(`No match for ${fullFileName}, defaulting to brute force...`);
+            for (let j = 0; j < rarityImages.length; j++) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const rarityImage = rarityImages[j];
+                const addonImage = addonImages[i];
+
+                ctx.drawImage(rarityImage, 22, 22, 256, 256);
+                ctx.drawImage(addonImage, 22, 22, 256, 256);
+
+                const buffer = canvas.toBuffer('image/png');
+                
+                let outFileName = fullFileName;
+                if (j > 0) {
+                    outFileName = outFileName.replace('.png', `-${j}.png`);
+                }
+
+                const outputFilePath = path.join(outputFolder, outFileName);
+
+                console.log(`Writing file: ${outputFilePath}`);
+
+                fs.writeFileSync(outputFilePath, buffer);
+            }
         }
     }
 }

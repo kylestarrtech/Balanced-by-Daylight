@@ -36,10 +36,10 @@ if (disableAutobalance) {
 const {GoogleSpreadsheet} = require('google-spreadsheet');
 const doc = new GoogleSpreadsheet('10N1VSWuxk1uALAiqSsgaI0Yp_BmevWhc1jgj1JyCWvE');
   
-const dbdlConverter = require('./utilities/autobalancer/autobalancer-dbdl.js');
+// const dbdlConverter = require('./utilities/autobalancer/autobalancer-dbdl.js');
 const converterMap = new Map()
-    .set("DBDL", dbdlConverter)
-    .set("DBDL-AHL", dbdlConverter)
+//     .set("DBDL", dbdlConverter)
+//     .set("DBDL-AHL", dbdlConverter)
 
 
 // Check if the autobalancer is enabled via the .env file
@@ -110,7 +110,7 @@ async function getLeagues(){
 
         balancings.push(balancingsObj);
 
-        if(row.Type != "Stored"){
+        if(row.Type != "Stored") {
             autobalanceLeagues.push({
                 FullTitle: row.Name,
                 Name: row.Filename,
@@ -157,9 +157,9 @@ function InitAutobalance() {
     for(const league of autobalanceLeagues){
         const leagueName = league.Name;
         let leagueURL = league.URL;
-        if(leagueName.startsWith("DBDL")){
-            leagueURL += process.env.DBDL_API_KEY;
-        }
+        // if(leagueName.startsWith("DBDL")){
+        //     leagueURL += process.env.DBDL_API_KEY;
+        // }
         
         const leagueObjPath = `${autobalanceObjLocation}${leagueName}.json`;
 

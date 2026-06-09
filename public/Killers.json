@@ -376,5 +376,14 @@
         "PowerIcon": "public/Powers/First.webp",
         "Aliases": ["Vecna", "Henry Creel", "ST Vecna", "001", "Mr. Whatsit"],
         "AdditionalData": {}
+    },
+    {
+        "ID": 42,
+        "Name": "The Slasher",
+        "Portrait": "iconography/portraits/Slasher.webp",
+        "LorePortrait": "iconography/lore/Slasher.webp",
+        "PowerIcon": "public/Powers/Slasher.webp",
+        "Aliases": ["Jason", "Voorhees"],
+        "AdditionalData": {}
     }
 ]

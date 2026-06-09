@@ -6088,5 +6088,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Slasher",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 839,
+                "addonIcon": "public/PowerAddons/Slasher/Bent-Wheel.webp",
+                "Name": "Bent Wheel",
+                "Rarity": 0
+            },
+            {
+                "id": 5,
+                "globalID": 840,
+                "addonIcon": "public/PowerAddons/Slasher/Garden-Claw.webp",
+                "Name": "Garden Claw",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 841,
+                "addonIcon": "public/PowerAddons/Slasher/Knitting-Needle.webp",
+                "Name": "Knitting Needle",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 842,
+                "addonIcon": "public/PowerAddons/Slasher/Orderly_S-Shoe.webp",
+                "Name": "Orderly's Shoe",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 843,
+                "addonIcon": "public/PowerAddons/Slasher/Bloody-Smile.webp",
+                "Name": "Bloody Smile",
+                "Rarity": 1
+            },
+            {
+                "id": 1,
+                "globalID": 844,
+                "addonIcon": "public/PowerAddons/Slasher/Coroner_S-Coffee.webp",
+                "Name": "Coroner's Coffee",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 845,
+                "addonIcon": "public/PowerAddons/Slasher/Party-Noisemaker.webp",
+                "Name": "Party Noisemaker",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 846,
+                "addonIcon": "public/PowerAddons/Slasher/Sleeping-Bag.webp",
+                "Name": "Sleeping Bag",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 847,
+                "addonIcon": "public/PowerAddons/Slasher/Toxic-Waste.webp",
+                "Name": "Toxic Waste",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 848,
+                "addonIcon": "public/PowerAddons/Slasher/Eye-Goop.webp",
+                "Name": "Eye Goop",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 849,
+                "addonIcon": "public/PowerAddons/Slasher/Imprinted-Aluminum.webp",
+                "Name": "Imprinted Aluminum",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 850,
+                "addonIcon": "public/PowerAddons/Slasher/Mirror-Shards.webp",
+                "Name": "Mirror Shards",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 851,
+                "addonIcon": "public/PowerAddons/Slasher/Sauna-Rock.webp",
+                "Name": "Sauna Rock",
+                "Rarity": 2
+            },
+            {
+                "id": 3,
+                "globalID": 852,
+                "addonIcon": "public/PowerAddons/Slasher/Two-Nails.webp",
+                "Name": "Two Nails",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 853,
+                "addonIcon": "public/PowerAddons/Slasher/Bloody-Magazine.webp",
+                "Name": "Rabbit Remains",
+                "Rarity": 3
+            },
+            {
+                "id": 14,
+                "globalID": 854,
+                "addonIcon": "public/PowerAddons/Slasher/Burnt-Fuse.webp",
+                "Name": "Burnt Fuse",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 855,
+                "addonIcon": "public/PowerAddons/Slasher/Deputy_S-Badge.webp",
+                "Name": "Deputy's Badge",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 856,
+                "addonIcon": "public/PowerAddons/Slasher/Missing-Corkscrew.webp",
+                "Name": "Missing Corkscrew",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 857,
+                "addonIcon": "public/PowerAddons/Slasher/Dirty-Money.webp",
+                "Name": "Dirty Money",
+                "Rarity": 4
+            },
+            {
+                "id": 18,
+                "globalID": 858,
+                "addonIcon": "public/PowerAddons/Slasher/Iridescent-Boat-Motor.webp",
+                "Name": "Iridescent Boat Motor",
+                "Rarity": 4
+            }
+        ]
     }
 ]

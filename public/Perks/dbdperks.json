@@ -2836,5 +2836,35 @@
         "tags": [],
         "character": "Kwon Tae-young",
         "survivorPerk": true
+    },
+    {
+        "id": 309,
+        "dateAdded": 1781025506,
+        "name": "Rampage",
+        "icon": "public/Perks/Killers/Rampage.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Slasher",
+        "survivorPerk": false
+    },
+    {
+        "id": 310,
+        "dateAdded": 1781025506,
+        "name": "Hex: Scared To Death",
+        "icon": "public/Perks/Killers/Hex-Scared-To-Death.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Slasher",
+        "survivorPerk": false
+    },
+    {
+        "id": 311,
+        "dateAdded": 1781025506,
+        "name": "Silent Shadow",
+        "icon": "public/Perks/Killers/Silent-Shadow.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Slasher",
+        "survivorPerk": false
     }
 ]
