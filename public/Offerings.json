@@ -107,6 +107,12 @@
             "name": "Murky Reagent",
             "icon": "public/Offerings/Murky-Reagent.webp",
             "survivorOffering": true
+        },
+        {
+            "id": 18,
+            "name": "Shiny Coin",
+            "icon": "public/Offerings/Shiny-Coin.webp",
+            "survivorOffering": true
         }
     ],
     "Killer": [

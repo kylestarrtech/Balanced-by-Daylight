@@ -2866,5 +2866,35 @@
         "tags": [],
         "character": "The Slasher",
         "survivorPerk": false
+    },
+    {
+        "id": 312,
+        "dateAdded": 1782087184,
+        "name": "Cross Examination",
+        "icon": "public/Perks/Survivors/Cross-Examination.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Shane Wiigwaas",
+        "survivorPerk": true
+    },
+    {
+        "id": 313,
+        "dateAdded": 1782087184,
+        "name": "Lend A Hand",
+        "icon": "public/Perks/Survivors/Lend-A-Hand.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Shane Wiigwaas",
+        "survivorPerk": true
+    },
+    {
+        "id": 314,
+        "dateAdded": 1782087184,
+        "name": "Wide Open Throttle",
+        "icon": "public/Perks/Survivors/Wide-Open-Throttle.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Shane Wiigwaas",
+        "survivorPerk": true
     }
 ]
