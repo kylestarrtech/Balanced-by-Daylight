@@ -76,11 +76,22 @@ function GenerateMapModal() {
 }
 
 /**
+ * Checks whether a note string contains a link-like value.
+ */
+function ContainsLink(text) {
+    if (text == undefined || text == null) { return false; }
+    if (typeof text !== "string") { return false; }
+
+    return /<a\b[^>]*\bhref\s*=/i.test(text) ||
+        /(?:https?:\/\/|www\.)\S+/i.test(text);
+}
+
+/**
  * Builds a note string from the global notes and killer override notes, then displays them in the alert modal.
  */
 function GenerateNotesModal() {
     // Get global notes
-    let globalNotes = currentBalancing["GlobalNotes"] == undefined ?
+    let globalNotesRaw = currentBalancing["GlobalNotes"] == undefined ?
         "No global notes for this balancing profile." :
         currentBalancing["GlobalNotes"] == "" ?
             "No global notes for this balancing profile." :
@@ -89,15 +100,22 @@ function GenerateNotesModal() {
     // Get notes for the selected killer
     let killerNotesBase = currentBalancing["KillerOverride"][selectedKiller]["KillerNotes"];
 
-    let killerNotes = killerNotesBase == undefined ?
+    let killerNotesRaw = killerNotesBase == undefined ?
         "No special notes for this killer." :
         killerNotesBase == "" ?
             "No special notes for this killer." :
             killerNotesBase;
 
+    if (ContainsLink(globalNotesRaw) || ContainsLink(killerNotesRaw)) {
+        console.log("Link Detected");
+        document.getElementById("alert-link-notice").hidden = false;
+    } else {
+        document.getElementById("alert-link-notice").hidden = true;
+    }
+
     // Remove any HTML from the notes
-    globalNotes = globalNotes.replace(/<[^>]*>?/gm, '');
-    killerNotes = killerNotes.replace(/<[^>]*>?/gm, '');
+    let globalNotes = globalNotesRaw.replace(/<[^>]*>?/gm, '');
+    let killerNotes = killerNotesRaw.replace(/<[^>]*>?/gm, '');
 
     // Replace newlines with <br>
     globalNotes = globalNotes.replace(/\n/g, '<br>');
