@@ -1421,7 +1421,13 @@ function GenerateImageFromButtonPress() {
                     imageGenOkButton.innerText = "Close";
                 break;
                 default:
-                    GenerateAlertModal("Error", "An error occurred while generating your image.");
+                    let errorMessage = "An unknown error occurred.";
+                    if (this.response) {
+                        const decoder = new TextDecoder('utf-8');
+                        errorMessage = decoder.decode(this.response);
+                    }
+
+                    GenerateAlertModal("Error", `An error occurred while generating your image:<br>${errorMessage}`);
                     console.error("Error getting image: " + this.status);
             }
         }

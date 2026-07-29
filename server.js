@@ -3,12 +3,16 @@ const http = require('http');
 const socketio = require('socket.io');
 const config = require('./server-config.json');
 const multer = require('multer');
+const rateLimit = require('express-rate-limit');
 
 const canvasGen = require('./canvasGenerator.js');
 const autobalanceAPI = require('./autobalance-api.js');
 const imageExtractor = require('./imageExtractor.js')
 
 const app = express()
+
+app.set('trust proxy', 1);
+
 const server=http.createServer(app);
 const io=socketio(server);
 const port = 3000
@@ -28,7 +32,23 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/favicon.ico', express.static('/favicon.ico'));
 
+// Rate limiter for /get-build-image
+const imageGenLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1min
+  max: 6, // 6req/min
+  message: "Too many image generation requests from this IP, please try again in a minute.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
+// Rate limiter for /image-extractor
+const imageExtractLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1min
+  max: 5, // 3req/min
+  message: "Too many image upload requests from this IP, please try again in a minute.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // Set Pug as the view engine
 app.set('view engine', 'pug')
@@ -45,7 +65,7 @@ app.get('/config', (req, res) => {
   res.json(config);
 });
 
-app.post('/get-build-image', (req, res) => {
+app.post('/get-build-image', imageGenLimiter, (req, res) => {
   // Get the build data from the request body
   const buildData = req.body;
   //console.log(buildData);
@@ -74,7 +94,7 @@ app.post('/get-build-image', (req, res) => {
   }
 });
 
-app.post('/image-extractor', upload.single("image"), async (req, res) => {
+app.post('/image-extractor', upload.single("image"), imageExtractLimiter, async (req, res) => {
   if(!req.file){
     res.status(400).send("Invalid import data. No image received.");
     return;

@@ -11,6 +11,22 @@ const Items = require('./public/Items.json');
 const Offerings = require('./public/Offerings.json');
 const KillerAddons = require('./public/NewAddons.json');
 
+function drawOutlinedText(context, text, x, y, maxWidth, fillColor = '#ffffff', strokeColor = '#000000', strokeWidth = 5) {
+    context.save();
+    
+    // 1. Draw the outline (stroke)
+    context.strokeStyle = strokeColor;
+    context.lineWidth = strokeWidth;
+    context.lineJoin = 'round';
+    context.strokeText(text, x, y, maxWidth);
+    
+    // 2. Draw the inner text (fill)
+    context.fillStyle = fillColor;
+    context.fillText(text, x, y, maxWidth);
+    
+    context.restore();
+}
+
 function GetKillerAddonById(id) {
     for (let i = 0; i < KillerAddons.length; i++) {
         let currentKiller = KillerAddons[i];
@@ -618,7 +634,8 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     const TitlePrefixText = 'Going against: '
     
     context.fillStyle = '#fff'
-    context.fillText(TitlePrefixText, 10, 10, width);
+
+    drawOutlinedText(context, TitlePrefixText, 10, 10, width);
     
     let titleTextMetrics = context.measureText(TitlePrefixText);
     let titleTextWidth = titleTextMetrics.width;
@@ -628,7 +645,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     context.textBaseline = 'top'
     
     const KillerTitleText = importedBuild["KillerName"];
-    context.fillText(KillerTitleText, 10 + titleTextWidth, 10, width);
+    drawOutlinedText(context, KillerTitleText, 10 + titleTextWidth, 10, width);
 
     // Generate Anti-Facecamp Badge
 
@@ -651,7 +668,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     context.textBaseline = 'top'
     
     const BalancingPrefixText = 'Balancing: '
-    context.fillText(BalancingPrefixText, 10, 20 + titleTextHeight, width);
+    drawOutlinedText(context, BalancingPrefixText, 10, 20 + titleTextHeight, width);
     
     let balancingTextWidth = context.measureText(BalancingPrefixText).width;
     let balancingTextHeight = context.measureText(BalancingPrefixText).height;
@@ -660,7 +677,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     context.textBaseline = 'top'
     
     const BalancingTitleText = importedBuild["BalancingTitle"];
-    context.fillText(BalancingTitleText, 10 + balancingTextWidth, 20 + titleTextHeight, width);
+    drawOutlinedText(context, BalancingTitleText, 10 + balancingTextWidth, 20 + titleTextHeight, width);
     
     // Generate date text
     
@@ -673,7 +690,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     // Get current date and time formatted as YYYY-MM-DD HH:MM:SS (24 hour) UTC
     const date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
     let dateText = `Image Date: ${date} UTC`;
-    context.fillText(dateText, locationX, 10, width);
+    drawOutlinedText(context, dateText, locationX, 10, width);
 
     let dateTextHeight = context.measureText(dateText).height;
 
@@ -692,9 +709,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
                                     `${numErrors} errors found at image generation`;
 
     const errorColor = numErrors == 0 ? '#80ff80' : '#ff8080';
-    context.fillStyle = errorColor;
-
-    context.fillText(numErrorsText, locationX, 40, width);
+    drawOutlinedText(context, numErrorsText, locationX, 40, width, errorColor);
 
     context.fillStyle = '#fff';
     
@@ -723,7 +738,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     let linkHeight = linkMetrics.actualBoundingBoxAscent + linkMetrics.actualBoundingBoxDescent;
 
     locationX = width / 2;
-    context.fillText(LinkText, locationX, logoHeight - 2, width);
+    drawOutlinedText(context, LinkText, locationX, (logoHeight - 2) + 10, width);
 
     // Generate Killer lore image
     let loreImagePromise = loadImage(importedBuild["KillerLoreImage"]).then(image => {
@@ -966,7 +981,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     const TitlePrefixText = 'Playing as: '
     
     context.fillStyle = '#fff'
-    context.fillText(TitlePrefixText, 10, 10, width);
+    drawOutlinedText(context, TitlePrefixText, 10, 10, width);
     
     let titleTextMetrics = context.measureText(TitlePrefixText);
     let titleTextWidth = titleTextMetrics.width;
@@ -976,7 +991,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     context.textBaseline = 'top'
     
     const KillerTitleText = importedBuild["KillerName"];
-    context.fillText(KillerTitleText, 10 + titleTextWidth, 10, width);
+    drawOutlinedText(context, KillerTitleText, 10 + titleTextWidth, 10, width);
 
     // Generate Anti-Facecamp Badge
 
@@ -998,7 +1013,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     context.textBaseline = 'top'
     
     const BalancingPrefixText = 'Balancing: '
-    context.fillText(BalancingPrefixText, 10, 20 + titleTextHeight, width);
+    drawOutlinedText(context, BalancingPrefixText, 10, 20 + titleTextHeight, width);
     
     let balancingTextWidth = context.measureText(BalancingPrefixText).width;
     let balancingTextHeight = context.measureText(BalancingPrefixText).height;
@@ -1007,7 +1022,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     context.textBaseline = 'top'
     
     const BalancingTitleText = importedBuild["BalancingTitle"];
-    context.fillText(BalancingTitleText, 10 + balancingTextWidth, 20 + titleTextHeight, width);
+    drawOutlinedText(context, BalancingTitleText, 10 + balancingTextWidth, 20 + titleTextHeight, width);
     
     // Generate date text
     
@@ -1018,7 +1033,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     let locationX = width - 10;
     // Get current date and time formatted as YYYY-MM-DD HH:MM:SS (24 hour) UTC
     const date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    context.fillText(`Image Date: ${date} UTC`, locationX, 10, width);
+    drawOutlinedText(context, `Image Date: ${date} UTC`, locationX, 10, width);
 
     // Generate numError text
 
@@ -1035,9 +1050,7 @@ async function GenerateKillerImage(importedBuild, callback) {
                                     `${numErrors} errors found at image generation`;
 
     const errorColor = numErrors == 0 ? '#80ff80' : '#ff8080';
-    context.fillStyle = errorColor;
-
-    context.fillText(numErrorsText, locationX, 40, width);
+    drawOutlinedText(context, numErrorsText, locationX, 40, width, errorColor);
 
     context.fillStyle = '#fff';
     
@@ -1066,7 +1079,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     let linkHeight = linkMetrics.actualBoundingBoxAscent + linkMetrics.actualBoundingBoxDescent;
 
     locationX = width / 2;
-    context.fillText(LinkText, locationX, (logoHeight - 2) + 20, width);
+    drawOutlinedText(context, LinkText, locationX, (logoHeight - 2) + 10, width);
 
     // Generate background for perks
 
