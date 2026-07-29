@@ -1,6 +1,9 @@
 const fs = require('fs')
 const pako = require('pako')
-const { createCanvas, loadImage } = require('@napi-rs/canvas')
+const { createCanvas, loadImage, GlobalFonts } = require('@napi-rs/canvas')
+
+GlobalFonts.registerFromPath('./fonts/Roboto-Regular.ttf', 'Roboto');
+GlobalFonts.registerFromPath('./fonts/Roboto-Bold.ttf', 'Roboto');
 
 const Killers = require('./public/Killers.json');
 const Perks = require('./public/Perks/dbdperks.json');
