@@ -1063,7 +1063,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     let linkHeight = linkMetrics.actualBoundingBoxAscent + linkMetrics.actualBoundingBoxDescent;
 
     locationX = width / 2;
-    context.fillText(LinkText, locationX, logoHeight - 2, width);
+    context.fillText(LinkText, locationX, (logoHeight - 2) + 20, width);
 
     // Generate background for perks
 
