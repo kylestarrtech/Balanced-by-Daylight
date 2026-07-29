@@ -1,6 +1,6 @@
 const fs = require('fs')
 const pako = require('pako')
-const { createCanvas, loadImage } = require('canvas')
+const { createCanvas, loadImage } = require('@napi-rs/canvas')
 
 const Killers = require('./public/Killers.json');
 const Perks = require('./public/Perks/dbdperks.json');
@@ -713,7 +713,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     
     context.font = '700 15pt Roboto'
     context.textAlign = 'center'
-    context.textBaseline = 'center'
+    context.textBaseline = 'middle'
     
     const LinkText = 'balancedbydaylight.com';
     let linkMetrics = context.measureText(LinkText);
@@ -1056,7 +1056,7 @@ async function GenerateKillerImage(importedBuild, callback) {
     
     context.font = '700 15pt Roboto'
     context.textAlign = 'center'
-    context.textBaseline = 'center'
+    context.textBaseline = 'middle'
     
     const LinkText = 'balancedbydaylight.com';
     let linkMetrics = context.measureText(LinkText);
