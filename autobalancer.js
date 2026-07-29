@@ -100,12 +100,19 @@ async function getLeagues(){
             Balancing: {}
         };
 
-        // Try to get LastUpdated
+        // trying to get LastUpdated gracefully
         try {
-            const balanceData = fs.readFileSync(`${publicDataLocation}${balancingsObj["Path"]}`, { encoding: 'utf8', flag: 'r' });
-            balancingsObj["LastUpdated"] = JSON.parse(balanceData)["Version"];
+            const fullPath = `${publicDataLocation}${balancingsObj["Path"]}`;
+            if (fs.existsSync(fullPath)) {
+                const balanceData = fs.readFileSync(fullPath, { encoding: 'utf8', flag: 'r' });
+                balancingsObj["LastUpdated"] = JSON.parse(balanceData)["Version"];
+            } else {
+                // default to 0 if there's no other option
+                balancingsObj["LastUpdated"] = 0; 
+            }
         } catch (err) {
-            console.error(`There was an issue updating the LastUpdated property on the "${balancingsObj["Name"]}" preset. Trying again next time!`);
+            console.log(`[Info] Could not read Version for "${balancingsObj["Name"]}" yet. It will be updated shortly!`);
+            balancingsObj["LastUpdated"] = 0;
         }
 
         balancings.push(balancingsObj);
@@ -264,6 +271,22 @@ function FetchAutobalance(index) {
             if (err) throw err;
             //console.log('Saved file! Saving last run...');
 
+            try {
+                const balancingsPath = "./public/Balancings.json";
+                if (fs.existsSync(balancingsPath)) {
+                    let balancings = JSON.parse(fs.readFileSync(balancingsPath, "utf8"));
+                    
+                    // Find this specific preset in the array
+                    let targetPreset = balancings.find(b => b.Name === balanceObject.FullTitle);
+                    if (targetPreset) {
+                        targetPreset.LastUpdated = convertedData.Version || 0;
+                        fs.writeFileSync(balancingsPath, JSON.stringify(balancings));
+                        console.log(`Successfully updated LastUpdated for ${balanceObject.Name}!`);
+                    }
+                }
+            } catch (updateErr) {
+                console.error("Could not quickly update Balancings.json after fetch:", updateErr);
+            }
             
             // Update the last run time in the .env file (epoch time)
             const now = new Date();
