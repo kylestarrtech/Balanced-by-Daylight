@@ -23,7 +23,7 @@ const activeBuilds = {};
 require('./routes/viewRoutes')(app)
 
 // Set a static folder with all subfolders and files
-app.use(express.static('public'))
+app.use(express.static('public', { maxAge: '30d' }))
 
 // middleware 
 app.use(express.json()) //Add it first then others follow
@@ -118,6 +118,7 @@ app.get("/imageProxy", async (req, res) => {
     res.status(response.status).send("Erreur Discord");
     return
   }
+  res.setHeader("Cache-Control", "public, max-age=86400")
   res.setHeader("Content-Type", response.headers.get("content-type"))
   res.send(Buffer.from(await response.arrayBuffer()))
 })
