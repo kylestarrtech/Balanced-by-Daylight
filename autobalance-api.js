@@ -16,9 +16,9 @@ module.exports = function(app) {
     });
 
     const fetchLeaguesLimiter = rateLimit({
-      windowMs: 1440 * 60 * 1000, // 1 day
-      max: 2, // 2 requests per day
-      message: "Fetch leagues requests are limited to 2 per day. Please try again later.",
+      windowMs: 12 * 60 * 60 * 1000, // 12 hours
+      max: 2, // 2 requests per 12 hours
+      message: "Fetch leagues requests are limited to 2 per 12 hours. Please try again later.",
       standardHeaders: true,
       legacyHeaders: false,
     });
