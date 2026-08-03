@@ -24,9 +24,8 @@ module.exports = function(app) {
     });
 
     function VerifyAutobalanceKey(givenKey) {
-        let env = dotenv.config();
-
-        let apiKeys = env.parsed["AUTOBALANCE-KEYS"].split(",");
+        let keysString = process.env["AUTOBALANCE-KEYS"] || "";
+        let apiKeys = keysString.split(",");
 
         if (!apiKeys.includes(givenKey)) {
             return false;
@@ -36,9 +35,8 @@ module.exports = function(app) {
     }
 
     function VerifyPartnerKey(givenKey) {
-        let env = dotenv.config();
-
-        let partnerKeys = env.parsed["PARTNER-KEYS"].split(",");
+        let keysString = process.env["PARTNER-KEYS"] || "";
+        let partnerKeys = keysString.split(",");
 
         if (!partnerKeys.includes(givenKey)) {
             return false;
