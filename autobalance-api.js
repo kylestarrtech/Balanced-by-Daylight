@@ -162,7 +162,7 @@ module.exports = function(app) {
         }
     });
 
-    app.get('/autobalance/reinit', function(req, res) {
+    app.get('/autobalance/reinit', autobalanceReinitLimiter, function(req, res) {
         let verified = VerifyAutobalanceKey(req.query.key);
 
         let resultFormat = {
