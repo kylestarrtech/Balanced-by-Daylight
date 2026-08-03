@@ -1,6 +1,5 @@
 const express = require('express');
 const http = require('http');
-const socketio = require('socket.io');
 const config = require('./server-config.json');
 const multer = require('multer');
 const rateLimit = require('express-rate-limit');
@@ -14,9 +13,13 @@ const app = express()
 app.set('trust proxy', 1);
 
 const server=http.createServer(app);
-const io=socketio(server);
 const port = 3000
-const upload = multer({ storage: multer.memoryStorage() })
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024
+  }
+})
 
 const activeBuilds = {};
 
@@ -127,121 +130,6 @@ app.get('*', (req, res) => {
   res.status(404).send('404 Not Found')
 })
 
-// If config shows that multiplayer is enabled, then start the server.
-if (config.multiplayerEnabled) {
-
-  io.on("connection",(client)=>{
-    console.log('New client connected.');
-  
-    // Assign a room with a unique ID to the client
-    client.join(client.id);
-  
-    // Request Room data from the client. The client will emit a 'roomDataResponse' event.
-    client.emit('serverRequestRoomData', client.id);
-  
-    // Send the client the room ID
-    client.emit('roomID', client.id);
-  
-    client.on('clientRoomDataResponse', (data) => { 
-      // Create a new roomData object with the data received from the client
-      const roomData = CreateRoomData(client, data);
-  
-      console.log("clientRoomDataResponse");
-      console.log('-------- Room Data --------');
-      console.log(roomData);
-      console.log('---------------------------');
-  
-      // Add the roomData object to the activeBuilds object
-      activeBuilds[client.id] = roomData;
-  
-      // Send the roomData object back to all clients in the room.
-      io.to(client.id).emit('serverRoomDataResponse', roomData);
-    });
-  
-    client.on('clientRoomDataUpdate', (data) => {
-      // Create a new roomData object with the data received from the client.
-      const roomData = UpdateRoomData(activeBuilds[client.id], data);
-  
-      console.log("clientRoomDataUpdate");
-      console.log('-------- Room Data --------');
-      console.log(roomData);
-      console.log('---------------------------');
-  
-      // Update the roomData object in the activeBuilds object
-      activeBuilds[client.id] = roomData;
-  
-      // Send the roomData object back to all clients in the room.
-      io.to(client.id).emit('serverRoomDataResponse', roomData);
-    });
-  
-    client.on('clientJoinRoom', (roomID) => {
-      // Join the room with the roomID
-      client.join(roomID);
-  
-      // Send the client the roomData object
-      client.emit('serverRoomDataResponse', activeBuilds[roomID]);
-    });
-  
-    client.on('clientLeaveRoom', (data) => {
-      console.log("DATA:");
-      console.log(data);
-      // Leave the room with the roomID
-      let roomID = data["roomID"];
-      client.leave(roomID);
-  
-      // Check if owner left the room
-      console.log(activeBuilds[roomID]);
-      if (client.id == activeBuilds[roomID].owner) {
-        // Delete the room from the activeBuilds object
-        delete activeBuilds[roomID];
-      }
-  
-      // Put the client back in their own room
-      client.join(client.id);
-  
-      // Create a new roomData object with the client ID.
-      const roomData = CreateRoomData(client, data);
-  
-      // Add the roomData object to the activeBuilds object
-      activeBuilds[client.id] = roomData;
-  
-      // Send the roomData object back to all clients in the room.
-      io.to(client.id).emit('serverRoomDataResponse', roomData);
-    });
-  });  
-
-}
-
 server.listen(port, () => {
   console.log(`DBD Balance Checker listening on port ${port}`)
 })
-
-function CreateRoomData(client, data) {
-  const roomData = {
-    owner: client.id,
-    users: [ // Includes the owner.
-      client.id
-    ],
-    appStatus: {
-      builds: data.SurvivorPerks,
-      selectedKiller: data.selectedKiller,
-      currentBalancingIndex: data.currentBalancingIndex,
-      customBalanceOverride: data.customBalanceOverride,
-      currentBalancing: data.currentBalancing
-    }
-  }
-
-  return roomData;
-}
-
-function UpdateRoomData(roomData, newData) {
-  roomData.appStatus = {
-    builds: newData.SurvivorPerks,
-    selectedKiller: newData.selectedKiller,
-    currentBalancingIndex: newData.currentBalancingIndex,
-    customBalanceOverride: newData.customBalanceOverride,
-    currentBalancing: newData.currentBalancing
-  }
-
-  return roomData;
-}

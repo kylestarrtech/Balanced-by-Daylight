@@ -1402,7 +1402,7 @@ function GenerateImageFromButtonPress() {
                     // This is the encoded image data.
                     let imageBuffer = this.response;
 
-                    const imageBlob = new Blob([imageBuffer], { type: "image/png" });
+                    const imageBlob = new Blob([imageBuffer], { type: "image/webp" });
 
                     const imageUrl = URL.createObjectURL(imageBlob);
 

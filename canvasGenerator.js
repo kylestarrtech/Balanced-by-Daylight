@@ -934,7 +934,7 @@ async function GenerateSurvivorImage(importedBuild, callback) {
     
     // Generates image only after all promises have been resolved
     Promise.allSettled(promises).then(() => {
-        const buffer = canvas.toBuffer('image/png');
+        const buffer = canvas.toBuffer('image/webp', { quality: 0.8 });
         callback({
             status: 200,
             imageData: buffer,
@@ -1238,7 +1238,7 @@ async function GenerateKillerImage(importedBuild, callback) {
 
     // Generates image only after all promises have been resolved
     Promise.allSettled(promises).then(() => {
-        const buffer = canvas.toBuffer('image/png');
+        const buffer = canvas.toBuffer('image/webp');
         callback({
             status: 200,
             imageData: buffer,
