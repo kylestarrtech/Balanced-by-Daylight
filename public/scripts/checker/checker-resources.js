@@ -30,7 +30,7 @@ function GetBalancings() {
             GetPerks();
         }
     }
-    xhttp.open("GET", "Balancings.json", false);
+    xhttp.open("GET", `Balancings.json?v=${Date.now()}`, false);
     xhttp.send();
 }
 
@@ -49,7 +49,7 @@ function GetPerks() {
             GetKillers();
         }
     }
-    xhttp.open("GET", "Perks/dbdperks.json", false);
+    xhttp.open("GET", `Perks/dbdperks.json?v=${Date.now()}`, false);
     xhttp.send();
 }
 
@@ -69,7 +69,7 @@ function GetKillers() {
             GetSurvivors();
         }
     }
-    xhttp.open("GET", "Killers.json", false);
+    xhttp.open("GET", `Killers.json?v=${Date.now()}`, false);
     xhttp.send();
 }
 
@@ -109,7 +109,7 @@ function GetMaps() {
             GetAddons();
         }
     }
-    xhttp.open("GET", "NewMaps.json", false);
+    xhttp.open("GET", `NewMaps.json?v=${Date.now()}`, false);
     xhttp.send();
 }
 
@@ -128,7 +128,7 @@ function GetAddons() {
             GetItems();
         }
     }
-    xhttp.open("GET", "NewAddons.json", false);
+    xhttp.open("GET", `NewAddons.json?v=${Date.now()}`, false);
     xhttp.send();
 }
 
