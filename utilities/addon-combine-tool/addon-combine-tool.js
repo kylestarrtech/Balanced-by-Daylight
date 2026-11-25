@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas')
 
 let addonList = [];
 try{
@@ -15,7 +15,7 @@ try{
 const outputFolder = path.join(__dirname, 'output');
 
 const combineMode = "characterMatch";
-const characterName = "The Slasher";
+const characterName = "The Judgment";
 
 let newAddonsList = [];
 try {

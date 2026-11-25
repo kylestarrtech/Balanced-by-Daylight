@@ -6233,5 +6233,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Judgment",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 859,
+                "addonIcon": "public/PowerAddons/Judgment/Heretic_S-Mark.webp",
+                "Name": "Heretic's Mark",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 860,
+                "addonIcon": "public/PowerAddons/Judgment/Koenrad_S-Gauntlet.webp",
+                "Name": "Koenrad's Gauntlet",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 861,
+                "addonIcon": "public/PowerAddons/Judgment/Prayer-Kneeler.webp",
+                "Name": "Prayer Kneeler",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 862,
+                "addonIcon": "public/PowerAddons/Judgment/Searcher_S-Skull.webp",
+                "Name": "Searcher's Skull",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 863,
+                "addonIcon": "public/PowerAddons/Judgment/Aurora_S-Telereceptor.webp",
+                "Name": "Aurora's Telereceptor",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 864,
+                "addonIcon": "public/PowerAddons/Judgment/Confessor_S-War-Horn.webp",
+                "Name": "Confessor's War Horn",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 865,
+                "addonIcon": "public/PowerAddons/Judgment/Magnetised-Manacles.webp",
+                "Name": "Magnetised Manacles",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 866,
+                "addonIcon": "public/PowerAddons/Judgment/Mark-Of-The-Adherent.webp",
+                "Name": "Mark of the Adherent",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 867,
+                "addonIcon": "public/PowerAddons/Judgment/Undying-Flame.webp",
+                "Name": "Undying Flame",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 868,
+                "addonIcon": "public/PowerAddons/Judgment/Blindfold-Of-The-Devoted.webp",
+                "Name": "Blindfold of the Devoted",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 869,
+                "addonIcon": "public/PowerAddons/Judgment/Electric-Torch.webp",
+                "Name": "Electric Torch",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 870,
+                "addonIcon": "public/PowerAddons/Judgment/Holy-Winged-Icon.webp",
+                "Name": "Holy Winged Icon",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 871,
+                "addonIcon": "public/PowerAddons/Judgment/Order-Of-Inquisition.webp",
+                "Name": "Order of Inquisition",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 872,
+                "addonIcon": "public/PowerAddons/Judgment/Superheated-Glass.webp",
+                "Name": "Superheated Glass",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 873,
+                "addonIcon": "public/PowerAddons/Judgment/Chains-Of-The-Heretic.webp",
+                "Name": "Chains of the Heretic",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 874,
+                "addonIcon": "public/PowerAddons/Judgment/Crown-Of-The-Destroyer.webp",
+                "Name": "Crown of the Destroyer",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 875,
+                "addonIcon": "public/PowerAddons/Judgment/Eyes-Of-Gerhardt.webp",
+                "Name": "Eyes of Gerhardt",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 876,
+                "addonIcon": "public/PowerAddons/Judgment/Improvised-Detonators.webp",
+                "Name": "Improvised Detonators",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 877,
+                "addonIcon": "public/PowerAddons/Judgment/Mirror-Of-The-Creators.webp",
+                "Name": "Mirror of the Creators",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 878,
+                "addonIcon": "public/PowerAddons/Judgment/Obsidian-Feather.webp",
+                "Name": "Obsidian Feather",
+                "Rarity": 4
+            }
+        ]
     }
 ]

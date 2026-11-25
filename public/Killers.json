@@ -385,5 +385,14 @@
         "PowerIcon": "public/Powers/Slasher.webp",
         "Aliases": ["Jason", "Voorhees"],
         "AdditionalData": {}
+    },
+    {
+        "ID": 43,
+        "Name": "The Judgment",
+        "Portrait": "iconography/portraits/Judgment.webp",
+        "LorePortrait": "iconography/lore/Judgment.webp",
+        "PowerIcon": "public/Powers/Judgment.webp",
+        "Aliases": [],
+        "AdditionalData": {}
     }
 ]

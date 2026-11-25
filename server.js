@@ -26,7 +26,16 @@ const activeBuilds = {};
 require('./routes/viewRoutes')(app)
 
 // Set a static folder with all subfolders and files
-app.use(express.static('public', { maxAge: '30d' }))
+app.use(express.static('public', {
+  maxAge: '30d', // Keep the default 30-day cache for most assets
+  setHeaders: (res, path, stat) => {
+    // Check if the file being served is Balancings.json
+    if (path.endsWith('Balancings.json') || path.includes('Autobalance')) {
+      // Override the Cache-Control header to 30 minutes
+      res.set('Cache-Control', 'public, max-age=1800');
+    }
+  }
+}))
 
 // middleware 
 app.use(express.json()) //Add it first then others follow

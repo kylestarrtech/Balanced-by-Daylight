@@ -24,7 +24,7 @@ module.exports = function(app) {
     });
 
     function VerifyAutobalanceKey(givenKey) {
-        let keysString = process.env["AUTOBALANCE-KEYS"] || "";
+        let keysString = process.env["AUTOBALANCE_KEYS"] || "";
         let apiKeys = keysString.split(",");
 
         if (!apiKeys.includes(givenKey)) {
@@ -35,7 +35,7 @@ module.exports = function(app) {
     }
 
     function VerifyPartnerKey(givenKey) {
-        let keysString = process.env["PARTNER-KEYS"] || "";
+        let keysString = process.env["PARTNER_KEYS"] || "";
         let partnerKeys = keysString.split(",");
 
         if (!partnerKeys.includes(givenKey)) {

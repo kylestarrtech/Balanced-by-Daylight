@@ -2896,5 +2896,65 @@
         "tags": [],
         "character": "Shane Wiigwaas",
         "survivorPerk": true
+    },
+    {
+        "id": 315,
+        "dateAdded": 1787919187,
+        "name": "Celestial Witness",
+        "icon": "public/Perks/Killers/Celestial-Witness.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Judgment",
+        "survivorPerk": false
+    },
+    {
+        "id": 316,
+        "dateAdded": 1787919187,
+        "name": "Hex: Under Your Thumb",
+        "icon": "public/Perks/Killers/Hex-Under-Your-Thumb.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Judgment",
+        "survivorPerk": false
+    },
+    {
+        "id": 317,
+        "dateAdded": 1787919187,
+        "name": "Lay Waste",
+        "icon": "public/Perks/Killers/Lay-Waste.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Judgment",
+        "survivorPerk": false
+    },
+    {
+        "id": 318,
+        "dateAdded": 1787919187,
+        "name": "Boon: Steadfast",
+        "icon": "public/Perks/Survivors/Boon-Steadfast.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Aurora Stardotter",
+        "survivorPerk": true
+    },
+    {
+        "id": 319,
+        "dateAdded": 1787919187,
+        "name": "Fruits of Your Labor",
+        "icon": "public/Perks/Survivors/Fruits-Of-Your-Labor.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Aurora Stardotter",
+        "survivorPerk": true
+    },
+    {
+        "id": 320,
+        "dateAdded": 1787919187,
+        "name": "Salvation's Cry",
+        "icon": "public/Perks/Survivors/Salvation_S-Cry.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Aurora Stardotter",
+        "survivorPerk": true
     }
 ]
