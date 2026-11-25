@@ -462,5 +462,13 @@
         "Type": "hybrid",
         "Icon": "N/A",
         "ClockImage": "N/A"
+    },
+    {
+        "ID": 58,
+        "Name": "Hartshorne Mall",
+        "Realm": "The Subdivisions",
+        "Type": "indoor",
+        "Icon": "N/A",
+        "ClockImage": "N/A"
     }
 ]
