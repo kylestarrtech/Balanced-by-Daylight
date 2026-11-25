@@ -2956,5 +2956,65 @@
         "tags": [],
         "character": "Aurora Stardotter",
         "survivorPerk": true
+    },
+    {
+        "id": 321,
+        "dateAdded": 1795631437,
+        "name": "Funny Business",
+        "icon": "public/Perks/Killers/Funny-Business.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Terrifier",
+        "survivorPerk": false
+    },
+    {
+        "id": 322,
+        "dateAdded": 1795631437,
+        "name": "Kill Spree",
+        "icon": "public/Perks/Killers/Kill-Spree.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Terrifier",
+        "survivorPerk": false
+    },
+    {
+        "id": 323,
+        "dateAdded": 1795631437,
+        "name": "Laughingstock",
+        "icon": "public/Perks/Killers/Laughingstock.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "The Terrifier",
+        "survivorPerk": false
+    },
+    {
+        "id": 324,
+        "dateAdded": 1795631437,
+        "name": "Best Gift Ever",
+        "icon": "public/Perks/Survivors/Best-Gift-Ever.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Sienna Shaw",
+        "survivorPerk": true
+    },
+    {
+        "id": 325,
+        "dateAdded": 1795631437,
+        "name": "Shared Trauma",
+        "icon": "public/Perks/Survivors/Shared-Trauma.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Sienna Shaw",
+        "survivorPerk": true
+    },
+    {
+        "id": 326,
+        "dateAdded": 1795631437,
+        "name": "Valkyrie's Rage",
+        "icon": "public/Perks/Survivors/Valkyrie_S-Rage.webp",
+        "exhaustion": false,
+        "tags": [],
+        "character": "Sienna Shaw",
+        "survivorPerk": true
     }
 ]

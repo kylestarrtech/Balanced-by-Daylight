@@ -6378,5 +6378,150 @@
                 "Rarity": 4
             }
         ]
+    },
+    {
+        "Name": "The Terrifier",
+        "Addons": [
+            {
+                "id": 0,
+                "globalID": 879,
+                "addonIcon": "public/PowerAddons/Terrifier/Allie_S-Scalp.webp",
+                "Name": "Allie's Scalp",
+                "Rarity": 0
+            },
+            {
+                "id": 1,
+                "globalID": 880,
+                "addonIcon": "public/PowerAddons/Terrifier/Blackened-Heart.webp",
+                "Name": "Blackened Heart",
+                "Rarity": 0
+            },
+            {
+                "id": 2,
+                "globalID": 881,
+                "addonIcon": "public/PowerAddons/Terrifier/Bottle-Of-Bleach.webp",
+                "Name": "Bottle of Bleach",
+                "Rarity": 0
+            },
+            {
+                "id": 3,
+                "globalID": 882,
+                "addonIcon": "public/PowerAddons/Terrifier/Mike_S-Phone.webp",
+                "Name": "Mike's Phone",
+                "Rarity": 0
+            },
+            {
+                "id": 4,
+                "globalID": 883,
+                "addonIcon": "public/PowerAddons/Terrifier/Bloodstained-Bullet.webp",
+                "Name": "Bloodstained Bullet",
+                "Rarity": 1
+            },
+            {
+                "id": 5,
+                "globalID": 884,
+                "addonIcon": "public/PowerAddons/Terrifier/Brooke_S-Pustule.webp",
+                "Name": "Brooke's Pustule",
+                "Rarity": 1
+            },
+            {
+                "id": 6,
+                "globalID": 885,
+                "addonIcon": "public/PowerAddons/Terrifier/Burnt-Wings.webp",
+                "Name": "Burnt Wings",
+                "Rarity": 1
+            },
+            {
+                "id": 7,
+                "globalID": 886,
+                "addonIcon": "public/PowerAddons/Terrifier/Shiny-Tricycle.webp",
+                "Name": "Shiny Tricycle",
+                "Rarity": 1
+            },
+            {
+                "id": 8,
+                "globalID": 887,
+                "addonIcon": "public/PowerAddons/Terrifier/Sienna_S-Flesh.webp",
+                "Name": "Sienna's Flesh",
+                "Rarity": 1
+            },
+            {
+                "id": 9,
+                "globalID": 888,
+                "addonIcon": "public/PowerAddons/Terrifier/Candy-Head-Bowl.webp",
+                "Name": "Candy Head Bowl",
+                "Rarity": 2
+            },
+            {
+                "id": 10,
+                "globalID": 889,
+                "addonIcon": "public/PowerAddons/Terrifier/Dead-Opossum.webp",
+                "Name": "Dead Opossum",
+                "Rarity": 2
+            },
+            {
+                "id": 11,
+                "globalID": 890,
+                "addonIcon": "public/PowerAddons/Terrifier/Emily.webp",
+                "Name": "Emily",
+                "Rarity": 2
+            },
+            {
+                "id": 12,
+                "globalID": 891,
+                "addonIcon": "public/PowerAddons/Terrifier/Thornton-Salt.webp",
+                "Name": "Thornton Salt",
+                "Rarity": 2
+            },
+            {
+                "id": 13,
+                "globalID": 892,
+                "addonIcon": "public/PowerAddons/Terrifier/Victoria_S-Eye.webp",
+                "Name": "Victoria's Eye",
+                "Rarity": 2
+            },
+            {
+                "id": 14,
+                "globalID": 893,
+                "addonIcon": "public/PowerAddons/Terrifier/Art-Crispies.webp",
+                "Name": "Art Crispies",
+                "Rarity": 3
+            },
+            {
+                "id": 15,
+                "globalID": 894,
+                "addonIcon": "public/PowerAddons/Terrifier/Explosive-Gift.webp",
+                "Name": "Explosive Gift",
+                "Rarity": 3
+            },
+            {
+                "id": 16,
+                "globalID": 895,
+                "addonIcon": "public/PowerAddons/Terrifier/Jonathan_S-Skull.webp",
+                "Name": "Jonathan's Skull",
+                "Rarity": 3
+            },
+            {
+                "id": 17,
+                "globalID": 896,
+                "addonIcon": "public/PowerAddons/Terrifier/Wacky-Jacks.webp",
+                "Name": "Wacky Jacks",
+                "Rarity": 3
+            },
+            {
+                "id": 18,
+                "globalID": 897,
+                "addonIcon": "public/PowerAddons/Terrifier/Duct-Tape.webp",
+                "Name": "Duct Tape",
+                "Rarity": 4
+            },
+            {
+                "id": 19,
+                "globalID": 898,
+                "addonIcon": "public/PowerAddons/Terrifier/The-Ninth-Circle.webp",
+                "Name": "The Ninth Circle",
+                "Rarity": 4
+            }
+        ]
     }
 ]

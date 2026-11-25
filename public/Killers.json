@@ -394,5 +394,14 @@
         "PowerIcon": "public/Powers/Judgment.webp",
         "Aliases": [],
         "AdditionalData": {}
+    },
+    {
+        "ID": 44,
+        "Name": "The Terrifier",
+        "Portrait": "iconography/portraits/Terrifier.webp",
+        "LorePortrait": "iconography/lore/Terrifier.webp",
+        "PowerIcon": "public/Powers/Terrifier.webp",
+        "Aliases": ["Art The Clown", "Art"],
+        "AdditionalData": {}
     }
 ]

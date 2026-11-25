@@ -15,7 +15,7 @@ try{
 const outputFolder = path.join(__dirname, 'output');
 
 const combineMode = "characterMatch";
-const characterName = "The Judgment";
+const characterName = "The Terrifier";
 
 let newAddonsList = [];
 try {
